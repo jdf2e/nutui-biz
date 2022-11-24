@@ -1,0 +1,42 @@
+.DS_Store
+node_modules
+.idea
+.eslintcache
+/dist
+/libs
+/jd/upload.js
+yarn.lock
+package-lock.json
+/cache
+/src/nutui.ts
+/src/nutui.react.ts
+/src/nutui.*.ts
+/src/packages/nutui.ts
+/src/packages/nutui.react.ts
+/src/packages/nutui.*.ts
+/src/sites/doc/docs.ts
+/src/sites/doc/docs.taro.ts
+/src/sites/mobile-taro/dist
+/src/sites/mobile-taro/node_modules
+/tsc/test
+/site_docs
+/coverage
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
