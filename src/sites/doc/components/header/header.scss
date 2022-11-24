@@ -163,7 +163,7 @@
     .header {
       &-logo {
         .logo-link {
-          background: url('../../assets/images/logo-header-white.png') no-repeat
+          background: url('https://nutui.jd.com/react/1.3.12/logo-header-red-react.png') no-repeat
             center/100%;
         }
         .logo-border {
@@ -321,8 +321,12 @@
     .header {
       &-logo {
         .logo-link {
-          background: url('../../assets/images/logo-header-red.png') no-repeat
+          background: url('https://nutui.jd.com/react/1.3.12/logo-header-red-react.png') no-repeat
             center/100%;
+            width: 197px;
+
+            .react {
+            }
         }
         .logo-border {
           background: $theme-black-border;
