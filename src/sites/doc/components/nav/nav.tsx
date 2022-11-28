@@ -19,18 +19,19 @@ const Nav = () => {
   useEffect(() => {
     document.addEventListener('scroll', scrollNav)
   }, [])
+  const currentComponents = ['SettleBar']
   return (
     <div className={`doc-nav ${fixed ? 'fixed' : ''}`}>
       <ol>
         {cNav.map((cn: any) => {
           return (
-            <>
+            <React.Fragment key={Math.random()}>
               <li>{cn.name}</li>
               <ul>
                 {cn.packages.map((cp: any) => {
                   if (!cp.show) return null
                   return (
-                    cp.name !== 'Address' ? <a
+                    !currentComponents.includes(cp.name) ? <a
                     key={Math.random()}
                   >
                     <li style={{color: '#ccc', cursor: 'not-allowed'}}>
@@ -48,7 +49,7 @@ const Nav = () => {
                   )
                 })}
               </ul>
-            </>
+            </React.Fragment>
           )
         })}
       </ol>

@@ -1,0 +1,82 @@
+.nut-settle-bar {
+    &-warning {
+        position: relative;
+        height: 38px;
+
+        &-mask,
+        &-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        &-mask {
+            z-index: 1;
+            background-color: #faa21e;
+            opacity: .4;
+        }
+
+        &-content {
+            z-index: 2;
+        }
+    }
+
+    &-main {
+        padding: 6px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .nut-checkbox__label {
+            margin-left: 10px;
+        }
+    
+        .total {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            margin-left: 12px;
+            margin-right: 12px;
+
+            &-main {
+                font-size: 16px;
+            }
+
+            &-tip {
+                font-size: 12px;
+            }
+        }
+
+        .btn {
+            border: 1px solid #8c8c8c;
+            border-radius: 15px;
+            font-size: 12px;
+            line-height: 30px;
+            padding: 0 19px;
+        }
+    
+        .buy {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f2270c;
+            background-image: linear-gradient(135deg,#f2140c,#f2270c 70%,#f24d0c);
+            border-radius: 20px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            height: 38px;
+            width: 113px;
+    
+            &.disabled {
+                opacity: .3;
+            }
+    
+            .num {
+                font-weight: 400;
+            }
+        }
+    }
+}

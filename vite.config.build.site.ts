@@ -9,7 +9,7 @@ const { resolve } = path
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/react/',
+  base: '/',
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },
@@ -45,6 +45,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         mobile: resolve(__dirname, 'demo.html'),
+        index: resolve(__dirname, 'index.html'),
       },
       output: {
         entryFileNames: `demo-${config.version}/[name].js`,

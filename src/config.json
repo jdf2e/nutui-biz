@@ -46,6 +46,127 @@
       "name": "商品类",
       "enName": "base",
       "packages": [
+        {
+          "version": "0.1.0",
+          "name": "Card",
+          "type": "component",
+          "cName": "商品卡片",
+          "desc": "商品卡片",
+          "sort": 7,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "CartBar",
+          "type": "component",
+          "cName": "购物车栏",
+          "desc": "购物车栏",
+          "sort": 3,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Category",
+          "type": "component",
+          "cName": "商品分类",
+          "desc": "商品分类",
+          "sort": 5,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Comment",
+          "type": "component",
+          "cName": "评论",
+          "desc": "评论",
+          "sort": 1,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Ecard",
+          "type": "component",
+          "cName": "电子卡",
+          "desc": "电子卡",
+          "sort": 4,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "GoodsFilter",
+          "type": "component",
+          "cName": "商品筛选",
+          "desc": "商品筛选",
+          "sort": 6,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "QuickEnter",
+          "type": "component",
+          "cName": "快捷入口",
+          "desc": "快捷入口",
+          "sort": 10,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "SearchHistory",
+          "type": "component",
+          "cName": "搜索历史",
+          "desc": "搜索历史",
+          "sort": 8,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "SettleBar",
+          "type": "component",
+          "cName": "结算栏",
+          "desc": "结算栏",
+          "sort": 11,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Sku",
+          "type": "component",
+          "cName": "商品规格选择",
+          "desc": "商品规格选择",
+          "sort": 2,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "SkuFeeds",
+          "type": "component",
+          "cName": "商品feed流",
+          "desc": "商品feed流",
+          "sort": 9,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        }
       ]
     },
     {
@@ -62,6 +183,61 @@
           "show": true,
           "taro": true,
           "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "AddressEdit",
+          "type": "component",
+          "cName": "地址编辑",
+          "desc": "地址编辑",
+          "sort": 17,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "AddressList",
+          "type": "component",
+          "cName": "地址列表",
+          "desc": "地址列表",
+          "sort": 16,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Delivery",
+          "type": "component",
+          "cName": "配送",
+          "desc": "配送",
+          "sort": 14,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "OrderCancelPanel",
+          "type": "component",
+          "cName": "订单取消面板",
+          "desc": "订单取消面板",
+          "sort": 13,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "OrderRemark",
+          "type": "component",
+          "cName": "订单备注",
+          "desc": "订单备注",
+          "sort": 12,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
         }
       ]
     },
@@ -75,6 +251,50 @@
       "name": "发票类",
       "enName": "dentry",
       "packages": [
+        {
+          "version": "0.1.0",
+          "name": "InvoiceTitleEdit",
+          "type": "component",
+          "cName": "发票抬头编辑",
+          "desc": "发票抬头编辑",
+          "sort": 21,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "InvoiceTitleList",
+          "type": "component",
+          "cName": "发票抬头列表",
+          "desc": "发票抬头列表",
+          "sort": 18,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "ReceiveInvoiceEdit",
+          "type": "component",
+          "cName": "收票地址编辑",
+          "desc": "收票地址编辑",
+          "sort": 20,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "ReceiveInvoiceList",
+          "type": "component",
+          "cName": "收票人列表",
+          "desc": "收票人列表",
+          "sort": 19,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        }
       ]
     },
     {
@@ -93,6 +313,39 @@
       "name": "其他",
       "enName": "business",
       "packages": [
+        {
+          "version": "0.1.0",
+          "name": "Coupon",
+          "type": "component",
+          "cName": "优惠券",
+          "desc": "优惠券",
+          "sort": 23,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "HorizontalScrolling",
+          "type": "component",
+          "cName": "横向滚动",
+          "desc": "横向滚动",
+          "sort": 24,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Login",
+          "type": "component",
+          "cName": "登录",
+          "desc": "登录",
+          "sort": 22,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        }
       ]
     }
   ]

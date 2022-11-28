@@ -5,10 +5,9 @@ import {
   useThemeEditor,
 } from '@/sites/theme/components/theme-setting/helpers'
 import './theme-setting.scss'
-import '@/packages/button/button.scss'
-import '@/packages/input/input.scss'
-import Button from '@/packages/button'
-import Input from '@/packages/input'
+// import '@/packages/button/button.scss'
+// import '@/packages/input/input.scss'
+import {Button,Input} from '@nutui/nutui-react'
 import { useHistory } from 'react-router-dom'
 import ColorPicker from '@/sites/theme/components/theme-setting/color-picker'
 
