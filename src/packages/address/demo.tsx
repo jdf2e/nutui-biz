@@ -88,6 +88,10 @@ const AddressDemo = () => {
     { id: 5, name: '浙江', title: 'Z' },
   ])
 
+  const handleClickHotCity = (city: any) => {
+    console.log(city)
+  }
+
   const addressData: any = {
     province: [
       { id: 1, name: '北京', title: 'B' },
@@ -110,6 +114,14 @@ const AddressDemo = () => {
       { id: 4, name: '常营乡', title: 'C' },
     ],
     town: [],
+    hotCities: [
+      { id: 1, name: '北京' },
+      { id: 2, name: '广西' },
+      { id: 3, name: '江西' },
+      { id: 4, name: '四川' },
+      { id: 5, name: '浙江' },
+    ],
+    onClickHotCity: handleClickHotCity
   }
 
   const [city, setCity] = useState<any>([])
@@ -436,9 +448,11 @@ const AddressDemo = () => {
           city={addressData.city}
           country={addressData.country}
           town={addressData.town}
+          hotCities={addressData.hotCities}
           height="270px"
           onChange={(cal) => onChange(cal, 'normal2')}
           onClose={close5}
+          onClickHotCity={handleClickHotCity}
           customAddressTitle={translated.title}
         />
 

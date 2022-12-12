@@ -33,6 +33,10 @@ export interface AddressProps extends IComponent {
   town: RegionData[]
   isShowCustomAddress: boolean
   existAddress: AddressList[]
+  hotCities: Array<{
+    id: number,
+    name: string
+  }>
   existAddressTitle: string
   customAndExistTitle: string
   height: string | number
@@ -46,6 +50,10 @@ export interface AddressProps extends IComponent {
     copyExistAdd: AddressList[]
   ) => void
   onClose?: (cal: CloseCallBack) => void
+  onClickHotCity?: (city: {
+    id: number,
+    name: string
+  }) => void
   closeMask?: (cal: { closeWay: string }) => void
   switchModule?: (cal: { type: string }) => void
   onChange?: (cal: ChangeCallBack) => void
@@ -64,6 +72,7 @@ const defaultProps = {
   town: [],
   isShowCustomAddress: true,
   existAddress: [],
+  hotCities: [],
   existAddressTitle: '配送至',
   customAndExistTitle: '选择其他地址',
   height: '200px',
@@ -85,6 +94,7 @@ export const Address: FunctionComponent<
     height,
     customAddressTitle,
     existAddress,
+    hotCities,
     existAddressTitle,
     province,
     city,
@@ -99,6 +109,7 @@ export const Address: FunctionComponent<
     onChange,
     onSelected,
     onClose,
+    onClickHotCity,
     closeMask,
     switchModule,
     onTabChecked,
@@ -286,6 +297,7 @@ export const Address: FunctionComponent<
                 city={city}
                 country={country}
                 town={town}
+                hotCities={hotCities}
                 height={height}
                 onNextArea={(cal) => {
                   nextAreaList && nextAreaList(cal)
@@ -294,6 +306,7 @@ export const Address: FunctionComponent<
                   onTabChecked && onTabChecked(type)
                 }}
                 onClose={handClose}
+                onClickHotCity={onClickHotCity}
               />
             )}
             {privateType === 'exist' && (

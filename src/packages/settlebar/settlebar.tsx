@@ -1,13 +1,16 @@
 import React, {
   FunctionComponent,
   CSSProperties,
-  ReactElement
+  useRef,
+  useState,
+  useEffect,
+  ReactNode
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames';
 import { Icon, Checkbox } from '@nutui/nutui-react';
-import '@nutui/nutui-react/dist/style.css';
 import bem from '@/utils/bem'
+import {getRect} from '@/utils/useClientRect'
 
 import { IComponent } from '@/utils/typings'
 
@@ -20,17 +23,20 @@ export interface SettleBarProps extends IComponent {
   loading: boolean
   className: string
   style: CSSProperties
+  safeAreaInsetBottom: boolean
+  placeholder: boolean
   settleCount: number | string
   settleUnit: string
-  customWarning: ReactElement
-  customTotal: ReactElement
-  customTotalExtra: ReactElement
-  customSelectAll: ReactElement
-  customTotalPrice: ReactElement
-  isEdit: boolean
+  showZero: boolean
+  noCount: boolean
+  customWarning: ReactNode
+  customTotal: ReactNode
+  customSelectAll: ReactNode
+  customTotalPrice: ReactNode
+  customTotalExtra: ReactNode
+  customButton: ReactNode
   onSettle: () => void
-  onDelete: () => void
-  onSelectAll: () => void
+  onSelectAll: (checked: boolean) => void
 }
 
 const defaultProps = {
@@ -41,17 +47,21 @@ const defaultProps = {
   disabled: false,
   loading: false,
   settleCount: 0,
-  settleUnit: '件',
-  isEdit: false,
+  settleUnit: '',
+  showZero: true,
+  noCount: false,
+  safeAreaInsetBottom: true,
+  placeholder: false,
+  customTotalExtra: '',
   onSettle: () => {},
-  onDelete: () => {},
-  onSelectAll: () => {}
+  onSelectAll: (checked) => {}
 } as SettleBarProps
 
 export const SettleBar: FunctionComponent<
-  Partial<SettleBarProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<SettleBarProps>
 > = (props) => {
   const { locale } = useConfig()
+  const root = useRef(null)
   const {
     total,
     totalText,
@@ -64,13 +74,16 @@ export const SettleBar: FunctionComponent<
     settleCount,
     settleUnit,
     customWarning,
-    isEdit,
+    safeAreaInsetBottom,
+    placeholder,
+    showZero,
+    noCount,
     customTotal,
-    customTotalExtra,
     customSelectAll,
     customTotalPrice,
+    customButton,
+    customTotalExtra,
     onSettle,
-    onDelete,
     onSelectAll,
     ...rest
   } = {
@@ -83,21 +96,49 @@ export const SettleBar: FunctionComponent<
   }
 
   let totalStyle = {
-    alignItems: totalAlign === 'left' ? 'flex-start' : 'flex-end'
-  }
+    alignItems: totalAlign === 'left' ? 'flex-start' : 'flex-end',
+    textAlign: totalAlign
+  } as CSSProperties
 
-  const handleDelete = () => {
-    onDelete && onDelete()
-  }
-
-  const handleSelectAll = () => {
-    onSelectAll && onSelectAll()
+  const handleSelectAll = (checked: boolean) => {
+    onSelectAll && onSelectAll(checked)
   }
 
   const b = bem('settle-bar')
 
-  return (
-    <div className={`${b()} ${className || ''}`} style={style} {...rest}>
+  const [height,setHeight] = useState(0)
+
+  useEffect(() => {
+    if(root.current) {
+      setHeight((getRect(root.current) as any).height)
+    }
+  }, ['height'])
+
+  const renderCountAndUnit = () => {
+    if(showZero || settleCount !== 0) {
+      return <span className="num">({settleCount}{settleUnit})</span>
+    }
+  }
+
+  const renderButton = () => {
+    return customButton || <div 
+      className={classNames(`buy ${(disabled || loading) ? 'disabled' : ''}`)}
+      onClick={handleSettle}
+    >
+      {
+        loading ? <Icon name="loading" /> :  <>{settleButtonText}{!noCount && renderCountAndUnit()}</>
+      }
+    </div>
+  }
+
+  const renderSelectAll = () => {
+    if(!customSelectAll && customSelectAll !== undefined) return null;
+
+    return <div className='select-all'>{customSelectAll ? customSelectAll : <Checkbox label="全选" onChange={handleSelectAll} />}</div>
+  }
+
+  const renderSettleBar = () => {
+    return <div ref={root} className={classNames([b(),className,{'nut-biz-safe-area-bottom':safeAreaInsetBottom}])} style={style} {...rest}>
       {
         customWarning && 
         <div className='nut-settle-bar-warning'>
@@ -106,38 +147,33 @@ export const SettleBar: FunctionComponent<
         </div>
       }
       <div className='nut-settle-bar-main'>
-        <div>{customSelectAll ? customSelectAll : <Checkbox label="全选" onChange={handleSelectAll} checked={false} />}</div>
-        {
-          isEdit ? <div>
-            <div className="btn" onClick={handleDelete}>删除</div>
-          </div> : <>
-            <div className='total' style={totalStyle}>
+        {renderSelectAll()}
+        <div className='total' style={totalStyle}>
+          {
+            customTotal ? customTotal : <>
               {
-                customTotal ? customTotal : <>
-                  {
-                    customTotalPrice ? customTotalPrice : <div className="total-main">
-                      <span>{totalText}：</span>
-                      <span>¥{total}</span>
-                    </div>
-                  }
-                  {
-                    customTotalExtra ? customTotalExtra : <span className="total-tip">已优惠¥100.00</span>
-                  }
-                </>
+                customTotalPrice ? customTotalPrice : <div className="total-main">
+                  <span>{totalText}：</span>
+                  <span>¥{total}</span>
+                </div>
               }
-            </div>
-            <div 
-              className={classNames(`buy ${(disabled || loading) ? 'disabled' : ''}`)}
-              onClick={handleSettle}
-            >
-              {
-                loading ? <Icon name="loading" /> :  <>{settleButtonText}<span className="num">({settleCount}{settleUnit})</span></>
-              }
-            </div>
-          </>
-        }
+              {customTotalExtra}
+            </>
+          }
+        </div>
+        {renderButton()}
       </div>
     </div>
+  }
+
+  const renderSettleBarWithPlaceholder = () => {
+    return <div style={{height}} className={`${b('')}--placeholder`}>
+      {renderSettleBar()}
+    </div>
+  }
+
+  return (
+    placeholder ? renderSettleBarWithPlaceholder() : renderSettleBar()
   )
 }
 

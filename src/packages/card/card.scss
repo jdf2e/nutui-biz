@@ -1,35 +1,58 @@
 @import '../../styles/mixins/text-ellipsis.scss';
 
 .nut-theme-dark {
-  .nut-card {
-    .nut-card__right {
+  .nut-biz-card {
+    .nut-biz-card__right {
       color: $dark-color;
     }
   }
 }
 
-.nut-card {
+%noClamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.nut-biz-card {
   width: 100%;
-  display: flex;
-  .nut-card__left {
+
+  .nut-biz-card__main {
+    display: flex;
+  }
+
+  .nut-biz-card__left {
     width: 120px;
     height: 120px;
     flex-shrink: 0;
+    position: relative;
+
     > img {
       display: block;
       width: 100%;
       height: 100%;
     }
   }
-  .nut-card__right {
+
+  .nut-biz-card__right {
     flex: 1;
     padding: 0 10px 8px;
-    .nut-card__right__title {
-      @include moreline-ellipsis();
+    width: calc(100% - 130px);
+
+    .nut-biz-card__right__title {
       line-height: 1.5;
       font-size: 14px;
+
+      &.multiple-lines {
+        @extend %noClamp;
+      }
+
+      &.one-line {
+        @include oneline-ellipsis;
+      }
     }
-    .nut-card__right__price {
+    .nut-biz-card__right__price {
       display: flex;
       align-items: center;
       height: 18px;
@@ -45,7 +68,7 @@
           font-size: 12px;
         }
       }
-      .nut-card__right__price__origin {
+      .nut-biz-card__right__price__origin {
         &.nut-price {
           margin-left: 2px;
           color: #d2a448;
@@ -58,7 +81,7 @@
         }
       }
     }
-    .nut-card__right__other {
+    .nut-biz-card__right__other {
       display: flex;
       align-items: center;
       padding: 5px 0 2px;
@@ -68,16 +91,53 @@
         font-size: $font-size-0;
       }
     }
-    .nut-card__right__shop {
+    .nut-biz-card__right__shop {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      .nut-card__right__shop__name {
+      .nut-biz-card__right__shop__name {
         line-height: 1.5;
         color: #999;
         font-size: 12px;
         padding-top: 4px;
       }
+    }
+  }
+
+  .half-line {
+    img {
+      width: 100%;
+    }
+
+    &-img {
+      position: relative;
+    }
+
+    &-title {
+      color: #333;
+      font-size: 14px;
+      margin-top: 8px;
+
+      &.one-line {
+        @include oneline-ellipsis;
+      }
+
+      &.multiple-lines {
+        @extend %noClamp;
+      }
+    }
+
+    &-shop-name {
+      font-size: 12px;
+      color: #999;
+    }
+  }
+
+  .img-tag {
+    position: absolute;
+
+    &.top-right {
+      right: 0;
     }
   }
 }

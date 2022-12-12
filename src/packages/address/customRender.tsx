@@ -24,9 +24,17 @@ export interface AddressProps {
   country: RegionData[]
   town: RegionData[]
   height: string | number
+  hotCities: Array<{
+    id: number,
+    name: string
+  }>
   onNextArea?: (cal: NextListObj) => void
   onTabClick?: (type: string) => void
   onClose?: () => void
+  onClickHotCity?: (city: {
+    id: number,
+    name: string
+  }) => void
 }
 
 const defaultProps = {
@@ -37,6 +45,7 @@ const defaultProps = {
   country: [],
   town: [],
   height: '200px',
+  hotCities: []
 } as AddressProps
 
 export const CustomRender: FunctionComponent<
@@ -52,9 +61,11 @@ export const CustomRender: FunctionComponent<
     city,
     country,
     town,
+    hotCities,
     onNextArea,
     onTabClick,
     onClose,
+    onClickHotCity,
     ...rest
   } = {
     ...defaultProps,
@@ -381,6 +392,18 @@ export const CustomRender: FunctionComponent<
           </ul>
         </div>
       )}
+
+      {hotCities.length > 0 && <div>
+        <div className='hot-title'>热门城市</div>
+        <ul className='hot-citys'>
+          {
+            hotCities.map((city, index) => {
+              return <li key={city.id} onClick={() => onClickHotCity && onClickHotCity(city)}>{city.name}</li>
+            })
+          }
+        </ul>
+      </div>
+      }
 
       {privateType === 'custom2' && (
         <div className={b('elevator-group')}>

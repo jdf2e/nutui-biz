@@ -587,31 +587,33 @@ export default App;
 |----- | ----- | ----- | -----  |
 | modelValue | Whether to open address | String | '' |
 | modelSelect`v1.2.3` | Default address value | String\|Number[] | [] |
-| type | Choose type: exist/custom/custom2  | String | 'custom' |
+| type | Choose type: exist/custom/custom2  | String |  `custom` |
 | province | Province data | Array | [] |
 | city | City data | Array | [] |
 | country | Country data | Array | [] |
 | town | Town data | Array | [] |
-| height | Popup height | String、Number | '200px' |
+| hotCities | Hot cities | Array | [] |
+| height | Popup height | String、Number | `200px` |
 | existAddress | Exist address list data | Array | [] |
 | defaultIcon | Exist address default icon | String | '' |
 | selectedIcon | Exist address selected icon | String | '' |
 | closeBtnIcon | Custom close button icon | string | - |
 | backBtnIcon | Custom back button icon | String | - |
-| isShowCustomAddress | Whether to change custom address | Boolean | true |
-| customAddressTitle  | Custom address title | String | 'Select Region' |
-| existAddressTitle|  Exist address title | String | 'Delivery To'
-| customAndExistTitle| Custom address and existing address switch button copywriting | String | 'Choose Another Address'
+| isShowCustomAddress | Whether to change custom address | Boolean | `true` |
+| customAddressTitle  | Custom address title | String | `Select Region` |
+| existAddressTitle|  Exist address title | String | `Delivery To`
+| customAndExistTitle| Custom address and existing address switch button copywriting | String | `Choose Another Address`
 
 
 ## Event
 | Attribute            | Description               | Arguments   |
 |----- | ----- | -----  |
 | onChange | Emitted when to selected custom address |  reference onChange |
-| onSelected |  Emitted when to selected exist address  | reference selected
-| onClose | Emitted when to close  | reference close
+| onSelected |  Emitted when to selected exist address  | reference selected |
+| onClose | Emitted when to close  | reference close  |
+| onClickHotCity | Emitted when click hot city | clicked hot city data |
 | closeMask |Emitted when to close mask | {closeWay:'mask'/'cross'} |
-| switchModule | Click to select another address or custom address to select the upper left corner of the return button triggered | {type:'exist'/'custom'/'custom2'}
+| switchModule | Click to select another address or custom address to select the upper left corner of the return button triggered | {type:'exist'/'custom'/'custom2'} |
 
 
 ## change 回调参数

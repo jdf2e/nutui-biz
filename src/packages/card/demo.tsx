@@ -12,6 +12,7 @@ interface T {
   customShop: string
   customPriceIcon: string
   customFooter: string
+  customBottom: string
   customContent: string
   desc: string
   delivery: string
@@ -30,6 +31,7 @@ const CardDemo = () => {
       customShop: '自定义店铺介绍',
       customPriceIcon: '价格后自定义标签',
       customFooter: '自定义右下角内容',
+      customBottom: '自定义底部内容',
       customContent: '自定义',
       desc: '自营',
       delivery: '厂商配送',
@@ -46,6 +48,7 @@ const CardDemo = () => {
       customShop: '自定義店鋪介紹',
       customPriceIcon: '價格後自定義標簽',
       customFooter: '自定義右下角內容',
+      customBottom: '自定義底部內容',
       customContent: '自定義',
       desc: '自營',
       delivery: '廠商配送',
@@ -61,6 +64,7 @@ const CardDemo = () => {
       customShop: 'Custom Content',
       customPriceIcon: 'Price after custom tag',
       customFooter: 'Customize bottom right content',
+      customBottom: 'Customize bottom content',
       customContent: 'custom',
       desc: 'desc',
       delivery: 'delivery',
@@ -180,6 +184,31 @@ const CardDemo = () => {
           footerTpl={
             <div style={{ fontSize: '12px' }}>{translated.customContent}</div>
           }
+        />
+        <h2>{translated.customBottom}</h2>
+        <Card
+          imgUrl={state.imgUrl}
+          title={state.title}
+          price={state.price}
+          vipPrice={state.vipPrice}
+          shopDesc={state.shopDesc}
+          delivery={state.delivery}
+          shopName={state.shopName}
+          bottomTpl={
+            <div style={{ fontSize: '12px' }}>{translated.customContent}</div>
+          }
+        />
+        <h2>半行模式</h2>
+        <Card
+          imgUrl={state.imgUrl}
+          title={state.title}
+          price={state.price}
+          vipPrice={state.vipPrice}
+          shopDesc={state.shopDesc}
+          delivery={state.delivery}
+          shopName={state.shopName}
+          showType="half-line"
+          style={{width: '172px'}}
         />
       </div>
     </>

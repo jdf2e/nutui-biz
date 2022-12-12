@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { nav } from '@/config.json'
+import { NavLink } from 'react-router-dom'
+import classNames from 'classnames';
 // @ts-ignore
 import { version } from '/package.json'
 import config from '@/sites/config/env'
@@ -13,15 +15,19 @@ const Header = () => {
   const location = useLocation()
 
   const [currLang, setCurrLang] = useState({})
+  const [packages, setPackages] = useState([])
+  const [searchList, setSearchList] = useState([])
+  const [searchIndex, setSearchIndex] = useState(0)
+  const [searchCurName, setSearchCurName] = useState('')
 
   const toHome = () => {
     history.replace('/')
   }
 
   useEffect(() => {
-    let packages = [] as any[]
     nav.forEach((item) => {
       packages.push(...item.packages)
+      setPackages(packages)
     })
   }, [])
 
@@ -58,18 +64,91 @@ const Header = () => {
     window.location.href = link
   }
 
+  useEffect(() => {
+  }, [searchList])
+
+  const handleKeyUp = (e) => {
+    let sVal = e.target.value;
+
+    if (sVal) {
+      setSearchList(packages.filter((item) => {
+        if (item.show === false) return false;
+          item._name = `/component/${item.name.toLowerCase()}`;
+        const rx = new RegExp(sVal, 'gi');
+        return rx.test(item.name + ' ' + item.cName + '' + item.desc);
+      }))
+    } else {
+      setSearchList([])
+      setSearchIndex(0)
+    }
+
+    let setSearchIndex1 = searchIndex;
+
+    if (e.keyCode == 40) {
+      setSearchIndex1++;
+    }
+    if (e.keyCode == 38) {
+      setSearchIndex1--;
+    }
+    if (setSearchIndex1 < 0) {
+      setSearchIndex1 = 0;
+    }
+
+    const searchList1 = searchList;
+    if (searchList1.length > 0) {
+      const cName = searchList1[setSearchIndex1] && searchList1[setSearchIndex1].name;
+      if (cName) {
+        setSearchCurName(cName)
+        setSearchIndex(setSearchIndex1)
+        if (e.keyCode == 13) {
+          history.push('/zh-CN/component/' + searchList1[searchIndex].name);
+          setSearchCurName('')
+          setSearchList([])
+          setSearchIndex(0)
+        }
+      }
+    }
+  }
+
+  const handleClick = () => {
+    setSearchList([])
+    setSearchIndex(0)
+  }
+
   return (
     <div className="doc-header doc-header-black">
       <div className="header-logo">
         <a className="logo-link react" href="#/" onClick={toHome}></a>
         <span className="logo-border"></span>
-        {/* <span className="version">{version}</span> */}
       </div>
       <div className="header-nav">
-        <a href="https//github.com/jdf2e/nutui-docs" target="_blank">
-          当前环境：development ,代码 PR 合并后，文档会自动同步至
-          https//github.com/jdf2e/nutui-docs
-        </a>
+        <div className="search-box">
+          <input
+            type="text"
+            className="search-input"
+            placeholder="在 NutUI 中搜索"
+            onKeyUp={handleKeyUp}
+          />
+          {
+            searchList.length > 0 && <ul className="search-list">
+              {
+                searchList.map((item, index) => {
+                  return <li key={index} onClick={handleClick} className={classNames(searchCurName == item.name ? 'cur' : '')}>
+                    <NavLink to={item.name}>
+                      {item.name}<span>{item.cName}</span>
+                    </NavLink>
+                  </li>
+                })
+              }
+            </ul>
+          }
+        </div>
+        <div className="nav-box">
+          <ul className="nav-list">
+            <li className='nav-item active'><NavLink to="/zh-CN/component/SettleBar">组件</NavLink></li>
+            <li className="nav-item"><a className="user-link" target="_blank" href="https://github.com/jdf2e/nutui-biz"></a></li>
+          </ul>
+        </div>
       </div>
       {/*<div className={'switch'}>*/}
       {/*  <div className={'switch-content'}>*/}

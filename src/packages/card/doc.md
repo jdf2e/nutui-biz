@@ -247,10 +247,21 @@ export default App;
 | shopDesc  | 店铺介绍                                  | String | -    |
 | delivery     | 配送方式 | String  | -      |
 | shopName   | 店铺名称| String  | -      |
+| showType   | 展示形式，可选：`full-line`、`half-line`| String  | `full-line`      |
 | prolistTpl   | 自定义商品介绍| React.ReactNode  | -      |
 | originTpl   | 价格后方自定义内容| React.ReactNode  | -      |
 | shopTagTpl   | 店铺介绍自定义| React.ReactNode  | -      |
 | footerTpl   | 右下角内容自定义| React.ReactNode  | -      |
+| bottomTpl   | 底部内容自定义| React.ReactNode  | -      |
+| isNeedPrice   | 是否需要展示价格| Boolean  | `true`      |
+| imgTag   | 标题左侧标签，常用于活动标记等，不设置此参数或此参数为空，不展示| String  | -      |
+| imgTagDirection   | 商品图片标签呈现位置，可选：top-left、top-right| String  | top-left      |
+| titleTag   | 底部内容自定义| React.ReactNode  | -      |
+| titleLine   | 标题行数，默认两行，想展示更多下面内容可设置为1| String  | -      |
+| linkUrl   | 跳转链接，默认点击整个卡片以href的形式跳转，可通过点击事件自定义| String  | -      |
 
 
-
+## Events
+| 字段 | 说明 | 回调参数 |
+|----- | ----- | -----  |
+| onClick | 点击时触发 |  event: MouseEvent |

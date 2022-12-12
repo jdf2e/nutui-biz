@@ -1,0 +1,17 @@
+.nut-cart-bar-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+
+    .txt {
+        font-size: 9px;
+    }
+
+    .nut-badge {
+        margin-right: 0;
+        width: auto;
+        height: auto;
+    }
+}

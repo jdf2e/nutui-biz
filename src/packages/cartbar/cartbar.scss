@@ -1,0 +1,33 @@
+@import '../cartbaricon/cartbaricon.scss';
+@import '../cartbarbutton/cartbarbutton.scss';
+@import '../../styles/base.scss';
+
+.nut-cart-bar {
+    .nut-cart-bar-inner {
+        display: flex;
+
+        &.has-capsule-buttons {
+            > article {
+                margin-right: 0;
+
+                .nut-button--round {
+                    border-radius: 0;
+                }
+    
+                &:first-of-type {
+                    .nut-button--round {
+                        border-top-left-radius: 25px;
+                        border-bottom-left-radius: 25px;
+                    }
+                }
+            
+                &:last-of-type {
+                    .nut-button--round {
+                        border-top-right-radius: 25px;
+                        border-bottom-right-radius: 25px;
+                    }
+                }
+            }
+        }
+    }
+}

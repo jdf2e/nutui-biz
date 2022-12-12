@@ -60,7 +60,6 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
       })
       return component
     }
-    console.log(getComponentName())
     return (
       <>
         <div id="nav">

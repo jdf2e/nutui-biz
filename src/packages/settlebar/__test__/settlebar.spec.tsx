@@ -3,6 +3,15 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { SettleBar } from '../settlebar'
 
+test('test base', async () => {
+  const { container } = render(
+    <SettleBar />
+  )
+  const settleBar = container.querySelector('.nut-settle-bar')
+  
+  expect(settleBar).toHaveClass('nut-biz-safe-area-bottom')
+})
+
 test('test totalAlign', async () => {
   const { container } = render(
     <SettleBar totalAlign="left" />
@@ -47,19 +56,6 @@ test('test settleCount and settleUnit', async () => {
   expect(settleBarMainData).toHaveTextContent('100个')
 })
 
-test('test isEdit and onDelete', async () => {
-  const onDelete = jest.fn()
-  const { container } = render(
-    <SettleBar isEdit onDelete ={onDelete} />
-  )
-  const settleBarMainData = container.querySelector('.nut-settle-bar-main')
-  const btn = container.querySelector('.btn') as HTMLElement
-  expect(settleBarMainData).toHaveTextContent('删除')
-  expect(settleBarMainData).not.toHaveTextContent('去结算')
-  fireEvent.click(btn)
-  expect(onDelete).toBeCalled()
-})
-
 test('test customTotal', async () => {
   const { container } = render(
     <SettleBar customTotal={<div>自定义合计</div>} />
@@ -68,7 +64,15 @@ test('test customTotal', async () => {
   expect(settleBarMainData).toHaveTextContent('自定义合计')
 })
 
-test('test customTotal', async () => {
+test('test placeholder', async () => {
+  const { container } = render(
+    <SettleBar placeholder />
+  )
+
+  expect(container.querySelector('.nut-settle-bar--placeholder')?.innerHTML).toMatchSnapshot()
+})
+
+test('test customWarning', async () => {
   const customWarningHtml = () => {
     return <div style={{display: 'flex', height: '100%', alignItems: 'center', justifyContent: 'center', color: 'red'}}>此商品无货！</div>
   }

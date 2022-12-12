@@ -1,3 +1,5 @@
+@import '../../styles/base.scss';
+
 .nut-settle-bar {
     &-warning {
         position: relative;
@@ -14,8 +16,8 @@
 
         &-mask {
             z-index: 1;
-            background-color: #faa21e;
-            opacity: .4;
+            background-color: #fffbe8;
+            opacity: .8;
         }
 
         &-content {
@@ -32,12 +34,15 @@
         .nut-checkbox__label {
             margin-left: 10px;
         }
+
+        .select-all {
+            margin-right: 12px;
+        }
     
         .total {
             flex: 1;
             display: flex;
             flex-direction: column;
-            margin-left: 12px;
             margin-right: 12px;
 
             &-main {
@@ -69,9 +74,11 @@
             font-weight: 700;
             height: 38px;
             width: 113px;
+            cursor: pointer;
     
             &.disabled {
                 opacity: .3;
+                cursor: not-allowed;
             }
     
             .num {

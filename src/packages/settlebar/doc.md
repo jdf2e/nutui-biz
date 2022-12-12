@@ -6,17 +6,37 @@
 
 ### 安装
 
+```javascript
 import { SettleBar } from '@nutui/nutui-biz';
+```
 
 ## 代码演示
 
-### 合计对齐方式
+### 基本用法
 
 :::demo
 
 ```ts
 import  React from "react";
-import { SettleBar } from '@nutui/nutui-react';
+import { SettleBar } from '@nutui/nutui-biz';
+
+const App = () => {
+  return (
+    <SettleBar />
+  );
+};
+export default App;
+```
+
+:::
+
+### 对齐方式
+
+:::demo
+
+```ts
+import  React from "react";
+import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
   return (
@@ -28,13 +48,13 @@ export default App;
 
 :::
 
-### 去结算按钮置灰
+### 禁用状态
 
 :::demo
 
 ```ts
 import  React from "react";
-import { SettleBar } from '@nutui/nutui-react';
+import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
   return (
@@ -46,13 +66,13 @@ export default App;
 
 :::
 
-### 去结算加载中
+### 加载状态
 
 :::demo
 
 ```ts
 import  React from "react";
-import { SettleBar } from '@nutui/nutui-react';
+import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
   return (
@@ -64,17 +84,17 @@ export default App;
 
 :::
 
-### 自定义合计和去结算按钮文案
+### 提交订单
 
 :::demo
 
 ```ts
 import  React from "react";
-import { SettleBar } from '@nutui/nutui-react';
+import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
   return (
-    <SettleBar totalText="总计" settleButtonText="结算" />
+    <SettleBar customSelectAll="" showZero={false} totalText="总计" settleButtonText="提交订单" />
   );
 };
 export default App;
@@ -88,7 +108,7 @@ export default App;
 
 ```ts
 import  React from "react";
-import { SettleBar } from '@nutui/nutui-react';
+import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
   return (
@@ -100,35 +120,17 @@ export default App;
 
 :::
 
-### 编辑状态与删除事件
+### 自定义合计额外区域内容
 
 :::demo
 
 ```ts
 import  React from "react";
-import { SettleBar } from '@nutui/nutui-react';
+import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
   return (
-    <SettleBar isEdit onDelete ={() => console.log('Delete invoked')} />
-  );
-};
-export default App;
-```
-
-:::
-
-### 自定义合计区域内容
-
-:::demo
-
-```ts
-import  React from "react";
-import { SettleBar } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <SettleBar customTotal={<div>自定义合计</div>} />
+    <SettleBar customTotalExtra={<div style={{fontSize: '12px'}}>已减 ¥30.00</div>} />
   );
 };
 export default App;
@@ -142,9 +144,13 @@ export default App;
 
 ```ts
 import  React from "react";
-import { SettleBar } from '@nutui/nutui-react';
+import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
+  const customWarningHtml = () => {
+    return <div style={{display: 'flex', height: '100%', alignItems: 'center', fontSize: '12px', justifyContent: 'center', color: 'red'}}>此商品无货！</div>
+  }
+  
   return (
     <SettleBar customWarning={customWarningHtml()} />
   );
@@ -163,14 +169,16 @@ export default App;
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
 | total   | 合计价格                                 | Number  | 0         |
-| totalText     | 合计文案                   | String  | '合计'    |
-| totalAlign | 合计区域对齐方式，可选值：left、right                        | String  | 'right'      |
+| totalText     | 合计文案                   | String  | `合计`    |
+| totalAlign | 合计区域对齐方式，可选值：`left`、`right`                       | String  | `right`      |
 | settleCount     | 结算数量                               | Number | 0    |
 | settleUnit  | 结算单位                                  | String | -    |
-| settleButtonText     | 结算按钮文案 | String  | '去结算'     |
-| disabled   | 结算按钮是否置灰| Boolean  | true      |
-| loading   | 结算按钮是否加载中| Boolean  | false      |
-| isEdit   | 是否处于编辑状态| Boolean  | false      |
+| settleButtonText     | 结算按钮文案 | String  | `去结算`     |
+| disabled   | 结算按钮是否置灰| Boolean  | `true`      |
+| loading   | 结算按钮是否加载中| Boolean  | `false`      |
+| showZero   | 数量为0时是否展示                                 | boolean  | `true`          |
+| safeAreaInsetBottom   | 是否开启底部安全区适配                                 | boolean  | `true`          |
+| placeholder   | 是否在标签位置生成一个等高的占位元素                                 | boolean  | `false`          |
 
 
 ## Events
@@ -186,5 +194,6 @@ export default App;
 | customTotal | 合计区域自定义 |
 | customWarning | 上面提示内容自定义 |
 | customSelectAll | 全选内容自定义 |
-| customTotalExtra | 合计附加内容自定义 |
 | customTotalPrice | 合计价格内容自定义 |
+| customTotalExtra | 合计额外区域自定义 |
+| customButton | 按钮内容自定义 |

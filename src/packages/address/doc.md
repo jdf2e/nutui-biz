@@ -589,21 +589,22 @@ export default App;
 |----- | ----- | ----- | -----  |
 | modelValue | 是否打开地址选择 | String | '' |
 | modelSelect`v1.3.0` | 设置默认选中地址 | String\|Number[] | [] |
-| type | 地址选择类型 exist/custom/custom2  | String | 'custom' |
+| type | 地址选择类型 exist/custom/custom2  | String | `custom` |
 | province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
-| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | String、Number | '200px' |
+| hotCities | 热门城市 | Array | [] |
+| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | String、Number | `200px` |
 | existAddress | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | Array | [] |
 | defaultIcon | 已有地址列表默认图标，type=‘exist’ 时生效 | String | '' |
 | selectedIcon | 已有地址列表选中图标，type=‘exist’ 时生效 | String | '' |
 | closeBtnIcon | 自定义关闭弹框按钮图标 | string | - |
 | backBtnIcon | 自定义地址与已有地址切换时，自定义返回的按钮图标 | String | - |
-| isShowCustomAddress | 是否可以切换自定义地址选择，type=‘exist’ 时生效 | Boolean | true |
-| customAddressTitle  | 自定义地址选择文案，type='custom' 时生效 | String | '请选择所在地区' |
-| existAddressTitle| 已有地址文案 ，type=‘exist’ 时生效| String | '配送至' |
-| customAndExistTitle| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| String | '选择其他地址' |
+| isShowCustomAddress | 是否可以切换自定义地址选择，type=‘exist’ 时生效 | Boolean | `true` |
+| customAddressTitle  | 自定义地址选择文案，type='custom' 时生效 | String | `请选择所在地区` |
+| existAddressTitle| 已有地址文案 ，type=‘exist’ 时生效| String | `配送至` |
+| customAndExistTitle| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| String | `选择其他地址` |
 
 
   * provinceName 省的名字
@@ -621,6 +622,7 @@ export default App;
 | onChange | 自定义选择地址时，选择地区时触发 |  参考 onChange |
 | onSelected | 选择已有地址列表时触发 | 参考 selected |
 | onClose | 地址选择弹框关闭时触发 | 参考 close |
+| onClickHotCity | 点击热门城市触发 | 被点击的热门城市数据 |
 | closeMask |点击遮罩层或点击右上角叉号关闭时触发 | {closeWay:'mask'/'cross'} |
 | switchModule | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'/'custom2'} |
 
