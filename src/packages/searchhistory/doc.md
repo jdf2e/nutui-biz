@@ -17,7 +17,7 @@ import { SearchHistory } from '@nutui/nutui-biz';
 :::demo
 
 ```ts
-import  React from "react";
+import  React from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -79,7 +79,7 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
+import  React from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -104,7 +104,7 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
+import  React from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -129,7 +129,7 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
+import  React from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -155,7 +155,7 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
+import  React from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -179,7 +179,7 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
+import  React from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -203,7 +203,7 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
+import  React from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 import { Icon } from '@nutui/nutui-react';
 

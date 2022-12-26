@@ -32,7 +32,19 @@
     .search-discover-tit {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         margin-bottom: 13px;
+        height: 26px;
+    }
+
+    .search-history-divider-box {
+        font-size: 12px;
+        display: flex;
+
+        .search-history-divider {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
     }
 
     .close-eye {
@@ -64,11 +76,18 @@
             padding-right: 13px;
             font-size: 12px;
             line-height: 24px;
+            height: 24px;
             border-radius: 3px;
             color: #686868;
             white-space: nowrap;
             text-overflow: ellipsis;
             background-color: #f0f2f5;
+
+            span {
+                margin-left: 5px;
+                color: #333;
+                vertical-align: middle;
+            }
         }
     }
 }

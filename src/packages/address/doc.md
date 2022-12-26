@@ -7,7 +7,7 @@
 
 ### 安装
 ``` javascript
-import { Address } from '@nutui/nutui-react';
+import { Address } from '@nutui/nutui-biz';
 ```
 
 ## 代码示例
@@ -15,8 +15,9 @@ import { Address } from '@nutui/nutui-react';
 
 :::demo
 ```tsx
-import  React,{useState} from "react";
-import { Address, Cell ,Popup} from '@nutui/nutui-react';
+import  React, { useState } from 'react';
+import { Cell, Popup } from '@nutui/nutui-react';
+import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
   const [text, setText] = useState('请选择地址')
@@ -101,8 +102,9 @@ export default App;
 
 :::demo
 ```tsx
-import  React,{useState} from "react";
-import { Address, Cell ,Popup} from '@nutui/nutui-react';
+import  React, { useState } from 'react';
+import { Cell, Popup } from '@nutui/nutui-react';
+import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
   const [text, setText] = useState('请选择地址')
@@ -176,8 +178,9 @@ export default App;
 :::demo
 ```tsx
 
-import  React,{useState} from "react";
-import { Address, Cell ,Popup} from '@nutui/nutui-react';
+import  React, { useState } from 'react';
+import { Cell, Popup } from '@nutui/nutui-react';
+import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
   const [text, setText] = useState('请选择地址')
@@ -259,8 +262,9 @@ export default App;
 
 :::demo
 ```tsx
-import  React,{useState} from "react";
-import { Address, Cell ,Popup} from '@nutui/nutui-react';
+import  React, { useState } from 'react';
+import { Cell, Popup } from '@nutui/nutui-react';
+import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
   const [text, setText] = useState('请选择地址')
@@ -342,8 +346,9 @@ export default App;
 
 :::demo
 ```tsx
-import  React,{useState} from "react";
-import { Address, Cell ,Popup} from '@nutui/nutui-react';
+import  React, { useState } from 'react';
+import { Cell, Popup } from '@nutui/nutui-react';
+import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
   const [text, setText] = useState('请选择地址')
@@ -437,8 +442,9 @@ export default App;
 
 :::demo
 ```tsx
-import  React,{useState} from "react";
-import { Address, Cell ,Popup} from '@nutui/nutui-react';
+import  React, { useState } from 'react';
+import { Cell, Popup } from '@nutui/nutui-react';
+import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
   const [text, setText] = useState('请选择地址')

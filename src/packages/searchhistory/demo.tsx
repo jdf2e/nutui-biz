@@ -46,8 +46,14 @@ const SearchHistoryDemo = () => {
     setSearchHistoryData([])
   }
 
-  const handleClickSearchItem = (searchItem: IsearchItem) => {
-    console.log(searchItem)
+  const handleDeleteSingle = (val: IsearchItem) => {
+    if(localStorage.getItem('searchHistoryData')) {
+      let searchHistoryData = JSON.parse(localStorage.getItem('searchHistoryData'))
+      let filterSearchHistoryData = searchHistoryData.filter((item: IsearchItem) => item.key != val.key)
+      
+      localStorage.setItem('searchHistoryData', JSON.stringify(filterSearchHistoryData))
+      setSearchHistoryData(filterSearchHistoryData)
+    }
   }
 
   return (
@@ -56,8 +62,16 @@ const SearchHistoryDemo = () => {
         <h2>基本用法</h2>
         <SearchHistory 
           onClickSearchButton={handleClick}
-          onClickSearchItem={handleClickSearchItem}
           onDelete={handleDelete}
+          searchHistoryData={searchHistoryData} 
+          discoverData={discoverData} 
+        />
+        <h2>单个删除</h2>
+        <SearchHistory 
+          onClickSearchButton={handleClick}
+          deleteType="single"
+          onDelete={handleDelete}
+          onDeleteSingle={handleDeleteSingle}
           searchHistoryData={searchHistoryData} 
           discoverData={discoverData} 
         />

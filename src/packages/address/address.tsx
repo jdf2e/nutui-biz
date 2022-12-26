@@ -18,7 +18,7 @@ import {
   AddressList,
 } from './type'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { IComponent } from '@/utils/typings'
 
 export interface AddressProps extends IComponent {
   className?: string
@@ -60,52 +60,30 @@ export interface AddressProps extends IComponent {
   onTabChecked?: (cal: string) => void
 }
 
-const defaultProps = {
-  ...ComponentDefaults,
-  modelValue: false,
-  modelSelect: [],
-  type: 'custom',
-  customAddressTitle: '请选择所在地区',
-  province: [],
-  city: [],
-  country: [],
-  town: [],
-  isShowCustomAddress: true,
-  existAddress: [],
-  hotCities: [],
-  existAddressTitle: '配送至',
-  customAndExistTitle: '选择其他地址',
-  height: '200px',
-  defaultIcon: 'location2',
-  selectedIcon: 'Check',
-  closeBtnIcon: 'circle-close',
-  backBtnIcon: 'left',
-} as AddressProps
-
 export const Address: FunctionComponent<
   Partial<AddressProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
   const { locale } = useConfig()
   const {
-    modelValue,
-    modelSelect,
+    modelValue = false,
+    modelSelect = [],
     children,
-    type,
-    height,
-    customAddressTitle,
-    existAddress,
-    hotCities,
-    existAddressTitle,
-    province,
-    city,
-    country,
-    town,
-    isShowCustomAddress,
-    customAndExistTitle,
-    selectedIcon,
-    defaultIcon,
-    closeBtnIcon,
-    backBtnIcon,
+    type = 'custom',
+    height = '200px',
+    customAddressTitle = '请选择所在地区',
+    existAddress = [],
+    hotCities = [],
+    existAddressTitle = '配送至',
+    province = [],
+    city = [],
+    country = [],
+    town = [],
+    isShowCustomAddress = true,
+    customAndExistTitle = '选择其他地址',
+    selectedIcon = 'Check',
+    defaultIcon = 'location2',
+    closeBtnIcon = 'circle-close',
+    backBtnIcon = 'left',
     onChange,
     onSelected,
     onClose,
@@ -119,7 +97,6 @@ export const Address: FunctionComponent<
     iconFontClassName,
     ...rest
   } = {
-    ...defaultProps,
     ...props,
   }
   const b = bem('address')
@@ -330,5 +307,4 @@ export const Address: FunctionComponent<
   )
 }
 
-Address.defaultProps = defaultProps
 Address.displayName = 'NutAddress'

@@ -17,7 +17,7 @@ import { SettleBar } from '@nutui/nutui-biz';
 :::demo
 
 ```ts
-import  React from "react";
+import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -35,7 +35,7 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
+import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -53,7 +53,7 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
+import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -71,7 +71,7 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
+import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -89,7 +89,7 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
+import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -107,7 +107,7 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
+import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -125,7 +125,7 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
+import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -143,7 +143,7 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
+import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {

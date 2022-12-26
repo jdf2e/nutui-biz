@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Address } from './address'
-import {Cell} from '@nutui/nutui-react'
+import { Cell } from '@nutui/nutui-react'
 
 interface CalBack {
   next: string
@@ -149,6 +149,7 @@ const AddressDemo = () => {
   const [showPopup, setShowPopup] = useState({
     normal: false,
     normal2: false,
+    normal3: false,
     exist: false,
     customImg: false,
     other: false,
@@ -208,7 +209,7 @@ const AddressDemo = () => {
   const onChange = (cal: any, tag: string) => {
     console.log('change', cal, tag)
 
-    if (tag === 'normal2' || tag === 'select') {
+    if (tag === 'normal2' || tag === 'normal3' || tag === 'select') {
       if (cal.next === 'town') {
         setShowPopup({
           ...showPopup,
@@ -363,6 +364,20 @@ const AddressDemo = () => {
     })
   }
 
+  const close7 = (val: CalResult) => {
+    if ((val.data as AddressResult).addressStr) {
+      setText({
+        ...text,
+        five: (val.data as AddressResult).addressStr,
+      })
+    }
+
+    setShowPopup({
+      ...showPopup,
+      normal3: false,
+    })
+  }
+
   const close6 = (val: CalResult) => {
     if ((val.data as AddressResult).addressStr) {
       setText({
@@ -397,6 +412,12 @@ const AddressDemo = () => {
           title={translated.title}
           desc={text.five}
           onClick={() => showAddress('normal2')}
+        />
+        <h2>热门城市</h2>
+        <Cell
+          title={translated.title}
+          desc={text.five}
+          onClick={() => showAddress('normal3')}
         />
         <h2>{translated.existAddress}</h2>
         <Cell
@@ -448,10 +469,24 @@ const AddressDemo = () => {
           city={addressData.city}
           country={addressData.country}
           town={addressData.town}
-          hotCities={addressData.hotCities}
           height="270px"
           onChange={(cal) => onChange(cal, 'normal2')}
           onClose={close5}
+          customAddressTitle={translated.title}
+        />
+
+        <Address
+          modelValue={showPopup.normal3}
+          type="custom2"
+          modelSelect={[1, 7, 3]}
+          province={addressData.province}
+          city={addressData.city}
+          country={addressData.country}
+          town={addressData.town}
+          hotCities={addressData.hotCities}
+          height="270px"
+          onChange={(cal) => onChange(cal, 'normal3')}
+          onClose={close7}
           onClickHotCity={handleClickHotCity}
           customAddressTitle={translated.title}
         />

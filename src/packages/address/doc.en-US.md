@@ -5,16 +5,18 @@
 Load on demand Load the  Icon、Popup、Elevator dependent component
 
 ### Install
+
 ``` javascript
-import { Address } from '@nutui/nutui-react';
+import { Address } from '@nutui/nutui-biz';
 ```
 
 ### Choose Custom Address
 
 :::demo
 ```tsx
-import  React,{useState} from "react";
-import { Address, Cell ,Popup} from '@nutui/nutui-react';
+import  React, { useState } from 'react';
+import { Cell, Popup } from '@nutui/nutui-react';
+import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
   const [text, setText] = useState('Choose Address')
@@ -99,8 +101,9 @@ If you want to select a province, you need to set the region ID in the order of 
 
 :::demo
 ```tsx
-import  React,{useState} from "react";
-import { Address, Cell ,Popup} from '@nutui/nutui-react';
+import  React, { useState } from 'react';
+import { Cell, Popup } from '@nutui/nutui-react';
+import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
   const [text, setText] = useState('Choose City')
@@ -174,8 +177,9 @@ export default App;
 :::demo
 ```tsx
 
-import  React,{useState} from "react";
-import { Address, Cell ,Popup} from '@nutui/nutui-react';
+import  React, { useState } from 'react';
+import { Cell, Popup } from '@nutui/nutui-react';
+import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
   const [text, setText] = useState('Choose Address')
@@ -257,8 +261,9 @@ export default App;
 
 :::demo
 ```tsx
-import  React,{useState} from "react";
-import { Address, Cell ,Popup} from '@nutui/nutui-react';
+import  React, { useState } from 'react';
+import { Cell, Popup } from '@nutui/nutui-react';
+import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
   const [text, setText] = useState('Choose Address')
@@ -340,8 +345,9 @@ export default App;
 
 :::demo
 ```tsx
-import  React,{useState} from "react";
-import { Address, Cell ,Popup} from '@nutui/nutui-react';
+import  React, { useState } from 'react';
+import { Cell, Popup } from '@nutui/nutui-react';
+import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
   const [text, setText] = useState('Choose Address')
@@ -435,8 +441,9 @@ export default App;
 
 :::demo
 ```tsx
-import  React,{useState} from "react";
-import { Address, Cell ,Popup} from '@nutui/nutui-react';
+import  React, { useState } from 'react';
+import { Cell, Popup } from '@nutui/nutui-react';
+import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
   const [text, setText] = useState('Choose Address')

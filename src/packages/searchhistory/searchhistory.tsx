@@ -33,11 +33,13 @@ export interface SearchHistoryProps extends IComponent {
   closeEyeIcon: ReactNode
   refreshIcon?: ReactNode
   noDiscoverDataText: string
+  deleteType: string
   onClickSearchButton: (value: string) => void
   onClickBackIcon: () => void
   onClickSearchItem: (searchItem :IsearchItem) => void
   onClickRightInIcon: () => void
   onDelete: () => void
+  onDeleteSingle: (item :IsearchItem) => void
   onRefresh: () => void
 }
 
@@ -55,11 +57,13 @@ const defaultProps = {
   closeEyeIcon: <Icon name="marshalling" />,
   noDiscoverDataText: '当前搜索发现已隐藏',
   rightoutIcon: '搜索',
+  deleteType: 'all',
   onClickSearchButton: (value) => {},
   onClickBackIcon: () => {},
   onClickSearchItem: (searchItem) => {},
   onClickRightInIcon: () => {},
   onDelete: () => {},
+  onDeleteSingle: (item) => {},
   onRefresh: () => {}
 } as SearchHistoryProps
 
@@ -85,11 +89,13 @@ export const SearchHistory: FunctionComponent<
     refreshIcon,
     searchDiscoverExtra,
     noDiscoverDataText,
+    deleteType,
     onClickSearchButton,
     onClickBackIcon,
     onClickSearchItem,
     onClickRightInIcon,
     onDelete,
+    onDeleteSingle,
     onRefresh,
     ...rest
   } = {
@@ -99,6 +105,7 @@ export const SearchHistory: FunctionComponent<
 
   const [value, setValue] = useState<string>()
   const [eyeOpened, setEyeOpened] = useState<boolean>(true)
+  const [isShowDeleteSearchItemIcon, setIsShowDeleteSearchItemIcon] = useState<boolean>(false)
 
   const handleChange = (val: string) => {
     setValue(val)
@@ -107,7 +114,6 @@ export const SearchHistory: FunctionComponent<
   const renderSearchBar = () => {
     return <SearchBar
       shape="round"
-      autoFocus
       className={classNames({'nut-searchbar-no-left-in-icon': leftinIcon === ''})}
       value={value}
       onChange={handleChange}
@@ -118,28 +124,38 @@ export const SearchHistory: FunctionComponent<
     />
   }
 
-  const handleD = () => {
-    onDelete && onDelete()
-  }
-
   const handleDelete = () => {
-    handleD()
+    if(deleteType === 'single' && !isShowDeleteSearchItemIcon) {
+      setIsShowDeleteSearchItemIcon(true)
+    } else {
+      onDelete && onDelete()
+    }
   }
 
   const handleClickSearchItem = (item: IsearchItem) => {
-    onClickSearchItem && onClickSearchItem(item)
+    if(isShowDeleteSearchItemIcon) {
+      onDeleteSingle && onDeleteSingle(item)
+    } else {
+      onClickSearchItem && onClickSearchItem(item)
+    }
   }
 
   const renderSearchHistoryResult = () => {
     return <div className='search-history-result'>
           <div className='search-history-result-tit'>
             <div>{searchHistoryText}</div>
-            <div onClick={handleDelete}>{typeof deleteIcon === 'string' ? <Icon name={deleteIcon} /> : deleteIcon}</div>
+            {
+              isShowDeleteSearchItemIcon ? <div className='search-history-divider-box'>
+                <div onClick={handleDelete}>全部删除</div>
+                <div className='search-history-divider'>|</div>
+                <div onClick={() => setIsShowDeleteSearchItemIcon(false)}>完成</div>
+              </div> : <div onClick={handleDelete}>{typeof deleteIcon === 'string' ? <Icon name={deleteIcon} /> : deleteIcon}</div>
+            }
           </div>
           {
             <div className='search-history-result-tags'>
               {searchHistoryData.map((item, index) => {
-                return <a key={index} onClick={handleClickSearchItem.bind(this, item)}>{item.key}</a>
+                return <a key={index} onClick={handleClickSearchItem.bind(this, item)}>{item.key}{isShowDeleteSearchItemIcon && <span>X</span>}</a>
               })}
             </div>
           }

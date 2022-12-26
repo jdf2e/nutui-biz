@@ -19,7 +19,7 @@ const Nav = () => {
   useEffect(() => {
     document.addEventListener('scroll', scrollNav)
   }, [])
-  const currentComponents = ['SettleBar', 'CartBar', 'SearchHistory', 'Card', 'Address']
+  const currentComponents = ['SettleBar', 'CartBar', 'SearchHistory', 'Card', 'Address', 'Sku', 'AddressList', 'InvoiceTitleEdit']
   return (
     <div className={`doc-nav ${fixed ? 'fixed' : ''}`}>
       <ol>

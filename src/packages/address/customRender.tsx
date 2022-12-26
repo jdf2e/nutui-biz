@@ -26,14 +26,16 @@ export interface AddressProps {
   height: string | number
   hotCities: Array<{
     id: number,
-    name: string
+    name: string,
+    string: string
   }>
   onNextArea?: (cal: NextListObj) => void
   onTabClick?: (type: string) => void
   onClose?: () => void
   onClickHotCity?: (city: {
     id: number,
-    name: string
+    name: string,
+    string: string
   }) => void
 }
 
@@ -76,6 +78,7 @@ export const CustomRender: FunctionComponent<
   const [privateType] = useState<string>(type)
   const [tabIndex, setTabIndex] = useState(0)
   const [tabName] = useState<string[]>(['province', 'city', 'country', 'town'])
+  const [isShowHotCities, setIsShowHotCities] = useState<boolean>(true)
 
   const provinceRef = useRef(null)
   const cityRef = useRef(null)
@@ -182,6 +185,7 @@ export const CustomRender: FunctionComponent<
   }
   // 切换下一级列表
   const nextAreaList = (item: RegionData | string) => {
+    console.log('item', item)
     // onchange 接收的参数
     const calBack: NextListObj = {
       next: '',
@@ -238,6 +242,7 @@ export const CustomRender: FunctionComponent<
       lineAnimation(index)
     }
     onTabClick && onTabClick(key)
+    setIsShowHotCities(true)
   }
 
   // 默认选中项
@@ -321,6 +326,16 @@ export const CustomRender: FunctionComponent<
     initCustomSelected()
   }, [modelValue])
 
+  const handleClickHotCity = (city: {
+    id: number,
+    name: string,
+    titlle: string
+  }) => {
+    onClickHotCity && onClickHotCity(city)
+    nextAreaList(city)
+    setIsShowHotCities(false)
+  }
+
   return (
     <div className={b('custom')}>
       <div className={b('region-tab')}>
@@ -393,12 +408,12 @@ export const CustomRender: FunctionComponent<
         </div>
       )}
 
-      {hotCities.length > 0 && <div>
+      {hotCities.length > 0 && isShowHotCities && <div>
         <div className='hot-title'>热门城市</div>
         <ul className='hot-citys'>
           {
             hotCities.map((city, index) => {
-              return <li key={city.id} onClick={() => onClickHotCity && onClickHotCity(city)}>{city.name}</li>
+              return <li key={city.id} onClick={handleClickHotCity.bind(this, city)}>{city.name}</li>
             })
           }
         </ul>

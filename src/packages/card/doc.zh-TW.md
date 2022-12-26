@@ -6,8 +6,10 @@
 
 ### 安裝
 
-import { Card,Price, Tag} from '@nutui/nutui-react';
-
+```javascript
+import { Price, Tag } from '@nutui/nutui-react';
+import { Card } from '@nutui/nutui-biz';
+```
 
 ## 代碼演示
 
@@ -16,8 +18,9 @@ import { Card,Price, Tag} from '@nutui/nutui-react';
 :::demo
 
 ```ts
-import  React from "react";
-import { Card,Price, Tag } from '@nutui/nutui-react';
+import  React from 'react';
+import { Price, Tag } from '@nutui/nutui-react';
+import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
     const state = {
@@ -52,8 +55,9 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
-import { Card,Price, Tag } from '@nutui/nutui-react';
+import  React from 'react';
+import { Price, Tag } from '@nutui/nutui-react';
+import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
     const state = {
@@ -113,8 +117,9 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
-import { Card,Price, Tag } from '@nutui/nutui-react';
+import  React from 'react';
+import { Price, Tag } from '@nutui/nutui-react';
+import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
     const state = {
@@ -162,8 +167,9 @@ export default App;
 
 :::demo
 ```ts
-import  React from "react";
-import { Card,Price, Tag } from '@nutui/nutui-react';
+import  React from 'react';
+import { Price, Tag } from '@nutui/nutui-react';
+import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
     const state = {
@@ -199,8 +205,9 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
-import { Card,Price, Tag } from '@nutui/nutui-react';
+import  React from 'react';
+import { Price, Tag } from '@nutui/nutui-react';
+import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
     const state = {

@@ -126,7 +126,7 @@ const Header = () => {
           <input
             type="text"
             className="search-input"
-            placeholder="在 NutUI 中搜索"
+            placeholder="在 Biz 中搜索"
             onKeyUp={handleKeyUp}
           />
           {
