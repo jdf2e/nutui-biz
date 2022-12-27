@@ -2,12 +2,13 @@
 
 ### 介绍
 
-主要用于进行地址列表的展示以及操作。
+常见于地址管理页面，主要用于进行地址列表的展示以及操作。
 
 ### 安装
 
+```javascript
 import { AddressList } from '@nutui/nutui-react';
-
+```
 
 ## 代码演示
 

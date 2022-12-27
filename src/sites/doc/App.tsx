@@ -173,7 +173,7 @@ const App = () => {
                           }`,
                         }}
                       >
-                        <div className="tab-item cur">React / Taro</div>
+                        {/* <div className="tab-item cur">React / Taro</div> */}
                       </div>
                     )}
 

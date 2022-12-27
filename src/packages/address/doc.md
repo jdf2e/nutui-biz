@@ -2,7 +2,7 @@
 
 ### 介绍
 
-地址选择
+常见于网站顶部、购物车页和地址管理页面等，可进行配送地址的选择。
 
 
 ### 安装
@@ -601,7 +601,7 @@ export default App;
 | country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | hotCities | 热门城市 | Array | [] |
-| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | String、Number | `200px` |
+| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | String \| Number | `200px` |
 | existAddress | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | Array | [] |
 | defaultIcon | 已有地址列表默认图标，type=‘exist’ 时生效 | String | '' |
 | selectedIcon | 已有地址列表选中图标，type=‘exist’ 时生效 | String | '' |

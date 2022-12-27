@@ -2,7 +2,7 @@
 
 ### 介绍
 
-常用于搜索页，包含搜索历史和热门搜索。
+常见于搜索页，包含搜索历史和热门搜索。
 
 ### 安装
 
@@ -242,7 +242,7 @@ export default App;
 | deleteIcon   | 搜索历史删除图标| String  | `del`      |
 | searchDiscoverExtra   | 搜索发现额外信息| String  | -      |
 | searchDiscoverRefreshIcon   | 搜索历史刷新图标| String  | `refresh`      |
-| searchHistoryCollapse   | 搜索历史超过两行出现下拉箭头                                 | boolean  | `true`          |
+| searchHistoryCollapse   | 搜索历史超过两行出现下拉箭头                                 | Boolean  | `true`          |
 
 
 ## Events

@@ -2,7 +2,7 @@
 
 ### 介绍
 
-常见于购物车页底部，包括全选、合计与「去结算」按钮。
+常见于购物车页底部，包括全选、合计与「去结算」按钮。也适用于结算页底部的提交订单栏。
 
 ### 安装
 
@@ -176,9 +176,9 @@ export default App;
 | settleButtonText     | 结算按钮文案 | String  | `去结算`     |
 | disabled   | 结算按钮是否置灰| Boolean  | `true`      |
 | loading   | 结算按钮是否加载中| Boolean  | `false`      |
-| showZero   | 数量为0时是否展示                                 | boolean  | `true`          |
-| safeAreaInsetBottom   | 是否开启底部安全区适配                                 | boolean  | `true`          |
-| placeholder   | 是否在标签位置生成一个等高的占位元素                                 | boolean  | `false`          |
+| showZero   | 数量为0时是否展示                                 | Boolean  | `true`          |
+| safeAreaInsetBottom   | 是否开启底部安全区适配                                 | Boolean  | `true`          |
+| placeholder   | 是否在标签位置生成一个等高的占位元素                                 | Boolean  | `false`          |
 
 
 ## Events

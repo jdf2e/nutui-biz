@@ -2,7 +2,7 @@
 
 ### 介绍
 
-商品卡片，用于展示商品的图片、价格等信息
+常见于首页、搜索页，用于展示单个商品信息，包括商品图片、商品价格等。
 
 ### 安装
 
@@ -23,7 +23,7 @@ import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
-    const state = {
+  const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
@@ -35,14 +35,14 @@ const App = () => {
   }
   return (
     <Card
-        imgUrl={state.imgUrl}
-        title={state.title}
-        price={state.price}
-        vipPrice={state.vipPrice}
-        shopDesc={state.shopDesc}
-        delivery={state.delivery}
-        shopName={state.shopName}
-    ></Card>
+      imgUrl={state.imgUrl}
+      title={state.title}
+      price={state.price}
+      vipPrice={state.vipPrice}
+      shopDesc={state.shopDesc}
+      delivery={state.delivery}
+      shopName={state.shopName}
+    />
   );
 };
 export default App;
@@ -60,7 +60,7 @@ import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
-    const state = {
+  const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
@@ -82,28 +82,28 @@ const App = () => {
   }
   return (
     <Card
-        imgUrl={state.imgUrl}
-        title={state.title}
-        price={state.price}
-        vipPrice={state.vipPrice}
-        shopDesc={state.shopDesc}
-        delivery={state.delivery}
-        shopName={state.shopName}
-        prolistTpl={
+      imgUrl={state.imgUrl}
+      title={state.title}
+      price={state.price}
+      vipPrice={state.vipPrice}
+      shopDesc={state.shopDesc}
+      delivery={state.delivery}
+      shopName={state.shopName}
+      prolistTpl={
         <div
-            className="search_prolist_attr"
-            style={{ display: 'inline-flex', margin: '3px 0 1px', height: '15px' }}
+          className="search_prolist_attr"
+          style={{ display: 'inline-flex', margin: '3px 0 1px', height: '15px' }}
         >
-            {['鲜活', '礼盒', '国产'].map((item) => {
+          {['鲜活', '礼盒', '国产'].map((item) => {
             return (
-                <span style={wordStyles} className="word" key={item}>
+              <span style={wordStyles} className="word" key={item}>
                 {item}
-                </span>
+              </span>
             )
-            })}
+          })}
         </div>
-        }
-    ></Card>
+      }
+    />
   );
 };
 export default App;
@@ -122,7 +122,7 @@ import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
-    const state = {
+  const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
@@ -141,21 +141,21 @@ const App = () => {
   }
   return (
     <Card
-        imgUrl={state.imgUrl}
-        title={state.title}
-        price={state.price}
-        vipPrice={state.vipPrice}
-        shopDesc={state.shopDesc}
-        delivery={state.delivery}
-        shopName={state.shopName}
-        originTpl={
+      imgUrl={state.imgUrl}
+      title={state.title}
+      price={state.price}
+      vipPrice={state.vipPrice}
+      shopDesc={state.shopDesc}
+      delivery={state.delivery}
+      shopName={state.shopName}
+      originTpl={
         <img
-            style={tagStyles}
-            src="https://img11.360buyimg.com/jdphoto/s58x28_jfs/t9451/359/415622649/15318/b0943e5d/59a78495N3bd2a9f8.png"
-            alt=""
+          style={tagStyles}
+          src="https://img11.360buyimg.com/jdphoto/s58x28_jfs/t9451/359/415622649/15318/b0943e5d/59a78495N3bd2a9f8.png"
+          alt=""
         />
-        }
-    ></Card>
+      }
+    />
   );
 };
 export default App;
@@ -172,7 +172,7 @@ import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
-    const state = {
+  const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
@@ -184,15 +184,15 @@ const App = () => {
   }
   return (
     <Card
-        imgUrl={state.imgUrl}
-        title={state.title}
-        price={state.price}
-        vipPrice={state.vipPrice}
-        shopDesc={state.shopDesc}
-        delivery={state.delivery}
-        shopName={state.shopName}
-        shopTagTpl={<div>自定义店铺介绍</div>}
-    ></Card>
+      imgUrl={state.imgUrl}
+      title={state.title}
+      price={state.price}
+      vipPrice={state.vipPrice}
+      shopDesc={state.shopDesc}
+      delivery={state.delivery}
+      shopName={state.shopName}
+      shopTagTpl={<div>自定义店铺介绍</div>}
+    />
   );
 };
 export default App;
@@ -210,7 +210,7 @@ import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
-    const state = {
+  const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
@@ -223,15 +223,15 @@ const App = () => {
   
   return (
     <Card
-        imgUrl={state.imgUrl}
-        title={state.title}
-        price={state.price}
-        vipPrice={state.vipPrice}
-        shopDesc={state.shopDesc}
-        delivery={state.delivery}
-        shopName={state.shopName}
-        footerTpl={<div style={{ fontSize: '12px' }}>自定义</div>}
-    ></Card>
+      imgUrl={state.imgUrl}
+      title={state.title}
+      price={state.price}
+      vipPrice={state.vipPrice}
+      shopDesc={state.shopDesc}
+      delivery={state.delivery}
+      shopName={state.shopName}
+      footerTpl={<div style={{ fontSize: '12px' }}>自定义</div>}
+    />
   );
 };
 export default App;
@@ -262,7 +262,7 @@ export default App;
 | bottomTpl   | 底部内容自定义| React.ReactNode  | -      |
 | isNeedPrice   | 是否需要展示价格| Boolean  | `true`      |
 | imgTag   | 标题左侧标签，常用于活动标记等，不设置此参数或此参数为空，不展示| String  | -      |
-| imgTagDirection   | 商品图片标签呈现位置，可选：top-left、top-right| String  | top-left      |
+| imgTagDirection   | 商品图片标签呈现位置，可选：top-left、top-right| String  | `top-left`      |
 | titleTag   | 底部内容自定义| React.ReactNode  | -      |
 | titleLine   | 标题行数，默认两行，想展示更多下面内容可设置为1| String  | -      |
 | linkUrl   | 跳转链接，默认点击整个卡片以href的形式跳转，可通过点击事件自定义| String  | -      |

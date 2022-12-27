@@ -2,7 +2,7 @@
 
 ### 介绍
 
-常见于商详页底部，包括一些图标（联系客服、购物车等）和按钮（加车、立即购买）。
+常见于商详页底部，包括一组图标（联系客服、购物车等）和一组按钮（加车、立即购买）。
 
 ### 安装
 
@@ -165,9 +165,9 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| hasCapsuleButtons   | 是否包含胶囊型按钮                                 | boolean  | `false`          |
-| safeAreaInsetBottom   | 是否开启底部安全区适配                                 | boolean  | `true`          |
-| placeholder   | 是否在标签位置生成一个等高的占位元素                                 | boolean  | `false`          |
+| hasCapsuleButtons   | 是否包含胶囊型按钮                                 | Boolean  | `false`          |
+| safeAreaInsetBottom   | 是否开启底部安全区适配                                 | Boolean  | `true`          |
+| placeholder   | 是否在标签位置生成一个等高的占位元素                                 | Boolean  | `false`          |
 
 
 ### CartBarIcon Props
@@ -175,11 +175,11 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| text   | 图标文字                                 | string  | -         |
-| icon   | 图标                                 | string  | -         |
-| color   | 图标颜色                                 | string  | `#323233`         |
-| dot   | 是否显示图标右上角小红点                                 | boolean  | `false`         |
-| badge   | 图标右上角徽标的内容	                                 | number | string  | -         |
+| text   | 图标文字                                 | String  | -         |
+| icon   | 图标                                 | String  | -         |
+| color   | 图标颜色                                 | String  | `#323233`         |
+| dot   | 是否显示图标右上角小红点                                 | Boolean  | `false`         |
+| badge   | 图标右上角徽标的内容	                                 | Number \| String  | -         |
 
 
 ## CartBarIcon Events
@@ -194,11 +194,11 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| text   | 按钮文字                                 | string  | -         |
-| disabled   | 是否禁用按钮                                 | boolean  | false         |
-| type   | 按钮类型，可选值为 `primary` `info` `warning` `danger`                                 | string  | `default`         |
-| loading   | 是否显示为加载状态                                 | boolean  | false         |
-| color   | 图标颜色                                 | string  | -         |
+| text   | 按钮文字                                 | String  | -         |
+| disabled   | 是否禁用按钮                                 | Boolean  | `false`         |
+| type   | 按钮类型，可选值为 `primary` `info` `warning` `danger`                                 | String  | `default`         |
+| loading   | 是否显示为加载状态                                 | Boolean  | `false`         |
+| color   | 图标颜色                                 | String  | -         |
 
 
 ## CartBarButton Events
