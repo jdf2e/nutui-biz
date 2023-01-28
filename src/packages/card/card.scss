@@ -135,6 +135,7 @@
 
   .img-tag {
     position: absolute;
+    z-index: 1;
 
     &.top-right {
       right: 0;

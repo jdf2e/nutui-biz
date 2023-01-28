@@ -28,7 +28,11 @@ export interface SkuProps extends IComponent {
   skuStepper: ReactNode
   skuStepperBottom: ReactNode
   operateBtn: ReactNode
-  goods: object
+  goods: {
+    price: number
+    imagePath: string
+    skuId: string
+  }
   sku: Array<any>
   stepperMax: string | number
   stepperMin: string | number
@@ -167,6 +171,7 @@ export const Sku: FunctionComponent<
           {skuSelectTop}
           {skuSelect || <SkuSelect sku={sku} selectSku={handleSelectSku} />}
           {skuStepper || <SkuStepper 
+            goods={goods}
             stepperTitle={stepperTitle}
             stepperMax={stepperMax}
             stepperMin={stepperMin}
@@ -174,7 +179,7 @@ export const Sku: FunctionComponent<
             onAdd={() => handleAdd}
             onReduce={() => handleReduce}
             onOverLimit={handleOverLimit}
-            onChangeFuc={() => handleChangeFuc}
+            onChangeStepper={() => handleChangeFuc}
           />}
           {skuStepperBottom}
         </div>

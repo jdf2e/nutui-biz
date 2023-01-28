@@ -1,6 +1,5 @@
 import React, {
     FunctionComponent,
-    CSSProperties,
     ReactNode
   } from 'react'
   import { useConfig } from '@/packages/configprovider'
@@ -9,7 +8,11 @@ import React, {
   import { IComponent } from '@/utils/typings'
   
   export interface SkuHeaderProps extends IComponent {
-    goods: object
+    goods: {
+      price: number
+      imagePath: string
+      skuId: string
+    }
     skuHeaderPrice: ReactNode
     skuHeaderExtra: ReactNode
   }
@@ -19,7 +22,11 @@ import React, {
   > = (props) => {
     const { locale } = useConfig()
     const {
-        goods = {},
+        goods = {
+          price: 0,
+          imagePath: '',
+          skuId: ''
+        },
         skuHeaderPrice,
         skuHeaderExtra
     } = {

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode, CSSProperties, HTMLAttributes } from 'react'
-import {Price, Tag} from '@nutui/nutui-react'
+import { Price, Tag, Image } from '@nutui/nutui-react'
 import classNames from 'classnames'
 
 import bem from '@/utils/bem'
@@ -84,8 +84,8 @@ export const Card: FunctionComponent<
         showType === 'full-line' ?
         <div className={b('main')}>
           <a className={b('left')} href={linkUrl}>
-            <div className={classNames(['img-tag', {'top-right': imgTagDirection}])}>{imgTag}</div>
-            <img src={imgUrl} alt="" />
+            {imgTag && <div className={classNames(['img-tag', {'top-right': imgTagDirection === 'top-right'}])}>{imgTag}</div>}
+            <Image src={imgUrl} />
           </a>
           <div className={b('right')}>
             <div
@@ -115,8 +115,8 @@ export const Card: FunctionComponent<
         </div> : 
         <div className='half-line'>
           <a className='half-line-img' href={linkUrl}>
-            <div className={classNames(['img-tag', {'top-right': imgTagDirection}])}>{imgTag}</div>
-            <img src={imgUrl} alt="" />
+            {imgTag && <div className={classNames(['img-tag', {'top-right': imgTagDirection === 'top-right'}])}>{imgTag}</div>}
+            <Image src={imgUrl} />
           </a>
           <div 
             className={classNames(['half-line-title', {'one-line': titleLine == 1}, {'multiple-lines': titleLine > 1}])}

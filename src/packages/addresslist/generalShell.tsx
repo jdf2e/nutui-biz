@@ -8,16 +8,21 @@ import React, {
   import {ItemContents} from './itemContents'
   
   export interface GeneralShellProps extends IComponent {
-    item: Object
+    item: {
+      phone: string
+      addressName: string
+      defaultAddress: string
+      fullAddress: string
+    }
     longPress: boolean
-    onLongCopy: (event: Event, item: Object) => {}
-    onLongSet: (event: Event, item: Object) => {}
-    onLongDel: (event: Event, item: Object) => {}
-    onSwipeDel: (event: Event, item: Object) => {}
-    onDelIcon: (event: Event, item: Object) => {}
-    onEditIcon: (event: Event, item: Object) => {}
-    onItemClick: (event: Event, item: Object) => {}
-    onLongDown: (event: Event, item: Object) => {}
+    onLongCopy: (event: Event, item: Object) => void
+    onLongSet: (event: Event, item: Object) => void
+    onLongDel: (event: Event, item: Object) => void
+    onSwipeDel: (event: Event, item: Object) => void
+    onDelIcon: (event: Event, item: Object) => void
+    onEditIcon: (event: Event, item: Object) => void
+    onItemClick: (event: Event, item: Object) => void
+    onLongDown: (event: Event, item: Object) => void
   }
   
   export const GeneralShell: FunctionComponent<

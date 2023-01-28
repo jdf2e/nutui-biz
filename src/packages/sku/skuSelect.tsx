@@ -10,7 +10,15 @@ import classNames from 'classnames'
   
 export interface SkuSelectProps extends IComponent {
   sku: Array<any>
-  selectSku: () => void
+  selectSku: (object: any) => void
+}
+
+interface SkuInfo {
+  name: string;
+  id: number;
+  active: boolean;
+  disable: boolean;
+  [props: string]: any;
 }
   
 export const SkuSelect: FunctionComponent<
@@ -24,7 +32,7 @@ export const SkuSelect: FunctionComponent<
     ...props,
   }
 
-  const [skuInfo, setSkuInfo] = useState([])
+  const [skuInfo, setSkuInfo] = useState<SkuInfo[]>([])
 
   useEffect(() => {
     if (sku.length > 0) {
@@ -43,7 +51,7 @@ export const SkuSelect: FunctionComponent<
       return;
     }
 
-    selectSku({
+    selectSku && selectSku({
       sku: attrItem,
       skuIndex: index,
       parentSku: parentItem,
@@ -59,7 +67,11 @@ export const SkuSelect: FunctionComponent<
               <div className='nut-sku-select-item-title'>{item.name}</div>
               <div className='nut-sku-select-item-skus'>
                 {
-                  item.list.map((itemAttr, itemAttrIndex) => {
+                  item.list.map((itemAttr: {
+                    name: string
+                    disable: boolean
+                    active: boolean
+                  }, itemAttrIndex: number) => {
                     return <div 
                       className={classNames(['nut-sku-select-item-skus-sku', { active: !itemAttr.disable && itemAttr.active }, { disable: itemAttr.disable }])}
                       key={itemAttr.name}

@@ -9,11 +9,16 @@ import React, {
   import {ItemContents} from './itemContents'
   
   export interface SwipeShellProps extends IComponent {
-    onDelIcon: (event: Event, item: Object) => {}
-    onEditIcon: (event: Event, item: Object) => {}
-    onItemClick: (event: Event, item: Object) => {}
-    onSwipeDel: (event: Event, item: Object) => {}
-    item: Object
+    onDelIcon: (event: Event, item: Object) => void
+    onEditIcon: (event: Event, item: Object) => void
+    onItemClick: (event: Event, item: Object) => void
+    onSwipeDel: (event: Event, item: Object) => void
+    item: {
+      phone: string
+      addressName: string
+      defaultAddress: string
+      fullAddress: string
+    }
   }
   
   export const SwipeShell: FunctionComponent<

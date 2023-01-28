@@ -24,13 +24,13 @@ export interface AddressListProps extends IComponent {
   dataMapOptions: Object
   showSelect: boolean
   onAdd: (event: Event) => void
-  onDelIcon: (event: Event, item: Object) => {}
-  onEditIcon: (event: Event, item: Object) => {}
-  onItemClick: (event: Event, item: Object) => {}
-  onSwipeDel: (event: Event, item: Object) => {}
-  onLongCopy: (event: Event, item: Object) => {}
-  onLongSet: (event: Event, item: Object) => {}
-  onLongDel: (event: Event, item: Object) => {}
+  onDelIcon: (event: Event, item: Object) => void
+  onEditIcon: (event: Event, item: Object) => void
+  onItemClick: (event: Event, item: Object) => void
+  onSwipeDel: (event: Event, item: Object) => void
+  onLongCopy: (event: Event, item: Object) => void
+  onLongSet: (event: Event, item: Object) => void
+  onLongDel: (event: Event, item: Object) => void
 }
 
 export const AddressList: FunctionComponent<

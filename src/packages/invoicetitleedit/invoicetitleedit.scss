@@ -1,0 +1,39 @@
+.nut-theme-dark {
+    .nut-invoice-title-edit {
+      .nut-invoice-title-edit__submit {
+        background: $dark-background2;
+      }
+    }
+  }
+  
+  .nut-invoice-title-edit {
+    width: 100%;
+    position: relative;
+    .nut-cell {
+      align-items: baseline;
+    }
+    &__submit {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: $invoice-invoice-title-edit-padding;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      box-sizing: border-box;
+      bottom: constant(safe-area-inset-bottom);
+      bottom: env(safe-area-inset-bottom);
+    }
+    .nut-radio {
+      display: inline-block;
+      margin-right: 6px;
+      margin-bottom: 0;
+    }
+
+    .form-layout-right .nut-form-item__label {
+        padding-right: 0;
+        text-align: left;
+    }
+  }
+  

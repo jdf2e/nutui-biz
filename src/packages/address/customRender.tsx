@@ -27,7 +27,7 @@ export interface AddressProps {
   hotCities: Array<{
     id: number,
     name: string,
-    string: string
+    title: string
   }>
   onNextArea?: (cal: NextListObj) => void
   onTabClick?: (type: string) => void
@@ -35,7 +35,7 @@ export interface AddressProps {
   onClickHotCity?: (city: {
     id: number,
     name: string,
-    string: string
+    title: string
   }) => void
 }
 
@@ -329,7 +329,7 @@ export const CustomRender: FunctionComponent<
   const handleClickHotCity = (city: {
     id: number,
     name: string,
-    titlle: string
+    title: string
   }) => {
     onClickHotCity && onClickHotCity(city)
     nextAreaList(city)

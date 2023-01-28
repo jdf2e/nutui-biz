@@ -145,6 +145,7 @@ const Header = () => {
         </div>
         <div className="nav-box">
           <ul className="nav-list">
+            {/* <li className='nav-item active'><NavLink to="/zh-CN/guide/intro-react">指南</NavLink></li> */}
             <li className='nav-item active'><NavLink to="/zh-CN/component/SettleBar">组件</NavLink></li>
             <li className="nav-item"><a className="user-link" target="_blank" href="https://github.com/jdf2e/nutui-biz"></a></li>
           </ul>

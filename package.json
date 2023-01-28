@@ -1,9 +1,9 @@
 {
-  "name": "@nutui/nutui-react",
-  "version": "1.3.10",
+  "name": "@nutui/nutui-biz",
+  "version": "0.0.1",
   "style": "dist/style.css",
-  "main": "dist/nutui.react.umd.js",
-  "module": "dist/esm/nutui-react.es.js",
+  "main": "dist/nutui.biz.umd.js",
+  "module": "dist/esm/nutui-biz.es.js",
   "typings": "dist/types/index.d.ts",
   "sideEffects": [
     "*.scss",
@@ -17,7 +17,7 @@
     "nutui2",
     "nutui3",
     "react",
-    "nutui-react",
+    "nutui-biz",
     "webpack",
     "react component",
     "vite",
@@ -29,7 +29,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jdf2e/nutui-react.git"
+    "url": "https://github.com/jdf2e/nutui-biz.git"
   },
   "publishConfig": {
     "access": "public",
@@ -48,7 +48,7 @@
     "generate:themes": "node scripts/generate-themes.js",
     "generate:themes-dev": "node scripts/generate-themes-dev.js",
     "checked": "npm run generate:file && tsc",
-    "dev": "vite --open --force",
+    "dev": "npm run checked && vite --open --force",
     "dev:theme": "npm run generate:themes-dev && npm run checked && vite --config vite.config.theme.ts --open --force",
     "replace:scss": "node scripts/replace-scss-alias.js",
     "build:dts": "node scripts/export-props.js && npx rollup -c rollup.config.dts.js",
@@ -91,8 +91,8 @@
   "dependencies": {
     "@babel/runtime": "^7.16.5",
     "@bem-react/classname": "^1.5.10",
-    "@nutui/nutui-react": "^1.3.10",
-    "@nutui/nutui-react-taro": "^1.3.12-beta.2",
+    "@nutui/nutui-react": "^1.4.0",
+    "@nutui/nutui-react-taro": "^1.4.0",
     "@react-spring/web": "^9.3.2",
     "@use-gesture/react": "^10.2.9",
     "classnames": "^2.3.1",

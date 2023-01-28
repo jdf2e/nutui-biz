@@ -7,7 +7,12 @@ import React, {
   import { IComponent } from '@/utils/typings'
   
   export interface ItemContentsProps extends IComponent {
-    item: Object
+    item: {
+      phone: string
+      addressName: string
+      defaultAddress: string
+      fullAddress: string
+    }
     onDelIcon: (event: Event, item: Object) => void
     onEditIcon: (event: Event, item: Object) => void
     onClickItem: (event: Event, item: Object) => void
@@ -18,7 +23,12 @@ import React, {
   > = (props) => {
     const { locale } = useConfig()
     const {
-      item = {},
+      item = {
+        phone: '',
+        addressName: '',
+        defaultAddress: '',
+        fullAddress: ''
+      },
       onDelIcon,
       onEditIcon,
       onClickItem,

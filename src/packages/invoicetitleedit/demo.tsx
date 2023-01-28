@@ -6,11 +6,15 @@ interface T {
 }
 
 const InvoiceTitleEditDemo = () => {
+  const handle1 = () => {
+    console.log(111)
+  }
+
   return (
     <>
-      <div className="demo">
+      <div className="demo full">
         <h2>基本用法</h2>
-        <InvoiceTitleEdit />
+        <InvoiceTitleEdit onInput={handle1} />
       </div>
     </>
   )

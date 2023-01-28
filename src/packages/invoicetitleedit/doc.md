@@ -22,8 +22,12 @@ import  React from "react";
 import { InvoiceTitleEdit } from '@nutui/nutui-biz';
 
 const App = () => {
+  const handle1 = () => {
+    console.log(111)
+  }
+
   return (
-    <InvoiceTitleEdit />
+    <InvoiceTitleEdit onInput={handle1 } />
   );
 };
 export default App;
@@ -40,9 +44,13 @@ export default App;
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
 | data   | 地址数组                                 | Array  | -         |
+| invoiceType   | 发票类型，可选 `electronic`，`VAT`    | String  | `electronic`         |
+| bottom   | 底部自定义内容     | ReactNode  | -         |
+| submitText   | 提交按钮文案       | String  | `提交`        |
 
 
 ## Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
-| onDelIcon | 点击删除图标 |  event: Event,item |
+| onSubmit | 点击提交审批按钮事件 |  event: Event,item |
+| onInput | 发票抬头输入事件 |  event: Event,item |

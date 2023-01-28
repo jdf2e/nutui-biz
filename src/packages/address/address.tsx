@@ -35,7 +35,8 @@ export interface AddressProps extends IComponent {
   existAddress: AddressList[]
   hotCities: Array<{
     id: number,
-    name: string
+    name: string,
+    title: string
   }>
   existAddressTitle: string
   customAndExistTitle: string

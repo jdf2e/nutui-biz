@@ -48,7 +48,7 @@ const SearchHistoryDemo = () => {
 
   const handleDeleteSingle = (val: IsearchItem) => {
     if(localStorage.getItem('searchHistoryData')) {
-      let searchHistoryData = JSON.parse(localStorage.getItem('searchHistoryData'))
+      let searchHistoryData = JSON.parse(localStorage.getItem('searchHistoryData') as string)
       let filterSearchHistoryData = searchHistoryData.filter((item: IsearchItem) => item.key != val.key)
       
       localStorage.setItem('searchHistoryData', JSON.stringify(filterSearchHistoryData))

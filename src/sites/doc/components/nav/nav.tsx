@@ -19,7 +19,6 @@ const Nav = () => {
   useEffect(() => {
     document.addEventListener('scroll', scrollNav)
   }, [])
-  const currentComponents = ['SettleBar', 'CartBar', 'SearchHistory', 'Card', 'Address', 'Sku', 'AddressList', 'InvoiceTitleEdit']
   return (
     <div className={`doc-nav ${fixed ? 'fixed' : ''}`}>
       <ol>
@@ -29,9 +28,9 @@ const Nav = () => {
               <li>{cn.name}</li>
               <ul>
                 {cn.packages.map((cp: any) => {
-                  if (!cp.show) return null
+                  // if (!cp.show) return null
                   return (
-                    !currentComponents.includes(cp.name) ? <a
+                    !cp.show ? <a
                     key={Math.random()}
                   >
                     <li style={{color: '#ccc', cursor: 'not-allowed'}}>

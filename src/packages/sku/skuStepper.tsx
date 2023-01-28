@@ -1,7 +1,5 @@
 import React, {
   FunctionComponent,
-  CSSProperties,
-  ReactNode,
   useState,
   useEffect
 } from 'react'
@@ -15,6 +13,11 @@ export interface SkuHeaderProps extends IComponent {
   stepperMin: string | number
   stepperExtraText: Function | boolean
   stepperTitle: string
+  goods: {
+    price: number
+    imagePath: string
+    skuId: string
+  }
   onAdd: (value: number) => void
   onReduce: (value: number) => void
   onChangeStepper: (value: number) => void

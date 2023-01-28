@@ -42,4 +42,16 @@ for (const path in modulesTaroPage) {
   })
 }
 
+const modulesPageDocs = import.meta.globEager('/src/docs/*.md', {
+  as: 'raw',
+})
+
+for (const path in modulesPageDocs) {
+  routes.push({
+    path: '/zh-CN/guide/intro',
+    component: modulesPageDocs[path],
+    name: 'intro',
+  })
+}
+
 export default routes

@@ -23,9 +23,9 @@ const SkuDemo = () => {
   const [notSell, setNotSell] = useState<boolean>(false)
   const [customStepper, setCustomStepper] = useState<boolean>(false)
   const [customBySlot, setCustomBySlot] = useState<boolean>(false)
-  const [skuData, setSkuData] = useState<Skus>([] as unknown as Skus)
-  const [goodsInfo, setGoodsInfo] = useState({})
-  const [imagePathMap, setImagePathMap] = useState({})
+  const [skuData, setSkuData] = useState<Skus[]>([])
+  const [goodsInfo, setGoodsInfo] = useState<any>({})
+  const [imagePathMap, setImagePathMap] = useState<any>({})
   const [addressDesc, setAddressDesc] = useState<string>('(配送地会影响库存，请先确认)')
   const [showAddressPopup, setShowAddressPopup] = useState<boolean>(false)
 
