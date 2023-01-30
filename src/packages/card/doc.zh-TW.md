@@ -340,6 +340,7 @@ export default App;
 | footerTpl   | 右下角內容自定義| React.ReactNode  | -      |
 | showType   | 展示形式，可选：`full-line`、`half-line`| String  | `full-line`      |
 | bottomTpl   | 底部内容自定义| React.ReactNode  | -      |
+| infotpl   | 信息内容自定义| React.ReactNode  | -      |
 | isNeedPrice   | 是否需要展示价格| Boolean  | `true`      |
 | imgTag   | 商品图片标签，常用于标志双11、直播等| String  | -      |
 | imgTagDirection   | 商品图片标签呈现位置，可选：top-left、top-right| String  | `top-left`      |

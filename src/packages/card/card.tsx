@@ -91,27 +91,25 @@ export const Card: FunctionComponent<
           </a>
           <div className={b('right')}>
             {infoTpl || <>
-              <div
+              {title && <div
                 className={classNames([b('right__title'), {'one-line': titleLine == 1}, {'multiple-lines': titleLine > 1}])}
                 style={clampStyle()}
-              >{titleTag || ''}{title}</div>
+              >{titleTag || ''}{title}</div>}
               {prolistTpl}
               {isNeedPrice && <div className={b('right__price')}>
                 {priceTpl ? priceTpl : (price && <Price price={price} />)}
-                {originTpl || (
-                  <Price className={b('right__price__origin')} price={vipPrice} />
-                )}
+                {originTpl ? originTpl : (vipPrice && <Price className={b('right__price__origin')} price={vipPrice} />)}
               </div>}
               <div className={b('right__other')}>
                 {shopTagTpl || (
                   <>
-                    <Tag type="danger">{shopDesc}</Tag>
-                    <Tag plain>{delivery}</Tag>
+                    {shopDesc && <Tag type="danger">{shopDesc}</Tag>}
+                    {delivery && <Tag plain>{delivery}</Tag>}
                   </>
                 )}
               </div>
               <div className={b('right__shop')}>
-                <div className={b('right__shop__name')}>{shopName}</div>
+                {shopName && <div className={b('right__shop__name')}>{shopName}</div>}
                 {footerTpl}
               </div>
             </>}
@@ -123,11 +121,13 @@ export const Card: FunctionComponent<
             <Image src={imgUrl} />
           </a>
           {infoTpl || <>
-            <div 
+            {title && <div 
               className={classNames(['half-line-title', {'one-line': titleLine == 1}, {'multiple-lines': titleLine > 1}])}
               style={clampStyle()}
-            >{titleTag || ''}{title}</div>
-            {isNeedPrice && <Price price={price} />}
+            >{titleTag || ''}{title}</div>}
+            {isNeedPrice && <div>
+              {priceTpl ? priceTpl : (price && <Price price={price} />)}
+            </div>}
             <div className='half-line-shop-name'>{shopName}</div>
           </>}
         </div>
