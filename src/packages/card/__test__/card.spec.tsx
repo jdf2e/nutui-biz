@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { render } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { Card } from '../card'
@@ -30,6 +30,8 @@ test('props test', () => {
   )
   const priceDoms = container.querySelectorAll('.nut-price__big')
   const tagDoms = container.querySelectorAll('.nut-tag')
+  const nutPrice = container.querySelector('.nut-price') as HTMLElement
+  expect(nutPrice).toBeTruthy()
   expect(
     container.querySelector('.nut-card__left img')?.getAttribute('src')
   ).toBe(state.imgUrl)
@@ -244,11 +246,11 @@ test('showType test', () => {
       showType="half-line"
     />
   )
-  const priceDoms = container.querySelectorAll('.half-li1ne')
+  const priceDoms = container.querySelectorAll('.half-line')
   expect(priceDoms.length).toBe(1)
 })
 
-test('TitleLine test', () => {
+test('titleLine test', () => {
   const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
@@ -277,7 +279,7 @@ test('TitleLine test', () => {
   expect(priceDoms).toHaveClass('one-line')
 })
 
-test('ImgTag and imgTagDirection test', () => {
+test('imgTag and imgTagDirection test', () => {
   const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
@@ -298,10 +300,125 @@ test('ImgTag and imgTagDirection test', () => {
       shopDesc={state.shopDesc}
       delivery={state.delivery}
       shopName={state.shopName}
-      imgTag={<div style={{background: 'red'}}>11</div>}
+      imgTag={<img src="" />}
       imgTagDirection="top-right"
     />
   )
-  const priceDoms = container.querySelector('.half-line-title')
-  expect(priceDoms).toHaveClass('one-line')
+  const priceDoms = container.querySelector('.img-tag') as HTMLElement
+  expect(priceDoms).toBeTruthy()
+  expect(priceDoms).toHaveClass('top-right')
+})
+
+test('titleTag test', () => {
+  const state = {
+    imgUrl:
+      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
+    title:
+      '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+    price: '388',
+    vipPrice: '378',
+    shopDesc: '自营',
+    delivery: '厂商配送',
+    shopName: '阳澄湖大闸蟹自营店>',
+  }
+  const { container } = render(
+    <Card
+      imgUrl={state.imgUrl}
+      title={state.title}
+      price={state.price}
+      vipPrice={state.vipPrice}
+      shopDesc={state.shopDesc}
+      delivery={state.delivery}
+      shopName={state.shopName}
+      titleTag={<div>标题标签</div>}
+    />
+  )
+  const titleTag = container.querySelector('.nut-biz-card__right__title')
+  expect(titleTag).toHaveTextContent('标题标签')
+})
+
+test('priceTpl test', () => {
+  const state = {
+    imgUrl:
+      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
+    title:
+      '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+    price: '388',
+    vipPrice: '378',
+    shopDesc: '自营',
+    delivery: '厂商配送',
+    shopName: '阳澄湖大闸蟹自营店>',
+  }
+  const { container } = render(
+    <Card
+      imgUrl={state.imgUrl}
+      title={state.title}
+      price={state.price}
+      vipPrice={state.vipPrice}
+      shopDesc={state.shopDesc}
+      delivery={state.delivery}
+      shopName={state.shopName}
+      priceTpl={<div>自定义价格</div>}
+    />
+  )
+  const priceTpl = container.querySelector('.nut-biz-card__right__price')
+  expect(priceTpl).toHaveTextContent('自定义价格')
+})
+
+test('linkUrl test', () => {
+  const state = {
+    imgUrl:
+      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
+    title:
+      '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+    price: '388',
+    vipPrice: '378',
+    shopDesc: '自营',
+    delivery: '厂商配送',
+    shopName: '阳澄湖大闸蟹自营店>',
+  }
+  const { container } = render(
+    <Card
+      imgUrl={state.imgUrl}
+      title={state.title}
+      price={state.price}
+      vipPrice={state.vipPrice}
+      shopDesc={state.shopDesc}
+      delivery={state.delivery}
+      shopName={state.shopName}
+      linkUrl="https://www.jd.com/"
+    />
+  )
+  const linkUrl = container.querySelector('.nut-biz-card__left')
+  expect(linkUrl).toHaveAttribute('href', 'https://www.jd.com/')
+})
+
+test('click test', () => {
+  const onClick1 = jest.fn()
+  const state = {
+    imgUrl:
+      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
+    title:
+      '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+    price: '388',
+    vipPrice: '378',
+    shopDesc: '自营',
+    delivery: '厂商配送',
+    shopName: '阳澄湖大闸蟹自营店>',
+  }
+  const { container } = render(
+    <Card
+      imgUrl={state.imgUrl}
+      title={state.title}
+      price={state.price}
+      vipPrice={state.vipPrice}
+      shopDesc={state.shopDesc}
+      delivery={state.delivery}
+      shopName={state.shopName}
+      onClick={onClick1}
+    />
+  )
+  const nutBizCard = container.querySelector('.nut-biz-card') as HTMLElement
+  fireEvent.click(nutBizCard)
+  expect(onClick1).toBeCalled()
 })

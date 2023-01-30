@@ -12,9 +12,6 @@ exports[`bottomTpl slot test 1`] = `
         class="nut-biz-card__left"
       >
         <div
-          class="img-tag top-right"
-        />
-        <div
           class="nut-image  "
         >
           <img
@@ -155,9 +152,6 @@ exports[`prolistTpl slot test 1`] = `
       <a
         class="nut-biz-card__left"
       >
-        <div
-          class="img-tag top-right"
-        />
         <div
           class="nut-image  "
         >

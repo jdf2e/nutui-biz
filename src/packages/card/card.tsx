@@ -22,6 +22,7 @@ export interface CardProps {
   footerTpl: ReactNode
   priceTpl: ReactNode
   bottomTpl: ReactNode
+  infoTpl: ReactNode
   imgTag: ReactNode
   titleTag: ReactNode
   linkUrl: string
@@ -60,6 +61,7 @@ export const Card: FunctionComponent<
     footerTpl,
     priceTpl,
     bottomTpl,
+    infoTpl,
     imgTagDirection,
     showType,
     onClick,
@@ -88,29 +90,31 @@ export const Card: FunctionComponent<
             <Image src={imgUrl} />
           </a>
           <div className={b('right')}>
-            <div
-              className={classNames([b('right__title'), {'one-line': titleLine == 1}, {'multiple-lines': titleLine > 1}])}
-              style={clampStyle()}
-            >{titleTag || ''}{title}</div>
-            {prolistTpl}
-            {isNeedPrice && <div className={b('right__price')}>
-              <Price price={price} />
-              {originTpl || (
-                <Price className={b('right__price__origin')} price={vipPrice} />
-              )}
-            </div>}
-            <div className={b('right__other')}>
-              {shopTagTpl || (
-                <>
-                  <Tag type="danger">{shopDesc}</Tag>
-                  <Tag plain>{delivery}</Tag>
-                </>
-              )}
-            </div>
-            <div className={b('right__shop')}>
-              <div className={b('right__shop__name')}>{shopName}</div>
-              {footerTpl}
-            </div>
+            {infoTpl || <>
+              <div
+                className={classNames([b('right__title'), {'one-line': titleLine == 1}, {'multiple-lines': titleLine > 1}])}
+                style={clampStyle()}
+              >{titleTag || ''}{title}</div>
+              {prolistTpl}
+              {isNeedPrice && <div className={b('right__price')}>
+                {priceTpl ? priceTpl : (price && <Price price={price} />)}
+                {originTpl || (
+                  <Price className={b('right__price__origin')} price={vipPrice} />
+                )}
+              </div>}
+              <div className={b('right__other')}>
+                {shopTagTpl || (
+                  <>
+                    <Tag type="danger">{shopDesc}</Tag>
+                    <Tag plain>{delivery}</Tag>
+                  </>
+                )}
+              </div>
+              <div className={b('right__shop')}>
+                <div className={b('right__shop__name')}>{shopName}</div>
+                {footerTpl}
+              </div>
+            </>}
           </div>
         </div> : 
         <div className='half-line'>
@@ -118,12 +122,14 @@ export const Card: FunctionComponent<
             {imgTag && <div className={classNames(['img-tag', {'top-right': imgTagDirection === 'top-right'}])}>{imgTag}</div>}
             <Image src={imgUrl} />
           </a>
-          <div 
-            className={classNames(['half-line-title', {'one-line': titleLine == 1}, {'multiple-lines': titleLine > 1}])}
-            style={clampStyle()}
-          >{titleTag || ''}{title}</div>
-          {isNeedPrice && <Price price={price} />}
-          <div className='half-line-shop-name'>{shopName}</div>
+          {infoTpl || <>
+            <div 
+              className={classNames(['half-line-title', {'one-line': titleLine == 1}, {'multiple-lines': titleLine > 1}])}
+              style={clampStyle()}
+            >{titleTag || ''}{title}</div>
+            {isNeedPrice && <Price price={price} />}
+            <div className='half-line-shop-name'>{shopName}</div>
+          </>}
         </div>
       }
       {bottomTpl}

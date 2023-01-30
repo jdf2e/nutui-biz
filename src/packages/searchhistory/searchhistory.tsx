@@ -199,7 +199,7 @@ export const SearchHistory: FunctionComponent<
     <div className={classNames([b(),className])} style={style} {...rest}>
       {renderSearchBar()}
       {searchHistoryData.length > 0 && renderSearchHistoryResult()}
-      {renderSearchDiscover()}
+      {discoverData.length > 0 && renderSearchDiscover()}
     </div>
   )
 }
