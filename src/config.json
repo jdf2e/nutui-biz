@@ -166,6 +166,17 @@
           "show": false,
           "taro": true,
           "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "ProductFeed",
+          "type": "component",
+          "cName": "商品 Feed 流",
+          "desc": "商品 Feed 流",
+          "sort": 10,
+          "show": true,
+          "taro": true,
+          "author": "ailululu"
         }
       ]
     },
