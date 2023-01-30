@@ -334,15 +334,16 @@ export default App;
 | delivery     | 配送方式 | String  | -      |
 | shopName   | 店鋪名稱| String  | -      |
 | prolistTpl   | 自定義商品介紹| React.ReactNode  | -      |
+| priceTpl   | 价格自定义内容 | React.ReactNode  | -      |
 | originTpl   | 價格後方自定義內容| React.ReactNode  | -      |
 | shopTagTpl   | 店鋪介紹自定義| React.ReactNode  | -      |
 | footerTpl   | 右下角內容自定義| React.ReactNode  | -      |
 | showType   | 展示形式，可选：`full-line`、`half-line`| String  | `full-line`      |
 | bottomTpl   | 底部内容自定义| React.ReactNode  | -      |
 | isNeedPrice   | 是否需要展示价格| Boolean  | `true`      |
-| imgTag   | 标题左侧标签，常用于活动标记等，不设置此参数或此参数为空，不展示| String  | -      |
+| imgTag   | 商品图片标签，常用于标志双11、直播等| String  | -      |
 | imgTagDirection   | 商品图片标签呈现位置，可选：top-left、top-right| String  | `top-left`      |
-| titleTag   | 底部内容自定义| React.ReactNode  | -      |
+| titleTag   | 标题左侧标签，常用于活动标记等，不设置此参数或此参数为空，不展示| React.ReactNode  | -      |
 | titleLine   | 标题行数，默认两行，想展示更多下面内容可设置为1| String \| Number  | '2'      |
 | linkUrl   | 跳转链接，默认点击整个卡片以href的形式跳转，可通过点击事件自定义| String  | -      |
 
