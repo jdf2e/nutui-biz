@@ -241,7 +241,7 @@ export default App;
 | backIcon     | 左上角返回按钮图标，设置为空则无返回按钮 | String  | `left`     |
 | deleteIcon   | 搜索历史删除图标| String  | `del`      |
 | searchDiscoverExtra   | 搜索发现额外信息| String  | -      |
-| searchDiscoverRefreshIcon   | 搜索历史刷新图标| String  | `refresh`      |
+| refreshIcon   | 搜索历史刷新图标| String  | `refresh`      |
 | searchHistoryCollapse   | 搜索历史超过两行出现下拉箭头                                 | Boolean  | `true`          |
 
 

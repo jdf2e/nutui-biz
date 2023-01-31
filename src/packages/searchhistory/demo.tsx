@@ -125,7 +125,7 @@ const SearchHistoryDemo = () => {
           onDelete={handleDelete}
           searchHistoryData={searchHistoryData} 
           discoverData={discoverData} 
-          refreshIcon={<Icon name="refresh" style={{marginRight: '10px'}} />}
+          refreshIcon="refresh"
           onRefresh={() => Toast.text('点击了刷新按钮')}
         />
       </div>

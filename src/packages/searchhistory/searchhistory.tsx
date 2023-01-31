@@ -31,7 +31,7 @@ export interface SearchHistoryProps extends IComponent {
   searchDiscoverExtra?: ReactNode
   openEyeIcon: ReactNode
   closeEyeIcon: ReactNode
-  refreshIcon?: ReactNode
+  refreshIcon?: string
   noDiscoverDataText: string
   deleteType: string
   onClickSearchButton: (value: string) => void
@@ -171,7 +171,7 @@ export const SearchHistory: FunctionComponent<
         <div className='search-discover-tit'>
           <div>{searchDiscoverText}{searchDiscoverExtra}</div>
           <div style={{display: 'flex'}}>
-            <div onClick={() => onRefresh && onRefresh()}>{refreshIcon}</div>
+            {refreshIcon && <div onClick={() => onRefresh && onRefresh()}><Icon name={refreshIcon} style={{marginRight: '10px'}} /></div>}
             {
               eyeOpened ? <div onClick={() => handleToggleEye(false)}>{openEyeIcon}</div> : <div className='close-eye'>
                 {!noDiscoverDataText && <div className='close-eye-extra'>已隐藏</div>}
