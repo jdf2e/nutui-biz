@@ -103,9 +103,9 @@ test('searchBar test', async () => {
           url: ''
         }
       ]} 
-      leftinIcon=""
-      rightinIcon=""
-      rightoutIcon={<div className='rightoutIcon'>搜索</div>}
+      leftInIcon=""
+      rightInIcon=""
+      rightOutIcon={<div className='rightoutIcon'>搜索</div>}
     />
   )
 

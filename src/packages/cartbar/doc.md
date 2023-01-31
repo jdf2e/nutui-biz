@@ -168,6 +168,7 @@ export default App;
 | hasCapsuleButtons   | 是否包含胶囊型按钮                                 | Boolean  | `false`          |
 | safeAreaInsetBottom   | 是否开启底部安全区适配                                 | Boolean  | `true`          |
 | placeholder   | 是否在标签位置生成一个等高的占位元素                                 | Boolean  | `false`          |
+| top | 顶部自定义内容 |React.ReactNode  | -          |
 
 
 ### CartBarIcon Props
@@ -205,9 +206,3 @@ export default App;
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onClick | 点击事件 |  event: Event |
-
-
-## Slots
-| 参数 | 说明 |
-|----- | ----- |
-| top | 顶部自定义内容 |

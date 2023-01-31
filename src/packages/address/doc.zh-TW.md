@@ -578,8 +578,8 @@ const App = () => {
           onClose={close}
           onSelected={selected}
           customAndExistTitle="選擇其他地址"
-          switchModule={switchModule}
-          closeMask={closeMask}
+          onSwitchModule={switchModule}
+          onCloseMask={closeMask}
        />
     </>
   );
@@ -627,7 +627,7 @@ export default App;
 | onSelected | 選擇已有地址列錶時觸發 | 參考 selected |
 | onClose | 地址選擇彈框關閉時觸發 | 參考 close |
 | closeMask |點擊遮罩層或點擊右上角叉號關閉時觸發 | {closeWay:'mask'/'cross'} |
-| switchModule | 點擊‘選擇其他地址’或自定義地址選擇左上角返回按鈕觸發 | {type:'exist'/'custom'/'custom2'} |
+| onSwitchModule | 點擊‘選擇其他地址’或自定義地址選擇左上角返回按鈕觸發 | {type:'exist'/'custom'/'custom2'} |
 
 
 ## change 回調參數

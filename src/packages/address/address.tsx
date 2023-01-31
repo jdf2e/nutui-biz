@@ -55,8 +55,8 @@ export interface AddressProps extends IComponent {
     id: number,
     name: string
   }) => void
-  closeMask?: (cal: { closeWay: string }) => void
-  switchModule?: (cal: { type: string }) => void
+  onCloseMask?: (cal: { closeWay: string }) => void
+  onSwitchModule?: (cal: { type: string }) => void
   onChange?: (cal: ChangeCallBack) => void
   onTabChecked?: (cal: string) => void
 }
@@ -89,8 +89,8 @@ export const Address: FunctionComponent<
     onSelected,
     onClose,
     onClickHotCity,
-    closeMask,
-    switchModule,
+    onCloseMask,
+    onSwitchModule,
     onTabChecked,
     style,
     className,
@@ -120,7 +120,7 @@ export const Address: FunctionComponent<
   }
   // 点击遮罩层关闭
   const clickOverlay = () => {
-    closeMask && closeMask({ closeWay: 'mask' })
+    onCloseMask && onCloseMask({ closeWay: 'mask' })
   }
   // 切换下一级列表
   const nextAreaList = (item: NextListObj) => {
@@ -195,20 +195,20 @@ export const Address: FunctionComponent<
     onClose && onClose(res)
   }
   // 选择其他地址
-  const onSwitchModule = () => {
+  const handleSwitchModule = () => {
     if (privateType === 'exist') {
       setPrivateType('custom')
     } else {
       setPrivateType('exist')
     }
     initAddress()
-    switchModule && switchModule({ type: privateType })
+    onSwitchModule && onSwitchModule({ type: privateType })
   }
 
   const headerRender = () => {
     return (
       <div className={b('header')}>
-        <div className="arrow-back" onClick={onSwitchModule}>
+        <div className="arrow-back" onClick={handleSwitchModule}>
           {privateType === 'custom' && backBtnIcon && (
             <Icon
               classPrefix={iconClassPrefix}
@@ -298,7 +298,7 @@ export const Address: FunctionComponent<
                   locale.address.chooseAnotherAddress || customAndExistTitle
                 }
                 onSelected={selectedExist}
-                onSwitchModule={onSwitchModule}
+                onSwitchModule={handleSwitchModule}
               />
             )}
           </div>

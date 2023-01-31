@@ -368,6 +368,14 @@ export default App;
 | buyText |  立即购买按钮文案    | String | `立即购买` |
 | addCartText          |        加入购物车按钮文案                 | String | `加入购物车`             |
 | confirmText          |           确定按钮文案              | String | `确定`             |
+| skuHeader  | 商品信息展示区，包含商品图片、价格、编号 | React.ReactNode | -             |
+| skuHeaderPrice  | 商品信息展示区，价格区域展示| React.ReactNode | -             |
+| skuHeaderExtra  | 商品信息展示区，编号区域展示 | React.ReactNode | -             |
+| skuSelectTop | sku 展示区上方与商品信息展示区下方区域，无默认展示内容 | React.ReactNode | -             |
+| skuSelect | sku 展示区 | React.ReactNode | -             |
+| skuStepper  | 数量选择区 | React.ReactNode | -             |
+| skuStepperBottom  | 数量选择区下方区域 | React.ReactNode | -             |
+| skuOperate | 底部按钮操作区域 |React.ReactNode | -             |
 
 ### Events
 
@@ -382,19 +390,3 @@ export default App;
 | onClickCloseIcon  | 点击左上角关闭 icon 时触发 | - |
 | onClickOverlay  | 点击遮罩时触发 | - |
 | onClose  | 关闭弹层时触发 | - |
-
-
-### Slots
-
-Sku 组件默认划分为若干区域，这些区域都定义成了插槽，可以按照需求进行替换。
-
-| 事件名 | 说明           | 
-|--------|----------------|
-| sku-header  | 商品信息展示区，包含商品图片、价格、编号 | 
-| sku-header-price  | 商品信息展示区，价格区域展示| 
-| sku-header-extra  | 商品信息展示区，编号区域展示 | 
-| sku-select-top | sku 展示区上方与商品信息展示区下方区域，无默认展示内容 | 
-| sku-select | sku 展示区 | 
-| sku-stepper  | 数量选择区 | 
-| sku-stepper-bottom  | 数量选择区下方区域 | 
-| sku-operate | 底部按钮操作区域 |

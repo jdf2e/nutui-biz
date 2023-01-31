@@ -577,8 +577,8 @@ const App = () => {
           onClose={close}
           onSelected={selected}
           customAndExistTitle="选择其他地址"
-          switchModule={switchModule}
-          closeMask={closeMask}
+          onSwitchModule={switchModule}
+          onCloseMask={closeMask}
        />
     </>
   );
@@ -620,7 +620,7 @@ export default App;
   * addressDetail 具体地址
   * selectedAddress 字段用于判断当前地址列表的选中项。
 
-注：Nutui-React-Taro 下，自 `v1.3.10` 起 type 属性暂不支持 custom2 类型
+<!-- 注：Nutui-React-Taro 下，自 `v1.3.10` 起 type 属性暂不支持 custom2 类型 -->
 
 ## Event
 | 字段 | 说明 | 回调参数 |
@@ -629,8 +629,8 @@ export default App;
 | onSelected | 选择已有地址列表时触发 | 参考 selected |
 | onClose | 地址选择弹框关闭时触发 | 参考 close |
 | onClickHotCity | 点击热门城市触发 | 被点击的热门城市数据 |
-| closeMask |点击遮罩层或点击右上角叉号关闭时触发 | {closeWay:'mask'/'cross'} |
-| switchModule | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'/'custom2'} |
+| onCloseMask |点击遮罩层或点击右上角叉号关闭时触发 | {closeWay:'mask'/'cross'} |
+| onSwitchModule | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'/'custom2'} |
 
 
 ## change 回调参数

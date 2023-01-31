@@ -139,9 +139,9 @@ const App = () => {
         onDelete={handleDelete}
         searchHistoryData={searchHistoryData} 
         discoverData={discoverData} 
-        leftinIcon=""
-        rightinIcon=""
-        rightoutIcon={<div style={{background: '#e93b3d', padding: '6px', borderRadius: '4px', color: '#fff', fontSize: '14px'}}>搜索</div>}
+        leftInIcon=""
+        rightInIcon=""
+        rightOutIcon={<div style={{background: '#e93b3d', padding: '6px', borderRadius: '4px', color: '#fff', fontSize: '14px'}}>搜索</div>}
     />
   );
 };
@@ -243,6 +243,9 @@ export default App;
 | searchDiscoverExtra   | 搜索发现额外信息| String  | -      |
 | refreshIcon   | 搜索历史刷新图标| String  | `refresh`      |
 | searchHistoryCollapse   | 搜索历史超过两行出现下拉箭头                                 | Boolean  | `true`          |
+| leftInIcon | 文本框内左侧自定义，默认是放大图标 | React.ReactNode  | -          |
+| rightInIcon | 文本框内右侧自定义，默认是拍照图标 | React.ReactNode  | -          |
+| rightOutIcon | 文本框外右侧自定义，默认是“搜索” | React.ReactNode  | -          |
 
 
 ## Events
@@ -255,10 +258,3 @@ export default App;
 | onClickBackIcon | 左上角返回按钮点击事件 |  event: Event |
 | onRefresh | 搜索发现刷新按钮事件 |  event: Event |
 | onDelete | 删除事件 |  event: Event |
-
-## Slots
-| 参数 | 说明 |
-|----- | ----- |
-| leftinIcon | 文本框内左侧自定义，默认是放大图标 |
-| rightinIcon | 文本框内右侧自定义，默认是拍照图标 |
-| rightoutIcon | 文本框外右侧自定义，默认是“搜索” |
