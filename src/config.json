@@ -177,6 +177,17 @@
           "show": true,
           "taro": true,
           "author": "ailululu"
+        },
+        {
+          "version": "0.1.0",
+          "name": "ProductFeedItem",
+          "type": "component",
+          "cName": "商品 Feed 流商品",
+          "desc": "商品 Feed 流商品",
+          "sort": 11,
+          "show": false,
+          "taro": true,
+          "author": "ailululu"
         }
       ]
     },
