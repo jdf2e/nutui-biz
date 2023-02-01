@@ -280,7 +280,7 @@
           "cName": "发票抬头列表",
           "desc": "发票抬头列表",
           "sort": 18,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },

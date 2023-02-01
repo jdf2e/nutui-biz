@@ -1,18 +1,18 @@
 #  Sku 商品规格选择
 
-### 介绍
+### Intro
 
 常见于商详（单品）页，主要用来选择商品的规格。
 
-### 安装
+### Install
 
 ```javascript
 import { Sku } from '@nutui/nutui-biz';
 ```
 
-## 代码演示
+## Demo
 
-### 基本用法
+### Basic Usage
 
 :::demo
 
@@ -108,7 +108,7 @@ export default App;
 
 :::
 
-### 不可售
+### Not Sell
 
 :::demo
 
@@ -168,7 +168,7 @@ export default App;
 
 :::
 
-### 自定义计步器
+### Custom Stepper
 
 :::demo
 
@@ -213,7 +213,7 @@ export default App;
 
 :::
 
-### 自定义插槽
+### Custom Slots
 
 :::demo
 
@@ -354,20 +354,20 @@ export default App;
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| visible         | 是否显示商品规格弹框               | Boolean |  `false`              |
-| sku         | 商品 sku 数据 | Array | []               |
-| goods |  商品信息    | Object | - |
-| stepperMax         | 设置 inputNumber 最大值  | String \| Number | 99999               |
-| stepperMin         | 设置 inputNumber 最小值  | String \| Number | 1               |
-| btnOptions        |           底部按钮设置。['confirm','buy','cart' ] 分别对应确定、立即购买、加入购物车              | Array | [`confirm`]           |
-| btnExtraText | 按钮上部添加文案，默认为空，有值时显示 | String | -            |
-| stepperTitle         | 数量选择组件左侧文案 | String | `购买数量`                |
-| stepperExtraText        |   inputNumber 与标题之间的文案       | Function \| Boolean | `false`              |
-| buyText |  立即购买按钮文案    | String | `立即购买` |
-| addCartText          |        加入购物车按钮文案                 | String | `加入购物车`             |
-| confirmText          |           确定按钮文案              | String | `确定`             |
+| visible         | Whether to open popup               | Boolean |  `false`              |
+| sku         | Sku data | Array | []               |
+| goods |  Product Info    | Object | - |
+| stepperMax         | Stepper max  | String \| Number | 99999               |
+| stepperMin         | Stepper min  | String \| Number | 1               |
+| btnOptions        |           Bottom button              | Array | [`confirm`]           |
+| btnExtraText | Add text above button | String | -            |
+| stepperTitle         | Stepper left text | String | `Buy Num`                |
+| stepperExtraText        |   The text between the stepper and the headline       | Function \| Boolean | `false`              |
+| buyText |  Buy button text    | String | `Buy It Now` |
+| addCartText          |        Add cart button text                 | String | `Add To cart`             |
+| confirmText          |           Confirm button text              | String | `Confirm`             |
 | skuHeader  | 商品信息展示区，包含商品图片、价格、编号 | React.ReactNode | -             |
 | skuHeaderPrice  | 商品信息展示区，价格区域展示| React.ReactNode | -             |
 | skuHeaderExtra  | 商品信息展示区，编号区域展示 | React.ReactNode | -             |
@@ -379,14 +379,14 @@ export default App;
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
+| Attribute | Description           | Arguments     |
 |--------|----------------|--------------|
-| onSelectSku  | 切换规格类目时触发 | {sku,skuIndex,parentSku,parentIndex} |
-| onAdd  | inputNumber 点击增加按钮时触发 | value |
-| onReduce  | inputNumber 点击减少按钮时触发 | value |
-| overLimit  | inputNumber 点击不可用的按钮时触发 | value |
-| onChangeStepper  | 购买变化时触发 | value |
-| onClickBtnOperate  | 点击底部按钮时触发 | {type:'confirm',value:'inputNumber value'} |
-| onClickCloseIcon  | 点击左上角关闭 icon 时触发 | - |
-| onClickOverlay  | 点击遮罩时触发 | - |
-| onClose  | 关闭弹层时触发 | - |
+| onSelectSku  | Emitted when select sku | {sku,skuIndex,parentSku,parentIndex} |
+| onAdd  | Emitted when click stepper add button | value |
+| onReduce  | Emitted when click stepper reduce button | value |
+| overLimit  | Emitted when click stepper disabled button | value |
+| onChangeStepper  | Emitted when click stepper change | value |
+| onClickBtnOperate  | Emitted when click bottom button | {type:'confirm',value:'inputNumber value'} |
+| onClickCloseIcon  | Emitted when click close button | - |
+| onClickOverlay  | Emitted when click mask | - |
+| onClose  | Emitted when popup close | - |

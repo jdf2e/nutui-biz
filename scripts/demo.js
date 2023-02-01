@@ -8,7 +8,7 @@ const ${name}Demo = () => {
   return (
     <>
       <div className="demo">
-        <h2>基础用法</h2>
+        <h2>基本用法</h2>
         <${name}></${name}>
       </div>
     </>
@@ -26,7 +26,7 @@ const ${name}Demo = () => {
   return (
     <>
       <div className="demo">
-        <h2>基础用法</h2>
+        <h2>基本用法</h2>
         <${name}></${name}>
       </div>
     </>
@@ -71,7 +71,7 @@ ${''}
 
 ## 代码演示
 
-### 基础用法1
+### 基本用法
 
 
 
