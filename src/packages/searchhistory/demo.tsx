@@ -99,9 +99,9 @@ const SearchHistoryDemo = () => {
           onDelete={handleDelete}
           searchHistoryData={searchHistoryData} 
           discoverData={discoverData} 
-          leftinIcon=""
-          rightinIcon=""
-          rightoutIcon={<div style={{background: '#e93b3d', padding: '6px', borderRadius: '4px', color: '#fff', fontSize: '14px'}}>搜索</div>}
+          leftInIcon=""
+          rightInIcon=""
+          rightOutIcon={<div style={{background: '#e93b3d', padding: '6px', borderRadius: '4px', color: '#fff', fontSize: '14px'}}>搜索</div>}
         />
         <h2>添加搜索发现额外信息</h2>
         <SearchHistory 
@@ -125,7 +125,7 @@ const SearchHistoryDemo = () => {
           onDelete={handleDelete}
           searchHistoryData={searchHistoryData} 
           discoverData={discoverData} 
-          refreshIcon={<Icon name="refresh" style={{marginRight: '10px'}} />}
+          refreshIcon="refresh"
           onRefresh={() => Toast.text('点击了刷新按钮')}
         />
       </div>

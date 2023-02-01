@@ -134,9 +134,9 @@ const CardDemo = () => {
                 translated.customPro1,
                 translated.customPro2,
                 translated.customPro3,
-              ].map((item) => {
+              ].map((item, index) => {
                 return (
-                  <span style={wordStyles} className="word" key={item}>
+                  <span style={wordStyles} className="word" key={index}>
                     {item}
                   </span>
                 )

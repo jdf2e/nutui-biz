@@ -528,8 +528,8 @@ const AddressDemo = () => {
           onClose={close4}
           onSelected={selected}
           customAndExistTitle={translated.other}
-          switchModule={switchModule}
-          closeMask={closeMask}
+          onSwitchModule={switchModule}
+          onCloseMask={closeMask}
         />
       </div>
     </>

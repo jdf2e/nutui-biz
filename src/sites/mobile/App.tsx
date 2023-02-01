@@ -20,6 +20,7 @@ import { BaseLang } from '@/locales/base'
 import {Icon} from '@nutui/nutui-react'
 import { nav } from '@/config.json'
 import TaroDemo from '@/sites/mobile/TaroDemo'
+import '@nutui/nutui-react/dist/style.css';
 
 interface Languages {
   [key: string]: BaseLang

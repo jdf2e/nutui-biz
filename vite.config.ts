@@ -7,7 +7,7 @@ const path = require('path')
 const { resolve } = path
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/react',
+  base: '/nutui/biz',
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },

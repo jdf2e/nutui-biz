@@ -576,8 +576,8 @@ const App = () => {
           onClose={close}
           onSelected={selected}
           customAndExistTitle="Choose Other Address"
-          switchModule={switchModule}
-          closeMask={closeMask}
+          onSwitchModule={switchModule}
+          onCloseMask={closeMask}
        />
     </>
   );
@@ -619,8 +619,8 @@ export default App;
 | onSelected |  Emitted when to selected exist address  | reference selected |
 | onClose | Emitted when to close  | reference close  |
 | onClickHotCity | Emitted when click hot city | clicked hot city data |
-| closeMask |Emitted when to close mask | {closeWay:'mask'/'cross'} |
-| switchModule | Click to select another address or custom address to select the upper left corner of the return button triggered | {type:'exist'/'custom'/'custom2'} |
+| onCloseMask |Emitted when to close mask | {closeWay:'mask'/'cross'} |
+| onSwitchModule | Click to select another address or custom address to select the upper left corner of the return button triggered | {type:'exist'/'custom'/'custom2'} |
 
 
 ## change 回调参数
