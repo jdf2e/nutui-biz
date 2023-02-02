@@ -29,6 +29,10 @@
       display: inline-block;
       margin-right: 6px;
       margin-bottom: 0;
+
+      .nut-radio__button {
+        cursor: pointer;
+      }
     }
 
     .form-layout-right .nut-form-item__label {
