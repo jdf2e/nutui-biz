@@ -123,5 +123,11 @@ const idID: BaseLang = {
     refreshingText: 'Memuat...',
     completeText: 'Penyegaran berhasil',
   },
+  orderRemark: {
+    placeholderText: 'Harap masukkan isi komentar',
+    title: 'Catatan Pesanan',
+    tagTitle: 'Merekomendasikan Tanda Tangan',
+    submitText: 'Konfirmasi'
+  }
 }
 export default idID

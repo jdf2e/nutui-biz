@@ -1,0 +1,81 @@
+.nut-orderRemark {
+  &__title {
+    height: 50px;
+    line-height: 50px;
+    width: 100%;
+    font-size: 16px;
+    font-family: PingFangSC;
+    font-weight: 500;
+    color: rgba(29, 31, 43, 1);
+    text-align: center;
+  }
+  &__textarea-container {
+    .nut-textarea {
+      padding: 10px 15px;
+    }
+    .nut-textarea__textarea {
+      height: 120px;
+      padding: 10px;
+      border: 1px solid rgba(233, 233, 233, 1);
+      border-radius: 8px;
+      font-size: 12px;
+    }
+    .nut-textarea__limit {
+      right: 25px;
+    }
+  }
+  &__opt-container {
+    height: 62px;
+    width: 100%;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 -4px 12px 0 rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .nut-button {
+      width: 335px;
+      height: 40px;
+      background: linear-gradient(
+        135deg,
+        rgba(242, 20, 12, 1) 0%,
+        rgba(242, 39, 12, 1) 69.83950099728881%,
+        rgba(242, 77, 12, 1) 100%
+      );
+      border-radius: 20px;
+    }
+  }
+  &__tag-container {
+    padding: 10px 15px;
+    padding-top: 15px;
+    .nut-orderRemark__tag-title {
+      font-size: 12px;
+      font-family: PingFangSC;
+      font-weight: normal;
+      color: rgba(0, 0, 0, 0.44);
+      margin-bottom: 10px;
+    }
+    .nut-orderRemark__tag-content {
+      .nut-orderRemark__tag {
+        height: 28px;
+        background: rgba(233, 233, 233, 1);
+        border-radius: 14px;
+        font-size: 12px;
+        padding: 5px 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        display: inline-block;
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+.nut-orderRemark__popup {
+  .nutui-popup__close-icon {
+    top: 12px !important;
+  }
+}

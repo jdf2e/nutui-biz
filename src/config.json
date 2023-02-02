@@ -246,7 +246,7 @@
           "cName": "订单备注",
           "desc": "订单备注",
           "sort": 12,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         }
