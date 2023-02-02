@@ -344,11 +344,11 @@ export default App;
 | bottomTpl   | 底部内容自定义| React.ReactNode  | -      |
 | infotpl   | 信息内容自定义| React.ReactNode  | -      |
 | isNeedPrice   | 是否需要展示价格| Boolean  | `true`      |
-| imgTag   | 商品图片标签，常用于标志双11、直播等| String  | -      |
-| imgTagDirection   | 商品图片标签呈现位置，可选：top-left、top-right| String  | `top-left`      |
+| imgTag   | 商品图片标签，常用于标志双 11、直播等| String  | -      |
+| imgTagDirection   | 商品图片标签呈现位置，可选：`top-left`、`top-right`| String  | `top-left`      |
 | titleTag   | 标题左侧标签，常用于活动标记等，不设置此参数或此参数为空，不展示| React.ReactNode  | -      |
-| titleLine   | 标题行数，默认两行，想展示更多下面内容可设置为1| String \| Number  | '2'      |
-| linkUrl   | 跳转链接，默认点击整个卡片以href的形式跳转，可通过点击事件自定义| String  | -      |
+| titleLine   | 标题行数，默认两行，想展示更多下面内容可设置为 1| String \| Number  | `2`      |
+| linkUrl   | 跳转链接，默认点击整个卡片以 href 的形式跳转，可通过点击事件自定义| String  | -      |
 
 
 ## Events

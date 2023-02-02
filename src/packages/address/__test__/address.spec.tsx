@@ -177,7 +177,7 @@ test('exist address & list address', async () => {
       town={addressData.town}
       existAddress={existAddress}
       customAddressTitle="请选择所在地区"
-      switchModule={switchModule}
+      onSwitchModule={switchModule}
       onChange={changeHandle}
     />
   )

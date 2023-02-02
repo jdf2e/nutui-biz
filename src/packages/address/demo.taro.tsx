@@ -435,8 +435,8 @@ const AddressDemo = () => {
           onClose={close4}
           onSelected={selected}
           customAndExistTitle="选择其他地址"
-          switchModule={switchModule}
-          closeMask={closeMask}
+          onSwitchModule={switchModule}
+          onCloseMask={closeMask}
         />
       </div>
     </>

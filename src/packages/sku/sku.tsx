@@ -27,6 +27,7 @@ export interface SkuProps extends IComponent {
   skuSelect: ReactNode
   skuStepper: ReactNode
   skuStepperBottom: ReactNode
+  skuOperate: ReactNode
   operateBtn: ReactNode
   goods: {
     price: number
@@ -69,6 +70,7 @@ export const Sku: FunctionComponent<
     skuSelect,
     skuStepper,
     skuStepperBottom,
+    skuOperate,
     goods,
     sku = [],
     stepperMax = 99999,
@@ -190,6 +192,7 @@ export const Sku: FunctionComponent<
           addCartText = {addCartText}
           confirmText = {confirmText}
           operateBtn={operateBtn}
+          skuOperate = {skuOperate}
           onClickBtnOperate = {handleClickBtnOperate} />
       </div>
     </Popup>

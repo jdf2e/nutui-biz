@@ -179,6 +179,12 @@ export default App;
 | showZero   | 数量为0时是否展示                                 | Boolean  | `true`          |
 | safeAreaInsetBottom   | 是否开启底部安全区适配                                 | Boolean  | `true`          |
 | placeholder   | 是否在标签位置生成一个等高的占位元素                                 | Boolean  | `false`          |
+| customTotal | 合计区域自定义 | React.ReactNode  | -          |
+| customWarning | 上面提示内容自定义 | React.ReactNode  | -          |
+| customSelectAll | 全选内容自定义 | React.ReactNode  | -          |
+| customTotalPrice | 合计价格内容自定义 | React.ReactNode  | -          |
+| customTotalExtra | 合计额外区域自定义 | React.ReactNode  | -          |
+| customButton | 按钮内容自定义 | React.ReactNode  | -          |
 
 
 ## Events
@@ -187,13 +193,3 @@ export default App;
 | onSelectAll | 全选按钮点击事件 |  event: Event |
 | onSubmit | 去结算按钮点击事件 |  event: Event |
 | onDelete | 删除事件，isEdit 为 true 时生效 |  event: Event |
-
-## Slots
-| 参数 | 说明 |
-|----- | ----- |
-| customTotal | 合计区域自定义 |
-| customWarning | 上面提示内容自定义 |
-| customSelectAll | 全选内容自定义 |
-| customTotalPrice | 合计价格内容自定义 |
-| customTotalExtra | 合计额外区域自定义 |
-| customButton | 按钮内容自定义 |

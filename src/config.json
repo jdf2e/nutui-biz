@@ -177,6 +177,17 @@
           "show": true,
           "taro": true,
           "author": "ailululu"
+        },
+        {
+          "version": "0.1.0",
+          "name": "ProductFeedItem",
+          "type": "component",
+          "cName": "商品 Feed 流商品",
+          "desc": "商品 Feed 流商品",
+          "sort": 11,
+          "show": false,
+          "taro": true,
+          "author": "ailululu"
         }
       ]
     },
@@ -279,7 +290,7 @@
           "cName": "发票抬头列表",
           "desc": "发票抬头列表",
           "sort": 18,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },

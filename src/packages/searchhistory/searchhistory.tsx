@@ -25,9 +25,9 @@ export interface SearchHistoryProps extends IComponent {
   backIcon: string
   deleteIcon: ReactNode
   keyword: string
-  leftinIcon: ReactNode
-  rightoutIcon: ReactNode
-  rightinIcon: ReactNode
+  leftInIcon: ReactNode
+  rightOutIcon: ReactNode
+  rightInIcon: ReactNode
   searchDiscoverExtra?: ReactNode
   openEyeIcon: ReactNode
   closeEyeIcon: ReactNode
@@ -51,12 +51,12 @@ const defaultProps = {
   backIcon: 'left',
   deleteIcon: 'del',
   keyword: '',
-  leftinIcon: <Icon name="search" size="12" />,
-  rightinIcon: <Icon name="photograph" size="12" />,
+  leftInIcon: <Icon name="search" size="12" />,
+  rightInIcon: <Icon name="photograph" size="12" />,
   openEyeIcon: <Icon name="eye" />,
   closeEyeIcon: <Icon name="marshalling" />,
   noDiscoverDataText: '当前搜索发现已隐藏',
-  rightoutIcon: '搜索',
+  rightOutIcon: '搜索',
   deleteType: 'all',
   onClickSearchButton: (value) => {},
   onClickBackIcon: () => {},
@@ -81,9 +81,9 @@ export const SearchHistory: FunctionComponent<
     keyword,
     searchHistoryData,
     discoverData,
-    leftinIcon,
-    rightoutIcon,
-    rightinIcon,
+    leftInIcon,
+    rightOutIcon,
+    rightInIcon,
     openEyeIcon,
     closeEyeIcon,
     refreshIcon,
@@ -114,13 +114,13 @@ export const SearchHistory: FunctionComponent<
   const renderSearchBar = () => {
     return <SearchBar
       shape="round"
-      className={classNames({'nut-searchbar-no-left-in-icon': leftinIcon === ''})}
+      className={classNames({'nut-searchbar-no-left-in-icon': leftInIcon === ''})}
       value={value}
       onChange={handleChange}
-      leftinIcon={leftinIcon}
-      rightinIcon={<div onClick={() => onClickRightInIcon && onClickRightInIcon()}>{rightinIcon}</div>}
+      leftinIcon={leftInIcon}
+      rightinIcon={<div onClick={() => onClickRightInIcon && onClickRightInIcon()}>{rightInIcon}</div>}
       leftoutIcon={<Icon name={backIcon} size="14" onClick={() => onClickBackIcon && onClickBackIcon()} />}
-      rightoutIcon={<div onClick={() => onClickSearchButton && onClickSearchButton(value as string)}>{rightoutIcon}</div>}
+      rightoutIcon={<div onClick={() => onClickSearchButton && onClickSearchButton(value as string)}>{rightOutIcon}</div>}
     />
   }
 
