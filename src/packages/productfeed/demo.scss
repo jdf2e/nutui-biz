@@ -1,0 +1,85 @@
+#app .demo {
+  padding: 57px 0 0;
+}
+.nut-tabs__titles {
+  background: #eee;
+}
+.nut-tabpane {
+  padding: 0 20px 20px;
+  background: #eee;
+}
+.nut-biz-productfeed {
+  height: calc(100vh - 145px);
+  width: 100%;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar { width: 0 !important }
+}
+// 商品样式
+.nut-biz-card {
+  margin-bottom: 6px;
+  background: rgba(255,255,255,1);
+  border-radius: 8px;
+  .img-label {
+    width: 63px;
+    height: 16px;
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+  .nut-image {
+    padding: 10px;
+    img {
+      width: 100%;
+      border-radius: 8px;
+    }
+  }
+  .name-box {
+    margin-bottom: 7px;
+    padding: 0 12px;
+    font-size: 14px;
+    font-family: PingFang SC;
+    font-weight: normal;
+    color: rgba(0,0,0,0.85);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    word-break: break-all;
+    .label {
+      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      height: 13px;
+      margin-right: 5px;
+      padding: 0 2px;
+      font-size: 10px;
+      font-family: PingFang SC;
+      position: relative;
+      top: -1px;
+      // vertical-align: middle;
+      color: rgba(255,255,255,1);
+      background: linear-gradient(135deg, rgba(255,64,79,1) 0%,rgba(250,44,25,1) 100%);
+      border-radius: 2px;
+    }
+  }
+  .bottom {
+    padding: 0 12px;
+  }
+  .price {
+    font-size: 0;
+    .nut-price {
+      font-family: JDZH-Regular;
+      color: rgba(250,44,25,1);
+      .nut-price__symbol-large, .nut-price__decimal-large {
+        font-size: 12px;
+      }
+      .nut-price__integer-large {
+        font-size: 18px;
+      }
+    }
+  }
+}
+

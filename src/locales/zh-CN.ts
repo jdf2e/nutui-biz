@@ -95,7 +95,7 @@ const zhCN: BaseLang = {
     basePlaceholder: '上京东，购好物',
     text: '文本',
     test: '测试',
-    title1: '基础用法',
+    title1: '基本用法',
     title2: '搜索框形状及最大长度',
     title3: '搜索框内外背景设置',
     title4: '搜索框文本设置',
