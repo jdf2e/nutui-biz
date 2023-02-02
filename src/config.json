@@ -255,8 +255,7 @@
     {
       "name": "售后类",
       "enName": "nav",
-      "packages": [
-      ]
+      "packages": []
     },
     {
       "name": "发票类",
@@ -311,14 +310,12 @@
     {
       "name": "客服类",
       "enName": "feedback",
-      "packages": [
-      ]
+      "packages": []
     },
     {
       "name": "履约类",
       "enName": "exhibition",
-      "packages": [
-      ]
+      "packages": []
     },
     {
       "name": "其他",
@@ -331,7 +328,7 @@
           "cName": "优惠券",
           "desc": "优惠券",
           "sort": 23,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
