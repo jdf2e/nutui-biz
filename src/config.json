@@ -86,9 +86,9 @@
           "cName": "评论",
           "desc": "评论",
           "sort": 1,
-          "show": false,
-          "taro": true,
-          "author": "yangjinjun3"
+          "show": true,
+          "taro": false,
+          "author": "eiinu"
         },
         {
           "version": "0.1.0",
