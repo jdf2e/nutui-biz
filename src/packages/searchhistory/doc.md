@@ -21,8 +21,8 @@ import  React from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
-  const [searchHistoryData, setSearchHistoryData] = useState(JSON.parse(localStorage.getItem('searchHistoryData') as string) || [])
-  const discoverData = [
+  const [recentSearchData, setRecentSearchData] = useState(JSON.parse(localStorage.getItem('recentSearchData') as string) || [])
+  const searchDiscoverData = [
     {
       name: '小米手环'
     },
@@ -34,7 +34,7 @@ const App = () => {
   const handleClick = (val: string) => { 
     if(val.trim() === '') return
 
-    let arr = JSON.parse(localStorage.getItem('searchHistoryData') as string) || [];
+    let arr = JSON.parse(localStorage.getItem('recentSearchData') as string) || [];
     let len = arr.filter((item: {
       name: string
     }) => item.name === val).length
@@ -49,23 +49,23 @@ const App = () => {
       name: val
     })
 
-    localStorage.setItem('searchHistoryData', 
+    localStorage.setItem('recentSearchData', 
       JSON.stringify(arr)
     )
-    setSearchHistoryData(arr)
+    setRecentSearchData(arr)
   }
 
   const handleDelete = () => {
-    localStorage.removeItem('searchHistoryData')
-    setSearchHistoryData([])
+    localStorage.removeItem('recentSearchData')
+    setRecentSearchData([])
   }
 
   return (
     <SearchHistory 
         onClickSearchButton={handleClick}
         onDelete={handleDelete}
-        searchHistoryData={searchHistoryData} 
-        discoverData={discoverData} 
+        recentSearchData={recentSearchData} 
+        searchDiscoverData={searchDiscoverData} 
     />
   );
 };
@@ -87,9 +87,9 @@ const App = () => {
     <SearchHistory 
         onClickSearchButton={handleClick}
         onDelete={handleDelete}
-        searchHistoryData={searchHistoryData} 
-        discoverData={discoverData} 
-        searchHistoryText="搜索历史"
+        recentSearchData={recentSearchData} 
+        searchDiscoverData={searchDiscoverData} 
+        recentSearchText="搜索历史"
         searchDiscoverText="猜你想搜"
     />
   );
@@ -112,8 +112,8 @@ const App = () => {
     <SearchHistory 
         onClickSearchButton={handleClick}
         onDelete={handleDelete}
-        searchHistoryData={searchHistoryData} 
-        discoverData={discoverData} 
+        recentSearchData={recentSearchData} 
+        searchDiscoverData={searchDiscoverData} 
         backIcon="play-double-back"
         deleteIcon="del2"
     />
@@ -137,8 +137,8 @@ const App = () => {
     <SearchHistory 
         onClickSearchButton={handleClick}
         onDelete={handleDelete}
-        searchHistoryData={searchHistoryData} 
-        discoverData={discoverData} 
+        recentSearchData={recentSearchData} 
+        searchDiscoverData={searchDiscoverData} 
         leftInIcon=""
         rightInIcon=""
         rightOutIcon={<div style={{background: '#e93b3d', padding: '6px', borderRadius: '4px', color: '#fff', fontSize: '14px'}}>搜索</div>}
@@ -163,8 +163,8 @@ const App = () => {
     <SearchHistory 
         onClickSearchButton={handleClick}
         onDelete={handleDelete}
-        searchHistoryData={searchHistoryData} 
-        discoverData={discoverData} 
+        recentSearchData={recentSearchData} 
+        searchDiscoverData={searchDiscoverData} 
         searchDiscoverExtra={<span style={{color: 'gray', fontSize: '12px', marginLeft: '10px'}}>十亿商品，搜啥都有</span>}
     />
   );
@@ -187,8 +187,8 @@ const App = () => {
     <SearchHistory 
         onClickSearchButton={handleClick}
         onDelete={handleDelete}
-        searchHistoryData={searchHistoryData} 
-        discoverData={discoverData} 
+        recentSearchData={recentSearchData} 
+        searchDiscoverData={searchDiscoverData} 
         noDiscoverDataText=""
     />
   );
@@ -212,8 +212,8 @@ const App = () => {
     <SearchHistory 
         onClickSearchButton={handleClick}
         onDelete={handleDelete}
-        searchHistoryData={searchHistoryData} 
-        discoverData={discoverData} 
+        recentSearchData={recentSearchData} 
+        searchDiscoverData={searchDiscoverData} 
         refreshIcon={<Icon name="refresh" style={marginRight: '10px'} />}
         onRefresh={() => Toast.text('点击了刷新按钮')}
     />
@@ -230,19 +230,18 @@ export default App;
 
 ### Props
 
-
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| searchHistoryText   | 搜索历史文案                                     | String  | `最近搜索`         |
+| recentSearchText   | 最近搜索文案                                     | String  | `最近搜索`         |
 | searchDiscoverText     | 搜索发现文案                   | String  | `搜索发现`    |
-| searchHistoryData      | 搜索历史数据                               |  Array  | []      |
-| discoverData | 搜索发现数据                        | Array  | []      |
+| recentSearchData      | 最近搜索数据                               |  Array  | []      |
+| searchDiscoverData | 搜索发现数据                        | Array  | []      |
 | keyword  | 文本框内关键字                                  | String | ''    |
 | backIcon     | 左上角返回按钮图标，设置为空则无返回按钮 | String  | `left`     |
-| deleteIcon   | 搜索历史删除图标| String  | `del`      |
+| deleteIcon   | 最近搜索删除图标| String  | `del`      |
 | searchDiscoverExtra   | 搜索发现额外信息| String  | -      |
-| refreshIcon   | 搜索历史刷新图标| String  | `refresh`      |
-| searchHistoryCollapse   | 搜索历史超过两行出现下拉箭头                                 | Boolean  | `true`          |
+| refreshIcon   | 最近搜索刷新图标| String  | `refresh`      |
+| recentSearchCollapse   | 最近搜索数据超过两行出现下拉箭头                                 | Boolean  | `true`          |
 | leftInIcon | 文本框内左侧自定义，默认是放大图标 | React.ReactNode  | -          |
 | rightInIcon | 文本框内右侧自定义，默认是拍照图标 | React.ReactNode  | -          |
 | rightOutIcon | 文本框外右侧自定义，默认是“搜索” | React.ReactNode  | -          |

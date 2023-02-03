@@ -10,10 +10,10 @@ function sleep(delay = 0): Promise<void> {
   })
 }
 
-test('searchHistoryText and searchDiscoverText test', async () => {
+test('recentSearchText and searchDiscoverText test', async () => {
   const { container } = render(
     <SearchHistory
-      searchHistoryData={[
+      recentSearchData={[
         {
           key: '小米手环',
           url: ''
@@ -23,7 +23,7 @@ test('searchHistoryText and searchDiscoverText test', async () => {
           url: ''
         }
       ]} 
-      discoverData={[
+      searchDiscoverData={[
         {
           key: '小米手环',
           url: ''
@@ -33,7 +33,7 @@ test('searchHistoryText and searchDiscoverText test', async () => {
           url: ''
         }
       ]} 
-      searchHistoryText="搜索历史"
+      recentSearchText="搜索历史"
       searchDiscoverText="猜你想搜"
     />
   )
@@ -48,7 +48,7 @@ test('searchHistoryText and searchDiscoverText test', async () => {
 test('backIcon and deleteIcon test', async () => {
   const { container } = render(
     <SearchHistory
-      searchHistoryData={[
+      recentSearchData={[
         {
           key: '小米手环',
           url: ''
@@ -58,7 +58,7 @@ test('backIcon and deleteIcon test', async () => {
           url: ''
         }
       ]} 
-      discoverData={[
+      searchDiscoverData={[
         {
           key: '小米手环',
           url: ''
@@ -83,7 +83,7 @@ test('backIcon and deleteIcon test', async () => {
 test('searchBar test', async () => {
   const { container } = render(
     <SearchHistory
-      searchHistoryData={[
+      recentSearchData={[
         {
           key: '小米手环',
           url: ''
@@ -93,7 +93,7 @@ test('searchBar test', async () => {
           url: ''
         }
       ]} 
-      discoverData={[
+      searchDiscoverData={[
         {
           key: '小米手环',
           url: ''
@@ -121,7 +121,7 @@ test('searchBar test', async () => {
 test('searchDiscoverExtra test', async () => {
   const { container } = render(
     <SearchHistory
-      searchHistoryData={[
+      recentSearchData={[
         {
           key: '小米手环',
           url: ''
@@ -131,7 +131,7 @@ test('searchDiscoverExtra test', async () => {
           url: ''
         }
       ]} 
-      discoverData={[
+      searchDiscoverData={[
         {
           key: '小米手环',
           url: ''
@@ -154,7 +154,7 @@ test('refresh test', async () => {
 
   const { container } = render(
     <SearchHistory
-      searchHistoryData={[
+      recentSearchData={[
         {
           key: '小米手环',
           url: ''
@@ -164,7 +164,7 @@ test('refresh test', async () => {
           url: ''
         }
       ]} 
-      discoverData={[
+      searchDiscoverData={[
         {
           key: '小米手环',
           url: ''
@@ -184,13 +184,13 @@ test('refresh test', async () => {
   expect(onRefresh).toBeCalled()
 })
 
-test('hide discoverData test', async () => {
+test('hide searchDiscoverData test', async () => {
   let _container: any
 
   act(() => {
     const { container } = render(
       <SearchHistory
-        searchHistoryData={[
+        recentSearchData={[
           {
             key: '小米手环',
             url: ''
@@ -200,7 +200,7 @@ test('hide discoverData test', async () => {
             url: ''
           }
         ]} 
-        discoverData={[
+        searchDiscoverData={[
           {
             key: '小米手环',
             url: ''
