@@ -350,7 +350,7 @@ export default App;
 | linkUrl   | 跳转链接，默认点击整个卡片以 href 的形式跳转，可通过点击事件自定义| String  | -      |
 
 ## Events
-| 字段 | 说明 | 回调参数 |
+| Attribute | Description | Arguments |
 |----- | ----- | -----  |
 | onClick | 点击时触发 |  event: MouseEvent |
 

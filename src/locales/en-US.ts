@@ -1,4 +1,4 @@
-import { BaseLang } from './base'
+import { BaseLang } from './base';
 
 const enUS: BaseLang = {
   save: 'Save',
@@ -10,20 +10,20 @@ const enUS: BaseLang = {
   select: 'Select',
   video: {
     errorTip: 'Error Tip',
-    clickRetry: 'Click Retry',
+    clickRetry: 'Click Retry'
   },
   fixednav: {
     activeText: 'Close Nav',
-    unActiveText: 'Open Nav',
+    unActiveText: 'Open Nav'
   },
   infiniteloading: {
     pullRefreshText: 'Pull Refresh',
     loadText: 'Loading',
-    loadMoreText: "Oops, here's the bottom",
+    loadMoreText: "Oops, here's the bottom"
   },
   pagination: {
     prev: 'Previous',
-    next: 'Next',
+    next: 'Next'
   },
   range: { rangeText: 'is overflow' },
   calendaritem: {
@@ -34,12 +34,12 @@ const enUS: BaseLang = {
     monthTitle: (year: number, month: number) => `${year}/${month}`,
     today: 'Today',
     loadPreviousMonth: 'Load Previous Month',
-    noEarlierMonth: 'No Earlier Month',
+    noEarlierMonth: 'No Earlier Month'
   },
   shortpassword: {
     title: 'Please input a password',
     desc: 'Verify',
-    tips: 'Forget password',
+    tips: 'Forget password'
   },
   uploader: {
     ready: 'Ready',
@@ -48,47 +48,46 @@ const enUS: BaseLang = {
     uploading: 'Uploading...',
     success: 'Upload successful',
     error: 'Upload failed',
-    deleteWord: 'The user blocked the deletion!',
+    deleteWord: 'The user blocked the deletion!'
   },
   countdown: {
     day: ' Day ',
     hour: ' Hour ',
     minute: ' Minute ',
-    second: ' Second ',
+    second: ' Second '
   },
   address: {
     selectRegion: 'Select Region',
     deliveryTo: 'Delivery To',
-    chooseAnotherAddress: 'Choose Another Address',
+    chooseAnotherAddress: 'Choose Another Address'
   },
   signature: {
     reSign: 'Re Sign',
-    unSupportTpl: `Sorry, the current browser doesn't support canvas, so we can't use this control!`,
+    unSupportTpl: `Sorry, the current browser doesn't support canvas, so we can't use this control!`
   },
   ecard: {
     chooseText: 'Select',
     otherValueText: 'Other Value',
-    placeholder: 'Placeholder',
+    placeholder: 'Placeholder'
   },
   timeselect: {
-    pickupTime: 'Pickup Time',
+    pickupTime: 'Pickup Time'
   },
   sku: {
     buyNow: 'Buy Now',
     buyNumber: 'Buy Number',
-    addToCard: 'Add to Card',
+    addToCard: 'Add to Card'
   },
   skuheader: {
-    skuId: 'Sku Number',
+    skuId: 'Sku Number'
   },
   addresslist: {
-    addAddress: 'Add New Address',
+    addAddress: 'Add New Address'
   },
   comment: {
     complaintsText: 'I have a complaint',
     additionalReview: (day: number) => `Review after ${day} days of purchase`,
-    additionalImages: (length: number) =>
-      `There are ${length} follow-up comments`,
+    additionalImages: (length: number) => `There are ${length} follow-up comments`
   },
   searchbar: {
     basePlaceholder: 'Go to jd.com and buy good things',
@@ -99,7 +98,7 @@ const enUS: BaseLang = {
     title3: 'background settings inside and outside the search box',
     title4: 'search box text settings',
     title5: 'custom icon settings',
-    title6: 'data change monitoring',
+    title6: 'data change monitoring'
   },
   audio: {
     back: 'fastBack',
@@ -107,7 +106,7 @@ const enUS: BaseLang = {
     pause: 'pause',
     start: 'start',
     mute: 'mute',
-    tips: 'The onplayend event will only be triggered when loop = false',
+    tips: 'The onplayend event will only be triggered when loop = false'
   },
   datepicker: {
     year: 'Year',
@@ -115,13 +114,19 @@ const enUS: BaseLang = {
     day: 'Day',
     hour: 'Hour',
     min: 'Minute',
-    seconds: 'Second',
+    seconds: 'Second'
   },
   pullToRefresh: {
     pullingText: 'Pulling',
     canReleaseText: 'Release to refresh',
     refreshingText: 'Loading...',
-    completeText: 'Refresh successful',
+    completeText: 'Refresh successful'
   },
-}
-export default enUS
+  orderRemark: {
+    placeholderText: 'Please enter the content of the remarks',
+    title: 'Order Remarks',
+    tagTitle: 'Recommend Signature',
+    submitText: 'Confirm'
+  }
+};
+export default enUS;

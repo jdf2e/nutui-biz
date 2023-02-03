@@ -12,7 +12,7 @@ import { ConfigProvider } from '@nutui/nutui-react';
 
 ## 代码演示
 
-### 基础用法
+### 基本用法
 
 :::demo
 
