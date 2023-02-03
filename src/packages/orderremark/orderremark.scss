@@ -57,7 +57,7 @@
     }
     .nut-orderRemark__tag-content {
       .nut-orderRemark__tag {
-        height: 28px;
+        // height: 28px;
         background: rgba(233, 233, 233, 1);
         border-radius: 14px;
         font-size: 12px;
@@ -67,9 +67,9 @@
         cursor: pointer;
         display: inline-block;
         max-width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+        // overflow: hidden;
+        // white-space: nowrap;
+        // text-overflow: ellipsis;
       }
     }
   }

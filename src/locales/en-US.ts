@@ -125,7 +125,7 @@ const enUS: BaseLang = {
   orderRemark: {
     placeholderText: 'Please enter the content of the remarks',
     title: 'Order Remarks',
-    tagTitle: 'Recommend Signature',
+    tagTitle: 'Recommended Tags',
     submitText: 'Confirm'
   }
 };
