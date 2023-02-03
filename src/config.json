@@ -97,9 +97,9 @@
           "cName": "电子卡",
           "desc": "电子卡",
           "sort": 4,
-          "show": false,
+          "show": true,
           "taro": true,
-          "author": "yangjinjun3"
+          "author": "songchenglin3"
         },
         {
           "version": "0.1.0",

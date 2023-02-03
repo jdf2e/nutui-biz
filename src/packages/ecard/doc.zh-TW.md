@@ -1,18 +1,18 @@
-# Ecard 
+# Ecard 電子卡
 
-### Intro
+### 介紹
 
-Virtual e-card selection
+虛擬電子卡選擇
 
-### Install
+### 安裝
 
 ``` javascript
 import { Ecard } from '@nutui/nutui-biz';
 ```
 
-## Demo
+## 代碼示例
 
-### Basic
+### 基礎用法
 
 :::demo
 
@@ -67,7 +67,7 @@ export default App;
 
 ### Props
 
-| Attribute          | Description             | Type   | Default           |
+| 參數          | 說明                             | 類型   | 默認值           |
 |---------------|----------------------------------|--------|------------------|
 | chooseText    | 選擇面值文案   | string |   `請選擇電子卡面值`   |
 | suffix        | 符號標示       | string | `¥`            |
@@ -82,14 +82,14 @@ export default App;
 
 ### Events
 
-| Event | Description   | Arguments     |
+| 事件名 | 說明           | 回調參數     |
 |--------|----------------|--------------|
-| onChange  | Trigger event when Ecard is clicker | `value` |
-| onInputChange  | Triggered when the value changes | `value` |
-| onChangeStep  | Triggered when the steps value changes | `value，modelValue` |
+| onChange  | 選中電子卡事件 | 點擊的數據 |
+| onInputChange  | 更改 `input` 框觸發事件 |輸入的數據 |
+| onChangeStep  | 更改數量時觸發 | 當前數量，當前選中的卡面值 |
 
 ### DataList 數據結構
 
-| key | Description     | Type     |
+| 鍵名 | 說明           | 類型     |
 |--------|----------------|--------------|
-| price  | price | string |
+| price  | 每張電子卡價格 | string |

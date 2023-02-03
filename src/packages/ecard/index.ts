@@ -1,3 +1,3 @@
-import { Ecard } from './ecard'
+import { Ecard } from "./ecard";
 
-export default Ecard
+export default Ecard;

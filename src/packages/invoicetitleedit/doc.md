@@ -7,13 +7,14 @@
 ### 安装
 
 ```javascript
+import { Form, Radio, Input, Button } from '@nutui/nutui-react'
 import { InvoiceTitleEdit } from '@nutui/nutui-biz';
 ```
 
 
 ## 代码演示
 
-### 基本用法
+### 增值税专用发票
 
 :::demo
 
@@ -22,12 +23,68 @@ import  React from "react";
 import { InvoiceTitleEdit } from '@nutui/nutui-biz';
 
 const App = () => {
-  const handle1 = () => {
-    console.log(111)
+  const handleSubmit = (arg: any) => {
+    if (Array.isArray(arg)) {
+      Toast.fail('callback: submitFailed error')
+      console.log('failed error', arg)
+    } else {
+      Toast.success('succeed')
+      console.log('succeed', arg)
+    }
+  }
+
+  const handleInput = () => {
+
   }
 
   return (
-    <InvoiceTitleEdit onInput={handle1 } />
+    <InvoiceTitleEdit 
+      onSubmit={handleSubmit}
+      onInput={handleInput}
+    />
+  );
+};
+export default App;
+```
+
+:::
+
+### 电子普通发票
+
+:::demo
+
+```ts
+import  React from "react";
+import { InvoiceTitleEdit } from '@nutui/nutui-biz';
+
+const App = () => {
+  return (
+    <InvoiceTitleEdit 
+      onSubmit={handleSubmit}
+      invoiceType="normal"
+    />
+  );
+};
+export default App;
+```
+
+:::
+
+### 自定义底部
+
+:::demo
+
+```ts
+import  React from "react";
+import { InvoiceTitleEdit } from '@nutui/nutui-biz';
+
+const App = () => {
+  return (
+    <InvoiceTitleEdit 
+      onSubmit={handleSubmit}
+      invoiceType="normal"
+      bottom={<div style={{textAlign: 'center', lineHeight: '40px'}}>我是自定义的底部</div>}
+    />
   );
 };
 export default App;
@@ -44,9 +101,8 @@ export default App;
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
 | data   | 地址数组                                 | Array  | -         |
-| invoiceType   | 发票类型，可选 `electronic`，`VAT`    | String  | `electronic`         |
+| invoiceType   | 发票类型，可选 `normal`，`special`    | String  | `special`         |
 | bottom   | 底部自定义内容     | ReactNode  | -         |
-| submitText   | 提交按钮文案       | String  | `提交`        |
 
 
 ## Events
