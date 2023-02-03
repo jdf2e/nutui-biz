@@ -33,7 +33,7 @@ export interface EcardProps extends IComponent {
   cardBuyMax: number;
   money: number;
   placeholder: string;
-  onChange?: (val: number) => void;
+  onChange?: (item: IDataList) => void;
   onChangeInput?: (val: number) => void;
   onChangeStep?: (num: number, price: number) => void;
 }
@@ -100,7 +100,7 @@ export const Ecard: FunctionComponent<
         },
       };
     });
-    onChange && onChange(item.price);
+    onChange && onChange(item);
   };
 
   const handleClickInput = () => {

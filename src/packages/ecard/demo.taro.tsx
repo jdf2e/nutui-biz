@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useTranslate } from "../../sites/assets/locale";
-import { Ecard } from "./ecard";
-import { Cell } from "@nutui/nutui-react";
+import { Ecard, Cell } from "@/packages/nutui.react.taro";
 
 interface IDataList {
   price: number;

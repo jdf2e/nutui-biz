@@ -37,24 +37,24 @@ const App = () => {
           price:40
         },
     ]);
-    const onInputChange = (val) => {
-        setMoney(value);
+    const onChangeInput = (val: number) => {
+        console.log(val);
     };
-    const onChange = (item) => {
-        setMoney(item.price);
+    const onChange = (item: IDataList) => {
+        console.log(item);
     };
-    const onChangeStep = (num, price) => {
-        setMoney(price * num);
+    const onChangeStep = (num: number, price: number) => {
+        console.log(price, num);
     };
     return (
         <Cell>
             <Ecard
                 money={money}
-                onInputChange={onInputChange}
+                onChangeInput={onChangeInput}
                 onChange={onChange}
                 onChangeStep={onChangeStep}
                 dataList={dataList}
-            ></Ecard>
+          ></Ecard>
         </Cell>
     );
 };
