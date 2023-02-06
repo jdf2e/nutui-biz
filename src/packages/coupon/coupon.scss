@@ -1,8 +1,115 @@
 .nut-biz-coupon__box {
   display: flex;
   background-size: 100% 100%;
+  position: relative;
   .nut-biz-coupon__main {
+    position: relative;
+    display: flex;
+    padding: 16px;
+    align-items: center;
+    text-align: left;
+    &-price {
+      display: flex;
+      align-items: baseline;
+      margin-right: 20px;
+      font-size: 32px;
+
+      &--currency {
+        font-size: 16px;
+      }
+    }
+    &-content {
+      overflow: hidden;
+      &--maintitle {
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      &--subtitle,
+      &--timerange {
+        font-size: 12px;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+    &-usedicon {
+      position: absolute;
+      top: 0px;
+      right: 7px;
+    }
+  }
+  .nut-biz-coupon__btns {
     flex: 1;
-    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .nut-biz-coupon__label {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    height: 14px;
+    padding: 0 2px;
+    font-size: 10px;
+    font-weight: 400;
+    color: red;
+    background: #fff;
+    border-radius: 6px 0;
+  }
+}
+.nut-biz-coupon__box--small {
+  height: 81px;
+  .nut-biz-coupon__main {
+    color: red;
+    flex-direction: column;
+    text-align: center;
+    padding: 13px 7px 10px;
+    &-price {
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      margin-right: 0;
+      &--currency {
+        font-size: 12px;
+      }
+      &--number {
+        font-size: 18px;
+      }
+    }
+    &-content {
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      &--maintitle {
+        font-size: 10px;
+      }
+      &--subtitle {
+        color: rgba(250, 44, 25, 0.5);
+        font-size: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+  .nut-biz-coupon__btns {
+    &-vertcal {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      font-size: 10px;
+      padding: 0 7px;
+      color: red;
+    }
+  }
+  .nut-biz-coupon__label {
+    background: red;
+    color: #fff;
   }
 }
