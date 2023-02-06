@@ -6,7 +6,8 @@ import React, {
   useState,
 } from "react";
 import { IComponent } from "@/utils/typings";
-import { Button, ButtonProps } from "@nutui/nutui-react";
+import { Button } from "@nutui/nutui-react";
+import { throttle } from "@/utils/throttle";
 import bem from "@/utils/bem";
 import "./coupon.scss";
 
@@ -31,8 +32,8 @@ export type IPricePosition = "front" | "back";
 
 export interface CouponProps extends IComponent {
   type: CouponType; //优惠券的尺寸
-  couponMarginRight: number; //每张优惠券的margin边距
-  couponMarginBottom: number; //每张优惠券的margin边距
+  couponMarginRight: number; //每张优惠券的margin右边距
+  couponMarginBottom: number; //每张优惠券的margin下边距
   couponWidth: string; //每张优惠券的宽度 30px 或者 30%
   couponHeight: string; //每张优惠券的高度
   couponMainWidth: string; //优惠券左侧的宽度10px或者10%
@@ -104,7 +105,6 @@ export const Coupon: FunctionComponent<
   const b = bem("biz-coupon");
   const disabdb = bem("biz-dis-coupon");
   useEffect(() => {}, []);
-  const [disabled, setDisabled] = useState(false);
   const renderPrice = () => {
     if (pricePosition === "front") {
       return (
@@ -126,13 +126,12 @@ export const Coupon: FunctionComponent<
       );
     }
   };
-  const handleClick = () => {
-    setDisabled(true);
+  const handleClick = throttle(() => {
     onClick && onClick(itemData);
-  };
+  }, 300);
   return (
     <div
-      className={`${b()} ${disabled ? disabdb() : ""} ${className} `}
+      className={`${b()} ${isReceived ? disabdb() : ""} ${className} `}
       {...rest}
     >
       <div
@@ -169,7 +168,13 @@ export const Coupon: FunctionComponent<
               {btnText}
             </div>
           ) : (
-            <Button type={btnType} size="small" plain onClick={handleClick}>
+            <Button
+              type={btnType}
+              disabled={isReceived}
+              size="small"
+              plain
+              onClick={handleClick}
+            >
               {btnText}
             </Button>
           )}
