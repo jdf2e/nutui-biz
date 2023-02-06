@@ -2,31 +2,92 @@ import React from 'react'
 import { SettleBar } from './settlebar'
 import { useTranslate } from '../../sites/assets/locale'
 
-interface T {
+interface tarnslatedOption {
+  basic: string;
+  title1: string;
+  title2: string;
+  title3: string;
+  title4: string;
+  title5: string;
+  title6: string;
+  title7: string;
+  totalText: string 
+  settleButtonText: string
+  settleUnit: string
+  customWarningText: string
+  reduced: string
 }
+
 const SettleBarDemo = () => {
+  const [translated] = useTranslate<tarnslatedOption>({
+    'zh-CN': {
+      basic: '基本用法',
+      title1: '对齐方式',
+      title2: '禁用状态',
+      title3: '加载状态',
+      title4: '提交订单',
+      title5: '去结算数量和单位',
+      title6: '自定义合计额外区域内容',
+      title7: '带有警告信息',
+      totalText: '总计',
+      settleButtonText: '提交订单',
+      settleUnit: '个',
+      customWarningText: '此商品无货！',
+      reduced: '已减'
+    },
+    'zh-TW': {
+      basic: '基本用法',
+      title1: '對齊方式',
+      title2: '禁用狀態',
+      title3: '加載狀態',
+      title4: '提交訂單',
+      title5: '去結算數量和單位',
+      title6: '自定義合計額外區域內容',
+      title7: '帶有警告信息',
+      totalText: '總計',
+      settleButtonText: '提交訂單',
+      settleUnit: '個',
+      customWarningText: '此商品無貨！',
+      reduced: '已減'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      title1: 'Alignment',
+      title2: 'Disabled',
+      title3: 'Loading',
+      title4: 'Submit Order',
+      title5: 'To Settle Quantity And Unit',
+      title6: 'Custom Total Extra Area Content',
+      title7: 'With Warning Message',
+      totalText: 'Total',
+      settleButtonText: 'Submit Order',
+      settleUnit: 'Indivual',
+      customWarningText: 'This product is out of stock！',
+      reduced: 'reduced'
+    }
+  });
   const customWarningHtml = () => {
-    return <div style={{display: 'flex', height: '100%', alignItems: 'center', fontSize: '12px', justifyContent: 'center', color: 'red'}}>此商品无货！</div>
+    return <div style={{display: 'flex', height: '100%', alignItems: 'center', fontSize: '12px', justifyContent: 'center', color: 'red'}}>{translated.customWarningText}</div>
   }
 
   return (
     <>
       <div className="demo">
-        <h2>基本用法</h2>
+        <h2>{translated.basic}</h2>
         <SettleBar />
-        <h2>对齐方式</h2>
+        <h2>{translated.title1}</h2>
         <SettleBar totalAlign="left" />
-        <h2>禁用状态</h2>
+        <h2>{translated.title2}</h2>
         <SettleBar disabled />
-        <h2>加载状态</h2>
+        <h2>{translated.title3}</h2>
         <SettleBar loading />
-        <h2>提交订单</h2>
-        <SettleBar customSelectAll="" noCount={true} totalText="总计" settleButtonText="提交订单" />
-        <h2>去结算数量和单位</h2>
-        <SettleBar settleCount="100" settleUnit="个" />
-        <h2>自定义合计额外区域内容</h2>
-        <SettleBar customTotalExtra={<div style={{fontSize: '12px'}}>已减 ¥30.00</div>} />
-        <h2>带有警告信息</h2>
+        <h2>{translated.title4}</h2>
+        <SettleBar customSelectAll="" noCount={true} totalText={translated.totalText} settleButtonText={translated.settleButtonText} />
+        <h2>{translated.title5}</h2>
+        <SettleBar settleCount="100" settleUnit={translated.settleUnit} />
+        <h2>{translated.title6}</h2>
+        <SettleBar customTotalExtra={<div style={{fontSize: '12px'}}>{translated.reduced} ¥30.00</div>} />
+        <h2>{translated.title7}</h2>
         <SettleBar customWarning={customWarningHtml()} />
       </div>
     </>
