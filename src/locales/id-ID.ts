@@ -21,6 +21,17 @@ const idID: BaseLang = {
     loadText: 'Memuat',
     loadMoreText: 'Oops, sudah sampai bawah',
   },
+  searchHistory: {
+    recentSearchText: 'Recent Search Text',
+    searchDiscoverText: 'Search Discover Text',
+    noDiscoverDataText: 'No Discover Data Text',
+    rightOutIcon: 'Search'
+  },
+  settleBar: {
+    totalText: 'Total',
+    settleButtonText: 'To Settle',
+    selectAll: 'Select All'
+  },
   pagination: {
     prev: 'Sebelumnya',
     next: 'Selanjutnya',
