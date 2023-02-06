@@ -2,15 +2,13 @@ import React, {
   ChangeEvent,
   CSSProperties,
   FunctionComponent,
-  useEffect,
-  useRef,
   useState,
 } from "react";
-import { useConfig } from "@/packages/configprovider";
 
-import { IComponent, ComponentDefaults } from "@/utils/typings";
+import { InputNumber } from "@nutui/nutui-react-taro";
 import bem from "@/utils/bem";
-import { Input, InputNumber } from "@nutui/nutui-react";
+import { useConfig } from "@/packages/configprovider/configprovider.taro";
+import { IComponent, ComponentDefaults } from "@/utils/typings";
 
 interface IDataList {
   price: number;
@@ -90,11 +88,6 @@ export const Ecard: FunctionComponent<
     moneyValue: money,
   });
 
-  //   const [currentIndex, setCurrentIndex] = useState<number>(-2);
-  //   const currentValue = useRef<number>(money);
-  //   const [inputValue, setInputValue] = useState<number | string>("");
-  //   const [stepValue, setStepValue] = useState(cardAmountMin);
-
   const handleClick = (item: { price: number }, index: number) => {
     setState((stateOld) => {
       return {
@@ -162,20 +155,6 @@ export const Ecard: FunctionComponent<
     });
     onChangeStep && onChangeStep(+param, state.currentValue as number);
   };
-
-  //   useEffect(() => {
-  //     if (state.moneyValue !== money) {
-  //       console.log("s");
-  //       setState((stateOld) => {
-  //         return {
-  //           ...stateOld,
-  //           ...{
-  //             moneyValue: money,
-  //           },
-  //         };
-  //       });
-  //     }
-  //   }, [money]);
 
   return (
     <div className={`${b()} ${className}`} {...rest}>

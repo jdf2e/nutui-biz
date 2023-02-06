@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 
-import { Popup, TextArea, Button } from '@nutui/nutui-react';
+import { Popup, TextArea, Button } from '@nutui/nutui-react-taro';
 import bem from '@/utils/bem';
 import { useConfig } from '@/packages/configprovider';
 import { IComponent } from '@/utils/typings';
@@ -15,7 +15,7 @@ export interface OrderRemarkProps extends IComponent {
   remark: string;
   submitText: string;
   recommendTags: string[];
-  onClickOverlay?: (val: string) => void;
+  onCloseMask?: (val: string) => void;
   onClose?: (val: string) => void;
   onOpen?: () => void;
   onChange?: (val: string) => void;
@@ -49,7 +49,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
     recommendTags,
     style,
     className,
-    onClickOverlay,
+    onCloseMask,
     onClose,
     onOpen,
     onChange,
@@ -66,7 +66,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
   const b = bem('orderRemark');
 
   const clickOverlay = () => {
-    onClickOverlay && onClickOverlay(innerMark);
+    onCloseMask && onCloseMask(innerMark);
   };
   const closeFun = () => {
     onClose && onClose(innerMark);

@@ -1,18 +1,18 @@
 #  SettleBar 结算栏
 
-### 介绍
+### Intro
 
-常见于购物车页底部，包括全选、合计与「去结算」按钮。也适用于结算页底部的提交订单栏。
+Commonly found at the bottom of shopping cart pages, including select all, total, and "go to checkout" buttons. Also applies to the submit order bar at the bottom of the submit page.
 
-### 安装
+### Install
 
 ```javascript
 import { SettleBar } from '@nutui/nutui-biz';
 ```
 
-## 代码演示
+## Demo
 
-### 基本用法
+### Basic Usage
 
 :::demo
 
@@ -30,7 +30,7 @@ export default App;
 
 :::
 
-### 对齐方式
+### Alignment
 
 :::demo
 
@@ -48,7 +48,7 @@ export default App;
 
 :::
 
-### 禁用状态
+### Disabled
 
 :::demo
 
@@ -66,7 +66,7 @@ export default App;
 
 :::
 
-### 加载状态
+### Loading
 
 :::demo
 
@@ -84,7 +84,7 @@ export default App;
 
 :::
 
-### 提交订单
+### Submit Order
 
 :::demo
 
@@ -94,7 +94,7 @@ import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
   return (
-    <SettleBar customSelectAll="" showZero={false} totalText="总计" settleButtonText="提交订单" />
+    <SettleBar customSelectAll="" showZero={false} totalText="total" settleButtonText="submit order" />
   );
 };
 export default App;
@@ -102,7 +102,7 @@ export default App;
 
 :::
 
-### 去结算数量和单位
+### To Settle Quantity And Unit
 
 :::demo
 
@@ -112,7 +112,7 @@ import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
   return (
-    <SettleBar settleCount="100" settleUnit="个" />
+    <SettleBar settleCount="100" settleUnit="indivual" />
   );
 };
 export default App;
@@ -120,7 +120,7 @@ export default App;
 
 :::
 
-### 自定义合计额外区域内容
+### Custom Total Extra Area Content
 
 :::demo
 
@@ -130,7 +130,7 @@ import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
   return (
-    <SettleBar customTotalExtra={<div style={{fontSize: '12px'}}>已减 ¥30.00</div>} />
+    <SettleBar customTotalExtra={<div style={{fontSize: '12px'}}>reduced ¥30.00</div>} />
   );
 };
 export default App;
@@ -138,7 +138,7 @@ export default App;
 
 :::
 
-### 带有警告信息
+### With Warning Message
 
 :::demo
 
@@ -148,7 +148,7 @@ import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
   const customWarningHtml = () => {
-    return <div style={{display: 'flex', height: '100%', alignItems: 'center', fontSize: '12px', justifyContent: 'center', color: 'red'}}>此商品无货！</div>
+    return <div style={{display: 'flex', height: '100%', alignItems: 'center', fontSize: '12px', justifyContent: 'center', color: 'red'}}>This product is out of stock！</div>
   }
   
   return (
@@ -166,30 +166,30 @@ export default App;
 ### Props
 
 
-| 字段    | 说明                                       | 类型    | 默认值    |
+| Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
-| total   | 合计价格                                 | Number  | 0         |
-| totalText     | 合计文案                   | String  | `合计`    |
-| totalAlign | 合计区域对齐方式，可选值：`left`、`right`                       | String  | `right`      |
-| settleCount     | 结算数量                               | Number | 0    |
-| settleUnit  | 结算单位                                  | String | -    |
-| settleButtonText     | 结算按钮文案 | String  | `去结算`     |
-| disabled   | 结算按钮是否置灰| Boolean  | `true`      |
-| loading   | 结算按钮是否加载中| Boolean  | `false`      |
-| showZero   | 数量为0时是否展示                                 | Boolean  | `true`          |
-| safeAreaInsetBottom   | 是否开启底部安全区适配                                 | Boolean  | `true`          |
-| placeholder   | 是否在标签位置生成一个等高的占位元素                                 | Boolean  | `false`          |
-| customTotal | 合计区域自定义 | React.ReactNode  | -          |
-| customWarning | 上面提示内容自定义 | React.ReactNode  | -          |
-| customSelectAll | 全选内容自定义 | React.ReactNode  | -          |
-| customTotalPrice | 合计价格内容自定义 | React.ReactNode  | -          |
-| customTotalExtra | 合计额外区域自定义 | React.ReactNode  | -          |
-| customButton | 按钮内容自定义 | React.ReactNode  | -          |
+| total   | Total price                                 | Number  | 0         |
+| totalText     | Total text                   | String  | `total`    |
+| totalAlign | Total area alignment, optional value：`left`、`right`                       | String  | `right`      |
+| settleCount     | Settlement quantity                               | Number | 0    |
+| settleUnit  | Settlement unit                                  | String | -    |
+| settleButtonText     | Settlement button text | String  | `to settle`     |
+| disabled   | Whether the settlement button is disabled| Boolean  | `true`      |
+| loading   | Whether the settlement button is loading| Boolean  | `false`      |
+| showZero   | Whether to display when the quantity is 0                                 | Boolean  | `true`          |
+| safeAreaInsetBottom   | Whether to enable bottom safe area adaptation                                 | Boolean  | `true`          |
+| placeholder   | Whether to generate a placeholder element when fixed                                 | Boolean  | `false`          |
+| customTotal | Customize total area content | React.ReactNode  | -          |
+| customWarning | Customize warning content | React.ReactNode  | -          |
+| customSelectAll | Customize select all content | React.ReactNode  | -          |
+| customTotalPrice | Customize total price content | React.ReactNode  | -          |
+| customTotalExtra | Customize total extra content | React.ReactNode  | -          |
+| customButton | Customize button content | React.ReactNode  | -          |
 
 
 ## Events
-| 字段 | 说明 | 回调参数 |
+| Attribute | Description | Arguments |
 |----- | ----- | -----  |
-| onSelectAll | 全选按钮点击事件 |  event: Event |
-| onSubmit | 去结算按钮点击事件 |  event: Event |
-| onDelete | 删除事件，isEdit 为 true 时生效 |  event: Event |
+| onSelectAll | Select all button click event |  event: Event |
+| onSubmit | To settle button click event |  event: Event |
+| onDelete | Delete event, take effect when isEdit is true |  event: Event |

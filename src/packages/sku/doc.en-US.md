@@ -2,7 +2,7 @@
 
 ### Intro
 
-常见于商详（单品）页，主要用来选择商品的规格。
+Commonly found on product detail pages, mainly used to select product specifications.
 
 ### Install
 
@@ -368,14 +368,14 @@ export default App;
 | buyText |  Buy button text    | String | `Buy It Now` |
 | addCartText          |        Add cart button text                 | String | `Add To cart`             |
 | confirmText          |           Confirm button text              | String | `Confirm`             |
-| skuHeader  | 商品信息展示区，包含商品图片、价格、编号 | React.ReactNode | -             |
-| skuHeaderPrice  | 商品信息展示区，价格区域展示| React.ReactNode | -             |
-| skuHeaderExtra  | 商品信息展示区，编号区域展示 | React.ReactNode | -             |
-| skuSelectTop | sku 展示区上方与商品信息展示区下方区域，无默认展示内容 | React.ReactNode | -             |
-| skuSelect | sku 展示区 | React.ReactNode | -             |
-| skuStepper  | 数量选择区 | React.ReactNode | -             |
-| skuStepperBottom  | 数量选择区下方区域 | React.ReactNode | -             |
-| skuOperate | 底部按钮操作区域 |React.ReactNode | -             |
+| skuHeader  | Custom header | React.ReactNode | -             |
+| skuHeaderPrice  | Custom header price area| React.ReactNode | -             |
+| skuHeaderExtra  | Extra header area | React.ReactNode | -             |
+| skuSelectTop | Custom select top | React.ReactNode | -             |
+| skuSelect | Custom sku | React.ReactNode | -             |
+| skuStepper  | Custom stepper | React.ReactNode | -             |
+| skuStepperBottom  | Custom stepper bottom | React.ReactNode | -             |
+| skuOperate | Custom stepper bottom operation |React.ReactNode | -             |
 
 ### Events
 

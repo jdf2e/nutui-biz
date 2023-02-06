@@ -2,7 +2,7 @@
 
 ### Intro
 
-常见于地址管理页面，主要用于进行地址列表的展示以及操作。
+Commonly used in address management pages, mainly used to display and operate address lists.
 
 ### Install
 

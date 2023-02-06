@@ -16,11 +16,11 @@ export type IsearchItem = {
 }
 
 export interface SearchHistoryProps extends IComponent {
-  searchHistoryData: Array<IsearchItem>
-  discoverData: Array<IsearchItem>
+  recentSearchData: Array<IsearchItem>
+  searchDiscoverData: Array<IsearchItem>
   className?: string
   style?: CSSProperties
-  searchHistoryText: string
+  recentSearchText: string
   searchDiscoverText: string
   backIcon: string
   deleteIcon: ReactNode
@@ -34,38 +34,15 @@ export interface SearchHistoryProps extends IComponent {
   refreshIcon?: string
   noDiscoverDataText: string
   deleteType: string
+  recentSearchCollapse: boolean
   onClickSearchButton: (value: string) => void
   onClickBackIcon: () => void
-  onClickSearchItem: (searchItem :IsearchItem) => void
+  onClickSearchItem: (searchItem: IsearchItem) => void
   onClickRightInIcon: () => void
   onDelete: () => void
-  onDeleteSingle: (item :IsearchItem) => void
+  onDeleteSingle: (item: IsearchItem) => void
   onRefresh: () => void
 }
-
-const defaultProps = {
-  searchHistoryData: [],
-  discoverData: [],
-  searchHistoryText: '最近搜索',
-  searchDiscoverText: '搜索发现',
-  backIcon: 'left',
-  deleteIcon: 'del',
-  keyword: '',
-  leftInIcon: <Icon name="search" size="12" />,
-  rightInIcon: <Icon name="photograph" size="12" />,
-  openEyeIcon: <Icon name="eye" />,
-  closeEyeIcon: <Icon name="marshalling" />,
-  noDiscoverDataText: '当前搜索发现已隐藏',
-  rightOutIcon: '搜索',
-  deleteType: 'all',
-  onClickSearchButton: (value) => {},
-  onClickBackIcon: () => {},
-  onClickSearchItem: (searchItem) => {},
-  onClickRightInIcon: () => {},
-  onDelete: () => {},
-  onDeleteSingle: (item) => {},
-  onRefresh: () => {}
-} as SearchHistoryProps
 
 export const SearchHistory: FunctionComponent<
   Partial<SearchHistoryProps>
@@ -74,32 +51,32 @@ export const SearchHistory: FunctionComponent<
   const {
     className,
     style,
-    searchHistoryText,
-    searchDiscoverText,
-    backIcon,
-    deleteIcon,
-    keyword,
-    searchHistoryData,
-    discoverData,
-    leftInIcon,
-    rightOutIcon,
-    rightInIcon,
-    openEyeIcon,
-    closeEyeIcon,
+    recentSearchText = locale.searchHistory.recentSearchText,
+    searchDiscoverText = locale.searchHistory.searchDiscoverText,
+    backIcon = 'left',
+    deleteIcon = 'del',
+    keyword = '',
+    recentSearchData = [],
+    searchDiscoverData = [],
+    leftInIcon = <Icon name="search" size="12" />,
+    rightOutIcon = locale.searchHistory.rightOutIcon,
+    rightInIcon = <Icon name="photograph" size="12" />,
+    openEyeIcon = <Icon name="eye" />,
+    closeEyeIcon = <Icon name="marshalling" />,
     refreshIcon,
     searchDiscoverExtra,
-    noDiscoverDataText,
-    deleteType,
-    onClickSearchButton,
-    onClickBackIcon,
-    onClickSearchItem,
-    onClickRightInIcon,
-    onDelete,
-    onDeleteSingle,
-    onRefresh,
+    noDiscoverDataText = locale.searchHistory.noDiscoverDataText,
+    deleteType = 'all',
+    recentSearchCollapse = true,
+    onClickSearchButton =  (value: string) => {},
+    onClickBackIcon = () => {},
+    onClickSearchItem = (searchItem: IsearchItem) => {},
+    onClickRightInIcon = () => {},
+    onDelete = () => {},
+    onDeleteSingle = (item: IsearchItem) => {},
+    onRefresh = () => {},
     ...rest
   } = {
-    ...defaultProps,
     ...props,
   }
 
@@ -143,7 +120,7 @@ export const SearchHistory: FunctionComponent<
   const renderSearchHistoryResult = () => {
     return <div className='search-history-result'>
           <div className='search-history-result-tit'>
-            <div>{searchHistoryText}</div>
+            <div>{recentSearchText}</div>
             {
               isShowDeleteSearchItemIcon ? <div className='search-history-divider-box'>
                 <div onClick={handleDelete}>全部删除</div>
@@ -154,7 +131,7 @@ export const SearchHistory: FunctionComponent<
           </div>
           {
             <div className='search-history-result-tags'>
-              {searchHistoryData.map((item, index) => {
+              {recentSearchData.map((item, index) => {
                 return <a key={index} onClick={handleClickSearchItem.bind(this, item)}>{item.key}{isShowDeleteSearchItemIcon && <span>X</span>}</a>
               })}
             </div>
@@ -181,14 +158,14 @@ export const SearchHistory: FunctionComponent<
           </div>
         </div>
           {
-            discoverData.length > 0 && eyeOpened && <div className='search-history-result-tags'>
-              {discoverData.map((item, index) => {
+            searchDiscoverData.length > 0 && eyeOpened && <div className='search-history-result-tags'>
+              {searchDiscoverData.map((item, index) => {
                 return <a key={index} onClick={handleClickSearchItem.bind(this, item)}>{item.key}</a>
               })}
             </div>
           }
           {
-            discoverData.length > 0 && !eyeOpened && noDiscoverDataText && <div className='no-discover-data'>{noDiscoverDataText}</div>
+            searchDiscoverData.length > 0 && !eyeOpened && noDiscoverDataText && <div className='no-discover-data'>{noDiscoverDataText}</div>
           }
     </div>
   }
@@ -198,11 +175,10 @@ export const SearchHistory: FunctionComponent<
   return (
     <div className={classNames([b(),className])} style={style} {...rest}>
       {renderSearchBar()}
-      {searchHistoryData.length > 0 && renderSearchHistoryResult()}
-      {discoverData.length > 0 && renderSearchDiscover()}
+      {recentSearchData.length > 0 && renderSearchHistoryResult()}
+      {searchDiscoverData.length > 0 && renderSearchDiscover()}
     </div>
   )
 }
 
-SearchHistory.defaultProps = defaultProps
 SearchHistory.displayName = 'NutSearchHistory'

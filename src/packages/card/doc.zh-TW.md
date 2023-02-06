@@ -291,12 +291,12 @@ const App = () => {
   const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+    title: '【活蟹】湖塘煙雨 陽澄湖大閘蟹公4.5兩 母3.5兩 4對8只 鮮活生鮮螃蟹現貨水產禮盒海鮮水',
     price: '388',
     vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
+    shopDesc: '自營',
+    delivery: '廠商配送',
+    shopName: '陽澄湖大閘蟹自營店>',
   }
   
   return (
@@ -338,20 +338,20 @@ export default App;
 | originTpl   | 價格後方自定義內容| React.ReactNode  | -      |
 | shopTagTpl   | 店鋪介紹自定義| React.ReactNode  | -      |
 | footerTpl   | 右下角內容自定義| React.ReactNode  | -      |
-| showType   | 展示形式，可选：`full-line`、`half-line`| String  | `full-line`      |
-| bottomTpl   | 底部内容自定义| React.ReactNode  | -      |
-| infotpl   | 信息内容自定义| React.ReactNode  | -      |
-| isNeedPrice   | 是否需要展示价格| Boolean  | `true`      |
-| imgTag   | 商品图片标签，常用于标志双 11、直播等| String  | -      |
-| imgTagDirection   | 商品图片标签呈现位置，可选：`top-left`、`top-right`| String  | `top-left`      |
-| titleTag   | 标题左侧标签，常用于活动标记等，不设置此参数或此参数为空，不展示| React.ReactNode  | -      |
-| titleLine   | 标题行数，默认两行，想展示更多下面内容可设置为 1| String \| Number  | `2`      |
-| linkUrl   | 跳转链接，默认点击整个卡片以 href 的形式跳转，可通过点击事件自定义| String  | -      |
+| showType   | 展示形式，可選：`full-line`、`half-line`| String  | `full-line`      |
+| bottomTpl   | 底部內容自定義 | React.ReactNode  | -      |
+| infotpl   | 信息內容自定義 | React.ReactNode  | -      |
+| isNeedPrice   | 是否需要價格展示 | Boolean  | `true`      |
+| imgTag   | 商品圖片標簽，常用於標誌雙 11、直播等| String  | -      |
+| imgTagDirection   | 商品圖片標簽呈現位置，可選：`top-left`、`top-right`| String  | `top-left`      |
+| titleTag   | 標題左側標簽，常用於活動標記等，不設置此參數或此參數為空，不展示| React.ReactNode  | -      |
+| titleLine   | 標題行數，默認兩行，想展示更多下面內容可設置為 1| String \| Number  | `2`      |
+| linkUrl   | 跳轉鏈接，默認點擊整個卡片以 href 的形式跳轉，可通過點擊事件自定義| String  | -      |
 
 ## Events
-| 字段 | 说明 | 回调参数 |
+| 字段 | 說明 | 回調參數 |
 |----- | ----- | -----  |
-| onClick | 点击时触发 |  event: MouseEvent |
+| onClick | 點擊事件 |  event: MouseEvent |
 
 
 
