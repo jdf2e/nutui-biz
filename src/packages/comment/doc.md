@@ -17,8 +17,8 @@ import { Comment } from "@nutui/nutui-biz";
 :::demo
 
 ```js
-import React, { useState } from 'react'
-import { Comment } from '@nutui/nutui-biz'
+import React, { useState } from 'react';
+import { Comment } from '@nutui/nutui-biz';
 
 const App = () => {
 
@@ -74,13 +74,13 @@ export default App;
 
 ### 评论图片多行展示
 
-通过 headerType 的值可以设置图片多行展示。
+通过 `type` 的值可以设置图片多行展示。
 
 :::demo
 
 ```js
-import React from 'react'
-import { Comment } from '@nutui/nutui-biz'
+import React from 'react';
+import { Comment } from '@nutui/nutui-biz';
 
 const App = () => {
 
@@ -144,8 +144,8 @@ export default App;
 :::demo
 
 ```js
-import React from 'react'
-import { Comment } from '@nutui/nutui-biz'
+import React from 'react';
+import { Comment } from '@nutui/nutui-biz';
 
 const App = () => {
 
@@ -192,31 +192,24 @@ export default App;
 
 | 参数        | 说明                                          | 类型             | 默认值                      |
 | ----------- | --------------------------------------------- | ---------------- | --------------------------- |
-| header-type | 头部样式展示类型，可选： `default`，`complex` | string           | `default`                   |
-| images-rows | 评论图片展示行数，可选： `one`，`multi`       | string           | `one`                       |
+| type | 头部样式展示类型，可选： `default`，`complex` | string           | `default`                   |
+| imagesRows | 评论图片展示行数，可选： `one`，`multi`       | string           | `one`                       |
 | ellipsis    | 设置评论内容省略行数                          | string \| number | `2`                         |
 | videos      | 视频信息                                      | Array            | `[]`                        |
 | images      | 图片信息                                      | Array            | `[]`                        |
 | info        | 评论详情                                      | object           | `{}`                        |
 | follow      | 追评内容                                      | object           | `{}`                        |
 | operation   | 配置底部按钮                                  | Array            | `["reply", "like", "more"]` |
+| commentLabels | 评论用户的标签 | React.ReactNode | - |
+| commentShopReply | 评论最底部，用于展示商家回复 | React.ReactNode | - |
 
 ### Events
 
 | 事件名        | 说明                     | 回调参数             |
 | ------------- | ------------------------ | -------------------- |
-| click-operate | 点击底部操作按钮回调函数 | `type`               |
+| clickOperate | 点击底部操作按钮回调函数 | `type`               |
 | click         | 点击评论内容回调函数     | `type`               |
-| click-images  | 点击图片或视频触发       | `{type,index,value}` |
-
-### Slots
-
-`Comment` 组件在某些区域定义了插槽，可以按照需求进行替换。
-
-| 名称               | 说明                         |
-| ------------------ | ---------------------------- |
-| comment-labels     | 评论用户的标签               |
-| comment-shop-reply | 评论最底部，用于展示商家回复 |
+| clickImages  | 点击图片或视频触发       | `{type,index,value}` |
 
 ### images 数组
 
@@ -225,6 +218,7 @@ images 数组中存放的是图片对象。
 ```javascript
 const images = [
   {
+    id: "", // key
     smallImgUrl: "", // 小图，列表展示时使用
     bigImgUrl: "", // 大图，大图展示使用
     imgUrl: "", // 兜底图
@@ -237,6 +231,7 @@ const images = [
 ```javascript
 const videos = [
   {
+    id: "", // key
     mainUrl: "", // 视频遮罩图片
     videoUrl: "", // 视频链接
   },

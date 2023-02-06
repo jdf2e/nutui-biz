@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Comment } from "./comment";
-import { Cell, Tag } from "@nutui/nutui-react";
+import { Cell } from "@nutui/nutui-react";
 import { useTranslate } from "../../sites/assets/locale";
 
 interface T {
