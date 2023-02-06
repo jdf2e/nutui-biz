@@ -256,16 +256,3 @@ const follow = {
   images: [] // Review images
 }
 ```
-
-## Theming
-
-### CSS Variables
-
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
-
-| Name | Default Value | 
-| --------------------------------------- | -------------------------- | 
-| --nut-comment-header-user-name-color| _rgba(51, 51, 51, 1)_ |
-| --nut-comment-header-time-color| _rgba(153, 153, 153, 1)_ |
-| --nut-comment-bottom-label-color| _rgba(153, 153, 153, 1)_ |
-| --nut-comment-shop-color| _var(--nut-primary-color)_ |
