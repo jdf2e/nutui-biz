@@ -110,7 +110,6 @@
     "@babel/preset-typescript": "^7.16.5",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
-    "@jd/upload-oss-tools": "^1.1.23",
     "@loadable/component": "^5.15.0",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^21.0.1",

@@ -75,7 +75,7 @@
           "cName": "商品分类",
           "desc": "商品分类",
           "sort": 5,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },

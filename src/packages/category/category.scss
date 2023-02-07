@@ -1,0 +1,52 @@
+.nut-biz-category {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    &__cate-list {
+        height: 100%;
+        display: flex;
+        overflow: hidden;
+        background: $category-bg-color;
+    }
+
+    &__cate-list-left {
+        width: 100px;
+        height: 100%;
+        flex-shrink: 0;
+        overflow: auto;
+        background: $category-list-left-bg-color;
+    }
+
+    &__cate-list-item-checked,
+    &__cate-list-item {
+        height: 50px;
+        line-height: 50px;
+        width: 100%;
+        padding: 0 10px;
+        text-align: center;
+        font-size: 13px;
+        font-family: PingFangSC;
+        font-weight: normal;
+        color: $category-list-item-color;
+        transition: all 0.3s;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    &__cate-list-item-checked {
+        background: $category-list-item-checked-color;
+        font-weight: 500;
+        transition: all 0.3s;
+        position: relative;
+        &::before {
+            position: absolute;
+            content: "";
+            left: 0;
+            top: 50%;
+            margin-top: -9px;
+            width: 5px;
+            height: 18px;
+            background:$category-list-item-checked-img-bg-color;
+        }
+    }
+}
