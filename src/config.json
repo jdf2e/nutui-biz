@@ -213,7 +213,7 @@
           "cName": "地址编辑",
           "desc": "地址编辑",
           "sort": 17,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
