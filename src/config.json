@@ -86,9 +86,9 @@
           "cName": "评论",
           "desc": "评论",
           "sort": 1,
-          "show": false,
-          "taro": true,
-          "author": "yangjinjun3"
+          "show": true,
+          "taro": false,
+          "author": "eiinu"
         },
         {
           "version": "0.1.0",
@@ -97,9 +97,9 @@
           "cName": "电子卡",
           "desc": "电子卡",
           "sort": 4,
-          "show": false,
+          "show": true,
           "taro": true,
-          "author": "yangjinjun3"
+          "author": "songchenglin3"
         },
         {
           "version": "0.1.0",
@@ -177,6 +177,17 @@
           "show": true,
           "taro": true,
           "author": "ailululu"
+        },
+        {
+          "version": "0.1.0",
+          "name": "ProductFeedItem",
+          "type": "component",
+          "cName": "商品 Feed 流商品",
+          "desc": "商品 Feed 流商品",
+          "sort": 11,
+          "show": false,
+          "taro": true,
+          "author": "ailululu"
         }
       ]
     },
@@ -246,7 +257,7 @@
           "cName": "订单备注",
           "desc": "订单备注",
           "sort": 12,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         }
@@ -255,8 +266,7 @@
     {
       "name": "售后类",
       "enName": "nav",
-      "packages": [
-      ]
+      "packages": []
     },
     {
       "name": "发票类",
@@ -280,7 +290,7 @@
           "cName": "发票抬头列表",
           "desc": "发票抬头列表",
           "sort": 18,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -311,14 +321,12 @@
     {
       "name": "客服类",
       "enName": "feedback",
-      "packages": [
-      ]
+      "packages": []
     },
     {
       "name": "履约类",
       "enName": "exhibition",
-      "packages": [
-      ]
+      "packages": []
     },
     {
       "name": "其他",
@@ -331,7 +339,7 @@
           "cName": "优惠券",
           "desc": "优惠券",
           "sort": 23,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },

@@ -343,7 +343,7 @@ export default App;
 | showType   | 展示形式，可选：`full-line`、`half-line`| String  | `full-line`      |
 | bottomTpl   | 底部内容自定义| React.ReactNode  | -      |
 | infotpl   | 信息内容自定义| React.ReactNode  | -      |
-| isNeedPrice   | 是否需要展示价格| Boolean  | `true`      |
+| isNeedPrice   | 是否需要价格展示| Boolean  | `true`      |
 | imgTag   | 商品图片标签，常用于标志双 11、直播等| String  | -      |
 | imgTagDirection   | 商品图片标签呈现位置，可选：`top-left`、`top-right`| String  | `top-left`      |
 | titleTag   | 标题左侧标签，常用于活动标记等，不设置此参数或此参数为空，不展示| React.ReactNode  | -      |
@@ -354,4 +354,4 @@ export default App;
 ## Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
-| onClick | 点击时触发 |  event: MouseEvent |
+| onClick | 点击事件 |  event: MouseEvent |

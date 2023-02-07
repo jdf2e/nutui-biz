@@ -292,12 +292,12 @@ const App = () => {
   const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+    title: 'title',
     price: '388',
     vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
+    shopDesc: 'desc',
+    delivery: 'delivery',
+    shopName: 'shopName>',
   }
   
   return (
@@ -339,20 +339,20 @@ export default App;
 | originTpl   | Custom content behind the price| React.ReactNode  | -      |
 | shopTagTpl   | Custom shop introduction| React.ReactNode  | -      |
 | footerTpl   | Customize bottom right content| React.ReactNode  | -      |
-| showType   | 展示形式，可选：`full-line`、`half-line`| String  | `full-line`      |
-| bottomTpl   | 底部内容自定义| React.ReactNode  | -      |
-| infotpl   | 信息内容自定义| React.ReactNode  | -      |
-| isNeedPrice   | 是否需要展示价格| Boolean  | `true`      |
-| imgTag   | 商品图片标签，常用于标志双 11、直播等| String  | -      |
-| imgTagDirection   | 商品图片标签呈现位置，可选：`top-left`、`top-right`| String  | `top-left`      |
-| titleTag   | 标题左侧标签，常用于活动标记等，不设置此参数或此参数为空，不展示| React.ReactNode  | -      |
-| titleLine   | 标题行数，默认两行，想展示更多下面内容可设置为 1| String \| Number  | `2`      |
-| linkUrl   | 跳转链接，默认点击整个卡片以 href 的形式跳转，可通过点击事件自定义| String  | -      |
+| showType   | Display format, optional value: `full-line`、`half-line`| String  | `full-line`      |
+| bottomTpl   | Customize bottom content| React.ReactNode  | -      |
+| infotpl   | Customize info content| React.ReactNode  | -      |
+| isNeedPrice   | Whether price display is required| Boolean  | `true`      |
+| imgTag   | Product image label, often used to mark Double 11, live broadcast, etc | String  | -      |
+| imgTagDirection   | Display position of product image label, optional value: `top-left`、`top-right`| String  | `top-left`      |
+| titleTag   | The label on the left side of the title, often used for activity tags, etc. If this parameter is not set or this parameter is empty, it will not be displayed| React.ReactNode  | -      |
+| titleLine   | The number of title lines, the default is two lines, if you want to display more content below, you can set it to 1| String \| Number  | `2`      |
+| linkUrl   | Jump link, click on the whole card by default to jump in the form of href, can be customized through click event| String  | -      |
 
 ## Events
-| 字段 | 说明 | 回调参数 |
+| Attribute | Description | Arguments |
 |----- | ----- | -----  |
-| onClick | 点击时触发 |  event: MouseEvent |
+| onClick | click event |  event: MouseEvent |
 
 
 
