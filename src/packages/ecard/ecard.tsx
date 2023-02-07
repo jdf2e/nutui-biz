@@ -8,7 +8,6 @@ import React, {
 } from "react";
 import { useConfig } from "@/packages/configprovider";
 
-import { IComponent, ComponentDefaults } from "@/utils/typings";
 import bem from "@/utils/bem";
 import { Input, InputNumber } from "@nutui/nutui-react";
 
@@ -22,7 +21,7 @@ interface IState {
   stepValue: number;
   moneyValue: number | string;
 }
-export interface EcardProps extends IComponent {
+export interface EcardProps {
   className?: string;
   style?: CSSProperties;
   chooseText: string;
@@ -41,7 +40,6 @@ export interface EcardProps extends IComponent {
 }
 
 const defaultProps = {
-  ...ComponentDefaults,
   className: "",
   chooseText: "",
   suffix: "¥",
@@ -60,6 +58,7 @@ export const Ecard: FunctionComponent<
 > = (props) => {
   const { locale } = useConfig();
   const {
+    className,
     chooseText,
     suffix,
     otherValueText,
@@ -73,8 +72,6 @@ export const Ecard: FunctionComponent<
     onChange,
     onChangeInput,
     onChangeStep,
-    children,
-    className,
     ...rest
   } = {
     ...defaultProps,
