@@ -19,6 +19,17 @@ export interface BaseLang {
     loadText: string;
     loadMoreText: string;
   };
+  searchHistory: {
+    recentSearchText: string;
+    searchDiscoverText: string;
+    noDiscoverDataText: string;
+    rightOutIcon: string;
+  };
+  settleBar: {
+    totalText: string;
+    settleButtonText: string;
+    selectAll: string;
+  };
   pagination: {
     prev: string;
     next: string;

@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom'
 import './App.scss'
 import { nav } from '@/config.json'
-import useLocale from '../assets/locale/uselocale'
+import {getLocale} from '../assets/locale/uselocale'
 import remarkGfm from 'remark-gfm'
 import { raws, scssRaws } from './docs'
 import { visit } from 'unist-util-visit'
@@ -65,7 +65,7 @@ const Title = () => {
   const [componentName, setComponentName] = useState({ name: '', cName: '' })
   return (
     <div className="title">
-      {componentName.name}&nbsp;{componentName.cName}
+      {componentName.name}&nbsp;{getLocale() === 'zh-CN' && componentName.cName}
     </div>
   )
 }

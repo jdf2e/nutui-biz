@@ -21,6 +21,17 @@ const zhCN: BaseLang = {
     loadText: '加载中……',
     loadMoreText: '哎呀，这里是底部了啦'
   },
+  searchHistory: {
+    recentSearchText: '最近搜索',
+    searchDiscoverText: '搜索发现',
+    noDiscoverDataText: '当前搜索发现已隐藏',
+    rightOutIcon: '搜索'
+  },
+  settleBar: {
+    totalText: '合计',
+    settleButtonText: '去结算',
+    selectAll: '全选'
+  },
   pagination: {
     prev: '上一页',
     next: '下一页'
