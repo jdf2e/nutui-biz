@@ -158,17 +158,6 @@
         },
         {
           "version": "0.1.0",
-          "name": "SkuFeeds",
-          "type": "component",
-          "cName": "商品feed流",
-          "desc": "商品feed流",
-          "sort": 9,
-          "show": false,
-          "taro": true,
-          "author": "yangjinjun3"
-        },
-        {
-          "version": "0.1.0",
           "name": "ProductFeed",
           "type": "component",
           "cName": "商品 Feed 流",
