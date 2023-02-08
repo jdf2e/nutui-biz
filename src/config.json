@@ -119,9 +119,9 @@
           "cName": "快捷入口",
           "desc": "快捷入口",
           "sort": 10,
-          "show": false,
+          "show": true,
           "taro": true,
-          "author": "yangjinjun3"
+          "author": "Ymm0008"
         },
         {
           "version": "0.1.0",
