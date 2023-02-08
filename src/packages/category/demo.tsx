@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Category } from "./category";
 import { useTranslate } from "../../sites/assets/locale";
-import { categoryInfo, categoryChild, customCategory } from "./data";
 import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 interface T {
@@ -24,19 +23,18 @@ const CommentDemo = () => {
     },
   });
 
-  const [category, setCategory] = useState(categoryInfo);
+  const [category, setCategory] = useState();
   const [switchIdx,setSwitchIdx] = useState(0)
 
 
   const getData = () => {
-    // fetch("//storage.360buyimg.com/nutui/3x/comment_data.json")
-    //   .then((response) => response.json())
-    //   .then((res) => {
-    //     res.Comment.info.avatar =
-    //       "https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png";
-    //     setCmt(res.Comment);
-    //   })
-    //   .catch((err) => console.log("Oh, error", err));
+    fetch("https://storage.360buyimg.com/nutui/3x/new-categoryData.js")
+      .then((response) => response.json())
+      .then((res) => {
+        console.log(res,res.categoryInfo.category)
+        setCategory(res.categoryInfo.category)
+      })
+      .catch((err) => console.log("Oh, error", err));
   };
 
   useEffect(() => {
@@ -46,14 +44,20 @@ const CommentDemo = () => {
 
   const onTabSwitch = (child:any, idx:any) => { setSwitchIdx(idx) }
 
-  
 
+  const onClassifyClick = (index:any)=>{
+    console.log('一级分类',index)
+  }
+
+  const onPanelThirdClick = (sku:any)=>{
+    console.log('三级分类跳转', sku)
+  }
   return (
     <>
 
       { switchIdx == 0 && (
         <div className="demo nut-category-demo" style={{padding:'57px 0 0'}}>
-          <Category category={category} ></Category>
+          <Category category={category} onClick={onClassifyClick} onPanelThirdClick={onPanelThirdClick}></Category>
         </div>
       )}
 
@@ -68,15 +72,15 @@ const CommentDemo = () => {
      {   
          switchIdx == 2 && (
           <div className="demo nut-category-demo"  style={{padding:'57px 0 0'}}>
-            <Category category={category} showSecondLevelQuickNav={true}></Category>
+            <Category category={category} showSecondLevelQuickNav={true} ></Category>
           </div>
          )
       }
 
       <Tabbar tabSwitch={((child, idx) => onTabSwitch(child, idx))}>
         <TabbarItem tabTitle="经典分类" icon="category" />
-        <TabbarItem tabTitle="隐藏图片" icon="find" />
-        <TabbarItem tabTitle="显示横向" icon="cart" />
+        <TabbarItem tabTitle="隐藏图片" icon="image" />
+        <TabbarItem tabTitle="横向快捷导航" icon="horizontal" />
       </Tabbar>
 
     </>

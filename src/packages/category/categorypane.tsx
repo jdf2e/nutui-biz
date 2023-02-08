@@ -3,7 +3,8 @@ import React, {
   ReactElement,
   useRef,
   CSSProperties,
-  useState
+  useState,
+  useImperativeHandle
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames';
@@ -31,23 +32,27 @@ export interface CategoryPaneProps extends IComponent {
   style?: CSSProperties,
   showSkuImg: boolean,
   categoryChild: CategoryPane[],
-  showSecondLevelQuickNav: boolean
+  showSecondLevelQuickNav: boolean,
+  onPanelNavClick:(index:number)=>void,
+  onPanelThirdClick: (sku:CategoryPaneItem)=>void
 }
 
 const defaultProps = {
   categoryChild: [],
   showSkuImg: true,
   showSecondLevelQuickNav: false,
+  onPanelNavClick:()=>{},
+  onPanelThirdClick: ()=>{}
 } as CategoryPaneProps
 
-export const CategoryPane: FunctionComponent<
-  Partial<CategoryPaneProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
-> = (props) => {
+export const CategoryPane = React.forwardRef<unknown, Partial<CategoryPaneProps>>((props,ref) => {
   const { locale } = useConfig()
   const {
     categoryChild,
     showSkuImg,
-    showSecondLevelQuickNav
+    showSecondLevelQuickNav,
+    onPanelNavClick,
+    onPanelThirdClick
   } = {
     ...defaultProps,
     ...props,
@@ -67,6 +72,8 @@ export const CategoryPane: FunctionComponent<
       quickNavScroll(tab)
       bodyScroll(tab)
     }
+
+    onPanelNavClick && onPanelNavClick(tab)
   }
 
   const checkActiveIndex = throttle(() => {
@@ -83,13 +90,13 @@ export const CategoryPane: FunctionComponent<
 
       if (!panel) continue
       const panelIndex = Number(panel.dataset['index'])
+        
+      if (panel.offsetTop + panel.clientHeight - 80 > scrollTop) {
 
-      if(panelIndex > 0) {
-        if (panel.offsetTop + panel.clientHeight - 80 > scrollTop) {
-          setPaneIndex(panelIndex)
-          quickNavScroll(panelIndex)
-          return
-        }
+        console.log('滚动',panelIndex)
+        setPaneIndex(panelIndex)
+        quickNavScroll(panelIndex)
+        return
       }
       
     }
@@ -117,14 +124,15 @@ export const CategoryPane: FunctionComponent<
 
   // 快捷导航滚动
   const quickNavScroll = (index:number) => {
+
     const quick: any = quickRef.current
     if (!quick) return
 
     const currentScroll = quick.scrollLeft
 
-    const idx = index || paneIndex
+    const idx = index > -1 ? index : paneIndex
     if (currentScroll == 0 && idx > 1 || currentScroll != 0) {
-
+    
       const nextScrollLeft = (idx - 1) * 96
 
       quick.scrollTo({
@@ -136,6 +144,14 @@ export const CategoryPane: FunctionComponent<
 
   }
 
+  const panelSkuClick = (sku:CategoryPaneItem)=>{
+    onPanelThirdClick && onPanelThirdClick(sku)
+  }
+  useImperativeHandle(ref, () => ({
+    reset: () => {
+      changePane(0)
+    }
+  }));
 
   return (
     <div className={classNames(b())}>
@@ -161,7 +177,7 @@ export const CategoryPane: FunctionComponent<
               <div className={classNames(b('child-item-list'))}>
                 {
                   child.children?.map((sku, idx) => (
-                    <div className={classNames(b('child-item'))} key={idx}>
+                    <div className={classNames([b('child-item'),!showSkuImg && b('child-item-no')])} key={idx} onClick={()=>panelSkuClick(sku)}>
 
                       {
                         showSkuImg && (<img className={classNames(b('child-img'))} src={sku.backImg} />)
@@ -179,5 +195,5 @@ export const CategoryPane: FunctionComponent<
       </div>
     </div>
   )
-}
+})
 

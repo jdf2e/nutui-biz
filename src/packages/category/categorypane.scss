@@ -24,7 +24,14 @@
       display: flex;
       flex-wrap: wrap;
     }
-   
+
+    &__child-item{
+      margin-right: 10px;
+    }
+    &__child-item-no{
+      margin-right: 0px !important;
+    }
+
     &__child-img {
       width: 75px;
       height: 75px;
