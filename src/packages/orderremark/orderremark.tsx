@@ -5,7 +5,6 @@ import bem from '@/utils/bem';
 import { useConfig } from '@/packages/configprovider';
 import { IComponent } from '@/utils/typings';
 
-import './orderremark.scss';
 export interface OrderRemarkProps extends IComponent {
   visible: boolean;
   closeOnClickOverlay: boolean;
@@ -16,7 +15,7 @@ export interface OrderRemarkProps extends IComponent {
   remark: string;
   submitText: string;
   recommendTags: string[];
-  onCloseMask?: (val: string) => void;
+  onClickOverlay?: (val: string) => void;
   onClose?: (val: string) => void;
   onOpen?: () => void;
   onChange?: (val: string) => void;
@@ -50,7 +49,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
     recommendTags,
     style,
     className,
-    onCloseMask,
+    onClickOverlay,
     onClose,
     onOpen,
     onChange,
@@ -67,7 +66,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
   const b = bem('orderRemark');
 
   const clickOverlay = () => {
-    onCloseMask && onCloseMask(innerMark);
+    onClickOverlay && onClickOverlay(innerMark);
   };
   const closeFun = () => {
     onClose && onClose(innerMark);

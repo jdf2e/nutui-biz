@@ -75,7 +75,7 @@
           "cName": "商品分类",
           "desc": "商品分类",
           "sort": 5,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -86,9 +86,9 @@
           "cName": "评论",
           "desc": "评论",
           "sort": 1,
-          "show": false,
-          "taro": true,
-          "author": "yangjinjun3"
+          "show": true,
+          "taro": false,
+          "author": "eiinu"
         },
         {
           "version": "0.1.0",
@@ -97,9 +97,9 @@
           "cName": "电子卡",
           "desc": "电子卡",
           "sort": 4,
-          "show": false,
+          "show": true,
           "taro": true,
-          "author": "yangjinjun3"
+          "author": "songchenglin3"
         },
         {
           "version": "0.1.0",
@@ -213,7 +213,7 @@
           "cName": "地址编辑",
           "desc": "地址编辑",
           "sort": 17,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -339,7 +339,7 @@
           "cName": "优惠券",
           "desc": "优惠券",
           "sort": 23,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },

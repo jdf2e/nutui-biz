@@ -21,6 +21,17 @@ const enUS: BaseLang = {
     loadText: 'Loading',
     loadMoreText: "Oops, here's the bottom"
   },
+  searchHistory: {
+    recentSearchText: 'Recent Search Text',
+    searchDiscoverText: 'Search Discover Text',
+    noDiscoverDataText: 'No Discover Data Text',
+    rightOutIcon: 'Search'
+  },
+  settleBar: {
+    totalText: 'Total',
+    settleButtonText: 'To Settle',
+    selectAll: 'Select All'
+  },
   pagination: {
     prev: 'Previous',
     next: 'Next'
@@ -125,7 +136,7 @@ const enUS: BaseLang = {
   orderRemark: {
     placeholderText: 'Please enter the content of the remarks',
     title: 'Order Remarks',
-    tagTitle: 'Recommend Signature',
+    tagTitle: 'Recommended Tags',
     submitText: 'Confirm'
   }
 };
