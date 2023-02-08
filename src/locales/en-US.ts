@@ -21,6 +21,17 @@ const enUS: BaseLang = {
     loadText: 'Loading',
     loadMoreText: "Oops, here's the bottom"
   },
+  searchHistory: {
+    recentSearchText: 'Recent Search Text',
+    searchDiscoverText: 'Search Discover Text',
+    noDiscoverDataText: 'No Discover Data Text',
+    rightOutIcon: 'Search'
+  },
+  settleBar: {
+    totalText: 'Total',
+    settleButtonText: 'To Settle',
+    selectAll: 'Select All'
+  },
   pagination: {
     prev: 'Previous',
     next: 'Next'

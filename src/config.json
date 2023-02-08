@@ -75,7 +75,7 @@
           "cName": "商品分类",
           "desc": "商品分类",
           "sort": 5,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -86,9 +86,9 @@
           "cName": "评论",
           "desc": "评论",
           "sort": 1,
-          "show": false,
-          "taro": true,
-          "author": "yangjinjun3"
+          "show": true,
+          "taro": false,
+          "author": "eiinu"
         },
         {
           "version": "0.1.0",
@@ -119,9 +119,9 @@
           "cName": "快捷入口",
           "desc": "快捷入口",
           "sort": 10,
-          "show": false,
+          "show": true,
           "taro": true,
-          "author": "yangjinjun3"
+          "author": "Ymm0008"
         },
         {
           "version": "0.1.0",
@@ -213,7 +213,7 @@
           "cName": "地址编辑",
           "desc": "地址编辑",
           "sort": 17,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -266,8 +266,7 @@
     {
       "name": "售后类",
       "enName": "nav",
-      "packages": [
-      ]
+      "packages": []
     },
     {
       "name": "发票类",
@@ -322,14 +321,12 @@
     {
       "name": "客服类",
       "enName": "feedback",
-      "packages": [
-      ]
+      "packages": []
     },
     {
       "name": "履约类",
       "enName": "exhibition",
-      "packages": [
-      ]
+      "packages": []
     },
     {
       "name": "其他",
@@ -342,7 +339,7 @@
           "cName": "优惠券",
           "desc": "优惠券",
           "sort": 23,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },

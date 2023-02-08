@@ -4,6 +4,13 @@ import Address from '../address'
 import {Cell, Button, Price} from '@nutui/nutui-react'
 import { useTranslate } from '../../sites/assets/locale'
 
+interface tarnslatedOption {
+  basic: string;
+  notSell: string;
+  customStepper: string;
+  customBySlot: string;
+}
+
 interface Skus {
   id: number;
   name: string;
@@ -19,6 +26,26 @@ interface SkuItem {
 }
 
 const SkuDemo = () => {
+  const [translated] = useTranslate<tarnslatedOption>({
+    'zh-CN': {
+      basic: '基本用法',
+      notSell: '不可售',
+      customStepper: '自定义计步器',
+      customBySlot: '自定义插槽'
+    },
+    'zh-TW': {
+      basic: '基本用法',
+      notSell: '不可售',
+      customStepper: '自定義計步器',
+      customBySlot: '自定義插槽'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      notSell: 'Not Sell',
+      customStepper: 'Custom Stepper',
+      customBySlot: 'Custom By Slot'
+    }
+  });
   const [base, setBase] = useState<boolean>(false)
   const [notSell, setNotSell] = useState<boolean>(false)
   const [customStepper, setCustomStepper] = useState<boolean>(false)
@@ -184,8 +211,8 @@ const SkuDemo = () => {
   return (
     <>
       <div className="demo">
-        <h2>基本用法</h2>
-        <Cell onClick={() => setBase(true)}>基本用法</Cell>
+        <h2>{translated.basic}</h2>
+        <Cell onClick={() => setBase(true)}>{translated.basic}</Cell>
         <Sku 
           visible={base} 
           sku={skuData}
@@ -194,8 +221,8 @@ const SkuDemo = () => {
           onClickBtnOperate={clickBtnOperate}
           onClose={() => setBase(false)} 
         />
-        <h2>不可售</h2>
-        <Cell onClick={() => setNotSell(true)}>不可售</Cell>
+        <h2>{translated.notSell}</h2>
+        <Cell onClick={() => setNotSell(true)}>{translated.notSell}</Cell>
         <Sku 
           visible={notSell} 
           sku={skuData}
@@ -212,8 +239,8 @@ const SkuDemo = () => {
           }
           onClose={() => setNotSell(false)} 
         />
-        <h2>自定义计步器</h2>
-        <Cell onClick={() => setCustomStepper(true)}>自定义计步器</Cell>
+        <h2>{translated.customStepper}</h2>
+        <Cell onClick={() => setCustomStepper(true)}>{translated.customStepper}</Cell>
         <Sku 
           visible={customStepper} 
           sku={skuData}
@@ -228,8 +255,8 @@ const SkuDemo = () => {
           onClickBtnOperate={clickBtnOperate}
           onClose={() => setCustomStepper(false)} 
         />
-        <h2>自定义插槽</h2>
-        <Cell onClick={() => setCustomBySlot(true)}>自定义插槽</Cell>
+        <h2>{translated.customBySlot}</h2>
+        <Cell onClick={() => setCustomBySlot(true)}>{translated.customBySlot}</Cell>
         <Sku 
           visible={customBySlot} 
           sku={skuData}

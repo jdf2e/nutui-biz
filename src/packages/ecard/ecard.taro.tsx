@@ -8,7 +8,6 @@ import React, {
 import { InputNumber } from "@nutui/nutui-react-taro";
 import bem from "@/utils/bem";
 import { useConfig } from "@/packages/configprovider/configprovider.taro";
-import { IComponent, ComponentDefaults } from "@/utils/typings";
 
 interface IDataList {
   price: number;
@@ -20,7 +19,7 @@ interface IState {
   stepValue: number;
   moneyValue: number | string;
 }
-export interface EcardProps extends IComponent {
+export interface EcardProps {
   className?: string;
   style?: CSSProperties;
   chooseText: string;
@@ -39,7 +38,6 @@ export interface EcardProps extends IComponent {
 }
 
 const defaultProps = {
-  ...ComponentDefaults,
   className: "",
   chooseText: "",
   suffix: "¥",
@@ -58,6 +56,7 @@ export const Ecard: FunctionComponent<
 > = (props) => {
   const { locale } = useConfig();
   const {
+    className,
     chooseText,
     suffix,
     otherValueText,
@@ -71,8 +70,7 @@ export const Ecard: FunctionComponent<
     onChange,
     onChangeInput,
     onChangeStep,
-    children,
-    className,
+
     ...rest
   } = {
     ...defaultProps,

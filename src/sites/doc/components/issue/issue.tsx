@@ -32,7 +32,7 @@ export function Issue() {
       <div className="doc-content-issue">
         <a
           className="issue-item"
-          href="https://github.com/jdf2e/nutui-react/issues"
+          href="https://github.com/jdf2e/nutui-biz/issues"
           target="_blank"
         >
           <Icon name="uploader"></Icon>
@@ -40,7 +40,7 @@ export function Issue() {
         </a>
         <a
           className="issue-item"
-          href="https://github.com/jdf2e/nutui-react/issues?q=is:issue+is:open"
+          href="https://github.com/jdf2e/nutui-biz/issues?q=is:issue+is:open"
           target="_blank"
         >
           <Icon name="issue"></Icon>
@@ -48,7 +48,7 @@ export function Issue() {
         </a>
         <a
           className="issue-item"
-          href={`https://github.com/jdf2e/nutui-react/issues?q=is:issue+is:closed+${componentName.name}`}
+          href={`https://github.com/jdf2e/nutui-biz/issues?q=is:issue+is:closed+${componentName.name}`}
           target="_blank"
         >
           <Icon name="checklist"></Icon>
