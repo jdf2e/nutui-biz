@@ -137,6 +137,9 @@ export default App;
 | showSecondLevelQuickNav   | 是否展示二级分类快捷导航            | Boolean  | `false`          |
 | isLeftAutoSlide   | 左侧导航，即一级分类，选中值是否居中展示     | Boolean  | `true`          |
 | showSkuImg | 三级分类图片是否展示 | Boolean | `true`        |
+| isLazy | 三级分类图片是否懒加载 | Boolean | `true`        |
+| loadingImg | 设置加载中提示图片 | String | -       |
+| errorImg | 设置错误提示图片 | String | -        |
 
 
 ### Event

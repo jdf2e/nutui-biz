@@ -31,7 +31,6 @@ const CommentDemo = () => {
     fetch("https://storage.360buyimg.com/nutui/3x/new-categoryData.js")
       .then((response) => response.json())
       .then((res) => {
-        console.log(res,res.categoryInfo.category)
         setCategory(res.categoryInfo.category)
       })
       .catch((err) => console.log("Oh, error", err));

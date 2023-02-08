@@ -9,9 +9,10 @@ import React, {
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames';
 import bem from '@/utils/bem'
-import './categorypane.scss'
 import { IComponent } from '@/utils/typings'
 import { throttle } from "@/utils/throttle";
+import { Image } from '@nutui/nutui-react';
+
 
 interface CategoryPane {
   catId: string | number,
@@ -33,6 +34,9 @@ export interface CategoryPaneProps extends IComponent {
   showSkuImg: boolean,
   categoryChild: CategoryPane[],
   showSecondLevelQuickNav: boolean,
+  isLazy:boolean,
+  loadingImg:string,
+  errorImg:string,
   onPanelNavClick:(index:number)=>void,
   onPanelThirdClick: (sku:CategoryPaneItem)=>void
 }
@@ -41,6 +45,9 @@ const defaultProps = {
   categoryChild: [],
   showSkuImg: true,
   showSecondLevelQuickNav: false,
+  isLazy:true,
+  loadingImg:'https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
+  errorImg:'https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
   onPanelNavClick:()=>{},
   onPanelThirdClick: ()=>{}
 } as CategoryPaneProps
@@ -51,6 +58,9 @@ export const CategoryPane = React.forwardRef<unknown, Partial<CategoryPaneProps>
     categoryChild,
     showSkuImg,
     showSecondLevelQuickNav,
+    isLazy,
+    loadingImg,
+    errorImg,
     onPanelNavClick,
     onPanelThirdClick
   } = {
@@ -92,8 +102,6 @@ export const CategoryPane = React.forwardRef<unknown, Partial<CategoryPaneProps>
       const panelIndex = Number(panel.dataset['index'])
         
       if (panel.offsetTop + panel.clientHeight - 80 > scrollTop) {
-
-        console.log('滚动',panelIndex)
         setPaneIndex(panelIndex)
         quickNavScroll(panelIndex)
         return
@@ -180,7 +188,7 @@ export const CategoryPane = React.forwardRef<unknown, Partial<CategoryPaneProps>
                     <div className={classNames([b('child-item'),!showSkuImg && b('child-item-no')])} key={idx} onClick={()=>panelSkuClick(sku)}>
 
                       {
-                        showSkuImg && (<img className={classNames(b('child-img'))} src={sku.backImg} />)
+                        showSkuImg && (<Image className={classNames(b('child-img'))} src={sku.backImg}  isLazy={isLazy} loadingImg={loadingImg}  errorImg={errorImg} />)
                       }
 
                       <div className={classNames(b(showSkuImg ? 'sku-img' : 'sku-name'))}>{sku?.catName}</div>

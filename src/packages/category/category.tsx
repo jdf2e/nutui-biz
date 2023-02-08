@@ -39,6 +39,9 @@ export interface CategoryProps extends IComponent {
   category: Category[],
   showSecondLevelQuickNav:boolean,
   isLeftAutoSlide:boolean,
+  isLazy:boolean,
+  loadingImg:string,
+  errorImg:string,
   onChange: (index:Category) => void,
   onPanelNavClick:(index:number)=>void,
   onPanelThirdClick: (sku:CategoryPaneItem)=>void
@@ -49,6 +52,9 @@ const defaultProps = {
   showSkuImg:true,
   showSecondLevelQuickNav:false,
   isLeftAutoSlide:true,
+  isLazy:true,
+  loadingImg:'https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
+  errorImg:'https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
   onChange: () => {},
   onPanelNavClick:()=>{},
   onPanelThirdClick: ()=>{}
@@ -63,6 +69,9 @@ export const Category: FunctionComponent<
     showSkuImg,
     showSecondLevelQuickNav,
     isLeftAutoSlide,
+    isLazy,
+    loadingImg,
+    errorImg,
     onChange,
     onPanelNavClick,
     onPanelThirdClick
@@ -128,6 +137,9 @@ export const Category: FunctionComponent<
               categoryChild={props.category && props.category[checkIndex].children}
               showSkuImg={showSkuImg}
               showSecondLevelQuickNav={showSecondLevelQuickNav}
+              isLazy
+              loadingImg={loadingImg}
+              errorImg={errorImg}
               onPanelNavClick={onPanelNavClick}
               onPanelThirdClick={onPanelThirdClick}
               ></CategoryPane>
