@@ -89,13 +89,27 @@ const zhCN: BaseLang = {
   sku: {
     buyNow: '立即购买',
     buyNumber: '购买数量',
-    addToCard: '加入购物车'
+    addToCard: '加入购物车',
+    confirm: '确定'
   },
   skuheader: {
     skuId: '商品编号'
   },
   addresslist: {
     addAddress: '新建地址'
+  },
+  itemContents: {
+    default: '默认'
+  },
+  swipeShell: {
+    delete: '删除'
+  },
+  generalShell: {
+    copy: '复制',
+    address: '地址',
+    set: '设置',
+    default: '默认',
+    delete: '删除'
   },
   comment: {
     complaintsText: '我要投诉',

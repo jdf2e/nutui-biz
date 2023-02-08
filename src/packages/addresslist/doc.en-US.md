@@ -27,14 +27,14 @@ const App = () => {
             testaddressName: '姓名',
             phone: '123****4567',
             defaultAddress: false,
-            fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
+            fullAddress: '北京亦庄经济技术开发区科创十一街18号院'
         },
         {
             testid: 4,
             testaddressName: '姓名',
             phone: '123****4567',
             defaultAddress: true,
-            fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
+            fullAddress: '北京亦庄经济技术开发区科创十一街18号院'
         }
     ];
 

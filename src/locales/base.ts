@@ -89,12 +89,26 @@ export interface BaseLang {
     buyNow: string;
     buyNumber: string;
     addToCard: string;
+    confirm: string;
   };
   skuheader: {
     skuId: string;
   };
   addresslist: {
     addAddress: string;
+  };
+  itemContents: {
+    default: string;
+  };
+  swipeShell: {
+    delete: string;
+  };
+  generalShell: {
+    copy: string;
+    address: string;
+    set: string;
+    default: string;
+    delete: string;
   };
   comment: {
     complaintsText: string;

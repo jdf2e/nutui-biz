@@ -87,13 +87,27 @@ const enUS: BaseLang = {
   sku: {
     buyNow: 'Buy Now',
     buyNumber: 'Buy Number',
-    addToCard: 'Add to Card'
+    addToCard: 'Add to Card',
+    confirm: 'Confirm'
   },
   skuheader: {
     skuId: 'Sku Number'
   },
   addresslist: {
     addAddress: 'Add New Address'
+  },
+  itemContents: {
+    default: 'Default'
+  },
+  swipeShell: {
+    delete: 'Delete'
+  },
+  generalShell: {
+    copy: 'Copy',
+    address: 'Address',
+    set: 'Set',
+    default: 'Default',
+    delete: 'Delete'
   },
   comment: {
     complaintsText: 'I have a complaint',

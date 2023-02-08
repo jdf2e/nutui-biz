@@ -87,13 +87,27 @@ const zhTW: BaseLang = {
   sku: {
     buyNow: '立即購買',
     buyNumber: '購買數量',
-    addToCard: '加入購物車'
+    addToCard: '加入購物車',
+    confirm: '確定'
   },
   skuheader: {
     skuId: '商品編號'
   },
   addresslist: {
     addAddress: '新建地址'
+  },
+  itemContents: {
+    default: '默認'
+  },
+  swipeShell: {
+    delete: '删除'
+  },
+  generalShell: {
+    copy: '復製',
+    address: '地址',
+    set: '設置',
+    default: '默認',
+    delete: '删除'
   },
   comment: {
     complaintsText: '我要投訴',

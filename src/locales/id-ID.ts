@@ -88,12 +88,26 @@ const idID: BaseLang = {
     buyNow: 'Beli Sekarang',
     buyNumber: 'Jumlah Pembelian',
     addToCard: 'Tambahkan ke Keranjang',
+    confirm: 'Confirm'
   },
   skuheader: {
     skuId: 'Nomor SKU',
   },
   addresslist: {
     addAddress: 'Tambah Alamat Baru',
+  },
+  itemContents: {
+    default: 'Default'
+  },
+  swipeShell: {
+    delete: 'Delete'
+  },
+  generalShell: {
+    copy: 'Copy',
+    address: 'Address',
+    set: 'Set',
+    default: 'Default',
+    delete: 'Delete'
   },
   comment: {
     complaintsText: 'Saya memiliki komplain',
