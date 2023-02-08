@@ -68,7 +68,7 @@ const CommentDemo = () => {
      {   
          switchIdx == 2 && (
           <div className="demo nut-category-demo"  style={{padding:'57px 0 0'}}>
-            <Category category={category} ></Category>
+            <Category category={category} showSecondLevelQuickNav={true}></Category>
           </div>
          )
       }
@@ -78,7 +78,7 @@ const CommentDemo = () => {
         <TabbarItem tabTitle="隐藏图片" icon="find" />
         <TabbarItem tabTitle="显示横向" icon="cart" />
       </Tabbar>
-      
+
     </>
   );
 };

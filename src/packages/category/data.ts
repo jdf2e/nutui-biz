@@ -279,6 +279,121 @@ export const categoryChild = [
       ],
       showPic: true,
       showVideo: false,
+    },{
+      catId: "1590",
+      catName: "饮料冲调2",
+      catLevel: 2,
+      catType: 1,
+      children: [
+        {
+          backImg:
+            "https://m.360buyimg.com/n2/jfs/t1/175064/33/23005/219475/6168eee1Ed59f4aef/a7f7dab7fb5c8d99.jpg",
+          catId: "1601",
+          catName: "冲饮谷物",
+          showPic: true,
+          showVideo: false,
+        },
+        {
+          backImg:
+            "https://m.360buyimg.com/n2/jfs/t25171/268/1139055306/236004/bb244324/5b88b326Na7890577.jpg",
+          catId: "1602",
+          catName: "饮料",
+          showPic: true,
+          showVideo: false,
+        },
+        {
+          backImg:
+            "https://m.360buyimg.com/n2/jfs/t1/171130/22/6024/128321/6020b2e4Ef4ba4542/353a556d47c25121.jpg",
+          catId: "3986",
+          catName: "咖啡/奶茶",
+          showPic: true,
+          showVideo: false,
+        },
+        {
+          backImg:
+            "https://m.360buyimg.com/n2/jfs/t1/107411/30/15915/199263/5eaf6b4cE0a7b4080/41335d5d95f576ce.jpg",
+          catId: "9434",
+          catName: "牛奶乳品",
+          showPic: true,
+          showVideo: false,
+        },
+        {
+          backImg:
+            "https://m.360buyimg.com/n2/jfs/t1/201557/13/17647/135095/61a9ceecE312cb7f8/81b6c24f7d7727c1.jpg",
+          catId: "10975",
+          catName: "饮用水",
+          showPic: true,
+          showVideo: false,
+        },
+        {
+          backImg:
+            "https://m.360buyimg.com/n2/jfs/t1/51415/33/16609/122207/61397309E88c81fbc/7c38686c1f2ffb84.jpg",
+          catId: "12200",
+          catName: "蜂蜜/柚子茶",
+          showPic: true,
+          showVideo: false,
+        },
+      ],
+      showPic: true,
+      showVideo: false,
+    },
+    {
+      catId: "1591",
+      catName: "饮料冲调3",
+      catLevel: 2,
+      catType: 1,
+      children: [
+        {
+          backImg:
+            "https://m.360buyimg.com/n2/jfs/t1/175064/33/23005/219475/6168eee1Ed59f4aef/a7f7dab7fb5c8d99.jpg",
+          catId: "1601",
+          catName: "冲饮谷物",
+          showPic: true,
+          showVideo: false,
+        },
+        {
+          backImg:
+            "https://m.360buyimg.com/n2/jfs/t25171/268/1139055306/236004/bb244324/5b88b326Na7890577.jpg",
+          catId: "1602",
+          catName: "饮料",
+          showPic: true,
+          showVideo: false,
+        },
+        {
+          backImg:
+            "https://m.360buyimg.com/n2/jfs/t1/171130/22/6024/128321/6020b2e4Ef4ba4542/353a556d47c25121.jpg",
+          catId: "3986",
+          catName: "咖啡/奶茶",
+          showPic: true,
+          showVideo: false,
+        },
+        {
+          backImg:
+            "https://m.360buyimg.com/n2/jfs/t1/107411/30/15915/199263/5eaf6b4cE0a7b4080/41335d5d95f576ce.jpg",
+          catId: "9434",
+          catName: "牛奶乳品",
+          showPic: true,
+          showVideo: false,
+        },
+        {
+          backImg:
+            "https://m.360buyimg.com/n2/jfs/t1/201557/13/17647/135095/61a9ceecE312cb7f8/81b6c24f7d7727c1.jpg",
+          catId: "10975",
+          catName: "饮用水",
+          showPic: true,
+          showVideo: false,
+        },
+        {
+          backImg:
+            "https://m.360buyimg.com/n2/jfs/t1/51415/33/16609/122207/61397309E88c81fbc/7c38686c1f2ffb84.jpg",
+          catId: "12200",
+          catName: "蜂蜜/柚子茶",
+          showPic: true,
+          showVideo: false,
+        },
+      ],
+      showPic: true,
+      showVideo: false,
     },
   ];
   

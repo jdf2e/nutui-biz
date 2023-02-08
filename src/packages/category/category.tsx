@@ -40,6 +40,7 @@ export interface CategoryProps extends IComponent {
   type: "classify" | "text",
   showSkuImg: boolean,
   category: CategoryTab[],
+  showSecondLevelQuickNav:boolean,
   onClick: () => void
 }
 
@@ -47,6 +48,7 @@ const defaultProps = {
   type: 'classify',
   category: [],
   showSkuImg:true,
+  showSecondLevelQuickNav:false,
   onClick: () => { }
 } as CategoryProps
 
@@ -55,7 +57,8 @@ export const Category: FunctionComponent<
 > = (props) => {
   const { locale } = useConfig()
   const {
-    showSkuImg
+    showSkuImg,
+    showSecondLevelQuickNav
   } = {
     ...defaultProps,
     ...props,
@@ -94,6 +97,7 @@ export const Category: FunctionComponent<
         <CategoryPane 
           categoryChild={props.category && props.category[checkIndex].children}
           showSkuImg={showSkuImg}
+          showSecondLevelQuickNav={showSecondLevelQuickNav}
           ></CategoryPane>
       </div>
     </div>
