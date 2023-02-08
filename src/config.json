@@ -119,9 +119,9 @@
           "cName": "快捷入口",
           "desc": "快捷入口",
           "sort": 10,
-          "show": false,
+          "show": true,
           "taro": true,
-          "author": "yangjinjun3"
+          "author": "Ymm0008"
         },
         {
           "version": "0.1.0",
@@ -266,8 +266,7 @@
     {
       "name": "售后类",
       "enName": "nav",
-      "packages": [
-      ]
+      "packages": []
     },
     {
       "name": "发票类",
@@ -322,14 +321,12 @@
     {
       "name": "客服类",
       "enName": "feedback",
-      "packages": [
-      ]
+      "packages": []
     },
     {
       "name": "履约类",
       "enName": "exhibition",
-      "packages": [
-      ]
+      "packages": []
     },
     {
       "name": "其他",
