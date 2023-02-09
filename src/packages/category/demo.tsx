@@ -10,16 +10,14 @@ interface T {
 const CommentDemo = () => {
   const [translated] = useTranslate<T>({
     "zh-CN": {
-      basic: "基础用法",
-      single: "评论图片单行展示",
-      multiRow: "评论图片多行展示",
-      additionalReviewd: "追评展示",
+      basic: "经典分类",
+      hideImage: "隐藏图片",
+      quicknav: "横向快捷导航",
     },
     "en-US": {
       basic: "Basic Usage",
-      single: "Single Line Image",
-      multiRow: "Multi Line Image ",
-      review: "Additional Review",
+      hideImage: "Hide Image",
+      quicknav: "Quick Nav",
     },
   });
 
@@ -77,9 +75,9 @@ const CommentDemo = () => {
       }
 
       <Tabbar tabSwitch={((child, idx) => onTabSwitch(child, idx))}>
-        <TabbarItem tabTitle="经典分类" icon="category" />
-        <TabbarItem tabTitle="隐藏图片" icon="image" />
-        <TabbarItem tabTitle="横向快捷导航" icon="horizontal" />
+        <TabbarItem tabTitle={translated.basic} icon="category" />
+        <TabbarItem tabTitle={translated.hideImage} icon="image" />
+        <TabbarItem tabTitle={translated.quicknav} icon="horizontal" />
       </Tabbar>
 
     </>

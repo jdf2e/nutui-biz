@@ -1,6 +1,4 @@
 import React, {
-  FunctionComponent,
-  ReactElement,
   useRef,
   CSSProperties,
   useState,
@@ -190,7 +188,6 @@ export const CategoryPane = React.forwardRef<unknown, Partial<CategoryPaneProps>
                       {
                         showSkuImg && (<Image className={classNames(b('child-img'))} src={sku.backImg}  isLazy={isLazy} loadingImg={loadingImg}  errorImg={errorImg} />)
                       }
-
                       <div className={classNames(b(showSkuImg ? 'sku-img' : 'sku-name'))}>{sku?.catName}</div>
                     </div>
                   ))
