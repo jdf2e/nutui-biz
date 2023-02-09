@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent, HTMLAttributes, useEffect, useState } from "react";
 import { IComponent } from "@/utils/typings";
 import { Icon } from "@nutui/nutui-react";
 
@@ -31,8 +31,7 @@ const defaultProps = {
 } as CommentImagesProps;
 
 export const CommentImages: FunctionComponent<
-  Partial<CommentImagesProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">
+  Partial<CommentImagesProps> & HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { type, videos, images, onClickImages } = {
     ...defaultProps,
