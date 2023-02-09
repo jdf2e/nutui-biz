@@ -14,16 +14,16 @@ export interface CommentImagesProps extends IComponent {
 }
 
 export interface VideosType {
-  id: number | string;
-  mainUrl: string;
-  videoUrl: string;
+  id?: number | string;
+  mainUrl?: string;
+  videoUrl?: string;
 }
 
 export interface ImagesType {
-  id: number | string;
-  smallImgUrl: string;
-  bigImgUrl: string;
-  imgUrl: string;
+  id?: number | string;
+  smallImgUrl?: string;
+  bigImgUrl?: string;
+  imgUrl?: string;
 }
 
 const defaultProps = {
