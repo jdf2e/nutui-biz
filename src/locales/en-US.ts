@@ -8,6 +8,10 @@ const enUS: BaseLang = {
   noData: 'No Data',
   placeholder: 'Placeholder',
   select: 'Select',
+  name: 'Name',
+  tel: 'Tel',
+  default: 'Default',
+  addres: 'Addres',
   video: {
     errorTip: 'Error Tip',
     clickRetry: 'Click Retry'
