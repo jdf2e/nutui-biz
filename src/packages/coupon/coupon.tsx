@@ -9,7 +9,6 @@ import { IComponent } from "@/utils/typings";
 import { Button } from "@nutui/nutui-react";
 import { throttle } from "@/utils/throttle";
 import bem from "@/utils/bem";
-import "./coupon.scss";
 
 export interface ICouponType {
   price: number; //优惠券价格或者折扣价
