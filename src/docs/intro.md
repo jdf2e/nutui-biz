@@ -29,7 +29,7 @@ NutUI-Biz 组件库，适用于 React 技术栈的 H5 电商应用，开箱即�
 
 感谢以下小伙伴们为 NutUI-Biz 发展做出的贡献：
 
-[![contributors](https://opencollective.com/nutui-react/contributors.svg?width=890&button=false)](https://github.com/jdf2e/nutui-react/graphs/contributors)
+[![contributors](https://opencollective.com/nutui-biz/contributors.svg?width=890&button=false)](https://github.com/jdf2e/nutui-biz/graphs/contributors)
 
 
 ## 开源协议
