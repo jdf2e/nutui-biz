@@ -120,6 +120,12 @@ const App = (props) => {
     document.addEventListener('scroll', scrollTitle)
   }, [])
 
+  useEffect(() => {
+    if(location.hash === '#/') {
+      location.href="#/zh-CN/guide/intro"
+    }
+  })
+
   const [docname, setDocName] = useState('react')
 
   const handleClick = (activeName: string) => {

@@ -24,7 +24,7 @@ const Nav = () => {
     document.addEventListener('scroll', scrollNav)
   }, [])
 
-  const isGuideNav = location.href.includes('guide');
+  const isGuideNav = location.href.includes('guide') || location.hash === '#/';
 
   const changeNav = (_nav: any) => {
     setActiveName(_nav.name)
