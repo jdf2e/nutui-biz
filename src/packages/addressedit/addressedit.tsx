@@ -12,7 +12,6 @@ import {
   Cell,
   CellGroup,
 } from "@nutui/nutui-react";
-import "./addressedit.scss";
 
 const { RadioGroup } = Radio;
 const { Item } = Form;

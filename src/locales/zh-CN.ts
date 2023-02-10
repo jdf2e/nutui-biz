@@ -8,6 +8,10 @@ const zhCN: BaseLang = {
   noData: '暂无数据',
   placeholder: '请输入内容',
   select: '请选择',
+  name: '姓名',
+  tel: '电话',
+  default: '默认',
+  addres: '地址',
   video: {
     errorTip: '视频加载失败',
     clickRetry: '点击重试'

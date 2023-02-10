@@ -301,7 +301,7 @@
           "cName": "收票人列表",
           "desc": "收票人列表",
           "sort": 19,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         }

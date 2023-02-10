@@ -6,6 +6,10 @@ export interface BaseLang {
   noData: string;
   placeholder: string;
   select: string;
+  name: string,
+  tel: string,
+  default: string,
+  addres: string,
   video: {
     errorTip: string;
     clickRetry: string;

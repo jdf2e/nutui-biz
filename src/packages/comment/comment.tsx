@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from "react";
+import React, { FunctionComponent, HTMLAttributes, ReactNode } from "react";
 import { IComponent } from "@/utils/typings";
 import { CommentHeader } from "./components/CommentHeader";
 import { CommentBottom } from "./components/CommentBottom";
@@ -35,7 +35,7 @@ const defaultProps = {
 } as CommentProps;
 
 export const Comment: FunctionComponent<
-  Partial<CommentProps> & Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">
+  Partial<CommentProps> & HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
     type,
