@@ -8,6 +8,10 @@ const zhTW: BaseLang = {
   noData: '暫無數據',
   placeholder: '請輸入',
   select: '請選擇',
+  name: '姓名',
+  tel: '電話',
+  default: '默認',
+  addres: '地址',
   video: {
     errorTip: '視頻加載失敗',
     clickRetry: '點擊重試'

@@ -8,6 +8,10 @@ const idID: BaseLang = {
   noData: 'Tidak Ada Data',
   placeholder: 'Kolom Input',
   select: 'Pilih',
+  name: 'Nama penuh',
+  tel: 'Telepon',
+  default: 'Default',
+  addres: 'Addres',
   video: {
     errorTip: 'Terjadi Kesalahan',
     clickRetry: 'Coba Lagi',
