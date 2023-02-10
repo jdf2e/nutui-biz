@@ -86,6 +86,21 @@ export interface BaseLang {
     otherValueText: string;
     placeholder: string;
   };
+  receiveInvoiceEdit: {
+    nameText: string,
+    namePlaceholder: string,
+    nameErrorMsg: string,
+    telText: string,
+    telPlaceholder: string,
+    telErrorMsg: string,
+    regionText: string,
+    regionPlaceholder: string,
+    regionErrorMsg: string,
+    addressText: string,
+    addressPlaceholder: string,
+    addressErrorMsg: string,
+    bottomText: string,
+  };
   timeselect: {
     pickupTime: string;
   };
