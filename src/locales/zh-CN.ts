@@ -83,6 +83,21 @@ const zhCN: BaseLang = {
     otherValueText: '其他面值',
     placeholder: '请输入1-5000整数'
   },
+  receiveInvoiceEdit:{
+    nameText: "姓名",
+    namePlaceholder: "请输入姓名",
+    nameErrorMsg: "该项为必填项，请填写完后提交",
+    telText: "手机号码",
+    telPlaceholder: "请输入收货人手机号码",
+    telErrorMsg: "该项为必填项，请填写完后提交",
+    regionText: "所在地区",
+    regionPlaceholder: "请选择所在地区",
+    regionErrorMsg: "该项为必填项，请填写完后提交",
+    addressText: "详细地址",
+    addressPlaceholder: "街道、楼牌号",
+    addressErrorMsg: "该项为必填项，请填写完后提交",
+    bottomText: "保存",
+  },
   timeselect: {
     pickupTime: '取件时间'
   },

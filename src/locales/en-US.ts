@@ -81,6 +81,21 @@ const enUS: BaseLang = {
     otherValueText: 'Other Value',
     placeholder: 'Placeholder'
   },
+  receiveInvoiceEdit:{
+    nameText: "name",
+    namePlaceholder: "Please enter a name",
+    nameErrorMsg: "This item is required, please fill it out and submit it",
+    telText: "phone",
+    telPlaceholder: "Please enter the mobile phone number of the consignee",
+    telErrorMsg: "This item is required, please fill it out and submit it",
+    regionText: "region",
+    regionPlaceholder: "Please select your region",
+    regionErrorMsg: "This item is required, please fill it out and submit it交",
+    addressText: "address",
+    addressPlaceholder: "Street, building numbe",
+    addressErrorMsg: "This item is required, please fill it out and submit it",
+    bottomText: "save",
+  },
   timeselect: {
     pickupTime: 'Pickup Time'
   },
