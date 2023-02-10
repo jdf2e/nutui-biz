@@ -361,7 +361,7 @@
           "cName": "登录",
           "desc": "登录",
           "sort": 22,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         }

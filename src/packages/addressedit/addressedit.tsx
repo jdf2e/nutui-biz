@@ -1,10 +1,8 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
 import { useConfig } from "@/packages/configprovider";
-
+import bem from "@/utils/bem";
 import { IComponent } from "@/utils/typings";
 import {
-  Form,
-  Radio,
   Input,
   Button,
   Address,
@@ -14,8 +12,6 @@ import {
 } from "@nutui/nutui-react";
 import "./addressedit.scss";
 
-const { RadioGroup } = Radio;
-const { Item } = Form;
 interface CalResult {
   type: string;
   data: any;
@@ -242,10 +238,10 @@ export const AddressEdit: FunctionComponent<
     onChange && onChange(val, tag);
   };
   const validForm = () => {
-    let form = formData;
+    let form = { ...formData };
     let arr: any = [].concat(errorList);
     Object.keys(form).map((key) => {
-      if (isRequired.includes(key) && formData[key] === "") {
+      if (isRequired.includes(key) && form[key] === "") {
         switch (key) {
           case "name":
             if (!errorList.includes("name")) {
@@ -260,19 +256,18 @@ export const AddressEdit: FunctionComponent<
           case "region":
             if (!errorList.includes("region")) {
               arr.push("region");
-              setErrorList(arr);
             }
             break;
           case "address":
             if (!errorList.includes("address")) {
               arr.push("address");
-              setErrorList(arr);
             }
             break;
 
           default:
             break;
         }
+        setErrorList(arr);
         return false;
       }
     });
@@ -286,10 +281,16 @@ export const AddressEdit: FunctionComponent<
       console.log("校验不通过");
     }
   };
+  const inputClear = (tag: string) => {
+    let data = { ...formData };
+    data[tag] = "";
+    setFormData({ ...formData, ...data });
+  };
 
+  const b = bem("addressedit");
   return (
-    <div className="nut-addressedit" id={data?.id}>
-      <div className="nut-addressedit-item">
+    <div className={`${b()}`} id={data?.id}>
+      <div className={`${b("item")}`}>
         <Input
           className="nut-input-text"
           label={editSeting.nameText}
@@ -297,12 +298,14 @@ export const AddressEdit: FunctionComponent<
           name="name"
           placeholder={editSeting?.namePlaceholder}
           type="text"
+          clearable
           required={isRequired.includes("name") || false}
           onChange={(e) => inputOnchange(e, "name")}
+          onClear={() => inputClear("name")}
           errorMessage={errorList.includes("name") && editSeting.nameErrorMsg}
         />
       </div>
-      <div className="nut-addressedit-item">
+      <div className={`${b("item")}`}>
         <Input
           className="nut-input-text"
           label={editSeting.telText}
@@ -310,12 +313,14 @@ export const AddressEdit: FunctionComponent<
           name="tel"
           placeholder={editSeting.telPlaceholder}
           type="tel"
+          clearable
           required={isRequired.includes("tel") || false}
           onChange={(e) => inputOnchange(e, "tel")}
+          onClear={() => inputClear("tel")}
           errorMessage={errorList.includes("tel") && editSeting.telErrorMsg}
         />
       </div>
-      <div className="nut-addressedit-item">
+      <div className={`${b("item")}`}>
         <Input
           className="nut-input-text"
           label={editSeting.regionText}
@@ -344,21 +349,23 @@ export const AddressEdit: FunctionComponent<
           onClose={closeAddress}
         />
       </div>
-      <div className="nut-addressedit-item">
+      <div className={`${b("item")}`}>
         <Input
           label={editSeting.addressText}
           className="nut-input-text"
           defaultValue={formData.address}
           placeholder={editSeting.addressPlaceholder}
           type="text"
+          clearable
           required={isRequired.includes("address") || false}
           onChange={(e) => inputOnchange(e, "address")}
+          onClear={() => inputClear("address")}
           errorMessage={
             errorList.includes("address") && editSeting.addressErrorMsg
           }
         />
       </div>
-      <div className="nut-addressedit-item setdefualt">
+      <div className={`${b("item")} setdefualt`}>
         <span className="label">设置默认地址</span>
         <Switch
           checked={formData.default}
@@ -367,7 +374,7 @@ export const AddressEdit: FunctionComponent<
           }}
         />
       </div>
-      <div className="nut-addressedit-bottom">
+      <div className={`${b("bottom")}`}>
         <Button block type="danger" onClick={save}>
           {editSeting.bottomText}
         </Button>
