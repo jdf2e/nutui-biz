@@ -3,13 +3,13 @@
     "name": "指南",
     "packages": [
       {
-        "name": "intro-react",
+        "name": "intro",
         "cName": "介绍",
         "show": true
       },
       {
         "name": "start-react",
-        "cName": "H5快速上手",
+        "cName": "快速上手",
         "show": true
       },
       {
@@ -34,7 +34,7 @@
         "show": true
       },
       {
-        "name": "https://github.com/jdf2e/nutui-react/releases",
+        "name": "https://github.com/jdf2e/nutui-biz/releases",
         "cName": "更新日志",
         "show": true,
         "isLink": true
