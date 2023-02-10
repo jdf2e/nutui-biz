@@ -344,6 +344,7 @@ export default App;
 | infotpl   | Customize info content| React.ReactNode  | -      |
 | isNeedPrice   | Whether price display is required| Boolean  | `true`      |
 | imgTag   | Product image label, often used to mark Double 11, live broadcast, etc | String  | -      |
+| isLazy   | Whether to show image lazyload| Boolean  | `false`      |
 | imgTagDirection   | Display position of product image label, optional value: `top-left`、`top-right`| String  | `top-left`      |
 | titleTag   | The label on the left side of the title, often used for activity tags, etc. If this parameter is not set or this parameter is empty, it will not be displayed| React.ReactNode  | -      |
 | titleLine   | The number of title lines, the default is two lines, if you want to display more content below, you can set it to 1| String \| Number  | `2`      |
@@ -352,7 +353,7 @@ export default App;
 ## Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
-| onClick | click event |  event: MouseEvent |
+| onClick | Click event |  event: MouseEvent |
 
 
 

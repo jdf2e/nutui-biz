@@ -49,8 +49,8 @@ const App = () => {
             setSkuData(Sku)
             setGoodsInfo(Goods)
             setImagePathMap(imagePathMap)
-        }) //执行结果是 resolve就调用then方法
-        .catch((err) => console.log('Oh, error', err)); //执行结果是 reject就调用catch方法
+        })
+        .catch((err) => console.log('Oh, error', err));
     };
 
     useEffect(() => {
@@ -72,7 +72,7 @@ const App = () => {
 
         setGoodsInfo({
             skuId: sku.id,
-            price: '4599.00' // 商品信息展示区，商品价格
+            price: '4599.00'
         })
         
         let goodsInfoBck = goodsInfo;
@@ -86,12 +86,12 @@ const App = () => {
     };
 
     const clickBtnOperate = (op: string) => {
-        console.log('点击了操作按钮', op);
+        console.log('Clicked operate button', op);
     };
 
   return (
     <>
-        <Cell onClick={() => setBase(true)}>基本用法</Cell>
+        <Cell onClick={() => setBase(true)}>Basic Usage</Cell>
         <Sku 
             visible={base} 
             sku={skuData}
@@ -121,7 +121,7 @@ const App = () => {
   const [notSell, setNotSell] = useState<boolean>(false)
 
   const changeStepper = (count: number) => {
-    console.log('购买数量', count);
+    console.log('Buy number', count);
   };
 
     const skuOperateBoxStyle = {
@@ -143,19 +143,19 @@ const App = () => {
 
   return (
     <>
-        <Cell onClick={() => setNotSell(true)}>不可售</Cell>
+        <Cell onClick={() => setNotSell(true)}>Not Sell</Cell>
         <Sku 
           visible={notSell} 
           sku={skuData}
           goods={goodsInfo}
-          btnExtraText="抱歉，此商品在所选区域暂无存货"
+          btnExtraText="Sorry, this product is not currently in stock in the selected region"
           onChangeStepper={changeStepper}
           btnOptions={['buy', 'cart']}
           onSelectSku={selectSku}
           operateBtn = {
             <div style={skuOperateBoxStyle}>
-              <Button style={skuOperateBoxDisFirstChildStyle} type="warning">查看相似商品</Button>
-              <Button style={skuOperateBoxDisLastChildStyle} type="info">到货通知</Button>
+              <Button style={skuOperateBoxDisFirstChildStyle} type="warning">View similar products</Button>
+              <Button style={skuOperateBoxDisLastChildStyle} type="info">Arrival Notice</Button>
             </div>
           }
           onClose={() => setNotSell(false)} 
@@ -181,16 +181,16 @@ const App = () => {
     const [customStepper, setCustomStepper] = useState<boolean>(false)
 
       const stepperExtraText = () => {
-        return <div style={{width:"100%",textAlign:"right",color:"#F00"}}>2 件起售</div>;
+        return <div style={{width:"100%",textAlign:"right",color:"#F00"}}>Minimum 2 pieces</div>;
     };
 
       const overLimit = () => {
-        console.log('已到极限值')
+        console.log('Limit value reached')
     };
 
   return (
     <>
-        <Cell onClick={() => setCustomStepper(true)}>自定义计步器</Cell>
+        <Cell onClick={() => setCustomStepper(true)}>Custom Stepper</Cell>
         <Sku 
           visible={customStepper} 
           sku={skuData}
@@ -224,7 +224,7 @@ import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
     const [customBySlot, setCustomBySlot] = useState<boolean>(false)
-    const [addressDesc, setAddressDesc] = useState<string>('(配送地会影响库存，请先确认)')
+    const [addressDesc, setAddressDesc] = useState<string>('(The delivery address will affect the stock, please confirm first)')
     const [showAddressPopup, setShowAddressPopup] = useState<boolean>(false)
 
     const tagStyle = {
@@ -260,37 +260,37 @@ const App = () => {
     const existAddress = [
         {
             id: 1,
-            addressDetail: 'th ',
-            cityName: '石景山区',
-            countyName: '城区',
-            provinceName: '北京',
+            addressDetail: 'Somewhere No 18',
+            cityName: 'Yizhuang',
+            countyName: 'Daxing',
+            provinceName: 'Beijing',
             selectedAddress: true,
             townName: ''
         },
         {
             id: 2,
-            addressDetail: '12_ ',
-            cityName: '电饭锅',
-            countyName: '扶绥县',
-            provinceName: '北京',
+            addressDetail: 'Somewhere No 19',
+            cityName: 'Yizhuang',
+            countyName: 'Daxing',
+            provinceName: 'Beijing',
             selectedAddress: false,
             townName: ''
         },
         {
             id: 3,
-            addressDetail: '发大水比 ',
-            cityName: '放到',
-            countyName: '广宁街道',
-            provinceName: '钓鱼岛全区',
+            addressDetail: 'Somewhere No 20',
+            cityName: 'Yizhuang',
+            countyName: 'Daxing',
+            provinceName: 'Beijing',
             selectedAddress: false,
             townName: ''
         },
         {
             id: 4,
-            addressDetail: '还是想吧百度吧 ',
-            cityName: '研发',
-            countyName: '八里庄街道',
-            provinceName: '北京',
+            addressDetail: 'Somewhere No 21',
+            cityName: 'Yizhuang',
+            countyName: 'Daxing',
+            provinceName: 'Beijing',
             selectedAddress: false,
             townName: ''
         }
@@ -303,7 +303,7 @@ const App = () => {
 
   return (
     <div>
-        <Cell onClick={() => setCustomBySlot(true)}>自定义插槽</Cell>
+        <Cell onClick={() => setCustomBySlot(true)}>Custom Slots</Cell>
         <Sku 
           visible={customBySlot} 
           sku={skuData}
@@ -313,17 +313,17 @@ const App = () => {
             <Price price={goodsInfo.price} needSymbol={true} thousands={false} />
             <span style={tagStyle}></span>
           </div>}
-          skuHeaderExtra={<span className='nut-sku-header-right-extra'>重量：0.1kg 编号：{ goodsInfo.skuId }</span>}
+          skuHeaderExtra={<span className='nut-sku-header-right-extra'>weight：0.1kg skuId：{ goodsInfo.skuId }</span>}
           operateBtn = {
             <div style={skuOperateBoxStyle}>
-              <Button style={skuOperateItemFirstChildStyle} shape="square" type="warning">加入购物车</Button>
-              <Button style={skuOperateItemLastChildStyle} shape="square" type="primary">立即购买</Button>
+              <Button style={skuOperateItemFirstChildStyle} shape="square" type="warning">Add Cart</Button>
+              <Button style={skuOperateItemLastChildStyle} shape="square" type="primary">Buy it now</Button>
             </div>
           }
           skuSelectTop={
             <Cell
               style={{boxShadow: 'none', padding: '13px 0'}}
-              title="送至"
+              title="Sent To"
               desc={addressDesc}
               onClick={() => setShowAddressPopup(true)}
             />
@@ -339,7 +339,7 @@ const App = () => {
           onClose={close}
           isShowCustomAddress={false}
           onSelect={() => selectedAddress.bind(this)}
-          existAddressTitle="配送至"
+          existAddressTitle="Deliver To"
         />
     </div>
   );

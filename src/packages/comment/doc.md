@@ -60,7 +60,9 @@ const App = () => {
       operation={["reply"]}
       commentLabels={
         <img
-          className="nut-comment-header__labels--item"
+          style={{
+            height: "20px",
+          }}
           src="https://img11.360buyimg.com/imagetools/jfs/t1/211858/17/4258/12101/618e6f78Ed0edcadc/e83a673555edf59f.jpg"
         />
       }
@@ -120,7 +122,6 @@ const App = () => {
       onClickImages={onClickImages}
       commentLabels={
         <img
-          className="nut-comment-header__labels--item"
           src="https://storage.360buyimg.com/imgtools/78925d9440-f9e874d0-e93d-11eb-8e5c-0da9e18a13b1.png"
           style={{ height: "12px" }}
         />

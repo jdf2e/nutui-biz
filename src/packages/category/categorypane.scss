@@ -1,0 +1,111 @@
+
+  .nut-category-pane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 100px);
+
+    
+    &__cate-list-right {
+      padding-left: 15px;
+      background: $category-bg-color;
+      overflow: auto;
+    }
+    &__child-title {
+      margin-top: 15px;
+      margin-bottom: 15px;
+      font-size: 13px;
+      font-family: PingFangSC;
+      font-weight: 500;
+      color: $category-pane-title-color;
+    }
+  
+    &__child-item-list {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &__child-item{
+      margin-right: 10px;
+    }
+    &__child-item-no{
+      margin-right: 0px !important;
+    }
+
+    &__child-img {
+      width: 75px;
+      height: 75px;
+      border-radius: 5px;
+    }
+  
+    &__sku-name {
+      margin-left: 8px;
+      margin-bottom: 15px;
+      width: 75px;
+      height: 34px;
+      padding: 0 4px;
+      border: 1px solid $category-pane-border-color;
+      border-radius: 8px;
+      font-size: 12px;
+      font-family: PingFangSC;
+      font-weight: normal;
+      color: $category-pane-gray-color;
+      text-align: center;
+      line-height: 34px;
+      white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+  
+    }
+  
+    &__sku-img {
+      font-size: 12px;
+      font-family: PingFangSC;
+      font-weight: normal;
+      color: $category-pane-gray-color;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+  
+    &__self-item-list {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &__quick{
+      height: 64px;
+      width: 100%;
+      background: #fff;
+      z-index: 1;
+    }
+
+    &__quick-box{
+      display: flex;
+      padding:  20px 0 20px;
+      overflow: auto;
+    }
+
+    &__quick-child{
+      flex-shrink:0 ;
+      width: 80px;
+      margin: 0px 8px 0 ;
+      padding: 0 8px;
+      height: 24px;
+      line-height: 24px;
+      font-size: 12px;
+      background: #f3f3f3;
+      border-radius: 12px;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &-active{
+        background: rgba(242,39,12,.07);
+        border: 1px solid #f2270c;
+        color:#f2270c ;
+      }
+    }
+  }
+  

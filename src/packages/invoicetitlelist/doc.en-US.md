@@ -2,7 +2,7 @@
 
 ### Intro
 
-展示发票抬头列表，包括增值税专用发票和电子普通发票。
+Display the list of invoice headers, including VAT special invoices and electronic general invoices.
 
 ### Install
 
@@ -13,7 +13,7 @@ import { InvoiceTitleList } from '@nutui/nutui-biz';
 
 ## Demo
 
-### 增值税专用发票
+### Special Invoice
 
 :::demo
 
@@ -48,7 +48,7 @@ export default App;
 
 :::
 
-### 增值税专用发票-发票状态
+### Special Invoice-Invoice Status
 
 :::demo
 
@@ -84,7 +84,7 @@ export default App;
 :::
 
 
-### 电子普通发票
+### Normal Invoice
 
 :::demo
 
@@ -120,7 +120,7 @@ export default App;
 :::
 
 
-### 选中状态
+### Selected Status
 
 :::demo
 
@@ -156,7 +156,7 @@ export default App;
 :::
 
 
-### 操作按钮自定义
+### Custom Bottom
 
 :::demo
 
@@ -193,7 +193,7 @@ export default App;
 :::
 
 
-### 隐藏所有操作
+### Hide All Operates
 
 :::demo
 
@@ -233,7 +233,7 @@ export default App;
 ### Props
 
 
-| 字段    | 说明                                       | 类型    | 默认值    |
+| Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
 | data   | 发票信息                                 | Object  | -         |
 | isShowOperate     | 是否展示操作区域                   | Boolean  | `true`    |
@@ -243,7 +243,7 @@ export default App;
 ### Data 字段说明
 
 
-| 字段    | 说明                                       | 类型    | 默认值    |
+| Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
 | isSelected   | 是否选择                                 | Boolean  | `false`         |
 | type     | 每一个抬头可选择的发票类型：normal（电子普票）special （增值税专用发票）                   | String  | `special`    |

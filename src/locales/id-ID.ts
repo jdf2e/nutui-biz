@@ -8,6 +8,10 @@ const idID: BaseLang = {
   noData: 'Tidak Ada Data',
   placeholder: 'Kolom Input',
   select: 'Pilih',
+  name: 'Nama penuh',
+  tel: 'Telepon',
+  default: 'Default',
+  addres: 'Addres',
   video: {
     errorTip: 'Terjadi Kesalahan',
     clickRetry: 'Coba Lagi',
@@ -81,6 +85,21 @@ const idID: BaseLang = {
     otherValueText: 'Jumlah Lain',
     placeholder: 'Kolom Input',
   },
+  receiveInvoiceEdit:{
+    nameText: "Nama",
+    namePlaceholder: "Silakan masukkan nama",
+    nameErrorMsg: "Item ini wajib diisi, harap diisi dan dikirimkan",
+    telText: "Nomor ponsel",
+    telPlaceholder: "Masukkan nomor ponsel penerima",
+    telErrorMsg: "Item ini wajib diisi, mohon diisi dan dikirimkan",
+    regionText: "lokasi",
+    regionPlaceholder: "Silakan pilih wilayah Anda",
+    regionErrorMsg: "Item ini wajib diisi, mohon diisi dan dikirimkan",
+    addressText: "Alamat",
+    addressPlaceholder: "Jalan, nomor gedung",
+    addressErrorMsg: "Item ini wajib diisi, mohon diisi dan dikirimkan",
+    bottomText: "menyimpan",
+  },
   timeselect: {
     pickupTime: 'Waktu Penjemputan',
   },
@@ -88,12 +107,26 @@ const idID: BaseLang = {
     buyNow: 'Beli Sekarang',
     buyNumber: 'Jumlah Pembelian',
     addToCard: 'Tambahkan ke Keranjang',
+    confirm: 'Confirm'
   },
   skuheader: {
     skuId: 'Nomor SKU',
   },
   addresslist: {
     addAddress: 'Tambah Alamat Baru',
+  },
+  itemContents: {
+    default: 'Default'
+  },
+  swipeShell: {
+    delete: 'Delete'
+  },
+  generalShell: {
+    copy: 'Copy',
+    address: 'Address',
+    set: 'Set',
+    default: 'Default',
+    delete: 'Delete'
   },
   comment: {
     complaintsText: 'Saya memiliki komplain',

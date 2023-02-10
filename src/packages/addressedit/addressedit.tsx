@@ -10,7 +10,6 @@ import {
   Cell,
   CellGroup,
 } from "@nutui/nutui-react";
-import "./addressedit.scss";
 
 interface CalResult {
   type: string;
