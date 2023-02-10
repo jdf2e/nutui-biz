@@ -259,7 +259,7 @@ export default App;
 
 | Attribute    | Description     | Type    | Default   |
 |---------|--------------------------------------------|---------|-----------|
-| account | account name | String | [] |
+| account | account name | String | '' |
 | accountPlaceholder | Placeholder text of the account input box | String | 'Please enter the login code' |
 | accountErrorText | account error prompt text | String | '' |
 | telOrMail | mobile phone or email | String | '' |

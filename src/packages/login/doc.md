@@ -258,7 +258,7 @@ export default App;
 ### Props formParams
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| account   | 账号名 | String | [] |
+| account   | 账号名 | String | '' |
 | accountPlaceholder   | 账号输入框占位文字    | String  |   '请输入登录码'      |
 | accountErrorText | 账号错误提示文字  | String | '' |
 | telOrMail | 手机或邮箱 | String | '' |
