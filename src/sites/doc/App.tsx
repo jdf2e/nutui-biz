@@ -121,6 +121,9 @@ const App = (props) => {
   }, [])
 
   useEffect(() => {
+    if(location.href.includes('component')) {
+      setActiveName('component')
+    }
     if(location.hash === '#/') {
       location.href="#/zh-CN/guide/intro"
     }

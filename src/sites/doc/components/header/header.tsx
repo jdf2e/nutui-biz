@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { nav } from '@/config.json'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory, useLocation } from 'react-router-dom'
 import classNames from 'classnames';
 // @ts-ignore
 import { version } from '/package.json'
 import config from '@/sites/config/env'
 import './header.scss'
-import { useHistory, useLocation } from 'react-router-dom'
 // import '@/packages/popover/popover.scss'
 import {Popover} from '@nutui/nutui-react'
 
@@ -71,6 +70,12 @@ const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   useEffect(() => {
   }, [searchList])
+
+  useEffect(() => {
+    if(location.pathname.includes('component')) {
+      setActiveName('component')
+    }
+  })
 
   const handleKeyUp = (e) => {
     let sVal = e.target.value;
