@@ -2,32 +2,53 @@ import React from 'react'
 import { AddressList } from './addresslist'
 import { useTranslate } from '../../sites/assets/locale'
 
-interface T {
+interface tarnslatedOption {
+  basic: string
+  title1: string
+  title2: string
+  testaddressName: string
+  fullAddress: string
 }
+
 const AddressListDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate<tarnslatedOption>({
     'zh-CN': {
+      basic: '基本用法',
+      title1: '长按功能',
+      title2: '滑动功能',
+      testaddressName: '姓名',
+      fullAddress: '北京亦庄经济技术开发区科创十一街18号院'
     },
     'zh-TW': {
+      basic: '基本用法',
+      title1: '長按功能',
+      title2: '滑動功能',
+      testaddressName: '姓名',
+      fullAddress: '北京亦莊經濟技術開發區科創十一街18號院'
     },
     'en-US': {
+      basic: 'Basic Usage',
+      title1: 'Long Press Function',
+      title2: 'Swipe Function',
+      testaddressName: 'Name',
+      fullAddress: 'Full Address'
     },
   })
 
   const data = [
     {
       testid: 3,
-      testaddressName: '姓名',
+      testaddressName: translated.testaddressName,
       phone: '123****4567',
       defaultAddress: false,
-      fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
+      fullAddress: translated.fullAddress
     },
     {
       testid: 4,
-      testaddressName: '姓名',
+      testaddressName: translated.testaddressName,
       phone: '123****4567',
       defaultAddress: true,
-      fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
+      fullAddress: translated.fullAddress
     }
   ];
 
@@ -64,7 +85,7 @@ const AddressListDemo = () => {
   return (
     <>
       <div className="demo">
-        <h2>基本用法</h2>
+        <h2>{translated.basic}</h2>
         <AddressList
           data={data}
           showBottomButton={false}
@@ -73,7 +94,7 @@ const AddressListDemo = () => {
           onEditIcon={editClick}
           onItemClick={itemClick}
         />
-        <h2>长按功能</h2>
+        <h2>{translated.title1}</h2>
         <AddressList
           data={data}
           longPress={true}
@@ -86,7 +107,7 @@ const AddressListDemo = () => {
           onLongSet={setClick}
           onLongDel={delClick}
         />
-        <h2>滑动功能</h2>
+        <h2>{translated.title2}</h2>
         <AddressList
           data={data}
           showBottomButton={true}

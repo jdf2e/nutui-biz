@@ -3,6 +3,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    width: calc(100% - 100px);
 
     
     &__cate-list-right {
@@ -23,7 +24,14 @@
       display: flex;
       flex-wrap: wrap;
     }
-   
+
+    &__child-item{
+      margin-right: 10px;
+    }
+    &__child-item-no{
+      margin-right: 0px !important;
+    }
+
     &__child-img {
       width: 75px;
       height: 75px;
@@ -80,14 +88,18 @@
 
     &__quick-child{
       flex-shrink:0 ;
+      width: 80px;
       margin: 0px 8px 0 ;
-      padding: 0 12px;
+      padding: 0 8px;
       height: 24px;
       line-height: 24px;
       font-size: 12px;
       background: #f3f3f3;
       border-radius: 12px;
       text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       &-active{
         background: rgba(242,39,12,.07);

@@ -186,7 +186,7 @@ export default App;
 ## CartBarIcon Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
-| onClick | click event |  event: Event |
+| onClick | Click event |  event: Event |
 
 
 
@@ -205,4 +205,4 @@ export default App;
 ## CartBarButton Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
-| onClick | click event |  event: Event |
+| onClick | Click event |  event: Event |

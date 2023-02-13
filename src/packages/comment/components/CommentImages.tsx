@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent, HTMLAttributes, useEffect, useState } from "react";
 import { IComponent } from "@/utils/typings";
 import { Icon } from "@nutui/nutui-react";
 
@@ -14,16 +14,16 @@ export interface CommentImagesProps extends IComponent {
 }
 
 export interface VideosType {
-  id: number | string;
-  mainUrl: string;
-  videoUrl: string;
+  id?: number | string;
+  mainUrl?: string;
+  videoUrl?: string;
 }
 
 export interface ImagesType {
-  id: number | string;
-  smallImgUrl: string;
-  bigImgUrl: string;
-  imgUrl: string;
+  id?: number | string;
+  smallImgUrl?: string;
+  bigImgUrl?: string;
+  imgUrl?: string;
 }
 
 const defaultProps = {
@@ -31,8 +31,7 @@ const defaultProps = {
 } as CommentImagesProps;
 
 export const CommentImages: FunctionComponent<
-  Partial<CommentImagesProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">
+  Partial<CommentImagesProps> & HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { type, videos, images, onClickImages } = {
     ...defaultProps,

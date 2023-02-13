@@ -59,7 +59,7 @@ import React, {
                     <slot name="contentTop">
                         <div className="nut-address-list-item__info-contact-name">{ item.addressName }</div>
                         <div className="nut-address-list-item__info-contact-tel">{ item.phone }</div>
-                        {item.defaultAddress && <div className="nut-address-list-item__info-contact-default">默认</div>}
+                        {item.defaultAddress && <div className="nut-address-list-item__info-contact-default">{locale.itemContents.default}</div>}
                     </slot>
                 </div>
                 <div className="nut-address-list-item__info-handle">

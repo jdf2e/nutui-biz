@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent, HTMLAttributes, useEffect, useState } from "react";
 import { IComponent } from "@/utils/typings";
 import { Icon } from "@nutui/nutui-react";
 
@@ -16,8 +16,7 @@ const defaultProps = {
 } as CommentBottomProps;
 
 export const CommentBottom: FunctionComponent<
-  Partial<CommentBottomProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">
+  Partial<CommentBottomProps> & HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { type, info, operation, onHandleClick, onClickOperate } = {
     ...defaultProps,

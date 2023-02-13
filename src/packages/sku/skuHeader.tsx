@@ -36,7 +36,7 @@ import React, {
     const renderSkuHeaderExtra = () => {
         if(skuHeaderExtra) return skuHeaderExtra;
         if(!skuHeaderExtra && goods.skuId) {
-            return <div className='nut-sku-header-right-extra'>商品编号：{goods.skuId}</div>
+            return <div className='nut-sku-header-right-extra'>{locale.skuheader.skuId}：{goods.skuId}</div>
         } else {
             return null;
         }

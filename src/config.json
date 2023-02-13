@@ -3,13 +3,13 @@
     "name": "指南",
     "packages": [
       {
-        "name": "intro-react",
+        "name": "intro",
         "cName": "介绍",
         "show": true
       },
       {
         "name": "start-react",
-        "cName": "H5快速上手",
+        "cName": "快速上手",
         "show": true
       },
       {
@@ -34,7 +34,7 @@
         "show": true
       },
       {
-        "name": "https://github.com/jdf2e/nutui-react/releases",
+        "name": "https://github.com/jdf2e/nutui-biz/releases",
         "cName": "更新日志",
         "show": true,
         "isLink": true
@@ -153,17 +153,6 @@
           "desc": "商品规格选择",
           "sort": 2,
           "show": true,
-          "taro": true,
-          "author": "yangjinjun3"
-        },
-        {
-          "version": "0.1.0",
-          "name": "SkuFeeds",
-          "type": "component",
-          "cName": "商品feed流",
-          "desc": "商品feed流",
-          "sort": 9,
-          "show": false,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -301,7 +290,7 @@
           "cName": "收票地址编辑",
           "desc": "收票地址编辑",
           "sort": 20,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -312,7 +301,7 @@
           "cName": "收票人列表",
           "desc": "收票人列表",
           "sort": 19,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         }
@@ -361,7 +350,7 @@
           "cName": "登录",
           "desc": "登录",
           "sort": 22,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         }

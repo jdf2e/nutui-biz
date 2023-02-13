@@ -1,0 +1,456 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`multi imagesRows test 1`] = `
+<div>
+  <div
+    class="nut-comment"
+  >
+    <div>
+      <div
+        class="nut-comment-header"
+      >
+        <div
+          class="nut-comment-header__user"
+        >
+          <div
+            class="nut-comment-header__user-avter"
+          >
+            <img
+              src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
+            />
+          </div>
+          <div
+            class="nut-comment-header__user-complex"
+          >
+            <span
+              class="nut-comment-header__user-complex-name"
+            >
+              星***_
+            </span>
+            <img
+              src="https://storage.360buyimg.com/imgtools/78925d9440-f9e874d0-e93d-11eb-8e5c-0da9e18a13b1.png"
+              style="height: 12px;"
+            />
+          </div>
+        </div>
+        <div
+          class="nut-comment-header__time"
+        >
+          2021-09-09
+        </div>
+      </div>
+      <div
+        class="nut-comment-header__complex-score"
+      >
+        <div
+          class="nut-rate undefined"
+        >
+          <div
+            class="nut-rate-item"
+            style="margin-right: 3px;"
+          >
+            <i
+              class="nutui-iconfont nut-icon nut-icon-star-fill-n nut-rate-item__icon "
+              style="font-size: 12px; height: 12px; width: 12px;"
+            />
+          </div>
+          <div
+            class="nut-rate-item"
+            style="margin-right: 3px;"
+          >
+            <i
+              class="nutui-iconfont nut-icon nut-icon-star-fill-n nut-rate-item__icon "
+              style="font-size: 12px; height: 12px; width: 12px;"
+            />
+          </div>
+          <div
+            class="nut-rate-item"
+            style="margin-right: 3px;"
+          >
+            <i
+              class="nutui-iconfont nut-icon nut-icon-star-fill-n nut-rate-item__icon "
+              style="font-size: 12px; height: 12px; width: 12px;"
+            />
+          </div>
+          <div
+            class="nut-rate-item"
+            style="margin-right: 3px;"
+          >
+            <i
+              class="nutui-iconfont nut-icon nut-icon-star-fill-n nut-rate-item__icon "
+              style="font-size: 12px; height: 12px; width: 12px;"
+            />
+          </div>
+          <div
+            class="nut-rate-item"
+            style="margin-right: 3px;"
+          >
+            <i
+              class="nutui-iconfont nut-icon nut-icon-star-fill-n nut-rate-item__icon "
+              style="font-size: 12px; height: 12px; width: 12px;"
+            />
+          </div>
+        </div>
+        <i
+          class="nut-comment-header__complex-score-i"
+        />
+        <div
+          class="nut-comment-header__complex-score-size"
+        >
+          雪域白【碎屏险套装】全网通；8G+256【12期免息】
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-comment__main"
+    >
+       
+      产品包装：塑料瓶，但是能接受，也很喜欢。
+       
+    </div>
+    <div
+      class="nut-comment-images nut-comment-images--multi"
+    >
+      <div
+        class="nut-comment-images__item nut-comment-images__item--video"
+      >
+        <img
+          src="https://img.300hu.com/4c1f7a6atransbjngwcloud1oss/3a5abb98377496264567160833/imageSampleSnapshot/1604738160_777980391.100_1344.jpg"
+        />
+        <div
+          class="nut-comment-images__play"
+        />
+      </div>
+      <div
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
+      >
+        <img
+          src="https://img30.360buyimg.com/imagetools/jfs/t1/153847/3/5051/62777/5fa65e01Ec88cecb9/36ba206949050b39.jpg"
+        />
+      </div>
+      <div
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
+      >
+        <img
+          src="https://img30.360buyimg.com/imagetools/jfs/t1/131794/19/15190/57841/5fa65e03E75c12ef1/0d1ac3a87ff9e398.jpg"
+        />
+      </div>
+      <div
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
+      >
+        <img
+          src="https://img30.360buyimg.com/imagetools/jfs/t1/155091/12/4926/68141/5fa65e03E9d8c5120/9c71b6e49f1eb3c3.jpg"
+        />
+      </div>
+      <div
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
+      >
+        <img
+          src="https://img30.360buyimg.com/imagetools/jfs/t1/138774/29/13635/70364/5fa65e04E1669ad70/c97839098a18d92e.jpg"
+        />
+      </div>
+      <div
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
+      >
+        <img
+          src="https://img30.360buyimg.com/imagetools/jfs/t1/120265/1/17811/70109/5fa65e05Eb23a84e3/e156fc1d316922c4.jpg"
+        />
+      </div>
+      <div
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
+      >
+        <img
+          src="https://img30.360buyimg.com/imagetools/jfs/t1/120265/1/17811/70109/5fa65e05Eb23a84e3/e156fc1d316922c4.jpg"
+        />
+      </div>
+      <div
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
+      >
+        <img
+          src="https://img30.360buyimg.com/imagetools/jfs/t1/155091/12/4926/68141/5fa65e03E9d8c5120/9c71b6e49f1eb3c3.jpg"
+        />
+      </div>
+      <div
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
+      >
+        <img
+          src="https://img30.360buyimg.com/imagetools/jfs/t1/138774/29/13635/70364/5fa65e04E1669ad70/c97839098a18d92e.jpg"
+        />
+        <div
+          class="nut-comment-images__mask"
+        >
+          <span>
+            共 
+            10
+             张
+          </span>
+          <i
+            class="nutui-iconfont nut-icon nut-icon-right "
+            style="font-size: 12px; height: 12px; width: 12px;"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-comment-bottom"
+    >
+      <div
+        class="nut-comment-bottom__lable"
+      />
+      <div
+        class="nut-comment-bottom__cpx"
+      >
+        <div
+          class="nut-comment-bottom__cpx-item nut-comment-bottom__cpx-item--reply"
+        >
+          <span>
+            23
+          </span>
+          <i
+            class="nutui-iconfont nut-icon nut-icon-comment "
+          />
+        </div>
+        <div
+          class="nut-comment-bottom__cpx-item nut-comment-bottom__cpx-item--like"
+        >
+          <span>
+            1
+          </span>
+          <i
+            class="nutui-iconfont nut-icon nut-icon-fabulous "
+          />
+        </div>
+        <div
+          class="nut-comment-bottom__cpx-item nut-comment-bottom__cpx-item--more"
+        >
+          <i
+            class="nutui-iconfont nut-icon nut-icon-more-x "
+          />
+          <div
+            class="nut-comment-bottom__cpx-item-popover"
+          >
+            我要投诉
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-comment-shop"
+    >
+      <span>
+        京东美妆国际：
+      </span>
+      尊敬的客户您好，非常抱歉给您带来不愉快的购物体验，关于过敏，什么成分都不存在个别性和普遍性。
+    </div>
+  </div>
+</div>
+`;
+
+exports[`props & one imageRow test 1`] = `
+<div>
+  <div
+    class="nut-comment"
+  >
+    <div>
+      <div
+        class="nut-comment-header"
+      >
+        <div
+          class="nut-comment-header__user"
+        >
+          <div
+            class="nut-comment-header__user-avter"
+          >
+            <img
+              src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
+            />
+          </div>
+          <div
+            class="nut-comment-header__user-default"
+          >
+            <div
+              class="nut-comment-header__user-default-name"
+            >
+              <span>
+                星***_
+              </span>
+              <img
+                class="item"
+                src="https://img11.360buyimg.com/imagetools/jfs/t1/211858/17/4258/12101/618e6f78Ed0edcadc/e83a673555edf59f.jpg"
+                style="height: 20px;"
+              />
+            </div>
+            <div
+              class="nut-comment-header__user-score"
+            >
+              <div
+                class="nut-rate undefined"
+              >
+                <div
+                  class="nut-rate-item"
+                  style="margin-right: 5px;"
+                >
+                  <i
+                    class="nutui-iconfont nut-icon nut-icon-star-fill-n nut-rate-item__icon "
+                    style="font-size: 12px; height: 12px; width: 12px;"
+                  />
+                </div>
+                <div
+                  class="nut-rate-item"
+                  style="margin-right: 5px;"
+                >
+                  <i
+                    class="nutui-iconfont nut-icon nut-icon-star-fill-n nut-rate-item__icon "
+                    style="font-size: 12px; height: 12px; width: 12px;"
+                  />
+                </div>
+                <div
+                  class="nut-rate-item"
+                  style="margin-right: 5px;"
+                >
+                  <i
+                    class="nutui-iconfont nut-icon nut-icon-star-fill-n nut-rate-item__icon "
+                    style="font-size: 12px; height: 12px; width: 12px;"
+                  />
+                </div>
+                <div
+                  class="nut-rate-item"
+                  style="margin-right: 5px;"
+                >
+                  <i
+                    class="nutui-iconfont nut-icon nut-icon-star-fill-n nut-rate-item__icon "
+                    style="font-size: 12px; height: 12px; width: 12px;"
+                  />
+                </div>
+                <div
+                  class="nut-rate-item"
+                  style="margin-right: 5px;"
+                >
+                  <i
+                    class="nutui-iconfont nut-icon nut-icon-star-fill-n nut-rate-item__icon "
+                    style="font-size: 12px; height: 12px; width: 12px;"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="nut-comment-header__time"
+        >
+          2021-09-09
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-comment__main"
+    >
+       
+      产品包装：塑料瓶，但是能接受，也很喜欢。
+       
+    </div>
+    <div
+      class="nut-comment-images nut-comment-images--one"
+    >
+      <div
+        class="nut-comment-images__item nut-comment-images__item--video"
+      >
+        <img
+          src="https://img.300hu.com/4c1f7a6atransbjngwcloud1oss/3a5abb98377496264567160833/imageSampleSnapshot/1604738160_777980391.100_1344.jpg"
+        />
+        <div
+          class="nut-comment-images__play"
+        />
+      </div>
+      <div
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
+      >
+        <img
+          src="https://img30.360buyimg.com/imagetools/jfs/t1/153847/3/5051/62777/5fa65e01Ec88cecb9/36ba206949050b39.jpg"
+        />
+      </div>
+      <div
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
+      >
+        <img
+          src="https://img30.360buyimg.com/imagetools/jfs/t1/131794/19/15190/57841/5fa65e03E75c12ef1/0d1ac3a87ff9e398.jpg"
+        />
+      </div>
+      <div
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
+      >
+        <img
+          src="https://img30.360buyimg.com/imagetools/jfs/t1/155091/12/4926/68141/5fa65e03E9d8c5120/9c71b6e49f1eb3c3.jpg"
+        />
+      </div>
+      <div
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
+      >
+        <img
+          src="https://img30.360buyimg.com/imagetools/jfs/t1/138774/29/13635/70364/5fa65e04E1669ad70/c97839098a18d92e.jpg"
+        />
+      </div>
+      <div
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
+      >
+        <img
+          src="https://img30.360buyimg.com/imagetools/jfs/t1/120265/1/17811/70109/5fa65e05Eb23a84e3/e156fc1d316922c4.jpg"
+        />
+      </div>
+      <div
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
+      >
+        <img
+          src="https://img30.360buyimg.com/imagetools/jfs/t1/120265/1/17811/70109/5fa65e05Eb23a84e3/e156fc1d316922c4.jpg"
+        />
+      </div>
+      <div
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
+      >
+        <img
+          src="https://img30.360buyimg.com/imagetools/jfs/t1/155091/12/4926/68141/5fa65e03E9d8c5120/9c71b6e49f1eb3c3.jpg"
+        />
+      </div>
+      <div
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
+      >
+        <img
+          src="https://img30.360buyimg.com/imagetools/jfs/t1/138774/29/13635/70364/5fa65e04E1669ad70/c97839098a18d92e.jpg"
+        />
+      </div>
+      <div
+        class="nut-comment-images__item nut-comment-images__item--imgbox"
+      >
+        <img
+          src="https://img30.360buyimg.com/imagetools/jfs/t1/138774/29/13635/70364/5fa65e04E1669ad70/c97839098a18d92e.jpg"
+        />
+      </div>
+    </div>
+    <div
+      class="nut-comment-bottom"
+    >
+      <div
+        class="nut-comment-bottom__lable"
+      >
+        <span>
+          雪域白【碎屏险套装】全网通；8G+256【12期免息】
+        </span>
+      </div>
+      <div
+        class="nut-comment-bottom__cpx"
+      >
+        <div
+          class="nut-comment-bottom__cpx-item nut-comment-bottom__cpx-item--reply"
+        >
+          <span>
+            23
+          </span>
+          <i
+            class="nutui-iconfont nut-icon nut-icon-comment "
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

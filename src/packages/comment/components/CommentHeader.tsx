@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from "react";
+import React, { FunctionComponent, HTMLAttributes, ReactNode } from "react";
 import { IComponent } from "@/utils/typings";
 import { Rate } from "@nutui/nutui-react";
 
@@ -14,8 +14,7 @@ const defaultProps = {
 } as CommentHeaderProps;
 
 export const CommentHeader: FunctionComponent<
-  Partial<CommentHeaderProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">
+  Partial<CommentHeaderProps> & HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { type, info, commentLabels, onHandleClick } = {
     ...defaultProps,

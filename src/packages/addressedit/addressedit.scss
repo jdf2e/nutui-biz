@@ -5,7 +5,7 @@
     background: $white;
     padding:5px 10px;
     border-radius: 4px;
-    &-item{
+    &__item{
         background: $white;
         padding: 0 10px;
         font-size: $font-size-2;
@@ -19,7 +19,7 @@
             }
         }
     }
-    &-bottom{
+    &__bottom{
         position: fixed;
         left: 0;
         right: 0;

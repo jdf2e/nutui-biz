@@ -7,7 +7,7 @@
 ### 安装
 
 ```javascript
-import { AddressEdit } from '@nutui/nutui-react';
+import { AddressEdit } from '@nutui/nutui-biz';
 ```
 
 ## 代码演示

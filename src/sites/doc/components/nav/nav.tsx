@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { nav } from '@/config.json'
-import { NavLink } from 'react-router-dom'
+import { nav, docs } from '@/config.json'
+import { NavLink, useHistory } from 'react-router-dom'
 import './nav.scss'
 import useLocale from '@/sites/assets/locale/uselocale'
+import classNames from 'classnames'
 
 const Nav = () => {
+  const history = useHistory()
   const [cNav] = useState<any>(nav)
+  const [cDocs] = useState<any>(docs)
   const [lang] = useLocale()
   const [fixed, setFixed] = useState(false)
+  const [activeName, setActiveName] = useState<string>('intro')
   const scrollNav = () => {
     let top = document.documentElement.scrollTop
     if (top > 64) {
@@ -19,9 +23,25 @@ const Nav = () => {
   useEffect(() => {
     document.addEventListener('scroll', scrollNav)
   }, [])
+
+  const isGuideNav = location.href.includes('guide') || location.hash === '#/';
+
+  const changeNav = (_nav: any) => {
+    setActiveName(_nav.name)
+    history.push(_nav.name)
+  }
+
   return (
     <div className={`doc-nav ${fixed ? 'fixed' : ''}`}>
-      <ol>
+      { isGuideNav ? <ol><ul>
+        {
+          cDocs.packages.map((_package, index) => {
+            return <li className={classNames([{active: activeName === _package.name}])} key={index} onClick={changeNav.bind(this, _package)}>
+              <div>{_package.cName}</div>
+            </li>
+          })
+        }
+      </ul></ol> : <ol>
         {cNav.map((cn: any) => {
           return (
             <React.Fragment key={Math.random()}>
@@ -51,7 +71,7 @@ const Nav = () => {
             </React.Fragment>
           )
         })}
-      </ol>
+      </ol>}
     </div>
   )
 }
