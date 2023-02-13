@@ -39,7 +39,8 @@ export const ReceiveInvoiceList: FunctionComponent<
   Partial<ReceiveInvoiceListProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
   const { locale } = useConfig();
-  const [modelValue, setModelValue] = useState(defaultProps.modelValue);
+  const [modelValue, setModelValue] = useState(props.modelValue);
+
   const {
     list,
     onSelected,
