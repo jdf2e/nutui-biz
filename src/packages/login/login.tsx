@@ -8,7 +8,6 @@ import React, {
 import { useConfig } from "@/packages/configprovider";
 import bem from "@/utils/bem";
 import { IComponent } from "@/utils/typings";
-import "./login.scss";
 import { Input, Button, Icon, Checkbox, Toast } from "@nutui/nutui-react";
 
 interface LoginParamsProps {
