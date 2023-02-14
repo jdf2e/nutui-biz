@@ -132,7 +132,7 @@ export const SearchHistory: FunctionComponent<
           {
             <div className='search-history-result-tags'>
               {recentSearchData.map((item, index) => {
-                return <a key={index} onClick={handleClickSearchItem.bind(this, item)}>{item.key}{isShowDeleteSearchItemIcon && <span>X</span>}</a>
+                return <a key={index} onClick={()=>handleClickSearchItem(item)}>{item.key}{isShowDeleteSearchItemIcon && <span>X</span>}</a>
               })}
             </div>
           }
@@ -160,7 +160,7 @@ export const SearchHistory: FunctionComponent<
           {
             searchDiscoverData.length > 0 && eyeOpened && <div className='search-history-result-tags'>
               {searchDiscoverData.map((item, index) => {
-                return <a key={index} onClick={handleClickSearchItem.bind(this, item)}>{item.key}</a>
+                return <a key={index} onClick={()=>handleClickSearchItem(item)}>{item.key}</a>
               })}
             </div>
           }

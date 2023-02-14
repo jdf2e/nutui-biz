@@ -36,7 +36,7 @@ const Nav = () => {
       { isGuideNav ? <ol><ul>
         {
           cDocs.packages.map((_package, index) => {
-            return <li className={classNames([{active: activeName === _package.name}])} key={index} onClick={changeNav.bind(this, _package)}>
+            return <li className={classNames([{active: activeName === _package.name}])} key={index} onClick={()=>changeNav(_package)}>
               <div>{_package.cName}</div>
             </li>
           })

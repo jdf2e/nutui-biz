@@ -59,7 +59,7 @@ let fileStr = `${importStr}
 ${importScssStr}
 export { ${packages.join(',')} };`
 fs.outputFile(
-  path.resolve(__dirname, '../../src/packages/nutui.react.taro.ts'),
+  path.resolve(__dirname, '../../src/packages/nutui.biz.taro.ts'),
   fileStr,
   'utf8',
   (error) => {
@@ -71,7 +71,7 @@ let taroScssfileStr = `
 ${importScssStr}
 export default { "NutUI":"NutUI-Taro" };`
 fs.outputFile(
-  path.resolve(__dirname, '../../src/packages/nutui.react.taro.scss.ts'),
+  path.resolve(__dirname, '../../src/packages/nutui.biz.taro.scss.ts'),
   taroScssfileStr,
   'utf8',
   (error) => {
@@ -80,7 +80,7 @@ fs.outputFile(
 )
 
 fs.outputFile(
-  path.resolve(__dirname, '../../src/packages/nutui.react.scss.ts'),
+  path.resolve(__dirname, '../../src/packages/nutui.biz.scss.ts'),
   importScssStr,
   'utf8',
   (error) => {

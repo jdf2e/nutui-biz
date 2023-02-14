@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { nav } from '@/config.json'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory, useLocation } from 'react-router-dom'
 import classNames from 'classnames';
 // @ts-ignore
 import { version } from '/package.json'
 import config from '@/sites/config/env'
 import './header.scss'
-import { useHistory, useLocation } from 'react-router-dom'
 // import '@/packages/popover/popover.scss'
 import {Popover} from '@nutui/nutui-react'
 
@@ -71,6 +70,12 @@ const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   useEffect(() => {
   }, [searchList])
+
+  useEffect(() => {
+    if(location.pathname.includes('component')) {
+      setActiveName('component')
+    }
+  })
 
   const handleKeyUp = (e) => {
     let sVal = e.target.value;
@@ -155,8 +160,8 @@ const Header: React.FunctionComponent<HeaderProps> = (props) => {
         </div>
         <div className="nav-box">
           <ul className="nav-list">
-            <li className={classNames(['nav-item', {active: activeName === 'guide'}])} onClick={handleSetActiveName.bind(this, 'guide')}><NavLink to="/zh-CN/guide/intro">指南</NavLink></li>
-            <li className={classNames(['nav-item', {active: activeName === 'component'}])} onClick={handleSetActiveName.bind(this, 'component')}><NavLink to="/zh-CN/component/SettleBar">组件</NavLink></li>
+            <li className={classNames(['nav-item', {active: activeName === 'guide'}])} onClick={() => handleSetActiveName('guide')}><NavLink to="/zh-CN/guide/intro">指南</NavLink></li>
+            <li className={classNames(['nav-item', {active: activeName === 'component'}])} onClick={() => handleSetActiveName('component')}><NavLink to="/zh-CN/component/SettleBar">组件</NavLink></li>
             <li className="nav-item"><a className="user-link" target="_blank" href="https://github.com/jdf2e/nutui-biz"></a></li>
           </ul>
         </div>

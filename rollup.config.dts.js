@@ -5,10 +5,10 @@ console.log(process.env.npm_config_taro)
 
 const config = [
   {
-    // input: './dist/esm/types/src/packages/nutui.react.d.ts',
+    // input: './dist/esm/types/src/packages/nutui.biz.d.ts',
     input: process.env.npm_config_taro
-      ? './dist/types/nutui.taro.react.build.ts'
-      : './dist/types/nutui.react.build.ts',
+      ? './dist/types/nutui.taro.biz.build.ts'
+      : './dist/types/nutui.biz.build.ts',
     output: [{ file: 'dist/types/index.d.ts', format: 'es' }],
     plugins: [
       dts({

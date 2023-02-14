@@ -20,7 +20,7 @@ export default ${name}Demo
 
     tarodemo: `import React from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { ${name} } from '@/packages/nutui.react.taro'
+import { ${name} } from '@/packages/nutui.biz.taro'
 
 const ${name}Demo = () => {
   return (
