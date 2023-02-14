@@ -71,14 +71,14 @@ export default App;
 |---------------|----------------------------------|--------|------------------|
 | chooseText    | 選擇面值文案   | string |   `請選擇電子卡面值`   |
 | suffix        | 符號標示       | string | `¥`            |
-| otherValueText| 其他面值文案   | string |    `其他面值`   |
+| otherValueText| 其他面值文案   | string |    `其它面值`   |
 | dataList      | 電子卡面值列表  | Array |  `DataList[]`  |
 | cardAmountMin | 其它面值最小值  | number | `1` |
 | cardAmountMax | 其他面值最大值  | number | `9999`            |
 | cardBuyMin    | 購買數量最小值  | number | `9999`            |
 | cardBuyMax    | 購買數量最大值  | number | `9999`            |
 | money         | 購買電子卡所需價錢 | number | `0`            |
-| placeholder   | 其他面值默認提示語 | string | `請輸入1-5000整數`|
+| placeholder   | 其他面值默認提示語 | string | `請輸入1-9999整數`|
 
 ### Events
 
