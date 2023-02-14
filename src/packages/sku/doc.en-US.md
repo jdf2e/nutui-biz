@@ -338,7 +338,7 @@ const App = () => {
           existAddress={existAddress}
           onClose={close}
           isShowCustomAddress={false}
-          onSelect={() => selectedAddress.bind(this)}
+          onSelect={() => selectedAddress()}
           existAddressTitle="Deliver To"
         />
     </div>

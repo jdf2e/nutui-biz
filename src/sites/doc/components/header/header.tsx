@@ -160,8 +160,8 @@ const Header: React.FunctionComponent<HeaderProps> = (props) => {
         </div>
         <div className="nav-box">
           <ul className="nav-list">
-            <li className={classNames(['nav-item', {active: activeName === 'guide'}])} onClick={handleSetActiveName.bind(this, 'guide')}><NavLink to="/zh-CN/guide/intro">指南</NavLink></li>
-            <li className={classNames(['nav-item', {active: activeName === 'component'}])} onClick={handleSetActiveName.bind(this, 'component')}><NavLink to="/zh-CN/component/SettleBar">组件</NavLink></li>
+            <li className={classNames(['nav-item', {active: activeName === 'guide'}])} onClick={() => handleSetActiveName('guide')}><NavLink to="/zh-CN/guide/intro">指南</NavLink></li>
+            <li className={classNames(['nav-item', {active: activeName === 'component'}])} onClick={() => handleSetActiveName('component')}><NavLink to="/zh-CN/component/SettleBar">组件</NavLink></li>
             <li className="nav-item"><a className="user-link" target="_blank" href="https://github.com/jdf2e/nutui-biz"></a></li>
           </ul>
         </div>
