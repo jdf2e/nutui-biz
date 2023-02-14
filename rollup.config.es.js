@@ -6,7 +6,7 @@ const path = require('path')
 const config = require('./src/config.json')
 
 const entries = {
-  'nutui-react.es': path.join(__dirname, `./src/packages/nutui.react.build.ts`),
+  'nutui-biz.es': path.join(__dirname, `./src/packages/nutui.biz.build.ts`),
 }
 const outputEntries = {}
 
