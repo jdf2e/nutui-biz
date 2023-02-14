@@ -61,22 +61,70 @@ export default App;
 ```
 
 :::
+### 使用左滑删除
+
+:::demo
+
+```ts
+import  React from 'react';
+import { Cell,CellGroup, Tag } from '@nutui/nutui-react';
+import { ReceiveInvoiceList } from '@nutui/nutui-biz';
+
+const App = () => {
+  
+  const state = {
+    modelValue: 1,
+    list: [
+      {
+        id: 1,
+        name: '张三',
+        tel: '15088888888',
+        addres: '北京市大兴京东大厦1号楼',
+        isDefault: true,
+      },
+      {
+        id: 2,
+        name: '李四',
+        tel: '15088888888',
+        addres: '北京市大兴京东大厦2号楼',
+        isDefault: false,
+        extends: [
+          { label: '扩展1', value: '扩展信息展示' },
+          { label: '扩展2', value: '扩展信息展示' }
+        ]
+      }
+    ]
+  };
+
+  const event = {
+    onDelete: (item: ReceiveInvoiceItem) => { console.log('onDelete', item) },
+  }
+
+  return (
+     <ReceiveInvoiceList enableDelete={true} list={state.list} modelValue={state.modelValue} onDelete={event.onDelete} />
+  );
+};
+export default App;
+```
+
+:::
 
 ## API
 
 ### Props
 
 
-| 字段       | 说明                | 类型                      | 默认值 |
-|------------|---------------------|---------------------------|--------|
-| list       | 联系人列表          | Array<ReceiveInvoiceItem> | []     |
-| modelValue | 当前选中联系人的 id | Number \| String           | -      |
+| 字段         | 说明                | 类型                      | 默认值  |
+|--------------|---------------------|---------------------------|---------|
+| modelValue   | 当前选中联系人的 id | Number \| String          | -       |
+| list         | 联系人列表          | Array<ReceiveInvoiceItem> | []      |
+| enableDelete | 是否启用删除功能    | Boolean                   | `false` |
 
 ### ReceiveInvoiceItem 数据结构
 
 | 键名    | 说明           | 类型                         |
 |---------|----------------|------------------------------|
-| id      | 联系人的 id    | Number \| String              |
+| id      | 联系人的 id    | Number \| String             |
 | name    | 联系人姓名     | String                       |
 | tel     | 联系人手机号   | String                       |
 | addres  | 联系人地址信息 | String                       |
@@ -90,7 +138,8 @@ export default App;
 
 
 ## Events
-| 字段       | 说明       | 回调参数                |
-|------------|------------|-------------------------|
-| onEdit     | 点击事件   | item\:ReceiveInvoiceItem |
-| onSelected | 选中卡片项 | item\:ReceiveInvoiceItem |
+| 字段       | 说明     | 回调参数                 |
+|------------|----------|--------------------------|
+| onEdit     | 编辑事件 | item\:ReceiveInvoiceItem |
+| onSelected | 选中事件 | item\:ReceiveInvoiceItem |
+| onDelete   | 删除事件 | item\:ReceiveInvoiceItem |

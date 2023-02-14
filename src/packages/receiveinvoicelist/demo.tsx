@@ -4,18 +4,22 @@ import { useTranslate } from '../../sites/assets/locale'
 
 interface tarnslatedOption {
   basic: string;
+  useSwipe: string;
 }
 
 const ReceiveInvoiceListDemo = () => {
   const [translated] = useTranslate<tarnslatedOption>({
     'zh-CN': {
       basic: '基本用法',
+      useSwipe: '使用左滑删除',
     },
     'zh-TW': {
       basic: '基本用法',
+      useSwipe: '使用左滑删除',
     },
     'en-US': {
       basic: 'Basic Usage',
+      useSwipe: 'Use Swipe Delete',
     }
   });
 
@@ -45,7 +49,8 @@ const ReceiveInvoiceListDemo = () => {
 
   const event = {
     onEdit: (item: ReceiveInvoiceItem) => { console.log('onEdit', item) },
-    onSelected: (item: ReceiveInvoiceItem) => { console.log('onSelected', item) }
+    onSelected: (item: ReceiveInvoiceItem) => { console.log('onSelected', item) },
+    onDelete: (item: ReceiveInvoiceItem) => { console.log('onDelete', item) }
   }
 
 
@@ -54,6 +59,8 @@ const ReceiveInvoiceListDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <ReceiveInvoiceList list={state.list} modelValue={state.modelValue} onSelected={event.onSelected} onEdit={event.onEdit} />
+        <h2>{translated.useSwipe}</h2>
+        <ReceiveInvoiceList enableDelete={true} list={state.list} modelValue={state.modelValue} onDelete={event.onDelete} />
       </div>
     </>
   )
