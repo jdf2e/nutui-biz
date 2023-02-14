@@ -76,12 +76,12 @@ export const Sku: FunctionComponent<
     stepperMax = 99999,
     stepperMin = 1,
     stepperExtraText = false,
-    stepperTitle = '购买数量',
+    stepperTitle = locale.sku.buyNumber,
     btnOptions = ['confirm'],
     btnExtraText = '',
-    buyText = '立即购买',
-    addCartText = '加入购物车',
-    confirmText = '确定',
+    buyText = locale.sku.buyNow,
+    addCartText = locale.sku.addToCard,
+    confirmText = locale.sku.confirm,
     operateBtn,
     onClose,
     onClickOverlay,
@@ -163,9 +163,9 @@ export const Sku: FunctionComponent<
       closeable
       round
       style={{"height": '75%'}}
-      onClose={closePopup.bind(this, 'close')}
-      onClickCloseIcon={closePopup.bind(this, 'icon')}
-      onClickOverlay={closePopup.bind(this, 'overlay')}
+      onClose={()=>closePopup('close')}
+      onClickCloseIcon={()=>closePopup('icon')}
+      onClickOverlay={()=>closePopup('overlay')}
     >
       <div className={classNames([b(),className])} style={style}>
         {renderSkuHeader()}

@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-biz",
-  "version": "0.0.1",
+  "version": "0.0.1-beta.0",
   "style": "dist/style.css",
   "main": "dist/nutui.biz.umd.js",
   "module": "dist/esm/nutui-biz.es.js",
@@ -91,7 +91,7 @@
   "dependencies": {
     "@babel/runtime": "^7.16.5",
     "@bem-react/classname": "^1.5.10",
-    "@nutui/nutui-react": "^1.4.5",
+    "@nutui/nutui-react": "^1.4.6",
     "@nutui/nutui-react-taro": "^1.4.0",
     "@react-spring/web": "^9.3.2",
     "@use-gesture/react": "^10.2.9",

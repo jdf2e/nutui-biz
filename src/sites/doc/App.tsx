@@ -3,13 +3,11 @@ import {
   HashRouter,
   Switch,
   Route,
-  Redirect,
   useLocation,
-  useHistory,
 } from 'react-router-dom'
 import './App.scss'
 import { nav } from '@/config.json'
-import useLocale from '../assets/locale/uselocale'
+import {getLocale} from '../assets/locale/uselocale'
 import remarkGfm from 'remark-gfm'
 import { raws, scssRaws } from './docs'
 import { visit } from 'unist-util-visit'
@@ -22,6 +20,7 @@ import DemoPreview from '@/sites/doc/components/demo-preview'
 import Issue from '@/sites/doc/components/issue'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import routers from './router'
+import classNames from 'classnames'
 
 function myRemarkPlugin() {
   return (tree: any) => {
@@ -65,12 +64,12 @@ const Title = () => {
   const [componentName, setComponentName] = useState({ name: '', cName: '' })
   return (
     <div className="title">
-      {componentName.name}&nbsp;{componentName.cName}
+      {componentName.name}&nbsp;{getLocale() === 'zh-CN' && componentName.cName}
     </div>
   )
 }
 
-const App = () => {
+const App = (props) => {
   const taros = useMemo(() => {
     const docs = {} as any
     const support = {} as any
@@ -90,6 +89,7 @@ const App = () => {
 
   const [fixed, setFixed] = useState(false)
   const [hidden, setHidden] = useState(false)
+  const [activeName, setActiveName] = useState('guide')
 
   const scrollTitle = () => {
     let top = document.documentElement.scrollTop
@@ -120,15 +120,28 @@ const App = () => {
     document.addEventListener('scroll', scrollTitle)
   }, [])
 
+  useEffect(() => {
+    if(location.href.includes('component')) {
+      setActiveName('component')
+    }
+    if(location.hash === '#/') {
+      location.href="#/zh-CN/guide/intro"
+    }
+  })
+
   const [docname, setDocName] = useState('react')
+
+  const handleClick = (activeName: string) => {
+    setActiveName(activeName)
+  }
 
   return (
     <div>
       <HashRouter>
-        <Header></Header>
+        <Header click={handleClick}></Header>
         <Nav></Nav>
         <div className="doc-content">
-          <div className="doc-title">
+          { activeName === 'component' && <div className="doc-title">
             <div
               className={`doc-title-position ${fixed ? 'fixed' : ''} ${
                 hidden ? 'hidden' : ''
@@ -137,8 +150,8 @@ const App = () => {
               <Title></Title>
               <Issue></Issue>
             </div>
-          </div>
-          <div className="doc-content-document isComponent">
+          </div>}
+          <div className={classNames(['doc-content-document', activeName === 'component' ? 'isComponent' : 'full'])}>
             <Switch>
               {routers.map((ru, k) => {
                 return (
@@ -214,9 +227,9 @@ const App = () => {
               })}
             </Switch>
           </div>
-          <div className="markdown-body">
+          { activeName === 'component' && <div className="markdown-body">
             <DemoPreview className={`${fixed ? 'fixed' : ''}`}></DemoPreview>
-          </div>
+          </div> }
         </div>
       </HashRouter>
     </div>

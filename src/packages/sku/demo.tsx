@@ -17,8 +17,58 @@ interface SkuItem {
   imagePath: string;
   [key: string]: any;
 }
+interface tarnslatedOption {
+  basic: string;
+  notSell: string;
+  customStepper: string;
+  customBySlot: string;
+  deliverTo: string;
+  sendTo: string;
+  weight: string;
+  skuId: string;
+  addCart: string;
+  buyItNow: string;
+}
 
 const SkuDemo = () => {
+  const [translated] = useTranslate<tarnslatedOption>({
+    'zh-CN': {
+      basic: '基本用法',
+      notSell: '不可售',
+      customStepper: '自定义计步器',
+      customBySlot: '自定义插槽',
+      deliverTo: '配送至',
+      sendTo: '送至',
+      weight: '重量',
+      skuId: '编号',
+      addCart: '加入购物车',
+      buyItNow: '立即购买'
+    },
+    'zh-TW': {
+      basic: '基本用法',
+      notSell: '不可售',
+      customStepper: '自定義計步器',
+      customBySlot: '自定義插槽',
+      deliverTo: '配送至',
+      sendTo: '送至',
+      weight: '重量',
+      skuId: '編號',
+      addCart: '加入購物車',
+      buyItNow: '立即購買'
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      notSell: 'Not Sell',
+      customStepper: 'Custom Stepper',
+      customBySlot: 'Custom By Slot',
+      deliverTo: 'Deliver To',
+      sendTo: 'Send To',
+      weight: 'Weight',
+      skuId: 'SkuId',
+      addCart: 'Add Cart',
+      buyItNow: 'Buy It Now'
+    }
+  });
   const [base, setBase] = useState<boolean>(false)
   const [notSell, setNotSell] = useState<boolean>(false)
   const [customStepper, setCustomStepper] = useState<boolean>(false)
@@ -184,8 +234,8 @@ const SkuDemo = () => {
   return (
     <>
       <div className="demo">
-        <h2>基本用法</h2>
-        <Cell onClick={() => setBase(true)}>基本用法</Cell>
+        <h2>{translated.basic}</h2>
+        <Cell onClick={() => setBase(true)}>{translated.basic}</Cell>
         <Sku 
           visible={base} 
           sku={skuData}
@@ -194,8 +244,8 @@ const SkuDemo = () => {
           onClickBtnOperate={clickBtnOperate}
           onClose={() => setBase(false)} 
         />
-        <h2>不可售</h2>
-        <Cell onClick={() => setNotSell(true)}>不可售</Cell>
+        <h2>{translated.notSell}</h2>
+        <Cell onClick={() => setNotSell(true)}>{translated.notSell}</Cell>
         <Sku 
           visible={notSell} 
           sku={skuData}
@@ -212,8 +262,8 @@ const SkuDemo = () => {
           }
           onClose={() => setNotSell(false)} 
         />
-        <h2>自定义计步器</h2>
-        <Cell onClick={() => setCustomStepper(true)}>自定义计步器</Cell>
+        <h2>{translated.customStepper}</h2>
+        <Cell onClick={() => setCustomStepper(true)}>{translated.customStepper}</Cell>
         <Sku 
           visible={customStepper} 
           sku={skuData}
@@ -228,8 +278,8 @@ const SkuDemo = () => {
           onClickBtnOperate={clickBtnOperate}
           onClose={() => setCustomStepper(false)} 
         />
-        <h2>自定义插槽</h2>
-        <Cell onClick={() => setCustomBySlot(true)}>自定义插槽</Cell>
+        <h2>{translated.customBySlot}</h2>
+        <Cell onClick={() => setCustomBySlot(true)}>{translated.customBySlot}</Cell>
         <Sku 
           visible={customBySlot} 
           sku={skuData}
@@ -239,17 +289,17 @@ const SkuDemo = () => {
             <Price price={goodsInfo.price} needSymbol={true} thousands={false} />
             <span style={tagStyle}></span>
           </div>}
-          skuHeaderExtra={<span className='nut-sku-header-right-extra'>重量：0.1kg 编号：{ goodsInfo.skuId }</span>}
+          skuHeaderExtra={<span className='nut-sku-header-right-extra'>{translated.weight}：0.1kg {translated.skuId}：{ goodsInfo.skuId }</span>}
           operateBtn = {
             <div style={skuOperateBoxStyle}>
-              <Button style={skuOperateItemFirstChildStyle} shape="square" type="warning">加入购物车</Button>
-              <Button style={skuOperateItemLastChildStyle} shape="square" type="primary">立即购买</Button>
+              <Button style={skuOperateItemFirstChildStyle} shape="square" type="warning">{translated.addCart}</Button>
+              <Button style={skuOperateItemLastChildStyle} shape="square" type="primary">{translated.buyItNow}</Button>
             </div>
           }
           skuSelectTop={
             <Cell
               style={{boxShadow: 'none', padding: '13px 0'}}
-              title="送至"
+              title={translated.sendTo}
               desc={addressDesc}
               onClick={() => setShowAddressPopup(true)}
             />
@@ -265,7 +315,7 @@ const SkuDemo = () => {
           onClose={close}
           isShowCustomAddress={false}
           onSelect={() => selectedAddress.bind(this)}
-          existAddressTitle="配送至"
+          existAddressTitle={translated.deliverTo}
         />
       </div>
     </>

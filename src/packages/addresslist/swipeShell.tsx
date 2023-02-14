@@ -75,7 +75,7 @@ import React, {
     }
   
     return (
-        <Swipe rightAction={<Button shape="square" style={{height: '100%'}} type="danger" onClick={swipeDelClick}>删除</Button>}>
+        <Swipe rightAction={<Button shape="square" style={{height: '100%'}} type="danger" onClick={swipeDelClick}>{locale.swipeShell.delete}</Button>}>
           <div className="nut-address-list-swipe">
               <ItemContents
                 item={item}

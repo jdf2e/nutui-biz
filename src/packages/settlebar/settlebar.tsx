@@ -39,55 +39,36 @@ export interface SettleBarProps extends IComponent {
   onSelectAll: (checked: boolean) => void
 }
 
-const defaultProps = {
-  total: 0,
-  totalText: '合计',
-  totalAlign: 'right',
-  settleButtonText: '去结算',
-  disabled: false,
-  loading: false,
-  settleCount: 0,
-  settleUnit: '',
-  showZero: true,
-  noCount: false,
-  safeAreaInsetBottom: true,
-  placeholder: false,
-  customTotalExtra: '',
-  onSettle: () => {},
-  onSelectAll: (checked) => {}
-} as SettleBarProps
-
 export const SettleBar: FunctionComponent<
   Partial<SettleBarProps>
 > = (props) => {
   const { locale } = useConfig()
   const root = useRef(null)
   const {
-    total,
-    totalText,
-    totalAlign,
-    settleButtonText,
-    disabled,
-    loading,
+    total = 0,
+    totalText = locale.settleBar.totalText,
+    totalAlign = 'right',
+    settleButtonText = locale.settleBar.settleButtonText,
+    disabled = false,
+    loading = false,
     className,
     style,
-    settleCount,
-    settleUnit,
+    settleCount = 0,
+    settleUnit = '',
     customWarning,
-    safeAreaInsetBottom,
-    placeholder,
-    showZero,
-    noCount,
+    safeAreaInsetBottom = true,
+    placeholder = false,
+    showZero = true,
+    noCount = false,
     customTotal,
     customSelectAll,
     customTotalPrice,
     customButton,
-    customTotalExtra,
-    onSettle,
-    onSelectAll,
+    customTotalExtra = '',
+    onSettle = () => {},
+    onSelectAll = (checked: boolean) => {},
     ...rest
   } = {
-    ...defaultProps,
     ...props,
   }
 
@@ -134,7 +115,7 @@ export const SettleBar: FunctionComponent<
   const renderSelectAll = () => {
     if(!customSelectAll && customSelectAll !== undefined) return null;
 
-    return <div className='select-all'>{customSelectAll ? customSelectAll : <Checkbox label="全选" onChange={handleSelectAll} />}</div>
+    return <div className='select-all'>{customSelectAll ? customSelectAll : <Checkbox label={locale.settleBar.selectAll} onChange={handleSelectAll} />}</div>
   }
 
   const renderSettleBar = () => {
@@ -177,5 +158,4 @@ export const SettleBar: FunctionComponent<
   )
 }
 
-SettleBar.defaultProps = defaultProps
 SettleBar.displayName = 'NutSettleBar'

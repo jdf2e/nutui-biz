@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { nav } from '@/config.json'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory, useLocation } from 'react-router-dom'
 import classNames from 'classnames';
 // @ts-ignore
 import { version } from '/package.json'
 import config from '@/sites/config/env'
 import './header.scss'
-import { useHistory, useLocation } from 'react-router-dom'
 // import '@/packages/popover/popover.scss'
 import {Popover} from '@nutui/nutui-react'
 
-const Header = () => {
+interface HeaderProps {
+  click: (activeName: string) => void
+}
+
+const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const history = useHistory()
   const location = useLocation()
 
@@ -19,6 +22,7 @@ const Header = () => {
   const [searchList, setSearchList] = useState([])
   const [searchIndex, setSearchIndex] = useState(0)
   const [searchCurName, setSearchCurName] = useState('')
+  const [activeName, setActiveName] = useState('guide')
 
   const toHome = () => {
     history.replace('/')
@@ -66,6 +70,12 @@ const Header = () => {
 
   useEffect(() => {
   }, [searchList])
+
+  useEffect(() => {
+    if(location.pathname.includes('component')) {
+      setActiveName('component')
+    }
+  })
 
   const handleKeyUp = (e) => {
     let sVal = e.target.value;
@@ -115,10 +125,15 @@ const Header = () => {
     setSearchIndex(0)
   }
 
+  const handleSetActiveName = (activeName: string) => {
+    setActiveName(activeName); 
+    props.click(activeName)
+  }
+
   return (
     <div className="doc-header doc-header-black">
       <div className="header-logo">
-        <a className="logo-link react" href="#/" onClick={toHome}></a>
+        <a className="logo-link react" href="#/zh-CN/guide/intro" onClick={toHome}></a>
         <span className="logo-border"></span>
       </div>
       <div className="header-nav">
@@ -145,8 +160,8 @@ const Header = () => {
         </div>
         <div className="nav-box">
           <ul className="nav-list">
-            {/* <li className='nav-item active'><NavLink to="/zh-CN/guide/intro-react">指南</NavLink></li> */}
-            <li className='nav-item active'><NavLink to="/zh-CN/component/SettleBar">组件</NavLink></li>
+            <li className={classNames(['nav-item', {active: activeName === 'guide'}])} onClick={handleSetActiveName.bind(this, 'guide')}><NavLink to="/zh-CN/guide/intro">指南</NavLink></li>
+            <li className={classNames(['nav-item', {active: activeName === 'component'}])} onClick={handleSetActiveName.bind(this, 'component')}><NavLink to="/zh-CN/component/SettleBar">组件</NavLink></li>
             <li className="nav-item"><a className="user-link" target="_blank" href="https://github.com/jdf2e/nutui-biz"></a></li>
           </ul>
         </div>

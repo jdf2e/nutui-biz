@@ -6,6 +6,10 @@ export interface BaseLang {
   noData: string;
   placeholder: string;
   select: string;
+  name: string,
+  tel: string,
+  default: string,
+  addres: string,
   video: {
     errorTip: string;
     clickRetry: string;
@@ -18,6 +22,17 @@ export interface BaseLang {
     pullRefreshText: string;
     loadText: string;
     loadMoreText: string;
+  };
+  searchHistory: {
+    recentSearchText: string;
+    searchDiscoverText: string;
+    noDiscoverDataText: string;
+    rightOutIcon: string;
+  };
+  settleBar: {
+    totalText: string;
+    settleButtonText: string;
+    selectAll: string;
   };
   pagination: {
     prev: string;
@@ -71,6 +86,21 @@ export interface BaseLang {
     otherValueText: string;
     placeholder: string;
   };
+  receiveInvoiceEdit: {
+    nameText: string,
+    namePlaceholder: string,
+    nameErrorMsg: string,
+    telText: string,
+    telPlaceholder: string,
+    telErrorMsg: string,
+    regionText: string,
+    regionPlaceholder: string,
+    regionErrorMsg: string,
+    addressText: string,
+    addressPlaceholder: string,
+    addressErrorMsg: string,
+    bottomText: string,
+  };
   timeselect: {
     pickupTime: string;
   };
@@ -78,12 +108,26 @@ export interface BaseLang {
     buyNow: string;
     buyNumber: string;
     addToCard: string;
+    confirm: string;
   };
   skuheader: {
     skuId: string;
   };
   addresslist: {
     addAddress: string;
+  };
+  itemContents: {
+    default: string;
+  };
+  swipeShell: {
+    delete: string;
+  };
+  generalShell: {
+    copy: string;
+    address: string;
+    set: string;
+    default: string;
+    delete: string;
   };
   comment: {
     complaintsText: string;

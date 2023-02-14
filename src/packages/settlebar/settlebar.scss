@@ -31,8 +31,12 @@
         align-items: center;
         justify-content: space-between;
 
-        .nut-checkbox__label {
-            margin-left: 10px;
+        .nut-checkbox {
+            cursor: pointer;
+
+            &__label {
+                margin-left: 10px;
+            }
         }
 
         .select-all {

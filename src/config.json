@@ -3,13 +3,13 @@
     "name": "指南",
     "packages": [
       {
-        "name": "intro-react",
+        "name": "intro",
         "cName": "介绍",
         "show": true
       },
       {
         "name": "start-react",
-        "cName": "H5快速上手",
+        "cName": "快速上手",
         "show": true
       },
       {
@@ -34,7 +34,7 @@
         "show": true
       },
       {
-        "name": "https://github.com/jdf2e/nutui-react/releases",
+        "name": "https://github.com/jdf2e/nutui-biz/releases",
         "cName": "更新日志",
         "show": true,
         "isLink": true
@@ -75,7 +75,7 @@
           "cName": "商品分类",
           "desc": "商品分类",
           "sort": 5,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -119,9 +119,9 @@
           "cName": "快捷入口",
           "desc": "快捷入口",
           "sort": 10,
-          "show": false,
+          "show": true,
           "taro": true,
-          "author": "yangjinjun3"
+          "author": "Ymm0008"
         },
         {
           "version": "0.1.0",
@@ -153,17 +153,6 @@
           "desc": "商品规格选择",
           "sort": 2,
           "show": true,
-          "taro": true,
-          "author": "yangjinjun3"
-        },
-        {
-          "version": "0.1.0",
-          "name": "SkuFeeds",
-          "type": "component",
-          "cName": "商品feed流",
-          "desc": "商品feed流",
-          "sort": 9,
-          "show": false,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -213,7 +202,7 @@
           "cName": "地址编辑",
           "desc": "地址编辑",
           "sort": 17,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -266,8 +255,7 @@
     {
       "name": "售后类",
       "enName": "nav",
-      "packages": [
-      ]
+      "packages": []
     },
     {
       "name": "发票类",
@@ -302,7 +290,7 @@
           "cName": "收票地址编辑",
           "desc": "收票地址编辑",
           "sort": 20,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -313,7 +301,7 @@
           "cName": "收票人列表",
           "desc": "收票人列表",
           "sort": 19,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         }
@@ -322,14 +310,12 @@
     {
       "name": "客服类",
       "enName": "feedback",
-      "packages": [
-      ]
+      "packages": []
     },
     {
       "name": "履约类",
       "enName": "exhibition",
-      "packages": [
-      ]
+      "packages": []
     },
     {
       "name": "其他",
@@ -342,7 +328,7 @@
           "cName": "优惠券",
           "desc": "优惠券",
           "sort": 23,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -364,7 +350,7 @@
           "cName": "登录",
           "desc": "登录",
           "sort": 22,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         }

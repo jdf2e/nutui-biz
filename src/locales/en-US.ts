@@ -8,6 +8,10 @@ const enUS: BaseLang = {
   noData: 'No Data',
   placeholder: 'Placeholder',
   select: 'Select',
+  name: 'Name',
+  tel: 'Tel',
+  default: 'Default',
+  addres: 'Addres',
   video: {
     errorTip: 'Error Tip',
     clickRetry: 'Click Retry'
@@ -20,6 +24,17 @@ const enUS: BaseLang = {
     pullRefreshText: 'Pull Refresh',
     loadText: 'Loading',
     loadMoreText: "Oops, here's the bottom"
+  },
+  searchHistory: {
+    recentSearchText: 'Recent Search Text',
+    searchDiscoverText: 'Search Discover Text',
+    noDiscoverDataText: 'No Discover Data Text',
+    rightOutIcon: 'Search'
+  },
+  settleBar: {
+    totalText: 'Total',
+    settleButtonText: 'To Settle',
+    selectAll: 'Select All'
   },
   pagination: {
     prev: 'Previous',
@@ -70,19 +85,48 @@ const enUS: BaseLang = {
     otherValueText: 'Other Value',
     placeholder: 'Placeholder'
   },
+  receiveInvoiceEdit:{
+    nameText: "name",
+    namePlaceholder: "Please enter a name",
+    nameErrorMsg: "This item is required, please fill it out and submit it",
+    telText: "phone",
+    telPlaceholder: "Please enter the mobile phone number of the consignee",
+    telErrorMsg: "This item is required, please fill it out and submit it",
+    regionText: "region",
+    regionPlaceholder: "Please select your region",
+    regionErrorMsg: "This item is required, please fill it out and submit it交",
+    addressText: "address",
+    addressPlaceholder: "Street, building numbe",
+    addressErrorMsg: "This item is required, please fill it out and submit it",
+    bottomText: "save",
+  },
   timeselect: {
     pickupTime: 'Pickup Time'
   },
   sku: {
     buyNow: 'Buy Now',
     buyNumber: 'Buy Number',
-    addToCard: 'Add to Card'
+    addToCard: 'Add to Card',
+    confirm: 'Confirm'
   },
   skuheader: {
     skuId: 'Sku Number'
   },
   addresslist: {
     addAddress: 'Add New Address'
+  },
+  itemContents: {
+    default: 'Default'
+  },
+  swipeShell: {
+    delete: 'Delete'
+  },
+  generalShell: {
+    copy: 'Copy',
+    address: 'Address',
+    set: 'Set',
+    default: 'Default',
+    delete: 'Delete'
   },
   comment: {
     complaintsText: 'I have a complaint',

@@ -2,7 +2,7 @@
 
 ### Intro
 
-用于新增或编辑发票抬头，包括增值税专用发票和电子普通发票。
+Used to add or edit invoice headers, including VAT special invoices and electronic ordinary invoices.
 
 ### Install
 
@@ -14,7 +14,7 @@ import { InvoiceTitleEdit } from '@nutui/nutui-biz';
 
 ## Demo
 
-### 增值税专用发票
+### Special Invoice
 
 :::demo
 
@@ -49,7 +49,7 @@ export default App;
 
 :::
 
-### 电子普通发票
+### Normal Invoice
 
 :::demo
 
@@ -70,7 +70,7 @@ export default App;
 
 :::
 
-### 自定义底部
+### Custom Bottom
 
 :::demo
 
@@ -83,7 +83,7 @@ const App = () => {
     <InvoiceTitleEdit 
       onSubmit={handleSubmit}
       invoiceType="normal"
-      bottom={<div style={{textAlign: 'center', lineHeight: '40px'}}>我是自定义的底部</div>}
+      bottom={<div style={{textAlign: 'center', lineHeight: '40px'}}>Custom Bottom</div>}
     />
   );
 };
@@ -101,12 +101,12 @@ export default App;
 | Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
 | data   | 地址数组                                 | Array  | -         |
-| invoiceType   | 发票类型，可选 `normal`，`special`    | String  | `special`         |
-| bottom   | 底部自定义内容     | ReactNode  | -         |
+| invoiceType   | Invoice type, optional value:  `normal`，`special`    | String  | `special`         |
+| bottom   | Custom bottom content     | ReactNode  | -         |
 
 
 ## Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
-| onSubmit | 点击提交审批按钮事件 |  event: Event,item |
-| onInput | 发票抬头输入事件 |  event: Event,item |
+| onSubmit | Submit event |  event: Event,item |
+| onInput | Invoice header input event |  event: Event,item |

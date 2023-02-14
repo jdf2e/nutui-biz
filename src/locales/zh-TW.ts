@@ -8,6 +8,10 @@ const zhTW: BaseLang = {
   noData: '暫無數據',
   placeholder: '請輸入',
   select: '請選擇',
+  name: '姓名',
+  tel: '電話',
+  default: '默認',
+  addres: '地址',
   video: {
     errorTip: '視頻加載失敗',
     clickRetry: '點擊重試'
@@ -20,6 +24,17 @@ const zhTW: BaseLang = {
     pullRefreshText: '鬆開刷新',
     loadText: '加載中……',
     loadMoreText: '哎呀，這裡是底部了啦'
+  },
+  searchHistory: {
+    recentSearchText: '最近搜索',
+    searchDiscoverText: '搜索發現',
+    noDiscoverDataText: '當前搜索發現已隱藏',
+    rightOutIcon: '搜索'
+  },
+  settleBar: {
+    totalText: '合計',
+    settleButtonText: '去結算',
+    selectAll: '全選'
   },
   pagination: {
     prev: '上一頁',
@@ -70,19 +85,48 @@ const zhTW: BaseLang = {
     otherValueText: '其他面值',
     placeholder: '請輸入1-5000整數'
   },
+  receiveInvoiceEdit:{
+    nameText: "姓名",
+    namePlaceholder: "請輸入姓名",
+    nameErrorMsg: "該項為必填項，請填寫完後提交",
+    telText: "手機號碼",
+    telPlaceholder: "請輸入收貨人手機號碼",
+    telErrorMsg: "該項為必填項，請填寫完後提交",
+    regionText: "所在地區",
+    regionPlaceholder: "請選擇所在地區",
+    regionErrorMsg: "該項為必填項，請填寫完後提交",
+    addressText: "詳細地址",
+    addressPlaceholder: "街道、樓牌號",
+    addressErrorMsg: "該項為必填項，請填寫完後提交",
+    bottomText: "保存",
+  },
   timeselect: {
     pickupTime: '取件時間'
   },
   sku: {
     buyNow: '立即購買',
     buyNumber: '購買數量',
-    addToCard: '加入購物車'
+    addToCard: '加入購物車',
+    confirm: '確定'
   },
   skuheader: {
     skuId: '商品編號'
   },
   addresslist: {
     addAddress: '新建地址'
+  },
+  itemContents: {
+    default: '默認'
+  },
+  swipeShell: {
+    delete: '删除'
+  },
+  generalShell: {
+    copy: '復製',
+    address: '地址',
+    set: '設置',
+    default: '默認',
+    delete: '删除'
   },
   comment: {
     complaintsText: '我要投訴',

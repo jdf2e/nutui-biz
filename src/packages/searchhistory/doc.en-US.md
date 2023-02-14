@@ -60,10 +60,51 @@ const App = () => {
     setRecentSearchData([])
   }
 
+  const handleDeleteSingle = (val: {
+    key: string,
+    url: string
+  }) => {
+    if(localStorage.getItem('recentSearchData')) {
+      let recentSearchData = JSON.parse(localStorage.getItem('recentSearchData') as string)
+      let filterSearchHistoryData = recentSearchData.filter((item: {
+        key: string,
+        url: string
+      }) => item.key != val.key)
+      
+      localStorage.setItem('recentSearchData', JSON.stringify(filterSearchHistoryData))
+      setRecentSearchData(filterSearchHistoryData)
+    }
+  }
+
   return (
     <SearchHistory 
         onClickSearchButton={handleClick}
         onDelete={handleDelete}
+        recentSearchData={recentSearchData} 
+        searchDiscoverData={searchDiscoverData} 
+    />
+  );
+};
+export default App;
+```
+
+:::
+
+### Single Delete
+
+:::demo
+
+```ts
+import  React from 'react';
+import { SearchHistory } from '@nutui/nutui-biz';
+
+const App = () => {
+  return (
+    <SearchHistory 
+        onClickSearchButton={handleClick}
+        deleteType="single"
+        onDelete={handleDelete}
+        onDeleteSingle={handleDeleteSingle}
         recentSearchData={recentSearchData} 
         searchDiscoverData={searchDiscoverData} 
     />

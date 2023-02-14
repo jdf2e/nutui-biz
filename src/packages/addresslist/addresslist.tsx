@@ -72,7 +72,7 @@ export const AddressList: FunctionComponent<
     addressName: '姓名',
     phone: '123****4567',
     defaultAddress: false,
-    fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
+    fullAddress: '北京亦庄经济技术开发区科创十一街18号院'
   };
 
   const trowelData = () => {
@@ -169,7 +169,7 @@ export const AddressList: FunctionComponent<
         })
       }
       {showBottomButton && <div className="nut-address-list__bottom" onClick={addAddress}>
-        <Button block type="danger">新建地址</Button>
+        <Button block type="danger">{locale.addresslist.addAddress}</Button>
       </div>}
     </div>
   )

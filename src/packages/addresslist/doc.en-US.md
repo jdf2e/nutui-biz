@@ -2,7 +2,7 @@
 
 ### Intro
 
-常见于地址管理页面，主要用于进行地址列表的展示以及操作。
+Commonly used in address management pages, mainly used to display and operate address lists.
 
 ### Install
 
@@ -27,14 +27,14 @@ const App = () => {
             testaddressName: '姓名',
             phone: '123****4567',
             defaultAddress: false,
-            fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
+            fullAddress: '北京亦庄经济技术开发区科创十一街18号院'
         },
         {
             testid: 4,
             testaddressName: '姓名',
             phone: '123****4567',
             defaultAddress: true,
-            fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
+            fullAddress: '北京亦庄经济技术开发区科创十一街18号院'
         }
     ];
 

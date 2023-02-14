@@ -48,9 +48,9 @@ const modulesPageDocs = import.meta.globEager('/src/docs/*.md', {
 
 for (const path in modulesPageDocs) {
   routes.push({
-    path: '/zh-CN/guide/intro',
+    path: `/zh-CN/guide/${path.replace('/src/docs/', '').replace('.md', '')}`,
     component: modulesPageDocs[path],
-    name: 'intro',
+    name: path.replace('/src/docs/', '').replace('.md', ''),
   })
 }
 

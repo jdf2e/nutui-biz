@@ -28,12 +28,14 @@ export interface CardProps {
   linkUrl: string
   isNeedPrice: boolean
   imgTagDirection: string
+  isLazy: boolean
   onClick: () => void
 }
 const defaultProps = {
   showType: 'full-line',
   titleLine: '2',
   imgTagDirection: 'top-left',
+  isLazy: false,
   isNeedPrice: true,
   onClick: () => {}
 } as CardProps
@@ -63,6 +65,7 @@ export const Card: FunctionComponent<
     bottomTpl,
     infoTpl,
     imgTagDirection,
+    isLazy,
     showType,
     onClick,
     ...rest
@@ -87,7 +90,7 @@ export const Card: FunctionComponent<
         <div className={b('main')}>
           <a className={b('left')} href={linkUrl}>
             {imgTag && <div className={classNames(['img-tag', {'top-right': imgTagDirection === 'top-right'}])}>{imgTag}</div>}
-            <Image src={imgUrl} />
+            <Image src={imgUrl} isLazy={isLazy} />
           </a>
           <div className={b('right')}>
             {infoTpl || <>
@@ -118,7 +121,7 @@ export const Card: FunctionComponent<
         <div className='half-line'>
           <a className='half-line-img' href={linkUrl}>
             {imgTag && <div className={classNames(['img-tag', {'top-right': imgTagDirection === 'top-right'}])}>{imgTag}</div>}
-            <Image src={imgUrl} />
+            <Image src={imgUrl} isLazy={isLazy} />
           </a>
           {infoTpl || <>
             {title && <div 
