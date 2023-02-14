@@ -2,6 +2,7 @@ import React, {
   FunctionComponent, CSSProperties, HTMLAttributes, useState, useEffect
 } from 'react'
 import { Infiniteloading } from '@nutui/nutui-react';
+import { IComponent } from '@/utils/typings'
 
 import classNames from 'classnames'
 import bem from '@/utils/bem'
@@ -10,7 +11,7 @@ import bem from '@/utils/bem'
 //   name: string
 //   imgUrl: string
 // }
-export interface ProductFeedProps {
+export interface ProductFeedProps extends IComponent {
   className: string
   style: CSSProperties
   col: number | string

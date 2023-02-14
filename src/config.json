@@ -353,7 +353,7 @@
           "cName": "横向滚动",
           "desc": "横向滚动",
           "sort": 24,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
