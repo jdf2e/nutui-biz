@@ -78,7 +78,7 @@ export default App;
 | cardBuyMin    | 购买数量最小值  | number | `9999`            |
 | cardBuyMax    | 购买数量最大值  | number | `9999`            |
 | money         | 购买电子卡所需价钱 | number | `0`            |
-| placeholder   | 其他面值默认提示语 | string | `请输入1-5000整数`|
+| placeholder   | 其他面值默认提示语 | string | `请输入1-9999整数`|
 
 ### Events
 
