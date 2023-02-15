@@ -145,9 +145,9 @@ export const OrderCancelPanel: FunctionComponent<
         position="bottom"
         round
         closeable={isShowCloseBtn}
-        onClose={closePopup.bind(this, "close")}
-        onClickCloseIcon={closePopup.bind(this, "icon")}
-        onClickOverlay={closePopup.bind(this, "overlay")}
+        onClose={() => closePopup("close")}
+        onClickCloseIcon={() => closePopup("icon")}
+        onClickOverlay={() => closePopup("overlay")}
         className={`${b()} ${className} `}
       >
         <div className={b("main")}>
