@@ -350,8 +350,8 @@ export default App;
 | titleTag   | 标题左侧标签，常用于活动标记等，不设置此参数或此参数为空，不展示| React.ReactNode  | -      |
 | titleLine   | 标题行数，默认两行，想展示更多下面内容可设置为 1| String \| Number  | `2`      |
 | linkUrl   | 跳转链接，默认点击整个卡片以 href 的形式跳转，可通过点击事件自定义 | String  | -      |
-| width   | 宽度，默认单位`px` | String  | -      |
-| height   | 高度，默认单位`px` | String  | -      |
+| imgWidth   | 宽度，默认单位`px` | String  | -      |
+| imgHeight   | 高度，默认单位`px` | String  | -      |
 | loadingImg   | 设置加载中提示图片，与slotLoding冲突，优先级高于slotLoding | String  | -      |
 | errorImg   | 设置错误提示图片，与slotError冲突，优先级高于slotError | String  | -      |
 
