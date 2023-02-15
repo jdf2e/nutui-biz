@@ -70,7 +70,7 @@ export const ProductFeedItem: FunctionComponent<
         imgTag={imgTag}
         infoTpl={children}
         isLazy={isImageLazy}
-        height={imgHeight}
+        imgHeight={imgHeight}
         loadingImg={loadingImg}
         errorImg={loadingImg}
       />
