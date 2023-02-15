@@ -347,6 +347,7 @@ export default App;
 | titleTag   | 標題左側標簽，常用於活動標記等，不設置此參數或此參數為空，不展示| React.ReactNode  | -      |
 | titleLine   | 標題行數，默認兩行，想展示更多下面內容可設置為 1| String \| Number  | `2`      |
 | linkUrl   | 跳轉鏈接，默認點擊整個卡片以 href 的形式跳轉，可通過點擊事件自定義| String  | -      |
+| width   | 寬度，默認單位`px` | String  | -      |
 | height   | 高度，默認單位`px` | String  | -      |
 | loadingImg   | 設置加載中提示圖片，與slotLoding沖突，優先級高於slotLoding | String  | -      |
 | errorImg   | 設置錯誤提示圖片，與slotError沖突，優先級高於slotError | String  | -      |
