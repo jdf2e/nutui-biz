@@ -171,6 +171,9 @@ const enUS: BaseLang = {
     title: 'Order Remarks',
     tagTitle: 'Recommended Tags',
     submitText: 'Confirm'
+  },
+  horizontalscrolling: {
+    more: 'More'
   }
 };
 export default enUS;
