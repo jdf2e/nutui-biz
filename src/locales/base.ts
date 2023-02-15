@@ -175,4 +175,7 @@ export interface BaseLang {
     tagTitle: string;
     submitText: string;
   };
+  horizontalscrolling: {
+    more: string;
+  };
 }

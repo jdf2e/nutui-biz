@@ -17,30 +17,31 @@ const HorizontalScrollingDemo = () => {
       title4: '遮罩层半透明阴影样式',
       title5: '自定义遮罩内容',
       title6: '无遮罩',
-      title7: '自定义图标',
-    },
-    'zh-TW': {
-      title1: '基本用法',
-      title2: '選擇地址',
-      title3: '選擇自定義地址',
-      title4: '選中省市區',
-      title5: '選擇自定義地址2',
-      title6: '選擇已有地址',
-      title7: '自定義圖標',
+      title7: '事件演示',
+      symbol: '￥',
+      demo4: '共3件',
+      more: '查看更多'
     },
     'en-US': {
-      basic: 'Basic Usage',
-      title: 'Choose Address',
-      customAddress: 'Choose Custom Address',
-      selectCity: 'Choose City',
-      customAddress2: 'Choose Custom Address2',
-      existAddress: 'Choose Exist Address',
-      icon: 'Custom Icon',
+      title1: 'Basic Usage',
+      title2: 'Mask Position',
+      title3: 'Overlay Shadow Style',
+      title4: 'Overlay Translucent Shadow Style',
+      title5: 'Custom Mask Content',
+      title6: 'No Mask',
+      title7: 'Event Demo',
+      symbol: '$',
+      demo4: 'Total 3 pieces',
+      more: 'More'
     },
   })
 
   const onChange = () => {
     console.log('change')
+  }
+
+  const onScroll = () => {
+    console.log('scroll right')
   }
 
   return (
@@ -91,6 +92,7 @@ const HorizontalScrollingDemo = () => {
           <HorizontalScrolling
             maskPosition="left"
             maskShadowType="shadow"
+            maskIcon="more-x"
           >
             {[1, 2, 3, 4, 5, 6].map((item, index) => {
               return (
@@ -110,16 +112,15 @@ const HorizontalScrollingDemo = () => {
         <Cell
           className="nut-cell-right-zero"
         >
-          <HorizontalScrolling        
+          <HorizontalScrolling
             maskShadowType="transparent"  
             maskWidth="50px"
             maskDistance="10px"
             maskHpl={
             <div className="nut-biz-horizontalscrolling__mask-box buy-price">
-              <div><i>￥</i>199</div>
-              <div>共3件</div>
-            </div>
-          }
+              <div><i>{translated.symbol}</i>199</div>
+              <div>{translated.more}</div>
+            </div>}
           >
             {[1, 2, 3, 4, 5, 6].map((item, index) => {
               return (
@@ -145,11 +146,10 @@ const HorizontalScrollingDemo = () => {
             maskWidth="40px" 
             className="custom-float"
             maskHpl={
-              <div className="nut-biz-horizontalscrolling__mask-right-box">
-                查看更多
+              <div className="more-box">
+                {translated.more}
               </div>
             }
-            onClickMask={onChange}
           >
             {[1, 2, 3, 4, 5, 6].map((item, index) => {
               return (
@@ -170,6 +170,29 @@ const HorizontalScrollingDemo = () => {
           <HorizontalScrolling 
             showMask={false} 
             maskPosition="left"
+          >
+            {[1, 2, 3, 4, 5, 6].map((item, index) => {
+              return (
+                <div   
+                  className="nut-biz-horizontalscrolling__contain-item"
+                  key={index}
+                >
+                  <img
+                    src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
+                  />
+                </div>
+              )
+            })}
+          </HorizontalScrolling>
+        </Cell>
+        <h2>{translated.title7}</h2>
+        <Cell
+          className="nut-cell-right-zero"
+        >
+          <HorizontalScrolling 
+            maskShadowType="shadow" 
+            onClickMask={onChange}
+            onScrollRight={onScroll}
           >
             {[1, 2, 3, 4, 5, 6].map((item, index) => {
               return (

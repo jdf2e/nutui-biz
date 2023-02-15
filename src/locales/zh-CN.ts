@@ -173,6 +173,9 @@ const zhCN: BaseLang = {
     title: '订单备注',
     tagTitle: '推荐标签',
     submitText: '确认'
+  },
+  horizontalscrolling: {
+    more: '更多'
   }
 };
 export default zhCN;

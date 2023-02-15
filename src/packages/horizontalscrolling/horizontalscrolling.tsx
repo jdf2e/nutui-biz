@@ -4,7 +4,7 @@ import React, {
   ReactNode,
   useRef
 } from 'react'
-
+import { useConfig } from '@/packages/configprovider'
 import { IComponent } from '@/utils/typings'
 import { Icon } from '@nutui/nutui-react';
 
@@ -40,6 +40,7 @@ const defaultProps = {
 export const HorizontalScrolling: FunctionComponent<
   Partial<HorizontalScrollingProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
+  const { locale } = useConfig()
   const {
     className,
     style,
@@ -65,18 +66,15 @@ export const HorizontalScrolling: FunctionComponent<
   const scrollRef = useRef(null)
 
   const containStyles = (() => {
-    if(maskShadowType == 'transparent'){
-      if(maskPosition == 'right'){
-        return {
-          paddingRight: maskDistance ? maskDistance : maskWidth
-        }
-      } else {
-        return {
-          paddingLeft: maskDistance ? maskDistance : maskWidth
-        }
+    if(maskPosition == 'right'){
+      return {
+        paddingRight: maskDistance ? maskDistance : maskWidth
+      }
+    } else {
+      return {
+        paddingLeft: maskDistance ? maskDistance : maskWidth
       }
     }
-    return {}
   })
 
   const handleMaskClick = ()=>{
@@ -99,7 +97,7 @@ export const HorizontalScrolling: FunctionComponent<
         {maskHpl ? maskHpl : 
         <div className={b('mask-box')}>
           <Icon name={maskIcon} color="#fa2c19" size="26"></Icon>
-          <span>查看更多</span>
+          <span>{locale.horizontalscrolling.more}</span>
         </div>}
       </div>
     )
