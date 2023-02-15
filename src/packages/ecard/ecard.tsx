@@ -25,7 +25,7 @@ export interface EcardProps {
   cardAmountMax: number;
   cardBuyMin: number;
   cardBuyMax: number;
-  money: number;
+  modelValue: number;
   placeholder: string;
   onChange?: (item: IDataList) => void;
   onChangeInput?: (val: number) => void;
@@ -42,7 +42,7 @@ const defaultProps = {
   cardAmountMax: 9999,
   cardBuyMin: 1,
   cardBuyMax: 9999,
-  money: 0,
+  modelValue: 0,
   placeholder: "",
 } as EcardProps;
 
@@ -60,7 +60,7 @@ export const Ecard: FunctionComponent<
     cardAmountMax,
     cardBuyMin,
     cardBuyMax,
-    money,
+    modelValue,
     placeholder,
     onChange,
     onChangeInput,
@@ -72,7 +72,7 @@ export const Ecard: FunctionComponent<
   };
   const b = bem("ecard");
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [currentValue, setCurrentValue] = useState<number>(money);
+  const [currentValue, setCurrentValue] = useState<number>(modelValue);
   const [customValue, setCustomValue] = useState<number | string>("");
   const [cardAmount, setCardAmount] = useState(cardAmountMin);
 

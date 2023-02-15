@@ -20,8 +20,8 @@ const dataList = [
   },
 ];
 
-test("should render correct money", () => {
-  const { container } = render(<Ecard money={0} dataList={dataList}></Ecard>);
+test("should render correct modelValue", () => {
+  const { container } = render(<Ecard modelValue={0} dataList={dataList}></Ecard>);
   const itemDoms = container.querySelectorAll(".nut-ecard__list__item");
   fireEvent.click(itemDoms[0]);
   expect(
@@ -31,7 +31,7 @@ test("should render correct money", () => {
 
 test("input change when more than maxValue", () => {
   const { container } = render(
-    <Ecard money={0} dataList={dataList} cardAmountMax={100}></Ecard>
+    <Ecard modelValue={0} dataList={dataList} cardAmountMax={100}></Ecard>
   );
 
   const inputDom = container.querySelector(".nut-ecard__list__input--input");
@@ -46,7 +46,7 @@ test("input change when more than maxValue", () => {
 
 test("input change when less than maxValue", () => {
   const { container } = render(
-    <Ecard money={0} dataList={dataList} cardAmountMin={100}></Ecard>
+    <Ecard modelValue={0} dataList={dataList} cardAmountMin={100}></Ecard>
   );
   const inputDom = container.querySelector(".nut-ecard__list__input--input");
   if (inputDom) {
@@ -60,7 +60,7 @@ test("input change when less than maxValue", () => {
 
 test("input change when less than maxValue", () => {
   const { container } = render(
-    <Ecard money={10} dataList={dataList} cardAmountMin={100}></Ecard>
+    <Ecard modelValue={10} dataList={dataList} cardAmountMin={100}></Ecard>
   );
   const inputDom = container.querySelector(".nut-ecard__list__input--input");
   const addDom = container.querySelector(".nut-icon-plus");
