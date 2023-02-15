@@ -6,7 +6,7 @@ const exportPropsTypes = require('./export-props')
 const dest_docs = './dist/types'
 
 vfs
-  .src(['./dist/esm/types/src/packages/nutui.react.d.ts'])
+  .src(['./dist/esm/types/src/packages/nutui.biz.d.ts'])
   .pipe(
     map((file, cb) => {
       const contents = file.contents

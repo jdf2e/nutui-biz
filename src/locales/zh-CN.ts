@@ -84,8 +84,8 @@ const zhCN: BaseLang = {
   },
   ecard: {
     chooseText: '请选择电子卡面值',
-    otherValueText: '其他面值',
-    placeholder: '请输入1-5000整数'
+    otherValueText: '其它面值',
+    placeholder: '请输入1-9999整数'
   },
   receiveInvoiceEdit:{
     nameText: "姓名",

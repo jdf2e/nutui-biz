@@ -1,0 +1,73 @@
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.nut-biz-ordercancel {
+  font-weight: normal;
+  &__main {
+    padding: 0px 20px;
+  }
+  &__reason-header {
+    margin-top: 10px;
+    width: 90%;
+    font-size: 18px;
+    @include ellipsis;
+  }
+  &__header {
+    width: 90%;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    @include ellipsis;
+  }
+  &__tips {
+    font-size: 14px;
+    color: #000000a6;
+    padding: 14px;
+    background-color: #f7f7f7ff;
+    line-height: 25px;
+    border-radius: 10px;
+    max-height: 160px;
+    overflow: scroll;
+    &-header {
+      font-size: 14px;
+      text-align: left;
+      font-weight: normal;
+    }
+  }
+  &__reason {
+    font-size: 14px;
+    padding-top: 10px;
+    max-height: 280px;
+    overflow: scroll;
+    &--list {
+      display: flex;
+      height: 35px;
+      align-items: center;
+      justify-content: space-between;
+      &__checkbox {
+        .nut-checkbox {
+          display: flex;
+          justify-content: right;
+          .nut-checkbox__label {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  &__area {
+    border: 1px solid #eee;
+    padding: 10px 10px;
+  }
+  &__btns {
+    margin-top: 10px;
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 14px 43px -7px rgb(0 0 0 / 50%);
+  }
+}

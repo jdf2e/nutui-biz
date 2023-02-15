@@ -69,16 +69,16 @@ export default App;
 
 | Attribute          | Description             | Type   | Default           |
 |---------------|----------------------------------|--------|------------------|
-| chooseText    | 選擇面值文案   | string |   `請選擇電子卡面值`   |
-| suffix        | 符號標示       | string | `¥`            |
-| otherValueText| 其他面值文案   | string |    `其他面值`   |
-| dataList      | 電子卡面值列表  | Array |  `DataList[]`  |
-| cardAmountMin | 其它面值最小值  | number | `1` |
-| cardAmountMax | 其他面值最大值  | number | `9999`            |
-| cardBuyMin    | 購買數量最小值  | number | `9999`            |
-| cardBuyMax    | 購買數量最大值  | number | `9999`            |
-| money         | 購買電子卡所需價錢 | number | `0`            |
-| placeholder   | 其他面值默認提示語 | string | `請輸入1-5000整數`|
+| chooseText    | Select value copywriter    | string |   `Please select an e-card face value `   |
+| suffix        | Symbol mark        | string | `¥`            |
+| otherValueText| Other denominations copywriter    | string |    `Other denominations `   |
+| dataList      | An e-card value list   | Array |  `DataList[]`  |
+| cardAmountMin | The minimum value of other value   | number | `1` |
+| cardAmountMax | Other value maximum   | number | `9999`            |
+| cardBuyMin    | The minimum purchase quantity   | number | `9999`            |
+| cardBuyMax    | A maximum purchase quantity   | number | `9999`            |
+| money         | Purchase price needed for an e-card  | number | `0`            |
+| placeholder   | The default prompt other denominations  | string | `Please enter the integer 1-9999 `|
 
 ### Events
 
@@ -88,7 +88,7 @@ export default App;
 | onInputChange  | Triggered when the value changes | `value` |
 | onChangeStep  | Triggered when the steps value changes | `value，modelValue` |
 
-### DataList 數據結構
+### DataList The data structure 
 
 | key | Description     | Type     |
 |--------|----------------|--------------|

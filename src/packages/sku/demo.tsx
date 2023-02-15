@@ -314,7 +314,8 @@ const SkuDemo = () => {
           existAddress={existAddress}
           onClose={close}
           isShowCustomAddress={false}
-          onSelect={() => selectedAddress.bind(this)}
+          // @ts-ignore
+          onSelect={() => selectedAddress()}
           existAddressTitle={translated.deliverTo}
         />
       </div>
