@@ -349,6 +349,9 @@ export default App;
 | titleTag   | The label on the left side of the title, often used for activity tags, etc. If this parameter is not set or this parameter is empty, it will not be displayed| React.ReactNode  | -      |
 | titleLine   | The number of title lines, the default is two lines, if you want to display more content below, you can set it to 1| String \| Number  | `2`      |
 | linkUrl   | Jump link, click on the whole card by default to jump in the form of href, can be customized through click event| String  | -      |
+| height   | Height，Default unit px | String  | -      |
+| loadingImg   | Set the prompt image during loading, which conflicts with `slotLoding` and has a higher priority than `slotLoding` | String  | -      |
+| errorImg   | Set the error prompt image, which conflicts with `slotError` and has a higher priority than `slotError` | String  | -      |
 
 ## Events
 | Attribute | Description | Arguments |

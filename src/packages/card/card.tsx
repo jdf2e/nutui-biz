@@ -29,6 +29,9 @@ export interface CardProps {
   isNeedPrice: boolean
   imgTagDirection: string
   isLazy: boolean
+  height: string
+  loadingImg: string
+  errorImg: string
   onClick: () => void
 }
 const defaultProps = {
@@ -66,6 +69,9 @@ export const Card: FunctionComponent<
     infoTpl,
     imgTagDirection,
     isLazy,
+    height,
+    loadingImg,
+    errorImg,
     showType,
     onClick,
     ...rest
@@ -90,7 +96,7 @@ export const Card: FunctionComponent<
         <div className={b('main')}>
           <a className={b('left')} href={linkUrl}>
             {imgTag && <div className={classNames(['img-tag', {'top-right': imgTagDirection === 'top-right'}])}>{imgTag}</div>}
-            <Image src={imgUrl} isLazy={isLazy} />
+            <Image src={imgUrl} isLazy={isLazy} height={height} loadingImg={loadingImg} errorImg={errorImg} />
           </a>
           <div className={b('right')}>
             {infoTpl || <>
@@ -121,7 +127,7 @@ export const Card: FunctionComponent<
         <div className='half-line'>
           <a className='half-line-img' href={linkUrl}>
             {imgTag && <div className={classNames(['img-tag', {'top-right': imgTagDirection === 'top-right'}])}>{imgTag}</div>}
-            <Image src={imgUrl} isLazy={isLazy} />
+            <Image src={imgUrl} isLazy={isLazy} height={height} loadingImg={loadingImg} errorImg={errorImg} />
           </a>
           {infoTpl || <>
             {title && <div 
