@@ -1,10 +1,4 @@
-import React, {
-  FunctionComponent,
-  useEffect,
-  CSSProperties,
-  ReactNode,
-  useState,
-} from "react";
+import React, { FunctionComponent, useEffect, ReactNode } from "react";
 import { IComponent } from "@/utils/typings";
 import { Button } from "@nutui/nutui-react";
 import { throttle } from "@/utils/throttle";

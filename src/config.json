@@ -235,7 +235,7 @@
           "cName": "订单取消面板",
           "desc": "订单取消面板",
           "sort": 13,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
