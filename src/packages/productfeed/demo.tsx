@@ -37,7 +37,7 @@ const ProductFeedDemo = () => {
       customFooter: '自定义右下角内容',
       customBottom: '自定义底部内容',
       customContent: '自定义',
-      desc: '自营',
+      desc: '更多买点更多买点',
       delivery: '厂商配送',
       shopName: '阳澄湖大闸蟹自营店>',
     },
@@ -90,61 +90,73 @@ const ProductFeedDemo = () => {
     {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       title: translated.title,
+      desc: translated.desc,
       price: '388',
       vipPrice: '378',
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       title: translated.title,
+      desc: translated.desc,
       price: '388',
       vipPrice: '378',
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       title: translated.title,
+      desc: translated.desc,
       price: '388',
       vipPrice: '378',
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       title: translated.title,
+      desc: translated.desc,
       price: '388',
       vipPrice: '378',
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       title: translated.title,
+      desc: translated.desc,
       price: '388',
       vipPrice: '378',
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       title: translated.title,
+      desc: translated.desc,
       price: '388',
       vipPrice: '378',
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       title: translated.title,
+      desc: translated.desc,
       price: '388',
       vipPrice: '378',
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       title: translated.title,
+      desc: translated.desc,
       price: '388',
       vipPrice: '378',
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       title: translated.title,
+      desc: translated.desc,
       price: '388',
       vipPrice: '378',
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       title: translated.title,
+      desc: translated.desc,
       price: '388',
       vipPrice: '378',
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       title: translated.title,
+      desc: translated.desc,
       price: '388',
       vipPrice: '378',
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       title: translated.title,
+      desc: translated.desc,
       price: '388',
       vipPrice: '378',
     }
@@ -234,12 +246,13 @@ const ProductFeedDemo = () => {
   return (
     <div className="demo">
       <>
-        <h2>{translated.basic}</h2>
+        {/* <h2>{translated.basic}</h2> */}
         <Tabs value={tab1value} onChange={({ paneKey }) => {
           setTab1value(paneKey)
         }}>
           <TabPane title={translated.basic}>
             <ProductFeed
+              className="demo1"
               id="refreshScroll1"
               hasMore={hasMore1}
               containerId="refreshScroll1"
@@ -253,12 +266,13 @@ const ProductFeedDemo = () => {
                     gutter={6}
                     col={2}
                     imgUrl={item.imgUrl}
+                    imgHeight="164"
                     imgTag={<div className='img-label'><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
                   >
                     <>
                       <div className="name-box">
                         <div className="label">自营</div>
-                        {index+1}{item.title}
+                        {item.title}
                       </div>
                       <div className="bottom">
                         <div className="price-box">
@@ -275,6 +289,7 @@ const ProductFeedDemo = () => {
           </TabPane>
           <TabPane title={translated.oneLine}>
             <ProductFeed
+              className="demo2"
               id="refreshScroll2"
               hasMore={hasMore2}
               containerId="refreshScroll2"
@@ -288,12 +303,16 @@ const ProductFeedDemo = () => {
                     gutter={6}
                     col={1}
                     imgUrl={item.imgUrl}
+                    imgHeight="120"
                     imgTag={<div className='img-label'><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
                   >
                     <>
                       <div className="name-box">
                         <div className="label">自营</div>
-                        {index+1}{item.title}
+                        {item.title}
+                      </div>
+                      <div className="name-box desc-box">
+                        {item.desc}
                       </div>
                       <div className="bottom">
                         <div className="price-box">
@@ -310,6 +329,7 @@ const ProductFeedDemo = () => {
           </TabPane>
           <TabPane title={translated.customPro1}>
             <ProductFeed
+              className="demo3"
               id="refreshScroll3"
               hasMore={hasMore3}
               containerId="refreshScroll3"
@@ -325,12 +345,13 @@ const ProductFeedDemo = () => {
                     gutter={6}
                     col={2}
                     imgUrl={item.imgUrl}
+                    imgHeight="164"
                     imgTag={<div className='img-label'><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
                   >
                     <>
                       <div className="name-box">
                         <div className="label">自营</div>
-                        {index+1}{item.title}
+                        {item.title}
                       </div>
                       <div className="bottom">
                         <div className="price-box">
@@ -346,7 +367,6 @@ const ProductFeedDemo = () => {
             </ProductFeed>
           </TabPane>
         </Tabs>
-        <h2>{translated.basic}</h2>
       </>
     </div>
   )

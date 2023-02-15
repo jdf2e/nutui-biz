@@ -7,15 +7,9 @@ import { IComponent } from '@/utils/typings'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 
-// export interface ProductList {
-//   name: string
-//   imgUrl: string
-// }
 export interface ProductFeedProps extends IComponent {
   className: string
   style: CSSProperties
-  col: number | string
-  // data: any[] | []
   // 是否还有更多数据
   hasMore: boolean
   containerId: string
@@ -40,8 +34,6 @@ export interface ProductFeedProps extends IComponent {
 }
 
 const defaultProps = {
-  col: 2,
-  // data: [],
   onClick: () => { }
 } as ProductFeedProps
 
@@ -52,8 +44,6 @@ export const ProductFeed: FunctionComponent<
     className,
     style,
     children,
-    col,
-    // data,
     hasMore,
     containerId,
     useWindow,
@@ -71,12 +61,7 @@ export const ProductFeed: FunctionComponent<
     ...props,
   }
 
-  const [list, setList] = useState([] as any)
-
-  // const [hasMore, setHasMore] = useState(true)
-
   const b = bem('biz-productfeed')
-
 
   useEffect(() => {
   }, [])

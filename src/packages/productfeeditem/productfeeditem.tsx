@@ -11,16 +11,23 @@ export interface ProductFeedItemProps {
   style: CSSProperties
   col: number | string
   gutter: number | string
-  dara: Array<any>
   imgUrl: string
+  imgWidth: string
+  imgHeight: string
   imgTag: ReactNode
+  isImageLazy: boolean
+  loadingImg: string
+  errorImg: string
   onClick: () => void
 }
 
 const defaultProps = {
-  imgUrl: '',
   col: 2,
   gutter: 6,
+  imgHeight: '150',
+  isImageLazy: true,
+  loadingImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
+  errorImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
   onClick: () => { }
 } as unknown as ProductFeedItemProps
 
@@ -34,14 +41,17 @@ export const ProductFeedItem: FunctionComponent<
     col,
     gutter,
     imgUrl,
+    imgWidth,
+    imgHeight,
     imgTag,
+    isImageLazy,
+    loadingImg,
+    errorImg,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
-
-  const [hasMore, setHasMore] = useState(true)
 
   const b = bem('biz-productfeedItem')
 
@@ -49,7 +59,6 @@ export const ProductFeedItem: FunctionComponent<
     return {
       'width': col == 1 ? '100%' : 
                   `calc((100% - ${gutter}px)/${col})`,
-      // 'marginLeft': gutter + 'px'
     }
   }
 
@@ -60,6 +69,10 @@ export const ProductFeedItem: FunctionComponent<
         showType={col == 1 ? 'full-line' : 'half-line'}
         imgTag={imgTag}
         infoTpl={children}
+        isLazy={isImageLazy}
+        height={imgHeight}
+        loadingImg={loadingImg}
+        errorImg={loadingImg}
       />
     </div>
   )
