@@ -7,7 +7,7 @@ Commonly found on the address management page, it is mainly used to add or edit 
 ### Install
 
 ```javascript
-import { AddressEdit } from '@nutui/nutui-react';
+import { AddressEdit } from '@nutui/nutui-biz';
 ```
 
 ## Code Demo

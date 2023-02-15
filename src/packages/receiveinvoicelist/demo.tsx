@@ -1,21 +1,26 @@
 import React from 'react'
 import { ReceiveInvoiceItem, ReceiveInvoiceList } from './receiveinvoicelist'
 import { useTranslate } from '../../sites/assets/locale'
+import { Toast } from '@nutui/nutui-react';
 
 interface tarnslatedOption {
   basic: string;
+  useSwipe: string;
 }
 
 const ReceiveInvoiceListDemo = () => {
   const [translated] = useTranslate<tarnslatedOption>({
     'zh-CN': {
       basic: '基本用法',
+      useSwipe: '使用左滑删除',
     },
     'zh-TW': {
       basic: '基本用法',
+      useSwipe: '使用左滑删除',
     },
     'en-US': {
       basic: 'Basic Usage',
+      useSwipe: 'Use Swipe Delete',
     }
   });
 
@@ -44,8 +49,18 @@ const ReceiveInvoiceListDemo = () => {
   };
 
   const event = {
-    onEdit: (item: ReceiveInvoiceItem) => { console.log('onEdit', item) },
-    onSelected: (item: ReceiveInvoiceItem) => { console.log('onSelected', item) }
+    onEdit: (item: ReceiveInvoiceItem) => {
+      Toast.text('onEdit ' + item.name);
+      console.log('onEdit', item);
+    },
+    onSelected: (item: ReceiveInvoiceItem) => {
+      Toast.text('onSelected ' + item.name);
+      console.log('onSelected', item);
+    },
+    onDelete: (item: ReceiveInvoiceItem) => {
+      Toast.text('onDelete ' + item.name);
+      console.log('onDelete', item);
+    }
   }
 
 
@@ -54,6 +69,8 @@ const ReceiveInvoiceListDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <ReceiveInvoiceList list={state.list} modelValue={state.modelValue} onSelected={event.onSelected} onEdit={event.onEdit} />
+        <h2>{translated.useSwipe}</h2>
+        <ReceiveInvoiceList enableDelete={true} list={state.list} modelValue={state.modelValue} onSelected={event.onSelected} onEdit={event.onEdit} onDelete={event.onDelete} />
       </div>
     </>
   )

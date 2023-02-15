@@ -3,13 +3,13 @@
     "name": "指南",
     "packages": [
       {
-        "name": "intro-react",
+        "name": "intro",
         "cName": "介绍",
         "show": true
       },
       {
         "name": "start-react",
-        "cName": "H5快速上手",
+        "cName": "快速上手",
         "show": true
       },
       {
@@ -34,7 +34,7 @@
         "show": true
       },
       {
-        "name": "https://github.com/jdf2e/nutui-react/releases",
+        "name": "https://github.com/jdf2e/nutui-biz/releases",
         "cName": "更新日志",
         "show": true,
         "isLink": true
@@ -65,6 +65,30 @@
           "desc": "购物车栏",
           "sort": 3,
           "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "CartBarButton",
+          "type": "component",
+          "cName": "购物车栏",
+          "desc": "购物车栏",
+          "sort": 26,
+          "show": false,
+          "exportEmpty": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "CartBarIcon",
+          "type": "component",
+          "cName": "购物车栏",
+          "desc": "购物车栏",
+          "sort": 27,
+          "show": false,
+          "exportEmpty": true,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -177,6 +201,17 @@
           "show": false,
           "taro": true,
           "author": "ailululu"
+        },
+        {
+          "version": "0.1.0",
+          "name": "ConfigProvider",
+          "type": "component",
+          "cName": "全局配置",
+          "desc": "可以配置多语言等全局属性",
+          "sort": 25,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
         }
       ]
     },
@@ -339,7 +374,7 @@
           "cName": "横向滚动",
           "desc": "横向滚动",
           "sort": 24,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -350,7 +385,7 @@
           "cName": "登录",
           "desc": "登录",
           "sort": 22,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         }

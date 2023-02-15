@@ -5,7 +5,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { useConfig } from "@/packages/configprovider";
 import { IComponent } from "@/utils/typings";
 import classNames from "classnames";
 import bem from "@/utils/bem";
@@ -44,8 +43,6 @@ export const QuickEnter: FunctionComponent<
     Omit<React.HTMLAttributes<HTMLDivElement>, "onClick">
 > = (props) => {
   const time = new Date().getTime();
-
-  // const { locale } = useConfig();
   const {
     className,
     style,
@@ -71,7 +68,7 @@ export const QuickEnter: FunctionComponent<
   };
   const formatIcons = () => {
     const screenNumber = columns * rows;
-    let quicks = [];
+    let quicks: any[] = [];
     let index = 0;
     while (index < data.length) {
       quicks.push(data.slice(index, (index += screenNumber)));

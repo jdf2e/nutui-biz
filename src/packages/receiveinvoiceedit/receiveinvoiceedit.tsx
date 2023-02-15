@@ -5,7 +5,6 @@ import {
   Button,
   Address,
 } from "@nutui/nutui-react";
-import "./receiveinvoiceedit.scss";
 import { useConfig } from "@/packages/configprovider";
 
 interface CalResult {
@@ -49,7 +48,7 @@ interface AddressResult {
   addressTitle: string;
 }
 
-export interface ReceiveInvoiceEdit extends IComponent {
+export interface ReceiveInvoiceEditProps extends IComponent {
   invoiceInfo: InvoiceInfo;
   data: InvoiceData;
   address: AddressResult;
@@ -77,10 +76,10 @@ const defaultProps = {
     town: [],
     addressTitle: "选择所在地区",
   },
-} as unknown as ReceiveInvoiceEdit;
+} as unknown as ReceiveInvoiceEditProps;
 
 export const ReceiveInvoiceEdit: FunctionComponent<
-  Partial<ReceiveInvoiceEdit> &
+  Partial<ReceiveInvoiceEditProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">
 > = (props) => {
   const { locale } = useConfig();

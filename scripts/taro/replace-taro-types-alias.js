@@ -6,7 +6,7 @@ const exportPropsTypes = require('../export-props')
 const dest_docs = './dist/types'
 
 vfs
-  .src(['./dist/esm/types/src/packages/nutui.react.taro.d.ts'])
+  .src(['./dist/esm/types/src/packages/nutui.biz.taro.d.ts'])
   .pipe(
     map((file, cb) => {
       const contents = file.contents
@@ -37,8 +37,8 @@ vfs
       .on('end', () => {
         fs.remove('./dist/esm/types')
         fs.move(
-          './dist/types/nutui.react.taro.d.ts',
-          './dist/types/nutui.react.d.ts',
+          './dist/types/nutui.biz.taro.d.ts',
+          './dist/types/nutui.biz.d.ts',
           (err) => {
             console.log('重命名失败', err)
             exportPropsTypes('taro')

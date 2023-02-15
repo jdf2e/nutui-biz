@@ -1,0 +1,126 @@
+.nut-login{
+    display: flex;
+    flex-direction: column;
+    padding: 18px ;
+    background: $white;
+    &__logo{
+        width: 80px;
+        height: 80px;
+        margin: 20px auto 15px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__title{
+        font-size: 24px;
+        font-weight: bold;
+        margin: 10px;
+    }
+    &__content{
+        margin: 20px 0px 10px;
+        .code-box{
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            min-width:100px;
+            padding:0 5px;
+            color:#666;
+            cursor: pointer;
+            &::before{
+                content: '';
+                display: block;
+                width: 1px;
+                height: 26px;
+                margin-right: 10px;
+                background: #e3e3e3;
+            }
+            &.disabled{
+                color: #ccc;
+                cursor: not-allowed;
+            }
+            .counts{
+                width: 100%;
+                text-align: center;
+            }
+        }
+        .input-wrap{
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-bottom: 0px;
+            transition: all 0.2s;
+            &.error{
+                margin-bottom: 10px;
+            }
+            .forget-pwd{
+                width: 55px;
+                font-size: 12px;
+                color: #006FFF;
+                margin: 0 0 15px 10px;
+                cursor: pointer;
+            }
+            .error-msg{
+                position: absolute;
+                bottom: -4px;
+                font-size: 12px;
+                color: red;
+                padding: 0 18px;
+            }
+        }
+        .input-item{
+            display: flex;
+            align-items: center;
+            flex:1;
+            min-height: 45px;
+            border: 1px solid #e3e3e3;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            overflow: hidden;
+            .nut-input-text{
+                padding:8px 15px;
+            }
+            .input-text{color: #333;}
+            ::-webkit-input-placeholder{
+                color: #999;
+            }
+        }
+        .pwd-hide-icon{
+            width: 10%;
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+    }
+    
+    .login-protocal{
+        font-size: 12px;
+        margin-bottom: 10px;
+        .nut-checkbox__label {
+            margin-left: 5px;
+            font-size: 12px;
+        }
+    }
+    &__btn{
+        margin: 0 0 15px;
+        border-radius: 4px;
+        overflow: hidden;
+        .nut-button{
+            height: 45px;
+            font-size: 16px;
+        }
+        .nut-button--disabled{
+            background: #D8D8D8;
+            .nut-button__warp{
+                color: #999;
+            }
+        }
+        
+    }
+    .switch-type{
+        color: #006FFF;
+        font-size: 14px;
+        margin: 0 auto 10px;
+        cursor: pointer;
+    }
+}
