@@ -17,7 +17,7 @@ import { Sku } from '@nutui/nutui-biz';
 :::demo
 
 ```ts
-import  React, { useState } from 'react';
+import  React, { useState, useEffect } from 'react';
 import { Sku } from '@nutui/nutui-biz';
 import { Cell } from '@nutui/nutui-react'
 

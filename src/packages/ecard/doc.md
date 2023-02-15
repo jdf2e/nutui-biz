@@ -22,7 +22,7 @@ import { Cell } from '@nutui/nutui-react';
 import { Ecard } from '@nutui/nutui-biz';
 
 const App = () => {
-    const [money, setMoney] = useState(10);
+    const [modelValue, setModelValue] = useState(10);
     const [dataList]=useState([
         {
           price:10
@@ -49,7 +49,7 @@ const App = () => {
     return (
         <Cell>
             <Ecard
-                money={money}
+                modelValue={modelValue}
                 onChangeInput={onChangeInput}
                 onChange={onChange}
                 onChangeStep={onChangeStep}
@@ -77,8 +77,8 @@ export default App;
 | cardAmountMax | 其他面值最大值  | number | `9999`            |
 | cardBuyMin    | 购买数量最小值  | number | `9999`            |
 | cardBuyMax    | 购买数量最大值  | number | `9999`            |
-| money         | 购买电子卡所需价钱 | number | `0`            |
-| placeholder   | 其他面值默认提示语 | string | `请输入1-5000整数`|
+| modelValue         | 购买电子卡所需价钱 | number | `0`            |
+| placeholder   | 其他面值默认提示语 | string | `请输入1-9999整数`|
 
 ### Events
 

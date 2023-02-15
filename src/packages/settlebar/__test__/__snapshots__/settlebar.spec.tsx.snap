@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test placeholder 1`] = `"<div class=\\"nut-settle-bar nut-biz-safe-area-bottom\\"><div class=\\"nut-settle-bar-main\\"><div class=\\"select-all\\"><div class=\\"nut-checkbox \\"><i class=\\"nutui-iconfont nut-icon nut-icon-check-normal nut-checkbox__icon--unchecked\\" style=\\"font-size: 18px; height: 18px; width: 18px;\\"></i><span class=\\"nut-checkbox__label \\">全选</span></div></div><div class=\\"total\\" style=\\"align-items: flex-end; text-align: right;\\"><div class=\\"total-main\\"><span>合计：</span><span>¥0</span></div></div><div class=\\"buy \\">去结算<span class=\\"num\\">(0)</span></div></div></div>"`;
