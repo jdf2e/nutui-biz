@@ -1,26 +1,16 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
 import { IComponent } from "@/utils/typings";
-import {
-  Input,
-  Button,
-  Address,
-} from "@nutui/nutui-react";
+import { Input, Button } from "@nutui/nutui-react";
+import { Address } from "../address/address";
 import { useConfig } from "@/packages/configprovider";
 
-interface CalResult {
-  type: string;
-  data: any;
-}
-interface RegionData {
-  name?: string;
-  [key: string]: any;
-}
 interface InvoiceInfo {
   name?: string;
   tel?: string;
   region?: string;
   regionIds?: any;
   address?: string;
+  [key: string]: any;
 }
 interface InvoiceData {
   nameText?: string;
@@ -35,27 +25,29 @@ interface InvoiceData {
   addressText?: string;
   addressPlaceholder?: string;
   addressErrorMsg?: string;
-  required?: any;
+  required?: string[];
+  showSaveBtn?: boolean;
   bottomText?: string;
+  [key: string]: any;
 }
 interface AddressResult {
   addressSelect: any;
-  addressStr: string;
-  province: RegionData[];
-  city: RegionData[];
-  country: RegionData[];
-  town: RegionData[];
+  province: [];
+  city: [];
+  country: [];
+  town: [];
   addressTitle: string;
+  [key: string]: any;
 }
 
 export interface ReceiveInvoiceEditProps extends IComponent {
   invoiceInfo: InvoiceInfo;
   data: InvoiceData;
   address: AddressResult;
-  onChange: (val: string, tag: string) => void;
-  onChangeAddress: (data: any) => void;
-  onCloseAddress: (data: any) => void;
-  onSave: (data: any) => void;
+  onChange?: (val: string, tag: string) => void;
+  onAddressChange?: (data: any) => void;
+  onAddressClose?: (data: any) => void; // 地址弹窗关闭时触发事件
+  onSave?: (data: any) => void; // 保存按钮事件
 }
 
 const defaultProps = {
@@ -76,7 +68,7 @@ const defaultProps = {
     town: [],
     addressTitle: "选择所在地区",
   },
-} as unknown as ReceiveInvoiceEditProps;
+} as ReceiveInvoiceEditProps;
 
 export const ReceiveInvoiceEdit: FunctionComponent<
   Partial<ReceiveInvoiceEditProps> &
@@ -84,44 +76,36 @@ export const ReceiveInvoiceEdit: FunctionComponent<
 > = (props) => {
   const { locale } = useConfig();
   const {
-    invoiceInfo = null,
-    showSave = false,
-    data = null,
+    invoiceInfo,
+    data,
     address,
     onChange,
     onSave,
-    onChangeAddress,
-    onCloseAddress,
+    onAddressChange,
+    onAddressClose,
     ...rest
   } = {
+    ...defaultProps,
     ...props,
   };
-  //提交数据格式
-  const [formData, setFormData] = useState<any>({
-    name: "",
-    tel: "",
-    region: "",
-    regionIds: [],
-    address: "",
-  });
-  //必填项设置
-  const [isRequired, setIsRequired] = useState([
+  const [formData, setFormData] = useState<InvoiceInfo>(invoiceInfo);
+  const [required, setRequired] = useState([
     "name",
     "tel",
     "region",
     "address",
   ]);
   //地址组件相关数据
-  const [addressData, setAddressData] = useState({
+  const [addressData, setAddressData] = useState<AddressResult>({
     addressSelect: [],
-    province: [] as RegionData[],
-    city: [] as RegionData[],
-    country: [] as RegionData[],
-    town: [] as RegionData[],
+    province: [],
+    city: [],
+    country: [],
+    town: [],
     addressTitle: "选择所在地区",
   });
   //地址编辑数据形式兜底文案配置
-  const [editSeting, setEditSeting] = useState({
+  const [editSeting, setEditSeting] = useState<InvoiceData>({
     nameText: locale.receiveInvoiceEdit.nameText,
     namePlaceholder: locale.receiveInvoiceEdit.namePlaceholder,
     nameErrorMsg: locale.receiveInvoiceEdit.nameErrorMsg,
@@ -140,52 +124,39 @@ export const ReceiveInvoiceEdit: FunctionComponent<
   const [addressVisible, setAddressVisible] = useState(false);
 
   useEffect(() => {
-    //地址组件所需相关信息获取
-    if (address) {
-      setAddressData(address);
-    }
-    //编辑地址所需字段设置获取
     if (data) {
-      setEditSeting({ ...editSeting,...data });
+      setEditSeting({ ...editSeting, ...data });
       if (data?.required) {
-        setIsRequired(data.required);
+        setRequired(data.required);
       }
     }
-    //地址信息初始化获取
     if (invoiceInfo) {
       setFormData({ ...formData, ...invoiceInfo });
-      //同步地址组件
-      if (invoiceInfo.regionIds.length) {
-        setAddressData({
-          ...addressData,
-          addressSelect: invoiceInfo.regionIds,
-        });
-      }
+      setAddressData({
+        ...address,
+        addressSelect: invoiceInfo.regionIds,
+      });
     }
-    //重置error错误
     setErrorList([]);
   }, [address, data, invoiceInfo]);
   const changeAddress = (cal: any) => {
     setErrorList(errorList.filter((i: any) => i != "region"));
-    if (cal.next === "town") {
+    const name = addressData[cal.next];
+    if (name.length < 1) {
       setAddressVisible(false);
     }
-    onChangeAddress && onChangeAddress(cal);
+    onAddressChange && onAddressChange(cal);
   };
-
-  const closeAddress = (val: CalResult) => {
-    if ((val.data as AddressResult).addressStr) {
-      //地址id格式处理
-      let ids = val.data.addressIdStr.split("_").map((item: any) => item * 1);
-      //删除数组中为0的项
-      ids.splice(ids.indexOf(0));
-      //提交信息数据同步
-      setFormData({ ...formData, region: val.data.addressStr, regionIds: ids });
-      //地址组件数据同步
-      setAddressData({ ...addressData, addressSelect: ids });
-    }
-    onCloseAddress && onCloseAddress(val);
-
+  const closeAddress = (val: any) => {
+    //地址id格式处理
+    let ids = val.data.addressIdStr.split("_").map((item: any) => item * 1);
+    //删除数组中为0的项
+    ids.splice(ids.indexOf(0));
+    //提交信息数据同步
+    setFormData({ ...formData, region: val.data.addressStr, regionIds: ids });
+    //地址组件数据同步
+    setAddressData({ ...addressData, addressSelect: ids });
+    onAddressClose && onAddressClose(val);
     setAddressVisible(false);
   };
   const inputOnchange = (val: any, tag: string) => {
@@ -193,21 +164,9 @@ export const ReceiveInvoiceEdit: FunctionComponent<
     if (val.length != 0) {
       setErrorList(errorList.filter((i: any) => i != tag));
     }
-
     Object.keys(formData).map((key: any) => {
       if (key === tag) {
-        if (key === "tel") {
-          const regTel =
-            /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
-          const regNumber = /[^-0-9]/g;
-          let number =
-            !regTel.test(val) && val.length > 11
-              ? val.substring(0, 11)
-              : val.replace(regNumber, "");
-          data[tag] = number;
-        } else {
           data[tag] = val;
-        }
       }
     });
     setFormData({ ...formData, ...data });
@@ -215,127 +174,63 @@ export const ReceiveInvoiceEdit: FunctionComponent<
   };
   const validForm = () => {
     let form = formData;
-    let flag = false
     let arr: any = [].concat(errorList);
     Object.keys(form).map((key) => {
-      // console.log(key);
-      // console.log(isRequired);
-      if (isRequired.includes(key) && formData[key] == "") {
-        console.log(key);
-        
-        switch (key) {
-          case "name":
-            if (!errorList.includes("name")) {
-              arr.push("name");
-              setErrorList(arr);
-            }
-            break;
-          case "tel":
-            if (!errorList.includes("tel")) {
-              arr.push("tel");
-              setErrorList(arr);
-            }
-            break;
-          case "region":
-            if (!errorList.includes("region")) {
-              arr.push("region");
-              setErrorList(arr);
-            }
-            break;
-          case "address":
-            if (!errorList.includes("address")) {
-              arr.push("address");
-              setErrorList(arr);
-            }
-            break;
-
-          default:
-            break;
+      if (required.includes(key) && formData[key] == "") {
+        if(!errorList.includes(key)){
+          arr.push(key);
         }
-        flag = false
-      }else{
-        flag =  true
+        setErrorList(arr);
       }
     });
-    return flag
+    return arr.length>0 ?false:true;
   };
   const save = () => {
     if (validForm()) {
       onSave && onSave(formData);
-    } else {
-      console.log("校验不通过");
     }
+  };
+  const InputDom = (props: { name: string; type: string; }) => {
+    const { name, type } = props;
+    const label = name + "Text";
+    const errorMsg = name + "ErrorMsg";
+    const placeholder = name + "Placeholder";
+    return (
+      <div className="nut-receive-invoice-edit-item">
+        <Input
+          className="nut-input-text"
+          label={editSeting[label]}
+          defaultValue={formData[name]}
+          name={name}
+          placeholder={editSeting[placeholder]}
+          type={type}
+          readonly={name == "region"}
+          required={required.includes(name)}
+          onChange={(e) => inputOnchange(e, name)}
+          onClick={() => (name == "region" ? setAddressVisible(true) : "")}
+          errorMessage={errorList.includes(name) && editSeting[errorMsg]}
+        />
+      </div>
+    );
   };
 
   return (
     <div className="nut-receive-invoice-edit" {...rest}>
-      <div className="nut-receive-invoice-edit-item">
-        <Input
-          className="nut-input-text"
-          label={editSeting.nameText}
-          defaultValue={formData.name}
-          name="name"
-          placeholder={editSeting?.namePlaceholder}
-          type="text"
-          required={isRequired.includes("name") || false}
-          onChange={(e) => inputOnchange(e, "name")}
-          errorMessage={errorList.includes("name") && editSeting.nameErrorMsg}
-        />
-      </div>
-      <div className="nut-receive-invoice-edit-item">
-        <Input
-          className="nut-input-text"
-          label={editSeting.telText}
-          defaultValue={formData.tel}
-          name="tel"
-          placeholder={editSeting.telPlaceholder}
-          type="tel"
-          required={isRequired.includes("tel") || false}
-          onChange={(e) => inputOnchange(e, "tel")}
-          errorMessage={errorList.includes("tel") && editSeting.telErrorMsg}
-        />
-      </div>
-      <div className="nut-receive-invoice-edit-item">
-        <Input
-          className="nut-input-text"
-          label={editSeting.regionText}
-          defaultValue={formData.region}
-          name="region"
-          readonly
-          placeholder={editSeting.regionPlaceholder}
-          type="text"
-          required={isRequired.includes("region") || false}
-          onClick={() => setAddressVisible(true)}
-          errorMessage={
-            errorList.includes("region") && editSeting.regionErrorMsg
-          }
-        />
-        <Address
-          modelValue={addressVisible}
-          modelSelect={addressData.addressSelect}
-          province={addressData.province}
-          city={addressData.city}
-          country={addressData.country}
-          town={addressData.town}
-          customAddressTitle={addressData.addressTitle}
-          onChange={(cal) => changeAddress(cal)}
-          onClose={closeAddress}
-        />
-      </div>
-      <div className="nut-receive-invoice-edit-item">
-        <Input
-          label={editSeting.addressText}
-          className="nut-input-text"
-          defaultValue={formData.address}
-          placeholder={editSeting.addressPlaceholder}
-          type="text"
-          required={isRequired.includes("address") || false}
-          onChange={(e) => inputOnchange(e, "address")}
-          errorMessage={
-            errorList.includes("address") && editSeting.addressErrorMsg
-          }
-        />
-      </div>
+      {InputDom({ name: "name", type: "text" })}
+      {InputDom({ name: "tel", type: "tel" })}
+      {InputDom({ name: "region", type: "text" })}
+      {InputDom({ name: "address", type: "text" })}
+      <Address
+        modelValue={addressVisible}
+        modelSelect={addressData.addressSelect}
+        province={addressData.province}
+        city={addressData.city}
+        country={addressData.country}
+        town={addressData.town}
+        customAddressTitle={addressData.addressTitle}
+        onChange={(cal) => changeAddress(cal)}
+        onClose={closeAddress}
+      />
       <div className="nut-receive-invoice-edit-bottom">
         <Button block type="danger" onClick={save}>
           {editSeting.bottomText}
