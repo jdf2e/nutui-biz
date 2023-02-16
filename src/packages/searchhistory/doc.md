@@ -24,10 +24,12 @@ const App = () => {
   const [recentSearchData, setRecentSearchData] = useState(JSON.parse(localStorage.getItem('recentSearchData') as string) || [])
   const searchDiscoverData = [
     {
-      name: '小米手环'
+      key: '小米手环',
+      url: ''
     },
     {
-      name: '对讲机'
+      key: '对讲机',
+      url: ''
     }
   ]
 
@@ -36,17 +38,20 @@ const App = () => {
 
     let arr = JSON.parse(localStorage.getItem('recentSearchData') as string) || [];
     let len = arr.filter((item: {
-      name: string
-    }) => item.name === val).length
+      key: string,
+      url: string
+    }) => item.key === val).length
 
     if(len > 0) {
       arr = arr.filter((item: {
-        name: string
-      }) => item.name !== val)
+        key: string,
+        url: string
+      }) => item.key !== val)
     }
 
     arr.unshift({
-      name: val
+      key: val,
+      url: ''
     })
 
     localStorage.setItem('recentSearchData', 

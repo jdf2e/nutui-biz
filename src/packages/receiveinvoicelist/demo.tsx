@@ -1,6 +1,7 @@
 import React from 'react'
 import { ReceiveInvoiceItem, ReceiveInvoiceList } from './receiveinvoicelist'
 import { useTranslate } from '../../sites/assets/locale'
+import { Toast } from '@nutui/nutui-react';
 
 interface tarnslatedOption {
   basic: string;
@@ -48,9 +49,18 @@ const ReceiveInvoiceListDemo = () => {
   };
 
   const event = {
-    onEdit: (item: ReceiveInvoiceItem) => { console.log('onEdit', item) },
-    onSelected: (item: ReceiveInvoiceItem) => { console.log('onSelected', item) },
-    onDelete: (item: ReceiveInvoiceItem) => { console.log('onDelete', item) }
+    onEdit: (item: ReceiveInvoiceItem) => {
+      Toast.text('onEdit ' + item.name);
+      console.log('onEdit', item);
+    },
+    onSelected: (item: ReceiveInvoiceItem) => {
+      Toast.text('onSelected ' + item.name);
+      console.log('onSelected', item);
+    },
+    onDelete: (item: ReceiveInvoiceItem) => {
+      Toast.text('onDelete ' + item.name);
+      console.log('onDelete', item);
+    }
   }
 
 
@@ -60,7 +70,7 @@ const ReceiveInvoiceListDemo = () => {
         <h2>{translated.basic}</h2>
         <ReceiveInvoiceList list={state.list} modelValue={state.modelValue} onSelected={event.onSelected} onEdit={event.onEdit} />
         <h2>{translated.useSwipe}</h2>
-        <ReceiveInvoiceList enableDelete={true} list={state.list} modelValue={state.modelValue} onDelete={event.onDelete} />
+        <ReceiveInvoiceList enableDelete={true} list={state.list} modelValue={state.modelValue} onSelected={event.onSelected} onEdit={event.onEdit} onDelete={event.onDelete} />
       </div>
     </>
   )

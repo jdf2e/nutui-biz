@@ -2,25 +2,18 @@ import React, {
   ChangeEvent,
   CSSProperties,
   FunctionComponent,
-  useEffect,
-  useRef,
+  useMemo,
   useState,
 } from "react";
 import { useConfig } from "@/packages/configprovider";
 
 import bem from "@/utils/bem";
-import { Input, InputNumber } from "@nutui/nutui-react";
+import { InputNumber } from "@nutui/nutui-react";
 
 interface IDataList {
   price: number;
 }
-interface IState {
-  currentIndex: number;
-  currentValue: number;
-  inputValue: number | string;
-  stepValue: number;
-  moneyValue: number | string;
-}
+
 export interface EcardProps {
   className?: string;
   style?: CSSProperties;
@@ -32,7 +25,7 @@ export interface EcardProps {
   cardAmountMax: number;
   cardBuyMin: number;
   cardBuyMax: number;
-  money: number;
+  modelValue: number;
   placeholder: string;
   onChange?: (item: IDataList) => void;
   onChangeInput?: (val: number) => void;
@@ -49,7 +42,7 @@ const defaultProps = {
   cardAmountMax: 9999,
   cardBuyMin: 1,
   cardBuyMax: 9999,
-  money: 0,
+  modelValue: 0,
   placeholder: "",
 } as EcardProps;
 
@@ -67,7 +60,7 @@ export const Ecard: FunctionComponent<
     cardAmountMax,
     cardBuyMin,
     cardBuyMax,
-    money,
+    modelValue,
     placeholder,
     onChange,
     onChangeInput,
@@ -78,52 +71,31 @@ export const Ecard: FunctionComponent<
     ...props,
   };
   const b = bem("ecard");
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [currentValue, setCurrentValue] = useState<number>(modelValue);
+  const [customValue, setCustomValue] = useState<number | string>("");
+  const [cardAmount, setCardAmount] = useState(cardAmountMin);
 
-  const [state, setState] = useState<IState>({
-    currentIndex: -2,
-    currentValue: money,
-    inputValue: "",
-    stepValue: cardAmountMin,
-    moneyValue: money,
-  });
-
-  //   const [currentIndex, setCurrentIndex] = useState<number>(-2);
-  //   const currentValue = useRef<number>(money);
-  //   const [inputValue, setInputValue] = useState<number | string>("");
-  //   const [stepValue, setStepValue] = useState(cardAmountMin);
-
+  const totalPrice = useMemo(() => {
+    if (!currentValue && !customValue) return 0
+    if (currentIndex >= 0 && cardAmount && currentValue) return Number(currentValue) * Number(cardAmount)
+    if (customValue && currentIndex === -1 && cardAmount) return Number(customValue) * Number(cardAmount)
+    return 0
+  }, [currentIndex, currentValue, cardAmount, customValue])
+  
   const handleClick = (item: { price: number }, index: number) => {
-    setState((stateOld) => {
-      return {
-        ...stateOld,
-        ...{
-          currentIndex: index,
-          currentValue: item.price,
-          stepValue: cardAmountMin,
-          moneyValue: item.price * cardAmountMin,
-        },
-      };
-    });
+    setCurrentIndex(index)
+    setCurrentValue(item.price)
+    setCustomValue('')
     onChange && onChange(item);
   };
 
-  const handleClickInput = () => {
-    setState((stateOld) => {
-      return {
-        ...stateOld,
-        ...{
-          currentIndex: -1,
-          currentValue: stateOld.inputValue ? +stateOld.inputValue : 0,
-          stepValue: cardAmountMin,
-          moneyValue: stateOld.inputValue
-            ? +stateOld.inputValue * cardAmountMin
-            : "",
-        },
-      };
-    });
+  const handleInputClick = () => {
+    setCurrentIndex(-1)
   };
 
   const handleChangeInput = (event: Event) => {
+    console.log({ cardAmountMax, cardAmountMin })
     const inputEle = event.target as HTMLInputElement;
     let inputValueCache = +inputEle.value.replace(/[^\d]/g, "");
     if (inputValueCache > cardAmountMax) {
@@ -131,16 +103,7 @@ export const Ecard: FunctionComponent<
     } else if (inputValueCache < cardAmountMin) {
       inputValueCache = cardAmountMin;
     }
-    setState((stateOld) => {
-      return {
-        ...stateOld,
-        ...{
-          currentValue: inputValueCache,
-          inputValue: inputValueCache,
-          moneyValue: inputValueCache * stateOld.stepValue,
-        },
-      };
-    });
+    setCustomValue(inputValueCache)
     onChangeInput && onChangeInput(inputValueCache);
   };
 
@@ -148,31 +111,9 @@ export const Ecard: FunctionComponent<
     param: string | number,
     e: MouseEvent | ChangeEvent<HTMLInputElement>
   ) => {
-    setState((stateOld) => {
-      return {
-        ...stateOld,
-        ...{
-          stepValue: +param,
-          moneyValue: stateOld.currentValue * +param,
-        },
-      };
-    });
-    onChangeStep && onChangeStep(+param, state.currentValue as number);
+    setCardAmount(Number(param))
+    onChangeStep && onChangeStep(+param, currentValue as any);
   };
-
-  //   useEffect(() => {
-  //     if (state.moneyValue !== money) {
-  //       console.log("s");
-  //       setState((stateOld) => {
-  //         return {
-  //           ...stateOld,
-  //           ...{
-  //             moneyValue: money,
-  //           },
-  //         };
-  //       });
-  //     }
-  //   }, [money]);
 
   return (
     <div className={`${b()} ${className}`} {...rest}>
@@ -182,9 +123,8 @@ export const Ecard: FunctionComponent<
           {dataList.map((item, index) => {
             return (
               <div
-                className={`${b("list__item")} ${
-                  state.currentIndex === index ? "active" : ""
-                }`}
+                className={`${b("list__item")} ${currentIndex === index ? "active" : ""
+                  }`}
                 key={index}
                 onClick={() => {
                   handleClick(item, index);
@@ -195,29 +135,19 @@ export const Ecard: FunctionComponent<
             );
           })}
           <div
-            className={`${b("list__input")} ${
-              state.currentIndex === -1 ? "active" : ""
-            }`}
+            className={`${b("list__input")} ${currentIndex === -1 ? "active" : ""
+              }`}
             onClick={() => {
-              handleClickInput();
+              handleInputClick();
             }}
           >
             <div>{otherValueText || locale.ecard.otherValueText}</div>
             <div className={b("list__input--con")}>
-              {/* <Input
-                className={b("list__input--input")}
-                type="number"
-                inputAlign="right"
-                border={false}
-                defaultValue={state.inputValue}
-                onChange={handleChangeInput}
-                placeholder={placeholder || locale.ecard.placeholder}
-              /> */}
               <input
                 className={b("list__input--input")}
                 type="number"
-                value={state.inputValue}
-                onInput={(e: any) => {
+                value={customValue}
+                onChange={(e: any) => {
                   handleChangeInput(e);
                 }}
                 placeholder={placeholder || locale.ecard.placeholder}
@@ -228,10 +158,10 @@ export const Ecard: FunctionComponent<
           <div className={b("list__step")}>
             <div className={b("list__step--price")}>
               {suffix}
-              {state.moneyValue}
+              {totalPrice}
             </div>
             <InputNumber
-              modelValue={state.stepValue}
+              modelValue={cardAmount}
               min={cardBuyMin}
               max={cardBuyMax}
               onChangeFuc={handleChangeStep}

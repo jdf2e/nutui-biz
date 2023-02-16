@@ -172,6 +172,9 @@ const idID: BaseLang = {
     title: 'Catatan Pesanan',
     tagTitle: 'Merekomendasikan Tanda Tangan',
     submitText: 'Konfirmasi'
+  },
+  horizontalscrolling: {
+    more: 'Lagi'
   }
 }
 export default idID

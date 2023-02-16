@@ -70,6 +70,30 @@
         },
         {
           "version": "0.1.0",
+          "name": "CartBarButton",
+          "type": "component",
+          "cName": "购物车栏",
+          "desc": "购物车栏",
+          "sort": 26,
+          "show": false,
+          "exportEmpty": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "CartBarIcon",
+          "type": "component",
+          "cName": "购物车栏",
+          "desc": "购物车栏",
+          "sort": 27,
+          "show": false,
+          "exportEmpty": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
           "name": "Category",
           "type": "component",
           "cName": "商品分类",
@@ -177,6 +201,17 @@
           "show": false,
           "taro": true,
           "author": "ailululu"
+        },
+        {
+          "version": "0.1.0",
+          "name": "ConfigProvider",
+          "type": "component",
+          "cName": "全局配置",
+          "desc": "可以配置多语言等全局属性",
+          "sort": 25,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
         }
       ]
     },
@@ -224,7 +259,7 @@
           "cName": "配送",
           "desc": "配送",
           "sort": 14,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -235,7 +270,7 @@
           "cName": "订单取消面板",
           "desc": "订单取消面板",
           "sort": 13,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -341,7 +376,7 @@
           "sort": 24,
           "show": true,
           "taro": true,
-          "author": "yangjinjun3"
+          "author": "ailululu"
         },
         {
           "version": "0.1.0",

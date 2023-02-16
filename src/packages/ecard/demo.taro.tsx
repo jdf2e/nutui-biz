@@ -21,7 +21,7 @@ const EcardDemo = () => {
       basic: "Basic Usage",
     },
   });
-  const [money, setMoney] = useState(10);
+  const [money, setModelValue] = useState(10);
   const [dataList] = useState<IDataList[]>([
     {
       price: 10,
