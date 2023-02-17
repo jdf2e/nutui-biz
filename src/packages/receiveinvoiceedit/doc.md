@@ -54,7 +54,7 @@ const App = () => {
     address: "",
   };
   const addressSetData = {
-    isRequired: ["name", "tel"],
+    required: ["name", "tel"],
   };
   return (
     <ReceiveInvoiceEdit
@@ -113,15 +113,15 @@ const App = () => {
     address: "xxx小区3-2-302",
   };
   const addressSetData = {
-    isRequired: ["name", "tel"],
+    required: ["name", "tel"],
   };
 
   const onChange = (data: any) => {
-    console.log("onChangeAddress", data);
+    console.log("onAddressChange", data);
   };
 
   const onClose = (data: any) => {
-    console.log("onCloseAddress", data);
+    console.log("onAddressClose", data);
   };
 
   return (
@@ -132,8 +132,8 @@ const App = () => {
         onSave={(formData) => {
             console.log(formData);
         }}
-        onChangeAddress={onChange}
-        onCloseAddress={onClose}
+        onAddressChange={onChange}
+        onAddressClose={onClose}
         />
   );
 };
@@ -182,6 +182,7 @@ export default App;
 | addressText  | 自定义详细地址文案 | String | '详细地址' |
 | addressPlaceholder  | 自定义详细地址占位文案 | String | '街道、楼牌号' |
 | addressErrorMsg  | 自定义详细地址非空校验错误提示文案 | String | '该项为必填项，请填写完后提交' |
+| required  |需要展示错误信息的字段 | String[] | ['name','tel'] |
 | bottomText         |自定义底部保存按钮文案 | String | '保存' |
 
 ### Props addressInfo
@@ -199,7 +200,7 @@ export default App;
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onChange | 输入框输入文字，返回输入文案和所在输入框的标识tag (name,tel,region,address) |  value,tag |
-| onChangeAddress | 自定义选择地址时，选择地区时触发 |  {custom:当前选中地址,next:下一级地址,value:当前已选中的地址信息} |
-| onCloseAddress | 地址选择弹框关闭时触发 | value |
-| onSave | 点击底部保存地址按钮,返回保存的信息 |  formData |
+| onAddressChange | 自定义选择地址时，选择地区时触发 |  {custom:当前选中地址,next:下一级地址,value:当前已选中的地址信息} |
+| onAddressClose | 地址选择弹框关闭时触发 | value |
+| onSave | 点击底部保存地址按钮,返回保存的信息 |  value |
 

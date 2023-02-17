@@ -171,6 +171,9 @@ const zhTW: BaseLang = {
     title: '訂單備註',
     tagTitle: '推薦標籤',
     submitText: '確認'
+  },
+  horizontalscrolling: {
+    more: '更多'
   }
 };
 export default zhTW;

@@ -9,17 +9,11 @@
         color:$title-color2;
     }
     &-bottom{
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
         bottom: constant(safe-area-inset-bottom);
         bottom: env(safe-area-inset-bottom);
         width: 100%;
-        padding: 12px 18px 24px;
-        z-index: 999;
+        padding: 6px 15px;
         background-color: #fff;
-        box-sizing: border-box;
     }
     .nut-input{
         padding: var(--nutui-input-padding, 10px 10px);

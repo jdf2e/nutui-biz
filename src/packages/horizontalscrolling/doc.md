@@ -103,6 +103,7 @@ const App = () => {
       <HorizontalScrolling
         maskPosition="left"
         maskShadowType="shadow"
+        maskIcon="more-x"
       >
         {[1, 2, 3, 4, 5, 6].map((item, index) => {
           return (
@@ -131,7 +132,7 @@ export default App;
 :::demo
 ```tsx
 import  React from 'react';
-import { Cell, Icon } from '@nutui/nutui-react';
+import { Cell } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -178,7 +179,7 @@ export default App;
 :::demo
 ```tsx
 import  React from 'react';
-import { Cell, Icon } from '@nutui/nutui-react';
+import { Cell } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -193,11 +194,10 @@ const App = () => {
         maskWidth="40px" 
         className="custom-float"
         maskHpl={
-          <div className="nut-biz-horizontalscrolling__mask-right-box">
+          <div className="more-box">
             查看更多
           </div>
         }
-        onClickMask={onChange}
       >
         {[1, 2, 3, 4, 5, 6].map((item, index) => {
           return (
@@ -224,7 +224,7 @@ export default App;
 :::demo
 ```tsx
 import  React from 'react';
-import { Cell, Icon } from '@nutui/nutui-react';
+import { Cell } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -255,6 +255,52 @@ export default App;
 ```
 :::
 
+
+### 事件演示
+
+:::demo
+```tsx
+import  React from 'react';
+import { Cell, Icon } from '@nutui/nutui-react';
+import { HorizontalScrolling } from '@nutui/nutui-biz';
+
+const App = () => {
+
+  const onChange = () => {
+    console.log('change')
+  };
+
+  const onScroll = () => {
+    console.log('scroll right')
+  }
+
+  return (
+    <Cell>
+      <HorizontalScrolling 
+        maskShadowType="shadow" 
+        onClickMask={onChange}
+        onScrollRight={onScroll}
+      >
+        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+          return (
+            <div   
+              className="nut-biz-horizontalscrolling__contain-item"
+              key={index}
+            >
+              <img
+                src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
+              />
+            </div>
+          )
+        })}
+      </HorizontalScrolling>
+    </Cell>
+  );
+};
+export default App;
+```
+:::
+
 ## API
 
 ### Props
@@ -262,8 +308,8 @@ export default App;
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | showMask         | 是否需要遮罩层               | Boolean | true         |
-| maskPosition        | 遮罩层展示位置，可选择：left、right      | String | right                |
-| maskShadowType         | 遮罩阴影形式，none 无  triangle 有三角的 shadow 阴影 transparent 半透明 | String | triangle               |
+| maskPosition        | 遮罩层展示位置（可选值：`left`、`right`）      | String | right                |
+| maskShadowType         | 遮罩阴影形式（可选值 `none`: 无、`triangle`: 有三角的、`shadow`: 阴影、`transparent`: 半透明） | String | triangle               |
 | maskWidth          | 遮罩层宽度                        | String | '100px'              |
 | maskDistance       | 滚动内容距离容器的宽度                     | String | 0              |
 | showScrollBar       | 是否展示滚动条                     | Boolean | false             |
@@ -274,5 +320,5 @@ export default App;
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| onClickMask  | 点击遮罩层时触发 | - |
-| onScrollRight  | 滑动到右边时会触发 | - |
+| onClickMask  | 点击遮罩层时触发 | event: MouseEvent |
+| onScrollRight  | 滑动到右边时会触发 | event: MouseEvent |

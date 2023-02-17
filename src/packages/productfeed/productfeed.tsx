@@ -7,18 +7,14 @@ import { IComponent } from '@/utils/typings'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 
-// export interface ProductList {
-//   name: string
-//   imgUrl: string
-// }
 export interface ProductFeedProps extends IComponent {
   className: string
   style: CSSProperties
-  col: number | string
-  // data: any[] | []
   // 是否还有更多数据
   hasMore: boolean
+  // 在 useWindow 属性为 false 的时候，自定义设置节点ID
   containerId: string
+  // 将滚动侦听器添加到 window 否则侦听组件的父节点
   useWindow: boolean
   // “没有更多数”据展示文案
   loadMoreTxt: string
@@ -36,13 +32,17 @@ export interface ProductFeedProps extends IComponent {
   onLoadMore: (param: () => void) => void
   // 下拉刷新事件回调
   onRefresh: (param: () => void) => void
-  onClick: () => void
+  // onClick: () => void
 }
 
 const defaultProps = {
-  col: 2,
-  // data: [],
-  onClick: () => { }
+  hasMore: true,
+  useWindow: true,
+  loadMoreTxt: '哎呀，这里是底部了啦',
+  loadTxt: '加载中...',
+  isOpenRefresh: false,
+  pullTxt: '松手刷新'
+  // onClick: () => { }
 } as ProductFeedProps
 
 export const ProductFeed: FunctionComponent<
@@ -52,8 +52,6 @@ export const ProductFeed: FunctionComponent<
     className,
     style,
     children,
-    col,
-    // data,
     hasMore,
     containerId,
     useWindow,
@@ -71,12 +69,7 @@ export const ProductFeed: FunctionComponent<
     ...props,
   }
 
-  const [list, setList] = useState([] as any)
-
-  // const [hasMore, setHasMore] = useState(true)
-
   const b = bem('biz-productfeed')
-
 
   useEffect(() => {
   }, [])
