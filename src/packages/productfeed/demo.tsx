@@ -11,6 +11,7 @@ interface T {
   title3: string
   name: string
   desc: string
+  label: string
 }
 const ProductFeedDemo = () => {
   const [translated] = useTranslate<T>({
@@ -21,13 +22,15 @@ const ProductFeedDemo = () => {
       name:
         '我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题',
       desc: '更多买点更多买点',
+      label: '自营'
     },
     'en-US': {
-      title1: 'Multiple columns',
-      title2: 'Single column',
-      title3: 'Pull down to refresh',
-      name: 'I am the title I am the title I am the title I am the title I am the title I am the title I am the title I am the title',
+      title1: 'Multiple',
+      title2: 'Single',
+      title3: 'Pull down',
+      name: 'I am the title I am the title I am the title I am the title I am the title I am the title',
       desc: 'buy more buy more',
+      label: 'Self'
     },
   })
 
@@ -48,72 +51,84 @@ const ProductFeedDemo = () => {
       desc: translated.desc,
       price: '388',
       vipPrice: '378',
+      label: translated.label,
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       name: translated.name,
       desc: translated.desc,
       price: '388',
       vipPrice: '378',
+      label: translated.label,
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       name: translated.name,
       desc: translated.desc,
       price: '388',
       vipPrice: '378',
+      label: translated.label,
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       name: translated.name,
       desc: translated.desc,
       price: '388',
       vipPrice: '378',
+      label: translated.label,
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       name: translated.name,
       desc: translated.desc,
       price: '388',
       vipPrice: '378',
+      label: translated.label,
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       name: translated.name,
       desc: translated.desc,
       price: '388',
       vipPrice: '378',
+      label: translated.label,
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       name: translated.name,
       desc: translated.desc,
       price: '388',
       vipPrice: '378',
+      label: translated.label,
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       name: translated.name,
       desc: translated.desc,
       price: '388',
       vipPrice: '378',
+      label: translated.label,
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       name: translated.name,
       desc: translated.desc,
       price: '388',
       vipPrice: '378',
+      label: translated.label,
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       name: translated.name,
       desc: translated.desc,
       price: '388',
       vipPrice: '378',
+      label: translated.label,
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       name: translated.name,
       desc: translated.desc,
       price: '388',
       vipPrice: '378',
+      label: translated.label,
     }, {
       imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
       name: translated.name,
       desc: translated.desc,
       price: '388',
       vipPrice: '378',
+      label: translated.label,
     }
   ]
 
@@ -162,13 +177,16 @@ const ProductFeedDemo = () => {
     }, 500)
   }
 
+  const handleClick = () => {
+    console.log('click')
+  }
+
   const refresh = (done: () => void) => {
     setTimeout(() => {
-      console.log('刷新成功')
+      console.log('refresh')
       done()
     }, 1000)
   }
-
 
   const init1 = () => {
     for (let i = 0; i < 6; i++) {
@@ -219,10 +237,11 @@ const ProductFeedDemo = () => {
                     imgUrl={item.imgUrl}
                     imgHeight="164"
                     imgTag={<div className='img-label'><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+                    onClick={handleClick}
                   >
                     <>
                       <div className="name-box">
-                        <div className="label">自营</div>
+                        <div className="label">{item.label}</div>
                         {item.name}
                       </div>
                       <div className="bottom">
@@ -256,10 +275,11 @@ const ProductFeedDemo = () => {
                     imgUrl={item.imgUrl}
                     imgHeight="120"
                     imgTag={<div className='img-label'><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+                    onClick={handleClick}
                   >
                     <>
                       <div className="name-box">
-                        <div className="label">自营</div>
+                        <div className="label">{item.label}</div>
                         {item.name}
                       </div>
                       <div className="name-box desc-box">
@@ -298,10 +318,11 @@ const ProductFeedDemo = () => {
                     imgUrl={item.imgUrl}
                     imgHeight="164"
                     imgTag={<div className='img-label'><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+                    onClick={handleClick}
                   >
                     <>
                       <div className="name-box">
-                        <div className="label">自营</div>
+                        <div className="label">{item.label}</div>
                         {item.name}
                       </div>
                       <div className="bottom">
