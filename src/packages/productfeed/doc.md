@@ -4,8 +4,6 @@
 
 商品 Feed 流组件可配置下拉刷新、列表加载、上滑加载功能，适用于商品信息展示，常见于页面的底部。
 
-<!-- 应用场景包括图片分享、新闻推荐类、商品推荐等。 -->
-
 ### 安装
 ``` javascript
 import { ProductFeed, ProductFeedItem, Card } from '@nutui/nutui-biz';
@@ -351,13 +349,13 @@ export default App;
 | 字段         | 说明                           | 类型     | 默认值    |
 |-------------|--------------------------------|---------|-----------|
 | hasMore     | 是否还有更多数据                  | Boolean | `true`    |
-| containerId | 在 useWindow 属性为 false 的时候，自定义设置节点ID | String  | -    |
+| containerId | 在 `useWindow` 属性为 `false` 的时候，自定义设置节点ID | String  | -    |
 | useWindow   | 将滚动侦听器添加到 window 否则侦听组件的父节点  | Boolean  | `true`  |
 | loadMoreTxt | 上拉加载图标名称                  | String  | `哎呀，这里是底部了啦` |
-| loadIcon    | 上拉加载图标名称                  | String  | -    |
+| loadIcon    | 上拉加载 `Icon` 名称                  | String  | -    |
 | loadTxt     | 上拉加载提示文案                  | String  | `加载中...` |
 | isOpenRefresh | 是否开启下拉刷新                | Boolean | `false` |
-| pullIcon    | 下拉刷新图标名称                  | String  | -    |
+| pullIcon    | 下拉刷新 `Icon` 名称                  | String  | -    |
 | pullTxt     | 下拉刷新提示文案                  | String  | `松手刷新` |
 
 ## Events
@@ -371,7 +369,7 @@ export default App;
 | 字段         | 说明                     | 类型              | 默认值  |
 |-------------|--------------------------|------------------|--------|
 | col         | 每行商品数量               | Number \| String  | `2`    |
-| gutter      | 每行商品之间的间距（单位为px）| Number \| String  | `6`    |
+| gutter      | 每行商品之间的间距，默认单位 `px`| Number \| String  | `6`    |
 | imgUrl      | 商品图片Url                | String           | -     |
 | imgWidth    | 商品图片宽度，默认单位 `px`  | String           | -     |
 | imgHeight   | 商品图片高度，默认单位 `px`  | String           | `150` |

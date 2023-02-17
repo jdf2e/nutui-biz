@@ -1,11 +1,19 @@
-// import * as React from 'react'
+import * as React from 'react'
 
-// import { render } from '@testing-library/react'
-// import '@testing-library/jest-dom'
-// import { trigger, triggerDrag } from '@/utils/test/event'
+import { render } from '@testing-library/react'
+import '@testing-library/jest-dom'
+import { trigger, triggerDrag } from '@/utils/test/event'
 
-// import { ProductFeed } from '../productfeed'
-// import { ProductFeedItem } from '../../productfeeditem/productfeeditem'
+import { ProductFeed } from '../productfeed'
+import { ProductFeedItem } from '../../productfeeditem/productfeeditem'
+
+test('col、gutter test', () => {
+  const { container } = render(
+    <ProductFeed
+    >
+    </ProductFeed>
+  )
+})
 
 // test('col、gutter test', () => {
 //   const { container } = render(
