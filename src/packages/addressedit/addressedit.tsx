@@ -162,7 +162,7 @@ export const AddressEdit: FunctionComponent<
     }
     //编辑地址所需字段设置获取
     if (data) {
-      setEditSeting({ ...data, ...editSeting });
+      setEditSeting({ ...editSeting, ...data });
       if (data?.isRequired) {
         setIsRequired(data.isRequired);
       }

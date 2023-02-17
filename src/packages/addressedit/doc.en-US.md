@@ -186,28 +186,28 @@ export default App;
 
 | Attribute    | Description     | Type    | Default   |
 |---------|--------------------------------------------|---------|-----------|
-| nameText | Custom consignee text | String | 'Consignee' |
-| namePlaceholder | Custom consignee placeholder text | String | 'Please enter the consignee' |
-| nameErrorMsg | Custom consignee non-null verification error prompt text | String | 'This item is required, please fill it out and submit it' |
-| telText | Custom  phone number text | String | 'Mobile phone number' |
-| telPlaceholder | Custom phone number placeholder text | String | 'Please enter your phone number' |
-| telErrorMsg | Prompt text for non-null mobile phone number verification error | String | 'This item is required, please fill it out and submit it' |
-| regionText | Customize the region text | String | 'Region' |
-| regionPlaceholder | Custom region placeholder text | String | 'Please select your region' |
-| regionErrorMsg | Custom region non-null verification error prompt text | String | 'This item is required, please fill it out and submit it' |
-| addressText | Custom detailed address text | String | 'Detailed address' |
-| addressPlaceholder | Custom detailed address placeholder text | String | 'street, building number' |
-| addressErrorMsg | Custom detailed address non-null verification error prompt text | String | 'This item is required, please fill it out and submit it' |
-|bottomText|Customize the text of the save button at the bottom | String | 'Save' |
+| nameText | Custom consignee text | String | `Consignee` |
+| namePlaceholder | Custom consignee placeholder text | String | `Please enter the consignee` |
+| nameErrorMsg | Custom consignee non-null verification error prompt text | String | `This item is required, please fill it out and submit it` |
+| telText | Custom  phone number text | String | `Mobile phone number` |
+| telPlaceholder | Custom phone number placeholder text | String | `Please enter your phone number` |
+| telErrorMsg | Prompt text for non-null mobile phone number verification error | String | `This item is required, please fill it out and submit it` |
+| regionText | Customize the region text | String | `Region` |
+| regionPlaceholder | Custom region placeholder text | String | `Please select your region` |
+| regionErrorMsg | Custom region non-null verification error prompt text | String | `This item is required, please fill it out and submit it` |
+| addressText | Custom detailed address text | String | `Detailed address` |
+| addressPlaceholder | Custom detailed address placeholder text | String | `street, building number` |
+| addressErrorMsg | Custom detailed address non-null verification error prompt text | String | `This item is required, please fill it out and submit it` |
+|bottomText|Customize the text of the save button at the bottom | String | `Save` |
 
 ### Props addressInfo
 | Attribute    | Description     | Type    | Default   |
 |---------|--------------------------------------------|---------|-----------|
-| name | consignee information | String | '' |
-| tel | phone number information | String | '' |
-| region | region information | String | '' |
-| regionIds | The id information of the selected address in the region | String | '' |
-| address | detailed address information | String | '' |
+| name | consignee information | String | -- |
+| tel | phone number information | String | -- |
+| region | region information | String | -- |
+| regionIds | The id information of the selected address in the region | String | -- |
+| address | detailed address information | String | -- |
 | default | Whether it is the default address | Boolean | false |
 
 
@@ -216,7 +216,7 @@ export default App;
 | Attribute    | Description  | Callback |
 |----- | ----- | -----  |
 | onChange | Emitted when to input address information， |  value,tag (name,tel,region,address) |
-| onChangeAddress |  Emitted when to selected address |  reference onChange |
-| onCloseAddress | Emitted when to close address | reference close |
+| onChangeAddress |  Emitted when to selected address |  reference `Address` onChange |
+| onCloseAddress | Emitted when to close address | reference `Address` close |
 | onSave | Emitted when to save address|  formData |
 

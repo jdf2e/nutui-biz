@@ -77,8 +77,8 @@ const AddressEditDemo = () => {
     default: true,
   };
   const addressSetData = {
-    nameText: "收货人",
-    namePlaceholder: "请输入收货人姓名",
+    nameText: "收件人",
+    namePlaceholder: "请输入收件人姓名",
     isRequired: ["name", "tel", "region", "address"],
     isDefualtAddress: true,
   };
@@ -121,6 +121,7 @@ const AddressEditDemo = () => {
 
   const [radioVal, setRadioVal] = useState("1");
   const handleChange = (v: any) => {
+    console.log("inputchange");
     setRadioVal(v);
   };
 
