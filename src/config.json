@@ -13,27 +13,6 @@
         "show": true
       },
       {
-        "name": "starttaro-react",
-        "cName": "小程序开发",
-        "eName": "WeChat",
-        "show": true
-      },
-      {
-        "name": "theme-react",
-        "cName": "主题定制",
-        "show": true
-      },
-      {
-        "name": "international-react",
-        "cName": "国际化",
-        "show": true
-      },
-      {
-        "name": "resource",
-        "cName": "资源",
-        "show": true
-      },
-      {
         "name": "https://github.com/jdf2e/nutui-biz/releases",
         "cName": "更新日志",
         "show": true,
