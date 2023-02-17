@@ -11,6 +11,11 @@ export interface IResonsObject {
   value: string;
   isChecked?: boolean;
 }
+export interface IKeyValue {
+  key: string;
+  value: string;
+  isChecked: boolean;
+}
 export type IPositionType =
   | "start"
   | "end"
@@ -18,6 +23,8 @@ export type IPositionType =
   | "right"
   | "center"
   | "justify";
+
+export type ICurrLang = "cn" | "tw" | "us";
 export interface OrderCancelPanelProps extends IComponent {
   showCancelPanel: boolean;
   warmTips: string[];
@@ -31,6 +38,8 @@ export interface OrderCancelPanelProps extends IComponent {
   isShowCloseBtn: boolean;
   limitshow: boolean;
   btnsText: string;
+  tipsTitle: string;
+  currLang: ICurrLang;
   onClose: () => void;
   onClickCloseIcon: () => void;
   onClickOverlay: () => void;
@@ -45,7 +54,9 @@ const defaultProps = {
   limitshow: false,
   isShowCloseBtn: true,
   btnsText: "提交",
+  tipsTitle: "温馨提示",
   maxlength: 100,
+  currLang: "cn",
 } as OrderCancelPanelProps;
 
 export const OrderCancelPanel: FunctionComponent<
@@ -66,7 +77,9 @@ export const OrderCancelPanel: FunctionComponent<
     maxlength,
     btnsText,
     limitshow,
+    tipsTitle,
     isShowCloseBtn,
+    currLang,
     onClose,
     onClickOverlay,
     onClickCloseIcon,
@@ -80,22 +93,34 @@ export const OrderCancelPanel: FunctionComponent<
   const [cancelResonsList, setCancelResonsList] = useState<
     Array<IResonsObject>
   >([]);
+  const [placeholderText, setPlaceholderText] = useState("");
   useEffect(() => {
+    const otherText = {
+      cn: "其他",
+      us: "other",
+      tw: "其他",
+    };
+    const placeholder = {
+      cn: "请输入内容",
+      us: "Please enter content",
+      tw: "請輸入內容",
+    };
+    setPlaceholderText(placeholder[currLang]);
     if (cancelResons && cancelResons.length > 0) {
       const cancelResonsListCheck: Array<IResonsObject> = cancelResons.map(
         (item) => {
           return Object.assign(item, { ischecked: false });
         }
       );
-      const otherReason = {
+      const otherReason: IKeyValue = {
         key: "other",
-        value: "其他",
+        value: otherText[currLang],
         isChecked: false,
       };
       isAddOtherReason && cancelResonsListCheck.push(otherReason);
       setCancelResonsList(cancelResonsListCheck);
     }
-  }, [cancelResons]);
+  }, [cancelResons, currLang]);
 
   const [currActivedKey, setCurrActivedKey] = useState("");
   const preChecked = useRef("");
@@ -159,7 +184,7 @@ export const OrderCancelPanel: FunctionComponent<
           </h1>
           {warmTips && (
             <div className={b("tips")}>
-              <h2 className={b("tips-header")}>温馨提示</h2>
+              <h2 className={b("tips-header")}>{tipsTitle}</h2>
               {warmTips.map((item, index) => {
                 return (
                   <p key={index} className={b("tips-list")}>
@@ -188,6 +213,7 @@ export const OrderCancelPanel: FunctionComponent<
               })}
               {showOtherText && (
                 <TextArea
+                  placeholder={placeholderText}
                   className={b("area")}
                   defaultValue={textAreaValue}
                   rows="3"
