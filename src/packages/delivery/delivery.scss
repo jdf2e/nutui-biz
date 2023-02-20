@@ -1,0 +1,206 @@
+.nut-delivery{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    &__title{
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        font-size: 16px;
+        color: #333;
+        font-weight: 600;
+        padding: 0 20px;
+        background-color: #fff;
+        z-index: 1;
+        border-radius: 20px;
+    }
+    &__content{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    &__type{
+        width: 100%;
+        margin-top: 20px;
+        padding: 0 20px;
+        .nut-radio{
+            display: inline-block;
+            margin-right: 15px;
+            &__button--active{
+                background-color: #ffece8;
+                font-size: 12px;
+            }
+        }
+        &__tips{
+            margin-top: 5px;
+            font-size: 12px;
+            color: #666;
+        }
+    }
+    &__deliverytime{
+        margin-top: 25px;
+        &__title{
+            font-size: 14px;
+            color: #333;
+            padding: 0 20px;
+        }
+        &__time{
+            margin-top: 10px;
+            padding: 0 20px;
+            .nut-radio{
+                display: inline-block;
+                margin-right: 15px;
+                &__button--active{
+                    background-color: #ffece8;
+                    font-size: 12px;
+                }
+            }
+        }
+        &__tips{
+            padding: 0 20px;
+            margin-top: 5px;
+            font-size: 12px;
+            color: #666;
+        }
+    }
+    &__select{
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        &__stage{
+            width: 100%;
+            height: calc(100% - 50px - 10px);
+            display: flex;
+            margin-top: 15px;
+            &__pannel{
+                width: 140px;
+                height: 100%;
+                overflow: auto;
+                overflow-x: hidden;
+                background-color: #f6f7f9;
+                &-title{
+                    display: flex;
+                    width: 150px;
+                    height: 45px;
+                    padding: 15px 20px;
+                    align-items: center;
+                    color: #666666;
+                    font-size: 14px;
+                    box-sizing: border-box;
+                }
+                &--current{
+                    background-color: #fff;
+                    color: #333333;
+                    font-weight: bold;
+                }
+            }
+            &__detail{
+                flex: 1;
+                height: 100%;
+                overflow-y: auto;
+                overflow-x: hidden;
+                padding: 0 10px;
+                &-item{
+                    width: 100%;
+                    height: 50px;
+                    line-height: 50px;
+                    text-align: center;
+                    margin-bottom: 10px;
+                    background-color: #f6f7f9;
+                    border-radius: 5px;
+                    color: #333333;
+                    font-size: 14px;
+                    border: 1px solid transparent;
+                }
+                &--current{
+                    background-color: #fce0df;
+                    border: 1px solid #fa2c19;
+                    color: #fa2c19;
+                }
+            }
+        }
+        &__date{
+            width: 100%;
+            margin-top: 15px;
+            padding: 0 20px;
+            &-item{
+                width: 100%;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+                margin-bottom: 10px;
+                background-color: #f6f7f9;
+                border-radius: 5px;
+                color: #333333;
+                font-size: 14px;
+                border: 1px solid transparent;
+            }
+            &--current{
+                background-color: #fce0df;
+                border: 1px solid #fa2c19;
+                color: #fa2c19;
+            }
+        }
+        &__accurate{
+            width: 100%;
+            height: calc(100% - 50px - 10px);
+            display: flex;
+            margin-top: 15px;
+            &__pannel{
+                width: 140px;
+                height: 100%;
+                overflow: auto;
+                overflow-x: hidden;
+                background-color: #f6f7f9;
+                &-title{
+                    display: flex;
+                    width: 150px;
+                    height: 45px;
+                    padding: 15px 20px;
+                    align-items: center;
+                    color: #666666;
+                    font-size: 14px;
+                    box-sizing: border-box;
+                }
+                &--current{
+                    background-color: #fff;
+                    color: #333333;
+                    font-weight: bold;
+                }
+            }
+            &__detail{
+                flex: 1;
+                height: 100%;
+                overflow-y: auto;
+                overflow-x: hidden;
+                padding: 0 10px;
+                &-item{
+                    margin-bottom: 10px;
+                    .title{
+                        font-size: 12px;
+                        color: #666;
+                    }
+                    &__times{
+                        width: 100%;
+                        margin-top: 5px;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+                        .time{
+                            width: 48%;
+                            height: 50px;
+                            line-height: 50px;
+                            text-align: center;
+                            margin-bottom: 10px;
+                            background-color: #f6f7f9;
+                            border-radius: 5px;
+                            color: #333;
+                            font-size: 14px;
+                            border: 1px solid transparent;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

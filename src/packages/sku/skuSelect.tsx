@@ -75,7 +75,7 @@ export const SkuSelect: FunctionComponent<
                     return <div 
                       className={classNames(['nut-sku-select-item-skus-sku', { active: !itemAttr.disable && itemAttr.active }, { disable: itemAttr.disable }])}
                       key={itemAttr.name}
-                      onClick={changeSaleChild.bind(this, itemAttr, itemAttrIndex, item, index)}
+                      onClick={()=>changeSaleChild(itemAttr, itemAttrIndex, item, index)}
                     >
                       {itemAttr.name}
                     </div>

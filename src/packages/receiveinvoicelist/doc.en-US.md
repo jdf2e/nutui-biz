@@ -1,0 +1,145 @@
+#  ReceiveInvoiceList
+
+### Intro
+
+Commonly used to display contact list information, etc.
+
+### Install
+
+```javascript
+import { Cell,CellGroup, Tag } from '@nutui/nutui-react';
+import { ReceiveInvoiceList } from '@nutui/nutui-biz';
+```
+
+## Demo
+
+### Basic Usage
+
+:::demo
+
+```ts
+import  React from 'react';
+import { Cell,CellGroup, Tag } from '@nutui/nutui-react';
+import { ReceiveInvoiceList } from '@nutui/nutui-biz';
+
+const App = () => {
+  
+  const state = {
+    modelValue: 1,
+    list: [
+      {
+        id: 1,
+        name: '张三',
+        tel: '15088888888',
+        addres: '北京市大兴京东大厦1号楼',
+        isDefault: true,
+      },
+      {
+        id: 2,
+        name: '李四',
+        tel: '15088888888',
+        addres: '北京市大兴京东大厦2号楼',
+        isDefault: false,
+        extends: [
+          { label: '扩展1', value: '扩展信息展示' },
+          { label: '扩展2', value: '扩展信息展示' }
+        ]
+      }
+    ]
+  };
+
+  const event = {
+    onEdit: (item: ReceiveInvoiceItem) => { console.log('onEdit', item) },
+    onSelected: (item: ReceiveInvoiceItem) => { console.log('onSelected', item) }
+  }
+
+  return (
+     <ReceiveInvoiceList list={state.list} modelValue={state.modelValue} onSelected={event.onSelected} onEdit={event.onEdit} />
+  );
+};
+export default App;
+```
+
+:::
+### Use Swipe Delete
+
+:::demo
+
+```ts
+import  React from 'react';
+import { Cell,CellGroup, Tag } from '@nutui/nutui-react';
+import { ReceiveInvoiceList } from '@nutui/nutui-biz';
+
+const App = () => {
+  
+  const state = {
+    modelValue: 1,
+    list: [
+      {
+        id: 1,
+        name: '张三',
+        tel: '15088888888',
+        addres: '北京市大兴京东大厦1号楼',
+        isDefault: true,
+      },
+      {
+        id: 2,
+        name: '李四',
+        tel: '15088888888',
+        addres: '北京市大兴京东大厦2号楼',
+        isDefault: false,
+        extends: [
+          { label: '扩展1', value: '扩展信息展示' },
+          { label: '扩展2', value: '扩展信息展示' }
+        ]
+      }
+    ]
+  };
+
+  const event = {
+    onDelete: (item: ReceiveInvoiceItem) => { console.log('onDelete', item) },
+  }
+
+  return (
+     <ReceiveInvoiceList enableDelete={true} list={state.list} modelValue={state.modelValue} onDelete={event.onDelete} />
+  );
+};
+export default App;
+```
+
+:::
+
+## API
+
+### Props
+
+
+| Attribute    | Description                           | Type                      | Default |
+|--------------|---------------------------------------|---------------------------|---------|
+| modelValue   | Id of chosen contact                  | Number \| String          | -       |
+| list         | Data List                             | Array<ReceiveInvoiceItem> | []      |
+| enableDelete | Whether to enable the delete function | Boolean                   | `false` |
+
+### ReceiveInvoiceItem Data Structure
+
+| key     | Description         | Type                         |
+|---------|---------------------|------------------------------|
+| id      | ID                  | Number \| String             |
+| name    | Name                | String                       |
+| tel     | Phone               | String                       |
+| addres  | Addres              | String                       |
+| extends | Extend custom array | Array<ReceiveInvoiceItemExt> |
+### ReceiveInvoiceItemExt Data Structure
+
+| key   | Description        | Type   |
+|-------|--------------------|--------|
+| label | Custom field name  | String |
+| value | Custom field value | String |
+
+
+## Events
+| Attribute  | Description    | Arguments                |
+|------------|----------------|--------------------------|
+| onEdit     | Edit Event     | item\:ReceiveInvoiceItem |
+| onSelected | Selected Event | item\:ReceiveInvoiceItem |
+| onDelete   | Delete Event   | item\:ReceiveInvoiceItem |

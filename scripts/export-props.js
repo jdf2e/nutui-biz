@@ -40,8 +40,8 @@ function exportComponentProps(isTaro) {
   vfs
     .src([
       isTaro
-        ? './src/packages/nutui.taro.react.build.ts'
-        : './src/packages/nutui.react.build.ts',
+        ? './src/packages/nutui.taro.biz.build.ts'
+        : './src/packages/nutui.biz.build.ts',
     ])
     .pipe(
       map((file, cb) => {

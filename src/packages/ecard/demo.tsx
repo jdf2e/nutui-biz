@@ -22,7 +22,7 @@ const EcardDemo = () => {
       basic: "Basic Usage",
     },
   });
-  const [money, setMoney] = useState(10);
+  const [modelValue, setModelValue] = useState(10);
   const [dataList] = useState<IDataList[]>([
     {
       price: 10,
@@ -31,7 +31,7 @@ const EcardDemo = () => {
       price: 20,
     },
     {
-      price: 30,
+      price: 33,
     },
     {
       price: 40,
@@ -52,7 +52,7 @@ const EcardDemo = () => {
         <h2>{translated.basic}</h2>
         <Cell>
           <Ecard
-            money={money}
+            modelValue={modelValue}
             onChangeInput={onChangeInput}
             onChange={onChange}
             onChangeStep={onChangeStep}

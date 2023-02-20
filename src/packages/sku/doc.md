@@ -17,7 +17,7 @@ import { Sku } from '@nutui/nutui-biz';
 :::demo
 
 ```ts
-import  React, { useState } from 'react';
+import  React, { useState, useEffect } from 'react';
 import { Sku } from '@nutui/nutui-biz';
 import { Cell } from '@nutui/nutui-react'
 
@@ -338,7 +338,7 @@ const App = () => {
           existAddress={existAddress}
           onClose={close}
           isShowCustomAddress={false}
-          onSelect={() => selectedAddress.bind(this)}
+          onSelect={() => selectedAddress()}
           existAddressTitle="配送至"
         />
     </div>

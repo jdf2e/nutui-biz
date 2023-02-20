@@ -163,9 +163,9 @@ export const Sku: FunctionComponent<
       closeable
       round
       style={{"height": '75%'}}
-      onClose={closePopup.bind(this, 'close')}
-      onClickCloseIcon={closePopup.bind(this, 'icon')}
-      onClickOverlay={closePopup.bind(this, 'overlay')}
+      onClose={()=>closePopup('close')}
+      onClickCloseIcon={()=>closePopup('icon')}
+      onClickOverlay={()=>closePopup('overlay')}
     >
       <div className={classNames([b(),className])} style={style}>
         {renderSkuHeader()}

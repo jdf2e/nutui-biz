@@ -1,0 +1,50 @@
+.demo {
+  .nut-cell-right-zero{
+    padding-right: 0;
+  }
+  .nut-cell-left-zero{
+    padding-left: 0;
+  }
+  .nut-biz-horizontalscrolling__contain-item {
+    position: relative;
+    width: 83px;
+    margin-right: 6px;
+    flex-shrink: 0;
+    overflow: hidden; 
+    img {
+      width: 83px;
+      height: 83px;
+      vertical-align: top;
+    }
+  }
+  .nut-biz-horizontalscrolling__mask-left{
+    margin-top: 0;
+    padding: 0 10px;
+  }
+  .nut-biz-horizontalscrolling__mask-right{
+    margin-top: 0;
+    padding: 0 10px;
+  }
+
+  .buy-price{
+    > div{
+      font-size: 16px;
+      color: #000;
+      &:last-child{
+        font-size: 12px;
+        color: #4e4e4f;
+      }
+
+      i {
+        font-size: 12px;
+        font-style: normal;
+      }
+    }
+  }
+  .more-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+}

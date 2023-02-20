@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom/client'
 import App from './App'
 import '@/sites/assets/styles/reset.scss'
 
-import('../../packages/nutui.react.scss')
+import('../../packages/nutui.biz.scss')
 
 const rootElement = document.querySelector('#app')
 

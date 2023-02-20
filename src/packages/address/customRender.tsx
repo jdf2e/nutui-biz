@@ -413,7 +413,7 @@ export const CustomRender: FunctionComponent<
         <ul className='hot-citys'>
           {
             hotCities.map((city, index) => {
-              return <li key={city.id} onClick={handleClickHotCity.bind(this, city)}>{city.name}</li>
+              return <li key={city.id} onClick={()=>handleClickHotCity(city)}>{city.name}</li>
             })
           }
         </ul>

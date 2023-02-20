@@ -55,16 +55,21 @@ fs.outputFile(
 
 let fileStr = `${importStr}
 ${importScssStr}
-export { ${packages.join(',')} };`;
-fs.outputFile(path.resolve(__dirname, '../../src/packages/nutui.react.taro.ts'), fileStr, 'utf8', (error) => {
-  if (error) throw error;
-});
+export { ${packages.join(',')} };`
+fs.outputFile(
+  path.resolve(__dirname, '../../src/packages/nutui.biz.taro.ts'),
+  fileStr,
+  'utf8',
+  (error) => {
+    if (error) throw error
+  }
+)
 
 let taroScssfileStr = `
 ${importScssStr}
 export default { "NutUI":"NutUI-Taro" };`;
 fs.outputFile(
-  path.resolve(__dirname, '../../src/packages/nutui.react.taro.scss.ts'),
+  path.resolve(__dirname, '../../src/packages/nutui.biz.taro.scss.ts'),
   taroScssfileStr,
   'utf8',
   (error) => {
@@ -72,9 +77,14 @@ fs.outputFile(
   }
 );
 
-fs.outputFile(path.resolve(__dirname, '../../src/packages/nutui.react.scss.ts'), importScssStr, 'utf8', (error) => {
-  if (error) throw error;
-});
+fs.outputFile(
+  path.resolve(__dirname, '../../src/packages/nutui.biz.scss.ts'),
+  importScssStr,
+  'utf8',
+  (error) => {
+    if (error) throw error
+  }
+)
 
 let mdFileStr = `${importMarkdownStr}
 export const routers = [${mds.map((m) => `'${m}'`)}]

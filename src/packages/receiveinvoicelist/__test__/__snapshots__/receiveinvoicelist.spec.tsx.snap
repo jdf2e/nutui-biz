@@ -1,0 +1,174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test props && event 1`] = `
+<div
+  class="nut-receive-invoice-list"
+>
+  <div
+    class="nut-cell-group nut-receive-invoice-list__item"
+  >
+    <div
+      class="nut-cell-group__wrap"
+    >
+      <div
+        class="nut-cell nut-receive-invoice-list__item-header "
+        style="border-radius: 6px;"
+        to=""
+      >
+        <div
+          class="nut-cell__title"
+        >
+          <div
+            class="nut-cell__maintitle"
+          >
+            <div
+              class="nut-tag nut-tag--danger"
+            >
+              <span
+                class="nut-tag-text"
+              >
+                默认
+              </span>
+            </div>
+             
+            张三
+          </div>
+        </div>
+        <i
+          class="nutui-iconfont nut-icon nut-icon-edit "
+          style="color: rgb(102, 102, 102);"
+        />
+      </div>
+      <div
+        class="nut-cell nut-receive-invoice-list__item-footer "
+        style="border-radius: 6px;"
+        to=""
+      >
+        <div
+          class="nut-checkbox "
+        >
+          <i
+            class="nutui-iconfont nut-icon nut-icon-checked nut-checkbox__icon"
+            style="font-size: 18px; height: 18px; width: 18px;"
+          />
+          <span
+            class="nut-checkbox__label "
+          />
+        </div>
+        <div
+          class="nut-receive-invoice-list__item-footer infobox"
+        >
+          <div
+            class="nut-receive-invoice-list__item-footer-info"
+          >
+            <span>
+              电话
+            </span>
+            <p>
+              15088888888
+            </p>
+          </div>
+          <div
+            class="nut-receive-invoice-list__item-footer-info"
+          >
+            <span>
+              地址
+            </span>
+            <p>
+              北京市大兴京东大厦1号楼
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="nut-cell-group nut-receive-invoice-list__item"
+  >
+    <div
+      class="nut-cell-group__wrap"
+    >
+      <div
+        class="nut-cell nut-receive-invoice-list__item-header "
+        style="border-radius: 6px;"
+        to=""
+      >
+        <div
+          class="nut-cell__title"
+        >
+          <div
+            class="nut-cell__maintitle"
+          >
+            李四
+          </div>
+        </div>
+        <i
+          class="nutui-iconfont nut-icon nut-icon-edit "
+          style="color: rgb(102, 102, 102);"
+        />
+      </div>
+      <div
+        class="nut-cell nut-receive-invoice-list__item-footer "
+        style="border-radius: 6px;"
+        to=""
+      >
+        <div
+          class="nut-checkbox "
+        >
+          <i
+            class="nutui-iconfont nut-icon nut-icon-check-normal nut-checkbox__icon--unchecked"
+            style="font-size: 18px; height: 18px; width: 18px;"
+          />
+          <span
+            class="nut-checkbox__label "
+          />
+        </div>
+        <div
+          class="nut-receive-invoice-list__item-footer infobox"
+        >
+          <div
+            class="nut-receive-invoice-list__item-footer-info"
+          >
+            <span>
+              电话
+            </span>
+            <p>
+              15088888888
+            </p>
+          </div>
+          <div
+            class="nut-receive-invoice-list__item-footer-info"
+          >
+            <span>
+              地址
+            </span>
+            <p>
+              北京市大兴京东大厦2号楼
+            </p>
+          </div>
+          <div
+            class="nut-receive-invoice-list__item-footer-info"
+          >
+            <span>
+              扩展1
+            </span>
+            <p>
+              扩展信息展示
+            </p>
+          </div>
+          <div
+            class="nut-receive-invoice-list__item-footer-info"
+          >
+            <span>
+              扩展2
+            </span>
+            <p>
+              扩展信息展示
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

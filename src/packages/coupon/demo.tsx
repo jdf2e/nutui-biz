@@ -18,7 +18,7 @@ const CouponDemo = () => {
     "zh-CN": {
       basic: "基本用法",
       eventText: "带有事件的优惠组件",
-      mulText: "多行优惠券",
+      mulText: "小卡片类型的优惠组件",
       btnText: "立即领取",
       receivedBtnText: "已经领取",
       mainTitle: "满100元可用",
@@ -28,25 +28,26 @@ const CouponDemo = () => {
     },
     "zh-TW": {
       basic: "基本用法",
-      eventText: "带有事件的优惠组件",
-      mulText: "多行优惠券",
-      btnText: "立即领取",
-      receivedBtnText: "已经领取",
-      mainTitle: "主标题内容",
-      subTitle: "用于渲染副标题文案",
-      label: "内购专享",
-      mulDesc: "",
+      eventText: "帶有事件的優惠組件",
+      mulText: "小卡片類型的優惠組件",
+      btnText: "立即領取",
+      receivedBtnText: "已經領取",
+      mainTitle: "主標題內容",
+      subTitle: "用於渲染副標題文案",
+      label: "內購專享",
+      mulDesc: "多行優惠券，在組件外層包裹元素上設置樣式",
     },
     "en-US": {
-      basic: "基本用法",
-      eventText: "带有事件的优惠组件",
-      mulText: "多行优惠券",
-      btnText: "立即领取",
-      receivedBtnText: "已经领取",
-      mainTitle: "主标题内容",
-      subTitle: "用于渲染副标题文案",
-      label: "内购专享",
-      mulDesc: "",
+      basic: "Basic Usage",
+      eventText: "Coupon components with events",
+      mulText: "Coupon components of small card type",
+      btnText: "Get it now",
+      receivedBtnText: "Received",
+      mainTitle: "Main title content",
+      subTitle: "Used to render subtitle text",
+      label: "Exclusive for internal purchase",
+      mulDesc:
+        "Multiline coupon, set the style on the outer package element of the component",
     },
   });
   //组件共有变量
@@ -87,10 +88,10 @@ const CouponDemo = () => {
   //带有事件的优惠组件
   const baseCouponBgImgEvent =
     "https://static.360buyimg.com/jdcdkh/open/1.0.0/assets/bg-coupon-1.68c324f9.png";
-  const [btnTextEvent, setBtnTextEvent] = useState("立即领取");
+  const [btnTextEvent, setBtnTextEvent] = useState(translated.btnText);
   const [receivedStatusEvent, setReceivedStatusEvent] = useState(false);
   const basedOnClickEvent = React.useCallback(() => {
-    setBtnTextEvent("已经领取");
+    setBtnTextEvent(translated.receivedBtnText);
     setReceivedStatusEvent(true);
   }, [btnTextEvent, setBtnTextEvent]);
   //多行展示小优惠券，【优惠券组件应该只是渲染一个优惠券的样式，而不应该是包含了多个优惠券，应该在优惠券外层传入要渲染的组件数据】
@@ -98,8 +99,8 @@ const CouponDemo = () => {
     return {
       price: 9,
       currency: "¥",
-      mainTitle: "满100元可用",
-      subTitle: "仅可购买满折券测试",
+      mainTitle: translated.mainTitle,
+      subTitle: translated.subTitle,
       label: "618",
     };
   }, []);
@@ -117,12 +118,7 @@ const CouponDemo = () => {
     flexWrap: "wrap",
     width: "700px",
   };
-  //按钮的props
-  const btnsProps = {
-    type: "default",
-    size: "small",
-    plain: true,
-  };
+
   const receivedBtn = React.useCallback((item: any) => {
     console.log(item);
   }, []);
@@ -155,7 +151,9 @@ const CouponDemo = () => {
           onClick={basedOnClickEvent}
         ></Coupon>
         <h2>{translated.mulText}</h2>
-        <p>{translated.mulDesc}</p>
+        <p style={{ lineHeight: "20px", padding: "5px 10px" }}>
+          {translated.mulDesc}
+        </p>
         <div style={wrapperStyle}>
           <div style={couponWrapperStyle}>
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => {

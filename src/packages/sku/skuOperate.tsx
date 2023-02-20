@@ -61,7 +61,7 @@ export const SkuOperate: FunctionComponent<
           return <div 
               className={classNames([`nut-sku-operate-btn-${btn}`, 'nut-sku-operate-btn-item'])}
               key={i}
-              onClick={clickBtnOperate.bind(this, btn)}
+              onClick={()=>clickBtnOperate(btn)}
             >
               {getBtnDesc(btn)}
           </div>

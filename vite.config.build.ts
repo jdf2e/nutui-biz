@@ -57,9 +57,9 @@ export default defineConfig({
       },
     },
     lib: {
-      entry: 'src/packages/nutui.react.build.ts',
-      name: 'nutui.react',
-      fileName: 'nutui.react',
+      entry: 'src/packages/nutui.biz.build.ts',
+      name: 'nutui.biz',
+      fileName: 'nutui.biz',
       formats: ['es', 'umd'],
     },
   },
