@@ -192,17 +192,6 @@
           "show": false,
           "taro": false,
           "author": "ailululu"
-        },
-        {
-          "version": "0.1.0",
-          "name": "ConfigProvider",
-          "type": "component",
-          "cName": "全局配置",
-          "desc": "可以配置多语言等全局属性",
-          "sort": 25,
-          "show": true,
-          "taro": true,
-          "author": "yangjinjun3"
         }
       ]
     },
@@ -251,7 +240,7 @@
           "desc": "配送",
           "sort": 14,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "yangjinjun3"
         },
         {
@@ -262,7 +251,7 @@
           "desc": "订单取消面板",
           "sort": 13,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "yangjinjun3"
         },
         {
