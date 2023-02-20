@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useTranslate } from "../../sites/assets/locale";
-import { Ecard, Cell } from "@/packages/nutui.react.taro";
+import { Ecard } from "@/packages/nutui.react.taro";
+import { Cell } from '@nutui/nutui-react-taro';
 
 interface IDataList {
   price: number;
@@ -10,17 +10,6 @@ interface T {
 }
 
 const EcardDemo = () => {
-  const [translated] = useTranslate<T>({
-    "zh-CN": {
-      basic: "基本用法",
-    },
-    "zh-TW": {
-      basic: "基本用法",
-    },
-    "en-US": {
-      basic: "Basic Usage",
-    },
-  });
   const [money, setMoney] = useState(10);
   const [dataList] = useState<IDataList[]>([
     {
@@ -48,7 +37,7 @@ const EcardDemo = () => {
   return (
     <>
       <div className="demo">
-        <h2>{translated.basic}</h2>
+        <h2>基本用法</h2>
         <Cell>
           <Ecard
             money={money}
