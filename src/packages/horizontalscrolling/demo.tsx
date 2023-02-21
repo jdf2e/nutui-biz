@@ -116,12 +116,12 @@ const HorizontalScrollingDemo = () => {
             maskShadowType="transparent"  
             maskWidth="50px"
             maskDistance="10px"
-            maskHpl={
-            <div className="nut-biz-horizontalscrolling__mask-box buy-price">
-              <div><i>{translated.symbol}</i>199</div>
-              <div>{translated.more}</div>
-            </div>}
-          >
+            maskContent={
+              <div className="nut-biz-horizontalscrolling__mask-box buy-price">
+                <div><i>{translated.symbol}</i>199</div>
+                <div>{translated.more}</div>
+              </div>}
+            >
             {[1, 2, 3, 4, 5, 6].map((item, index) => {
               return (
                 <div   
@@ -145,7 +145,7 @@ const HorizontalScrollingDemo = () => {
             maskPosition="left" 
             maskWidth="40px" 
             className="custom-float"
-            maskHpl={
+            maskContent={
               <div className="more-box">
                 {translated.more}
               </div>
