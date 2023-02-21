@@ -56,7 +56,7 @@ export interface SkuProps extends IComponent {
 }
 
 export const Sku: FunctionComponent<
-  Partial<SkuProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<SkuProps>
 > = (props) => {
   const { locale } = useConfig()
   const {

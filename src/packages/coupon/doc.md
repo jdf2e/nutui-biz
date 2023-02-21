@@ -7,7 +7,6 @@
 ### 安装
 
 ```javascript
-import { Button } from "@nutui/nutui-react";
 import { Coupon } from "@nutui/nutui-biz";
 ```
 
@@ -18,8 +17,7 @@ import { Coupon } from "@nutui/nutui-biz";
 :::demo
 
 ```ts
-import React from "react";
-import { Button } from "@nutui/nutui-react";
+import React, { useState } from "react";
 import { Coupon } from "@nutui/nutui-biz";
 
 const App = () => {
@@ -48,25 +46,27 @@ const App = () => {
   const baseCouponBgImg =
     "https://storage.360buyimg.com/jdcdkh/open/1.0.0/assets/bg-coupon-red.f6ae2e19.png";
 
-  const [btnText, setBtnText] = useState(translated.btnText);
+  const [btnText, setBtnText] = useState("立即领取");
   const [receivedStatus, setReceivedStatus] = useState(false);
   const [btnType, setBtnType] = useState<ButtonType>("primary");
   const basedOnClick = React.useCallback(() => {
-    setBtnText(translated.receivedBtnText);
+    setBtnText("已经领取");
     setReceivedStatus(true);
     setBtnType("default");
   }, [btnText, receivedStatus, btnType]);
   return (
-    <Coupon
-      pricePosition="back"
-      coupon={baseCouponObj}
-      couponBgImg={baseCouponBgImg}
-      btnText={btnText}
-      isReceived={receivedStatus}
-      usedIcon={usedIcon}
-      btnType={btnType}
-      onClick={basedOnClick}
-    ></Coupon>
+    <div className="demo">
+      <Coupon
+        pricePosition="back"
+        coupon={baseCouponObj}
+        couponBgImg={baseCouponBgImg}
+        btnText={btnText}
+        isReceived={receivedStatus}
+        usedIcon={usedIcon}
+        btnType={btnType}
+        onClick={basedOnClick}
+      ></Coupon>
+    </div>
   );
 };
 export default App;
@@ -79,8 +79,7 @@ export default App;
 :::demo
 
 ```ts
-import React from "react";
-import { Button } from "@nutui/nutui-react";
+import React, { useState } from "react";
 import { Coupon } from "@nutui/nutui-biz";
 
 const App = () => {
@@ -139,8 +138,7 @@ export default App;
 :::demo
 
 ```ts
-import React from "react";
-import { Button } from "@nutui/nutui-react";
+import React, { useState } from "react";
 import { Coupon } from "@nutui/nutui-biz";
 
 const App = () => {

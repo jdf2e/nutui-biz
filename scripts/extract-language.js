@@ -19,7 +19,7 @@ function hash(str) {
 // 输入组件名称，例如 Input 组件， node scripts/extract-language.js Input
 // 组件的 demo.tsx 中 demo 组件名字应该为 组件名称 + Demo，例如：InputDemo，CheckboxDemo 等
 const pkg = process.argv[2]
-const locals = ['zh-CN', 'zh-TW', 'en-US']
+const locals = ['zh-CN', 'en-US']
 
 const demoFile = path.join(process.cwd(), `src/packages/${pkg.toLocaleLowerCase()}/demo.tsx`)
 let demoContent = fs.readFileSync(demoFile).toString()

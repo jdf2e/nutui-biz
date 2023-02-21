@@ -34,7 +34,7 @@ export interface AddressListProps extends IComponent {
 }
 
 export const AddressList: FunctionComponent<
-  Partial<AddressListProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<AddressListProps>
 > = (props) => {
   const { locale } = useConfig()
   const {

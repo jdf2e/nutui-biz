@@ -24,7 +24,7 @@ export interface InvoiceTitleEditProps extends IComponent {
 }
 
 export const InvoiceTitleEdit: FunctionComponent<
-  Partial<InvoiceTitleEditProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<InvoiceTitleEditProps>
 > = (props) => {
   const { locale } = useConfig()
   const {

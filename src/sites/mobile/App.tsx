@@ -13,7 +13,6 @@ import Links from './Links'
 import logo from '@/sites/assets/images/logo-red.png'
 import useLocale, { getLocale } from '@/sites/assets/locale/uselocale'
 import Configprovider from '@/packages/configprovider'
-import zhTW from '@/locales/zh-TW'
 import zhCN from '@/locales/zh-CN'
 import enUS from '@/locales/en-US'
 import { BaseLang } from '@/locales/base'
@@ -27,7 +26,6 @@ interface Languages {
 }
 
 const languages: Languages = {
-  zhTW,
   zhCN,
   enUS,
 }
