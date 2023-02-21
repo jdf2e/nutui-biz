@@ -288,9 +288,9 @@ export default App;
 | searchDiscoverExtra   | 搜索发现额外信息| String  | -      |
 | refreshIcon   | 最近搜索刷新图标| String  | `refresh`      |
 | recentSearchCollapse   | 最近搜索数据超过两行出现下拉箭头                                 | Boolean  | `true`          |
-| leftInIcon | 文本框内左侧自定义，默认是放大图标 | React.ReactNode  | -          |
-| rightInIcon | 文本框内右侧自定义，默认是拍照图标 | React.ReactNode  | -          |
-| rightOutIcon | 文本框外右侧自定义，默认是“搜索” | React.ReactNode  | -          |
+| leftInIcon | 文本框内左侧自定义，默认是放大图标 | ReactNode  | -          |
+| rightInIcon | 文本框内右侧自定义，默认是拍照图标 | ReactNode  | -          |
+| rightOutIcon | 文本框外右侧自定义，默认是“搜索” | ReactNode  | -          |
 
 
 ## Events

@@ -168,7 +168,7 @@ export default App;
 | hasCapsuleButtons   | 是否包含胶囊型按钮                                 | Boolean  | `false`          |
 | safeAreaInsetBottom   | 是否开启iphone系列全面屏底部安全区适配                                 | Boolean  | `true`          |
 | placeholder   | 固定在底部时，是否在标签位置生成一个等高的占位元素                                 | Boolean  | `false`          |
-| top | 自定义顶部内容 |React.ReactNode  | -          |
+| top | 自定义顶部内容 |ReactNode  | -          |
 
 
 ### CartBarIcon Props
@@ -176,8 +176,8 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| text   | 图标文字                                 | String  | -         |
-| icon   | 图标                                 | String  | -         |
+| text   | 图标文字                                 | ReactNode  | -         |
+| icon   | 图标                                 | ReactNode  | -         |
 | color   | 图标颜色                                 | String  | `#323233`         |
 | dot   | 是否显示图标右上角小红点                                 | Boolean  | `false`         |
 | badge   | 图标右上角徽标的内容	                                 | Number \| String  | -         |
@@ -195,7 +195,7 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| text   | 按钮文字                                 | String  | -         |
+| text   | 按钮文字                                 | ReactNode  | -         |
 | disabled   | 是否禁用按钮                                 | Boolean  | `false`         |
 | type   | 按钮类型，可选值为 `primary` `info` `warning` `danger`                                 | String  | `default`         |
 | loading   | 是否显示为加载状态                                 | Boolean  | `false`         |

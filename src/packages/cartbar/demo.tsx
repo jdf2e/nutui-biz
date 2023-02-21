@@ -31,18 +31,6 @@ const CartBarDemo = () => {
       addCart: '加入购物车',
       buyItNow: '立即购买'
     },
-    'zh-TW': {
-      basic: '基本用法',
-      title1: '帶有徽標',
-      title2: '自定義圖標顏色',
-      title3: '圖標無文本',
-      title4: '膠囊型按鈕',
-      title5: '頂部自定義內容',
-      shop: '店鋪',
-      shoppingCart: '購物車',
-      addCart: '加入購物車',
-      buyItNow: '立即購買'
-    },
     'en-US': {
       basic: 'Basic Usage',
       title1: 'With Badge',

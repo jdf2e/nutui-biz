@@ -2,7 +2,7 @@ const fs = require('fs-extra')
 const glob = require('glob')
 const path = require('path')
 
-const locales = ['en-US', 'zh-TW']
+const locales = ['en-US']
 const componentDocs = glob.sync('./src/packages/**/doc.md')
 
 componentDocs.forEach((file) => {

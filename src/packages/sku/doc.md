@@ -368,14 +368,14 @@ export default App;
 | buyText |  立即购买按钮文案    | String | `立即购买` |
 | addCartText          |        加入购物车按钮文案                 | String | `加入购物车`             |
 | confirmText          |           确定按钮文案              | String | `确定`             |
-| skuHeader  | 商品信息展示区，包含商品图片、价格、编号 | React.ReactNode | -             |
-| skuHeaderPrice  | 商品信息展示区，价格区域展示| React.ReactNode | -             |
-| skuHeaderExtra  | 商品信息展示区，编号区域展示 | React.ReactNode | -             |
-| skuSelectTop | sku 展示区上方与商品信息展示区下方区域，无默认展示内容 | React.ReactNode | -             |
-| skuSelect | sku 展示区 | React.ReactNode | -             |
-| skuStepper  | 数量选择区 | React.ReactNode | -             |
-| skuStepperBottom  | 数量选择区下方区域 | React.ReactNode | -             |
-| skuOperate | 底部按钮操作区域 |React.ReactNode | -             |
+| skuHeader  | 商品信息展示区，包含商品图片、价格、编号 | ReactNode | -             |
+| skuHeaderPrice  | 商品信息展示区，价格区域展示| ReactNode | -             |
+| skuHeaderExtra  | 商品信息展示区，编号区域展示 | ReactNode | -             |
+| skuSelectTop | sku 展示区上方与商品信息展示区下方区域，无默认展示内容 | ReactNode | -             |
+| skuSelect | sku 展示区 | ReactNode | -             |
+| skuStepper  | 数量选择区 | ReactNode | -             |
+| skuStepperBottom  | 数量选择区下方区域 | ReactNode | -             |
+| skuOperate | 底部按钮操作区域 |ReactNode | -             |
 
 ### Events
 

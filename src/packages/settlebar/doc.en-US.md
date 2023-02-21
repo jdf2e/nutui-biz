@@ -179,12 +179,12 @@ export default App;
 | showZero   | Whether to display when the quantity is 0                                 | Boolean  | `true`          |
 | safeAreaInsetBottom   | Whether to enable bottom safe area adaptation                                 | Boolean  | `true`          |
 | placeholder   | Whether to generate a placeholder element when fixed                                 | Boolean  | `false`          |
-| customTotal | Customize total area content | React.ReactNode  | -          |
-| customWarning | Customize warning content | React.ReactNode  | -          |
-| customSelectAll | Customize select all content | React.ReactNode  | -          |
-| customTotalPrice | Customize total price content | React.ReactNode  | -          |
-| customTotalExtra | Customize total extra content | React.ReactNode  | -          |
-| customButton | Customize button content | React.ReactNode  | -          |
+| customTotal | Customize total area content | ReactNode  | -          |
+| customWarning | Customize warning content | ReactNode  | -          |
+| customSelectAll | Customize select all content | ReactNode  | -          |
+| customTotalPrice | Customize total price content | ReactNode  | -          |
+| customTotalExtra | Customize total extra content | ReactNode  | -          |
+| customButton | Customize button content | ReactNode  | -          |
 
 
 ## Events

@@ -34,7 +34,7 @@ export interface InvoiceTitleListProps extends IComponent {
 }
 
 export const InvoiceTitleList: FunctionComponent<
-  Partial<InvoiceTitleListProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<InvoiceTitleListProps>
 > = (props) => {
   const { locale } = useConfig()
   const {
