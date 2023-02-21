@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useState, useEffect } from "react";
+import React, {
+  FunctionComponent,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 import { useConfig } from "@/packages/configprovider";
 import bem from "@/utils/bem";
 import { IComponent } from "@/utils/typings";
@@ -55,17 +60,20 @@ interface AddressResult {
   town: RegionData[];
   customAddressTitle: string;
   height?: string;
+  addressType?: string;
 }
 
 export interface AddressEditProps extends IComponent {
   addressInfo: AddressInfo;
   data: AddressData;
   address: any;
-  addressType: string;
+  bottomInputTpl?: ReactNode;
+  showSave?: Boolean;
   onChange: (val: string, tag: string) => void;
   onChangeAddress: (data: any) => void;
   onCloseAddress: (data: any) => void;
   onSave: (data: any) => void;
+  onSwitch: (state: boolean, data: any) => void;
 }
 
 const defaultProps = {
@@ -97,14 +105,15 @@ export const AddressEdit: FunctionComponent<
   const { locale } = useConfig();
   const {
     addressInfo = null,
-    showSave = false,
+    showSave = true,
     data = null,
     address,
-    addressType,
+    bottomInputTpl,
     onChange,
     onSave,
     onChangeAddress,
     onCloseAddress,
+    onSwitch,
     ...rest
   } = {
     ...props,
@@ -134,6 +143,7 @@ export const AddressEdit: FunctionComponent<
     town: [],
     addressTitle: "选择所在地区",
     height: "200px",
+    addressType: "custom",
   });
   //地址编辑数据形式兜底文案配置
   const [editSeting, setEditSeting] = useState({
@@ -153,13 +163,13 @@ export const AddressEdit: FunctionComponent<
   });
   const [errorList, setErrorList] = useState<any>([]);
   const [showPopup, setShowPopup] = useState(false);
-  const [type, setType] = useState("custom");
 
   useEffect(() => {
     //地址组件所需相关信息获取
     if (address) {
-      setAddressData(address);
+      setAddressData({ ...addressData, ...address });
     }
+
     //编辑地址所需字段设置获取
     if (data) {
       setEditSeting({ ...editSeting, ...data });
@@ -174,6 +184,7 @@ export const AddressEdit: FunctionComponent<
       if (addressInfo.regionIds.length) {
         setAddressData({
           ...addressData,
+          ...address,
           addressSelect: addressInfo.regionIds,
         });
       }
@@ -181,12 +192,6 @@ export const AddressEdit: FunctionComponent<
     //重置error错误
     setErrorList([]);
   }, [address, data, addressInfo]);
-
-  useEffect(() => {
-    if (addressType) {
-      setType(addressType);
-    }
-  }, [addressType]);
 
   const changeAddress = (cal: any, tag: string) => {
     setErrorList(errorList.filter((i: any) => i != "region"));
@@ -336,7 +341,7 @@ export const AddressEdit: FunctionComponent<
         />
         <Address
           modelValue={showPopup}
-          type={type}
+          type={addressData.addressType}
           modelSelect={addressData.addressSelect}
           province={addressData.province}
           city={addressData.city}
@@ -344,6 +349,7 @@ export const AddressEdit: FunctionComponent<
           town={addressData.town}
           height={addressData.height}
           customAddressTitle={addressData.addressTitle}
+          existAddressTitle={addressData.addressTitle}
           onChange={(cal) => changeAddress(cal, "select")}
           onClose={closeAddress}
         />
@@ -364,20 +370,24 @@ export const AddressEdit: FunctionComponent<
           }
         />
       </div>
+      {bottomInputTpl ? <>{bottomInputTpl}</> : null}
       <div className={`${b("item")} setdefualt`}>
         <span className="label">设置默认地址</span>
         <Switch
           checked={formData.default}
           onChange={(state) => {
             setFormData({ ...formData, default: state });
+            onSwitch && onSwitch(state, { ...formData, default: state });
           }}
         />
       </div>
-      <div className={`${b("bottom")}`}>
-        <Button block type="danger" onClick={save}>
-          {editSeting.bottomText}
-        </Button>
-      </div>
+      {showSave ? (
+        <div className={`${b("bottom")}`}>
+          <Button block type="danger" onClick={save}>
+            {editSeting.bottomText}
+          </Button>
+        </div>
+      ) : null}
     </div>
   );
 };

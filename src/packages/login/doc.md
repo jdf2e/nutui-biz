@@ -61,7 +61,7 @@ const App = () => {
         isGetCode={getVerify}
         onVerifyBtnClick={queryVerifyCode}
         onLoginBtnClick={queryLogin}
-        countDownTime={60}
+        countDownTime={30}
         />
   );
 };
@@ -100,7 +100,6 @@ const App = () => {
   };
   const queryVerifyCode = (formData: any) => {
     setGetVerify(false);
-    console.log("getcode", formData);
     //异步获取校验码成功
     setTimeout(() => {
       setGetVerify(true);
@@ -132,6 +131,39 @@ export default App;
 ```
 :::
 
+### 错误提示
+
+:::demo
+
+```tsx
+import  React from 'react';
+import { Login } from '@nutui/nutui-biz';
+
+const App = () => {
+  const logoImg =
+    "https://img10.360buyimg.com/imagetools/jfs/t1/187998/28/32123/16333/63e346b8F0bff354b/c95da99ea108c463.png";
+  const [formParams3, setformParams3] = useState({
+    account: "12345",
+    accountErrorText: "账号不存在",
+    password: "123",
+    passwordErrorText: "请输入6位密码",
+  });
+  const onChange = (value: any, tag: string) => {
+    console.log(tag, value);
+  };
+
+  return (
+     <Login
+        formParams={formParams3}
+        logo={logoImg}
+        loginType="pwd"
+        onInputChange={onChange}
+        />
+  );
+};
+export default App;
+```
+:::
 ### 用户自定义登录框
 
 :::demo
@@ -149,7 +181,6 @@ const App = () => {
     passwordErrorText: "",
     isShowPwdInput: false,
   });
-  const [getVerify, setGetVerify] = useState(false);
   const onChange = (value: any, tag: string) => {
     console.log(tag, value);
   };
@@ -163,7 +194,6 @@ const App = () => {
         title="卡号登录"
         loginType="pwd"
         onInputChange={onChange}
-        countDownTime={30}
         isHideSwitchBtn={true}
         onLoginBtnClick={queryLogin}
         slotBottom={
@@ -184,7 +214,7 @@ export default App;
 ```
 :::
 
-### 错误提示
+### 用户自定义输入框
 
 :::demo
 
@@ -193,45 +223,80 @@ import  React from 'react';
 import { Login } from '@nutui/nutui-biz';
 
 const App = () => {
-  const logoImg =
-    "https://img10.360buyimg.com/imagetools/jfs/t1/187998/28/32123/16333/63e346b8F0bff354b/c95da99ea108c463.png";
-  const [formParams3, setformParams3] = useState({
-    account: "12345",
-    accountErrorText: "账号不存在",
-    password: "123",
-    passwordErrorText: "请输入6位密码",
+  const [formParams2, setformParams2] = useState({
+    account: "",
+    accountPlaceholder: "请输入账号",
+    accountErrorText: "",
+    password: "",
+    passwordErrorText: "",
+    isShowPwdInput: false,
   });
-  const [getVerify, setGetVerify] = useState(false);
+  const [isDisable, setIsDisable] = useState(true);
+  const [account, setAccount] = useState("");
+  const [customInput, setCustomInput] = useState("");
   const onChange = (value: any, tag: string) => {
     console.log(tag, value);
+    if (tag === "account") {
+      setAccount(value);
+    }
   };
-  const queryVerifyCode = (formData: any) => {
-    setGetVerify(false);
-    console.log("getcode", formData);
-    //异步获取校验码成功
-    setTimeout(() => {
-      setGetVerify(true);
-    }, 300);
-  };
-  const queryLogin = (formData: any) => {
-    console.log("login", formData);
-  };
+ 
+  useEffect(() => {
+    if (account.length > 0 && customInput.length > 0) {
+      setIsDisable(false);
+    } else {
+      setIsDisable(true);
+    }
+  }, [account, customInput]);
+
   return (
-     <Login
-        formParams={formParams3}
-        logo={logoImg}
+    <Login
+        formParams={formParams2}
+        title="卡号登录"
         loginType="pwd"
         onInputChange={onChange}
-        isGetCode={getVerify}
-        onVerifyBtnClick={queryVerifyCode}
+        isHideSwitchBtn={true}
         onLoginBtnClick={queryLogin}
-        countDownTime={60}
+        loginButtonDisable={isDisable}
+        loginButtonText={translated.loginText}
+        onClear={(tag) => {
+            if (tag === "account") {
+              setAccount("");
+            }
+        }}
+        slotInput={
+          <div className={`input-wrap`}>
+            <div className="input-item">
+                <Input
+                className="nut-input-text"
+                border={false}
+                defaultValue={customInput}
+                placeholder={'请输入验证码'}
+                type="text"
+                clearable
+                onChange={(value) => {
+                    setCustomInput(value);
+                }}
+                onClear={() => {
+                    setCustomInput("");
+                }}
+                />
+                <div className="code-box">
+                <img
+                    style={{ width: "65px", height: "30px" }}
+                    src="https://img12.360buyimg.com/imagetools/jfs/t1/211415/19/9275/14512/61924b82E09366437/cc5cc7297b9073ae.jpg"
+                />
+                </div>
+            </div>
+          </div>
+        }
         />
   );
 };
 export default App;
 ```
 :::
+
 
 
 ## API
@@ -251,8 +316,9 @@ export default App;
 | isGetCode   | 是否成功获取校验码 |Boolean  |false        |
 | isHideSwitchBtn   | 是否隐藏登录类型切换按钮  |Boolean  |true        |
 | countDownTime   | 校验码获取防频倒计时时间  |number  |60        |
-| slotProtocolText   | 自定义勾选知情同意内容  |React.ReactNode  |-        |
-| slotBottom   | 自定义登录按钮下方内容  |React.ReactNode  |-        |
+| slotProtocolText   | 自定义勾选知情同意内容  |ReactNode  |-        |
+| slotBottom   | 自定义登录按钮下方内容  |ReactNode  |--       |
+| slotInput   | 自定义输入框  |ReactNode  |--        |
 
 
 ### Props formParams
@@ -286,6 +352,8 @@ export default App;
 | onLoginBtnClick | 登录按钮点击回调 |  formData |
 | onVerifyBtnClick | 获取校验码按钮点击回调 | formData |
 | onForgetBtnClick | 点击忘记密码回调 |  - |
+| onInputClear | 输入框点击清除按钮回调，返回tag(account,password,telOrMail,verifyCode) | tag |
+| onLoginTypeClick | 点击切换登录方式回调 | -- |
 
 
 
