@@ -41,7 +41,7 @@ const defaultProps = {
 } as HorizontalScrollingProps
 
 export const HorizontalScrolling: FunctionComponent<
-  Partial<HorizontalScrollingProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<HorizontalScrollingProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { locale } = useConfig()
   const {
