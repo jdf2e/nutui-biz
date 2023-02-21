@@ -1,36 +1,31 @@
-import React, { FunctionComponent, useEffect, useState, useRef } from "react";
-import { useConfig } from "@/packages/configprovider";
-import { Popup, Checkbox, Button, TextArea } from "@nutui/nutui-react";
+import React, { FunctionComponent, useState, useRef } from "react";
+import {
+  Popup,
+  Checkbox,
+  Button,
+  TextArea,
+  TextAreaProps,
+  ButtonProps,
+} from "@nutui/nutui-react";
 import { IComponent } from "@/utils/typings";
 import bem from "@/utils/bem";
 import { throttle } from "@/utils/throttle";
-import "./ordercancelpanel.scss";
-//视觉稿路径：https://relay.jd.com/web/project/page/0e041de9-9299-400a-8eec-2239bd8b9315/0/
-export interface IResonsObject {
+export interface IKeyValue {
   key: string;
   value: string;
-  isChecked?: boolean;
 }
-export type IPositionType =
-  | "start"
-  | "end"
-  | "left"
-  | "right"
-  | "center"
-  | "justify";
 export interface OrderCancelPanelProps extends IComponent {
   showCancelPanel: boolean;
   warmTips: string[];
-  popupTitilePosition: IPositionType;
-  cancelResons: Array<IResonsObject>;
-  isAddOtherReason: boolean;
+  cancelResons: Array<IKeyValue>;
   canCancelReason: boolean;
-  popupTitle: React.ReactNode;
-  reasonTitle: React.ReactNode;
-  maxlength: number;
-  isShowCloseBtn: boolean;
-  limitshow: boolean;
+  popupTitle: React.ReactNode | string;
+  reasonTitle: React.ReactNode | string;
   btnsText: string;
+  tipsTitle: string;
+  className?: string;
+  buttonProps: Partial<ButtonProps>;
+  textAreaProps: Partial<Omit<TextAreaProps, "defaultValue">>;
   onClose: () => void;
   onClickCloseIcon: () => void;
   onClickOverlay: () => void;
@@ -39,20 +34,15 @@ export interface OrderCancelPanelProps extends IComponent {
 
 const defaultProps = {
   showCancelPanel: false,
-  isAddOtherReason: false,
   canCancelReason: false,
-  popupTitilePosition: "left",
-  limitshow: false,
-  isShowCloseBtn: true,
   btnsText: "提交",
-  maxlength: 100,
+  tipsTitle: "温馨提示",
 } as OrderCancelPanelProps;
 
 export const OrderCancelPanel: FunctionComponent<
   Partial<OrderCancelPanelProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">
-> = (props) => {
-  const { locale } = useConfig();
+> = React.memo((props) => {
   const {
     showCancelPanel,
     className,
@@ -61,12 +51,10 @@ export const OrderCancelPanel: FunctionComponent<
     reasonTitle,
     popupTitle,
     canCancelReason,
-    isAddOtherReason,
-    popupTitilePosition,
-    maxlength,
     btnsText,
-    limitshow,
-    isShowCloseBtn,
+    tipsTitle,
+    buttonProps,
+    textAreaProps,
     onClose,
     onClickOverlay,
     onClickCloseIcon,
@@ -76,37 +64,20 @@ export const OrderCancelPanel: FunctionComponent<
     ...defaultProps,
     ...props,
   };
+  console.log("渲染");
   const b = bem("biz-ordercancel");
-  const [cancelResonsList, setCancelResonsList] = useState<
-    Array<IResonsObject>
-  >([]);
-  useEffect(() => {
-    if (cancelResons && cancelResons.length > 0) {
-      const cancelResonsListCheck: Array<IResonsObject> = cancelResons.map(
-        (item) => {
-          return Object.assign(item, { ischecked: false });
-        }
-      );
-      const otherReason = {
-        key: "other",
-        value: "其他",
-        isChecked: false,
-      };
-      isAddOtherReason && cancelResonsListCheck.push(otherReason);
-      setCancelResonsList(cancelResonsListCheck);
-    }
-  }, [cancelResons]);
-
   const [currActivedKey, setCurrActivedKey] = useState("");
   const preChecked = useRef("");
-  const checkedReason = (item: IResonsObject) => {
-    handleCheckedBox(item);
-  };
+  //其他文本框输入
+  const [textAreaValue, setTextAreaValue] = useState("");
+  //其他文本框是否显示
+  const [showOtherText, setShowOtherText] = useState(false);
+
   //处理切换原因list，复选框是否被选中
-  const handleCheckedBox = (item: IResonsObject) => {
+  const checkedReason = (item: IKeyValue) => {
     setCurrActivedKey(item.key);
     setShowOtherText(false);
-    if (item.key === preChecked.current && canCancelReason) {
+    if (canCancelReason && item.key === preChecked.current) {
       setCurrActivedKey(preChecked.current ? "" : item.key);
       preChecked.current = "";
     } else {
@@ -116,26 +87,28 @@ export const OrderCancelPanel: FunctionComponent<
       }
     }
   };
-  //其他文本框输入
-  const [textAreaValue, setTextAreaValue] = useState("");
-  //其他文本框是否显示
-  const [showOtherText, setShowOtherText] = useState(false);
+
   //提交原因
   const submitContent = throttle(() => {
-    onSubmitBtn && onSubmitBtn(currActivedKey, textAreaValue);
+    let currTextarea = textAreaValue;
+    if (currActivedKey !== "other") {
+      currTextarea = "";
+      setTextAreaValue("");
+    }
+    onSubmitBtn && onSubmitBtn(currActivedKey, currTextarea);
   }, 300);
   //关闭相关事件
   const closePopup = (type: string) => {
-    if (type == "icon") {
-      onClickCloseIcon && onClickCloseIcon();
-    }
-
-    if (type == "overlay") {
-      onClickOverlay && onClickOverlay();
-    }
-
-    if (type == "close") {
-      onClose && onClose();
+    switch (type) {
+      case "icon":
+        onClickCloseIcon && onClickCloseIcon();
+        break;
+      case "overlay":
+        onClickOverlay && onClickOverlay();
+        break;
+      case "close":
+        onClose && onClose();
+        break;
     }
   };
   return (
@@ -144,22 +117,17 @@ export const OrderCancelPanel: FunctionComponent<
         visible={showCancelPanel}
         position="bottom"
         round
-        closeable={isShowCloseBtn}
+        closeable
         onClose={() => closePopup("close")}
         onClickCloseIcon={() => closePopup("icon")}
         onClickOverlay={() => closePopup("overlay")}
         className={`${b()} ${className} `}
       >
         <div className={b("main")}>
-          <h1
-            className={b("header")}
-            style={{ textAlign: popupTitilePosition }}
-          >
-            {popupTitle}
-          </h1>
+          <h1 className={b("header")}>{popupTitle}</h1>
           {warmTips && (
             <div className={b("tips")}>
-              <h2 className={b("tips-header")}>温馨提示</h2>
+              <h2 className={b("tips-header")}>{tipsTitle}</h2>
               {warmTips.map((item, index) => {
                 return (
                   <p key={index} className={b("tips-list")}>
@@ -170,9 +138,9 @@ export const OrderCancelPanel: FunctionComponent<
             </div>
           )}
           {reasonTitle && <h1 className={b("reason-header")}>{reasonTitle}</h1>}
-          {cancelResonsList && (
+          {cancelResons && (
             <div className={b("reason")}>
-              {cancelResonsList.map((item, index) => {
+              {cancelResons.map((item) => {
                 return (
                   <div
                     key={item.key}
@@ -188,12 +156,9 @@ export const OrderCancelPanel: FunctionComponent<
               })}
               {showOtherText && (
                 <TextArea
+                  {...textAreaProps}
                   className={b("area")}
                   defaultValue={textAreaValue}
-                  rows="3"
-                  limitshow={limitshow}
-                  autosize={false}
-                  maxlength={maxlength}
                   onChange={(val) => setTextAreaValue(val)}
                 />
               )}
@@ -201,18 +166,14 @@ export const OrderCancelPanel: FunctionComponent<
           )}
         </div>
         <div className={b("btns")}>
-          <Button
-            type="primary"
-            style={{ width: "80%" }}
-            onClick={submitContent}
-          >
+          <Button {...buttonProps} onClick={submitContent}>
             {btnsText}
           </Button>
         </div>
       </Popup>
     </div>
   );
-};
+});
 
 OrderCancelPanel.defaultProps = defaultProps;
 OrderCancelPanel.displayName = "NutOrderCancelPanel";

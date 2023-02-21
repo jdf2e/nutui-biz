@@ -16,7 +16,7 @@ const config: EnvConfig = {
   baseUrl: '',
   themeUrl: '',
   isPrd: true, // 是否为线上
-  locales: ['zh-CN', 'zh-TW', 'en-US', 'th'],
+  locales: ['zh-CN', 'en-US', 'th'],
 }
 switch (import.meta.env.MODE) {
   case 'development':

@@ -1,3 +1,8 @@
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .nut-biz-coupon__box {
   display: flex;
   background-size: 100% 100%;
@@ -11,9 +16,8 @@
     &-price {
       display: flex;
       align-items: baseline;
-      margin-right: 20px;
+      margin-right: 15px;
       font-size: 32px;
-
       &--currency {
         font-size: 16px;
       }
@@ -22,17 +26,13 @@
       overflow: hidden;
       &--maintitle {
         font-size: 14px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        @include ellipsis;
       }
       &--subtitle,
       &--timerange {
         font-size: 12px;
         width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        @include ellipsis;
       }
     }
     &-usedicon {
@@ -51,15 +51,16 @@
     position: absolute;
     top: 0px;
     left: 0px;
-    display: flex;
-    align-items: center;
     height: 14px;
+    line-height: 14px;
     padding: 0 2px;
     font-size: 10px;
     font-weight: 400;
     color: red;
     background: #fff;
     border-radius: 6px 0;
+    max-width: 100px;
+    @include ellipsis;
   }
 }
 .nut-biz-coupon__box--small {
@@ -69,7 +70,9 @@
     flex-direction: column;
     text-align: center;
     padding: 13px 7px 10px;
+
     &-price {
+      //   width: 100%;
       font-size: 18px;
       display: flex;
       justify-content: center;
@@ -78,23 +81,21 @@
         font-size: 12px;
       }
       &--number {
+        // width: 100%;
         font-size: 18px;
+        // @include ellipsis;
       }
     }
     &-content {
       width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      @include ellipsis;
       &--maintitle {
         font-size: 10px;
       }
       &--subtitle {
         color: rgba(250, 44, 25, 0.5);
         font-size: 10px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        @include ellipsis;
       }
     }
   }

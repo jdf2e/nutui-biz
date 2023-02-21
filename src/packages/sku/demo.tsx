@@ -44,18 +44,6 @@ const SkuDemo = () => {
       addCart: '加入购物车',
       buyItNow: '立即购买'
     },
-    'zh-TW': {
-      basic: '基本用法',
-      notSell: '不可售',
-      customStepper: '自定義計步器',
-      customBySlot: '自定義插槽',
-      deliverTo: '配送至',
-      sendTo: '送至',
-      weight: '重量',
-      skuId: '編號',
-      addCart: '加入購物車',
-      buyItNow: '立即購買'
-    },
     'en-US': {
       basic: 'Basic Usage',
       notSell: 'Not Sell',

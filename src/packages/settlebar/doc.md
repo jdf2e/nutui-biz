@@ -179,12 +179,12 @@ export default App;
 | showZero   | 数量为0时是否展示                                 | Boolean  | `true`          |
 | safeAreaInsetBottom   | 是否开启iphone系列全面屏底部安全区适配                                 | Boolean  | `true`          |
 | placeholder   | 固定在底部时，是否在标签位置生成一个等高的占位元素                                 | Boolean  | `false`          |
-| customTotal | 合计区域自定义 | React.ReactNode  | -          |
-| customWarning | 上面提示内容自定义 | React.ReactNode  | -          |
-| customSelectAll | 全选内容自定义 | React.ReactNode  | -          |
-| customTotalPrice | 合计价格内容自定义 | React.ReactNode  | -          |
-| customTotalExtra | 合计额外区域自定义 | React.ReactNode  | -          |
-| customButton | 按钮内容自定义 | React.ReactNode  | -          |
+| customTotal | 合计区域自定义 | ReactNode  | -          |
+| customWarning | 上面提示内容自定义 | ReactNode  | -          |
+| customSelectAll | 全选内容自定义 | ReactNode  | -          |
+| customTotalPrice | 合计价格内容自定义 | ReactNode  | -          |
+| customTotalExtra | 合计额外区域自定义 | ReactNode  | -          |
+| customButton | 按钮内容自定义 | ReactNode  | -          |
 
 
 ## Events

@@ -6,7 +6,6 @@ import React, {
   useEffect,
   ReactNode
 } from 'react'
-import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 import {getRect} from '@/utils/useClientRect'
@@ -31,7 +30,6 @@ const defaultProps = {
 export const CartBar: FunctionComponent<
   Partial<CartBarProps>
 > = (props) => {
-  const { locale } = useConfig()
   const root = useRef(null)
   const {
     children,
@@ -53,7 +51,7 @@ export const CartBar: FunctionComponent<
 
   useEffect(() => {
     if(root.current) {
-      setHeight((getRect(root.current) as any).height)
+      setHeight(getRect(root.current).height)
     }
   }, ['height'])
 

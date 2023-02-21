@@ -28,7 +28,11 @@ const Nav = () => {
 
   const changeNav = (_nav: any) => {
     setActiveName(_nav.name)
-    history.push(_nav.name)
+    if(_nav.name.includes('releases')) {
+      window.open(_nav.name, "_blank")
+    } else {
+      history.push(_nav.name)
+    }
   }
 
   return (
@@ -48,24 +52,16 @@ const Nav = () => {
               <li>{cn.name}</li>
               <ul>
                 {cn.packages.map((cp: any) => {
-                  // if (!cp.show) return null
-                  return (
-                    !cp.show ? <a
+                  if (!cp.show) return null
+                  return <NavLink
                     key={Math.random()}
+                    activeClassName="selected"
+                    to={`${lang ? `/${lang}` : ''}/component/${cp.name}`}
                   >
-                    <li style={{color: '#ccc', cursor: 'not-allowed'}}>
+                    <li>
                       {cp.name}&nbsp;&nbsp;<b>{cp.cName}</b>
                     </li>
-                  </a> : <NavLink
-                      key={Math.random()}
-                      activeClassName="selected"
-                      to={`${lang ? `/${lang}` : ''}/component/${cp.name}`}
-                    >
-                      <li>
-                        {cp.name}&nbsp;&nbsp;<b>{cp.cName}</b>
-                      </li>
-                    </NavLink>
-                  )
+                  </NavLink>
                 })}
               </ul>
             </React.Fragment>

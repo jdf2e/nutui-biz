@@ -7,7 +7,6 @@
 ### 安装
 
 ```javascript
-import { Button } from "@nutui/nutui-react";
 import { Coupon } from "@nutui/nutui-biz";
 ```
 
@@ -18,12 +17,21 @@ import { Coupon } from "@nutui/nutui-biz";
 :::demo
 
 ```ts
-import React from "react";
-import { Button } from "@nutui/nutui-react";
+import React, { useState } from "react";
 import { Coupon } from "@nutui/nutui-biz";
 
 const App = () => {
-  //已经使用的icon
+  //按钮props
+  const buttonProps: Partial<ButtonProps> = React.useMemo(() => {
+    return {
+      type: "primary",
+      size: "small",
+      plain: true,
+      className: "cancel-btn",
+    };
+  }, []);
+
+  //已经使用的icon标记
   const usedIcon = React.useMemo(() => {
     return (
       <img
@@ -33,10 +41,10 @@ const App = () => {
       />
     );
   }, []);
-  //渲染优惠券文案内容
+  //渲染组件文案内容
   const baseCouponObj = React.useMemo(() => {
     return {
-      price: 9,
+      price: "9",
       currency: "¥",
       mainTitle: "满100元可用",
       subTitle: "仅可购买满折券测试",
@@ -44,29 +52,44 @@ const App = () => {
       timeRange: "2022.03.01-2022.04.01",
     };
   }, []);
-  //背景图
-  const baseCouponBgImg =
-    "https://storage.360buyimg.com/jdcdkh/open/1.0.0/assets/bg-coupon-red.f6ae2e19.png";
-
-  const [btnText, setBtnText] = useState(translated.btnText);
+  //优惠券样式
+  const couponBaseStyle: CSSProperties = React.useMemo(() => {
+    return {
+      width: "100%",
+      height: "auto",
+      backgroundImage: `url(https://storage.360buyimg.com/jdcdkh/open/1.0.0/assets/bg-coupon-red.f6ae2e19.png)`,
+    };
+  }, []);
+  //优惠券主体样式
+  const couponMainBaseStyle: CSSProperties = React.useMemo(() => {
+    return {
+      width: "69%",
+      color: "#fff",
+    };
+  }, []);
+  //按钮文案
+  const [btnText, setBtnText] = useState("立即领取");
+  //是否点击了立即领取按钮
   const [receivedStatus, setReceivedStatus] = useState(false);
-  const [btnType, setBtnType] = useState<ButtonType>("primary");
   const basedOnClick = React.useCallback(() => {
-    setBtnText(translated.receivedBtnText);
+    setBtnText("已领取");
     setReceivedStatus(true);
-    setBtnType("default");
-  }, [btnText, receivedStatus, btnType]);
+  }, [btnText, receivedStatus]);
+
   return (
-    <Coupon
-      pricePosition="back"
-      coupon={baseCouponObj}
-      couponBgImg={baseCouponBgImg}
-      btnText={btnText}
-      isReceived={receivedStatus}
-      usedIcon={usedIcon}
-      btnType={btnType}
-      onClick={basedOnClick}
-    ></Coupon>
+    <div className="demo">
+      <Coupon
+        pricePosition="back"
+        couponStyle={couponBaseStyle}
+        couponMainStyle={couponMainBaseStyle}
+        coupon={baseCouponObj}
+        btnText={btnText}
+        isReceived={receivedStatus}
+        usedIcon={usedIcon}
+        buttonProps={buttonProps}
+        onBtnClick={basedOnClick}
+      ></Coupon>
+    </div>
   );
 };
 export default App;
@@ -74,135 +97,67 @@ export default App;
 
 :::
 
-### 带有事件的优惠组件
+### 小卡片类型的优惠组件
 
 :::demo
 
 ```ts
-import React from "react";
-import { Button } from "@nutui/nutui-react";
+import React, { useState } from "react";
 import { Coupon } from "@nutui/nutui-biz";
 
 const App = () => {
-  //已经使用的icon
-  const usedIcon = React.useMemo(() => {
-    return (
-      <img
-        src="https://storage.360buyimg.com/jdcdkh/open/1.0.0/assets/use-mask.60dc7c10.png"
-        width="45px"
-        height="42px"
-      />
-    );
-  }, []);
-  //渲染优惠券文案内容
-  const baseCouponObj = React.useMemo(() => {
+  //优惠券样式
+  const couponSmallStyle: CSSProperties = React.useMemo(() => {
     return {
-      price: 9,
-      currency: "¥",
-      mainTitle: "满100元可用",
-      subTitle: "仅可购买满折券测试",
-      label: "内购专享",
-      timeRange: "2022.03.01-2022.04.01",
+      width: "127px",
+      height: "auto",
+      backgroundImage: `url(https://static.360buyimg.com/jdcdkh/open/1.0.0/assets/bg-coupon.6df5b4ed.png)`,
+      marginRight: `10px`,
+      marginBottom: `10px`,
     };
   }, []);
-  const baseCouponBgImgEvent =
-    "https://static.360buyimg.com/jdcdkh/open/1.0.0/assets/bg-coupon-1.68c324f9.png";
-  const [btnTextEvent, setBtnTextEvent] = useState("立即领取");
-  const [receivedStatusEvent, setReceivedStatusEvent] = useState(false);
-  const basedOnClickEvent = React.useCallback(() => {
-    setBtnTextEvent("已经领取");
-    setReceivedStatusEvent(true);
-  }, [btnTextEvent, setBtnTextEvent]);
-  return (
-    <Coupon
-      className="demo-coupon"
-      type="large"
-      couponWidth="100%"
-      couponMainWidth="69%"
-      coupon={baseCouponObj}
-      couponBgImg={baseCouponBgImgEvent}
-      btnText={btnTextEvent}
-      couponMainColor="red"
-      isReceived={receivedStatusEvent}
-      usedIcon={usedIcon}
-      onClick={basedOnClickEvent}
-    ></Coupon>
-  );
-};
-export default App;
-```
-
-:::
-
-### 带有事件的优惠组件
-
-:::demo
-
-```ts
-import React from "react";
-import { Button } from "@nutui/nutui-react";
-import { Coupon } from "@nutui/nutui-biz";
-
-const App = () => {
-  //已经使用的icon
-  const usedIcon = React.useMemo(() => {
-    return (
-      <img
-        src="https://storage.360buyimg.com/jdcdkh/open/1.0.0/assets/use-mask.60dc7c10.png"
-        width="45px"
-        height="42px"
-      />
-    );
+  //优惠券主体样式
+  const couponMainSmallStyle: CSSProperties = React.useMemo(() => {
+    return {
+      width: "80%",
+      color: "red",
+    };
   }, []);
-  //渲染优惠券文案内容
+  //渲染优惠券文案
   const couponObj = React.useMemo(() => {
     return {
       price: 9,
       currency: "¥",
-      mainTitle: "满100元可用",
-      subTitle: "仅可购买满折券测试",
+      mainTitle: translated.mainTitle,
+      subTitle: translated.subTitle,
       label: "618",
     };
   }, []);
-  const couponBgImg =
-    "https://static.360buyimg.com/jdcdkh/open/1.0.0/assets/bg-coupon.6df5b4ed.png";
-  const wrapperStyle: CSSProperties = {
-    width: "100%",
-    overflow: "scroll",
-  };
-  //多行优惠券外层dom元素样式，宽度为每行优惠券的宽度
-  const couponWrapperStyle: CSSProperties = {
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    width: "700px",
-  };
-  //按钮的props
-  const btnsProps = {
-    type: "default",
-    size: "small",
-    plain: true,
-  };
-  const receivedBtn = React.useCallback((item: any) => {
+  const receivedBtn = React.useCallback((item: number) => {
     console.log(item);
   }, []);
   return (
-    <div style={wrapperStyle}>
-      <div style={couponWrapperStyle}>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => {
+    <div style={{ width: "100%", overflow: "scroll" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          width: "700px",
+        }}
+      >
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => {
           return (
             <Coupon
-              key={index}
+              key={item}
               type="small"
-              couponWidth="127px"
-              couponMainWidth="80%"
-              couponMainColor="red"
-              couponMarginRight={10}
-              couponMarginBottom={10}
+              couponMainStyle={couponMainSmallStyle}
+              couponStyle={couponSmallStyle}
               coupon={couponObj}
-              couponBgImg={couponBgImg}
+              buttonProps={buttonProps}
               itemData={item}
-              onClick={receivedBtn}
+              btnText="立即领取"
+              onBtnClick={receivedBtn}
             ></Coupon>
           );
         })}
@@ -219,25 +174,20 @@ export default App;
 
 ### Props
 
-| 字段               | 说明                                           | 类型    | 默认值      |
-| ------------------ | ---------------------------------------------- | ------- | ----------- |
-| type               | 优惠券的类型 可选值是 `large` `small`          | String  | `large`     |
-| couponMarginRight  | 每张优惠券的 margin 右边距                     | Number  | 0           |
-| couponMarginBottom | 每张优惠券的 margin 下边距                     | Number  | 0           |
-| couponWidth        | 每张优惠券的宽度 支持 `px` 和 `%`              | String  | `100%`      |
-| couponHeight       | 每张优惠券的高度                               | String  | `auto`      |
-| couponMainWidth    | 优惠券左侧的宽度 10px 或者 10%                 | String  | `69%`       |
-| couponMainColor    | 优惠券左侧的文字颜色                           | String  | `#fff`      |
-| couponBgImg        | 优惠券的背景图                                 | String  | 默认背景图  |
-| pricePosition      | 价格和标签的前后位置 `front` `back`            | String  | `back`      |
-| coupon             | 渲染优惠券内容                                 | Object  | -           |
-| btnText            | 按钮文案                                       | Stringe | -           |
-| isReceived         | 是否领取优惠券                                 | Boolean | -           |
-| receivedBtnText    | 领取后的按钮文案                               | String  | `full-line` |
-| className          | 自定义类名                                     | String  | -           |
-| btnType            | 领取按钮类型，同 Button 组件的 ButtonType      | String  | `primary`   |
-| usedIcon           | 已领取 icon                                    | Boolean | `true`      |
-| itemData           | 父组件传递过来的数据，作为函数参数返回给父组件 | Object  | -           |
+| 字段            | 说明                                           | 类型                 | 默认值      |
+| --------------- | ---------------------------------------------- | -------------------- | ----------- |
+| type            | 优惠券的类型 可选值是 `large` `small`          | String               | `large`     |
+| couponStyle     | 每张优惠券的样式                               | CSSProperties        | --          |
+| couponMainStyle | 优惠券主体的样式                               | CSSProperties        | --          |
+| pricePosition   | 价格和标签的前后位置 `front` `back`            | String               | `back`      |
+| coupon          | 渲染优惠券内容                                 | Object               | -           |
+| btnText         | 按钮文案                                       | Stringe              | -           |
+| isReceived      | 是否领取优惠券                                 | Boolean              | -           |
+| receivedBtnText | 领取后的按钮文案                               | String               | `full-line` |
+| className       | 自定义类名                                     | String               | -           |
+| buttonProps     | 按钮 props，来自于 nutui-react 中 Button 组件  | Partial<ButtonProps> | --          |
+| usedIcon        | 已领取 icon                                    | Boolean              | `true`      |
+| itemData        | 父组件传递过来的数据，作为函数参数返回给父组件 | Object               | -           |
 
 ## Events
 

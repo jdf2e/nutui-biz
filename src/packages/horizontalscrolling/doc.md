@@ -145,7 +145,7 @@ const App = () => {
         maskShadowType="transparent"  
         maskWidth="50px"
         maskDistance="10px"
-        maskHpl={
+        maskContent={
         <div className="nut-biz-horizontalscrolling__mask-box buy-price">
           <div><i>￥</i>199</div>
           <div>共3件</div>
@@ -174,7 +174,7 @@ export default App;
 
 ### 自定义遮罩内容
 
-可以通过 `maskHpl` 自定义遮罩内容
+可以通过 `maskContent` 自定义遮罩内容
 
 :::demo
 ```tsx
@@ -193,7 +193,7 @@ const App = () => {
         maskPosition="left" 
         maskWidth="40px" 
         className="custom-float"
-        maskHpl={
+        maskContent={
           <div className="more-box">
             查看更多
           </div>
@@ -313,12 +313,12 @@ export default App;
 | maskWidth          | 遮罩层宽度                        | String | '100px'              |
 | maskDistance       | 滚动内容距离容器的宽度                     | String | 0              |
 | showScrollBar       | 是否展示滚动条                     | Boolean | false             |
-| maskIcon | 自定义图标 `name` 值    | String | 'category' |
-| maskHpl  | 自定义遮罩内容    | React.ReactNode | - |
+| maskIcon | [图标名称](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon) 或图片链接    | String | 'category' |
+| maskContent  | 自定义遮罩内容    | String \| React.ReactNode | "更多" |
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| onClickMask  | 点击遮罩层时触发 | event: MouseEvent |
-| onScrollRight  | 滑动到右边时会触发 | event: MouseEvent |
+| 事件名          | 说明             | 回调参数  |
+|----------------|-----------------|------------|
+| onClickMask    | 点击遮罩层时触发   | - |
+| onScrollRight  | 滑动到右边时会触发 | - |

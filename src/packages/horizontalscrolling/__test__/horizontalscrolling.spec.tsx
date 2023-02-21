@@ -131,10 +131,10 @@ test('HorizontalScrolling maskIcon', async () => {
   
 })
 
-test('HorizontalScrolling maskHpl', async () => {
+test('HorizontalScrolling maskContent', async () => {
   const { container } = render(
     <HorizontalScrolling
-      maskHpl={
+      maskContent={
       <div className="nut-biz-horizontalscrolling__mask-box buy-price">
         <div><i>￥</i>199</div>
         <div>共3件</div>
@@ -155,9 +155,9 @@ test('HorizontalScrolling maskHpl', async () => {
     </HorizontalScrolling>
   )
 
-  const maskHpl = container.querySelectorAll('.buy-price')
+  const maskContent = container.querySelectorAll('.buy-price')
   
-  expect(maskHpl.length).toBe(1)
+  expect(maskContent.length).toBe(1)
 })
 
 test('click test', () => {

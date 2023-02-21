@@ -2,7 +2,6 @@ import React, {
   FunctionComponent,
   ReactNode
 } from 'react'
-import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames';
 import bem from '@/utils/bem'
 import {Icon, Badge} from '@nutui/nutui-react'
@@ -24,9 +23,8 @@ const defaultProps = {
 } as CartBarIconProps
 
 export const CartBarIcon: FunctionComponent<
-  Partial<CartBarIconProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<CartBarIconProps>
 > = (props) => {
-  const { locale } = useConfig()
   const {
     className,
     style,

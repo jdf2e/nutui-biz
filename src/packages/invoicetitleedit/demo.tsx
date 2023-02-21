@@ -17,11 +17,6 @@ const InvoiceTitleEditDemo = () => {
       specialInvoice: '增值税专用发票',
       customBottom: '自定义底部',
     },
-    'zh-TW': {
-      normalInvoice: '電子普通發票',
-      specialInvoice: '增值稅專用發票',
-      customBottom: '自定義底部',
-    },
     'en-US': {
       normalInvoice: 'Normal Invoice',
       specialInvoice: 'Special Invoice',

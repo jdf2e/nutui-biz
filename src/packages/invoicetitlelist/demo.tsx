@@ -28,17 +28,6 @@ const InvoiceTitleListDemo = () => {
       edited: '触发编辑事件',
       deleted: '触发删除事件'
     },
-    'zh-TW': {
-      title1: '增值稅專用發票',
-      title2: '增值稅專用發票-發票狀態',
-      title3: '電子普通發票',
-      title4: '選中狀態',
-      title5: '操作按鈕自定義',
-      title6: '隱藏所有操作',
-      clicked: '觸發點擊事件',
-      edited: '觸發編輯事件',
-      deleted: '觸發刪除事件'
-    },
     'en-US': {
       title1: 'Special Invoice',
       title2: 'Special Invoice-Invoice Status',

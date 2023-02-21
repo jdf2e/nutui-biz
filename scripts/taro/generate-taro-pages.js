@@ -9,7 +9,7 @@ const navs = config.nav
 // 将packages下的demo.taro.tsx 的内容拷贝到 mobile-taro 下的 index.tsx 中。
 const createIndexConfig = (enName, package) => {
   return new Promise((resolve, reject) => {
-    if (package.show && package.taro) {
+    if (package.show && package.taro && !package.exportEmpty) {
       const name = package.name
       const nameLc = package.name.toLowerCase()
       let content = `export default {
@@ -19,6 +19,7 @@ const createIndexConfig = (enName, package) => {
         __dirname,
         `../../src/sites/mobile-taro/src/${enName}/pages/${nameLc}`
       )
+      
       const filePath = path.join(dirPath, `index.config.ts`)
       if (!fs.existsSync(dirPath)) {
         fs.mkdirSync(dirPath, { recursive: true }, (err) => {
@@ -42,8 +43,8 @@ const createIndexConfig = (enName, package) => {
           const lines = fileString.split('\n')
           const reg =
             /import{1,}[\w\s\S]+(\'@\/packages\/nutui\.react\.taro\'){1,}/g
-          let fileStrArr = fileString.match(reg)
-          fileStrArr = fileStrArr[0].split('import')
+          // let fileStrArr = fileString.match(reg)
+          // fileStrArr = fileStrArr[0].split('import')
           // let importScssStr = ''
           // for (let i = 0, lens = fileStrArr.length; i < lens; i++) {
           //   if (fileStrArr[i].indexOf('@/packages/nutui.react.taro') != -1) {

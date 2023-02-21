@@ -1,24 +1,41 @@
 {
-  "appid": "wx9ac45039b7813c7d",
-  "compileType": "miniprogram",
-  "libVersion": "2.26.0",
-  "packOptions": {
-    "ignore": [],
-    "include": []
-  },
+  "miniprogramRoot": "dist/weapp/",
+  "projectname": "NutUI-React-Taro",
   "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": false,
     "coverView": true,
-    "es6": true,
-    "postcss": true,
-    "minified": true,
+    "lazyloadPlaceholderEnable": false,
+    "preloadBackgroundData": false,
+    "autoAudits": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
     "enhance": true,
     "showShadowRootInWxmlPanel": true,
+    "packNpmManually": false,
     "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "useStaticServer": true,
+    "showES6CompileOption": false,
+    "checkInvalidKey": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    }
+    },
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "minifyWXML": true,
+    "useMultiFrameRuntime": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.25.0",
+  "srcMiniprogramRoot": "dist/weapp/",
+  "packOptions": {
+    "ignore": [],
+    "include": []
   },
   "condition": {},
   "editorSetting": {

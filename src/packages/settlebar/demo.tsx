@@ -35,21 +35,6 @@ const SettleBarDemo = () => {
       customWarningText: '此商品无货！',
       reduced: '已减'
     },
-    'zh-TW': {
-      basic: '基本用法',
-      title1: '對齊方式',
-      title2: '禁用狀態',
-      title3: '加載狀態',
-      title4: '提交訂單',
-      title5: '去結算數量和單位',
-      title6: '自定義合計額外區域內容',
-      title7: '帶有警告信息',
-      totalText: '總計',
-      settleButtonText: '提交訂單',
-      settleUnit: '個',
-      customWarningText: '此商品無貨！',
-      reduced: '已減'
-    },
     'en-US': {
       basic: 'Basic Usage',
       title1: 'Alignment',

@@ -146,7 +146,7 @@ const App = () => {
         maskShadowType="transparent"  
         maskWidth="50px"
         maskDistance="10px"
-        maskHpl={
+        maskContent={
         <div className="nut-biz-horizontalscrolling__mask-box buy-price">
           <div><i>$</i>199</div>
           <div>Total 3 pieces</div>
@@ -175,7 +175,7 @@ export default App;
 
 ### Custom Mask Content
 
-Customize the mask content through `maskHpl`
+Customize the mask content through `maskContent`
 
 :::demo
 ```tsx
@@ -194,7 +194,7 @@ const App = () => {
         maskPosition="left" 
         maskWidth="40px" 
         className="custom-float"
-        maskHpl={
+        maskContent={
           <div className="more-box">
             More
           </div>
@@ -315,11 +315,11 @@ export default App;
 | maskDistance    | The width of the scroll content from the container        | String | 0              |
 | showScrollBar   | whether to show scroll bar                     | Boolean | false             |
 | maskIcon        | Custom icon `name` value    | String | 'category' |
-| maskHpl         | Custom mask content         | React.ReactNode | - |
+| maskContent     | Custom mask content         | String \| React.ReactNode | "More" |
 
 ### Events
 
-| Attribute            | Description               | Arguments   |
-|----- | ----- | -----  |
-| onClickMask  | Triggered when the mask layer is clicked | event: MouseEvent |
-| onScrollRight  | Fired when swiping to the right | event: MouseEvent |
+| Attribute      | Description               | Arguments   |
+|--------------- | ----- | -----  |
+| onClickMask    | Triggered when the mask layer is clicked | - |
+| onScrollRight  | Fired when swiping to the right | - |

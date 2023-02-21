@@ -6,10 +6,10 @@ export interface BaseLang {
   noData: string;
   placeholder: string;
   select: string;
-  name: string,
-  tel: string,
-  default: string,
-  addres: string,
+  name: string;
+  tel: string;
+  default: string;
+  addres: string;
   video: {
     errorTip: string;
     clickRetry: string;
@@ -87,19 +87,19 @@ export interface BaseLang {
     placeholder: string;
   };
   receiveInvoiceEdit: {
-    nameText: string,
-    namePlaceholder: string,
-    nameErrorMsg: string,
-    telText: string,
-    telPlaceholder: string,
-    telErrorMsg: string,
-    regionText: string,
-    regionPlaceholder: string,
-    regionErrorMsg: string,
-    addressText: string,
-    addressPlaceholder: string,
-    addressErrorMsg: string,
-    bottomText: string,
+    nameText: string;
+    namePlaceholder: string;
+    nameErrorMsg: string;
+    telText: string;
+    telPlaceholder: string;
+    telErrorMsg: string;
+    regionText: string;
+    regionPlaceholder: string;
+    regionErrorMsg: string;
+    addressText: string;
+    addressPlaceholder: string;
+    addressErrorMsg: string;
+    bottomText: string;
   };
   timeselect: {
     pickupTime: string;
@@ -178,4 +178,5 @@ export interface BaseLang {
   horizontalscrolling: {
     more: string;
   };
+  orderCancelPanel: { otherText: string };
 }
