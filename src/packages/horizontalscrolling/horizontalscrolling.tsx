@@ -7,17 +7,20 @@ import React, {
 import { useConfig } from '@/packages/configprovider'
 import { IComponent } from '@/utils/typings'
 import { Icon } from '@nutui/nutui-react';
-
 import classNames from 'classnames'
 import bem from '@/utils/bem'
+
+export type MaskPositionType = "left" | "right";
+export type MaskShadowTypeType = "triangle" | "shadow" | "transparent" | "none";
+
 export interface HorizontalScrollingProps extends IComponent {
   className: string
   style: CSSProperties
   // 是否需要遮罩层
   showMask: boolean
   // 遮罩层位置
-  maskPosition: string,
-  maskShadowType: string
+  maskPosition: MaskPositionType
+  maskShadowType: MaskShadowTypeType
   maskWidth: string
   maskDistance: string
   showScrollBar: boolean

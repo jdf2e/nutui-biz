@@ -306,16 +306,16 @@ export default App;
 
 ### Props
 
-| Event  | Description     | Type    |
-|---------|--------------------------------------------|---------|
-| showMask        | whether to show a mask layer    | Boolean | true         |
-| maskPosition    | Mask layer display position (eg: `left`, `right`)      | String | right                |
-| maskShadowType  | Mask shadow form (eg `none`: none, `triangle`: triangle, `shadow`: shadow, `transparent`: translucent) | String | triangle    |
-| maskWidth       | mask layer width            | String | '100px'              |
-| maskDistance    | The width of the scroll content from the container        | String | 0              |
-| showScrollBar   | whether to show scroll bar                     | Boolean | false             |
-| maskIcon        | Custom icon `name` value    | String | 'category' |
-| maskContent     | Custom mask content         | String \| React.ReactNode | "More" |
+| Attribute  | Description     | Type    | Default     |
+|---------|--------------------------------------------|---------|---------|
+| showMask        | whether to show a mask layer    | Boolean | `true`         |
+| maskPosition    | Mask layer display position (eg: `left`, `right`) | String | `right` |
+| maskShadowType  | Mask shadow form (eg `none`: none, `triangle`: triangle, `shadow`: shadow, `transparent`: translucent) | String | `triangle`    |
+| maskWidth       | mask layer width            | String | `100px`              |
+| maskDistance    | The width of the scroll content from the container        | String | `0`              |
+| showScrollBar   | whether to show scroll bar                     | Boolean | `false`             |
+| maskIcon        | Custom icon `name` value    | String | `category` |
+| maskContent     | Custom mask content         | String \| React.ReactNode | `More` |
 
 ### Events
 
