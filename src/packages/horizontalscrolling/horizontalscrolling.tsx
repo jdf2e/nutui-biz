@@ -22,7 +22,7 @@ export interface HorizontalScrollingProps extends IComponent {
   maskDistance: string
   showScrollBar: boolean
   maskIcon: string
-  maskHpl: ReactNode
+  maskContent: string | ReactNode
   onClickMask: () => void,
   onScrollRight: () => void
 }
@@ -34,7 +34,10 @@ const defaultProps = {
   maskWidth: "100px",
   maskDistance: "0px",
   showScrollBar: false,
-  maskIcon: "category"
+  maskIcon: "category",
+  maskContent: '',
+  onClickMask: () => { },
+  onScrollRight: () => { },
 } as HorizontalScrollingProps
 
 export const HorizontalScrolling: FunctionComponent<
@@ -52,7 +55,7 @@ export const HorizontalScrolling: FunctionComponent<
     maskDistance,
     showScrollBar,
     maskIcon,
-    maskHpl,
+    maskContent,
     onClickMask,
     onScrollRight,
     ...rest
@@ -94,10 +97,10 @@ export const HorizontalScrolling: FunctionComponent<
   const maskRender = () => {
     return (
       <div className={`${b('mask-')}${maskPosition} ${b('mask-')}${maskPosition}--${maskShadowType}`} style={{width: maskWidth}} onClick={handleMaskClick}>
-        {maskHpl ? maskHpl : 
+        {typeof maskContent !== 'string' ? maskContent : 
         <div className={b('mask-box')}>
           <Icon name={maskIcon} color="#fa2c19" size="26"></Icon>
-          <span>{locale.horizontalscrolling.more}</span>
+          <span>{maskContent ? maskContent : locale.horizontalscrolling.more}</span>
         </div>}
       </div>
     )
