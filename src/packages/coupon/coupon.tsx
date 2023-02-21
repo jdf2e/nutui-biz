@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, ReactNode } from "react";
 import { IComponent } from "@/utils/typings";
-import { Button } from "@nutui/nutui-react";
+import { Button, ButtonProps } from "@nutui/nutui-react";
 import { throttle } from "@/utils/throttle";
 import bem from "@/utils/bem";
 
@@ -12,13 +12,6 @@ export interface ICouponType {
   timeRange?: string; //优惠券使用时间范围
   label: string; //优惠券左上角的标签内容
 }
-export type ButtonType =
-  | "default"
-  | "primary"
-  | "info"
-  | "success"
-  | "warning"
-  | "danger";
 
 export type CouponType = "large" | "small";
 export type IPricePosition = "front" | "back";
@@ -38,7 +31,7 @@ export interface CouponProps extends IComponent {
   isReceived: boolean; //是否领取
   receivedBtnText: string; //领取后的按钮文案
   className: string;
-  btnType: ButtonType; //领取按钮类型
+  buttonProps: Partial<ButtonProps>; //按钮props
   usedIcon: ReactNode;
   onClick: any;
   itemData: any; //父组件传递过来的数据，用户函数参数返回
@@ -53,7 +46,6 @@ const couponObj = {
 } as ICouponType;
 const defaultProps = {
   type: "large",
-  btnType: "primary",
   couponMarginRight: 0,
   couponMarginBottom: 0,
   couponWidth: "100%",
@@ -68,12 +60,12 @@ const defaultProps = {
   isReceived: false,
   receivedBtnText: "已经领取",
 } as CouponProps;
+
 export const Coupon: FunctionComponent<
   Partial<CouponProps> & Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">
 > = React.memo((props) => {
   const {
     type,
-    btnType,
     couponWidth,
     couponHeight,
     couponMarginRight,
@@ -90,6 +82,7 @@ export const Coupon: FunctionComponent<
     usedIcon,
     onClick,
     itemData,
+    buttonProps,
     ...rest
   } = {
     ...defaultProps,
@@ -162,10 +155,8 @@ export const Coupon: FunctionComponent<
             </div>
           ) : (
             <Button
-              type={btnType}
+              {...buttonProps}
               disabled={isReceived}
-              size="small"
-              plain
               onClick={handleClick}
             >
               {btnText}

@@ -1,37 +1,37 @@
-import React, { useEffect, useState } from 'react'
-import { compressText, copyCodeHtml, decompressText } from './basedUtil'
+import React, { useEffect, useState } from "react";
+import { compressText, copyCodeHtml, decompressText } from "./basedUtil";
 interface A {
-  text: string
-  scss: string
-  children?: React.ReactNode
+  text: string;
+  scss: string;
+  children?: React.ReactNode;
 }
 const DemoBlock: React.FunctionComponent<A> = (props) => {
-  const [onlineUrl, setOnlineUrl] = useState('')
+  const [onlineUrl, setOnlineUrl] = useState("");
   useEffect(() => {
-    const sourceMainReactJsStr = `//import VConsole from "vconsole";
-//var vConsole = new VConsole();
-import React from "react";
+    const sourceMainReactJsStr = `import React from "react";
 import ReactDOM from "react-dom";
-import '@nutui/nutui-react/dist/style.css'
+import '@nutui/nutui-react/dist/style.css';
+import "@nutui/nutui-biz/dist/style.css";
+import "@nutui/reset.css";
 import App from "./app.tsx";
 import "./app.scss";
 ReactDOM.render(
   <App/>,
   document.getElementById("app")
-);`
+);`;
 
-    const sourceMainReactJs = compressText(sourceMainReactJsStr)
-    const sourceReactJs = compressText(props.text)
-    const sourceScss = compressText(props.scss || '')
-    const onlineUrl = `https://codehouse.jd.com/?source=share&type=react&mainJs=${sourceMainReactJs}&appValue=${sourceReactJs}&scssValue=${sourceScss}`
-    setOnlineUrl(onlineUrl)
-  }, [])
+    const sourceMainReactJs = compressText(sourceMainReactJsStr);
+    const sourceReactJs = compressText(props.text);
+    const sourceScss = compressText(props.scss || "");
+    const onlineUrl = `https://codehouse.jd.com/?source=share&type=react&mainJs=${sourceMainReactJs}&appValue=${sourceReactJs}&scssValue=${sourceScss}`;
+    setOnlineUrl(onlineUrl);
+  }, []);
   const copyCode = () => {
-    const sourceValue = props.text
+    const sourceValue = props.text;
     copyCodeHtml(sourceValue, () => {
-      alert('复制成功')
-    })
-  }
+      alert("复制成功");
+    });
+  };
   return (
     <>
       {props.children}
@@ -54,6 +54,6 @@ ReactDOM.render(
         </div>
       </div>
     </>
-  )
-}
-export default DemoBlock
+  );
+};
+export default DemoBlock;

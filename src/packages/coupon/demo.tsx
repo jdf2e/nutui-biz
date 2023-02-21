@@ -1,6 +1,7 @@
 import React, { useState, CSSProperties } from "react";
-import { Coupon, ButtonType } from "./coupon";
+import { Coupon } from "./coupon";
 import { useTranslate } from "../../sites/assets/locale";
+import { ButtonProps } from "@nutui/nutui-react";
 interface T {
   basic: string;
   eventText: string;
@@ -51,6 +52,15 @@ const CouponDemo = () => {
     },
   });
   //组件共有变量
+  const buttonProps: Partial<ButtonProps> = React.useMemo(() => {
+    return {
+      type: "primary",
+      size: "small",
+      plain: true,
+      className: "cancel-btn",
+    };
+  }, []);
+
   //已经使用的标记
   const usedIcon = React.useMemo(() => {
     return (
@@ -78,7 +88,7 @@ const CouponDemo = () => {
 
   const [btnText, setBtnText] = useState(translated.btnText);
   const [receivedStatus, setReceivedStatus] = useState(false);
-  const [btnType, setBtnType] = useState<ButtonType>("primary");
+  const [btnType, setBtnType] = useState("primary");
   const basedOnClick = React.useCallback(() => {
     setBtnText(translated.receivedBtnText);
     setReceivedStatus(true);
@@ -133,7 +143,7 @@ const CouponDemo = () => {
           btnText={btnText}
           isReceived={receivedStatus}
           usedIcon={usedIcon}
-          btnType={btnType}
+          buttonProps={buttonProps}
           onClick={basedOnClick}
         ></Coupon>
         <h2>{translated.eventText}</h2>
@@ -145,6 +155,7 @@ const CouponDemo = () => {
           coupon={baseCouponObj}
           couponBgImg={baseCouponBgImgEvent}
           btnText={btnTextEvent}
+          buttonProps={buttonProps}
           couponMainColor="red"
           isReceived={receivedStatusEvent}
           usedIcon={usedIcon}
@@ -168,6 +179,7 @@ const CouponDemo = () => {
                   couponMarginBottom={10}
                   coupon={couponObj}
                   couponBgImg={couponBgImg}
+                  buttonProps={buttonProps}
                   itemData={item}
                   onClick={receivedBtn}
                 ></Coupon>
