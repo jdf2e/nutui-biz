@@ -19,13 +19,6 @@ const AddressListDemo = () => {
       testaddressName: '姓名',
       fullAddress: '北京亦庄经济技术开发区科创十一街18号院'
     },
-    'zh-TW': {
-      basic: '基本用法',
-      title1: '長按功能',
-      title2: '滑動功能',
-      testaddressName: '姓名',
-      fullAddress: '北京亦莊經濟技術開發區科創十一街18號院'
-    },
     'en-US': {
       basic: 'Basic Usage',
       title1: 'Long Press Function',

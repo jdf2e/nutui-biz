@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { compressText, copyCodeHtml, decompressText } from "./basedUtil";
+import { getLocale } from "../../../assets/locale/uselocale";
 interface A {
   text: string;
   scss: string;
@@ -42,14 +43,18 @@ ReactDOM.render(
               className="online-icon"
               src="https://img12.360buyimg.com/imagetools/jfs/t1/214225/34/8715/7002/61c31bf1E69324ee9/7a452063eba88be4.png"
             />
-            <div className="online-tips">在线调试</div>
+            <div className="online-tips">
+              {getLocale() === "zh-CN" ? "在线调试" : "Open in CodeHouse"}
+            </div>
           </a>
           <div className="list" onClick={copyCode}>
             <img
               className="online-icon"
               src="https://img10.360buyimg.com/imagetools/jfs/t1/142615/10/25537/3671/61c31e6eE3ba7fb90/d1953e2b47e40e86.png"
             />
-            <div className="online-tips">复制代码</div>
+            <div className="online-tips">
+              {getLocale() === "zh-CN" ? "复制代码" : "Copy code"}
+            </div>
           </div>
         </div>
       </div>

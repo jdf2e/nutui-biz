@@ -168,7 +168,7 @@ export default App;
 | hasCapsuleButtons   | Whether to include capsule buttons                                 | Boolean  | `false`          |
 | safeAreaInsetBottom   | Whether to enable bottom safe area adaptation                                 | Boolean  | `true`          |
 | placeholder   | Whether to generate a placeholder element when fixed                                 | Boolean  | `false`          |
-| top | Custom top content |React.ReactNode  | -          |
+| top | Custom top content |ReactNode  | -          |
 
 
 ### CartBarIcon Props
@@ -176,8 +176,8 @@ export default App;
 
 | Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
-| text   | Icon text                                 | String  | -         |
-| icon   | Icon                                 | String  | -         |
+| text   | Icon text                                 | ReactNode  | -         |
+| icon   | Icon                                 | ReactNode  | -         |
 | color   | Icon color                                 | String  | `#323233`         |
 | dot   | Whether to display the small red dot in the upper right corner of the icon                                 | Boolean  | `false`         |
 | badge   | The content of the icon in the upper right corner of the icon	                                 | Number \| String  | -         |
@@ -195,7 +195,7 @@ export default App;
 
 | Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
-| text   | Button text                                 | String  | -         |
+| text   | Button text                                 | ReactNode  | -         |
 | disabled   | Whether to disable button                                 | Boolean  | `false`         |
 | type   | Button type, optional value: `primary` `info` `warning` `danger`                                 | String  | `default`         |
 | loading   | Whether to show loading status                                 | Boolean  | `false`         |

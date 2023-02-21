@@ -10,7 +10,6 @@ import {
 import { IComponent } from "@/utils/typings";
 import bem from "@/utils/bem";
 import { throttle } from "@/utils/throttle";
-import "./ordercancelpanel.scss";
 export interface IKeyValue {
   key: string;
   value: string;

@@ -91,7 +91,7 @@ export const SettleBar: FunctionComponent<
 
   useEffect(() => {
     if(root.current) {
-      setHeight((getRect(root.current) as any).height)
+      setHeight(getRect(root.current).height)
     }
   }, ['height'])
 

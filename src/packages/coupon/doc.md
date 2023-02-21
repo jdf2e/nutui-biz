@@ -55,16 +55,18 @@ const App = () => {
     setBtnType("default");
   }, [btnText, receivedStatus, btnType]);
   return (
-    <Coupon
-      pricePosition="back"
-      coupon={baseCouponObj}
-      couponBgImg={baseCouponBgImg}
-      btnText={btnText}
-      isReceived={receivedStatus}
-      usedIcon={usedIcon}
-      btnType={btnType}
-      onClick={basedOnClick}
-    ></Coupon>
+    <div className="demo">
+      <Coupon
+        pricePosition="back"
+        coupon={baseCouponObj}
+        couponBgImg={baseCouponBgImg}
+        btnText={btnText}
+        isReceived={receivedStatus}
+        usedIcon={usedIcon}
+        btnType={btnType}
+        onClick={basedOnClick}
+      ></Coupon>
+    </div>
   );
 };
 export default App;

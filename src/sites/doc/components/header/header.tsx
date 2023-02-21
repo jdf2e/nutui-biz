@@ -44,7 +44,6 @@ const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   const langs = [
     { name: '中文', locale: 'zh-CN' },
-    { name: '中文(繁体)', locale: 'zh-TW' },
     { name: 'English', locale: 'en-US' },
     { name: 'Thai', locale: 'th' },
   ]

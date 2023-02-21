@@ -14,10 +14,6 @@ const ReceiveInvoiceListDemo = () => {
       basic: '基本用法',
       useSwipe: '使用左滑删除',
     },
-    'zh-TW': {
-      basic: '基本用法',
-      useSwipe: '使用左滑删除',
-    },
     'en-US': {
       basic: 'Basic Usage',
       useSwipe: 'Use Swipe Delete',

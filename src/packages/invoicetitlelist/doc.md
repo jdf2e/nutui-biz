@@ -238,7 +238,7 @@ export default App;
 | data   | 发票信息                                 | Object  | -         |
 | isShowOperate     | 是否展示操作区域                   | Boolean  | `true`    |
 | isShowEdit     | 右上角是否展示编辑按钮，适用于电子普通发票                   | Boolean  | `true`    |
-| otherOperate | 扩展其他操作                         | React.ReactNode  | -      |
+| otherOperate | 扩展其他操作                         | ReactNode  | -      |
 
 ### Data 字段说明
 

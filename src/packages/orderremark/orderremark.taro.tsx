@@ -15,6 +15,7 @@ export interface OrderRemarkProps extends IComponent {
   remark: string;
   submitText: string;
   recommendTags: string[];
+  onClickOverlay?: (val: string) => void;
   onCloseMask?: (val: string) => void;
   onClose?: (val: string) => void;
   onOpen?: () => void;
@@ -49,6 +50,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
     recommendTags,
     style,
     className,
+    onClickOverlay,
     onCloseMask,
     onClose,
     onOpen,
@@ -66,7 +68,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
   const b = bem('orderRemark');
 
   const clickOverlay = () => {
-    onCloseMask && onCloseMask(innerMark);
+    onClickOverlay && onClickOverlay(innerMark);
   };
   const closeFun = () => {
     onClose && onClose(innerMark);

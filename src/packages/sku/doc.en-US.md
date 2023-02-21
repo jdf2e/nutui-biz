@@ -368,14 +368,14 @@ export default App;
 | buyText |  Buy button text    | String | `Buy It Now` |
 | addCartText          |        Add cart button text                 | String | `Add To cart`             |
 | confirmText          |           Confirm button text              | String | `Confirm`             |
-| skuHeader  | Custom header | React.ReactNode | -             |
-| skuHeaderPrice  | Custom header price area| React.ReactNode | -             |
-| skuHeaderExtra  | Extra header area | React.ReactNode | -             |
-| skuSelectTop | Custom select top | React.ReactNode | -             |
-| skuSelect | Custom sku | React.ReactNode | -             |
-| skuStepper  | Custom stepper | React.ReactNode | -             |
-| skuStepperBottom  | Custom stepper bottom | React.ReactNode | -             |
-| skuOperate | Custom stepper bottom operation |React.ReactNode | -             |
+| skuHeader  | Custom header | ReactNode | -             |
+| skuHeaderPrice  | Custom header price area| ReactNode | -             |
+| skuHeaderExtra  | Extra header area | ReactNode | -             |
+| skuSelectTop | Custom select top | ReactNode | -             |
+| skuSelect | Custom sku | ReactNode | -             |
+| skuStepper  | Custom stepper | ReactNode | -             |
+| skuStepperBottom  | Custom stepper bottom | ReactNode | -             |
+| skuOperate | Custom stepper bottom operation |ReactNode | -             |
 
 ### Events
 
