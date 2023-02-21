@@ -16,9 +16,8 @@
     &-price {
       display: flex;
       align-items: baseline;
-      margin-right: 20px;
+      margin-right: 15px;
       font-size: 32px;
-
       &--currency {
         font-size: 16px;
       }
@@ -71,7 +70,9 @@
     flex-direction: column;
     text-align: center;
     padding: 13px 7px 10px;
+
     &-price {
+      //   width: 100%;
       font-size: 18px;
       display: flex;
       justify-content: center;
@@ -80,7 +81,9 @@
         font-size: 12px;
       }
       &--number {
+        // width: 100%;
         font-size: 18px;
+        // @include ellipsis;
       }
     }
     &-content {
