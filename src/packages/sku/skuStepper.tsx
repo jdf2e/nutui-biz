@@ -8,7 +8,7 @@ import {InputNumber} from '@nutui/nutui-react'
 
 import { IComponent } from '@/utils/typings'
 
-export interface SkuHeaderProps extends IComponent {
+export interface SkuStepperProps extends IComponent {
   stepperMax: string | number
   stepperMin: string | number
   stepperExtraText: Function | boolean
@@ -25,7 +25,7 @@ export interface SkuHeaderProps extends IComponent {
 }
 
 export const SkuStepper: FunctionComponent<
-  Partial<SkuHeaderProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<SkuStepperProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
   const { locale } = useConfig()
   const {

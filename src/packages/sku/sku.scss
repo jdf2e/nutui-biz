@@ -22,6 +22,11 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      overflow: hidden;
+      .nut-price {
+        display: flex;
+        align-items: baseline;
+      }
       &-extra {
         font-size: 12px;
         color: #808080;
@@ -87,6 +92,7 @@
       font-size: 13px;
       color: #000;
       margin-right: 12px;
+      @include oneline-ellipsis()
     }
     &-limit {
       flex: 1;
@@ -110,11 +116,13 @@
     &-desc {
       display: block;
       width: 100%;
+      max-height: 94px;
       padding: 10px 0;
       text-align: center;
       background: #fbf9da;
       color: #de6a1c;
       font-size: 12px;
+      overflow: hidden;
     }
     &-btn {
       height: 54px;
