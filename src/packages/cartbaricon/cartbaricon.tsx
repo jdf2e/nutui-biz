@@ -3,7 +3,7 @@ import React, {
   ReactNode
 } from 'react'
 import classNames from 'classnames';
-import bem from '@/utils/bem'
+import {cn2} from '@/utils/bem'
 import {Icon, Badge} from '@nutui/nutui-react'
 
 import { IComponent } from '@/utils/typings'
@@ -40,10 +40,10 @@ export const CartBarIcon: FunctionComponent<
     ...props,
   }
 
-  const b = bem('cart-bar-icon')
+  const b = cn2('cart-bar-icon')
 
   const renderIcon = () => {
-    return typeof icon === 'string' ? <Icon name={icon} color={color} /> : icon
+    return typeof icon === 'string' ? <Icon className={b('icon')} name={icon} color={color} /> : icon
   }
 
   const renderText = () => {

@@ -28,6 +28,9 @@ export interface BaseLang {
     searchDiscoverText: string;
     noDiscoverDataText: string;
     rightOutIcon: string;
+    deleteAll: string;
+    finish: string;
+    hidden: string;
   };
   settleBar: {
     totalText: string;

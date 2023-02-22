@@ -19,10 +19,13 @@ import { SettleBar } from '@nutui/nutui-biz';
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <SettleBar />
+    <SettleBar
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
@@ -37,10 +40,14 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <SettleBar totalAlign="left" />
+    <SettleBar 
+      totalAlign="left" 
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
@@ -58,7 +65,9 @@ import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
   return (
-    <SettleBar disabled />
+    <SettleBar 
+      disabled 
+    />
   );
 };
 export default App;
@@ -76,7 +85,9 @@ import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
   return (
-    <SettleBar loading />
+    <SettleBar 
+      loading 
+    />
   );
 };
 export default App;
@@ -91,10 +102,17 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <SettleBar customSelectAll="" showZero={false} totalText="total" settleButtonText="submit order" />
+    <SettleBar 
+      customSelectAll="" 
+      showZero={false} 
+      totalText="total" 
+      settleButtonText="submit order" 
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
@@ -109,10 +127,15 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <SettleBar settleCount="100" settleUnit="indivual" />
+    <SettleBar 
+      settleCount="100" 
+      settleUnit="indivual" 
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
@@ -127,10 +150,14 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <SettleBar customTotalExtra={<div style={{fontSize: '12px'}}>reduced ¥30.00</div>} />
+    <SettleBar 
+      customTotalExtra={<div style={{fontSize: '12px'}}>reduced ¥30.00</div>} 
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
@@ -145,6 +172,7 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const customWarningHtml = () => {
@@ -152,7 +180,10 @@ const App = () => {
   }
   
   return (
-    <SettleBar customWarning={customWarningHtml()} />
+    <SettleBar 
+      customWarning={customWarningHtml()} 
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
@@ -174,7 +205,7 @@ export default App;
 | settleCount     | Settlement quantity                               | Number | 0    |
 | settleUnit  | Settlement unit                                  | String | -    |
 | settleButtonText     | Settlement button text | String  | `to settle`     |
-| disabled   | Whether the settlement button is disabled| Boolean  | `true`      |
+| disabled   | Whether the settlement button is disabled| Boolean  | `false`      |
 | loading   | Whether the settlement button is loading| Boolean  | `false`      |
 | showZero   | Whether to display when the quantity is 0                                 | Boolean  | `true`          |
 | safeAreaInsetBottom   | Whether to enable bottom safe area adaptation                                 | Boolean  | `true`          |
@@ -191,5 +222,5 @@ export default App;
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
 | onSelectAll | Select all button click event |  event: Event |
-| onSubmit | To settle button click event |  event: Event |
+| onSettle | To settle button click event |  event: Event |
 | onDelete | Delete event, take effect when isEdit is true |  event: Event |

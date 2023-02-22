@@ -2,12 +2,13 @@
 @import '../cartbarbutton/cartbarbutton.scss';
 @import '../../styles/base.scss';
 
-.nut-cart-bar {
-    .nut-cart-bar-inner {
+.nb-cart-bar {
+    .nb-cart-bar__inner {
         display: flex;
+        align-items: center;
 
         &.has-capsule-buttons {
-            > article {
+            > [class*="cart-bar-button"] {
                 margin-right: 0;
 
                 .nut-button--round {

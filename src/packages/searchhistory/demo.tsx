@@ -40,23 +40,6 @@ const SearchHistoryDemo = () => {
       key2: "对讲机",
       searchDiscoverExtra: "十亿商品，搜啥都有",
     },
-    "zh-TW": {
-      basic: "基本用法",
-      title1: "單個刪除",
-      title2: "自定義標題文案",
-      title3: "自定義返回和刪除圖標",
-      title4: "自定義 SearchBar",
-      title5: "添加搜索發現額外信息",
-      title6: "隱藏時不展示無數據文案",
-      title7: "刷新數據",
-      search: "搜索",
-      clicked: "點擊了刷新按鈕",
-      recentSearchText: "搜索歷史",
-      searchDiscoverText: "猜你想搜",
-      key1: "小米手環",
-      key2: "對講機",
-      searchDiscoverExtra: "十億商品，搜啥都有",
-    },
     "en-US": {
       basic: "Basic Usage",
       title1: "Single Delete",
@@ -90,7 +73,7 @@ const SearchHistoryDemo = () => {
   ];
 
   const handleClick = (val: string) => {
-    if (val.trim() === "") return;
+    if (!val || (val && val.trim() === "")) return;
 
     let arr =
       JSON.parse(localStorage.getItem("recentSearchData") as string) || [];

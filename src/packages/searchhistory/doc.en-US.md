@@ -221,6 +221,7 @@ export default App;
 :::
 
 ### No Discover Data Text When Hide
+Click the hide icon to hide the search discoveries data, the default non-data text is "No Discover Data Text", and set 'noDiscoverDataText' to empty to remove the non-data module.
 
 :::demo
 
@@ -284,8 +285,8 @@ export default App;
 | recentSearchData      | 最近搜索数据                               |  Array  | []      |
 | searchDiscoverData | 搜索发现数据                        | Array  | []      |
 | keyword  | 文本框内关键字                                  | String | ''    |
-| backIcon     | 左上角返回按钮图标，设置为空则无返回按钮 | String  | `left`     |
-| deleteIcon   | 最近搜索删除图标| String  | `del`      |
+| backIcon     | 左上角返回按钮图标，设置为空则无返回按钮 | ReactNode  | `left`     |
+| deleteIcon   | 最近搜索删除图标| ReactNode  | `del`      |
 | searchDiscoverExtra   | 搜索发现额外信息| String  | -      |
 | refreshIcon   | 最近搜索刷新图标| String  | `refresh`      |
 | recentSearchCollapse   | 最近搜索数据超过两行出现下拉箭头                                 | Boolean  | `true`          |

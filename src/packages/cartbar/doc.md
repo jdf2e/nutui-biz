@@ -196,10 +196,7 @@ export default App;
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
 | text   | 按钮文字                                 | ReactNode  | -         |
-| disabled   | 是否禁用按钮                                 | Boolean  | `false`         |
-| type   | 按钮类型，可选值为 `primary` `info` `warning` `danger`                                 | String  | `default`         |
-| loading   | 是否显示为加载状态                                 | Boolean  | `false`         |
-| color   | 图标颜色                                 | String  | -         |
+| buttonProps   | 按钮 props                                 | [ButtonProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/button)  | -         |
 
 
 ## CartBarButton Events
