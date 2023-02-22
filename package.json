@@ -68,7 +68,7 @@
     "prepare": "husky install",
     "upload": "yarn build:site:oss && node ./jd/upload.js",
     "test": "jest",
-    "test:demo": "jest  --testNamePattern=^should match snapshot$ --runTestsByPath ./src/packages/collapse/__test__/collapse.spec.tsx",
+    "test:demo": "jest  --testNamePattern=^should match snapshot$ --runTestsByPath ./src/packages/card/__test__/card.spec.tsx",
     "generate:file:taro": "node scripts/taro/generate-nutui-taro.js",
     "checked:taro": "npm run generate:file:taro && tsc --project ./tsconfig.taro.json",
     "generate:file:taro:pages": "node scripts/taro/generate-taro-pages.js",

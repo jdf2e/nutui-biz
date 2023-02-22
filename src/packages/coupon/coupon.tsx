@@ -8,6 +8,7 @@ import { IComponent } from "@/utils/typings";
 import { Button, ButtonProps } from "@nutui/nutui-react";
 import bem from "@/utils/bem";
 
+export type ButtonPropsType = ButtonProps;
 export interface ICouponType {
   price: number | string; //优惠券价格或者折扣价
   currency: string; //货币符号
