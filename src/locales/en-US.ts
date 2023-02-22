@@ -30,6 +30,9 @@ const enUS: BaseLang = {
     searchDiscoverText: "Search Discover Text",
     noDiscoverDataText: "No Discover Data Text",
     rightOutIcon: "Search",
+    deleteAll: "Delete All",
+    finish: "Finish",
+    hidden: "Hidden"
   },
   settleBar: {
     totalText: "Total",

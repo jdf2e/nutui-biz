@@ -55,43 +55,43 @@ const CartBarDemo = () => {
         <CartBar>
           <CartBarIcon text={translated.shop} icon="shop" />
           <CartBarIcon text={translated.shoppingCart} icon="cart" />
-          <CartBarButton text={translated.addCart} type="danger" />
-          <CartBarButton text={translated.buyItNow} type="warning" />
+          <CartBarButton text={translated.addCart} buttonProps={{type: 'danger'}} />
+          <CartBarButton text={translated.buyItNow} buttonProps={{type: 'warning'}} />
         </CartBar>
         <h2>{translated.title1}</h2>
         <CartBar>
           <CartBarIcon text={translated.shop} icon="shop" badge="10" />
           <CartBarIcon text={translated.shoppingCart} icon="cart" dot />
-          <CartBarButton text={translated.addCart} type="danger" />
-          <CartBarButton text={translated.buyItNow} type="warning" />
+          <CartBarButton text={translated.addCart} buttonProps={{type: 'danger'}} />
+          <CartBarButton text={translated.buyItNow} buttonProps={{type: 'warning'}} />
         </CartBar>
         <h2>{translated.title2}</h2>
         <CartBar>
           <CartBarIcon text={translated.shop} color="red" icon="shop" />
           <CartBarIcon text={translated.shoppingCart} icon="cart" />
-          <CartBarButton text={translated.addCart} type="danger" />
-          <CartBarButton text={translated.buyItNow} type="warning" />
+          <CartBarButton text={translated.addCart} buttonProps={{type: 'danger'}} />
+          <CartBarButton text={translated.buyItNow} buttonProps={{type: 'warning'}} />
         </CartBar>
         <h2>{translated.title3}</h2>
         <CartBar>
           <CartBarIcon icon="shop" />
           <CartBarIcon icon="cart" />
-          <CartBarButton text={translated.addCart} type="danger" />
-          <CartBarButton text={translated.buyItNow} type="warning" />
+          <CartBarButton text={translated.addCart} buttonProps={{type: 'danger'}} />
+          <CartBarButton text={translated.buyItNow} buttonProps={{type: 'warning'}} />
         </CartBar>
         <h2>{translated.title4}</h2>
         <CartBar hasCapsuleButtons>
           <CartBarIcon text={translated.shop} icon="shop" />
           <CartBarIcon text={translated.shoppingCart} icon="cart" />
-          <CartBarButton text={translated.addCart} type="danger" />
-          <CartBarButton text={translated.buyItNow} type="warning" />
+          <CartBarButton text={translated.addCart} buttonProps={{type: 'danger'}} />
+          <CartBarButton text={translated.buyItNow} buttonProps={{type: 'warning'}} />
         </CartBar>
         <h2>{translated.title5}</h2>
         <CartBar top={customTopHtml()}>
           <CartBarIcon text={translated.shop} icon="shop" />
           <CartBarIcon text={translated.shoppingCart} icon="cart" />
-          <CartBarButton text={translated.addCart} type="danger" />
-          <CartBarButton text={translated.buyItNow} type="warning" />
+          <CartBarButton text={translated.addCart} buttonProps={{type: 'danger'}} />
+          <CartBarButton text={translated.buyItNow} buttonProps={{type: 'warning'}} />
         </CartBar>
       </div>
     </>

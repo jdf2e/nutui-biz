@@ -1,4 +1,4 @@
-.nut-search-history {
+.nb-search-history {
     background-color: #fff;
 
     .nut-searchbar {
@@ -23,13 +23,13 @@
         padding: 6px;
     }    
 
-    .search-history-result,
-    .search-discover {
+    &__recent,
+    &__discover {
         margin: 15px;
     }
 
-    .search-history-result-tit, 
-    .search-discover-tit {
+    &__recent-tit, 
+    &__discover-tit {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -37,14 +37,22 @@
         height: 26px;
     }
 
-    .search-history-divider-box {
+    &__discover-icons {
+        display: flex;
+    }
+
+    &__discover-refresh {
+        margin-right: 10px;
+    }
+
+    &__divider-box {
         font-size: 12px;
         display: flex;
+    }
 
-        .search-history-divider {
-            margin-left: 10px;
-            margin-right: 10px;
-        }
+    &__recent-divider {
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .close-eye {
@@ -64,7 +72,7 @@
         text-align: center;
     }
 
-    .search-history-result-tags {
+    &__recent-tags {
         display: flex;
         flex-wrap: wrap;
 

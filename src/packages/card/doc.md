@@ -330,8 +330,8 @@ export default App;
 |---------|--------------------------------------------|---------|-----------|
 | imgUrl   | 左侧图片Url                                 | String  | -         |
 | title     | 标题                   | String  | -    |
-| price | 商品价格                         | String  | -      |
-| vipPrice     | 会员价格                               | String | -    |
+| price | 商品价格                         | String \| Number  | -      |
+| vipPrice     | 会员价格                               | String \| Number | -    |
 | shopDesc  | 店铺介绍                                  | String | -    |
 | delivery     | 配送方式 | String  | -      |
 | shopName   | 店铺名称| String  | -      |

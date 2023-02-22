@@ -1,11 +1,11 @@
 .nut-quick-enter {
-  .quickenter-content-slide {
+  &-content-slide {
     height: 100%;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
   }
-  .quickenter-item {
+  &-item {
     margin-top: 5px;
     margin-bottom: 13px;
     flex-shrink: 0;
@@ -13,7 +13,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    .enter-icon {
+    &-icon {
       width: 40px;
       height: 40px;
     }
@@ -52,7 +52,7 @@
       }
     }
   }
-  .wrapper-content {
+  &-wrapper-content {
     display: flex;
     overflow: scroll;
     width: 100%;

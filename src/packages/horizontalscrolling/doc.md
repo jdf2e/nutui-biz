@@ -305,16 +305,16 @@ export default App;
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| showMask         | 是否需要遮罩层               | Boolean | true         |
-| maskPosition        | 遮罩层展示位置（可选值：`left`、`right`）      | String | right                |
-| maskShadowType         | 遮罩阴影形式（可选值 `none`: 无、`triangle`: 有三角的、`shadow`: 阴影、`transparent`: 半透明） | String | triangle               |
-| maskWidth          | 遮罩层宽度                        | String | '100px'              |
-| maskDistance       | 滚动内容距离容器的宽度                     | String | 0              |
-| showScrollBar       | 是否展示滚动条                     | Boolean | false             |
-| maskIcon | [图标名称](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon) 或图片链接    | String | 'category' |
-| maskContent  | 自定义遮罩内容    | String \| React.ReactNode | "更多" |
+| 参数            | 说明                                 | 类型     | 默认值           |
+|----------------|--------------------------------------|---------|-----------------|
+| showMask       | 是否需要遮罩层                         | Boolean | `true`     |
+| maskPosition   | 遮罩层展示位置（可选值：`left`、`right`）| String   | `right`   |
+| maskShadowType | 遮罩阴影形式（可选值 `none`: 无、`triangle`: 有三角的、`shadow`: 阴影、`transparent`: 半透明） | String | `triangle`               |
+| maskWidth      | 遮罩层宽度                            | String  | `100px`     |
+| maskDistance   | 滚动内容距离容器的宽度                  | String  | `0`          |
+| showScrollBar  | 是否展示滚动条                         | Boolean | `false`     |
+| maskIcon       | [图标名称](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon) 或图片链接    | String | `category` |
+| maskContent    | 自定义遮罩内容                         | String \| React.ReactNode | `更多` |
 
 ### Events
 

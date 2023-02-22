@@ -42,6 +42,7 @@ export const QuickEnter: FunctionComponent<
   Partial<QuickEnterProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, "onClick">
 > = (props) => {
+  const b = bem("quick-enter");
   const time = new Date().getTime();
   const {
     className,
@@ -79,9 +80,9 @@ export const QuickEnter: FunctionComponent<
 
   const [contentWidth, setContentWidth] = useState(document.body.clientWidth);
   useEffect(() => {
-    const w = document.getElementsByClassName("quick-enter-" + time)[0];
+    const w = document.getElementsByClassName("nut-quick-enter-" + time)[0];
     w && setContentWidth(w.clientWidth);
-  }, [document.getElementsByClassName("quick-enter" + time)[0]]);
+  }, [document.getElementsByClassName("nut-quick-enter" + time)[0]]);
 
   const [init, setInit] = useState(false);
   useEffect(() => {
@@ -100,7 +101,7 @@ export const QuickEnter: FunctionComponent<
     const bgBarW = barbg.current.offsetWidth; // 滚动条的背景长度
     const barXWidth = barslide.current.offsetWidth; // 滚动条的长度
     let moveWidth = Number(
-      document.getElementsByClassName("quick-enter-scroll" + timestamp)[0]
+      document.getElementsByClassName("nut-quick-enter-scroll" + timestamp)[0]
         .scrollLeft
     );
     let barMoveDistance = 0; // 移动的位置
@@ -115,12 +116,17 @@ export const QuickEnter: FunctionComponent<
   };
   const renderQuickScroll = () => {
     return (
-      <div className="wrapper" ref={scrollviewRef}>
-        <div className={"wrapper-content quick-enter-scroll" + timestamp}>
+      <div className={`${b("")}-wrapper`} ref={scrollviewRef}>
+        <div
+          className={classNames([
+            `${b("")}-wrapper-content`,
+            `${b("")}-scroll` + timestamp,
+          ])}
+        >
           {formatIcons().map((item, index) => {
             return (
               <div
-                className="quickenter-content-slide scroll-slide"
+                className={`${b("")}-content-slide scroll-slide`}
                 key={"scroll" + index}
               >
                 {renderScrollItem(item)}
@@ -145,14 +151,14 @@ export const QuickEnter: FunctionComponent<
     return content.map((citem, _idx) => {
       return (
         <div
-          className="quickenter-item"
+          className={classNames([`${b("")}-item`])}
           key={"c" + _idx}
           style={{ width: (100 / columns).toFixed(2) + "%" }}
           onClick={() => clickCback(citem)}
         >
           {typeof citem.imageUrl === "string" ? (
             <img
-              className="enter-icon"
+              className={classNames([`${b("")}-icon`])}
               src={citem.imageUrl}
               style={iconstyle()}
             />
@@ -169,19 +175,10 @@ export const QuickEnter: FunctionComponent<
       setTimeout(() => {
         const _ref = scrollviewRef.current;
         if (_ref) {
-          // setScrollContentW(_ref.offsetWidth * formatIcons().length);
-          // setBgBarW(barbg.current.offsetWidth);
-          // setBarXWidth(barslide.current.offsetWidth);
           document
-            .getElementsByClassName("quick-enter-scroll" + timestamp)[0]
+            .getElementsByClassName("nut-quick-enter-scroll" + timestamp)[0]
             .addEventListener("scroll", scrollChange);
         }
-
-        // return () => {
-        //   document
-        //     .getElementsByClassName("quick-enter-scroll")[0]
-        //     .removeEventListener("scroll", scrollChange);
-        // };
       }, 300);
     }
   }, [scrollviewRef]);
@@ -206,7 +203,7 @@ export const QuickEnter: FunctionComponent<
         {formatIcons().map((item, idx) => {
           return (
             <SwiperItem
-              className="quickenter-content-slide"
+              className={classNames([`${b("")}-content-slide`])}
               key={"swiper-item-" + idx}
             >
               {renderSwiperItem(item)}
@@ -220,9 +217,9 @@ export const QuickEnter: FunctionComponent<
     return content.map((item, _index) => {
       return (
         <div
-          className="quickenter-item"
+          className={classNames([`${b("")}-item`])}
           style={{ width: (100 / columns).toFixed(2) + "%" }}
-          key={"quickenter-item" + _index}
+          key={"quick-enter-item" + _index}
           onClick={() => clickCback(item)}
         >
           {typeof item.imageUrl === "string" ? (
@@ -242,11 +239,10 @@ export const QuickEnter: FunctionComponent<
   const clickCback = (item: IDataItem) => {
     onClickItem && onClickItem(item);
   };
-  const b = bem("quick-enter");
 
   return (
     <div
-      className={classNames([b(), className, , "quick-enter-" + time])}
+      className={classNames([b(), className, `${b("")}-` + time])}
       style={style}
       {...rest}
     >

@@ -19,10 +19,13 @@ import { SettleBar } from '@nutui/nutui-biz';
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <SettleBar />
+    <SettleBar
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
@@ -37,10 +40,14 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <SettleBar totalAlign="left" />
+    <SettleBar 
+      totalAlign="left"
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
@@ -58,7 +65,9 @@ import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
   return (
-    <SettleBar disabled />
+    <SettleBar 
+      disabled
+    />
   );
 };
 export default App;
@@ -76,7 +85,9 @@ import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
   return (
-    <SettleBar loading />
+    <SettleBar 
+      loading 
+    />
   );
 };
 export default App;
@@ -91,10 +102,17 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <SettleBar customSelectAll="" showZero={false} totalText="总计" settleButtonText="提交订单" />
+    <SettleBar 
+      customSelectAll="" 
+      showZero={false} 
+      totalText="总计" 
+      settleButtonText="提交订单" 
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
@@ -109,10 +127,15 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <SettleBar settleCount="100" settleUnit="个" />
+    <SettleBar 
+      settleCount="100" 
+      settleUnit="个" 
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
@@ -127,10 +150,14 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <SettleBar customTotalExtra={<div style={{fontSize: '12px'}}>已减 ¥30.00</div>} />
+    <SettleBar 
+      customTotalExtra={<div style={{fontSize: '12px'}}>已减 ¥30.00</div>} 
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
@@ -145,6 +172,7 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const customWarningHtml = () => {
@@ -152,7 +180,10 @@ const App = () => {
   }
   
   return (
-    <SettleBar customWarning={customWarningHtml()} />
+    <SettleBar 
+      customWarning={customWarningHtml()} 
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
@@ -174,7 +205,7 @@ export default App;
 | settleCount     | 结算数量                               | Number | 0    |
 | settleUnit  | 结算单位                                  | String | -    |
 | settleButtonText     | 结算按钮文案 | String  | `去结算`     |
-| disabled   | 结算按钮是否置灰| Boolean  | `true`      |
+| disabled   | 结算按钮是否置灰| Boolean  | `false`      |
 | loading   | 结算按钮是否加载中| Boolean  | `false`      |
 | showZero   | 数量为0时是否展示                                 | Boolean  | `true`          |
 | safeAreaInsetBottom   | 是否开启iphone系列全面屏底部安全区适配                                 | Boolean  | `true`          |
@@ -191,5 +222,5 @@ export default App;
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onSelectAll | 全选按钮点击事件 |  event: Event |
-| onSubmit | 去结算按钮点击事件 |  event: Event |
+| onSettle | 去结算按钮点击事件 |  event: Event |
 | onDelete | 删除事件，isEdit 为 true 时生效 |  event: Event |

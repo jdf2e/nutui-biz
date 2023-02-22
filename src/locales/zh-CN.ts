@@ -30,6 +30,9 @@ const zhCN: BaseLang = {
     searchDiscoverText: "搜索发现",
     noDiscoverDataText: "当前搜索发现已隐藏",
     rightOutIcon: "搜索",
+    deleteAll: "全部删除",
+    finish: "完成",
+    hidden: "已隐藏"
   },
   settleBar: {
     totalText: "合计",

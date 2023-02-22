@@ -196,10 +196,7 @@ export default App;
 | Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
 | text   | Button text                                 | ReactNode  | -         |
-| disabled   | Whether to disable button                                 | Boolean  | `false`         |
-| type   | Button type, optional value: `primary` `info` `warning` `danger`                                 | String  | `default`         |
-| loading   | Whether to show loading status                                 | Boolean  | `false`         |
-| color   | Icon color                                 | String  | -         |
+| buttonProps   | Button props                                 | [ButtonProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/button)  | -         |
 
 
 ## CartBarButton Events

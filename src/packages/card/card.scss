@@ -1,8 +1,8 @@
 @import '../../styles/mixins/text-ellipsis.scss';
 
 .nut-theme-dark {
-  .nut-biz-card {
-    .nut-biz-card__right {
+  .nb-card {
+    .nb-card__right {
       color: $dark-color;
     }
   }
@@ -15,14 +15,14 @@
   word-break: break-all;
 }
 
-.nut-biz-card {
+.nb-card {
   width: 100%;
 
-  .nut-biz-card__main {
+  .nb-card__main {
     display: flex;
   }
 
-  .nut-biz-card__left {
+  .nb-card__left {
     width: 120px;
     height: 120px;
     flex-shrink: 0;
@@ -35,12 +35,12 @@
     }
   }
 
-  .nut-biz-card__right {
+  .nb-card__right {
     flex: 1;
     padding: 0 10px 8px;
     width: calc(100% - 130px);
 
-    .nut-biz-card__right__title {
+    .nb-card__right__title {
       line-height: 1.5;
       font-size: 14px;
 
@@ -52,10 +52,10 @@
         @include oneline-ellipsis;
       }
     }
-    .nut-biz-card__right__price {
+    .nb-card__right__price {
       display: flex;
       align-items: center;
-      height: 18px;
+      flex-wrap: wrap;
       line-height: 18px;
       margin-top: 9px;
       .nut-price {
@@ -68,7 +68,7 @@
           font-size: 12px;
         }
       }
-      .nut-biz-card__right__price__origin {
+      .nb-card__right__price__origin {
         &.nut-price {
           margin-left: 2px;
           color: #d2a448;
@@ -81,21 +81,22 @@
         }
       }
     }
-    .nut-biz-card__right__other {
+    .nb-card__right__other {
       display: flex;
       align-items: center;
       padding: 5px 0 2px;
       .nut-tag {
+        border: none;
         padding: 0 2px;
         margin-right: 5px;
         font-size: $font-size-0;
       }
     }
-    .nut-biz-card__right__shop {
+    .nb-card__right__shop {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      .nut-biz-card__right__shop__name {
+      .nb-card__right__shop__name {
         line-height: 1.5;
         color: #999;
         font-size: 12px;

@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`test placeholder 1`] = `"<div class=\\"nut-cart-bar-inner\\"><div class=\\"nut-cart-bar-icon\\"><div class=\\"nut-badge\\"><div><i class=\\"nutui-iconfont nut-icon nut-icon-shop \\"></i></div><div class=\\" nut-badge__content sup\\" style=\\"top: 0px; right: 0px; z-index: 0;\\"></div></div><span class=\\"txt\\">店铺</span></div></div>"`;

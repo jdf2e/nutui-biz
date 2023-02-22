@@ -65,7 +65,6 @@ const App = () => {
     <AddressEdit
         address={addressData}
         data={addressSetData}
-        addressType={"custom"}
         addressInfo={addressInfo}
         onSave={(formData) => {
             console.log(formData);
@@ -154,6 +153,184 @@ export default App;
 ```
 :::
 
+### Hide save button
+
+:::demo
+
+```tsx
+import  React from 'react';
+import { AddressEdit } from '@nutui/nutui-biz';
+
+const App = () => {
+  const addressData2: any = {
+     addressSelect: [1, 7, 3],
+     addressTitle: "Select your region",
+     province: [
+     { id: 1, name: "Beijing", title: "B" },
+     { id: 2, name: "Guangxi", title: "G" },
+     { id: 3, name: "Jiangxi", title: "J" },
+     { id: 4, name: "Sichuan", title: "S" },
+     { id: 5, name: "Zhejiang", title: "Z" },
+     ],
+     city: [
+     { id: 7, name: "Chaoyang District", title: "C" },
+     { id: 8, name: "Chongwen District", title: "C" },
+     { id: 9, name: "Changping District", title: "C" },
+     { id: 6, name: "Shijingshan District", title: "S" },
+     { id: 3, name: "Balizhuang Street", title: "B" },
+     { id: 10, name: "Beiyuan", title: "B" },
+     ],
+     country: [
+     { id: 3, name: "Balizhuang Street", title: "B" },
+     { id: 9, name: "Beiyuan", title: "B" },
+     { id: 4, name: "Changying Township", title: "C" },
+     ],
+     town: [],
+     addressType: "custom2",
+     height: "270px",
+   };
+  const addressInfo2 = {
+     name: "Zhang San",
+     tel: "13141234567",
+     region: "Balizhuang Street, Chaoyang District, Beijing",
+     regionIds: [1, 7, 3],
+     address: "xxx community 3-2-302",
+     default: true,
+   };
+  const addressSetData2 = {
+     nameText: "Consignee",
+     namePlaceholder: "Please enter the recipient's name",
+     isRequired: ["name", "tel",],
+     isDefualtAddress: false,
+   };
+  
+
+  const onClose = (data: any) => {
+    console.log("onCloseAddress", data);
+  };
+
+  return (
+     <AddressEdit
+        address={addressData2}
+        data={addressSetData2}
+        addressInfo={addressInfo2}
+        showSave={false}
+        onSwitch={(state, data) => {
+            console.log("switch", state, data);
+        }}
+        onChange={(value, tag) => {
+            console.log(tag, value);
+        }}
+        onCloseAddress={onClose}
+        />
+  );
+};
+export default App;
+```
+:::
+
+
+### Custom input box
+
+:::demo
+
+```tsx
+import  React from 'react';
+import { AddressEdit } from '@nutui/nutui-biz';
+
+const App = () => {
+  const addressData2: any = {
+     addressSelect: [1, 7, 3],
+     addressTitle: "Select your region",
+     province: [
+     { id: 1, name: "Beijing", title: "B" },
+     { id: 2, name: "Guangxi", title: "G" },
+     { id: 3, name: "Jiangxi", title: "J" },
+     { id: 4, name: "Sichuan", title: "S" },
+     { id: 5, name: "Zhejiang", title: "Z" },
+     ],
+     city: [
+     { id: 7, name: "Chaoyang District", title: "C" },
+     { id: 8, name: "Chongwen District", title: "C" },
+     { id: 9, name: "Changping District", title: "C" },
+     { id: 6, name: "Shijingshan District", title: "S" },
+     { id: 3, name: "Balizhuang Street", title: "B" },
+     { id: 10, name: "Beiyuan", title: "B" },
+     ],
+     country: [
+     { id: 3, name: "Balizhuang Street", title: "B" },
+     { id: 9, name: "Beiyuan", title: "B" },
+     { id: 4, name: "Changying Township", title: "C" },
+     ],
+     town: [],
+     addressType: "custom2",
+     height: "270px",
+   };
+  const addressInfo = {
+    name: "",
+    tel: "",
+    region: "",
+    regionIds: [],
+    address: "",
+    default: false,
+  };
+  const addressSetData2 = {
+     nameText: "Consignee",
+     namePlaceholder: "Please enter the recipient's name",
+     isRequired: ["name", "tel",],
+     isDefualtAddress: false,
+   };
+
+
+  return (
+      <AddressEdit
+        address={addressData}
+        data={addressSetData2}
+        addressInfo={addressInfo}
+        onChange={(value, tag) => {
+            console.log(tag, value);
+        }}
+        onSave={(formData) => {
+            console.log(formData);
+        }}
+        bottomInputTpl={
+          <>
+            <div className="nut-addressedit__item">
+                <Input
+                label={"custom1"}
+                className="nut-input-text"
+                defaultValue={""}
+                placeholder={"please enter ..."}
+                type="text"
+                clearable
+                onChange={(v, e) => {
+                    console.log(v, e);
+                }}
+                />
+            </div>
+            <div className="nut-addressedit__item">
+                <Input
+                label={"custom2"}
+                className="nut-input-text"
+                defaultValue={""}
+                placeholder={"please enter ..."}
+                type="text"
+                clearable
+                onChange={(v, e) => {
+                    console.log(v, e);
+                }}
+                />
+            </div>
+          </>
+        }
+        />
+  );
+};
+export default App;
+```
+:::
+
+
 
 
 
@@ -168,7 +345,8 @@ export default App;
 | address | Information about address components | Object | {} |
 | data | Edit address data format settings | Object | {} |
 | addressInfo | address information | Object |{} |
-| addressType | address component type, optional 'custom'/'custom2' | string | custom |
+| bottomInputTpl   | custom input box                                 | ReactNode  | --         |
+| showSave   | Whether to display the save button button                 | Boolean | `true`         |
 
 ### Props address
 | Attribute    | Description     | Type    | Default   |
@@ -179,8 +357,9 @@ export default App;
 | city | City data | Array | [] |
 | country | Country data | Array | [] |
 | town | Town data | Array | [] |
-| height | Popup height | String、Number | '200px' |
+| height | Popup height | String、Number | `200px` |
 | customAddressTitle  | Custom address title | String | 'Select Region' |
+| addressType | address component type, optional 'custom'/'custom2' | string | `custom `|
 
 ### Props data
 
@@ -219,4 +398,5 @@ export default App;
 | onChangeAddress |  Emitted when to selected address |  reference `Address` onChange |
 | onCloseAddress | Emitted when to close address | reference `Address` close |
 | onSave | Emitted when to save address|  formData |
+| onSwitch | Default address switch callback |  state，formData |
 

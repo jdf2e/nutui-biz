@@ -2,7 +2,7 @@
 
 ### 介绍
 
-常见于搜索页，包含搜索历史和热门搜索。
+常见于搜索页，包含最近搜索和搜索发现。
 
 ### 安装
 
@@ -221,6 +221,7 @@ export default App;
 :::
 
 ### 隐藏时不展示无数据文案
+点击隐藏图标，隐藏搜索发现数据时，默认无数据文案为“当前搜索发现已隐藏”，设置 `noDiscoverDataText` 为空不展示无数据模块。
 
 :::demo
 
@@ -283,10 +284,10 @@ export default App;
 | recentSearchData      | 最近搜索数据                               |  Array  | []      |
 | searchDiscoverData | 搜索发现数据                        | Array  | []      |
 | keyword  | 文本框内关键字                                  | String | ''    |
-| backIcon     | 左上角返回按钮图标，设置为空则无返回按钮 | String  | `left`     |
-| deleteIcon   | 最近搜索删除图标| String  | `del`      |
+| backIcon     | 左上角返回按钮图标，设置为空则无返回按钮，类型为字符串时，等同于 Icon 组件的 [name 属性](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon) | ReactNode  | `left`     |
+| deleteIcon   | 最近搜索删除图标，类型为字符串时，等同于 Icon 组件的 [name 属性](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)| ReactNode  | `del`      |
 | searchDiscoverExtra   | 搜索发现额外信息| String  | -      |
-| refreshIcon   | 最近搜索刷新图标| String  | `refresh`      |
+| refreshIcon   | 最近搜索刷新图标，等同于 Icon 组件的 [name 属性](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon) | String  | `refresh`      |
 | recentSearchCollapse   | 最近搜索数据超过两行出现下拉箭头                                 | Boolean  | `true`          |
 | leftInIcon | 文本框内左侧自定义，默认是放大图标 | ReactNode  | -          |
 | rightInIcon | 文本框内右侧自定义，默认是拍照图标 | ReactNode  | -          |

@@ -9,7 +9,7 @@ import React, {
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames';
 import { Icon, Checkbox } from '@nutui/nutui-react';
-import bem from '@/utils/bem'
+import {cn2} from '@/utils/bem'
 import {getRect} from '@/utils/useClientRect'
 
 import { IComponent } from '@/utils/typings'
@@ -73,7 +73,7 @@ export const SettleBar: FunctionComponent<
   }
 
   const handleSettle = () => {
-    !disabled && onSettle && onSettle()
+    !disabled && !loading && onSettle && onSettle()
   }
 
   let totalStyle = {
@@ -85,7 +85,7 @@ export const SettleBar: FunctionComponent<
     onSelectAll && onSelectAll(checked)
   }
 
-  const b = bem('settle-bar')
+  const b = cn2('settle-bar')
 
   const [height,setHeight] = useState(0)
 
@@ -97,13 +97,13 @@ export const SettleBar: FunctionComponent<
 
   const renderCountAndUnit = () => {
     if(showZero || settleCount !== 0) {
-      return <span className="num">({settleCount}{settleUnit})</span>
+      return <span className={b('main-num')}>({settleCount}{settleUnit})</span>
     }
   }
 
   const renderButton = () => {
     return customButton || <div 
-      className={classNames(`buy ${(disabled || loading) ? 'disabled' : ''}`)}
+      className={classNames(`${b('main-buy')} ${(disabled || loading) ? 'disabled' : ''}`)}
       onClick={handleSettle}
     >
       {
@@ -115,25 +115,25 @@ export const SettleBar: FunctionComponent<
   const renderSelectAll = () => {
     if(!customSelectAll && customSelectAll !== undefined) return null;
 
-    return <div className='select-all'>{customSelectAll ? customSelectAll : <Checkbox label={locale.settleBar.selectAll} onChange={handleSelectAll} />}</div>
+    return <div className={b('main-select-all')}>{customSelectAll ? customSelectAll : <Checkbox label={locale.settleBar.selectAll} onChange={handleSelectAll} />}</div>
   }
 
   const renderSettleBar = () => {
     return <div ref={root} className={classNames([b(),className,{'nut-biz-safe-area-bottom':safeAreaInsetBottom}])} style={style} {...rest}>
       {
         customWarning && 
-        <div className='nut-settle-bar-warning'>
-          <div className='nut-settle-bar-warning-mask'></div>
-          <div className='nut-settle-bar-warning-content'>{customWarning}</div>
+        <div className={b('warning')}>
+          <div className={b('warning-mask')}></div>
+          <div className={b('warning-content')}>{customWarning}</div>
         </div>
       }
-      <div className='nut-settle-bar-main'>
+      <div className={b('main')}>
         {renderSelectAll()}
-        <div className='total' style={totalStyle}>
+        <div className={b('main-total')} style={totalStyle}>
           {
             customTotal ? customTotal : <>
               {
-                customTotalPrice ? customTotalPrice : <div className="total-main">
+                customTotalPrice ? customTotalPrice : <div>
                   <span>{totalText}：</span>
                   <span>¥{total}</span>
                 </div>
