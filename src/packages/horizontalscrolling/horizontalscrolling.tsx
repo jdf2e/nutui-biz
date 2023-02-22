@@ -15,14 +15,15 @@ export type MaskShadowTypeType = "triangle" | "shadow" | "transparent" | "none";
 
 export interface HorizontalScrollingProps extends IComponent {
   className: string
+  // 样式
   style: CSSProperties
   // 是否需要遮罩层
   showMask: boolean
   // 遮罩层位置
   maskPosition: MaskPositionType
   maskShadowType: MaskShadowTypeType
-  maskWidth: string
-  maskDistance: string
+  maskWidth: number | string
+  maskDistance: number | string
   showScrollBar: boolean
   maskIcon: string
   maskContent: string | ReactNode
@@ -34,8 +35,8 @@ const defaultProps = {
   showMask: true,
   maskPosition: "right",
   maskShadowType: "triangle",
-  maskWidth: "100px",
-  maskDistance: "0px",
+  maskWidth: 100,
+  maskDistance: 0,
   showScrollBar: false,
   maskIcon: "category",
   maskContent: '',
@@ -71,14 +72,18 @@ export const HorizontalScrolling: FunctionComponent<
 
   const scrollRef = useRef(null)
 
+  const pxAdd = (value: string | number): string => {
+    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
+  }
+
   const containStyles = (() => {
     if(maskPosition == 'right'){
       return {
-        paddingRight: maskDistance ? maskDistance : maskWidth
+        paddingRight: pxAdd(maskDistance) ? pxAdd(maskDistance) : pxAdd(maskWidth)
       }
     } else {
       return {
-        paddingLeft: maskDistance ? maskDistance : maskWidth
+        paddingLeft: pxAdd(maskDistance) ? pxAdd(maskDistance) : pxAdd(maskWidth)
       }
     }
   })
