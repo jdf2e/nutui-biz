@@ -8,7 +8,7 @@ import React, {
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames';
-import { Icon, Checkbox } from '@nutui/nutui-react';
+import { Icon, Checkbox, IconProps, CheckboxProps } from '@nutui/nutui-react';
 import {cn2} from '@/utils/bem'
 import {getRect} from '@/utils/useClientRect'
 
@@ -35,6 +35,8 @@ export interface SettleBarProps extends IComponent {
   customTotalPrice: ReactNode
   customTotalExtra: ReactNode
   customButton: ReactNode
+  iconProps: Partial<IconProps>
+  checkboxProps: CheckboxProps
   onSettle: () => void
   onSelectAll: (checked: boolean) => void
 }
@@ -64,6 +66,8 @@ export const SettleBar: FunctionComponent<
     customSelectAll,
     customTotalPrice,
     customButton,
+    iconProps,
+    checkboxProps,
     customTotalExtra = '',
     onSettle = () => {},
     onSelectAll = (checked: boolean) => {},
@@ -107,7 +111,7 @@ export const SettleBar: FunctionComponent<
       onClick={handleSettle}
     >
       {
-        loading ? <Icon name="loading" /> :  <>{settleButtonText}{!noCount && renderCountAndUnit()}</>
+        loading ? <Icon name='loading' {...iconProps} /> :  <>{settleButtonText}{!noCount && renderCountAndUnit()}</>
       }
     </div>
   }
@@ -115,7 +119,7 @@ export const SettleBar: FunctionComponent<
   const renderSelectAll = () => {
     if(!customSelectAll && customSelectAll !== undefined) return null;
 
-    return <div className={b('main-select-all')}>{customSelectAll ? customSelectAll : <Checkbox label={locale.settleBar.selectAll} onChange={handleSelectAll} />}</div>
+    return <div className={b('main-select-all')}>{customSelectAll ? customSelectAll : <Checkbox label={locale.settleBar.selectAll} onChange={handleSelectAll} {...checkboxProps} />}</div>
   }
 
   const renderSettleBar = () => {

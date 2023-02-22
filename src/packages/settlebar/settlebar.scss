@@ -1,6 +1,11 @@
 @import '../../styles/base.scss';
 
 .nb-settle-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
     &__warning {
         position: relative;
         height: 38px;

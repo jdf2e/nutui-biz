@@ -29,6 +29,12 @@ const App = () => {
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -51,6 +57,12 @@ const App = () => {
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -71,6 +83,12 @@ const App = () => {
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -91,6 +109,12 @@ const App = () => {
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -116,6 +140,12 @@ const App = () => {
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -139,6 +169,12 @@ const App = () => {
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -161,6 +197,12 @@ const App = () => {
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -187,6 +229,12 @@ const App = () => {
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -216,6 +264,8 @@ export default App;
 | customTotalPrice | 合计价格内容自定义 | ReactNode  | -          |
 | customTotalExtra | 合计额外区域自定义 | ReactNode  | -          |
 | customButton | 按钮内容自定义 | ReactNode  | -          |
+| iconProps   | 图标 props                                 | [IconProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)  | -         |
+| checkboxProps   | 复选框 props                                 | [CheckboxProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/checkbox)  | -         |
 
 
 ## Events

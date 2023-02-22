@@ -53,7 +53,7 @@ export const CartBar: FunctionComponent<
     if(root.current) {
       setHeight(getRect(root.current).height)
     }
-  }, ['height'])
+  }, [height])
 
   const renderActionBar = () => {
     return <div ref={root} className={classNames([b(),className,{'nut-biz-safe-area-bottom':safeAreaInsetBottom}])} style={style} {...rest}>

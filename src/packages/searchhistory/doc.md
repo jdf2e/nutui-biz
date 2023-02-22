@@ -97,6 +97,8 @@ export default App;
 
 ### 单个删除
 
+点击删除按钮，默认是全部删除。设置 deleteType 为 single，可实现单个删除。
+
 :::demo
 
 ```ts
@@ -283,7 +285,7 @@ export default App;
 | searchDiscoverText     | 搜索发现文案                   | String  | `搜索发现`    |
 | recentSearchData      | 最近搜索数据                               |  Array  | []      |
 | searchDiscoverData | 搜索发现数据                        | Array  | []      |
-| keyword  | 文本框内关键字                                  | String | ''    |
+| keyword  | 传入文本框内的搜索词                                  | String | ''    |
 | backIcon     | 左上角返回按钮图标，设置为空则无返回按钮，类型为字符串时，等同于 Icon 组件的 [name 属性](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon) | ReactNode  | `left`     |
 | deleteIcon   | 最近搜索删除图标，类型为字符串时，等同于 Icon 组件的 [name 属性](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)| ReactNode  | `del`      |
 | searchDiscoverExtra   | 搜索发现额外信息| String  | -      |
@@ -297,10 +299,10 @@ export default App;
 ## Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
-| onClickSearchItem | 点击搜索项事件 |  搜索项数据 |
-| onClickSearchButton | 点击搜索按钮事件 |  文本框内关键字 |
-| onSearchTextKeyup | 文本框注册keyup事件，展示搜索建议 |  event: Event |
-| onClickRightInIcon | 照相机图标点击事件 |  event: Event |
-| onClickBackIcon | 左上角返回按钮点击事件 |  event: Event |
-| onRefresh | 搜索发现刷新按钮事件 |  event: Event |
-| onDelete | 删除事件 |  event: Event |
+| onClickSearchItem | 搜索项点击事件 |  searchItem: IsearchItem |
+| onClickSearchButton | 搜索按钮点击事件 |  value: string |
+| onSearchBarChange | 搜索栏 change 事件，可展示搜索建议 |  value: string, event: Event |
+| onClickRightInIcon | 照相机图标点击事件 |  - |
+| onClickBackIcon | 左上角返回图标点击事件 |  - |
+| onRefresh | 搜索发现刷新图标点击事件 |  - |
+| onDelete | 删除事件 |  - |

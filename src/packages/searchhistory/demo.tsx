@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SearchHistory, IsearchItem } from "./searchhistory";
 import { useTranslate } from "../../sites/assets/locale";
-import { Icon, Toast } from "@nutui/nutui-react";
+import { Toast } from "@nutui/nutui-react";
 
 interface tarnslatedOption {
   basic: string;

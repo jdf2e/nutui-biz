@@ -3,12 +3,17 @@
 @import '../../styles/base.scss';
 
 .nb-cart-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
     .nb-cart-bar__inner {
         display: flex;
         align-items: center;
 
         &.has-capsule-buttons {
-            > [class*="cart-bar-button"] {
+            > p {
                 margin-right: 0;
 
                 .nut-button--round {
