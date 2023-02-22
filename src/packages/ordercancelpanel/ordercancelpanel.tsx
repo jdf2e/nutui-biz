@@ -64,7 +64,6 @@ export const OrderCancelPanel: FunctionComponent<
     ...defaultProps,
     ...props,
   };
-  console.log("渲染");
   const b = bem("biz-ordercancel");
   const [currActivedKey, setCurrActivedKey] = useState("");
   const preChecked = useRef("");
@@ -89,16 +88,17 @@ export const OrderCancelPanel: FunctionComponent<
   };
 
   //提交原因
-  const submitContent = throttle(() => {
+  const submitContent = () => {
     let currTextarea = textAreaValue;
     if (currActivedKey !== "other") {
       currTextarea = "";
       setTextAreaValue("");
     }
     onSubmitBtn && onSubmitBtn(currActivedKey, currTextarea);
-  }, 300);
+  };
   //关闭相关事件
   const closePopup = (type: string) => {
+    console.log("执行了", type);
     switch (type) {
       case "icon":
         onClickCloseIcon && onClickCloseIcon();

@@ -1,0 +1,187 @@
+import * as React from "react";
+import { render, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import { Coupon, ButtonPropsType } from "../coupon";
+
+test("should match snapshot", () => {
+  const basedOnClick = jest.fn();
+  const buttonProps: Partial<ButtonPropsType> = {
+    type: "primary",
+    size: "small",
+    plain: true,
+    className: "cancel-btn",
+  };
+  const state = {
+    //优惠券样式
+    couponBaseStyle: {
+      width: "100%",
+      height: "auto",
+      backgroundImage: `url(https://storage.360buyimg.com/jdcdkh/open/1.0.0/assets/bg-coupon-red.f6ae2e19.png)`,
+    },
+    couponMainBaseStyle: {
+      width: "69%",
+      color: "#fff",
+    },
+    baseCouponObj: {
+      price: "9",
+      currency: "¥",
+      mainTitle: "满100元可用",
+      subTitle: "仅可购买满折券测试",
+      label: "内购专享",
+      timeRange: "2022.03.01-2022.04.01",
+    },
+    btnText: "立即领取",
+    receivedStatus: false,
+    usedIcon: (
+      <img
+        src="https://storage.360buyimg.com/jdcdkh/open/1.0.0/assets/use-mask.60dc7c10.png"
+        width="45px"
+        height="42px"
+      />
+    ),
+    buttonProps: buttonProps,
+  };
+  const { asFragment } = render(
+    <>
+      <Coupon
+        pricePosition="back"
+        couponStyle={state.couponBaseStyle}
+        couponMainStyle={state.couponMainBaseStyle}
+        coupon={state.baseCouponObj}
+        btnText={state.btnText}
+        isReceived={state.receivedStatus}
+        usedIcon={state.usedIcon}
+        buttonProps={state.buttonProps}
+        onBtnClick={basedOnClick}
+      ></Coupon>
+    </>
+  );
+  expect(asFragment()).toMatchSnapshot();
+});
+
+test("prop of Basic Usage", () => {
+  const basedOnClick = jest.fn();
+  const buttonProps: Partial<ButtonPropsType> = {
+    type: "primary",
+    size: "small",
+    plain: true,
+    className: "cancel-btn",
+  };
+  const state = {
+    //优惠券样式
+    couponBaseStyle: {
+      width: "100%",
+      height: "auto",
+      backgroundImage: `url(https://storage.360buyimg.com/jdcdkh/open/1.0.0/assets/bg-coupon-red.f6ae2e19.png)`,
+    },
+    couponMainBaseStyle: {
+      width: "69%",
+      color: "#fff",
+    },
+    baseCouponObj: {
+      price: "9",
+      currency: "¥",
+      mainTitle: "满100元可用",
+      subTitle: "仅可购买满折券测试",
+      label: "内购专享",
+      timeRange: "2022.03.01-2022.04.01",
+    },
+    btnText: "立即领取",
+    receivedStatus: false,
+    usedIcon: (
+      <img
+        src="https://storage.360buyimg.com/jdcdkh/open/1.0.0/assets/use-mask.60dc7c10.png"
+        width="45px"
+        height="42px"
+      />
+    ),
+    buttonProps: buttonProps,
+  };
+  const { container } = render(
+    <>
+      <Coupon
+        pricePosition="front"
+        couponStyle={state.couponBaseStyle}
+        couponMainStyle={state.couponMainBaseStyle}
+        coupon={state.baseCouponObj}
+        btnText={state.btnText}
+        isReceived={state.receivedStatus}
+        usedIcon={state.usedIcon}
+        buttonProps={state.buttonProps}
+        onBtnClick={basedOnClick}
+      ></Coupon>
+    </>
+  );
+  //价格和单位的前后位置
+  expect(
+    container.querySelectorAll(
+      ".nut-biz-coupon .nut-biz-coupon__main-price div"
+    )[1]?.innerHTML
+  ).toBe("¥");
+  //点击按钮事件
+  const nutCoupon = container.querySelector(
+    ".nut-biz-coupon .nut-biz-coupon__btns .nut-button--primary"
+  ) as HTMLElement;
+  fireEvent.click(nutCoupon);
+  expect(basedOnClick).toBeCalled();
+});
+
+test("small type of coupon", () => {
+  const basedOnClick = jest.fn();
+  const buttonProps: Partial<ButtonPropsType> = {
+    type: "primary",
+    size: "small",
+    plain: true,
+    className: "cancel-btn",
+  };
+  const state = {
+    //优惠券样式
+    couponBaseStyle: {
+      width: "100%",
+      height: "auto",
+      backgroundImage: `url(https://storage.360buyimg.com/jdcdkh/open/1.0.0/assets/bg-coupon-red.f6ae2e19.png)`,
+    },
+    couponMainBaseStyle: {
+      width: "69%",
+      color: "#fff",
+    },
+    baseCouponObj: {
+      price: "9",
+      currency: "¥",
+      mainTitle: "满100元可用",
+      subTitle: "仅可购买满折券测试",
+      label: "内购专享",
+      timeRange: "2022.03.01-2022.04.01",
+    },
+    btnText: "立即领取",
+    receivedStatus: true,
+    usedIcon: (
+      <img
+        src="https://storage.360buyimg.com/jdcdkh/open/1.0.0/assets/use-mask.60dc7c10.png"
+        width="45px"
+        height="42px"
+      />
+    ),
+    buttonProps: buttonProps,
+  };
+  const { container } = render(
+    <>
+      <Coupon
+        type="small"
+        pricePosition="front"
+        couponStyle={state.couponBaseStyle}
+        couponMainStyle={state.couponMainBaseStyle}
+        coupon={state.baseCouponObj}
+        btnText={state.btnText}
+        isReceived={state.receivedStatus}
+        usedIcon={state.usedIcon}
+        buttonProps={state.buttonProps}
+        onBtnClick={basedOnClick}
+      ></Coupon>
+    </>
+  );
+
+  expect(
+    container.querySelector(".nut-biz-coupon .nut-biz-coupon__btns div")
+  ).toHaveClass("nut-biz-coupon__btns-vertcal");
+});
