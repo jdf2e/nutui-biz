@@ -315,7 +315,7 @@ export default App;
 | maskDistance    | The distance between the scroll content and the overlay side of the container, the default unit is `px`    | String \| Number | `0`              |
 | showScrollBar   | whether to show scroll bar                     | Boolean | `false`             |
 | maskIcon        | Custom icon `name` value    | String | `category` |
-| maskContent     | Custom mask content         | String \| React.ReactNode | `More` |
+| maskContent     | Custom mask content         | String \| ReactNode | `More` |
 
 ### Events
 

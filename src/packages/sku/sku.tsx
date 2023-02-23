@@ -37,7 +37,7 @@ export interface SkuProps extends IComponent {
   sku: Array<any>
   stepperMax: string | number
   stepperMin: string | number
-  stepperExtraText: () => ReactNode | boolean
+  stepperExtraText: (() => ReactNode) | boolean
   stepperTitle: string
   btnOptions: Array<string>
   btnExtraText: string
@@ -177,7 +177,7 @@ export const Sku: FunctionComponent<
             stepperTitle={stepperTitle}
             stepperMax={stepperMax}
             stepperMin={stepperMin}
-            stepperExtraText={() => stepperExtraText} 
+            stepperExtraText={stepperExtraText} 
             onAdd={() => handleAdd}
             onReduce={() => handleReduce}
             onOverLimit={handleOverLimit}

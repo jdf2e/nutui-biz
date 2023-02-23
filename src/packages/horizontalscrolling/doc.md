@@ -314,7 +314,7 @@ export default App;
 | maskDistance   | 滚动内容和容器的遮罩层侧之间的距离，默认单位为 `px`   | String \| Number | `0`        |
 | showScrollBar  | 是否展示滚动条                         | Boolean | `false`     |
 | maskIcon       | [图标名称](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon) 或图片链接    | String | `category` |
-| maskContent    | 自定义遮罩内容                         | String \| React.ReactNode | `更多` |
+| maskContent    | 自定义遮罩内容                         | String \| ReactNode | `更多` |
 
 ### Events
 

@@ -12,7 +12,7 @@ import { IComponent } from '@/utils/typings'
 export interface SkuStepperProps extends IComponent {
   stepperMax: string | number
   stepperMin: string | number
-  stepperExtraText: () => ReactNode | boolean
+  stepperExtraText: (() => ReactNode) | boolean
   stepperTitle: string
   goods: {
     price: number
