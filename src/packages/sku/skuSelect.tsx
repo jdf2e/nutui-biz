@@ -67,11 +67,7 @@ export const SkuSelect: FunctionComponent<
               <div className='nut-sku-select-item-title'>{item.name}</div>
               <div className='nut-sku-select-item-skus'>
                 {
-                  item.list.map((itemAttr: {
-                    name: string
-                    disable: boolean
-                    active: boolean
-                  }, itemAttrIndex: number) => {
+                  item.list.map((itemAttr: SkuInfo, itemAttrIndex: number) => {
                     return <div 
                       className={classNames(['nut-sku-select-item-skus-sku', { active: !itemAttr.disable && itemAttr.active }, { disable: itemAttr.disable }])}
                       key={itemAttr.name}

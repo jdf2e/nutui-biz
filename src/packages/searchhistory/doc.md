@@ -2,7 +2,7 @@
 
 ### 介绍
 
-常见于搜索页，包含搜索历史和热门搜索。
+常见于搜索页，包含最近搜索和搜索发现。
 
 ### 安装
 
@@ -96,6 +96,8 @@ export default App;
 :::
 
 ### 单个删除
+
+点击删除按钮，默认是全部删除。设置 deleteType 为 single，可实现单个删除。
 
 :::demo
 
@@ -221,6 +223,7 @@ export default App;
 :::
 
 ### 隐藏时不展示无数据文案
+点击隐藏图标，隐藏搜索发现数据时，默认无数据文案为“当前搜索发现已隐藏”，设置 `noDiscoverDataText` 为空不展示无数据模块。
 
 :::demo
 
@@ -282,11 +285,11 @@ export default App;
 | searchDiscoverText     | 搜索发现文案                   | String  | `搜索发现`    |
 | recentSearchData      | 最近搜索数据                               |  Array  | []      |
 | searchDiscoverData | 搜索发现数据                        | Array  | []      |
-| keyword  | 文本框内关键字                                  | String | ''    |
-| backIcon     | 左上角返回按钮图标，设置为空则无返回按钮 | String  | `left`     |
-| deleteIcon   | 最近搜索删除图标| String  | `del`      |
+| keyword  | 传入文本框内的搜索词                                  | String | ''    |
+| backIcon     | 左上角返回按钮图标，设置为空则无返回按钮，类型为字符串时，等同于 Icon 组件的 [name 属性](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon) | ReactNode  | `left`     |
+| deleteIcon   | 最近搜索删除图标，类型为字符串时，等同于 Icon 组件的 [name 属性](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)| ReactNode  | `del`      |
 | searchDiscoverExtra   | 搜索发现额外信息| String  | -      |
-| refreshIcon   | 最近搜索刷新图标| String  | `refresh`      |
+| refreshIcon   | 最近搜索刷新图标，等同于 Icon 组件的 [name 属性](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon) | String  | `refresh`      |
 | recentSearchCollapse   | 最近搜索数据超过两行出现下拉箭头                                 | Boolean  | `true`          |
 | leftInIcon | 文本框内左侧自定义，默认是放大图标 | ReactNode  | -          |
 | rightInIcon | 文本框内右侧自定义，默认是拍照图标 | ReactNode  | -          |
@@ -296,10 +299,10 @@ export default App;
 ## Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
-| onClickSearchItem | 点击搜索项事件 |  搜索项数据 |
-| onClickSearchButton | 点击搜索按钮事件 |  文本框内关键字 |
-| onSearchTextKeyup | 文本框注册keyup事件，展示搜索建议 |  event: Event |
-| onClickRightInIcon | 照相机图标点击事件 |  event: Event |
-| onClickBackIcon | 左上角返回按钮点击事件 |  event: Event |
-| onRefresh | 搜索发现刷新按钮事件 |  event: Event |
-| onDelete | 删除事件 |  event: Event |
+| onClickSearchItem | 搜索项点击事件 |  searchItem: IsearchItem |
+| onClickSearchButton | 搜索按钮点击事件 |  value: string |
+| onSearchBarChange | 搜索栏 change 事件，可展示搜索建议 |  value: string, event: Event |
+| onClickRightInIcon | 照相机图标点击事件 |  - |
+| onClickBackIcon | 左上角返回图标点击事件 |  - |
+| onRefresh | 搜索发现刷新图标点击事件 |  - |
+| onDelete | 删除事件 |  - |

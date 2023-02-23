@@ -7,7 +7,7 @@ import React, {
   ReactNode
 } from 'react'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
+import {cn2} from '@/utils/bem'
 import {getRect} from '@/utils/useClientRect'
 
 import { IComponent } from '@/utils/typings'
@@ -45,7 +45,7 @@ export const CartBar: FunctionComponent<
     ...props,
   }
 
-  const b = bem('cart-bar')
+  const b = cn2('cart-bar')
 
   const [height,setHeight] = useState(0)
 
@@ -53,12 +53,12 @@ export const CartBar: FunctionComponent<
     if(root.current) {
       setHeight(getRect(root.current).height)
     }
-  }, ['height'])
+  }, [height])
 
   const renderActionBar = () => {
     return <div ref={root} className={classNames([b(),className,{'nut-biz-safe-area-bottom':safeAreaInsetBottom}])} style={style} {...rest}>
       {top}
-      <div className={classNames(['nut-cart-bar-inner',{'has-capsule-buttons':hasCapsuleButtons}])}>
+      <div className={classNames([b('inner'),{'has-capsule-buttons':hasCapsuleButtons}])}>
         {children}
       </div>
     </div>

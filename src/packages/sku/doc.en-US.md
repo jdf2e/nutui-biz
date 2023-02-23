@@ -72,6 +72,7 @@ const App = () => {
 
         setGoodsInfo({
             skuId: sku.id,
+            imagePath: "//img14.360buyimg.com/n4/jfs/t1/216079/14/3895/201095/618a5c0cEe0b9e2ba/cf5b98fb6128a09e.jpg",
             price: '4599.00'
         })
         
@@ -213,7 +214,7 @@ export default App;
 
 :::
 
-### Custom Slots
+### Custom Content
 
 :::demo
 
@@ -223,7 +224,7 @@ import { Sku } from '@nutui/nutui-biz';
 import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
-    const [customBySlot, setCustomBySlot] = useState<boolean>(false)
+    const [customByContent, setCustomByContent] = useState<boolean>(false)
     const [addressDesc, setAddressDesc] = useState<string>('(The delivery address will affect the stock, please confirm first)')
     const [showAddressPopup, setShowAddressPopup] = useState<boolean>(false)
 
@@ -303,9 +304,9 @@ const App = () => {
 
   return (
     <div>
-        <Cell onClick={() => setCustomBySlot(true)}>Custom Slots</Cell>
+        <Cell onClick={() => setCustomByContent(true)}>Custom Content</Cell>
         <Sku 
-          visible={customBySlot} 
+          visible={customByContent} 
           sku={skuData}
           goods={goodsInfo}
           btnOptions={['buy', 'cart']}
@@ -330,7 +331,7 @@ const App = () => {
           }
           onSelectSku={selectSku}
           onClickBtnOperate={clickBtnOperate}
-          onClose={() => setCustomBySlot(false)} 
+          onClose={() => setCustomByContent(false)} 
         />
         <Address
           modelValue={showAddressPopup}
@@ -364,7 +365,7 @@ export default App;
 | btnOptions        |           Bottom button              | Array | [`confirm`]           |
 | btnExtraText | Add text above button | String | -            |
 | stepperTitle         | Stepper left text | String | `Buy Num`                |
-| stepperExtraText        |   The text between the stepper and the headline       | Function \| Boolean | `false`              |
+| stepperExtraText        |   The text between the stepper and the headline       | () => ReactNode \| Boolean | `false`              |
 | buyText |  Buy button text    | String | `Buy It Now` |
 | addCartText          |        Add cart button text                 | String | `Add To cart`             |
 | confirmText          |           Confirm button text              | String | `Confirm`             |

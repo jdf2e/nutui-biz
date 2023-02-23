@@ -3,23 +3,18 @@ import React, {
   ReactNode
 } from 'react'
 import classNames from 'classnames';
-import bem from '@/utils/bem'
-import {Button} from '@nutui/nutui-react'
+import {cn2} from '@/utils/bem'
+import {Button, ButtonProps} from '@nutui/nutui-react'
 
 import { IComponent } from '@/utils/typings'
 
 export interface CartBarButtonProps extends IComponent {
   text: ReactNode
-  disabled: boolean
-  loading: boolean
-  type: string
-  color: string
+  buttonProps: Partial<ButtonProps>
   onClick: () => void
 }
 
 const defaultProps = {
-  disabled: false,
-  loading: false,
   onClick: () => {}
 } as CartBarButtonProps
 
@@ -30,34 +25,28 @@ export const CartBarButton: FunctionComponent<
     className,
     style,
     text,
-    type,
-    disabled,
-    loading,
-    color,
     onClick,
+    buttonProps,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
 
-  const b = bem('cart-bar-button')
+  const b = cn2('cart-bar-button')
 
   const handleClick = () => {
     onClick && onClick()
   }
 
   return (
-    <article className={classNames(b(),className)} style={style} {...rest} onClick={handleClick}>
+    <p className={classNames(b(),className)} style={style} {...rest} onClick={handleClick}>
       <Button 
-        type={type as any} 
-        disabled={disabled}
-        loading={loading}
-        color={color}
+        {...buttonProps}
       >
         {text}
       </Button>
-    </article>
+    </p>
   )
 }
 

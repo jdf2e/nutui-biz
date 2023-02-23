@@ -1,7 +1,12 @@
 @import '../../styles/base.scss';
 
-.nut-settle-bar {
-    &-warning {
+.nb-settle-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &__warning {
         position: relative;
         height: 38px;
 
@@ -25,7 +30,7 @@
         }
     }
 
-    &-main {
+    &__main {
         padding: 6px 12px;
         display: flex;
         align-items: center;
@@ -39,11 +44,11 @@
             }
         }
 
-        .select-all {
+        &-select-all {
             margin-right: 12px;
         }
     
-        .total {
+        &-total {
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -66,7 +71,7 @@
             padding: 0 19px;
         }
     
-        .buy {
+        &-buy {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -84,10 +89,10 @@
                 opacity: .3;
                 cursor: not-allowed;
             }
+        }
     
-            .num {
-                font-weight: 400;
-            }
+        &-num {
+            font-weight: 400;
         }
     }
 }

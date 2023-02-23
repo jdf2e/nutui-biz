@@ -1,19 +1,19 @@
 # OrderCancelPanel
 
-### 介绍
+### Intro
 
-订单取消面板
+OrderCancelPanel
 
-### 安装
+### Install
 
 ```javascript
 import { Cell } from "@nutui/nutui-react";
 import { OrderCancelPanel } from "@nutui/nutui-biz";
 ```
 
-## 代码演示
+## Demo
 
-### 基本用法
+### Basic Usage
 
 :::demo
 
@@ -58,7 +58,6 @@ const App = () => {
     );
     setShowPanel(false);
   };
-  //基本使用
   const [showPanel, setShowPanel] = useState(false);
   const buttonProps: Partial<ButtonProps> = React.useMemo(() => {
     return {
@@ -89,7 +88,7 @@ export default App;
 
 :::
 
-### 带有温馨提示的组件
+### Components with warm tips
 
 :::demo
 
@@ -140,7 +139,6 @@ const App = () => {
     );
     setShowCancelPanel(false);
   };
-  //基本使用
   const [showCancelPanel, setShowCancelPanel] = useState(false);
   const buttonProps: Partial<ButtonProps> = React.useMemo(() => {
     return {
@@ -179,7 +177,7 @@ export default App;
 
 :::
 
-### 带有其他原因选项的优惠组件
+### Components with other reason options
 
 :::demo
 
@@ -190,39 +188,39 @@ import { OrderCancelPanel } from "@nutui/nutui-biz";
 
 const App = () => {
   const warmTips = [
-    "1. 限时特价、预约资格等购买优惠可能一并取消",
-    "2. 如遇订单拆分，京券将换成同价值京豆返还",
-    "3. 支付券不予返还；支付优惠一并取消",
-    "4. 订单一旦取消，无法恢复",
+    "1. Limited time special offers, reservation qualifications and other purchase privileges may be cancelled at the same time",
+    "2. In case of order splitting, coupons will be exchanged for beans of the same value and returned",
+    "3. The payment voucher will not be returned; Cancellation of payment preference",
+    "4. Once the order is cancelled, it cannot be recovered",
   ];
   const cancelResons = [
     {
       key: "resons1",
-      value: "商品无货",
+      value: "No goods",
     },
     {
       key: "resons2",
-      value: "发货时间问题",
+      value: "Delivery time problem",
     },
     {
       key: "resons3",
-      value: "不想要了",
+      value: "do not want goods",
     },
     {
       key: "resons4",
-      value: "商品选错/多选",
+      value: "Wrong goods selected",
     },
     {
       key: "resons5",
-      value: "地址信息填写错误",
+      value: "Incorrect address information",
     },
     {
       key: "resons6",
-      value: "商品降价",
+      value: "Commodity price reduction",
     },
     {
       key: "other",
-      value: "其他",
+      value: "other",
     },
   ];
   const clickClosePopUp = () => {
@@ -251,21 +249,21 @@ const App = () => {
     };
   }, []);
   const popupTitleMemo = React.useMemo(() => {
-    return <div>退款原因</div>;
+    return <div>Refund reason</div>;
   }, []);
   return (
     <>
       <div className="demo">
         <Cell
-          title="带有其他原因选项的组件"
+          title="Components with other reason options"
           onClick={() => setShowOtherCancelPanel(true)}
         />
         <OrderCancelPanel
           showCancelPanel={showOtherCancelPanel}
           popupTitle={popupTitleMemo}
           canCancelReason={true}
-          tipsTitle="温馨提示"
-          btnsText="确认"
+          tipsTitle="reminder"
+          btnsText="confirm"
           warmTips={warmTips}
           cancelResons={cancelResons}
           buttonProps={buttonProps}
@@ -288,31 +286,31 @@ export default App;
 
 ### Props
 
-| 字段            | 说明                               | 类型                 | 默认值  |
-| --------------- | ---------------------------------- | -------------------- | ------- |
-| showCancelPanel | 是否显示或取消订单弹窗             | Boolean              | `false` |
-| warmTips        | 温馨提示内容,无则不展示提示内容    | Array<string>        | --      |
-| cancelResons    | 取消原因                           | Array<IResonsObject> | --      |
-| canCancelReason | 再次点击是否可以取消已选中的原因   | Boolean              | `false` |
-| popupTitle      | 弹窗的主标题                       | ReactNode            | --      |
-| reasonTitle     | 取消原因的标题                     | ReactNode            | --      |
-| btnsText        | 弹窗按钮文案                       | string               | `提交`  |
-| tipsTitle       | 温馨提示的标题                     | string               | --      |
-| buttonProps     | 按钮组件的 props                   | ButtonProps          | --      |
-| textAreaProps   | 其他原因对应的 TextArea 组件 props | TextAreaProps        | --      |
+| 字段            | 说明                                                 | 类型                 | 默认值   |
+| --------------- | ---------------------------------------------------- | -------------------- | -------- |
+| showCancelPanel | Whether to display or cancel the order pop-up window | Boolean              | `false`  |
+| warmTips        | Warm prompt content, no prompt content               | Array<string>        | --       |
+| cancelResons    | Reason for cancellation                              | Array<IResonsObject> | --       |
+| canCancelReason | Click again to cancel the selected reason            | Boolean              | `false`  |
+| popupTitle      | Main title of pop-up window                          | ReactNode            | --       |
+| reasonTitle     | Title of cancellation reason                         | ReactNode            | --       |
+| btnsText        | Popup Button content                                 | string               | `submit` |
+| tipsTitle       | Warm prompt title                                    | string               | --       |
+| buttonProps     | Props of button components                           | ButtonProps          | --       |
+| textAreaProps   | props of TextAre                                     | TextAreaProps        | --       |
 
 ### IResonsObject
 
-| 字段  | 说明                            | 类型   | 默认值 |
-| ----- | ------------------------------- | ------ | ------ |
-| key   | 取消原因的 key 字段每项的值不同 | string | --     |
-| value | 取消原因的文案内容              | string | --     |
+| 字段  | 说明                                | 类型   | 默认值 |
+| ----- | ----------------------------------- | ------ | ------ |
+| key   | Key of cancellation reason          | string | --     |
+| value | Copy content of cancellation reason | string | --     |
 
 ## Events
 
-| 字段             | 说明                                                                                | 回调参数 |
-| ---------------- | ----------------------------------------------------------------------------------- | -------- |
-| onClose          | 点击弹框时触发                                                                      | --       |
-| onClickCloseIcon | 点击关闭图标时触发                                                                  | --       |
-| onClickOverlay   | 点击遮罩触发                                                                        | --       |
-| onSubmitBtn      | 点击提交按钮触发，参数是选中的原因 key：currActivedKey，以及文本内容：textAreaValue | --       |
+| 字段             | 说明                                             | 回调参数 |
+| ---------------- | ------------------------------------------------ | -------- |
+| onClose          | Triggered when clicking the pop-up box           | --       |
+| onClickCloseIcon | Triggered when the close icon is clicked         | --       |
+| onClickOverlay   | Click the mask to trigger                        | --       |
+| onSubmitBtn      | Click the submit button to trigger The parameter | --       |

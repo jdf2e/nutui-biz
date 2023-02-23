@@ -24,11 +24,11 @@ const App = () => {
   const [recentSearchData, setRecentSearchData] = useState(JSON.parse(localStorage.getItem('recentSearchData') as string) || [])
   const searchDiscoverData = [
     {
-      key: '小米手环',
+      key: 'key1',
       url: ''
     },
     {
-      key: '对讲机',
+      key: 'key2',
       url: ''
     }
   ]
@@ -135,8 +135,8 @@ const App = () => {
         onDelete={handleDelete}
         recentSearchData={recentSearchData} 
         searchDiscoverData={searchDiscoverData} 
-        recentSearchText="搜索历史"
-        searchDiscoverText="猜你想搜"
+        recentSearchText="Search History"
+        searchDiscoverText="Guess you want to search"
     />
   );
 };
@@ -187,7 +187,7 @@ const App = () => {
         searchDiscoverData={searchDiscoverData} 
         leftInIcon=""
         rightInIcon=""
-        rightOutIcon={<div style={{background: '#e93b3d', padding: '6px', borderRadius: '4px', color: '#fff', fontSize: '14px'}}>搜索</div>}
+        rightOutIcon={<div style={{background: '#e93b3d', padding: '6px', borderRadius: '4px', color: '#fff', fontSize: '14px'}}>Search</div>}
     />
   );
 };
@@ -211,7 +211,7 @@ const App = () => {
         onDelete={handleDelete}
         recentSearchData={recentSearchData} 
         searchDiscoverData={searchDiscoverData} 
-        searchDiscoverExtra={<span style={{color: 'gray', fontSize: '12px', marginLeft: '10px'}}>十亿商品，搜啥都有</span>}
+        searchDiscoverExtra={<span style={{color: 'gray', fontSize: '12px', marginLeft: '10px'}}>Search discover extra</span>}
     />
   );
 };
@@ -221,6 +221,7 @@ export default App;
 :::
 
 ### No Discover Data Text When Hide
+Click the hide icon to hide the search discoveries data, the default non-data text is "No Discover Data Text", and set 'noDiscoverDataText' to empty to remove the non-data module.
 
 :::demo
 
@@ -279,28 +280,28 @@ export default App;
 
 | Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
-| recentSearchText   | 最近搜索文案                                     | String  | `最近搜索`         |
-| searchDiscoverText     | 搜索发现文案                   | String  | `搜索发现`    |
-| recentSearchData      | 最近搜索数据                               |  Array  | []      |
-| searchDiscoverData | 搜索发现数据                        | Array  | []      |
-| keyword  | 文本框内关键字                                  | String | ''    |
-| backIcon     | 左上角返回按钮图标，设置为空则无返回按钮 | String  | `left`     |
-| deleteIcon   | 最近搜索删除图标| String  | `del`      |
-| searchDiscoverExtra   | 搜索发现额外信息| String  | -      |
-| refreshIcon   | 最近搜索刷新图标| String  | `refresh`      |
-| recentSearchCollapse   | 最近搜索数据超过两行出现下拉箭头                                 | Boolean  | `true`          |
-| leftInIcon | 文本框内左侧自定义，默认是放大图标 | ReactNode  | -          |
-| rightInIcon | 文本框内右侧自定义，默认是拍照图标 | ReactNode  | -          |
-| rightOutIcon | 文本框外右侧自定义，默认是“搜索” | ReactNode  | -          |
+| recentSearchText   | Recent search text                                     | String  | `Recent Search`         |
+| searchDiscoverText     | Search discover text                   | String  | `Search Discover`    |
+| recentSearchData      | Recent search data                               |  Array  | []      |
+| searchDiscoverData | Search discover data                        | Array  | []      |
+| keyword  | The search keyword passed in the searchBar                                 | String | ''    |
+| backIcon     | Back icon, if set to empty, there will be no back icon | ReactNode  | `left`     |
+| deleteIcon   | Recent search delete icon | ReactNode  | `del`      |
+| searchDiscoverExtra   | Search discover extra info | String  | -      |
+| refreshIcon   | Recent search refresh icon| String  | `refresh`      |
+| recentSearchCollapse   | A drop-down arrow appears when there are more than two rows of recent search data | Boolean  | `true`          |
+| leftInIcon | Custom left in icon, default is search icon | ReactNode  | -          |
+| rightInIcon | Custom right in icon, default is photograph icon | ReactNode  | -          |
+| rightOutIcon | Custom right out icon, default is "Search" | ReactNode  | -          |
 
 
 ## Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
-| onClickSearchItem | 点击搜索项事件 |  搜索项数据 |
-| onClickSearchButton | 点击搜索按钮事件 |  文本框内关键字 |
-| onSearchTextKeyup | 文本框注册keyup事件，展示搜索建议 |  event: Event |
-| onClickRightInIcon | 照相机图标点击事件 |  event: Event |
-| onClickBackIcon | 左上角返回按钮点击事件 |  event: Event |
-| onRefresh | 搜索发现刷新按钮事件 |  event: Event |
-| onDelete | 删除事件 |  event: Event |
+| onClickSearchItem | Search item click event |  searchItem: IsearchItem |
+| onClickSearchButton | Search button click event |  value: string |
+| onSearchBarChange | Search bar change event, which can display search suggestions |  value: string, event: Event |
+| onClickRightInIcon | Photograph icon click event |  - |
+| onClickBackIcon | Back icon click event |  - |
+| onRefresh | Search discover refresh icon click event  |  - |
+| onDelete | Delete event |  - |

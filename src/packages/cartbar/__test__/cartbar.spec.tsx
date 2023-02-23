@@ -8,17 +8,17 @@ import { CartBarButton } from '../../cartbarbutton/cartbarbutton'
 test('test base', async () => {
   const { container } = render(
     <CartBar>
-      <CartBarIcon text="店铺" icon="shop" />
-      <CartBarIcon text="购物车" icon="cart" />
-      <CartBarButton text="加入购物车" type="danger" />
-      <CartBarButton text="立即购买" type="warning" />
+      <CartBarIcon text="店铺" iconProps={{name: 'shop'}} />
+      <CartBarIcon text="购物车" iconProps={{name: 'cart'}} />
+      <CartBarButton text="加入购物车" buttonProps={{type: "danger"}} />
+      <CartBarButton text="立即购买" buttonProps={{type: "warning"}} />
     </CartBar>
   )
-  const cartBar = container.querySelector('.nut-cart-bar')
+  const cartBar = container.querySelector('.nb-cart-bar')
   expect(cartBar).toHaveClass('nut-biz-safe-area-bottom')
   expect(cartBar).toBeTruthy()
-  const cartBarIcons = container.querySelectorAll('.nut-cart-bar-icon')
-  const cartBarButtons = container.querySelectorAll('.nut-cart-bar-button')
+  const cartBarIcons = container.querySelectorAll('.nb-cart-bar-icon')
+  const cartBarButtons = container.querySelectorAll('.nb-cart-bar-button')
   expect(cartBarIcons.length).toBe(2)
   expect(cartBarButtons.length).toBe(2)
 })
@@ -26,12 +26,12 @@ test('test base', async () => {
 test('test icon badge and dot', async () => {
   const { container } = render(
     <CartBar>
-      <CartBarIcon text="店铺" icon="shop" badge="10" />
-      <CartBarIcon text="购物车" icon="cart" dot />
+      <CartBarIcon text="店铺" iconProps={{name: 'shop'}} badgeProps={{value: '10'}} />
+      <CartBarIcon text="购物车" iconProps={{name: 'cart'}} badgeProps={{dot: true}} />
     </CartBar>
   )
 
-  const cartBarIcons = container.querySelectorAll('.nut-cart-bar-icon')
+  const cartBarIcons = container.querySelectorAll('.nb-cart-bar-icon')
   
   expect(cartBarIcons[0].querySelector('.nut-badge__content')?.innerHTML).toBe('10')
   expect(cartBarIcons[1].querySelector('.nut-badge__content')).toHaveClass('is-dot')
@@ -40,11 +40,11 @@ test('test icon badge and dot', async () => {
 test('test icon color', async () => {
   const { container } = render(
     <CartBar>
-      <CartBarIcon text="店铺" icon="shop" color='red' />
+      <CartBarIcon text="店铺" iconProps={{name: 'shop', color: 'red'}} />
     </CartBar>
   )
 
-  const iconfont = container.querySelector('.nut-cart-bar-icon .nutui-iconfont')
+  const iconfont = container.querySelector('.nb-cart-bar-icon .nutui-iconfont')
   
   expect(iconfont).toHaveAttribute('style', 'color: red;')
 })
@@ -52,7 +52,7 @@ test('test icon color', async () => {
 test('test no text icon', async () => {
   const { container } = render(
     <CartBar>
-      <CartBarIcon icon="shop" />
+      <CartBarIcon iconProps={{name: 'shop'}} />
     </CartBar>
   )
 
@@ -63,33 +63,33 @@ test('test no text icon', async () => {
 test('test hasCapsuleButtons', async () => {
   const { container } = render(
     <CartBar hasCapsuleButtons>
-      <CartBarButton text="加入购物车" type="danger" />
-      <CartBarButton text="立即购买" type="warning" />
+      <CartBarButton text="加入购物车"  buttonProps={{type: "danger"}} />
+      <CartBarButton text="立即购买"  buttonProps={{type: "warning"}} />
     </CartBar>
   )
 
-  const cartBarInner = container.querySelector('.nut-cart-bar-inner')
+  const cartBarInner = container.querySelector('.nb-cart-bar__inner')
   expect(cartBarInner).toHaveClass('has-capsule-buttons')
 })
 
 test('test hasCapsuleButtons', async () => {
   const { container } = render(
     <CartBar top={<div>我是自定义内容！</div>}>
-      <CartBarIcon text="店铺" icon="shop" />
-      <CartBarIcon text="购物车" icon="cart" />
-      <CartBarButton text="加入购物车" type="danger" />
-      <CartBarButton text="立即购买" type="warning" />
+      <CartBarIcon text="店铺" iconProps={{name: 'shop'}} />
+      <CartBarIcon text="购物车" iconProps={{name: 'cart'}} />
+      <CartBarButton text="加入购物车"  buttonProps={{type: "danger"}} />
+      <CartBarButton text="立即购买"  buttonProps={{type: "warning"}} />
     </CartBar>
   )
 
-  const cartBar = container.querySelector('.nut-cart-bar')
+  const cartBar = container.querySelector('.nb-cart-bar')
   expect(cartBar).toHaveTextContent('我是自定义内容！')
 })
 
 test('test placeholder', async () => {
   const { container } = render(
     <CartBar placeholder>
-      <CartBarIcon text="店铺" icon="shop" />
+      <CartBarIcon text="店铺" iconProps={{name: 'shop'}} />
     </CartBar>
   )
 
@@ -101,13 +101,13 @@ test('test click', async () => {
   const onClick2 = jest.fn()
   const { container } = render(
     <CartBar>
-      <CartBarIcon text="店铺" icon="shop" onClick={onClick1} />
-      <CartBarButton text="加入购物车" type="danger" onClick={onClick2} />
+      <CartBarIcon text="店铺" iconProps={{name: 'shop'}} onClick={onClick1} />
+      <CartBarButton text="加入购物车"  buttonProps={{type: "danger"}} onClick={onClick2} />
     </CartBar>
   )
 
-  const cartBarIcon = container.querySelector('.nut-cart-bar-icon') as HTMLElement
-  const cartBarButton = container.querySelector('.nut-cart-bar-button') as HTMLElement
+  const cartBarIcon = container.querySelector('.nb-cart-bar-icon') as HTMLElement
+  const cartBarButton = container.querySelector('.nb-cart-bar-button') as HTMLElement
   fireEvent.click(cartBarIcon)
   fireEvent.click(cartBarButton)
   expect(onClick1).toBeCalled()

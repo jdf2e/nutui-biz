@@ -72,6 +72,7 @@ const App = () => {
 
         setGoodsInfo({
             skuId: sku.id,
+            imagePath: "//img14.360buyimg.com/n4/jfs/t1/216079/14/3895/201095/618a5c0cEe0b9e2ba/cf5b98fb6128a09e.jpg",
             price: '4599.00' // 商品信息展示区，商品价格
         })
         
@@ -213,7 +214,7 @@ export default App;
 
 :::
 
-### 自定义插槽
+### 自定义内容
 
 :::demo
 
@@ -223,7 +224,7 @@ import { Sku } from '@nutui/nutui-biz';
 import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
-    const [customBySlot, setCustomBySlot] = useState<boolean>(false)
+    const [customByContent, setCustomByContent] = useState<boolean>(false)
     const [addressDesc, setAddressDesc] = useState<string>('(配送地会影响库存，请先确认)')
     const [showAddressPopup, setShowAddressPopup] = useState<boolean>(false)
 
@@ -303,9 +304,9 @@ const App = () => {
 
   return (
     <div>
-        <Cell onClick={() => setCustomBySlot(true)}>自定义插槽</Cell>
+        <Cell onClick={() => setCustomByContent(true)}>自定义内容</Cell>
         <Sku 
-          visible={customBySlot} 
+          visible={customByContent} 
           sku={skuData}
           goods={goodsInfo}
           btnOptions={['buy', 'cart']}
@@ -330,7 +331,7 @@ const App = () => {
           }
           onSelectSku={selectSku}
           onClickBtnOperate={clickBtnOperate}
-          onClose={() => setCustomBySlot(false)} 
+          onClose={() => setCustomByContent(false)} 
         />
         <Address
           modelValue={showAddressPopup}
@@ -364,7 +365,7 @@ export default App;
 | btnOptions        |           底部按钮设置。['confirm','buy','cart' ] 分别对应确定、立即购买、加入购物车              | Array | [`confirm`]           |
 | btnExtraText | 按钮上部添加文案，默认为空，有值时显示 | String | -            |
 | stepperTitle         | 数量选择组件左侧文案 | String | `购买数量`                |
-| stepperExtraText        |   inputNumber 与标题之间的文案       | Function \| Boolean | `false`              |
+| stepperExtraText        |   inputNumber 与标题之间的文案       | () => ReactNode \| Boolean | `false`              |
 | buyText |  立即购买按钮文案    | String | `立即购买` |
 | addCartText          |        加入购物车按钮文案                 | String | `加入购物车`             |
 | confirmText          |           确定按钮文案              | String | `确定`             |

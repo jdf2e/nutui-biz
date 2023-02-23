@@ -44,8 +44,7 @@ import React, {
   
     return (
         <div className='nut-sku-header'>
-            {/* <img src={goods.imagePath} alt="" /> */}
-            <img src='//img14.360buyimg.com/n4/jfs/t1/216079/14/3895/201095/618a5c0cEe0b9e2ba/cf5b98fb6128a09e.jpg' alt="" />
+            <img src={goods.imagePath} alt="" />
             <div className='nut-sku-header-right'>
                 {skuHeaderPrice || <Price price={goods.price} needSymbol={true} thousands={false} />}
                 {renderSkuHeaderExtra()}

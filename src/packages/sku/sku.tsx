@@ -166,6 +166,7 @@ export const Sku: FunctionComponent<
       onClose={()=>closePopup('close')}
       onClickCloseIcon={()=>closePopup('icon')}
       onClickOverlay={()=>closePopup('overlay')}
+      {...props}
     >
       <div className={classNames([b(),className])} style={style}>
         {renderSkuHeader()}

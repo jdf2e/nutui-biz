@@ -7,7 +7,7 @@ test('test base', async () => {
   const { container } = render(
     <SettleBar />
   )
-  const settleBar = container.querySelector('.nut-settle-bar')
+  const settleBar = container.querySelector('.nb-settle-bar')
   
   expect(settleBar).toHaveClass('nut-biz-safe-area-bottom')
 })
@@ -43,7 +43,7 @@ test('test totalText and settleButtonText', async () => {
   const { container } = render(
     <SettleBar totalText="总计" settleButtonText="jiesuan" />
   )
-  const settleBarMainData = container.querySelector('.nut-settle-bar-main')
+  const settleBarMainData = container.querySelector('.nb-settle-bar__main')
   expect(settleBarMainData).toHaveTextContent('总计')
   expect(settleBarMainData).toHaveTextContent('jiesuan')
 })
@@ -80,6 +80,6 @@ test('test customWarning', async () => {
   const { container } = render(
     <SettleBar customWarning={customWarningHtml()} />
   )
-  const settleBarWarning = container.querySelector('.nut-settle-bar-warning')
+  const settleBarWarning = container.querySelector('.nb-settle-bar__warning')
   expect(settleBarWarning).toBeInTheDocument()
 })
