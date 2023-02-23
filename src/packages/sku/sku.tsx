@@ -37,7 +37,7 @@ export interface SkuProps extends IComponent {
   sku: Array<any>
   stepperMax: string | number
   stepperMin: string | number
-  stepperExtraText: Function | boolean
+  stepperExtraText: () => ReactNode | boolean
   stepperTitle: string
   btnOptions: Array<string>
   btnExtraText: string
@@ -162,7 +162,6 @@ export const Sku: FunctionComponent<
       position="bottom"
       closeable
       round
-      style={{"height": '75%'}}
       onClose={()=>closePopup('close')}
       onClickCloseIcon={()=>closePopup('icon')}
       onClickOverlay={()=>closePopup('overlay')}
@@ -178,11 +177,11 @@ export const Sku: FunctionComponent<
             stepperTitle={stepperTitle}
             stepperMax={stepperMax}
             stepperMin={stepperMin}
-            stepperExtraText={stepperExtraText} 
+            stepperExtraText={() => stepperExtraText} 
             onAdd={() => handleAdd}
             onReduce={() => handleReduce}
             onOverLimit={handleOverLimit}
-            onChangeStepper={() => handleChangeFuc}
+            handleStepper={handleChangeFuc}
           />}
           {skuStepperBottom}
         </div>
