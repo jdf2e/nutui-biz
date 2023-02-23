@@ -191,6 +191,7 @@
           "sort": 11,
           "show": false,
           "taro": false,
+          "exportEmpty": true,
           "author": "ailululu"
         }
       ]

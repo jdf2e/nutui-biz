@@ -1,14 +1,21 @@
-.nut-biz-productfeed {
-  // display: flex;
-  &__main {
+.nut-biz-productfeedItem {
+  position: relative;
+  background: #fff;
+  &__single {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
   }
-  .nut-biz-card {
-    margin-left: 2px;
-    &:nth-of-type(2n+1) {
-      margin-left: 0;
+  &__image {
+    &-tag {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
     }
   }
+  &__content {
+    padding: 10px;
+  }
 }
+

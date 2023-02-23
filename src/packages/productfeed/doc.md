@@ -6,7 +6,7 @@
 
 ### 安装
 ``` javascript
-import { ProductFeed, ProductFeedItem, Card } from '@nutui/nutui-biz';
+import { ProductFeed, ProductFeedItem } from '@nutui/nutui-biz';
 ```
 
 ## 代码演示
@@ -18,7 +18,7 @@ import { ProductFeed, ProductFeedItem, Card } from '@nutui/nutui-biz';
 ```ts
 import  React from 'react';
 import { Price } from '@nutui/nutui-react';
-import { ProductFeed, ProductFeedItem, Card } from '@nutui/nutui-biz';
+import { ProductFeed, ProductFeedItem } from '@nutui/nutui-biz';
 
 const App = () => {
 
@@ -124,7 +124,7 @@ export default App;
 ```ts
 import  React from 'react';
 import { Price } from '@nutui/nutui-react';
-import { ProductFeed, ProductFeedItem, Card } from '@nutui/nutui-biz';
+import { ProductFeed, ProductFeedItem } from '@nutui/nutui-biz';
 
 const App = () => {
 
@@ -231,7 +231,7 @@ export default App;
 ```ts
 import  React from 'react';
 import { Price } from '@nutui/nutui-react';
-import { ProductFeed, ProductFeedItem, Card } from '@nutui/nutui-biz';
+import { ProductFeed, ProductFeedItem } from '@nutui/nutui-biz';
 
 const App = () => {
 

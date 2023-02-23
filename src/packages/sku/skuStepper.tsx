@@ -68,7 +68,6 @@ export const SkuStepper: FunctionComponent<
   }
 
   const getExtraText = () => {
-    console.log('33333', typeof stepperExtraText)
     if (stepperExtraText && (typeof stepperExtraText == 'function')) {
       return stepperExtraText();
     } else {

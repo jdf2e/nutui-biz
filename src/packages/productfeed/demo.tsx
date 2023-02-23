@@ -235,6 +235,7 @@ const ProductFeedDemo = () => {
                     gutter={6}
                     col={2}
                     imgUrl={item.imgUrl}
+                    imgWidth="164"
                     imgHeight="164"
                     imgTag={<div className='img-label'><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
                     onClick={handleClick}
@@ -273,6 +274,7 @@ const ProductFeedDemo = () => {
                     gutter={6}
                     col={1}
                     imgUrl={item.imgUrl}
+                    imgWidth="120"
                     imgHeight="120"
                     imgTag={<div className='img-label'><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
                     onClick={handleClick}
@@ -316,6 +318,7 @@ const ProductFeedDemo = () => {
                     gutter={6}
                     col={2}
                     imgUrl={item.imgUrl}
+                    imgWidth="164"
                     imgHeight="164"
                     imgTag={<div className='img-label'><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
                     onClick={handleClick}

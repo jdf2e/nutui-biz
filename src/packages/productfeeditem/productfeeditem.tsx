@@ -1,7 +1,7 @@
 import React, {
   FunctionComponent, ReactNode, CSSProperties, HTMLAttributes, useState
 } from 'react'
-import { Card } from '../card/card'
+import { Image } from '@nutui/nutui-react';
 
 import classNames from 'classnames'
 import bem from '@/utils/bem'
@@ -24,6 +24,7 @@ export interface ProductFeedItemProps {
 const defaultProps = {
   col: 2,
   gutter: 6,
+  imgWidth: '150',
   imgHeight: '150',
   isImageLazy: true,
   loadingImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
@@ -53,27 +54,45 @@ export const ProductFeedItem: FunctionComponent<
     ...props,
   }
 
-  const b = bem('biz-productfeedItem')
+  const b = bem("biz-productfeedItem")
 
-  const cardStyle = () => {
+  const pxAdd = (value: string | number): string => {
+    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
+  }
+
+  const itemStyle = () => {
     return {
-      'width': col == 1 ? '100%' : 
-                  `calc((100% - ${gutter}px)/${col})`,
+      "width": col == 1 ? "100%" : 
+                  `calc((100% - ${pxAdd(gutter)})/${col})`,
     }
   }
 
+  const contentStyle = () => {
+    return {
+      "width": col == 1 && `calc(100% - ${pxAdd(imgWidth ? imgWidth : imgHeight)})`,
+    } as CSSProperties
+  }
+
   return (
-    <div className={classNames([b(), className])} style={{ ...cardStyle(), ...style }} {...rest}>
-      <Card
-        imgUrl={imgUrl}
-        showType={col == 1 ? 'full-line' : 'half-line'}
-        imgTag={imgTag}
-        infoTpl={children}
-        isLazy={isImageLazy}
-        imgHeight={imgHeight}
-        loadingImg={loadingImg}
-        errorImg={loadingImg}
-      />
+    <div 
+      className={`${b()} ${col == 1 ? b("single") : b("multiple")}`}
+      style={{ ...itemStyle(), ...style }} 
+      {...rest}
+    >
+      <div className={b("image")}>
+        <Image
+          src={imgUrl}
+          isLazy={isImageLazy}
+          width={imgWidth}
+          height={imgHeight}
+          loadingImg={loadingImg}
+          errorImg={loadingImg}
+        />
+        {imgTag && <div className={b("image-tag")}>{imgTag}</div>}
+      </div>
+      <div className={b("content")} style={contentStyle()} >
+        {children}
+      </div>
     </div>
   )
 }
