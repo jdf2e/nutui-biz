@@ -365,7 +365,7 @@ export default App;
 | btnOptions        |           底部按钮设置。['confirm','buy','cart' ] 分别对应确定、立即购买、加入购物车              | Array | [`confirm`]           |
 | btnExtraText | 按钮上部添加文案，默认为空，有值时显示 | String | -            |
 | stepperTitle         | 数量选择组件左侧文案 | String | `购买数量`                |
-| stepperExtraText        |   inputNumber 与标题之间的文案       | Function \| Boolean | `false`              |
+| stepperExtraText        |   inputNumber 与标题之间的文案       | () => ReactNode \| Boolean | `false`              |
 | buyText |  立即购买按钮文案    | String | `立即购买` |
 | addCartText          |        加入购物车按钮文案                 | String | `加入购物车`             |
 | confirmText          |           确定按钮文案              | String | `确定`             |

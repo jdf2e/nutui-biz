@@ -86,13 +86,14 @@
   &-stepper {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 10px 0 30px;
     &-title {
       font-weight: bold;
       font-size: 13px;
       color: #000;
       margin-right: 12px;
-      @include oneline-ellipsis()
+      @include oneline-ellipsis(calc(100% - 175px))
     }
     &-limit {
       flex: 1;

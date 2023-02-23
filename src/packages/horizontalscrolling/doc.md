@@ -127,7 +127,7 @@ export default App;
 
 ### 遮罩层半透明阴影样式
 
-滚动内容距离容器的遮罩层侧默认为 `maskWidth` 宽度，也可以通过 `maskDistance` 设置
+滚动内容和容器的遮罩层侧之间的距离默认为 `maskWidth` 宽度，也可以通过 `maskDistance` 设置
 
 :::demo
 ```tsx
@@ -311,7 +311,7 @@ export default App;
 | maskPosition   | 遮罩层展示位置（可选值：`left`、`right`）| String   | `right`   |
 | maskShadowType | 遮罩阴影形式（可选值 `none`: 无、`triangle`: 有三角的、`shadow`: 阴影、`transparent`: 半透明） | String | `triangle`               |
 | maskWidth      | 遮罩层宽度，默认单位为 `px`             | String \| Number | `100px`     |
-| maskDistance   | 滚动内容距离容器的宽度，默认单位为 `px`   | String \| Number | `0`          |
+| maskDistance   | 滚动内容和容器的遮罩层侧之间的距离，默认单位为 `px`   | String \| Number | `0`        |
 | showScrollBar  | 是否展示滚动条                         | Boolean | `false`     |
 | maskIcon       | [图标名称](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon) 或图片链接    | String | `category` |
 | maskContent    | 自定义遮罩内容                         | String \| React.ReactNode | `更多` |

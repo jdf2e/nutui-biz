@@ -128,7 +128,7 @@ export default App;
 ### Overlay Translucent Shadow Style
 
 
-The distance from the scrolling content to the mask side of the container is `maskWidth` by default, and can also be set via `maskDistance`
+The distance between the scrollable content and the mask side of the container defaults to `maskWidth` width, and can also be set via `maskDistance`
 
 :::demo
 ```tsx
@@ -312,7 +312,7 @@ export default App;
 | maskPosition    | Mask layer display position (eg: `left`, `right`) | String | `right` |
 | maskShadowType  | Mask shadow form (eg `none`: none, `triangle`: triangle, `shadow`: shadow, `transparent`: translucent) | String | `triangle`    |
 | maskWidth       | mask layer width, the default unit is `px` | String \| Number | `100px`              |
-| maskDistance    | The width of the scroll content from the container, the default unit is `px`    | String \| Number | `0`              |
+| maskDistance    | The distance between the scroll content and the overlay side of the container, the default unit is `px`    | String \| Number | `0`              |
 | showScrollBar   | whether to show scroll bar                     | Boolean | `false`             |
 | maskIcon        | Custom icon `name` value    | String | `category` |
 | maskContent     | Custom mask content         | String \| React.ReactNode | `More` |

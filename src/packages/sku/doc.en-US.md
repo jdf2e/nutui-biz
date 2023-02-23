@@ -365,7 +365,7 @@ export default App;
 | btnOptions        |           Bottom button              | Array | [`confirm`]           |
 | btnExtraText | Add text above button | String | -            |
 | stepperTitle         | Stepper left text | String | `Buy Num`                |
-| stepperExtraText        |   The text between the stepper and the headline       | Function \| Boolean | `false`              |
+| stepperExtraText        |   The text between the stepper and the headline       | () => ReactNode \| Boolean | `false`              |
 | buyText |  Buy button text    | String | `Buy It Now` |
 | addCartText          |        Add cart button text                 | String | `Add To cart`             |
 | confirmText          |           Confirm button text              | String | `Confirm`             |
