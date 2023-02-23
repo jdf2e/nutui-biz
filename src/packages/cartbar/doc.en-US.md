@@ -23,14 +23,20 @@ import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
 const App = () => {
   return (
     <CartBar>
-      <CartBarIcon text="shop" icon="shop" />
-      <CartBarIcon text="shopping cart" icon="cart" />
-      <CartBarButton text="add cart" type="danger" />
-      <CartBarButton text="buy it now" type="warning" />
+      <CartBarIcon text="shop" iconProps={{name: 'shop'}} />
+      <CartBarIcon text="shopping cart" iconProps={{name: 'cart'}} />
+      <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
+      <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
     </CartBar>
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -46,14 +52,20 @@ import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
 const App = () => {
   return (
     <CartBar>
-      <CartBarIcon text="shop" icon="shop" badge="10" />
-      <CartBarIcon text="shopping cart" icon="cart" dot />
-      <CartBarButton text="add cart" type="danger" />
-      <CartBarButton text="buy it now" type="warning" />
+      <CartBarIcon text="shop" iconProps={{name: 'shop'}} badgeProps={{value: '10'}}  />
+      <CartBarIcon text="shopping cart" iconProps={{name: 'cart'}} badgeProps={{dot: true}} />
+      <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
+      <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
     </CartBar>
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -69,14 +81,20 @@ import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
 const App = () => {
   return (
     <CartBar>
-      <CartBarIcon text="shop" color="red" icon="shop" />
-      <CartBarIcon text="shopping cart" icon="cart" />
-      <CartBarButton text="add cart" type="danger" />
-      <CartBarButton text="buy it now" type="warning" />
+      <CartBarIcon text="shop" iconProps={{name: 'shop', color: 'red'}} />
+      <CartBarIcon text="shopping cart" iconProps={{name: 'cart'}} />
+      <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
+      <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
     </CartBar>
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -92,14 +110,20 @@ import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
 const App = () => {
   return (
     <CartBar>
-      <CartBarIcon icon="shop" />
-      <CartBarIcon icon="cart" />
-      <CartBarButton text="add cart" type="danger" />
-      <CartBarButton text="buy it now" type="warning" />
+      <CartBarIcon iconProps={{name: 'shop'}} />
+      <CartBarIcon iconProps={{name: 'cart'}} />
+      <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
+      <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
     </CartBar>
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -115,14 +139,20 @@ import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
 const App = () => {
   return (
     <CartBar hasCapsuleButtons>
-      <CartBarIcon text="shop" icon="shop" />
-      <CartBarIcon text="shopping cart" icon="cart" />
-      <CartBarButton text="add cart" type="danger" />
-      <CartBarButton text="buy it now" type="warning" />
+      <CartBarIcon text="shop" iconProps={{name: 'shop'}} />
+      <CartBarIcon text="shopping cart" iconProps={{name: 'cart'}} />
+      <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
+      <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
     </CartBar>
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -142,14 +172,20 @@ const App = () => {
 
   return (
     <CartBar top={customTopHtml()}>
-      <CartBarIcon text="shop" icon="shop" />
-      <CartBarIcon text="shopping cart" icon="cart" />
-      <CartBarButton text="add cart" type="danger" />
-      <CartBarButton text="buy it now" type="warning" />
+      <CartBarIcon text="shop" iconProps={{name: 'shop'}} />
+      <CartBarIcon text="shopping cart" iconProps={{name: 'cart'}} />
+      <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
+      <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
     </CartBar>
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -177,16 +213,14 @@ export default App;
 | Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
 | text   | Icon text                                 | ReactNode  | -         |
-| icon   | Icon                                 | ReactNode  | -         |
-| color   | Icon color                                 | String  | `#323233`         |
-| dot   | Whether to display the small red dot in the upper right corner of the icon                                 | Boolean  | `false`         |
-| badge   | The content of the icon in the upper right corner of the icon	                                 | Number \| String  | -         |
+| iconProps   | Icon props                                 | [IconProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)  | -         |
+| badgeProps   | Badge props                                 | [BadgeProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/badge)  | -         |
 
 
 ## CartBarIcon Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
-| onClick | Click event |  event: Event |
+| onClick | Click event |  - |
 
 
 
@@ -202,4 +236,4 @@ export default App;
 ## CartBarButton Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
-| onClick | Click event |  event: Event |
+| onClick | Click event |  - |

@@ -40,13 +40,13 @@ export const CartBarButton: FunctionComponent<
   }
 
   return (
-    <div className={classNames(b(),className)} style={style} {...rest} onClick={handleClick}>
+    <p className={classNames(b(),className)} style={style} {...rest} onClick={handleClick}>
       <Button 
         {...buttonProps}
       >
         {text}
       </Button>
-    </div>
+    </p>
   )
 }
 

@@ -8,8 +8,8 @@ import { CartBarButton } from '../../cartbarbutton/cartbarbutton'
 test('test base', async () => {
   const { container } = render(
     <CartBar>
-      <CartBarIcon text="店铺" icon="shop" />
-      <CartBarIcon text="购物车" icon="cart" />
+      <CartBarIcon text="店铺" iconProps={{name: 'shop'}} />
+      <CartBarIcon text="购物车" iconProps={{name: 'cart'}} />
       <CartBarButton text="加入购物车" buttonProps={{type: "danger"}} />
       <CartBarButton text="立即购买" buttonProps={{type: "warning"}} />
     </CartBar>
@@ -26,8 +26,8 @@ test('test base', async () => {
 test('test icon badge and dot', async () => {
   const { container } = render(
     <CartBar>
-      <CartBarIcon text="店铺" icon="shop" badge="10" />
-      <CartBarIcon text="购物车" icon="cart" dot />
+      <CartBarIcon text="店铺" iconProps={{name: 'shop'}} badgeProps={{value: '10'}} />
+      <CartBarIcon text="购物车" iconProps={{name: 'cart'}} badgeProps={{dot: true}} />
     </CartBar>
   )
 
@@ -40,7 +40,7 @@ test('test icon badge and dot', async () => {
 test('test icon color', async () => {
   const { container } = render(
     <CartBar>
-      <CartBarIcon text="店铺" icon="shop" color='red' />
+      <CartBarIcon text="店铺" iconProps={{name: 'shop', color: 'red'}} />
     </CartBar>
   )
 
@@ -52,7 +52,7 @@ test('test icon color', async () => {
 test('test no text icon', async () => {
   const { container } = render(
     <CartBar>
-      <CartBarIcon icon="shop" />
+      <CartBarIcon iconProps={{name: 'shop'}} />
     </CartBar>
   )
 
@@ -75,8 +75,8 @@ test('test hasCapsuleButtons', async () => {
 test('test hasCapsuleButtons', async () => {
   const { container } = render(
     <CartBar top={<div>我是自定义内容！</div>}>
-      <CartBarIcon text="店铺" icon="shop" />
-      <CartBarIcon text="购物车" icon="cart" />
+      <CartBarIcon text="店铺" iconProps={{name: 'shop'}} />
+      <CartBarIcon text="购物车" iconProps={{name: 'cart'}} />
       <CartBarButton text="加入购物车"  buttonProps={{type: "danger"}} />
       <CartBarButton text="立即购买"  buttonProps={{type: "warning"}} />
     </CartBar>
@@ -89,7 +89,7 @@ test('test hasCapsuleButtons', async () => {
 test('test placeholder', async () => {
   const { container } = render(
     <CartBar placeholder>
-      <CartBarIcon text="店铺" icon="shop" />
+      <CartBarIcon text="店铺" iconProps={{name: 'shop'}} />
     </CartBar>
   )
 
@@ -101,7 +101,7 @@ test('test click', async () => {
   const onClick2 = jest.fn()
   const { container } = render(
     <CartBar>
-      <CartBarIcon text="店铺" icon="shop" onClick={onClick1} />
+      <CartBarIcon text="店铺" iconProps={{name: 'shop'}} onClick={onClick1} />
       <CartBarButton text="加入购物车"  buttonProps={{type: "danger"}} onClick={onClick2} />
     </CartBar>
   )

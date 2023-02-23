@@ -11,7 +11,7 @@ import {cn2} from '@/utils/bem'
 import { IComponent } from '@/utils/typings'
 
 export type IsearchItem = {
-  key: string,
+  key: ReactNode,
   url: string
 }
 
@@ -39,6 +39,7 @@ export interface SearchHistoryProps extends IComponent {
   onClickBackIcon: () => void
   onClickSearchItem: (searchItem: IsearchItem) => void
   onClickRightInIcon: () => void
+  onSearchBarChange: (value: string, event: Event) => void
   onDelete: () => void
   onDeleteSingle: (item: IsearchItem) => void
   onRefresh: () => void
@@ -68,24 +69,26 @@ export const SearchHistory: FunctionComponent<
     noDiscoverDataText = locale.searchHistory.noDiscoverDataText,
     deleteType = 'all',
     recentSearchCollapse = true,
-    onClickSearchButton =  (value: string) => {},
-    onClickBackIcon = () => {},
-    onClickSearchItem = (searchItem: IsearchItem) => {},
-    onClickRightInIcon = () => {},
-    onDelete = () => {},
-    onDeleteSingle = (item: IsearchItem) => {},
-    onRefresh = () => {},
+    onClickSearchButton,
+    onClickBackIcon,
+    onClickSearchItem,
+    onClickRightInIcon,
+    onSearchBarChange,
+    onDelete,
+    onDeleteSingle,
+    onRefresh,
     ...rest
   } = {
     ...props,
   }
 
-  const [value, setValue] = useState<string>()
+  const [value, setValue] = useState<string>(keyword)
   const [eyeOpened, setEyeOpened] = useState<boolean>(true)
   const [isShowDeleteSearchItemIcon, setIsShowDeleteSearchItemIcon] = useState<boolean>(false)
 
-  const handleChange = (val: string) => {
+  const handleChange = (val: string, event: Event) => {
     setValue(val)
+    onSearchBarChange && onSearchBarChange(val, event)
   }
 
   const handleClear = () => {
@@ -99,6 +102,7 @@ export const SearchHistory: FunctionComponent<
 
   const renderSearchBar = () => {
     return <SearchBar
+      placeholder="input search text"
       shape="round"
       className={classNames({'nut-searchbar-no-left-in-icon': leftInIcon === ''})}
       value={value}

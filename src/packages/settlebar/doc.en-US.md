@@ -29,6 +29,12 @@ const App = () => {
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -51,6 +57,12 @@ const App = () => {
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -71,6 +83,12 @@ const App = () => {
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -91,6 +109,12 @@ const App = () => {
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -116,6 +140,12 @@ const App = () => {
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -139,6 +169,12 @@ const App = () => {
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -161,6 +197,12 @@ const App = () => {
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -187,6 +229,12 @@ const App = () => {
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -216,6 +264,8 @@ export default App;
 | customTotalPrice | Customize total price content | ReactNode  | -          |
 | customTotalExtra | Customize total extra content | ReactNode  | -          |
 | customButton | Customize button content | ReactNode  | -          |
+| iconProps   | Icon props                                 | [IconProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)  | -         |
+| checkboxProps   | Checkbox props                                 | [CheckboxProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/checkbox)  | -         |
 
 
 ## Events
