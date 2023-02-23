@@ -113,6 +113,7 @@
     }
   
     &__sku-img {
+      max-width: 75px;
       font-size: 12px;
       font-family: PingFangSC;
       font-weight: normal;
@@ -120,6 +121,9 @@
       margin-top: 10px;
       margin-bottom: 10px;
       text-align: center;
+      white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
   
     &__self-item-list {
