@@ -116,25 +116,25 @@ export default App;
 
 | Attribute    | Description                           | Type                      | Default |
 |--------------|---------------------------------------|---------------------------|---------|
-| modelValue   | Id of chosen contact                  | Number \| String          | -       |
+| modelValue   | Id of chosen contact                  | number \| string          | -       |
 | list         | Data List                             | Array<ReceiveInvoiceItem> | []      |
-| enableDelete | Whether to enable the delete function | Boolean                   | `false` |
+| enableDelete | Whether to enable the delete function | boolean                   | `false` |
 
 ### ReceiveInvoiceItem Data Structure
 
 | key     | Description         | Type                         |
 |---------|---------------------|------------------------------|
-| id      | ID                  | Number \| String             |
-| name    | Name                | String                       |
-| tel     | Phone               | String                       |
-| addres  | Addres              | String                       |
+| id      | ID                  | number \| string             |
+| name    | Name                | string                       |
+| tel     | Phone               | string                       |
+| addres  | Addres              | string                       |
 | extends | Extend custom array | Array<ReceiveInvoiceItemExt> |
 ### ReceiveInvoiceItemExt Data Structure
 
 | key   | Description        | Type   |
 |-------|--------------------|--------|
-| label | Custom field name  | String |
-| value | Custom field value | String |
+| label | Custom field name  | string |
+| value | Custom field value | string |
 
 
 ## Events
