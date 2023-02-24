@@ -32,7 +32,7 @@ const zhCN: BaseLang = {
     rightOutIcon: "搜索",
     deleteAll: "全部删除",
     finish: "完成",
-    hidden: "已隐藏"
+    hidden: "已隐藏",
   },
   settleBar: {
     totalText: "合计",
@@ -182,6 +182,34 @@ const zhCN: BaseLang = {
   },
   orderCancelPanel: {
     otherText: "其他",
+  },
+  addressedit: {
+    nameText: "收货人",
+    namePlaceholder: "请输入收货人",
+    nameErrorMsg: "该项为必填项，请填写完后提交",
+    telText: "手机号码",
+    telPlaceholder: "请输入手机号码",
+    telErrorMsg: "该项为必填项，请填写完后提交",
+    regionText: "所在地区",
+    regionPlaceholder: "请选择所在地区",
+    regionErrorMsg: "该项为必填项，请填写完后提交",
+    addressText: "详细地址",
+    addressPlaceholder: "街道、楼牌号",
+    addressErrorMsg: "该项为必填项，请填写完后提交",
+    bottomText: "保存",
+    setDefaultText: "设置默认地址",
+  },
+  login: {
+    accountPlaceholder: "请输入登录码",
+    telOrMailPlaceholder: "请输入手机号或邮箱",
+    passwordPlaceholder: "请输入密码",
+    verifyPlaceholder: "请输入验证码",
+    verifyButtonText: "获取验证码",
+    getCodeErrorToast: "请填写正确的手机号或邮箱",
+    switchLoginText1: "账号密码登录",
+    switchLoginText2: "手机/邮箱登录",
+    forgetPwdText: "忘记密码",
+    loginButtonText: "登录",
   },
 };
 export default zhCN;

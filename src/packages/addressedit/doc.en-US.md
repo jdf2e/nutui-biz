@@ -56,8 +56,6 @@ const App = () => {
     default: false,
   };
   const addressSetData = {
-     nameText: "Consignee",
-     namePlaceholder: "Please enter the recipient's name",
      isRequired: ["name", "tel", "region", "address"],
      isDefualtAddress: true,
    };
@@ -121,8 +119,6 @@ const App = () => {
      default: true,
    };
   const addressSetData = {
-     nameText: "Consignee",
-     namePlaceholder: "Please enter the recipient's name",
      isRequired: ["name", "tel", "region", "address"],
      isDefualtAddress: true,
    };
@@ -368,13 +364,13 @@ export default App;
 | nameText | Custom consignee text | String | `Consignee` |
 | namePlaceholder | Custom consignee placeholder text | String | `Please enter the consignee` |
 | nameErrorMsg | Custom consignee non-null verification error prompt text | String | `This item is required, please fill it out and submit it` |
-| telText | Custom  phone number text | String | `Mobile phone number` |
+| telText | Custom  phone number text | String | `Tel` |
 | telPlaceholder | Custom phone number placeholder text | String | `Please enter your phone number` |
 | telErrorMsg | Prompt text for non-null mobile phone number verification error | String | `This item is required, please fill it out and submit it` |
 | regionText | Customize the region text | String | `Region` |
 | regionPlaceholder | Custom region placeholder text | String | `Please select your region` |
 | regionErrorMsg | Custom region non-null verification error prompt text | String | `This item is required, please fill it out and submit it` |
-| addressText | Custom detailed address text | String | `Detailed address` |
+| addressText | Custom detailed address text | String | `Address` |
 | addressPlaceholder | Custom detailed address placeholder text | String | `street, building number` |
 | addressErrorMsg | Custom detailed address non-null verification error prompt text | String | `This item is required, please fill it out and submit it` |
 |bottomText|Customize the text of the save button at the bottom | String | `Save` |

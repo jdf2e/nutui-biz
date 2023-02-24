@@ -9,20 +9,13 @@ interface T {
   hasCustom: string;
   hasCustomInput: string;
   hasError: string;
-  placeholder1: string;
-  placeholder2: string;
-  placeholder3: string;
-  placeholder4: string;
+  placeholder: string;
   codeText: string;
   loginText: string;
   errorText1: string;
   errorText2: string;
-  forgetPwd: string;
-  switchText1: string;
-  switchText2: string;
   titleText: string;
   zhuce: string;
-  errorToast: string;
 }
 const LoginDemo = () => {
   const [translated] = useTranslate<T>({
@@ -32,20 +25,13 @@ const LoginDemo = () => {
       hasCustom: "用户自定义登录框",
       hasError: "错误提示",
       hasCustomInput: "用户自定义输入框",
-      placeholder1: "请输入账号",
-      placeholder2: "请输入手机号或邮箱",
-      placeholder3: "请输入账号密码",
-      placeholder4: "请输入验证码",
+      placeholder: "请输入验证码",
       codeText: "获取验证码",
       loginText: "登录",
       errorText1: "账号不存在",
       errorText2: "请输入6位密码",
-      forgetPwd: "忘记密码",
-      switchText1: "账号密码登录",
-      switchText2: "手机/邮箱登录",
       titleText: "卡号登录",
       zhuce: "新用户注册",
-      errorToast: "请填写正确的手机号或邮箱",
     },
     "en-US": {
       basic: "Basic usage",
@@ -53,20 +39,13 @@ const LoginDemo = () => {
       hasCustom: "Custom Login",
       hasCustomInput: "Custom Input",
       hasError: "Error Prompt",
-      placeholder1: "Please enter account number",
-      placeholder2: "Please enter your phone number or email",
-      placeholder3: "Please enter the account password",
-      placeholder4: "Please enter the verification code",
+      placeholder: "Please enter the verify code",
       codeText: "Get code",
       loginText: "Login",
       errorText1: "Account does not exist",
       errorText2: "Please enter a 6-digit password",
-      forgetPwd: "Forget password",
-      switchText1: "Account login",
-      switchText2: "Mobile phone/email login",
       titleText: "Login title",
       zhuce: "New User Registration",
-      errorToast: "Please fill in the correct phone number or email address",
     },
   });
 
@@ -74,25 +53,16 @@ const LoginDemo = () => {
     "https://img10.360buyimg.com/imagetools/jfs/t1/187998/28/32123/16333/63e346b8F0bff354b/c95da99ea108c463.png";
   const [formParams, setformParams] = useState({
     account: "",
-    accountPlaceholder: translated.placeholder1,
     accountErrorText: "",
     telOrMail: "",
-    telOrMailPlaceholder: translated.placeholder2,
     telOrMailErrorText: "",
     password: "",
-    passwordPlaceholder: translated.placeholder3,
     passwordErrorText: "",
     verifyCode: "",
-    verifyPlaceholder: translated.placeholder4,
     verifyButtonText: translated.codeText,
-    forgetPwdText: translated.forgetPwd,
-    switchLoginText1: translated.switchText1,
-    switchLoginText2: translated.switchText2,
-    getCodeErrorToast: translated.errorToast,
   });
   const [formParams2, setformParams2] = useState({
     account: "",
-    accountPlaceholder: translated.placeholder1,
     accountErrorText: "",
     telOrMail: "",
     telOrMailErrorText: "",
@@ -103,21 +73,12 @@ const LoginDemo = () => {
   });
   const [formParams3, setformParams3] = useState({
     account: "12345",
-    accountPlaceholder: translated.placeholder1,
     accountErrorText: translated.errorText1,
     telOrMail: "",
-    telOrMailPlaceholder: translated.placeholder2,
     telOrMailErrorText: "",
     password: "123",
     passwordErrorText: translated.errorText2,
-    passwordPlaceholder: translated.placeholder3,
     verifyCode: "",
-    verifyPlaceholder: translated.placeholder4,
-    forgetPwdText: translated.forgetPwd,
-    switchLoginText1: translated.switchText1,
-    switchLoginText2: translated.switchText2,
-    verifyButtonText: translated.codeText,
-    getCodeErrorToast: translated.errorToast,
   });
   const [getVerify, setGetVerify] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
@@ -270,7 +231,7 @@ const LoginDemo = () => {
                     className="nut-input-text"
                     border={false}
                     defaultValue={customInput}
-                    placeholder={translated.placeholder4}
+                    placeholder={translated.placeholder}
                     type="text"
                     clearable
                     onChange={(value) => {

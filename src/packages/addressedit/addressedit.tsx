@@ -3,18 +3,12 @@ import React, {
   useState,
   useEffect,
   ReactNode,
+  CSSProperties,
 } from "react";
 import { useConfig } from "@/packages/configprovider";
 import bem from "@/utils/bem";
 import { IComponent } from "@/utils/typings";
-import {
-  Input,
-  Button,
-  Address,
-  Switch,
-  Cell,
-  CellGroup,
-} from "@nutui/nutui-react";
+import { Input, Button, Address, Switch } from "@nutui/nutui-react";
 
 interface CalResult {
   type: string;
@@ -52,13 +46,13 @@ interface AddressData {
   bottomText?: string;
 }
 interface AddressResult {
-  addressSelect: any;
-  addressStr: string;
-  province: RegionData[];
-  city: RegionData[];
-  country: RegionData[];
-  town: RegionData[];
-  customAddressTitle: string;
+  addressSelect?: any;
+  addressStr?: string;
+  province?: RegionData[] | any;
+  city?: RegionData[] | any;
+  country?: RegionData[] | any;
+  town?: RegionData[] | any;
+  customAddressTitle?: string;
   height?: string;
   addressType?: string;
 }
@@ -66,7 +60,7 @@ interface AddressResult {
 export interface AddressEditProps extends IComponent {
   addressInfo: AddressInfo;
   data: AddressData;
-  address: any;
+  address: AddressResult;
   bottomInputTpl?: ReactNode;
   showSave?: Boolean;
   onChange: (val: string, tag: string) => void;
@@ -104,6 +98,8 @@ export const AddressEdit: FunctionComponent<
 > = (props) => {
   const { locale } = useConfig();
   const {
+    className,
+    style,
     addressInfo = null,
     showSave = true,
     data = null,
@@ -147,19 +143,19 @@ export const AddressEdit: FunctionComponent<
   });
   //地址编辑数据形式兜底文案配置
   const [editSeting, setEditSeting] = useState({
-    nameText: "收货人",
-    namePlaceholder: "请输入收货人",
-    nameErrorMsg: "该项为必填项，请填写完后提交",
-    telText: "手机号码",
-    telPlaceholder: "请输入手机号码",
-    telErrorMsg: "该项为必填项，请填写完后提交",
-    regionText: "所在地区",
-    regionPlaceholder: "请选择所在地区",
-    regionErrorMsg: "该项为必填项，请填写完后提交",
-    addressText: "详细地址",
-    addressPlaceholder: "街道、楼牌号",
-    addressErrorMsg: "该项为必填项，请填写完后提交",
-    bottomText: "保存",
+    nameText: locale.addressedit.nameText,
+    namePlaceholder: locale.addressedit.namePlaceholder,
+    nameErrorMsg: locale.addressedit.nameErrorMsg,
+    telText: locale.addressedit.telText,
+    telPlaceholder: locale.addressedit.telPlaceholder,
+    telErrorMsg: locale.addressedit.telErrorMsg,
+    regionText: locale.addressedit.regionText,
+    regionPlaceholder: locale.addressedit.regionPlaceholder,
+    regionErrorMsg: locale.addressedit.regionErrorMsg,
+    addressText: locale.addressedit.addressText,
+    addressPlaceholder: locale.addressedit.addressPlaceholder,
+    addressErrorMsg: locale.addressedit.addressErrorMsg,
+    bottomText: locale.addressedit.bottomText,
   });
   const [errorList, setErrorList] = useState<any>([]);
   const [showPopup, setShowPopup] = useState(false);
@@ -201,6 +197,7 @@ export const AddressEdit: FunctionComponent<
     onChangeAddress && onChangeAddress(cal);
   };
 
+  //地址组件关闭事件数据处理
   const closeAddress = (val: CalResult) => {
     if ((val.data as AddressResult).addressStr) {
       //地址id格式处理
@@ -216,6 +213,7 @@ export const AddressEdit: FunctionComponent<
 
     setShowPopup(false);
   };
+
   const inputOnchange = (val: any, tag: string) => {
     let data = { ...formData };
     if (val.length != 0) {
@@ -241,6 +239,7 @@ export const AddressEdit: FunctionComponent<
     setFormData({ ...formData, ...data });
     onChange && onChange(val, tag);
   };
+
   const validForm = () => {
     let form = { ...formData };
     let arr: any = [].concat(errorList);
@@ -278,6 +277,7 @@ export const AddressEdit: FunctionComponent<
 
     return true;
   };
+  //保存按钮控制
   const save = () => {
     if (validForm()) {
       onSave && onSave(formData);
@@ -293,7 +293,7 @@ export const AddressEdit: FunctionComponent<
 
   const b = bem("addressedit");
   return (
-    <div className={`${b()}`} id={data?.id}>
+    <div className={`${b()} ${className}`} id={data?.id} style={style}>
       <div className={`${b("item")}`}>
         <Input
           className="nut-input-text"
@@ -372,7 +372,7 @@ export const AddressEdit: FunctionComponent<
       </div>
       {bottomInputTpl ? <>{bottomInputTpl}</> : null}
       <div className={`${b("item")} setdefualt`}>
-        <span className="label">设置默认地址</span>
+        <span className="label">{locale.addressedit.setDefaultText}</span>
         <Switch
           checked={formData.default}
           onChange={(state) => {
