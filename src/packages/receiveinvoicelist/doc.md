@@ -116,25 +116,25 @@ export default App;
 
 | 字段         | 说明                | 类型                      | 默认值  |
 |--------------|---------------------|---------------------------|---------|
-| modelValue   | 当前选中联系人的 id | Number \| String          | -       |
+| modelValue   | 当前选中联系人的 id | number \| string          | -       |
 | list         | 联系人列表          | Array<ReceiveInvoiceItem> | []      |
-| enableDelete | 是否启用删除功能    | Boolean                   | `false` |
+| enableDelete | 是否启用删除功能    | boolean                   | `false` |
 
 ### ReceiveInvoiceItem 数据结构
 
 | 键名    | 说明           | 类型                         |
 |---------|----------------|------------------------------|
-| id      | 联系人的 id    | Number \| String             |
-| name    | 联系人姓名     | String                       |
-| tel     | 联系人手机号   | String                       |
-| addres  | 联系人地址信息 | String                       |
+| id      | 联系人的 id    | number \| string             |
+| name    | 联系人姓名     | string                       |
+| tel     | 联系人手机号   | string                       |
+| addres  | 联系人地址信息 | string                       |
 | extends | 扩展自定义数组 | Array<ReceiveInvoiceItemExt> |
 ### ReceiveInvoiceItemExt 数据结构
 
 | 键名  | 说明           | 类型   |
 |-------|----------------|--------|
-| label | 自定义字段名称 | String |
-| value | 自定义值       | String |
+| label | 自定义字段名称 | string |
+| value | 自定义值       | string |
 
 
 ## Events

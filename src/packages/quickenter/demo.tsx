@@ -2,7 +2,6 @@ import React from "react";
 import { QuickEnter } from "./quickenter";
 import { useTranslate } from "../../sites/assets/locale";
 import { quickEnterData } from "./data";
-
 interface tarnslatedOption {
   basic: string;
   title1: string;
