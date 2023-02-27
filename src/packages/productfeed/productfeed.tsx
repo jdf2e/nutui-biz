@@ -8,8 +8,6 @@ import classNames from 'classnames'
 import bem from '@/utils/bem'
 
 export interface ProductFeedProps extends IComponent {
-  className: string
-  style: CSSProperties
   // 是否还有更多数据
   hasMore: boolean
   // 在 useWindow 属性为 false 的时候，自定义设置节点ID
@@ -32,7 +30,6 @@ export interface ProductFeedProps extends IComponent {
   onLoadMore: (param: () => void) => void
   // 下拉刷新事件回调
   onRefresh: (param: () => void) => void
-  // onClick: () => void
 }
 
 const defaultProps = {
@@ -42,7 +39,6 @@ const defaultProps = {
   loadTxt: '加载中...',
   isOpenRefresh: false,
   pullTxt: '松手刷新'
-  // onClick: () => { }
 } as ProductFeedProps
 
 export const ProductFeed: FunctionComponent<
@@ -71,12 +67,8 @@ export const ProductFeed: FunctionComponent<
 
   const b = bem('biz-productfeed')
 
-  useEffect(() => {
-  }, [])
-
-
   return (
-    <div className={classNames([b(), className])} style={{ ...style }} {...rest}>
+    <div className={classNames([b(), className])} style={style} {...rest}>
       <Infiniteloading
         containerId={containerId}
         useWindow={useWindow}
@@ -87,8 +79,9 @@ export const ProductFeed: FunctionComponent<
         pullTxt={pullTxt}
         onLoadMore={onLoadMore}
         onRefresh={onRefresh}
+        {...props}
       >
-        <div className={b('main')} >
+        <div className={b('main')}>
           {children}
         </div>
       </Infiniteloading>

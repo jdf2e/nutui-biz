@@ -18,7 +18,7 @@ export interface SkuOperateProps extends IComponent {
 }
 
 export const SkuOperate: FunctionComponent<
-  Partial<SkuOperateProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<SkuOperateProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { locale } = useConfig()
   const {

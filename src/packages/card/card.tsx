@@ -2,13 +2,13 @@ import React, { FunctionComponent, ReactNode, CSSProperties, HTMLAttributes } fr
 import { Price, Tag, Image } from '@nutui/nutui-react'
 import classNames from 'classnames'
 
-import bem from '@/utils/bem'
+import {cn2} from '@/utils/bem'
 
 export interface CardProps {
   imgUrl: string
   title: string
-  price: string
-  vipPrice: string
+  price: number | string
+  vipPrice: number | string
   shopDesc: string
   delivery: string
   shopName: string
@@ -81,7 +81,7 @@ export const Card: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const b = bem('biz-card')
+  const b = cn2('card')
 
   const handleClick = () => {
     onClick && onClick()
@@ -108,8 +108,8 @@ export const Card: FunctionComponent<
               >{titleTag || ''}{title}</div>}
               {prolistTpl}
               {isNeedPrice && <div className={b('right__price')}>
-                {priceTpl ? priceTpl : (price && <Price price={price} />)}
-                {originTpl ? originTpl : (vipPrice && <Price className={b('right__price__origin')} price={vipPrice} />)}
+                {priceTpl ? priceTpl : (price && <Price price={price} size="normal" />)}
+                {originTpl ? originTpl : (vipPrice && <Price className={b('right__price__origin')} price={vipPrice} size="normal" />)}
               </div>}
               <div className={b('right__other')}>
                 {shopTagTpl || (
@@ -137,7 +137,7 @@ export const Card: FunctionComponent<
               style={clampStyle()}
             >{titleTag || ''}{title}</div>}
             {isNeedPrice && <div>
-              {priceTpl ? priceTpl : (price && <Price price={price} />)}
+              {priceTpl ? priceTpl : (price && <Price price={price} size="normal" />)}
             </div>}
             <div className='half-line-shop-name'>{shopName}</div>
           </>}

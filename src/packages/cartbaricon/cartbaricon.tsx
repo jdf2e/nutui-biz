@@ -2,39 +2,32 @@ import React, {
   FunctionComponent,
   ReactNode
 } from 'react'
-import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames';
-import bem from '@/utils/bem'
-import {Icon, Badge} from '@nutui/nutui-react'
+import {cn2} from '@/utils/bem'
+import {Icon, Badge, IconProps, BadgeProps} from '@nutui/nutui-react'
 
 import { IComponent } from '@/utils/typings'
 
 export interface CartBarIconProps extends IComponent {
-  icon: ReactNode
-  badge: number | string
-  color: string
   text: ReactNode
-  dot: boolean
+  iconProps: Partial<IconProps>
+  badgeProps: Partial<BadgeProps>
   onClick: () => void
 }
 
 const defaultProps = {
-  dot: false,
   onClick: () => {}
 } as CartBarIconProps
 
 export const CartBarIcon: FunctionComponent<
-  Partial<CartBarIconProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<CartBarIconProps>
 > = (props) => {
-  const { locale } = useConfig()
   const {
     className,
     style,
-    icon,
-    color,
-    dot,
-    badge,
     text,
+    iconProps,
+    badgeProps,
     onClick,
     ...rest
   } = {
@@ -42,10 +35,10 @@ export const CartBarIcon: FunctionComponent<
     ...props,
   }
 
-  const b = bem('cart-bar-icon')
+  const b = cn2('cart-bar-icon')
 
   const renderIcon = () => {
-    return typeof icon === 'string' ? <Icon name={icon} color={color} /> : icon
+    return <Icon className={b('icon')} {...iconProps} />
   }
 
   const renderText = () => {
@@ -58,7 +51,7 @@ export const CartBarIcon: FunctionComponent<
 
   return (
     <div className={classNames(b(),className)} style={style} {...rest} onClick={handleClick}>
-      <Badge value={badge} dot={dot}>
+      <Badge {...badgeProps}>
         {renderIcon()}
       </Badge>
       {renderText()}

@@ -84,7 +84,6 @@ test("Add New Address", async () => {
     <AddressEdit
       address={addressData}
       data={addressSetData}
-      addressType={"custom"}
       addressInfo={addressInfo}
     />
   );
@@ -103,7 +102,6 @@ test("edit address", async () => {
     <AddressEdit
       address={addressData2}
       data={addressSetData}
-      addressType={"custom2"}
       addressInfo={addressInfo2}
     />
   );
@@ -136,7 +134,6 @@ test("event onChangeAddress test", async () => {
     <AddressEdit
       address={addressData2}
       data={addressSetData}
-      addressType={"custom2"}
       addressInfo={addressInfo2}
       onChangeAddress={changeHandle}
       onCloseAddress={closeHandle}
@@ -169,7 +166,6 @@ test("event onSave test", async () => {
     <AddressEdit
       address={addressData2}
       data={addressSetData}
-      addressType={"custom2"}
       addressInfo={addressInfo2}
       onSave={saveHandle}
     />

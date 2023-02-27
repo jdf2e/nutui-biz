@@ -1,6 +1,8 @@
 import React from 'react'
 import { SettleBar } from './settlebar'
 import { useTranslate } from '../../sites/assets/locale'
+import { Toast } from '@nutui/nutui-react';
+import './demo.scss';
 
 interface tarnslatedOption {
   basic: string;
@@ -11,11 +13,12 @@ interface tarnslatedOption {
   title5: string;
   title6: string;
   title7: string;
-  totalText: string 
-  settleButtonText: string
-  settleUnit: string
-  customWarningText: string
-  reduced: string
+  totalText: string;
+  settleButtonText: string;
+  settleUnit: string;
+  customWarningText: string;
+  reduced: string;
+  clicked: string;
 }
 
 const SettleBarDemo = () => {
@@ -33,22 +36,8 @@ const SettleBarDemo = () => {
       settleButtonText: '提交订单',
       settleUnit: '个',
       customWarningText: '此商品无货！',
-      reduced: '已减'
-    },
-    'zh-TW': {
-      basic: '基本用法',
-      title1: '對齊方式',
-      title2: '禁用狀態',
-      title3: '加載狀態',
-      title4: '提交訂單',
-      title5: '去結算數量和單位',
-      title6: '自定義合計額外區域內容',
-      title7: '帶有警告信息',
-      totalText: '總計',
-      settleButtonText: '提交訂單',
-      settleUnit: '個',
-      customWarningText: '此商品無貨！',
-      reduced: '已減'
+      reduced: '已减',
+      clicked: '点击按钮'
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -63,7 +52,8 @@ const SettleBarDemo = () => {
       settleButtonText: 'Submit Order',
       settleUnit: 'Indivual',
       customWarningText: 'This product is out of stock！',
-      reduced: 'reduced'
+      reduced: 'reduced',
+      clicked: 'Settle'
     }
   });
   const customWarningHtml = () => {
@@ -74,21 +64,46 @@ const SettleBarDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <SettleBar />
+        <SettleBar 
+          onSettle={() => Toast.text(translated.clicked)} 
+        />
         <h2>{translated.title1}</h2>
-        <SettleBar totalAlign="left" />
+        <SettleBar 
+          totalAlign="left" 
+          onSettle={() => Toast.text(translated.clicked)} 
+        />
         <h2>{translated.title2}</h2>
-        <SettleBar disabled />
+        <SettleBar 
+          disabled 
+        />
         <h2>{translated.title3}</h2>
-        <SettleBar loading />
+        <SettleBar 
+          loading 
+        />
         <h2>{translated.title4}</h2>
-        <SettleBar customSelectAll="" noCount={true} totalText={translated.totalText} settleButtonText={translated.settleButtonText} />
+        <SettleBar 
+          customSelectAll="" 
+          noCount={true} 
+          totalText={translated.totalText} 
+          settleButtonText={translated.settleButtonText} 
+          onSettle={() => Toast.text(translated.clicked)} 
+        />
         <h2>{translated.title5}</h2>
-        <SettleBar settleCount="100" settleUnit={translated.settleUnit} />
+        <SettleBar 
+          settleCount="100" 
+          settleUnit={translated.settleUnit} 
+          onSettle={() => Toast.text(translated.clicked)} 
+        />
         <h2>{translated.title6}</h2>
-        <SettleBar customTotalExtra={<div style={{fontSize: '12px'}}>{translated.reduced} ¥30.00</div>} />
+        <SettleBar 
+          customTotalExtra={<div style={{fontSize: '12px'}}>{translated.reduced} ¥30.00</div>} 
+          onSettle={() => Toast.text(translated.clicked)} 
+        />
         <h2>{translated.title7}</h2>
-        <SettleBar customWarning={customWarningHtml()} />
+        <SettleBar 
+          customWarning={customWarningHtml()} 
+          onSettle={() => Toast.text(translated.clicked)} 
+        />
       </div>
     </>
   )

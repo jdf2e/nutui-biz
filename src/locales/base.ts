@@ -28,6 +28,9 @@ export interface BaseLang {
     searchDiscoverText: string;
     noDiscoverDataText: string;
     rightOutIcon: string;
+    deleteAll: string;
+    finish: string;
+    hidden: string;
   };
   settleBar: {
     totalText: string;
@@ -179,4 +182,32 @@ export interface BaseLang {
     more: string;
   };
   orderCancelPanel: { otherText: string };
+  addressedit: {
+    nameText: string;
+    namePlaceholder: string;
+    nameErrorMsg: string;
+    telText: string;
+    telPlaceholder: string;
+    telErrorMsg: string;
+    regionText: string;
+    regionPlaceholder: string;
+    regionErrorMsg: string;
+    addressText: string;
+    addressPlaceholder: string;
+    addressErrorMsg: string;
+    bottomText: string;
+    setDefaultText: string;
+  };
+  login: {
+    accountPlaceholder: string;
+    telOrMailPlaceholder: string;
+    passwordPlaceholder: string;
+    verifyPlaceholder: string;
+    verifyButtonText: string;
+    getCodeErrorToast: string;
+    switchLoginText1: string;
+    switchLoginText2: string;
+    forgetPwdText: string;
+    loginButtonText: string;
+  };
 }

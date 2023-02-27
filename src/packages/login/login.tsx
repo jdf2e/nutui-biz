@@ -1,12 +1,13 @@
 import React, {
   FunctionComponent,
-  ReactHTML,
   useEffect,
   useState,
   useRef,
+  ReactNode,
 } from "react";
 import { useConfig } from "@/packages/configprovider";
-import bem from "@/utils/bem";
+import classNames from "classnames";
+import { cn2 } from "@/utils/bem";
 import { IComponent } from "@/utils/typings";
 import { Input, Button, Icon, Checkbox, Toast } from "@nutui/nutui-react";
 
@@ -38,16 +39,19 @@ export interface LoginProps extends IComponent {
   loginButtonDisable: boolean;
   loginButtonText: string;
   hasForgetPassWord: boolean;
-  slotProtocolText?: React.ReactNode;
-  slotBottom?: React.ReactNode;
+  slotProtocolText?: ReactNode;
+  slotBottom?: ReactNode;
   hasHidePwd?: boolean;
   isGetCode?: boolean;
   countDownTime?: number;
   isHideSwitchBtn?: boolean;
+  slotInput?: ReactNode;
   onInputChange?: (value: string, tag: string) => void;
   onLoginBtnClick?: (data: any) => void;
   onVerifyBtnClick?: (formData: LoginParamsProps) => void;
   onForgetBtnClick?: () => void;
+  onInputClear?: (tag: string) => void;
+  onLoginTypeClick?: () => void;
 }
 
 const defaultProps = {
@@ -70,12 +74,14 @@ export const Login: FunctionComponent<
 > = (props) => {
   const { locale } = useConfig();
   const {
+    className,
+    style,
     logo,
     title,
     formParams,
     loginType,
     loginButtonDisable,
-    loginButtonText,
+    loginButtonText = locale.login.loginButtonText,
     hasForgetPassWord,
     hasHidePwd,
     isGetCode,
@@ -83,10 +89,13 @@ export const Login: FunctionComponent<
     slotBottom,
     countDownTime = 60,
     isHideSwitchBtn,
+    slotInput,
     onInputChange,
     onLoginBtnClick,
     onVerifyBtnClick,
     onForgetBtnClick,
+    onInputClear,
+    onLoginTypeClick,
   } = {
     ...defaultProps,
     ...props,
@@ -110,23 +119,23 @@ export const Login: FunctionComponent<
 
   const [loginParams, setLoginParams] = useState<LoginParamsProps>({
     account: "",
-    accountPlaceholder: "请输入登录码",
+    accountPlaceholder: locale.login.accountPlaceholder,
     accountErrorText: "",
     telOrMail: "",
-    telOrMailPlaceholder: "请输入手机号或邮箱",
+    telOrMailPlaceholder: locale.login.telOrMailPlaceholder,
     telOrMailErrorText: "",
     password: "",
-    passwordPlaceholder: "请输入密码",
+    passwordPlaceholder: locale.login.passwordPlaceholder,
     passwordErrorText: "",
     isShowPwdInput: true,
     verifyCode: "",
-    verifyPlaceholder: "请输入验证码",
-    verifyButtonText: "获取验证码",
+    verifyPlaceholder: locale.login.verifyPlaceholder,
+    verifyButtonText: locale.login.verifyButtonText,
     verifyErrorText: "",
-    getCodeErrorToast: "请填写正确的手机号或邮箱",
-    switchLoginText1: "账号密码登录",
-    switchLoginText2: "手机/邮箱登录",
-    forgetPwdText: "忘记密码",
+    getCodeErrorToast: locale.login.getCodeErrorToast,
+    switchLoginText1: locale.login.switchLoginText1,
+    switchLoginText2: locale.login.switchLoginText2,
+    forgetPwdText: locale.login.forgetPwdText,
   });
 
   const switchLogin = () => {
@@ -137,6 +146,7 @@ export const Login: FunctionComponent<
       setCurrLoginType("pwd");
       resetParams();
     }
+    onLoginTypeClick && onLoginTypeClick();
   };
   //重置
   const resetParams = () => {
@@ -168,20 +178,20 @@ export const Login: FunctionComponent<
     let status2 = currLoginType === "pwd" && account != "" && !isShowPwdInput;
     let status3 =
       currLoginType === "verify" && telOrMail != "" && verifyCode != "";
-
+    //用户自定义输入框slotInput时，登录按钮是否可点击用户控制
     if (slotProtocolText) {
-      if ((status1 || status2 || status3) && isProtocol) {
+      if ((status1 || status2 || status3) && isProtocol && !slotInput) {
         setIsLoginDisable(false);
         return;
       }
     } else {
-      if (status1 || status2 || status3) {
+      if ((status1 || status2 || status3) && !slotInput) {
         setIsLoginDisable(false);
         return;
       }
     }
-    setIsLoginDisable(true);
-  }, [loginParams, slotProtocolText, isProtocol]);
+    !slotInput && setIsLoginDisable(true);
+  }, [loginParams, slotProtocolText, isProtocol, slotInput]);
 
   const inputOnChange = (value: any, tag: string) => {
     let params: any = { ...loginParams };
@@ -197,7 +207,8 @@ export const Login: FunctionComponent<
     const telreg = /^[1][3,4,5,7,8][0-9]{9}$/;
     const mailreg =
       /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-    if (telreg.test(telOrMail) || mailreg.test(telOrMail)) {
+    // if (telreg.test(telOrMail) || mailreg.test(telOrMail)) {
+    if (telOrMail.length) {
       onVerifyBtnClick && onVerifyBtnClick(loginParams);
     } else {
       Toast.text(getCodeErrorToast, { duration: 2 });
@@ -236,8 +247,10 @@ export const Login: FunctionComponent<
   const inputClear = (tag: string) => {
     let params: any = loginParams;
     params[tag] = "";
+    onInputClear && onInputClear(tag);
     setLoginParams({ ...loginParams, ...params });
   };
+
   const isError = (tag: string) => {
     switch (tag) {
       case "account":
@@ -257,9 +270,9 @@ export const Login: FunctionComponent<
     }
   };
 
-  const b = bem("login");
+  const b = cn2("login");
   return (
-    <div className={`${b()}`}>
+    <div className={`${b()} ${className}`} style={style}>
       {logo ? (
         <div className={`${b("logo")}`}>
           <img src={logo} />
@@ -281,7 +294,6 @@ export const Login: FunctionComponent<
                   clearable
                   onChange={(e) => {
                     inputOnChange(e, "account");
-                    console.log("输入");
                   }}
                   onClear={() => {
                     inputClear("account");
@@ -307,7 +319,6 @@ export const Login: FunctionComponent<
                     clearable
                     onChange={(e) => {
                       inputOnChange(e, "password");
-                      console.log("输入");
                     }}
                     onClear={() => {
                       inputClear("password");
@@ -357,7 +368,6 @@ export const Login: FunctionComponent<
                   clearable
                   onChange={(e) => {
                     inputOnChange(e, "telOrMail");
-                    console.log("输入");
                   }}
                   onClear={() => {
                     inputClear("telOrMail");
@@ -384,7 +394,6 @@ export const Login: FunctionComponent<
                   clearable
                   onChange={(e) => {
                     inputOnChange(e, "verifyCode");
-                    console.log("输入");
                   }}
                   onClear={() => {
                     inputClear("verifyCode");
@@ -406,6 +415,7 @@ export const Login: FunctionComponent<
             </div>
           </>
         )}
+        {slotInput ? slotInput : null}
         {slotProtocolText ? (
           <Checkbox
             className="login-protocal"

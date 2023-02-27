@@ -7,7 +7,6 @@
 ### 安装
 
 ```javascript
-import { Cell } from "@nutui/nutui-react";
 import { OrderCancelPanel } from "@nutui/nutui-biz";
 ```
 
@@ -183,7 +182,7 @@ export default App;
 :::demo
 
 ```tsx
-import React from "react";
+import React, { useState } from "react";
 import { Cell, ButtonProps, TextAreaProps } from "@nutui/nutui-react";
 import { OrderCancelPanel } from "@nutui/nutui-biz";
 
@@ -243,7 +242,7 @@ const App = () => {
   }, []);
   const textareaProps: Partial<TextAreaProps> = React.useMemo(() => {
     return {
-      placeholder: translated.textareaPlaceholder,
+      placeholder: "请输入内容",
       rows: "3",
       limitshow: true,
       maxlength: 100,

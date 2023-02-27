@@ -1,28 +1,29 @@
 import React, {
   FunctionComponent,
-  CSSProperties,
   ReactNode,
   useRef
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import { IComponent } from '@/utils/typings'
-import { Icon } from '@nutui/nutui-react';
-
+import { Icon, IconProps } from '@nutui/nutui-react';
 import classNames from 'classnames'
 import bem from '@/utils/bem'
+import Unit from '@/utils/unit'
+
+
+export type MaskPositionType = "left" | "right";
+export type MaskShadowTypeType = "triangle" | "shadow" | "transparent" | "none";
+
 export interface HorizontalScrollingProps extends IComponent {
-  className: string
-  style: CSSProperties
   // 是否需要遮罩层
   showMask: boolean
   // 遮罩层位置
-  maskPosition: string,
-  maskShadowType: string
-  maskWidth: string
-  maskDistance: string
-  showScrollBar: boolean
-  maskIcon: string
-  maskHpl: ReactNode
+  maskPosition: MaskPositionType
+  maskShadowType: MaskShadowTypeType
+  maskWidth: number | string
+  maskDistance: number | string
+  maskContent: ReactNode
+  iconProps: Partial<IconProps>
   onClickMask: () => void,
   onScrollRight: () => void
 }
@@ -31,14 +32,15 @@ const defaultProps = {
   showMask: true,
   maskPosition: "right",
   maskShadowType: "triangle",
-  maskWidth: "100px",
-  maskDistance: "0px",
-  showScrollBar: false,
-  maskIcon: "category"
+  maskWidth: 100,
+  maskDistance: 0,
+  maskContent: '',
+  onClickMask: () => { },
+  onScrollRight: () => { },
 } as HorizontalScrollingProps
 
 export const HorizontalScrolling: FunctionComponent<
-  Partial<HorizontalScrollingProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<HorizontalScrollingProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { locale } = useConfig()
   const {
@@ -50,11 +52,10 @@ export const HorizontalScrolling: FunctionComponent<
     maskShadowType,
     maskWidth,
     maskDistance,
-    showScrollBar,
-    maskIcon,
-    maskHpl,
+    maskContent,
     onClickMask,
     onScrollRight,
+    iconProps,
     ...rest
   } = {
     ...defaultProps,
@@ -66,19 +67,20 @@ export const HorizontalScrolling: FunctionComponent<
   const scrollRef = useRef(null)
 
   const containStyles = (() => {
-    if(maskPosition == 'right'){
-      return {
-        paddingRight: maskDistance ? maskDistance : maskWidth
-      }
-    } else {
-      return {
-        paddingLeft: maskDistance ? maskDistance : maskWidth
-      }
+    // a
+    return {
+      [`padding${maskPosition[0].toUpperCase() + maskPosition.substr(1)}`]: Unit.pxAdd(maskDistance) ? Unit.pxAdd(maskDistance) : Unit.pxAdd(maskWidth)
+    }
+
+    // b
+    const key = maskPosition == 'right' ? 'paddingRight' : 'paddingLeft'
+    return {
+      [key]: Unit.pxAdd(maskDistance) ? Unit.pxAdd(maskDistance) : Unit.pxAdd(maskWidth)
     }
   })
 
   const handleMaskClick = ()=>{
-    onClickMask && onClickMask()
+    onClickMask()
   }
 
   const onScroll = () => {
@@ -86,7 +88,7 @@ export const HorizontalScrolling: FunctionComponent<
     if (scrollRef.current) {
       const { scrollLeft, clientWidth, scrollWidth } = scrollRef.current;
       if (scrollLeft + clientWidth >= scrollWidth) {
-        onScrollRight && onScrollRight();
+        onScrollRight();
       }
     }
   };
@@ -94,22 +96,22 @@ export const HorizontalScrolling: FunctionComponent<
   const maskRender = () => {
     return (
       <div className={`${b('mask-')}${maskPosition} ${b('mask-')}${maskPosition}--${maskShadowType}`} style={{width: maskWidth}} onClick={handleMaskClick}>
-        {maskHpl ? maskHpl : 
+        {typeof maskContent !== 'string' ? maskContent : 
         <div className={b('mask-box')}>
-          <Icon name={maskIcon} color="#fa2c19" size="26"></Icon>
-          <span>{locale.horizontalscrolling.more}</span>
+          <Icon name="category" {...iconProps} className={b('mask-icon')}></Icon>
+          <span>{maskContent ? maskContent : locale.horizontalscrolling.more}</span>
         </div>}
       </div>
     )
   }
 
   return (
-    <div className={classNames([b(), className])} style={{ ...style }} {...rest}>
+    <div className={classNames([b(), className])} style={style} {...rest}>
       {maskPosition == 'left' && showMask && 
         maskRender()
       }
       <div 
-        className={`${b('contain')} ${showScrollBar ? '' : b('contain-bar-hidden')}`} 
+        className={b('contain')} 
         ref={scrollRef}
         style={containStyles()}
         onScroll={onScroll}

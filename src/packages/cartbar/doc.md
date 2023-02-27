@@ -23,14 +23,20 @@ import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
 const App = () => {
   return (
     <CartBar>
-      <CartBarIcon text="店铺" icon="shop" />
-      <CartBarIcon text="购物车" icon="cart" />
-      <CartBarButton text="加入购物车" type="danger" />
-      <CartBarButton text="立即购买" type="warning" />
+      <CartBarIcon text="店铺" iconProps={{name: 'shop'}} />
+      <CartBarIcon text="购物车" iconProps={{name: 'cart'}} />
+      <CartBarButton text="加入购物车" buttonProps={{type: 'danger'}} />
+      <CartBarButton text="立即购买" buttonProps={{type: 'warning'}} />
     </CartBar>
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -46,14 +52,20 @@ import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
 const App = () => {
   return (
     <CartBar>
-      <CartBarIcon text="店铺" icon="shop" badge="10" />
-      <CartBarIcon text="购物车" icon="cart" dot />
-      <CartBarButton text="加入购物车" type="danger" />
-      <CartBarButton text="立即购买" type="warning" />
+      <CartBarIcon text="店铺" iconProps={{name: 'shop'}} badgeProps={{value: '10'}}  />
+      <CartBarIcon text="购物车" iconProps={{name: 'cart'}} badgeProps={{dot: true}} />
+      <CartBarButton text="加入购物车" buttonProps={{type: 'danger'}} />
+      <CartBarButton text="立即购买" buttonProps={{type: 'warning'}} />
     </CartBar>
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -69,15 +81,22 @@ import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
 const App = () => {
   return (
     <CartBar>
-      <CartBarIcon text="店铺" color="red" icon="shop" />
-      <CartBarIcon text="购物车" icon="cart" />
-      <CartBarButton text="加入购物车" type="danger" />
-      <CartBarButton text="立即购买" type="warning" />
+      <CartBarIcon text="店铺" iconProps={{name: 'shop', color: 'red'}} />
+      <CartBarIcon text="购物车" iconProps={{name: 'cart'}} />
+      <CartBarButton text="加入购物车" buttonProps={{type: 'danger'}} />
+      <CartBarButton text="立即购买" buttonProps={{type: 'warning'}} />
     </CartBar>
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
+
 
 :::
 
@@ -92,14 +111,20 @@ import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
 const App = () => {
   return (
     <CartBar>
-      <CartBarIcon icon="shop" />
-      <CartBarIcon icon="cart" />
-      <CartBarButton text="加入购物车" type="danger" />
-      <CartBarButton text="立即购买" type="warning" />
+      <CartBarIcon iconProps={{name: 'shop'}} />
+      <CartBarIcon iconProps={{name: 'cart'}} />
+      <CartBarButton text="加入购物车" buttonProps={{type: 'danger'}} />
+      <CartBarButton text="立即购买" buttonProps={{type: 'warning'}} />
     </CartBar>
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -115,14 +140,20 @@ import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
 const App = () => {
   return (
     <CartBar hasCapsuleButtons>
-      <CartBarIcon text="店铺" icon="shop" />
-      <CartBarIcon text="购物车" icon="cart" />
-      <CartBarButton text="加入购物车" type="danger" />
-      <CartBarButton text="立即购买" type="warning" />
+      <CartBarIcon text="店铺" iconProps={{name: 'shop'}} />
+      <CartBarIcon text="购物车" iconProps={{name: 'cart'}} />
+      <CartBarButton text="加入购物车" buttonProps={{type: 'danger'}} />
+      <CartBarButton text="立即购买" buttonProps={{type: 'warning'}} />
     </CartBar>
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -142,14 +173,20 @@ const App = () => {
 
   return (
     <CartBar top={customTopHtml()}>
-      <CartBarIcon text="店铺" icon="shop" />
-      <CartBarIcon text="购物车" icon="cart" />
-      <CartBarButton text="加入购物车" type="danger" />
-      <CartBarButton text="立即购买" type="warning" />
+      <CartBarIcon text="店铺" iconProps={{name: 'shop'}} />
+      <CartBarIcon text="购物车" iconProps={{name: 'cart'}} />
+      <CartBarButton text="加入购物车" buttonProps={{type: 'danger'}} />
+      <CartBarButton text="立即购买" buttonProps={{type: 'warning'}} />
     </CartBar>
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -168,7 +205,7 @@ export default App;
 | hasCapsuleButtons   | 是否包含胶囊型按钮                                 | Boolean  | `false`          |
 | safeAreaInsetBottom   | 是否开启iphone系列全面屏底部安全区适配                                 | Boolean  | `true`          |
 | placeholder   | 固定在底部时，是否在标签位置生成一个等高的占位元素                                 | Boolean  | `false`          |
-| top | 自定义顶部内容 |React.ReactNode  | -          |
+| top | 自定义顶部内容 |ReactNode  | -          |
 
 
 ### CartBarIcon Props
@@ -176,17 +213,15 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| text   | 图标文字                                 | String  | -         |
-| icon   | 图标                                 | String  | -         |
-| color   | 图标颜色                                 | String  | `#323233`         |
-| dot   | 是否显示图标右上角小红点                                 | Boolean  | `false`         |
-| badge   | 图标右上角徽标的内容	                                 | Number \| String  | -         |
+| text   | 图标文字                                 | ReactNode  | -         |
+| iconProps   | 图标 props                                 | [IconProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)  | -         |
+| badgeProps   | 徽标 props                                 | [BadgeProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/badge)  | -         |
 
 
 ## CartBarIcon Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
-| onClick | 点击事件 |  event: Event |
+| onClick | 点击事件 |  - |
 
 
 
@@ -195,14 +230,11 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| text   | 按钮文字                                 | String  | -         |
-| disabled   | 是否禁用按钮                                 | Boolean  | `false`         |
-| type   | 按钮类型，可选值为 `primary` `info` `warning` `danger`                                 | String  | `default`         |
-| loading   | 是否显示为加载状态                                 | Boolean  | `false`         |
-| color   | 图标颜色                                 | String  | -         |
+| text   | 按钮文字                                 | ReactNode  | -         |
+| buttonProps   | 按钮 props                                 | [ButtonProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/button)  | -         |
 
 
 ## CartBarButton Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
-| onClick | 点击事件 |  event: Event |
+| onClick | 点击事件 |  - |

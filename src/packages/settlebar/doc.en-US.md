@@ -19,13 +19,22 @@ import { SettleBar } from '@nutui/nutui-biz';
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <SettleBar />
+    <SettleBar
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -37,13 +46,23 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <SettleBar totalAlign="left" />
+    <SettleBar 
+      totalAlign="left" 
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -58,10 +77,18 @@ import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
   return (
-    <SettleBar disabled />
+    <SettleBar 
+      disabled 
+    />
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -76,10 +103,18 @@ import { SettleBar } from '@nutui/nutui-biz';
 
 const App = () => {
   return (
-    <SettleBar loading />
+    <SettleBar 
+      loading 
+    />
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -91,13 +126,26 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <SettleBar customSelectAll="" showZero={false} totalText="total" settleButtonText="submit order" />
+    <SettleBar 
+      customSelectAll="" 
+      showZero={false} 
+      totalText="total" 
+      settleButtonText="submit order" 
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -109,13 +157,24 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <SettleBar settleCount="100" settleUnit="indivual" />
+    <SettleBar 
+      settleCount="100" 
+      settleUnit="indivual" 
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -127,13 +186,23 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <SettleBar customTotalExtra={<div style={{fontSize: '12px'}}>reduced ¥30.00</div>} />
+    <SettleBar 
+      customTotalExtra={<div style={{fontSize: '12px'}}>reduced ¥30.00</div>} 
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -145,6 +214,7 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const customWarningHtml = () => {
@@ -152,10 +222,19 @@ const App = () => {
   }
   
   return (
-    <SettleBar customWarning={customWarningHtml()} />
+    <SettleBar 
+      customWarning={customWarningHtml()} 
+      onSettle ={() => Toast.text('点击按钮')}
+    />
   );
 };
 export default App;
+
+// css
+[class*="safe-area-bottom"] {
+    position: relative;
+}
+
 ```
 
 :::
@@ -174,22 +253,24 @@ export default App;
 | settleCount     | Settlement quantity                               | Number | 0    |
 | settleUnit  | Settlement unit                                  | String | -    |
 | settleButtonText     | Settlement button text | String  | `to settle`     |
-| disabled   | Whether the settlement button is disabled| Boolean  | `true`      |
+| disabled   | Whether the settlement button is disabled| Boolean  | `false`      |
 | loading   | Whether the settlement button is loading| Boolean  | `false`      |
 | showZero   | Whether to display when the quantity is 0                                 | Boolean  | `true`          |
 | safeAreaInsetBottom   | Whether to enable bottom safe area adaptation                                 | Boolean  | `true`          |
 | placeholder   | Whether to generate a placeholder element when fixed                                 | Boolean  | `false`          |
-| customTotal | Customize total area content | React.ReactNode  | -          |
-| customWarning | Customize warning content | React.ReactNode  | -          |
-| customSelectAll | Customize select all content | React.ReactNode  | -          |
-| customTotalPrice | Customize total price content | React.ReactNode  | -          |
-| customTotalExtra | Customize total extra content | React.ReactNode  | -          |
-| customButton | Customize button content | React.ReactNode  | -          |
+| customTotal | Customize total area content | ReactNode  | -          |
+| customWarning | Customize warning content | ReactNode  | -          |
+| customSelectAll | Customize select all content | ReactNode  | -          |
+| customTotalPrice | Customize total price content | ReactNode  | -          |
+| customTotalExtra | Customize total extra content | ReactNode  | -          |
+| customButton | Customize button content | ReactNode  | -          |
+| iconProps   | Icon props                                 | [IconProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)  | -         |
+| checkboxProps   | Checkbox props                                 | [CheckboxProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/checkbox)  | -         |
 
 
 ## Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
 | onSelectAll | Select all button click event |  event: Event |
-| onSubmit | To settle button click event |  event: Event |
+| onSettle | To settle button click event |  event: Event |
 | onDelete | Delete event, take effect when isEdit is true |  event: Event |

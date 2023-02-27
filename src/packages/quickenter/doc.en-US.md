@@ -19,14 +19,9 @@ import { QuickEnter } from "@nutui/nutui-biz";
 ```ts
 import React from "react";
 import { QuickEnter } from "@nutui/nutui-biz";
+import { data } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
 
 const App = () => {
-  const data = [
-    {
-      displayName: "50% Off Zone",
-      imageUrl: "Image Link",
-    },
-  ];
   return <QuickEnter data={data} />;
 };
 export default App;
@@ -43,14 +38,9 @@ When the length of the links array exceeds the maximum display number on one scr
 ```ts
 import React from "react";
 import { QuickEnter } from "@nutui/nutui-biz";
+import { data } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
 
 const App = () => {
-  const data = [
-    {
-      displayName: "50% Off Zone",
-      imageUrl: "Image Link",
-    },
-  ];
   return <QuickEnter data={data} indicatorVisible={true} />;
 };
 export default App;
@@ -65,14 +55,9 @@ export default App;
 ```ts
 import React from "react";
 import { QuickEnter } from "@nutui/nutui-biz";
+import { data } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
 
 const App = () => {
-  const data = [
-    {
-      displayName: "50% Off Zone",
-      imageUrl: "Image Link",
-    },
-  ];
   return <QuickEnter data={data} rows={1} indicatorVisible={true} />;
 };
 export default App;
@@ -87,14 +72,9 @@ export default App;
 ```ts
 import React from "react";
 import { QuickEnter } from "@nutui/nutui-biz";
+import { data } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
 
 const App = () => {
-  const data = [
-    {
-      displayName: "50% Off Zone",
-      imageUrl: "Image Link",
-    },
-  ];
   return <QuickEnter slideMode={"slide"} data={data} rows={2} />;
 };
 export default App;

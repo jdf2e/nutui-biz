@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { Tabs, TabPane, Price } from '@nutui/nutui-react'
-import { ProductFeed } from './productfeed'
-import { ProductFeedItem } from '../productfeeditem/productfeeditem'
-import { useTranslate } from '../../sites/assets/locale'
-import './demo.scss'
+import React, { useEffect, useState } from "react"
+import { Tabs, TabPane, Price } from "@nutui/nutui-react"
+import { ProductFeed } from "./productfeed"
+import { ProductFeedItem } from "../productfeeditem/productfeeditem"
+import { useTranslate } from "../../sites/assets/locale"
+import "./demo.scss"
 
 interface T {
   title1: string
@@ -15,26 +15,26 @@ interface T {
 }
 const ProductFeedDemo = () => {
   const [translated] = useTranslate<T>({
-    'zh-CN': {
-      title1: '多列',
-      title2: '单列',
-      title3: '下拉刷新',
+    "zh-CN": {
+      title1: "多列",
+      title2: "单列",
+      title3: "下拉刷新",
       name:
-        '我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题',
-      desc: '更多买点更多买点',
-      label: '自营'
+        "我是标题我是标题我是标题我是标题我是标题",
+      desc: "更多买点更多买点",
+      label: "自营"
     },
-    'en-US': {
-      title1: 'Multiple',
-      title2: 'Single',
-      title3: 'Pull down',
-      name: 'I am the title I am the title I am the title I am the title I am the title I am the title',
-      desc: 'buy more buy more',
-      label: 'Self'
+    "en-US": {
+      title1: "Multiple",
+      title2: "Single",
+      title3: "Pull down",
+      name: "I am the title I am the title I am the title I am the title",
+      desc: "buy more buy more",
+      label: "Self"
     },
   })
 
-  const [tab1value, setTab1value] = useState('0');
+  const [tab1value, setTab1value] = useState("0");
 
   const [list1, setList1] = useState([] as any)
   const [list2, setList2] = useState([] as any)
@@ -46,88 +46,88 @@ const ProductFeedDemo = () => {
 
   const data = [
     {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
       name: translated.name,
       desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      price: "388",
+      vipPrice: "378",
       label: translated.label,
     }, {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
       name: translated.name,
       desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      price: "388",
+      vipPrice: "378",
       label: translated.label,
     }, {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
       name: translated.name,
       desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      price: "388",
+      vipPrice: "378",
       label: translated.label,
     }, {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
       name: translated.name,
       desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      price: "388",
+      vipPrice: "378",
       label: translated.label,
     }, {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
       name: translated.name,
       desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      price: "388",
+      vipPrice: "378",
       label: translated.label,
     }, {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
       name: translated.name,
       desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      price: "388",
+      vipPrice: "378",
       label: translated.label,
     }, {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
       name: translated.name,
       desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      price: "388",
+      vipPrice: "378",
       label: translated.label,
     }, {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
       name: translated.name,
       desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      price: "388",
+      vipPrice: "378",
       label: translated.label,
     }, {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
       name: translated.name,
       desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      price: "388",
+      vipPrice: "378",
       label: translated.label,
     }, {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
       name: translated.name,
       desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      price: "388",
+      vipPrice: "378",
       label: translated.label,
     }, {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
       name: translated.name,
       desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      price: "388",
+      vipPrice: "378",
       label: translated.label,
     }, {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
       name: translated.name,
       desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      price: "388",
+      vipPrice: "378",
       label: translated.label,
     }
   ]
@@ -177,13 +177,17 @@ const ProductFeedDemo = () => {
     }, 500)
   }
 
-  const handleClick = () => {
-    console.log('click')
+  const handleClick = (item: object) => {
+    console.log("click", item)
+  }
+
+  const handleImageClick = (item: object) => {
+    console.log("click image", item)
   }
 
   const refresh = (done: () => void) => {
     setTimeout(() => {
-      console.log('refresh')
+      console.log("refresh")
       done()
     }, 1000)
   }
@@ -228,16 +232,19 @@ const ProductFeedDemo = () => {
               useWindow={false}
               onLoadMore={loadMore1}
             >
-              {list1.map((item: any, index: number)=> {
+              {list1.map((item: any)=> {
                 return (
                   <ProductFeedItem
-                    key={index}
+                    key={item}
+                    data={item}
                     gutter={6}
                     col={2}
                     imgUrl={item.imgUrl}
-                    imgHeight="164"
-                    imgTag={<div className='img-label'><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+                    imgWidth="144"
+                    imgHeight="144"
+                    imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
                     onClick={handleClick}
+                    onImageClick={handleImageClick}
                   >
                     <>
                       <div className="name-box">
@@ -266,15 +273,16 @@ const ProductFeedDemo = () => {
               useWindow={false}
               onLoadMore={loadMore2}
             >
-              {list2.map((item: any, index: number)=> {
+              {list2.map((item: any)=> {
                 return (
                   <ProductFeedItem
-                    key={index}
+                    key={item}
                     gutter={6}
                     col={1}
                     imgUrl={item.imgUrl}
-                    imgHeight="120"
-                    imgTag={<div className='img-label'><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+                    imgWidth="100"
+                    imgHeight="100"
+                    imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
                     onClick={handleClick}
                   >
                     <>
@@ -309,15 +317,15 @@ const ProductFeedDemo = () => {
               onLoadMore={loadMore3}
               onRefresh={refresh}
             >
-              {list3.map((item: any, index: number)=> {
+              {list3.map((item: any)=> {
                 return (
                   <ProductFeedItem
-                    key={index}
+                    key={item}
                     gutter={6}
                     col={2}
                     imgUrl={item.imgUrl}
-                    imgHeight="164"
-                    imgTag={<div className='img-label'><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+                    imgWidth="144"
+                    imgHeight="144"
                     onClick={handleClick}
                   >
                     <>

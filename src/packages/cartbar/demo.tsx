@@ -3,6 +3,7 @@ import { CartBar } from './cartbar'
 import { CartBarIcon } from '../cartbaricon/cartbaricon'
 import { CartBarButton } from '../cartbarbutton/cartbarbutton'
 import { useTranslate } from '../../sites/assets/locale'
+import './demo.scss'
 
 interface tarnslatedOption {
   basic: string
@@ -31,18 +32,6 @@ const CartBarDemo = () => {
       addCart: '加入购物车',
       buyItNow: '立即购买'
     },
-    'zh-TW': {
-      basic: '基本用法',
-      title1: '帶有徽標',
-      title2: '自定義圖標顏色',
-      title3: '圖標無文本',
-      title4: '膠囊型按鈕',
-      title5: '頂部自定義內容',
-      shop: '店鋪',
-      shoppingCart: '購物車',
-      addCart: '加入購物車',
-      buyItNow: '立即購買'
-    },
     'en-US': {
       basic: 'Basic Usage',
       title1: 'With Badge',
@@ -65,45 +54,45 @@ const CartBarDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <CartBar>
-          <CartBarIcon text={translated.shop} icon="shop" />
-          <CartBarIcon text={translated.shoppingCart} icon="cart" />
-          <CartBarButton text={translated.addCart} type="danger" />
-          <CartBarButton text={translated.buyItNow} type="warning" />
+          <CartBarIcon text={translated.shop} iconProps={{name: 'shop'}} />
+          <CartBarIcon text={translated.shoppingCart} iconProps={{name: 'cart'}} />
+          <CartBarButton text={translated.addCart} buttonProps={{type: 'danger'}} />
+          <CartBarButton text={translated.buyItNow} buttonProps={{type: 'warning'}} />
         </CartBar>
         <h2>{translated.title1}</h2>
         <CartBar>
-          <CartBarIcon text={translated.shop} icon="shop" badge="10" />
-          <CartBarIcon text={translated.shoppingCart} icon="cart" dot />
-          <CartBarButton text={translated.addCart} type="danger" />
-          <CartBarButton text={translated.buyItNow} type="warning" />
+          <CartBarIcon text={translated.shop} iconProps={{name: 'shop'}} badgeProps={{value: '10'}} />
+          <CartBarIcon text={translated.shoppingCart} iconProps={{name: 'cart'}} badgeProps={{dot: true}} />
+          <CartBarButton text={translated.addCart} buttonProps={{type: 'danger'}} />
+          <CartBarButton text={translated.buyItNow} buttonProps={{type: 'warning'}} />
         </CartBar>
         <h2>{translated.title2}</h2>
         <CartBar>
-          <CartBarIcon text={translated.shop} color="red" icon="shop" />
-          <CartBarIcon text={translated.shoppingCart} icon="cart" />
-          <CartBarButton text={translated.addCart} type="danger" />
-          <CartBarButton text={translated.buyItNow} type="warning" />
+          <CartBarIcon text={translated.shop} iconProps={{name: 'shop', color: 'red'}} />
+          <CartBarIcon text={translated.shoppingCart} iconProps={{name: 'cart'}} />
+          <CartBarButton text={translated.addCart} buttonProps={{type: 'danger'}} />
+          <CartBarButton text={translated.buyItNow} buttonProps={{type: 'warning'}} />
         </CartBar>
         <h2>{translated.title3}</h2>
         <CartBar>
-          <CartBarIcon icon="shop" />
-          <CartBarIcon icon="cart" />
-          <CartBarButton text={translated.addCart} type="danger" />
-          <CartBarButton text={translated.buyItNow} type="warning" />
+          <CartBarIcon iconProps={{name: 'shop'}} />
+          <CartBarIcon iconProps={{name: 'cart'}} />
+          <CartBarButton text={translated.addCart} buttonProps={{type: 'danger'}} />
+          <CartBarButton text={translated.buyItNow} buttonProps={{type: 'warning'}} />
         </CartBar>
         <h2>{translated.title4}</h2>
         <CartBar hasCapsuleButtons>
-          <CartBarIcon text={translated.shop} icon="shop" />
-          <CartBarIcon text={translated.shoppingCart} icon="cart" />
-          <CartBarButton text={translated.addCart} type="danger" />
-          <CartBarButton text={translated.buyItNow} type="warning" />
+          <CartBarIcon text={translated.shop} iconProps={{name: 'shop'}} />
+          <CartBarIcon text={translated.shoppingCart} iconProps={{name: 'cart'}} />
+          <CartBarButton text={translated.addCart} buttonProps={{type: 'danger'}} />
+          <CartBarButton text={translated.buyItNow} buttonProps={{type: 'warning'}} />
         </CartBar>
         <h2>{translated.title5}</h2>
         <CartBar top={customTopHtml()}>
-          <CartBarIcon text={translated.shop} icon="shop" />
-          <CartBarIcon text={translated.shoppingCart} icon="cart" />
-          <CartBarButton text={translated.addCart} type="danger" />
-          <CartBarButton text={translated.buyItNow} type="warning" />
+          <CartBarIcon text={translated.shop} iconProps={{name: 'shop'}} />
+          <CartBarIcon text={translated.shoppingCart} iconProps={{name: 'cart'}} />
+          <CartBarButton text={translated.addCart} buttonProps={{type: 'danger'}} />
+          <CartBarButton text={translated.buyItNow} buttonProps={{type: 'warning'}} />
         </CartBar>
       </div>
     </>

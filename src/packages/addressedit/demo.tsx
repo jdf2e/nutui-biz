@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AddressEdit } from "./addressedit";
-import { Radio, Cell, CellGroup } from "@nutui/nutui-react";
+import { Radio, Cell, CellGroup, Input } from "@nutui/nutui-react";
 import { useTranslate } from "../../sites/assets/locale";
 
 const { RadioGroup } = Radio;
@@ -10,6 +10,8 @@ interface T {
   selected: string;
   hasInfo: string;
   notInfo: string;
+  custom1: string;
+  custom2: string;
 }
 
 const AddressEditDemo = () => {
@@ -19,18 +21,16 @@ const AddressEditDemo = () => {
       selected: "已选地址",
       hasInfo: "修改地址",
       notInfo: "新增地址",
-    },
-    "zh-TW": {
-      basic: "基本用法",
-      selected: "已選地址",
-      hasInfo: "修改地址",
-      notInfo: "新增地址",
+      custom1: "隐藏保存按钮",
+      custom2: "自定义输入框",
     },
     "en-US": {
       basic: "Basic usage",
       selected: "Selected address",
       hasInfo: "Modify address",
       notInfo: "Add Address",
+      custom1: "Hide Save Button",
+      custom2: "Customize Input",
     },
   });
 
@@ -77,10 +77,15 @@ const AddressEditDemo = () => {
     default: true,
   };
   const addressSetData = {
-    nameText: "收件人",
-    namePlaceholder: "请输入收件人姓名",
     isRequired: ["name", "tel", "region", "address"],
     isDefualtAddress: true,
+  };
+
+  const addressSetData2 = {
+    nameText: "收件人",
+    namePlaceholder: "请输入收件人姓名",
+    isRequired: ["name", "tel"],
+    isDefualtAddress: false,
   };
 
   const addressData2: any = {
@@ -121,7 +126,6 @@ const AddressEditDemo = () => {
 
   const [radioVal, setRadioVal] = useState("1");
   const handleChange = (v: any) => {
-    console.log("inputchange");
     setRadioVal(v);
   };
 
@@ -132,10 +136,12 @@ const AddressEditDemo = () => {
           <RadioGroup
             value={radioVal}
             onChange={handleChange}
-            direction="horizontal"
+            style={{ flexFlow: "wrap" }}
           >
             <Radio value="1">{translated.notInfo}</Radio>
             <Radio value="2">{translated.hasInfo}</Radio>
+            <Radio value="3">{translated.custom1}</Radio>
+            <Radio value="4">{translated.custom2}</Radio>
           </RadioGroup>
         </Cell>
       </CellGroup>
@@ -145,26 +151,86 @@ const AddressEditDemo = () => {
           <AddressEdit
             address={addressData}
             data={addressSetData}
-            addressType={"custom"}
             addressInfo={addressInfo}
             onSave={(formData) => {
               console.log(formData);
             }}
           />
         </>
-      ) : (
+      ) : radioVal == "2" ? (
         <>
           <h2>{translated.selected}</h2>
           <AddressEdit
             address={addressData2}
             data={addressSetData}
-            addressType={"custom2"}
             addressInfo={addressInfo2}
             onSave={(formData) => {
               console.log(formData);
             }}
             onChangeAddress={onChange}
             onCloseAddress={onClose}
+          />
+        </>
+      ) : radioVal == "3" ? (
+        <>
+          <h2>{translated.custom1}</h2>
+          <AddressEdit
+            address={addressData2}
+            data={addressSetData2}
+            addressInfo={addressInfo2}
+            showSave={false}
+            onSwitch={(state, data) => {
+              console.log("switch", state, data);
+            }}
+            onChange={(value, tag) => {
+              console.log(tag, value);
+            }}
+            onCloseAddress={onClose}
+          />
+        </>
+      ) : (
+        <>
+          <h2>{translated.custom2}</h2>
+          <AddressEdit
+            address={addressData}
+            data={addressSetData2}
+            addressInfo={addressInfo}
+            onChange={(value, tag) => {
+              console.log(tag, value);
+            }}
+            onSave={(formData) => {
+              console.log(formData);
+            }}
+            bottomInputTpl={
+              <>
+                <div className="nb-addressedit__item">
+                  <Input
+                    label={"自定义内容1"}
+                    className="nut-input-text"
+                    defaultValue={""}
+                    placeholder={"请输入"}
+                    type="text"
+                    clearable
+                    onChange={(v, e) => {
+                      console.log(v, e);
+                    }}
+                  />
+                </div>
+                <div className="nb-addressedit__item">
+                  <Input
+                    label={"自定义内容2"}
+                    className="nut-input-text"
+                    defaultValue={""}
+                    placeholder={"请输入"}
+                    type="text"
+                    clearable
+                    onChange={(v, e) => {
+                      console.log(v, e);
+                    }}
+                  />
+                </div>
+              </>
+            }
           />
         </>
       )}

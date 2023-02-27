@@ -6,9 +6,8 @@ import React, {
   useEffect,
   ReactNode
 } from 'react'
-import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
+import {cn2} from '@/utils/bem'
 import {getRect} from '@/utils/useClientRect'
 
 import { IComponent } from '@/utils/typings'
@@ -31,7 +30,6 @@ const defaultProps = {
 export const CartBar: FunctionComponent<
   Partial<CartBarProps>
 > = (props) => {
-  const { locale } = useConfig()
   const root = useRef(null)
   const {
     children,
@@ -47,20 +45,20 @@ export const CartBar: FunctionComponent<
     ...props,
   }
 
-  const b = bem('cart-bar')
+  const b = cn2('cart-bar')
 
   const [height,setHeight] = useState(0)
 
   useEffect(() => {
     if(root.current) {
-      setHeight((getRect(root.current) as any).height)
+      setHeight(getRect(root.current).height)
     }
-  }, ['height'])
+  }, [height])
 
   const renderActionBar = () => {
     return <div ref={root} className={classNames([b(),className,{'nut-biz-safe-area-bottom':safeAreaInsetBottom}])} style={style} {...rest}>
       {top}
-      <div className={classNames(['nut-cart-bar-inner',{'has-capsule-buttons':hasCapsuleButtons}])}>
+      <div className={classNames([b('inner'),{'has-capsule-buttons':hasCapsuleButtons}])}>
         {children}
       </div>
     </div>

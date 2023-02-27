@@ -2,7 +2,7 @@
 
 ### Intro
 
-Suitable for horizontal scrolling display.
+Suitable for horizontal scrolling display, applicable scenarios include order lists, etc.
 
 ### Install
 ``` javascript
@@ -27,11 +27,11 @@ const App = () => {
       className="nut-cell-right-zero"
     >
       <HorizontalScrolling>
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -64,11 +64,11 @@ const App = () => {
       className="nut-cell-left-zero"
     >
       <HorizontalScrolling maskPosition="left">
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -103,13 +103,12 @@ const App = () => {
       <HorizontalScrolling
         maskPosition="left"
         maskShadowType="shadow"
-        maskIcon="more-x"
       >
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -128,7 +127,7 @@ export default App;
 ### Overlay Translucent Shadow Style
 
 
-The distance from the scrolling content to the mask side of the container is `maskWidth` by default, and can also be set via `maskDistance`
+The distance between the scrollable content and the mask side of the container defaults to `maskWidth` width, and can also be set via `maskDistance`
 
 :::demo
 ```tsx
@@ -144,20 +143,20 @@ const App = () => {
     >
       <HorizontalScrolling        
         maskShadowType="transparent"  
-        maskWidth="50px"
-        maskDistance="10px"
-        maskHpl={
+        maskWidth={50}
+        maskDistance={10}
+        maskContent={
         <div className="nut-biz-horizontalscrolling__mask-box buy-price">
           <div><i>$</i>199</div>
           <div>Total 3 pieces</div>
         </div>
       }
       >
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -175,7 +174,7 @@ export default App;
 
 ### Custom Mask Content
 
-Customize the mask content through `maskHpl`
+Customize the mask content through `maskContent`
 
 :::demo
 ```tsx
@@ -192,19 +191,19 @@ const App = () => {
       <HorizontalScrolling 
         maskShadowType="shadow" 
         maskPosition="left" 
-        maskWidth="40px" 
+        maskWidth={40}
         className="custom-float"
-        maskHpl={
+        maskContent={
           <div className="more-box">
             More
           </div>
         }
       >
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -236,11 +235,11 @@ const App = () => {
         showMask={false} 
         maskPosition="left"
       >
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -282,11 +281,11 @@ const App = () => {
         onClickMask={onChange}
         onScrollRight={onScroll}
       >
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -306,20 +305,19 @@ export default App;
 
 ### Props
 
-| Event  | Description     | Type    |
-|---------|--------------------------------------------|---------|
-| showMask        | whether to show a mask layer    | Boolean | true         |
-| maskPosition    | Mask layer display position (eg: `left`, `right`)      | String | right                |
-| maskShadowType  | Mask shadow form (eg `none`: none, `triangle`: triangle, `shadow`: shadow, `transparent`: translucent) | String | triangle    |
-| maskWidth       | mask layer width            | String | '100px'              |
-| maskDistance    | The width of the scroll content from the container        | String | 0              |
-| showScrollBar   | whether to show scroll bar                     | Boolean | false             |
-| maskIcon        | Custom icon `name` value    | String | 'category' |
-| maskHpl         | Custom mask content         | React.ReactNode | - |
+| Attribute  | Description     | Type    | Default     |
+|---------|--------------------------------------------|---------|---------|
+| showMask        | Whether to show a mask layer    | boolean | `true`         |
+| maskPosition    | Mask layer display position (eg: `left`, `right`) | string | `right` |
+| maskShadowType  | Mask shadow form (eg `none`: none, `triangle`: triangle, `shadow`: shadow, `transparent`: translucent) | string | `triangle`    |
+| maskWidth       | Mask layer width, the default unit is `px` | string \| number | `100px`              |
+| maskDistance    | The distance between the scroll content and the overlay side of the container, the default unit is `px`    | string \| number | `0`              |
+| iconProps       | [Props of the Icon component](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)    | iconProps | - |
+| maskContent     | Custom mask content         | ReactNode | - |
 
 ### Events
 
-| Attribute            | Description               | Arguments   |
-|----- | ----- | -----  |
-| onClickMask  | Triggered when the mask layer is clicked | event: MouseEvent |
-| onScrollRight  | Fired when swiping to the right | event: MouseEvent |
+| Attribute      | Description               | Arguments   |
+|--------------- | ----- | -----  |
+| onClickMask    | Triggered when the mask layer is clicked | - |
+| onScrollRight  | Fired when swiping to the right | - |

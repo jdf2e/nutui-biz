@@ -1,7 +1,21 @@
 .nut-theme-dark {
-    .nut-addressedit {}
+    .nb-addressedit {
+        background: $dark-background;
+        color: $dark-color;
+        &__item{ background: $dark-background;}
+        .nut-switch.switch-open {
+            background:$dark-color2;
+        }
+    }
+    .nb-addressedit__bottom{
+        background: $dark-background;
+        .nut-button{
+            color: $dark-color;
+        }
+        
+    }
 }
-.nut-addressedit{
+.nb-addressedit{
     background: $white;
     padding:5px 10px;
     border-radius: 4px;
@@ -11,7 +25,7 @@
         font-size: $font-size-2;
         color:$title-color2;
         &.setdefualt{
-            padding: 10px 15px;
+            padding: 10px 20px;
             display: flex;
             align-items: center;
             .label{
@@ -37,5 +51,8 @@
     }
     .nut-input.nut-input-required:before{
         left: 0;
+    }
+    .nut-input-error-message{
+        line-height: 1.2;
     }
 }

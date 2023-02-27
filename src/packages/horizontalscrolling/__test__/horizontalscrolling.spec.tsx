@@ -106,10 +106,14 @@ test('HorizontalScrolling maskDistance', async () => {
   
 })
 
-test('HorizontalScrolling maskIcon', async () => {
+test('HorizontalScrolling iconProps', async () => {
   const { container } = render(
     <HorizontalScrolling
-      maskIcon="more-x"
+      iconProps={{
+        name: "more-x",
+        color: "#fa2c19",
+        size: "26"
+      }}
     >
       {[1, 2, 3, 4, 5, 6].map((item, index) => {
         return (
@@ -131,10 +135,10 @@ test('HorizontalScrolling maskIcon', async () => {
   
 })
 
-test('HorizontalScrolling maskHpl', async () => {
+test('HorizontalScrolling maskContent', async () => {
   const { container } = render(
     <HorizontalScrolling
-      maskHpl={
+      maskContent={
       <div className="nut-biz-horizontalscrolling__mask-box buy-price">
         <div><i>￥</i>199</div>
         <div>共3件</div>
@@ -155,9 +159,9 @@ test('HorizontalScrolling maskHpl', async () => {
     </HorizontalScrolling>
   )
 
-  const maskHpl = container.querySelectorAll('.buy-price')
+  const maskContent = container.querySelectorAll('.buy-price')
   
-  expect(maskHpl.length).toBe(1)
+  expect(maskContent.length).toBe(1)
 })
 
 test('click test', () => {

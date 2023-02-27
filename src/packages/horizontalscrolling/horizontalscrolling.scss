@@ -9,12 +9,8 @@
     display: flex;
     padding: 2px 0;
     overflow: auto;
-    &-bar-hidden {
-      &::-webkit-scrollbar {
-
-        display: none;
-      
-      }
+    &::-webkit-scrollbar {
+      display: none;
     }
     &-group {
       width: 83px;

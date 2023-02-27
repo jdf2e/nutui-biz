@@ -21,7 +21,7 @@ interface tarnslatedOption {
   basic: string;
   notSell: string;
   customStepper: string;
-  customBySlot: string;
+  customByContent: string;
   deliverTo: string;
   sendTo: string;
   weight: string;
@@ -36,7 +36,7 @@ const SkuDemo = () => {
       basic: '基本用法',
       notSell: '不可售',
       customStepper: '自定义计步器',
-      customBySlot: '自定义插槽',
+      customByContent: '自定义内容',
       deliverTo: '配送至',
       sendTo: '送至',
       weight: '重量',
@@ -44,23 +44,11 @@ const SkuDemo = () => {
       addCart: '加入购物车',
       buyItNow: '立即购买'
     },
-    'zh-TW': {
-      basic: '基本用法',
-      notSell: '不可售',
-      customStepper: '自定義計步器',
-      customBySlot: '自定義插槽',
-      deliverTo: '配送至',
-      sendTo: '送至',
-      weight: '重量',
-      skuId: '編號',
-      addCart: '加入購物車',
-      buyItNow: '立即購買'
-    },
     'en-US': {
       basic: 'Basic Usage',
       notSell: 'Not Sell',
       customStepper: 'Custom Stepper',
-      customBySlot: 'Custom By Slot',
+      customByContent: 'Custom Content',
       deliverTo: 'Deliver To',
       sendTo: 'Send To',
       weight: 'Weight',
@@ -72,7 +60,7 @@ const SkuDemo = () => {
   const [base, setBase] = useState<boolean>(false)
   const [notSell, setNotSell] = useState<boolean>(false)
   const [customStepper, setCustomStepper] = useState<boolean>(false)
-  const [customBySlot, setCustomBySlot] = useState<boolean>(false)
+  const [customByContent, setCustomByContent] = useState<boolean>(false)
   const [skuData, setSkuData] = useState<Skus[]>([])
   const [goodsInfo, setGoodsInfo] = useState<any>({})
   const [imagePathMap, setImagePathMap] = useState<any>({})
@@ -149,6 +137,7 @@ const SkuDemo = () => {
 
     setGoodsInfo({
       skuId: sku.id,
+      imagePath: "//img14.360buyimg.com/n4/jfs/t1/216079/14/3895/201095/618a5c0cEe0b9e2ba/cf5b98fb6128a09e.jpg",
       price: '4599.00' // 商品信息展示区，商品价格
     })
     
@@ -278,10 +267,10 @@ const SkuDemo = () => {
           onClickBtnOperate={clickBtnOperate}
           onClose={() => setCustomStepper(false)} 
         />
-        <h2>{translated.customBySlot}</h2>
-        <Cell onClick={() => setCustomBySlot(true)}>{translated.customBySlot}</Cell>
+        <h2>{translated.customByContent}</h2>
+        <Cell onClick={() => setCustomByContent(true)}>{translated.customByContent}</Cell>
         <Sku 
-          visible={customBySlot} 
+          visible={customByContent} 
           sku={skuData}
           goods={goodsInfo}
           btnOptions={['buy', 'cart']}
@@ -306,7 +295,7 @@ const SkuDemo = () => {
           }
           onSelectSku={selectSku}
           onClickBtnOperate={clickBtnOperate}
-          onClose={() => setCustomBySlot(false)} 
+          onClose={() => setCustomByContent(false)} 
         />
         <Address
           modelValue={showAddressPopup}

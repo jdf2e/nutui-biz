@@ -1,17 +1,18 @@
 import React, {
   FunctionComponent,
   useState,
-  useEffect
+  useEffect,
+  ReactNode
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import {InputNumber} from '@nutui/nutui-react'
 
 import { IComponent } from '@/utils/typings'
 
-export interface SkuHeaderProps extends IComponent {
+export interface SkuStepperProps extends IComponent {
   stepperMax: string | number
   stepperMin: string | number
-  stepperExtraText: Function | boolean
+  stepperExtraText: (() => ReactNode) | boolean
   stepperTitle: string
   goods: {
     price: number
@@ -20,12 +21,12 @@ export interface SkuHeaderProps extends IComponent {
   }
   onAdd: (value: number) => void
   onReduce: (value: number) => void
-  onChangeStepper: (value: number) => void
+  handleStepper: (value: number) => void
   onOverLimit: () => void
 }
 
 export const SkuStepper: FunctionComponent<
-  Partial<SkuHeaderProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<SkuStepperProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
   const { locale } = useConfig()
   const {
@@ -36,7 +37,7 @@ export const SkuStepper: FunctionComponent<
     onAdd,
     onReduce,
     onOverLimit,
-    onChangeStepper
+    handleStepper
   } = {
     ...props,
   }
@@ -63,7 +64,7 @@ export const SkuStepper: FunctionComponent<
 
   const handleChangeFuc = (value: any) => {
     setGoodsCount(value)
-    onChangeStepper && onChangeStepper(value)
+    handleStepper && handleStepper(value)
   }
 
   const getExtraText = () => {
@@ -80,7 +81,7 @@ export const SkuStepper: FunctionComponent<
           <div className='nut-sku-stepper-limit'>{getExtraText()}</div>
           <div className='nut-sku-stepper-count'>
             <InputNumber
-              modelValue={1}
+              modelValue={goodsCount}
               min={stepperMin}
               max={stepperMax}
               onAdd={handleAdd}

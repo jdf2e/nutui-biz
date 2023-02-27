@@ -329,8 +329,8 @@ export default App;
 |---------|--------------------------------------------|---------|-----------|
 | imgUrl   | Left thumb image                                  | String  | -         |
 | title     | Title                   | String  | -    |
-| price | Price                         | String  | -      |
-| vipPrice     | vip-price                               | String | -    |
+| price | Price                         | String \| Number  | -      |
+| vipPrice     | vip-price                               | String \| Number | -    |
 | shopDesc  | shop-desc                                   | String | -    |
 | delivery     | delivery | String  | -      |
 | shopName   | shop-name| String  | -      |

@@ -37,7 +37,7 @@ export interface SkuProps extends IComponent {
   sku: Array<any>
   stepperMax: string | number
   stepperMin: string | number
-  stepperExtraText: Function | boolean
+  stepperExtraText: (() => ReactNode) | boolean
   stepperTitle: string
   btnOptions: Array<string>
   btnExtraText: string
@@ -56,7 +56,7 @@ export interface SkuProps extends IComponent {
 }
 
 export const Sku: FunctionComponent<
-  Partial<SkuProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<SkuProps>
 > = (props) => {
   const { locale } = useConfig()
   const {
@@ -162,10 +162,10 @@ export const Sku: FunctionComponent<
       position="bottom"
       closeable
       round
-      style={{"height": '75%'}}
       onClose={()=>closePopup('close')}
       onClickCloseIcon={()=>closePopup('icon')}
       onClickOverlay={()=>closePopup('overlay')}
+      {...props}
     >
       <div className={classNames([b(),className])} style={style}>
         {renderSkuHeader()}
@@ -181,7 +181,7 @@ export const Sku: FunctionComponent<
             onAdd={() => handleAdd}
             onReduce={() => handleReduce}
             onOverLimit={handleOverLimit}
-            onChangeStepper={() => handleChangeFuc}
+            handleStepper={handleChangeFuc}
           />}
           {skuStepperBottom}
         </div>
