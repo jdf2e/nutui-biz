@@ -6,7 +6,7 @@
 
 ### 安装
 ``` javascript
-import { ProductFeed, ProductFeedItem } from '@nutui/nutui-biz';
+import { ProductFeed, ProductFeedItem } from "@nutui/nutui-biz";
 ```
 
 ## 代码演示
@@ -16,9 +16,10 @@ import { ProductFeed, ProductFeedItem } from '@nutui/nutui-biz';
 :::demo
 
 ```ts
-import  React from 'react';
-import { Price } from '@nutui/nutui-react';
-import { ProductFeed, ProductFeedItem } from '@nutui/nutui-biz';
+import  React from "react";
+import { Price } from "@nutui/nutui-react";
+import { ProductFeed, ProductFeedItem } from "@nutui/nutui-biz";
+import React, { useEffect, useState } from "react"
 
 const App = () => {
 
@@ -28,19 +29,19 @@ const App = () => {
 
   const data = [
     {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
-      name: translated.name,
-      desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
+      name: "我是标题我是标题我是标题我是标题我是标题",
+      desc: "更多买点更多买点",
+      price: "388",
+      vipPrice: "378",
     }, {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
-      name: translated.name,
-      desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
+      name: "我是标题我是标题我是标题我是标题我是标题",
+      desc: "更多买点更多买点",
+      price: "388",
+      vipPrice: "378",
     },
-    ...
+    // ...
   ]
 
   const loadMore1 = (done: () => void) => {
@@ -59,7 +60,7 @@ const App = () => {
   }
 
   const handleClick = () => {
-    console.log('click')
+    console.log("click")
   }
 
   const init1 = () => {
@@ -90,7 +91,7 @@ const App = () => {
             col={2}
             imgUrl={item.imgUrl}
             imgHeight="164"
-            imgTag={<div className='img-label'><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+            imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
             onClick={handleClick}
           >
             <>
@@ -122,9 +123,10 @@ export default App;
 :::demo
 
 ```ts
-import  React from 'react';
-import { Price } from '@nutui/nutui-react';
-import { ProductFeed, ProductFeedItem } from '@nutui/nutui-biz';
+import  React from "react";
+import { Price } from "@nutui/nutui-react";
+import { ProductFeed, ProductFeedItem } from "@nutui/nutui-biz";
+import React, { useEffect, useState } from "react"
 
 const App = () => {
 
@@ -134,19 +136,19 @@ const App = () => {
 
   const data = [
     {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
-      name: translated.name,
-      desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
+      name: "我是标题我是标题我是标题我是标题我是标题",
+      desc: "更多买点更多买点",
+      price: "388",
+      vipPrice: "378",
     }, {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
-      name: translated.name,
-      desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
+      name: "我是标题我是标题我是标题我是标题我是标题",
+      desc: "更多买点更多买点",
+      price: "388",
+      vipPrice: "378",
     },
-    ...
+    // ...
   ]
 
   const loadMore2 = (done: () => void) => {
@@ -165,7 +167,7 @@ const App = () => {
   }
 
   const handleClick = () => {
-    console.log('click')
+    console.log("click")
   }
 
   const init2 = () => {
@@ -196,7 +198,7 @@ const App = () => {
             col={1}
             imgUrl={item.imgUrl}
             imgHeight="120"
-            imgTag={<div className='img-label'><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+            imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
             onClick={handleClick}
           >
             <>
@@ -229,9 +231,10 @@ export default App;
 :::demo
 
 ```ts
-import  React from 'react';
-import { Price } from '@nutui/nutui-react';
-import { ProductFeed, ProductFeedItem } from '@nutui/nutui-biz';
+import  React from "react";
+import { Price } from "@nutui/nutui-react";
+import { ProductFeed, ProductFeedItem } from "@nutui/nutui-biz";
+import React, { useEffect, useState } from "react"
 
 const App = () => {
 
@@ -241,19 +244,19 @@ const App = () => {
 
   const data = [
     {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
-      name: translated.name,
-      desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
+      name: "我是标题我是标题我是标题我是标题我是标题",
+      desc: "更多买点更多买点",
+      price: "388",
+      vipPrice: "378",
     }, {
-      imgUrl: '//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png',
-      name: translated.name,
-      desc: translated.desc,
-      price: '388',
-      vipPrice: '378',
+      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
+      name: "我是标题我是标题我是标题我是标题我是标题",
+      desc: "更多买点更多买点",
+      price: "388",
+      vipPrice: "378",
     },
-    ...
+    // ...
   ]
 
   const loadMore3 = (done: () => void) => {
@@ -272,12 +275,12 @@ const App = () => {
   }
 
   const handleClick = () => {
-    console.log('click')
+    console.log("click")
   }
 
   const refresh = (done: () => void) => {
     setTimeout(() => {
-      console.log('refresh')
+      console.log("refresh")
       done()
     }, 1000)
   }
@@ -312,7 +315,7 @@ const App = () => {
             col={2}
             imgUrl={item.imgUrl}
             imgHeight="164"
-            imgTag={<div className='img-label'><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+            imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
             onClick={handleClick}
           >
             <>
@@ -381,5 +384,5 @@ export default App;
 ## ProductFeedItem Events
 | 字段      | 说明      | 回调参数        |
 |--------- | -------- | ---------------|
-| onClick  | 点击时触发 |  event: Event |
+| onClick  | 点击时触发 | data |
 | onImageClick  | 点击时触发 | data |

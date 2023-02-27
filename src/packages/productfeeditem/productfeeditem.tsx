@@ -3,8 +3,8 @@ import React, {
 } from 'react'
 import { Image } from '@nutui/nutui-react';
 
-import classNames from 'classnames'
 import bem from '@/utils/bem'
+import Unit from '@/utils/unit'
 
 export interface ProductFeedItemProps {
   data: any
@@ -66,22 +66,18 @@ export const ProductFeedItem: FunctionComponent<
 
   const b = bem("biz-productfeedItem")
 
-  const pxAdd = (value: string | number): string => {
-    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
-  }
-
   const itemStyle = () => {
     return {
       "width": col == 1 ? "100%" : 
-                  `calc((100% - ${pxAdd(gutter)})/${col})`,
-      "borderRadius": pxAdd(borderRadius),
-      "padding": pxAdd(padding),
+                  `calc((100% - ${Unit.pxAdd(gutter)})/${col})`,
+      "borderRadius": Unit.pxAdd(borderRadius),
+      "padding": Unit.pxAdd(padding),
     }
   }
 
   const contentStyle = () => {
     return {
-      "width": col == 1 && `calc(100% - ${pxAdd(imgWidth ? imgWidth : imgHeight)})`,
+      "width": col == 1 && `calc(100% - ${Unit.pxAdd(imgWidth ? imgWidth : imgHeight)})`,
     } as CSSProperties
   }
 
@@ -109,7 +105,6 @@ export const ProductFeedItem: FunctionComponent<
           height={imgHeight}
           loadingImg={loadingImg}
           errorImg={loadingImg}
-          // {...props}
         />
         {imgTag && <div className={b("image-tag")}>{imgTag}</div>}
       </div>

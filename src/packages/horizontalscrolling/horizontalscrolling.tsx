@@ -8,6 +8,8 @@ import { IComponent } from '@/utils/typings'
 import { Icon, IconProps } from '@nutui/nutui-react';
 import classNames from 'classnames'
 import bem from '@/utils/bem'
+import Unit from '@/utils/unit'
+
 
 export type MaskPositionType = "left" | "right";
 export type MaskShadowTypeType = "triangle" | "shadow" | "transparent" | "none";
@@ -20,7 +22,6 @@ export interface HorizontalScrollingProps extends IComponent {
   maskShadowType: MaskShadowTypeType
   maskWidth: number | string
   maskDistance: number | string
-  showScrollBar: boolean
   maskContent: ReactNode
   iconProps: Partial<IconProps>
   onClickMask: () => void,
@@ -33,7 +34,6 @@ const defaultProps = {
   maskShadowType: "triangle",
   maskWidth: 100,
   maskDistance: 0,
-  showScrollBar: false,
   maskContent: '',
   onClickMask: () => { },
   onScrollRight: () => { },
@@ -52,7 +52,6 @@ export const HorizontalScrolling: FunctionComponent<
     maskShadowType,
     maskWidth,
     maskDistance,
-    showScrollBar,
     maskContent,
     onClickMask,
     onScrollRight,
@@ -67,19 +66,16 @@ export const HorizontalScrolling: FunctionComponent<
 
   const scrollRef = useRef(null)
 
-  const pxAdd = (value: string | number): string => {
-    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
-  }
-
   const containStyles = (() => {
-    if(maskPosition == 'right'){
-      return {
-        paddingRight: pxAdd(maskDistance) ? pxAdd(maskDistance) : pxAdd(maskWidth)
-      }
-    } else {
-      return {
-        paddingLeft: pxAdd(maskDistance) ? pxAdd(maskDistance) : pxAdd(maskWidth)
-      }
+    // a
+    return {
+      [`padding${maskPosition[0].toUpperCase() + maskPosition.substr(1)}`]: Unit.pxAdd(maskDistance) ? Unit.pxAdd(maskDistance) : Unit.pxAdd(maskWidth)
+    }
+
+    // b
+    const key = maskPosition == 'right' ? 'paddingRight' : 'paddingLeft'
+    return {
+      [key]: Unit.pxAdd(maskDistance) ? Unit.pxAdd(maskDistance) : Unit.pxAdd(maskWidth)
     }
   })
 
@@ -115,7 +111,7 @@ export const HorizontalScrolling: FunctionComponent<
         maskRender()
       }
       <div 
-        className={`${b('contain')} ${showScrollBar ? '' : b('contain-bar-hidden')}`} 
+        className={b('contain')} 
         ref={scrollRef}
         style={containStyles()}
         onScroll={onScroll}

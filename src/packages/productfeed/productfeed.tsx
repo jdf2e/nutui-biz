@@ -67,10 +67,6 @@ export const ProductFeed: FunctionComponent<
 
   const b = bem('biz-productfeed')
 
-  useEffect(() => {
-  }, [])
-
-
   return (
     <div className={classNames([b(), className])} style={style} {...rest}>
       <Infiniteloading
@@ -85,7 +81,7 @@ export const ProductFeed: FunctionComponent<
         onRefresh={onRefresh}
         {...props}
       >
-        <div className={b('main')} >
+        <div className={b('main')}>
           {children}
         </div>
       </Infiniteloading>

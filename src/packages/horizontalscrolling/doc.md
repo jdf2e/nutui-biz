@@ -2,7 +2,7 @@
 
 ### 介绍
 
-适用于横向滚动展示
+适用于横向滚动展示，适用场景有订单列表等
 
 ### 安装
 ``` javascript
@@ -316,7 +316,6 @@ export default App;
 | maskShadowType | 遮罩阴影形式（可选值 `none`: 无、`triangle`: 有三角的、`shadow`: 阴影、`transparent`: 半透明） | string | `triangle`               |
 | maskWidth      | 遮罩层宽度，默认单位为 `px`             | string \| number | `100px`     |
 | maskDistance   | 滚动内容和容器的遮罩层侧之间的距离，默认单位为 `px`   | string \| number | `0`        |
-| showScrollBar  | 是否展示滚动条                         | boolean | `false`     |
 | iconProps       | [Icon 组件的 props](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)    | iconProps | - |
 | maskContent    | 自定义遮罩内容                         | ReactNode | - |
 

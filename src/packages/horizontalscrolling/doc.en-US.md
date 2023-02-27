@@ -2,7 +2,7 @@
 
 ### Intro
 
-Suitable for horizontal scrolling display.
+Suitable for horizontal scrolling display, applicable scenarios include order lists, etc.
 
 ### Install
 ``` javascript
@@ -312,7 +312,6 @@ export default App;
 | maskShadowType  | Mask shadow form (eg `none`: none, `triangle`: triangle, `shadow`: shadow, `transparent`: translucent) | string | `triangle`    |
 | maskWidth       | Mask layer width, the default unit is `px` | string \| number | `100px`              |
 | maskDistance    | The distance between the scroll content and the overlay side of the container, the default unit is `px`    | string \| number | `0`              |
-| showScrollBar   | whether to show scroll bar                     | boolean | `false`             |
 | iconProps       | [Props of the Icon component](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)    | iconProps | - |
 | maskContent     | Custom mask content         | ReactNode | - |
 
