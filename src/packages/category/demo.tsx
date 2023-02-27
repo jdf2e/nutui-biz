@@ -74,7 +74,7 @@ const CommentDemo = () => {
          )
       }
 
-      <Tabbar tabSwitch={((child, idx) => onTabSwitch(child, idx))}>
+      <Tabbar onSwitch={((child, idx) => onTabSwitch(child, idx))}>
         <TabbarItem tabTitle={translated.basic} icon="category" />
         <TabbarItem tabTitle={translated.hideImage} icon="image" />
         <TabbarItem tabTitle={translated.quicknav} icon="horizontal" />

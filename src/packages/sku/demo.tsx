@@ -310,7 +310,7 @@ const SkuDemo = () => {
         />
         <Address
           modelValue={showAddressPopup}
-          type="exit"
+          type="exist"
           existAddress={existAddress}
           onClose={close}
           isShowCustomAddress={false}
