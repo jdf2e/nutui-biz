@@ -1,4 +1,16 @@
-.nut-login{
+.nut-theme-dark {
+    .nb-login{
+        background: $dark-background;
+        color: $dark-color;
+        &__btn .nut-button{
+            color: $dark-color;
+        }
+    }
+    
+}
+
+
+.nb-login{
     display: flex;
     flex-direction: column;
     padding: 18px ;
@@ -80,7 +92,7 @@
             .nut-input-text{
                 padding:8px 15px;
             }
-            .input-text{color: #333;}
+            // .input-text{color: #333;}
             ::-webkit-input-placeholder{
                 color: #999;
             }
