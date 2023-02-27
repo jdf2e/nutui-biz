@@ -203,7 +203,7 @@ const AddressEditDemo = () => {
             }}
             bottomInputTpl={
               <>
-                <div className="nut-addressedit__item">
+                <div className="nb-addressedit__item">
                   <Input
                     label={"自定义内容1"}
                     className="nut-input-text"
@@ -216,7 +216,7 @@ const AddressEditDemo = () => {
                     }}
                   />
                 </div>
-                <div className="nut-addressedit__item">
+                <div className="nb-addressedit__item">
                   <Input
                     label={"自定义内容2"}
                     className="nut-input-text"

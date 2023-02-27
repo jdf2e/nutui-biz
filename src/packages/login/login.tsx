@@ -4,10 +4,10 @@ import React, {
   useState,
   useRef,
   ReactNode,
-  CSSProperties,
 } from "react";
 import { useConfig } from "@/packages/configprovider";
-import bem from "@/utils/bem";
+import classNames from "classnames";
+import { cn2 } from "@/utils/bem";
 import { IComponent } from "@/utils/typings";
 import { Input, Button, Icon, Checkbox, Toast } from "@nutui/nutui-react";
 
@@ -270,7 +270,7 @@ export const Login: FunctionComponent<
     }
   };
 
-  const b = bem("login");
+  const b = cn2("login");
   return (
     <div className={`${b()} ${className}`} style={style}>
       {logo ? (

@@ -6,7 +6,8 @@ import React, {
   CSSProperties,
 } from "react";
 import { useConfig } from "@/packages/configprovider";
-import bem from "@/utils/bem";
+import classNames from "classnames";
+import { cn2 } from "@/utils/bem";
 import { IComponent } from "@/utils/typings";
 import { Input, Button, Address, Switch } from "@nutui/nutui-react";
 
@@ -291,9 +292,9 @@ export const AddressEdit: FunctionComponent<
     setFormData({ ...formData, ...data });
   };
 
-  const b = bem("addressedit");
+  const b = cn2("addressedit");
   return (
-    <div className={`${b()} ${className}`} id={data?.id} style={style}>
+    <div className={classNames([b(), className])} id={data?.id} style={style}>
       <div className={`${b("item")}`}>
         <Input
           className="nut-input-text"

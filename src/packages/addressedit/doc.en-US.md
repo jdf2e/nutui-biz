@@ -291,7 +291,7 @@ const App = () => {
         }}
         bottomInputTpl={
           <>
-            <div className="nut-addressedit__item">
+            <div className="nb-addressedit__item">
                 <Input
                 label={"custom1"}
                 className="nut-input-text"
@@ -304,7 +304,7 @@ const App = () => {
                 }}
                 />
             </div>
-            <div className="nut-addressedit__item">
+            <div className="nb-addressedit__item">
                 <Input
                 label={"custom2"}
                 className="nut-input-text"

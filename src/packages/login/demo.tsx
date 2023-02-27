@@ -108,10 +108,12 @@ const LoginDemo = () => {
   };
 
   useEffect(() => {
-    if (account.length > 0 && customInput.length > 0) {
-      setIsDisable(false);
-    } else {
-      setIsDisable(true);
+    if (radioVal === "5") {
+      if (account.length > 0 && customInput.length > 0) {
+        setIsDisable(false);
+      } else {
+        setIsDisable(true);
+      }
     }
   }, [account, customInput]);
 
