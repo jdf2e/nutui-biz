@@ -1,6 +1,6 @@
 # Login 
 
-### Introduce
+### Intro
 
 Mainly used on login pages. Dependent components: Input, Checkbox, Icon, Button
 
@@ -10,7 +10,7 @@ Mainly used on login pages. Dependent components: Input, Checkbox, Icon, Button
 import { Login } from '@nutui/nutui-biz';
 ```
 
-## Code Demo
+## Demo
 
 ### Basic usage
 

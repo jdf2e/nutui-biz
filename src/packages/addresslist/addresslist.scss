@@ -23,13 +23,13 @@
       }
     }
   }
-  .nut-address-list {
+  .nb-address-list {
     overflow: hidden;
     &:last-child {
       padding-bottom: 84px;
     }
-    &-swipe,
-    &-general {
+    &__swipe,
+    &__general {
       min-height: 76px;
       padding: 5px 10px;
       background-color: $addresslist-bg;
@@ -42,7 +42,7 @@
       &:last-child {
         border-bottom: none;
       }
-      &__mask {
+      &-mask {
         position: absolute;
         top: 0;
         left: 0;
@@ -77,9 +77,9 @@
         }
       }
     }
-    &-item {
+    &__item {
       width: 100%;
-      &__info {
+      &-info {
         display: flex;
         justify-content: space-between;
         &-contact {
@@ -113,7 +113,7 @@
           }
         }
       }
-      &__addr {
+      &-addr {
         color: $addresslist-addr-font-color;
         font-size: $addresslist-addr-font-size;
         margin-top: 5px;
@@ -132,7 +132,7 @@
       background-color: $addresslist-bg;
       box-sizing: border-box;
     }
-    .nut-address-list__mask-bottom {
+    &__mask-bottom {
       position: fixed;
       top: 0;
       bottom: 0;

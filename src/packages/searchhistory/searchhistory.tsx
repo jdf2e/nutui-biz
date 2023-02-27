@@ -1,5 +1,4 @@
 import React, {
-  CSSProperties,
   FunctionComponent,
   ReactNode,
   useState,
@@ -18,8 +17,6 @@ export type IsearchItem = {
 export interface SearchHistoryProps extends IComponent {
   recentSearchData: Array<IsearchItem>
   searchDiscoverData: Array<IsearchItem>
-  className?: string
-  style?: CSSProperties
   recentSearchText: string
   searchDiscoverText: string
   backIcon: ReactNode

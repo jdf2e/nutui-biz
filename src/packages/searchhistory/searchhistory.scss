@@ -28,6 +28,12 @@
         margin: 15px;
     }
 
+    &__discover {
+        min-height: 80px;
+        display: flex;
+        flex-direction: column;
+    }
+
     &__recent-tit, 
     &__discover-tit {
         display: flex;
@@ -66,10 +72,13 @@
     }
 
     .no-discover-data {
-        height: 50px;
         font-size: 12px;
         color: gray;
-        text-align: center;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 13px;
     }
 
     &__recent-tags {

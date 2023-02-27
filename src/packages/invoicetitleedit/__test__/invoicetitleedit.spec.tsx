@@ -8,8 +8,8 @@ test('test 增值税专用发票', async () => {
     <InvoiceTitleEdit />
   )
 
-  const nutInvoiceTitleEdit = container.querySelector('.nut-invoice-title-edit') as HTMLElement
-  const nutInvoiceTitleEditSubmit = container.querySelector('.nut-invoice-title-edit__submit') as HTMLElement
+  const nutInvoiceTitleEdit = container.querySelector('.nb-invoice-title-edit') as HTMLElement
+  const nutInvoiceTitleEditSubmit = container.querySelector('.nb-invoice-title-edit__submit') as HTMLElement
   expect(nutInvoiceTitleEdit).toBeTruthy()
   expect(nutInvoiceTitleEditSubmit).toHaveTextContent('提交审批')
 })
@@ -19,7 +19,7 @@ test('test 电子普通发票', async () => {
     <InvoiceTitleEdit invoiceType="normal" />
   )
 
-  const nutInvoiceTitleEditSubmit = container.querySelector('.nut-invoice-title-edit__submit') as HTMLElement
+  const nutInvoiceTitleEditSubmit = container.querySelector('.nb-invoice-title-edit__submit') as HTMLElement
   expect(nutInvoiceTitleEditSubmit).not.toHaveTextContent('审批')
 })
 
@@ -31,6 +31,6 @@ test('test 自定义底部', async () => {
     />
   )
 
-  const nutInvoiceTitleEdit = container.querySelector('.nut-invoice-title-edit') as HTMLElement
+  const nutInvoiceTitleEdit = container.querySelector('.nb-invoice-title-edit') as HTMLElement
   expect(nutInvoiceTitleEdit).toHaveTextContent('我是自定义的底部')
 })

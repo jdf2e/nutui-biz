@@ -5,6 +5,7 @@ import React, {
   import {Icon} from '@nutui/nutui-react'
   
   import { IComponent } from '@/utils/typings'
+  import {cn2} from '@/utils/bem'
   
   export interface ItemContentsProps extends IComponent {
     item: {
@@ -36,6 +37,8 @@ import React, {
     } = {
       ...props,
     }
+
+    const b = cn2('address-list')
   
     const delClick = (event: any) => {
       onDelIcon && onDelIcon(event, item)
@@ -53,21 +56,21 @@ import React, {
     }
   
     return (
-        <div className="nut-address-list-item" onClick={contentsClick} {...rest}>
-            <div className="nut-address-list-item__info">
-                <div className="nut-address-list-item__info-contact">
+        <div className={b('item')} onClick={contentsClick} {...rest}>
+            <div className={b('item-info')}>
+                <div className={b('item-info-contact')}>
                     <slot name="contentTop">
-                        <div className="nut-address-list-item__info-contact-name">{ item.addressName }</div>
-                        <div className="nut-address-list-item__info-contact-tel">{ item.phone }</div>
-                        {item.defaultAddress && <div className="nut-address-list-item__info-contact-default">{locale.itemContents.default}</div>}
+                        <div className={b('item-info-contact-name')}>{ item.addressName }</div>
+                        <div className={b('item-info-contact-tel')}>{ item.phone }</div>
+                        {item.defaultAddress && <div className={b('item-info-contact-default')}>{locale.itemContents.default}</div>}
                     </slot>
                 </div>
-                <div className="nut-address-list-item__info-handle">
-                    <Icon name="del" className="nut-address-list-item__info-handle-del" onClick={delClick}></Icon>
-                    <Icon name="edit" className="nut-address-list-item__info-handle-edit" onClick={editClick}></Icon>
+                <div className={b('item-info-handle')}>
+                    <Icon name="del" className={b('item-info-handle-del')} onClick={delClick}></Icon>
+                    <Icon name="edit" className={b('item-info-handle-edit')} onClick={editClick}></Icon>
                 </div>
             </div>
-            <div className="nut-address-list-item__addr">
+            <div className={b('item-addr')}>
                 <slot name="contentAddr">
                 { item.fullAddress }
                 </slot>

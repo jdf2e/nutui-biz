@@ -25,9 +25,9 @@ test('test 增值税专用发票', async () => {
     />
   )
 
-  const nutInvoiceTitleList = container.querySelector('.nut-invoice-title-list') as HTMLElement
-  const nutInvoiceTitleListMainDefault = container.querySelector('.nut-invoice-title-list__main-default') as HTMLElement
-  const nutInvoiceTitleListMainStatus = container.querySelector('.nut-invoice-title-list__main-status')
+  const nutInvoiceTitleList = container.querySelector('.nb-invoice-title-list') as HTMLElement
+  const nutInvoiceTitleListMainDefault = container.querySelector('.nb-invoice-title-list__main-default') as HTMLElement
+  const nutInvoiceTitleListMainStatus = container.querySelector('.nb-invoice-title-list__main-status')
   
   expect(nutInvoiceTitleList).toBeTruthy()
   expect(nutInvoiceTitleListMainDefault).toBeTruthy()
@@ -56,7 +56,7 @@ test('test 增值税专用发票-发票状态', async () => {
     />
   )
 
-  const nutInvoiceTitleListMainStatus = container.querySelector('.nut-invoice-title-list__main-status')
+  const nutInvoiceTitleListMainStatus = container.querySelector('.nb-invoice-title-list__main-status')
   
   expect(nutInvoiceTitleListMainStatus).toHaveClass('veto')
 })
@@ -82,8 +82,8 @@ test('test 电子普通发票', async () => {
     />
   )
 
-  const nutInvoiceTitleListMainStatus = container.querySelector('.nut-invoice-title-list__main-status')
-  const nutIconEdit = container.querySelector('.nut-invoice-title-list .nut-icon-edit') as HTMLElement
+  const nutInvoiceTitleListMainStatus = container.querySelector('.nb-invoice-title-list__main-status')
+  const nutIconEdit = container.querySelector('.nb-invoice-title-list .nut-icon-edit') as HTMLElement
   
   expect(nutInvoiceTitleListMainStatus).not.toBeTruthy()
   expect(nutIconEdit).toBeTruthy()
@@ -110,7 +110,7 @@ test('test 选中状态', async () => {
     />
   )
 
-  const nutIconChecked = container.querySelector('.nut-invoice-title-list .nut-icon-checked') as HTMLElement
+  const nutIconChecked = container.querySelector('.nb-invoice-title-list .nut-icon-checked') as HTMLElement
   
   expect(nutIconChecked).toBeTruthy()
 })
@@ -141,21 +141,21 @@ test('test 操作按钮自定义', async () => {
     />
   )
 
-  const nutInvoiceTitleListButtons = container.querySelector('.nut-invoice-title-list__buttons') as HTMLElement
+  const nutInvoiceTitleListButtons = container.querySelector('.nb-invoice-title-list__buttons') as HTMLElement
   
   expect(nutInvoiceTitleListButtons).toHaveTextContent('同步到电子发票')
 
-  const nutInvoiceTitleListMain = container.querySelector('.nut-invoice-title-list__main') as HTMLElement
+  const nutInvoiceTitleListMain = container.querySelector('.nb-invoice-title-list__main') as HTMLElement
   fireEvent.click(nutInvoiceTitleListMain)
   expect(onClick).toBeCalled()
 
-  const nutInvoiceTitleListButtonsEdit = container.querySelector('.nut-invoice-title-list__buttons-edit') as HTMLElement
-  const nutIconEdit = container.querySelector('.nut-invoice-title-list .nut-icon-edit') as HTMLElement
+  const nutInvoiceTitleListButtonsEdit = container.querySelector('.nb-invoice-title-list__buttons-edit') as HTMLElement
+  const nutIconEdit = container.querySelector('.nb-invoice-title-list .nut-icon-edit') as HTMLElement
   fireEvent.click(nutInvoiceTitleListButtonsEdit)
   fireEvent.click(nutIconEdit)
   expect(onEdit).toBeCalled()
 
-  const nutInvoiceTitleListButtonsDelete = container.querySelector('.nut-invoice-title-list__buttons-delete') as HTMLElement
+  const nutInvoiceTitleListButtonsDelete = container.querySelector('.nb-invoice-title-list__buttons-delete') as HTMLElement
   fireEvent.click(nutInvoiceTitleListButtonsDelete)
   expect(onDelete).toBeCalled()
 })
@@ -181,8 +181,8 @@ test('隐藏所有操作', async () => {
     />
   )
 
-  const nutInvoiceTitleListButtons = container.querySelector('.nut-invoice-title-list__buttons') as HTMLElement
-  const nutIconEdit = container.querySelector('.nut-invoice-title-list .nut-icon-edit') as HTMLElement
+  const nutInvoiceTitleListButtons = container.querySelector('.nb-invoice-title-list__buttons') as HTMLElement
+  const nutIconEdit = container.querySelector('.nb-invoice-title-list .nut-icon-edit') as HTMLElement
   
   expect(nutInvoiceTitleListButtons).not.toBeTruthy()
   expect(nutIconEdit).not.toBeTruthy()

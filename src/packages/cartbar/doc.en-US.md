@@ -201,9 +201,9 @@ export default App;
 
 | Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
-| hasCapsuleButtons   | Whether to include capsule buttons                                 | Boolean  | `false`          |
-| safeAreaInsetBottom   | Whether to enable bottom safe area adaptation                                 | Boolean  | `true`          |
-| placeholder   | Whether to generate a placeholder element when fixed                                 | Boolean  | `false`          |
+| hasCapsuleButtons   | Whether to include capsule buttons                                 | boolean  | `false`          |
+| safeAreaInsetBottom   | Whether to enable bottom safe area adaptation                                 | boolean  | `true`          |
+| placeholder   | Whether to generate a placeholder element when fixed                                 | boolean  | `false`          |
 | top | Custom top content |ReactNode  | -          |
 
 

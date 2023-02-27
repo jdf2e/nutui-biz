@@ -9,7 +9,7 @@ The product feed flow component can be configured with pull-down refresh, list l
 import { ProductFeed, ProductFeedItem } from "@nutui/nutui-biz";
 ```
 
-## Code
+## Demo
 
 ### Multiple Columns
 

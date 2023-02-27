@@ -24,6 +24,7 @@ import { Toast } from '@nutui/nutui-react';
 const App = () => {
   return (
     <SettleBar
+      total={100}
       onSettle ={() => Toast.text('点击按钮')}
     />
   );
@@ -51,6 +52,7 @@ import { Toast } from '@nutui/nutui-react';
 const App = () => {
   return (
     <SettleBar 
+      total={100}
       totalAlign="left" 
       onSettle ={() => Toast.text('点击按钮')}
     />
@@ -78,6 +80,7 @@ import { SettleBar } from '@nutui/nutui-biz';
 const App = () => {
   return (
     <SettleBar 
+      total={100}
       disabled 
     />
   );
@@ -104,6 +107,7 @@ import { SettleBar } from '@nutui/nutui-biz';
 const App = () => {
   return (
     <SettleBar 
+      total={100}
       loading 
     />
   );
@@ -131,6 +135,7 @@ import { Toast } from '@nutui/nutui-react';
 const App = () => {
   return (
     <SettleBar 
+      total={100}
       customSelectAll="" 
       showZero={false} 
       totalText="total" 
@@ -162,6 +167,7 @@ import { Toast } from '@nutui/nutui-react';
 const App = () => {
   return (
     <SettleBar 
+      total={100}
       settleCount="100" 
       settleUnit="indivual" 
       onSettle ={() => Toast.text('点击按钮')}
@@ -191,6 +197,7 @@ import { Toast } from '@nutui/nutui-react';
 const App = () => {
   return (
     <SettleBar 
+      total={100}
       customTotalExtra={<div style={{fontSize: '12px'}}>reduced ¥30.00</div>} 
       onSettle ={() => Toast.text('点击按钮')}
     />
@@ -223,6 +230,7 @@ const App = () => {
   
   return (
     <SettleBar 
+      total={100}
       customWarning={customWarningHtml()} 
       onSettle ={() => Toast.text('点击按钮')}
     />
@@ -247,25 +255,23 @@ export default App;
 
 | Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
-| total   | Total price                                 | Number  | 0         |
-| totalText     | Total text                   | String  | `total`    |
-| totalAlign | Total area alignment, optional value：`left`、`right`                       | String  | `right`      |
-| settleCount     | Settlement quantity                               | Number | 0    |
-| settleUnit  | Settlement unit                                  | String | -    |
-| settleButtonText     | Settlement button text | String  | `to settle`     |
-| disabled   | Whether the settlement button is disabled| Boolean  | `false`      |
-| loading   | Whether the settlement button is loading| Boolean  | `false`      |
-| showZero   | Whether to display when the quantity is 0                                 | Boolean  | `true`          |
-| safeAreaInsetBottom   | Whether to enable bottom safe area adaptation                                 | Boolean  | `true`          |
-| placeholder   | Whether to generate a placeholder element when fixed                                 | Boolean  | `false`          |
+| total   | Total price                                 | number \| string  | 0         |
+| totalText     | Total text                   | string  | `total`    |
+| totalAlign | Total area alignment, optional value：`left`、`right`                       | string  | `right`      |
+| settleCount     | Settlement quantity                               | number | 0    |
+| settleUnit  | Settlement unit                                  | string | -    |
+| settleButtonText     | Settlement button text | string  | `to settle`     |
+| disabled   | Whether the settlement button is disabled| boolean  | `false`      |
+| loading   | Whether the settlement button is loading| boolean  | `false`      |
+| showZero   | When SettleCount is 0, whether to display the count in the settlement button                                | boolean  | `true`          |
+| safeAreaInsetBottom   | Whether to enable bottom safe area adaptation                                 | boolean  | `true`          |
+| placeholder   | Whether to generate a placeholder element when fixed                                 | boolean  | `false`          |
 | customTotal | Customize total area content | ReactNode  | -          |
 | customWarning | Customize warning content | ReactNode  | -          |
 | customSelectAll | Customize select all content | ReactNode  | -          |
 | customTotalPrice | Customize total price content | ReactNode  | -          |
 | customTotalExtra | Customize total extra content | ReactNode  | -          |
 | customButton | Customize button content | ReactNode  | -          |
-| iconProps   | Icon props                                 | [IconProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)  | -         |
-| checkboxProps   | Checkbox props                                 | [CheckboxProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/checkbox)  | -         |
 
 
 ## Events

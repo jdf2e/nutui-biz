@@ -1,6 +1,6 @@
 # QuickEnter shortcut entry
 
-### introduce
+### Intro
 
 The shortcut entry, also known as the King Kong area, is an important position in the head of a page and the core functional area of the page. It is expressed in the form of grid area icons arranged in multiple rows.
 
@@ -10,7 +10,7 @@ The shortcut entry, also known as the King Kong area, is an important position i
 import { QuickEnter } from "@nutui/nutui-biz";
 ```
 
-## Code Demo
+## Demo
 
 ### Basic usage
 
