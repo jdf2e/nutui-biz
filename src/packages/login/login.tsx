@@ -1,10 +1,10 @@
 import React, {
   FunctionComponent,
-  ReactHTML,
   useEffect,
   useState,
   useRef,
   ReactNode,
+  CSSProperties,
 } from "react";
 import { useConfig } from "@/packages/configprovider";
 import bem from "@/utils/bem";
@@ -74,12 +74,14 @@ export const Login: FunctionComponent<
 > = (props) => {
   const { locale } = useConfig();
   const {
+    className,
+    style,
     logo,
     title,
     formParams,
     loginType,
     loginButtonDisable,
-    loginButtonText,
+    loginButtonText = locale.login.loginButtonText,
     hasForgetPassWord,
     hasHidePwd,
     isGetCode,
@@ -117,23 +119,23 @@ export const Login: FunctionComponent<
 
   const [loginParams, setLoginParams] = useState<LoginParamsProps>({
     account: "",
-    accountPlaceholder: "请输入登录码",
+    accountPlaceholder: locale.login.accountPlaceholder,
     accountErrorText: "",
     telOrMail: "",
-    telOrMailPlaceholder: "请输入手机号或邮箱",
+    telOrMailPlaceholder: locale.login.telOrMailPlaceholder,
     telOrMailErrorText: "",
     password: "",
-    passwordPlaceholder: "请输入密码",
+    passwordPlaceholder: locale.login.passwordPlaceholder,
     passwordErrorText: "",
     isShowPwdInput: true,
     verifyCode: "",
-    verifyPlaceholder: "请输入验证码",
-    verifyButtonText: "获取验证码",
+    verifyPlaceholder: locale.login.verifyPlaceholder,
+    verifyButtonText: locale.login.verifyButtonText,
     verifyErrorText: "",
-    getCodeErrorToast: "请填写正确的手机号或邮箱",
-    switchLoginText1: "账号密码登录",
-    switchLoginText2: "手机/邮箱登录",
-    forgetPwdText: "忘记密码",
+    getCodeErrorToast: locale.login.getCodeErrorToast,
+    switchLoginText1: locale.login.switchLoginText1,
+    switchLoginText2: locale.login.switchLoginText2,
+    forgetPwdText: locale.login.forgetPwdText,
   });
 
   const switchLogin = () => {
@@ -205,7 +207,8 @@ export const Login: FunctionComponent<
     const telreg = /^[1][3,4,5,7,8][0-9]{9}$/;
     const mailreg =
       /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-    if (telreg.test(telOrMail) || mailreg.test(telOrMail)) {
+    // if (telreg.test(telOrMail) || mailreg.test(telOrMail)) {
+    if (telOrMail.length) {
       onVerifyBtnClick && onVerifyBtnClick(loginParams);
     } else {
       Toast.text(getCodeErrorToast, { duration: 2 });
@@ -269,7 +272,7 @@ export const Login: FunctionComponent<
 
   const b = bem("login");
   return (
-    <div className={`${b()}`}>
+    <div className={`${b()} ${className}`} style={style}>
       {logo ? (
         <div className={`${b("logo")}`}>
           <img src={logo} />

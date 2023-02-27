@@ -77,8 +77,6 @@ const AddressEditDemo = () => {
     default: true,
   };
   const addressSetData = {
-    nameText: "收件人",
-    namePlaceholder: "请输入收件人姓名",
     isRequired: ["name", "tel", "region", "address"],
     isDefualtAddress: true,
   };

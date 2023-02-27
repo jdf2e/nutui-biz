@@ -25,17 +25,12 @@ const App = () => {
     "https://img10.360buyimg.com/imagetools/jfs/t1/187998/28/32123/16333/63e346b8F0bff354b/c95da99ea108c463.png";
   const [formParams, setformParams] = useState({
     account: "",
-    accountPlaceholder: "请输入账号",
     accountErrorText: "",
     telOrMail: "",
-    telOrMailPlaceholder: "请输入手机号或邮箱",
     telOrMailErrorText: "",
     password: "",
-    passwordPlaceholder: "请输入账号密码",
     passwordErrorText: "",
     verifyCode: "",
-    verifyPlaceholder: "请输入验证码",
-    verifyButtonText: "获取验证码",
   });
   const [getVerify, setGetVerify] = useState(false);
   const onChange = (value: any, tag: string) => {
@@ -82,17 +77,12 @@ const App = () => {
     "https://img10.360buyimg.com/imagetools/jfs/t1/187998/28/32123/16333/63e346b8F0bff354b/c95da99ea108c463.png";
   const [formParams, setformParams] = useState({
     account: "",
-    accountPlaceholder: "请输入账号",
     accountErrorText: "",
     telOrMail: "",
-    telOrMailPlaceholder: "请输入手机号或邮箱",
     telOrMailErrorText: "",
     password: "",
-    passwordPlaceholder: "请输入账号密码",
     passwordErrorText: "",
     verifyCode: "",
-    verifyPlaceholder: "请输入验证码",
-    verifyButtonText: "获取验证码",
   });
   const [getVerify, setGetVerify] = useState(false);
   const onChange = (value: any, tag: string) => {

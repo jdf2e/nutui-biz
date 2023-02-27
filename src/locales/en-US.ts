@@ -32,7 +32,7 @@ const enUS: BaseLang = {
     rightOutIcon: "Search",
     deleteAll: "Delete All",
     finish: "Finish",
-    hidden: "Hidden"
+    hidden: "Hidden",
   },
   settleBar: {
     totalText: "Total",
@@ -181,6 +181,35 @@ const enUS: BaseLang = {
   },
   orderCancelPanel: {
     otherText: "other",
+  },
+  addressedit: {
+    nameText: "Consignee",
+    namePlaceholder: "Please enter the consignee",
+    nameErrorMsg: "This item is required, please fill it out and submit it",
+    telText: "Tel",
+    telPlaceholder: "Please enter your phone number",
+    telErrorMsg: "This item is required, please fill it out and submit it",
+    regionText: "Region",
+    regionPlaceholder: "Please select your region",
+    regionErrorMsg: "This item is required, please fill it out and submit it",
+    addressText: "Address",
+    addressPlaceholder: "Street, building number",
+    addressErrorMsg: "This item is required, please fill it out and submit it",
+    bottomText: "Save",
+    setDefaultText: "Set default address",
+  },
+  login: {
+    accountPlaceholder: "Please enter the account",
+    telOrMailPlaceholder: "Please enter your phone number or email",
+    passwordPlaceholder: "Please enter a password",
+    verifyPlaceholder: "Please enter the verify code",
+    verifyButtonText: "Get Code",
+    getCodeErrorToast:
+      "Please fill in the correct phone number or email address",
+    switchLoginText1: "Account password login",
+    switchLoginText2: "Mobile phone/email login",
+    forgetPwdText: "Forgot Password",
+    loginButtonText: "Login",
   },
 };
 export default enUS;

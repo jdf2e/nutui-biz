@@ -25,17 +25,12 @@ const App = () => {
     "https://img10.360buyimg.com/imagetools/jfs/t1/187998/28/32123/16333/63e346b8F0bff354b/c95da99ea108c463.png";
   const [formParams, setformParams] = useState({
     account: "",
-    accountPlaceholder: "请输入账号",
     accountErrorText: "",
     telOrMail: "",
-    telOrMailPlaceholder: "请输入手机号或邮箱",
     telOrMailErrorText: "",
     password: "",
-    passwordPlaceholder: "请输入账号密码",
     passwordErrorText: "",
     verifyCode: "",
-    verifyPlaceholder: "请输入验证码",
-    verifyButtonText: "获取验证码",
   });
   const [getVerify, setGetVerify] = useState(false);
   const onChange = (value: any, tag: string) => {
@@ -82,17 +77,12 @@ const App = () => {
     "https://img10.360buyimg.com/imagetools/jfs/t1/187998/28/32123/16333/63e346b8F0bff354b/c95da99ea108c463.png";
   const [formParams, setformParams] = useState({
     account: "",
-    accountPlaceholder: "请输入账号",
     accountErrorText: "",
     telOrMail: "",
-    telOrMailPlaceholder: "请输入手机号或邮箱",
     telOrMailErrorText: "",
     password: "",
-    passwordPlaceholder: "请输入账号密码",
     passwordErrorText: "",
     verifyCode: "",
-    verifyPlaceholder: "请输入验证码",
-    verifyButtonText: "获取验证码",
   });
   const [getVerify, setGetVerify] = useState(false);
   const onChange = (value: any, tag: string) => {
@@ -312,7 +302,7 @@ export default App;
 | formParams | input box configuration information | Object |{} |
 | loginType | login type (optional verification code verification `verify`, account password verification `pwd`), default verify | String | `verify` |
 | loginButtonDisable | Whether the login button is disabled |Boolean | true |
-| loginButtonText | Login button text |String | Login |
+| loginButtonText | Login button text |String | `Login` |
 | hasForgetPassWord | Whether there is a forgot password text button |Boolean |true |
 | isGetCode | Whether to get the verification code successfully |Boolean |false |
 | isHideSwitchBtn | Whether to hide the login type switch button |Boolean |true |
@@ -327,7 +317,7 @@ export default App;
 | Attribute    | Description     | Type    | Default   |
 |---------|--------------------------------------------|---------|-----------|
 | account | account name | String | -- |
-| accountPlaceholder | Placeholder text of the account input box | String | `Please enter the login code` |
+| accountPlaceholder | Placeholder text of the account input box | String | `Please enter the account` |
 | accountErrorText | account error prompt text | String | -- |
 | telOrMail | mobile phone or email | String | -- |
 | telOrMailPlaceholder | Phone or email placeholder text | String | `Please enter your phone number or email` |
@@ -337,13 +327,13 @@ export default App;
 | passwordErrorText | password error prompt text | String | -- |
 | isShowPwdInput | Whether to show the password input box | Boolean | true |
 | verifyCode | verification code | String | -- |
-| verifyPlaceholder | Verification code placeholder text | String | `Please enter the verification code` |
-| verifyButtonText | Verification code get button text | String | `Get verification code` |
+| verifyPlaceholder | Verification code placeholder text | String | `Please enter the verify code` |
+| verifyButtonText | Verification code get button text | String | `Get code` |
 | verifyErrorText | verification code error prompt text | String | -- |
 | getCodeErrorToast | Get the verification code button and click the verification error prompt, which is used to prompt the phone or email input format error | String | `Please fill in the correct phone number or email` |
 | switchLoginText1 | Prompt text 1 for switching login type, which is a non-default login type | String | `Account password login` |
-| switchLoginText2 | Login type switch prompt text 2, which is the default login type | String | `Mobile phone/email login` |
-| forgetPwdText | Forgot password button text | String | `forgot password` |
+| switchLoginText2 | Login type switch prompt text 2, which is the default login type | String | `Mobile login / Email login` |
+| forgetPwdText | Forgot password button text | String | `Forgot password` |
 
 
 
