@@ -27,11 +27,11 @@ const App = () => {
       className="nut-cell-right-zero"
     >
       <HorizontalScrolling>
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -64,11 +64,11 @@ const App = () => {
       className="nut-cell-left-zero"
     >
       <HorizontalScrolling maskPosition="left">
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -103,13 +103,17 @@ const App = () => {
       <HorizontalScrolling
         maskPosition="left"
         maskShadowType="shadow"
-        maskIcon="more-x"
+        iconProps={{
+          name: "more-x",
+          color: "#fa2c19",
+          size: "26"
+        }}
       >
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -152,11 +156,11 @@ const App = () => {
         </div>
       }
       >
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -199,11 +203,11 @@ const App = () => {
           </div>
         }
       >
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -235,11 +239,11 @@ const App = () => {
         showMask={false} 
         maskPosition="left"
       >
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -281,11 +285,11 @@ const App = () => {
         onClickMask={onChange}
         onScrollRight={onScroll}
       >
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -307,14 +311,14 @@ export default App;
 
 | 参数            | 说明                                 | 类型     | 默认值           |
 |----------------|--------------------------------------|---------|-----------------|
-| showMask       | 是否需要遮罩层                         | Boolean | `true`     |
-| maskPosition   | 遮罩层展示位置（可选值：`left`、`right`）| String   | `right`   |
-| maskShadowType | 遮罩阴影形式（可选值 `none`: 无、`triangle`: 有三角的、`shadow`: 阴影、`transparent`: 半透明） | String | `triangle`               |
-| maskWidth      | 遮罩层宽度，默认单位为 `px`             | String \| Number | `100px`     |
-| maskDistance   | 滚动内容和容器的遮罩层侧之间的距离，默认单位为 `px`   | String \| Number | `0`        |
-| showScrollBar  | 是否展示滚动条                         | Boolean | `false`     |
-| maskIcon       | [图标名称](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon) 或图片链接    | String | `category` |
-| maskContent    | 自定义遮罩内容                         | String \| ReactNode | `更多` |
+| showMask       | 是否需要遮罩层                         | boolean | `true`     |
+| maskPosition   | 遮罩层展示位置（可选值：`left`、`right`）| string   | `right`   |
+| maskShadowType | 遮罩阴影形式（可选值 `none`: 无、`triangle`: 有三角的、`shadow`: 阴影、`transparent`: 半透明） | string | `triangle`               |
+| maskWidth      | 遮罩层宽度，默认单位为 `px`             | string \| number | `100px`     |
+| maskDistance   | 滚动内容和容器的遮罩层侧之间的距离，默认单位为 `px`   | string \| number | `0`        |
+| showScrollBar  | 是否展示滚动条                         | boolean | `false`     |
+| iconProps       | [Icon 组件的 props](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)    | iconProps | - |
+| maskContent    | 自定义遮罩内容                         | ReactNode | - |
 
 ### Events
 

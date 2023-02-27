@@ -106,10 +106,14 @@ test('HorizontalScrolling maskDistance', async () => {
   
 })
 
-test('HorizontalScrolling maskIcon', async () => {
+test('HorizontalScrolling iconProps', async () => {
   const { container } = render(
     <HorizontalScrolling
-      maskIcon="more-x"
+      iconProps={{
+        name: "more-x",
+        color: "#fa2c19",
+        size: "26"
+      }}
     >
       {[1, 2, 3, 4, 5, 6].map((item, index) => {
         return (

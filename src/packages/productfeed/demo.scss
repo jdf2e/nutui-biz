@@ -19,7 +19,6 @@
 // 商品样式
 .nut-biz-productfeedItem {
   margin-bottom: 6px;
-  border-radius: 8px;
   .img-label {
     width: 63px;
     height: 16px;
@@ -29,7 +28,6 @@
     }
   }
   .nut-image {
-    padding: 10px;
     img {
       width: 100%;
       border-radius: 8px;
@@ -47,17 +45,14 @@
     overflow: hidden;
     word-break: break-all;
     .label {
-      display: inline-block;
       display: inline-flex;
       align-items: center;
-      height: 13px;
+      height: 12px;
       margin-right: 5px;
       padding: 0 2px;
       font-size: 10px;
       font-family: PingFang SC;
-      position: relative;
-      top: -1px;
-      // vertical-align: middle;
+      vertical-align: 2px;
       color: rgba(255,255,255,1);
       background: linear-gradient(135deg, rgba(255,64,79,1) 0%,rgba(250,44,25,1) 100%);
       border-radius: 2px;
@@ -80,6 +75,7 @@
 
 .demo2 {
   .nut-biz-productfeedItem__content {
+    // margin-left: 6px;
   }
   .name-box {
     height: 42px;

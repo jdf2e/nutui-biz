@@ -82,10 +82,10 @@ const App = () => {
       useWindow={false}
       onLoadMore={loadMore1}
     >
-      {list1.map((item: any, index: number)=> {
+      {list1.map((item: any)=> {
         return (
           <ProductFeedItem
-            key={index}
+            key={item}
             gutter={6}
             col={2}
             imgUrl={item.imgUrl}
@@ -188,10 +188,10 @@ const App = () => {
       useWindow={false}
       onLoadMore={loadMore2}
     >
-      {list2.map((item: any, index: number)=> {
+      {list2.map((item: any)=> {
         return (
           <ProductFeedItem
-            key={index}
+            key={item}
             gutter={6}
             col={1}
             imgUrl={item.imgUrl}
@@ -304,10 +304,10 @@ const App = () => {
       onLoadMore={loadMore3}
       onRefresh={refresh}
     >
-      {list3.map((item: any, index: number)=> {
+      {list3.map((item: any)=> {
         return (
           <ProductFeedItem
-            key={index}
+            key={item}
             gutter={6}
             col={2}
             imgUrl={item.imgUrl}
@@ -348,15 +348,15 @@ export default App;
 
 | 字段         | 说明                           | 类型     | 默认值    |
 |-------------|--------------------------------|---------|-----------|
-| hasMore     | 是否还有更多数据                  | Boolean | `true`    |
-| containerId | 在 `useWindow` 属性为 `false` 的时候，自定义设置节点ID | String  | -    |
-| useWindow   | 将滚动侦听器添加到 window 否则侦听组件的父节点  | Boolean  | `true`  |
-| loadMoreTxt | 上拉加载图标名称                  | String  | `哎呀，这里是底部了啦` |
-| loadIcon    | 上拉加载 `Icon` 名称                  | String  | -    |
-| loadTxt     | 上拉加载提示文案                  | String  | `加载中...` |
-| isOpenRefresh | 是否开启下拉刷新                | Boolean | `false` |
-| pullIcon    | 下拉刷新 `Icon` 名称                  | String  | -    |
-| pullTxt     | 下拉刷新提示文案                  | String  | `松手刷新` |
+| hasMore     | 是否还有更多数据                  | boolean | `true`    |
+| containerId | 在 `useWindow` 属性为 `false` 的时候，自定义设置节点ID | string  | -    |
+| useWindow   | 将滚动侦听器添加到 window 否则侦听组件的父节点  | boolean  | `true`  |
+| loadMoreTxt | 上拉加载图标名称                  | string  | `哎呀，这里是底部了啦` |
+| loadIcon    | 上拉加载 `Icon` 名称                  | string  | -    |
+| loadTxt     | 上拉加载提示文案                  | string  | `加载中...` |
+| isOpenRefresh | 是否开启下拉刷新                | boolean | `false` |
+| pullIcon    | 下拉刷新 `Icon` 名称                  | string  | -    |
+| pullTxt     | 下拉刷新提示文案                  | string  | `松手刷新` |
 
 ## Events
 | 字段        | 说明            | 回调参数             |
@@ -368,17 +368,18 @@ export default App;
 
 | 字段         | 说明                     | 类型              | 默认值  |
 |-------------|--------------------------|------------------|--------|
-| col         | 每行商品数量               | Number \| String  | `2`    |
-| gutter      | 每行商品之间的间距，默认单位 `px`| Number \| String  | `6`    |
-| imgUrl      | 商品图片Url                | String           | -     |
-| imgWidth    | 商品图片宽度，默认单位 `px`  | String           | -     |
-| imgHeight   | 商品图片高度，默认单位 `px`  | String           | `150` |
-| imgTag      | 商品图片标签               | String           | -      |
-| isImageLazy | 是否开启商品懒加载          | Boolean          | `true` |
-| loadingImg  | 商品图片加载时的图片        | String           | -      |
-| errorImg    | 商品图片错误时的图片        | String           | -      |
+| col         | 每行商品数量               | number \| string  | `2`    |
+| gutter      | 每行商品之间的间距，默认单位 `px`| number \| string  | `6`    |
+| imgUrl      | 商品图片Url                | string           | -     |
+| imgWidth    | 商品图片宽度，默认单位 `px`  | string           | -     |
+| imgHeight   | 商品图片高度，默认单位 `px`  | string           | `150` |
+| imgTag      | 商品图片标签               | imgTag           | -      |
+| isImageLazy | 是否开启商品图片懒加载          | boolean          | `true` |
+| loadingImg  | 商品图片加载时的图片        | string           | -      |
+| errorImg    | 商品图片错误时的图片        | string           | -      |
 
 ## ProductFeedItem Events
 | 字段      | 说明      | 回调参数        |
 |--------- | -------- | ---------------|
 | onClick  | 点击时触发 |  event: Event |
+| onImageClick  | 点击时触发 | data |

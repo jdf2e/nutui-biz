@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslate } from '../../sites/assets/locale'
 import { HorizontalScrolling } from './horizontalscrolling'
-import { Cell } from '@nutui/nutui-react'
+import { Cell, ButtonProps } from '@nutui/nutui-react'
 import './demo.scss'
 
 interface T {
@@ -36,6 +36,14 @@ const HorizontalScrollingDemo = () => {
     },
   })
 
+  const iconProps: any = () => {
+    return {
+      name: "more-x",
+      color: "#fa2c19",
+      size: "26"
+    }
+  }
+
   const onChange = () => {
     console.log('change')
   }
@@ -52,11 +60,11 @@ const HorizontalScrollingDemo = () => {
           className="nut-cell-right-zero"
         >
           <HorizontalScrolling>
-            {[1, 2, 3, 4, 5, 6].map((item, index) => {
+            {[1, 2, 3, 4, 5, 6].map((item) => {
               return (
                 <div   
                   className="nut-biz-horizontalscrolling__contain-item"
-                  key={index}
+                  key={item}
                 >
                   <img
                     src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -71,11 +79,11 @@ const HorizontalScrollingDemo = () => {
           className="nut-cell-left-zero"
         >
           <HorizontalScrolling maskPosition="left">
-            {[1, 2, 3, 4, 5, 6].map((item, index) => {
+            {[1, 2, 3, 4, 5, 6].map((item) => {
               return (
                 <div   
                   className="nut-biz-horizontalscrolling__contain-item"
-                  key={index}
+                  key={item}
                 >
                   <img
                     src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -92,13 +100,17 @@ const HorizontalScrollingDemo = () => {
           <HorizontalScrolling
             maskPosition="left"
             maskShadowType="shadow"
-            maskIcon="more-x"
+            iconProps={{
+              name: "more-x",
+              color: "#fa2c19",
+              size: "26"
+            }}
           >
-            {[1, 2, 3, 4, 5, 6].map((item, index) => {
+            {[1, 2, 3, 4, 5, 6].map((item) => {
               return (
                 <div   
                   className="nut-biz-horizontalscrolling__contain-item"
-                  key={index}
+                  key={item}
                 >
                   <img
                     src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -122,11 +134,11 @@ const HorizontalScrollingDemo = () => {
                 <div>{translated.more}</div>
               </div>}
             >
-            {[1, 2, 3, 4, 5, 6].map((item, index) => {
+            {[1, 2, 3, 4, 5, 6].map((item) => {
               return (
                 <div   
                   className="nut-biz-horizontalscrolling__contain-item"
-                  key={index}
+                  key={item}
                 >
                   <img
                     src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -151,11 +163,11 @@ const HorizontalScrollingDemo = () => {
               </div>
             }
           >
-            {[1, 2, 3, 4, 5, 6].map((item, index) => {
+            {[1, 2, 3, 4, 5, 6].map((item) => {
               return (
                 <div   
                   className="nut-biz-horizontalscrolling__contain-item"
-                  key={index}
+                  key={item}
                 >
                   <img
                     src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -171,11 +183,11 @@ const HorizontalScrollingDemo = () => {
             showMask={false} 
             maskPosition="left"
           >
-            {[1, 2, 3, 4, 5, 6].map((item, index) => {
+            {[1, 2, 3, 4, 5, 6].map((item) => {
               return (
                 <div   
                   className="nut-biz-horizontalscrolling__contain-item"
-                  key={index}
+                  key={item}
                 >
                   <img
                     src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -194,11 +206,11 @@ const HorizontalScrollingDemo = () => {
             onClickMask={onChange}
             onScrollRight={onScroll}
           >
-            {[1, 2, 3, 4, 5, 6].map((item, index) => {
+            {[1, 2, 3, 4, 5, 6].map((item) => {
               return (
                 <div   
                   className="nut-biz-horizontalscrolling__contain-item"
-                  key={index}
+                  key={item}
                 >
                   <img
                     src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
