@@ -1,12 +1,11 @@
 import React, {
   FunctionComponent,
-  CSSProperties,
   ReactNode,
   useRef
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import { IComponent } from '@/utils/typings'
-import { Icon } from '@nutui/nutui-react';
+import { Icon, IconProps } from '@nutui/nutui-react';
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 
@@ -14,9 +13,6 @@ export type MaskPositionType = "left" | "right";
 export type MaskShadowTypeType = "triangle" | "shadow" | "transparent" | "none";
 
 export interface HorizontalScrollingProps extends IComponent {
-  className: string
-  // 样式
-  style: CSSProperties
   // 是否需要遮罩层
   showMask: boolean
   // 遮罩层位置
@@ -25,8 +21,8 @@ export interface HorizontalScrollingProps extends IComponent {
   maskWidth: number | string
   maskDistance: number | string
   showScrollBar: boolean
-  maskIcon: string
-  maskContent: string | ReactNode
+  maskContent: ReactNode
+  iconProps: Partial<IconProps>
   onClickMask: () => void,
   onScrollRight: () => void
 }
@@ -38,7 +34,6 @@ const defaultProps = {
   maskWidth: 100,
   maskDistance: 0,
   showScrollBar: false,
-  maskIcon: "category",
   maskContent: '',
   onClickMask: () => { },
   onScrollRight: () => { },
@@ -58,10 +53,10 @@ export const HorizontalScrolling: FunctionComponent<
     maskWidth,
     maskDistance,
     showScrollBar,
-    maskIcon,
     maskContent,
     onClickMask,
     onScrollRight,
+    iconProps,
     ...rest
   } = {
     ...defaultProps,
@@ -89,7 +84,7 @@ export const HorizontalScrolling: FunctionComponent<
   })
 
   const handleMaskClick = ()=>{
-    onClickMask && onClickMask()
+    onClickMask()
   }
 
   const onScroll = () => {
@@ -97,7 +92,7 @@ export const HorizontalScrolling: FunctionComponent<
     if (scrollRef.current) {
       const { scrollLeft, clientWidth, scrollWidth } = scrollRef.current;
       if (scrollLeft + clientWidth >= scrollWidth) {
-        onScrollRight && onScrollRight();
+        onScrollRight();
       }
     }
   };
@@ -107,7 +102,7 @@ export const HorizontalScrolling: FunctionComponent<
       <div className={`${b('mask-')}${maskPosition} ${b('mask-')}${maskPosition}--${maskShadowType}`} style={{width: maskWidth}} onClick={handleMaskClick}>
         {typeof maskContent !== 'string' ? maskContent : 
         <div className={b('mask-box')}>
-          <Icon name={maskIcon} color="#fa2c19" size="26"></Icon>
+          <Icon name="category" {...iconProps} className={b('mask-icon')}></Icon>
           <span>{maskContent ? maskContent : locale.horizontalscrolling.more}</span>
         </div>}
       </div>
@@ -115,7 +110,7 @@ export const HorizontalScrolling: FunctionComponent<
   }
 
   return (
-    <div className={classNames([b(), className])} style={{ ...style }} {...rest}>
+    <div className={classNames([b(), className])} style={style} {...rest}>
       {maskPosition == 'left' && showMask && 
         maskRender()
       }

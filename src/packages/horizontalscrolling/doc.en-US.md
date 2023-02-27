@@ -27,11 +27,11 @@ const App = () => {
       className="nut-cell-right-zero"
     >
       <HorizontalScrolling>
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -64,11 +64,11 @@ const App = () => {
       className="nut-cell-left-zero"
     >
       <HorizontalScrolling maskPosition="left">
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -103,13 +103,12 @@ const App = () => {
       <HorizontalScrolling
         maskPosition="left"
         maskShadowType="shadow"
-        maskIcon="more-x"
       >
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -153,11 +152,11 @@ const App = () => {
         </div>
       }
       >
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -200,11 +199,11 @@ const App = () => {
           </div>
         }
       >
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -236,11 +235,11 @@ const App = () => {
         showMask={false} 
         maskPosition="left"
       >
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -282,11 +281,11 @@ const App = () => {
         onClickMask={onChange}
         onScrollRight={onScroll}
       >
-        {[1, 2, 3, 4, 5, 6].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
               className="nut-biz-horizontalscrolling__contain-item"
-              key={index}
+              key={item}
             >
               <img
                 src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
@@ -308,14 +307,14 @@ export default App;
 
 | Attribute  | Description     | Type    | Default     |
 |---------|--------------------------------------------|---------|---------|
-| showMask        | whether to show a mask layer    | Boolean | `true`         |
-| maskPosition    | Mask layer display position (eg: `left`, `right`) | String | `right` |
-| maskShadowType  | Mask shadow form (eg `none`: none, `triangle`: triangle, `shadow`: shadow, `transparent`: translucent) | String | `triangle`    |
-| maskWidth       | mask layer width, the default unit is `px` | String \| Number | `100px`              |
-| maskDistance    | The distance between the scroll content and the overlay side of the container, the default unit is `px`    | String \| Number | `0`              |
-| showScrollBar   | whether to show scroll bar                     | Boolean | `false`             |
-| maskIcon        | Custom icon `name` value    | String | `category` |
-| maskContent     | Custom mask content         | String \| ReactNode | `More` |
+| showMask        | Whether to show a mask layer    | boolean | `true`         |
+| maskPosition    | Mask layer display position (eg: `left`, `right`) | string | `right` |
+| maskShadowType  | Mask shadow form (eg `none`: none, `triangle`: triangle, `shadow`: shadow, `transparent`: translucent) | string | `triangle`    |
+| maskWidth       | Mask layer width, the default unit is `px` | string \| number | `100px`              |
+| maskDistance    | The distance between the scroll content and the overlay side of the container, the default unit is `px`    | string \| number | `0`              |
+| showScrollBar   | whether to show scroll bar                     | boolean | `false`             |
+| iconProps       | [Props of the Icon component](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)    | iconProps | - |
+| maskContent     | Custom mask content         | ReactNode | - |
 
 ### Events
 

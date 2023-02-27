@@ -82,10 +82,10 @@ const App = () => {
       useWindow={false}
       onLoadMore={loadMore1}
     >
-      {list1.map((item: any, index: number)=> {
+      {list1.map((item: any)=> {
         return (
           <ProductFeedItem
-            key={index}
+            key={item}
             gutter={6}
             col={2}
             imgUrl={item.imgUrl}
@@ -188,10 +188,10 @@ const App = () => {
       useWindow={false}
       onLoadMore={loadMore2}
     >
-      {list2.map((item: any, index: number)=> {
+      {list2.map((item: any)=> {
         return (
           <ProductFeedItem
-            key={index}
+            key={item}
             gutter={6}
             col={1}
             imgUrl={item.imgUrl}
@@ -304,10 +304,10 @@ const App = () => {
       onLoadMore={loadMore3}
       onRefresh={refresh}
     >
-      {list3.map((item: any, index: number)=> {
+      {list3.map((item: any)=> {
         return (
           <ProductFeedItem
-            key={index}
+            key={item}
             gutter={6}
             col={2}
             imgUrl={item.imgUrl}
@@ -348,15 +348,15 @@ export default App;
 
 | Event  | Description     | Type    |
 |---------|--------------------------------------------|---------|
-| hasMore     | Has more data                  | Boolean | `true`    |
-| containerId | When the `useWindow` property is `false`, custom set the node ID | String  | -    |
-| useWindow   | Add scroll listener to window otherwise listen to component's parent  | Boolean  | `true`  |
-| loadMoreTxt | “No more” text              | String  | `Oops, this is the bottom` |
-| loadIcon    | Pull on loading `Icon` name         | String  | -    |
-| loadTxt     | Pull on loading text         | String  | `Loading...` |
-| isOpenRefresh | Enable pull refresh             | Boolean | `false` |
-| pullIcon    | Pull refresh `Icon` name           | String  | -    |
-| pullTxt     | Pull refresh text              | String  | `Loose to refresh` |
+| hasMore     | Has more data                  | boolean | `true`    |
+| containerId | When the `useWindow` property is `false`, custom set the node ID | string  | -    |
+| useWindow   | Add scroll listener to window otherwise listen to component's parent  | boolean  | `true`  |
+| loadMoreTxt | “No more” text              | string  | `Oops, this is the bottom` |
+| loadIcon    | Pull on loading `Icon` name         | string  | -    |
+| loadTxt     | Pull on loading text         | string  | `Loading...` |
+| isOpenRefresh | Enable pull refresh             | boolean | `false` |
+| pullIcon    | Pull refresh `Icon` name           | string  | -    |
+| pullTxt     | Pull refresh text              | string  | `Loose to refresh` |
 
 ## Events
 | Attribute            | Description               | Arguments   |
@@ -369,18 +369,19 @@ export default App;
 
 | Event  | Description     | Type    |
 |---------|--------------------------------------------|---------|
-| col         | Quantity of items per row               | Number \| String  | `2`    |
-| gutter      | The spacing between items in each row, the default unit is `px` | Number \| String  | `6`    |
-| imgUrl      | Product Image Url                | String           | -     |
-| imgWidth    | Product image width, default unit `px`  | String           | -     |
-| imgHeight   | Product image height, default unit `px`  | String           | `150` |
-| imgTag      | Product image tag               | String           | -      |
-| isImageLazy | Whether to enable product lazy loading          | Boolean          | `true` |
-| loadingImg  | Image when product image loads        | String           | -      |
-| errorImg    | Image when product image is wrong        | String           | -      |
+| col         | Quantity of items per row               | number \| string  | `2`    |
+| gutter      | The spacing between items in each row, the default unit is `px` | number \| string  | `6`    |
+| imgUrl      | Product Image Url                | string           | -     |
+| imgWidth    | Product image width, default unit `px`  | string           | -     |
+| imgHeight   | Product image height, default unit `px`  | string           | `150` |
+| imgTag      | Product image tag               | string           | -      |
+| isImageLazy | Whether to enable product lazy loading          | boolean          | `true` |
+| loadingImg  | Image when product image loads        | string           | -      |
+| errorImg    | Image when product image is wrong        | string           | -      |
 
 ## ProductFeedItem Events
 | Attribute            | Description               | Arguments   |
 |----- | ----- | -----  |
 |--------- | -------- | ---------------|
 | onClick  | fires on click |  event: Event |
+| onImageClick  | 点击时触发 |  data |

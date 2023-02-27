@@ -7,10 +7,11 @@ import classNames from 'classnames'
 import bem from '@/utils/bem'
 
 export interface ProductFeedItemProps {
-  className: string
-  style: CSSProperties
+  data: any
   col: number | string
   gutter: number | string
+  borderRadius: number | string
+  padding: number | string
   imgUrl: string
   imgWidth: string
   imgHeight: string
@@ -18,29 +19,36 @@ export interface ProductFeedItemProps {
   isImageLazy: boolean
   loadingImg: string
   errorImg: string
-  onClick: () => void
+  onClick: (item: any) => void
+  onImageClick: (item: any) => void
 }
 
 const defaultProps = {
   col: 2,
   gutter: 6,
+  borderRadius: 8,
+  padding: 10,
   imgWidth: '150',
   imgHeight: '150',
   isImageLazy: true,
   loadingImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
   errorImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
-  onClick: () => { }
+  onClick: () => { },
+  onImageClick: () => { }
 } as unknown as ProductFeedItemProps
 
 export const ProductFeedItem: FunctionComponent<
-  Partial<ProductFeedItemProps> & HTMLAttributes<HTMLDivElement>
+  Partial<ProductFeedItemProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const {
     className,
     style,
     children,
+    data,
     col,
     gutter,
+    borderRadius,
+    padding,
     imgUrl,
     imgWidth,
     imgHeight,
@@ -48,6 +56,8 @@ export const ProductFeedItem: FunctionComponent<
     isImageLazy,
     loadingImg,
     errorImg,
+    onClick,
+    onImageClick,
     ...rest
   } = {
     ...defaultProps,
@@ -64,6 +74,8 @@ export const ProductFeedItem: FunctionComponent<
     return {
       "width": col == 1 ? "100%" : 
                   `calc((100% - ${pxAdd(gutter)})/${col})`,
+      "borderRadius": pxAdd(borderRadius),
+      "padding": pxAdd(padding),
     }
   }
 
@@ -73,13 +85,23 @@ export const ProductFeedItem: FunctionComponent<
     } as CSSProperties
   }
 
+  const handleClick = () => {
+    onClick(data);
+  };
+
+  const handleImageClick = (event: any) => {
+    onImageClick(data);
+    event.stopPropagation();
+  };
+
   return (
     <div 
       className={`${b()} ${col == 1 ? b("single") : b("multiple")}`}
       style={{ ...itemStyle(), ...style }} 
+      onClick={handleClick}
       {...rest}
     >
-      <div className={b("image")}>
+      <div className={b("image")} onClick={handleImageClick}>
         <Image
           src={imgUrl}
           isLazy={isImageLazy}
@@ -87,6 +109,7 @@ export const ProductFeedItem: FunctionComponent<
           height={imgHeight}
           loadingImg={loadingImg}
           errorImg={loadingImg}
+          // {...props}
         />
         {imgTag && <div className={b("image-tag")}>{imgTag}</div>}
       </div>
