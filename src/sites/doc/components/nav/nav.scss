@@ -34,6 +34,8 @@
         position: relative;
 
         &.active {
+          color: #fa2c19 !important;
+          
           &::before {
             position: absolute;
             content: '';
@@ -43,9 +45,9 @@
             margin-top: -5px;
             height: 10px;
             transform: rotate(90deg);
-            background: url(https://img10.360buyimg.com/imagetools/jfs/t1/136135/19/14659/946/5fa20aa8E33a9aa26/d329fbe669171208.png)
-              no-repeat;
-            background-size: 100% 100%;
+            // background: url(https://img10.360buyimg.com/imagetools/jfs/t1/136135/19/14659/946/5fa20aa8E33a9aa26/d329fbe669171208.png)
+            //   no-repeat;
+            // background-size: 100% 100%;
           }
         }
       }
@@ -55,6 +57,8 @@
           cursor: pointer;
 
           &:hover {
+            color: #fa2c19;
+
             a {
               color: $doc-default-color;
             }

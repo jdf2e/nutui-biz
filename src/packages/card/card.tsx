@@ -85,7 +85,7 @@ export const Card: FunctionComponent<
   const b = cn2('card')
 
   const handleClick = () => {
-    onClick && onClick()
+    onClick()
   }
 
   const clampStyle = () => {

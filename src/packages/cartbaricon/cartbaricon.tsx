@@ -46,7 +46,7 @@ export const CartBarIcon: FunctionComponent<
   }
 
   const handleClick = () => {
-    onClick && onClick()
+    onClick()
   }
 
   return (

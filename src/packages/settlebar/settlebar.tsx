@@ -72,7 +72,7 @@ export const SettleBar: FunctionComponent<
   }
 
   const handleSettle = () => {
-    !disabled && !loading && onSettle && onSettle()
+    !disabled && !loading && onSettle()
   }
 
   let totalStyle = {
@@ -81,7 +81,7 @@ export const SettleBar: FunctionComponent<
   } as CSSProperties
 
   const handleSelectAll = (checked: boolean) => {
-    onSelectAll && onSelectAll(checked)
+    onSelectAll(checked)
   }
 
   const b = cn2('settle-bar')
