@@ -1,9 +1,10 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState, ReactNode, CSSProperties } from 'react';
 import { Icon, Popup } from '@nutui/nutui-react';
 import bem from '@/utils/bem';
 import { ExistRender } from './existRender';
 import { CustomRender } from './customRender';
 import { useConfig } from '@/packages/configprovider';
+import { IComponent } from '@/utils/typings';
 import {
   RegionData,
   NextListObj,
@@ -11,9 +12,36 @@ import {
   CloseCallBack,
   AddressList,
   AddressType,
-  AddressProps
+  baseAddressInfo,
+  HotCityList,
+  ChangeCallBack
 } from './type';
-
+export interface AddressProps extends IComponent, baseAddressInfo {
+  className?: string;
+  style?: CSSProperties;
+  modelValue: boolean;
+  modelSelect: (string | number)[];
+  type: AddressType;
+  customAddressTitle: string;
+  isShowCustomAddress: boolean;
+  existAddress: AddressList[];
+  hotCities: HotCityList;
+  existAddressTitle: string;
+  customAndExistTitle: string;
+  height: string | number;
+  defaultIcon: ReactNode;
+  selectedIcon: ReactNode;
+  closeBtnIcon: string;
+  backBtnIcon: string;
+  bottom: ReactNode;
+  onSelected?: (prevExistAdd: AddressList, item: AddressList, copyExistAdd: AddressList[]) => void;
+  onClose?: (cal: CloseCallBack) => void;
+  onClickHotCity?: (city: { id: number; name: string }) => void;
+  onCloseMask?: (cal: { closeWay: string }) => void;
+  onSwitchModule?: (cal: { type: string }) => void;
+  onChange?: (cal: ChangeCallBack) => void;
+  onTabChecked?: (cal: string) => void;
+}
 export const Address: FunctionComponent<Partial<AddressProps>> = (props) => {
   const { locale } = useConfig();
   const {

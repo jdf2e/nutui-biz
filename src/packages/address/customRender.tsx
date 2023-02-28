@@ -278,7 +278,11 @@ export const CustomRender: FunctionComponent<Partial<CustomRenderProps> & React.
   const handleElevatorItem = (key: string, item: RegionData | string) => {
     nextAreaList(item);
   };
-
+  const judgeSelectStatus = (item: RegionData) => {
+    return (
+      selectedRegion && selectedRegion[tabName.current[tabIndex] as SelectedRegionType].id == (item as RegionData).id
+    );
+  };
   useEffect(() => {
     const { province } = { ...defaultProps, ...props };
     setRegionList({
@@ -365,16 +369,14 @@ export const CustomRender: FunctionComponent<Partial<CustomRenderProps> & React.
               regionList[tabName.current[tabIndex] as SelectedRegionType].map(
                 (item: RegionData | CustomRegionData, index: number) => {
                   return (
-                    <li key={index} className={b('region-item')}>
+                    <li key={index} className={`${b('region-item')} ${judgeSelectStatus(item) ? 'active' : ''}`}>
                       <div
                         onClick={() => {
                           nextAreaList(item as RegionData);
                         }}>
-                        {selectedRegion &&
-                          selectedRegion[tabName.current[tabIndex] as SelectedRegionType].id ==
-                            (item as RegionData).id && (
-                            <Icon className={b('region-item--icon')} name="Check" color="#FA2C19" size="13px" />
-                          )}
+                        {judgeSelectStatus(item) && (
+                          <Icon className={b('region-item--icon')} name="Check" color="#FA2C19" size="13px" />
+                        )}
                         {(item as RegionData).name}
                       </div>
                     </li>
@@ -390,8 +392,20 @@ export const CustomRender: FunctionComponent<Partial<CustomRenderProps> & React.
           <Elevator
             height={height}
             indexList={regionList[tabName.current[tabIndex] as SelectedRegionType]}
-            onClickItem={handleElevatorItem}
-          />
+            onClickItem={handleElevatorItem}>
+            <Elevator.Context.Consumer>
+              {(item) => {
+                return (
+                  <div className={judgeSelectStatus(item) ? 'active' : ''}>
+                    {judgeSelectStatus(item) && (
+                      <Icon className={b('region-item--icon')} name="Check" color="#FA2C19" size="13px" />
+                    )}
+                    {item?.name}
+                  </div>
+                );
+              }}
+            </Elevator.Context.Consumer>
+          </Elevator>
         </div>
       )}
     </div>
