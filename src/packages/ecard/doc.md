@@ -40,7 +40,7 @@ const App = () => {
     const onChangeInput = (val: number) => {
         console.log(val);
     };
-    const onChange = (item: IDataList) => {
+    const onChange = (item: DataListItem) => {
         console.log(item);
     };
     const onChangeStep = (num: number, price: number) => {
@@ -71,20 +71,20 @@ export default App;
 |---------------|----------------------------------|--------|------------------|
 | chooseText    | 选择面值文案   | string |   `请选择电子卡面值`   |
 | suffix        | 符号标示       | string | `¥`            |
-| otherValueText| 其他面值文案   | string |    `其他面值`   |
-| dataList      | 电子卡面值列表  | Array |  `DataList[]`  |
+| otherValueText| 其它面值文案   | string |    `其它面值`   |
+| dataList      | 电子卡面值列表  | Array |  `DataListItem[]`  |
 | cardAmountMin | 其它面值最小值  | number | `1` |
-| cardAmountMax | 其他面值最大值  | number | `9999`            |
-| cardBuyMin    | 购买数量最小值  | number | `9999`            |
+| cardAmountMax | 其它面值最大值  | number | `9999`            |
+| cardBuyMin    | 购买数量最小值  | number | `1`            |
 | cardBuyMax    | 购买数量最大值  | number | `9999`            |
-| modelValue         | 购买电子卡所需价钱 | number | `0`            |
-| placeholder   | 其他面值默认提示语 | string | `请输入1-9999整数`|
+| modelValue         | 购买电子卡所需价钱 | number | `1`            |
+| placeholder   | 其它面值默认提示语 | string | `请输入1-9999整数`|
 
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| onChange  | 选中电子卡事件 | 点击的数据 |
+| onChange  | 选中电子卡事件 | 当前卡对应的DataListItem，例如{ price:100 } |
 | onInputChange  | 更改 `input` 框触发事件 |输入的数据 |
 | onChangeStep  | 更改数量时触发 | 当前数量，当前选中的卡面值 |
 
@@ -92,4 +92,4 @@ export default App;
 
 | 键名 | 说明           | 类型     |
 |--------|----------------|--------------|
-| price  | 每张电子卡价格 | string |
+| price  | 每张电子卡价格 | number  |
