@@ -6,6 +6,7 @@ import { useConfig } from '@/packages/configprovider'
 
 import { IComponent } from '@/utils/typings'
 import {ItemContents} from './itemContents'
+import {cn2} from '@/utils/bem'
 
 export interface GeneralShellProps extends IComponent {
   item: {
@@ -44,6 +45,8 @@ export const GeneralShell: FunctionComponent<
   } = {
     ...props,
   }
+
+  const b = cn2('address-list')
 
   let loop: any = null;
 
@@ -130,7 +133,7 @@ export const GeneralShell: FunctionComponent<
   }
 
   return (
-      <div {...rest} className="nut-address-list-general">
+      <div {...rest} className={b('general')}>
           <ItemContents
             item={item}
             onDelIcon={delShellClick}
@@ -140,21 +143,21 @@ export const GeneralShell: FunctionComponent<
             onTouchEnd={holddownend}
             onTouchMove={holddownmove}
           />
-          {longPress && showMaskRef && <div className="nut-address-list-general__mask" v-if="" onClick={maskClick}>
+          {longPress && showMaskRef && <div className={b('general-mask')} v-if="" onClick={maskClick}>
               <slot name="longpressAll">
-                  <div className="nut-address-list-general__mask-copy" onClick={copyClick}>
-                      <div className="nut-address-list-mask-contain"> {locale.generalShell.copy}<br />{locale.generalShell.address} </div>
+                  <div className={b('general-mask-copy')} onClick={copyClick}>
+                      <div className={b('mask-contain')}> {locale.generalShell.copy}<br />{locale.generalShell.address} </div>
                   </div>
-                  <div className="nut-address-list-general__mask-set" onClick={setDefault}>
-                      <div className="nut-address-list-mask-contain"> {locale.generalShell.set}<br />{locale.generalShell.default} </div>
+                  <div className={b('general-mask-set')} onClick={setDefault}>
+                      <div className={b('mask-contain')}> {locale.generalShell.set}<br />{locale.generalShell.default} </div>
                   </div>
-                  <div className="nut-address-list-general__mask-del" onClick={delClick}>
-                      <div className="nut-address-list-mask-contain"> {locale.generalShell.delete}<br />{locale.generalShell.address} </div>
+                  <div className={b('general-mask-del')} onClick={delClick}>
+                      <div className={b('mask-contain')}> {locale.generalShell.delete}<br />{locale.generalShell.address} </div>
                   </div>
               </slot>
           </div>}
           
-          {showMaskRef && <div className="nut-address-list__mask-bottom" onClick={hideMaskClick}></div>}
+          {showMaskRef && <div className={b('mask-bottom')} onClick={hideMaskClick}></div>}
       </div>
   )
 }

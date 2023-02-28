@@ -1,12 +1,11 @@
 import React, {
   FunctionComponent,
-  CSSProperties,
   useState,
   useEffect
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
+import {cn2} from '@/utils/bem'
 import {Button} from '@nutui/nutui-react'
 import {GeneralShell} from './generalShell'
 import {SwipeShell} from './swipeShell'
@@ -15,8 +14,6 @@ import {floatData} from '@/utils'
 import { IComponent } from '@/utils/typings'
 
 export interface AddressListProps extends IComponent {
-  className: string
-  style: CSSProperties
   data: Array<any>
   longPress: boolean
   swipeEdition: boolean
@@ -59,7 +56,7 @@ export const AddressList: FunctionComponent<
     ...props,
   }
 
-  const b = bem('address-list')
+  const b = cn2('address-list')
 
   const addAddress = (event: any) => {
     onAdd && onAdd(event)
@@ -168,7 +165,7 @@ export const AddressList: FunctionComponent<
                 />
         })
       }
-      {showBottomButton && <div className="nut-address-list__bottom" onClick={addAddress}>
+      {showBottomButton && <div className={b('bottom')} onClick={addAddress}>
         <Button block type="danger">{locale.addresslist.addAddress}</Button>
       </div>}
     </div>

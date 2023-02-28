@@ -10,7 +10,7 @@
 import { Ecard } from '@nutui/nutui-biz';
 ```
 
-## 代码示例
+## 代码演示
 
 ### 基础用法
 

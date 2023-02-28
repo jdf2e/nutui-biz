@@ -97,7 +97,7 @@ export default App;
 
 ### 单个删除
 
-点击删除按钮，默认是全部删除。设置 deleteType 为 single，可实现单个删除。
+点击最近搜索的删除图标，默认是全部删除。设置 `deleteType` 为 `single`，可实现搜索结果的单个删除。
 
 :::demo
 
@@ -281,16 +281,16 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| recentSearchText   | 最近搜索文案                                     | String  | `最近搜索`         |
-| searchDiscoverText     | 搜索发现文案                   | String  | `搜索发现`    |
+| recentSearchText   | 最近搜索文案                                     | string  | `最近搜索`         |
+| searchDiscoverText     | 搜索发现文案                   | string  | `搜索发现`    |
 | recentSearchData      | 最近搜索数据                               |  Array  | []      |
 | searchDiscoverData | 搜索发现数据                        | Array  | []      |
-| keyword  | 传入文本框内的搜索词                                  | String | ''    |
+| keyword  | 传入文本框内的搜索词                                  | string | ''    |
 | backIcon     | 左上角返回按钮图标，设置为空则无返回按钮，类型为字符串时，等同于 Icon 组件的 [name 属性](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon) | ReactNode  | `left`     |
 | deleteIcon   | 最近搜索删除图标，类型为字符串时，等同于 Icon 组件的 [name 属性](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)| ReactNode  | `del`      |
-| searchDiscoverExtra   | 搜索发现额外信息| String  | -      |
-| refreshIcon   | 最近搜索刷新图标，等同于 Icon 组件的 [name 属性](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon) | String  | `refresh`      |
-| recentSearchCollapse   | 最近搜索数据超过两行出现下拉箭头                                 | Boolean  | `true`          |
+| searchDiscoverExtra   | 搜索发现额外信息| string  | -      |
+| refreshIcon   | 最近搜索刷新图标，等同于 Icon 组件的 [name 属性](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon) | string  | `refresh`      |
+| recentSearchCollapse   | 最近搜索数据超过两行出现下拉箭头                                 | boolean  | `true`          |
 | leftInIcon | 文本框内左侧自定义，默认是放大图标 | ReactNode  | -          |
 | rightInIcon | 文本框内右侧自定义，默认是拍照图标 | ReactNode  | -          |
 | rightOutIcon | 文本框外右侧自定义，默认是“搜索” | ReactNode  | -          |

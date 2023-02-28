@@ -1,44 +1,11 @@
-import React, { useState } from 'react'
-import { useTranslate } from '../../sites/assets/locale'
-import { Address } from './address'
-import { Cell } from '@nutui/nutui-react'
-
-interface CalBack {
-  next: string
-  value: string | RegionData
-  custom: string
-  selectedRegion: any
-}
-interface RegionData {
-  name?: string
-  [key: string]: any
-}
-interface CalResult {
-  type: string
-  data: any
-}
-interface AddressList {
-  id?: string | number
-  provinceName: string
-  cityName: string
-  countyName: string
-  townName: string
-  addressDetail: string
-  selectedAddress: boolean
-  name?: string
-  phone?: string
-}
-interface AddressResult extends AddressList {
-  addressIdStr: string
-  addressStr: string
-  province: RegionData[]
-  city: RegionData[]
-  country: RegionData[]
-  town: RegionData[]
-}
+import React, { useState } from 'react';
+import { useTranslate } from '../../sites/assets/locale';
+import { Address } from './address';
+import { Cell, Icon } from '@nutui/nutui-react';
+import { CloseCallBack, AddressList, AddressResult } from './type';
 
 interface T {
-  [props: string]: string
+  [props: string]: string;
 }
 
 const AddressDemo = () => {
@@ -49,11 +16,12 @@ const AddressDemo = () => {
       customAddress: '选择自定义地址',
       selectCity: '选中省市区',
       customAddress2: '选择自定义地址2',
+      hotCity: '热门城市',
       existAddress: '选择已有地址',
       icon: '自定义图标',
       change: '自定义地址与已有地址切换',
       delivery: '配送',
-      other: '选择其他地址',
+      other: '选择其他地址'
     },
     'zh-TW': {
       basic: '基本用法',
@@ -61,11 +29,12 @@ const AddressDemo = () => {
       customAddress: '選擇自定義地址',
       selectCity: '選中省市區',
       customAddress2: '選擇自定義地址2',
+      hotCity: '热门城市',
       existAddress: '選擇已有地址',
       icon: '自定義圖標',
       change: '自定義地址與已有地址切換',
       delivery: '配送',
-      other: '選擇其他地址',
+      other: '選擇其他地址'
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -73,24 +42,25 @@ const AddressDemo = () => {
       customAddress: 'Choose Custom Address',
       selectCity: 'Choose City',
       customAddress2: 'Choose Custom Address2',
+      hotCity: 'Hot City',
       existAddress: 'Choose Exist Address',
       icon: 'Custom Icon',
       change: 'Custom Or Exist',
       delivery: 'Delivery',
-      other: 'Choose Other Address',
-    },
-  })
+      other: 'Choose Other Address'
+    }
+  });
   const [province, setProvince] = useState([
     { id: 1, name: '北京', title: 'B' },
     { id: 2, name: '广西', title: 'G' },
     { id: 3, name: '江西', title: 'J' },
     { id: 4, name: '四川', title: 'S' },
-    { id: 5, name: '浙江', title: 'Z' },
-  ])
+    { id: 5, name: '浙江', title: 'Z' }
+  ]);
 
   const handleClickHotCity = (city: any) => {
-    console.log(city)
-  }
+    console.log(city);
+  };
 
   const addressData: any = {
     province: [
@@ -104,14 +74,12 @@ const AddressDemo = () => {
       { id: 7, name: '朝阳区', title: 'C' },
       { id: 8, name: '崇文区', title: 'C' },
       { id: 9, name: '昌平区', title: 'C' },
-      { id: 6, name: '石景山区', title: 'S' },
-      { id: 3, name: '八里庄街道', title: 'B' },
-      { id: 10, name: '北苑', title: 'B' },
+      { id: 6, name: '石景山区', title: 'S' }
     ],
     country: [
       { id: 3, name: '八里庄街道', title: 'B' },
       { id: 9, name: '北苑', title: 'B' },
-      { id: 4, name: '常营乡', title: 'C' },
+      { id: 4, name: '常营乡', title: 'C' }
     ],
     town: [],
     hotCities: [
@@ -119,16 +87,16 @@ const AddressDemo = () => {
       { id: 2, name: '广西' },
       { id: 3, name: '江西' },
       { id: 4, name: '四川' },
-      { id: 5, name: '浙江' },
+      { id: 5, name: '浙江' }
     ],
     onClickHotCity: handleClickHotCity
-  }
+  };
 
-  const [city, setCity] = useState<any>([])
+  const [city, setCity] = useState<any>([]);
 
-  const [country, setCountry] = useState<any>([])
+  const [country, setCountry] = useState<any>([]);
 
-  const [town, setTown] = useState<any>([])
+  const [town, setTown] = useState<any>([]);
 
   const [text, setText] = useState<any>({
     one: translated.title,
@@ -137,14 +105,15 @@ const AddressDemo = () => {
     four: translated.title,
     five: translated.title,
     six: translated.title,
-  })
+    seven: translated.title
+  });
 
   const [address, setAddress] = useState({
     province,
     city,
     country,
-    town,
-  })
+    town
+  });
 
   const [showPopup, setShowPopup] = useState({
     normal: false,
@@ -153,15 +122,15 @@ const AddressDemo = () => {
     exist: false,
     customImg: false,
     other: false,
-    select: false,
-  })
+    select: false
+  });
 
   const [icon, setIcon] = useState({
     selectedIcon: 'heart-fill',
     defaultIcon: 'heart1',
     closeBtnIcon: 'close',
-    backBtnIcon: 'left',
-  })
+    backBtnIcon: 'left'
+  });
 
   const [existAddress, setExistAddress] = useState([
     {
@@ -173,7 +142,7 @@ const AddressDemo = () => {
       selectedAddress: true,
       townName: '',
       name: '探探鱼',
-      phone: '182****1718',
+      phone: '182****1718'
     },
     {
       id: 2,
@@ -184,7 +153,7 @@ const AddressDemo = () => {
       selectedAddress: false,
       townName: '',
       name: '探探鱼',
-      phone: '182****1718',
+      phone: '182****1718'
     },
     {
       id: 3,
@@ -195,26 +164,30 @@ const AddressDemo = () => {
       selectedAddress: false,
       townName: '',
       name: '探探鱼',
-      phone: '182****1718',
-    },
-  ])
+      phone: '182****1718'
+    }
+  ]);
+  const [normal, setNormal] = useState<any>([1, 0, 3]);
+  const [normal2, setNormal2] = useState<any>([1, 7, 3]);
+  const [normal3, setNormal3] = useState<any>([]);
+  const [select, setSelect] = useState<any>([1, 7, 3]);
 
   const showAddress = (tag: string) => {
     setShowPopup({
       ...showPopup,
-      [tag]: !(showPopup as any)[tag],
-    })
-  }
+      [tag]: !(showPopup as any)[tag]
+    });
+  };
 
   const onChange = (cal: any, tag: string) => {
-    console.log('change', cal, tag)
+    console.log('change', cal, tag);
 
     if (tag === 'normal2' || tag === 'normal3' || tag === 'select') {
       if (cal.next === 'town') {
         setShowPopup({
           ...showPopup,
-          [tag]: false,
-        })
+          [tag]: false
+        });
       }
     } else {
       setTimeout(() => {
@@ -225,221 +198,186 @@ const AddressDemo = () => {
               { id: 8, name: '崇文区', title: 'C' },
               { id: 9, name: '昌平区', title: 'C' },
               { id: 6, name: '石景山区', title: 'S' },
-              { id: 3, name: '八里庄街道', title: 'B' },
-              { id: 10, name: '北苑', title: 'B' },
-            ])
-            break
+            ]);
+            break;
           case 'country':
             setCountry([
               { id: 3, name: '八里庄街道', title: 'B' },
               { id: 9, name: '北苑', title: 'B' },
-              { id: 4, name: '常营乡', title: 'C' },
-            ])
-            break
+              { id: 4, name: '常营乡', title: 'C' }
+            ]);
+            break;
           default:
-            setShowPopup({
-              ...showPopup,
-              [tag]: false,
-            })
+          setShowPopup({
+            ...showPopup,
+            [tag]: false
+          });
         }
-      }, 200)
+      }, 200);
     }
-  }
+  };
 
-  const selected = (
-    prevExistAdd: AddressList,
-    nowExistAdd: AddressList,
-    arr: AddressList[]
-  ) => {
-    console.log('选择')
-  }
+  const selected = (prevExistAdd: AddressList, nowExistAdd: AddressList, arr: AddressList[]) => {
+    console.log('选择');
+  };
 
   const switchModule = (val: { type: string }) => {
     if (val.type === 'custom') {
-      console.log('点击了“选择其他地址”按钮')
+      console.log('点击了“选择其他地址”按钮');
     } else {
-      console.log('点击了自定义地址左上角的返回按钮')
+      console.log('点击了自定义地址左上角的返回按钮');
     }
-  }
+  };
 
   const closeMask = (val: { closeWay: string }) => {
-    console.log('关闭弹层', val)
-  }
+    console.log('关闭弹层', val);
+  };
 
-  const close1 = (val: CalResult) => {
+  const close1 = (val: CloseCallBack) => {
+    console.log(val);
     if ((val.data as AddressResult).addressStr) {
       setText({
         ...text,
-        one: (val.data as AddressResult).addressStr,
-      })
+        one: (val.data as AddressResult).addressStr
+      });
     }
-
+    setNormal((val.data as AddressResult).addressIdStr.split('_'));
     setShowPopup({
       ...showPopup,
-      normal: false,
-    })
-  }
+      normal: false
+    });
+  };
 
-  const close2 = (val: CalResult) => {
+  const close2 = (val: CloseCallBack) => {
     if (val.type === 'exist') {
-      const { provinceName, cityName, countyName, townName, addressDetail } =
-        val.data as AddressResult
+      const { provinceName, cityName, countyName, townName, addressDetail } = val.data as AddressResult;
       if (provinceName) {
         setText({
           ...text,
-          two: provinceName + cityName + countyName + townName + addressDetail,
-        })
+          two: provinceName + cityName + countyName + townName + addressDetail
+        });
       }
     } else if ((val.data as AddressResult).addressStr) {
       setText({
         ...text,
-        two: (val.data as AddressResult).addressStr,
-      })
+        two: (val.data as AddressResult).addressStr
+      });
     }
-
     setShowPopup({
       ...showPopup,
-      exist: false,
-    })
-  }
+      exist: false
+    });
+  };
 
-  const close3 = (val: CalResult) => {
+  const close3 = (val: CloseCallBack) => {
     if (val.type === 'exist') {
-      const { provinceName, cityName, countyName, townName, addressDetail } =
-        val.data as AddressResult
+      const { provinceName, cityName, countyName, townName, addressDetail } = val.data as AddressResult;
       if (provinceName) {
         setText({
           ...text,
-          three:
-            provinceName + cityName + countyName + townName + addressDetail,
-        })
+          three: provinceName + cityName + countyName + townName + addressDetail
+        });
       }
     } else if ((val.data as AddressResult).addressStr) {
       setText({
         ...text,
-        three: (val.data as AddressResult).addressStr,
-      })
+        three: (val.data as AddressResult).addressStr
+      });
     }
 
     setShowPopup({
       ...showPopup,
-      customImg: false,
-    })
-  }
+      customImg: false
+    });
+  };
 
-  const close4 = (val: CalResult) => {
+  const close4 = (val: CloseCallBack) => {
     if (val.type === 'exist') {
-      const { provinceName, cityName, countyName, townName, addressDetail } =
-        val.data as AddressResult
+      const { provinceName, cityName, countyName, townName, addressDetail } = val.data as AddressResult;
       if (provinceName) {
         setText({
           ...text,
-          four: provinceName + cityName + countyName + townName + addressDetail,
-        })
+          four: provinceName + cityName + countyName + townName + addressDetail
+        });
       }
     } else if ((val.data as AddressResult).addressStr) {
       setText({
         ...text,
-        four: (val.data as AddressResult).addressStr,
-      })
+        four: (val.data as AddressResult).addressStr
+      });
     }
 
     setShowPopup({
       ...showPopup,
-      other: false,
-    })
-  }
+      other: false
+    });
+  };
 
-  const close5 = (val: CalResult) => {
+  const close5 = (val: CloseCallBack) => {
     if ((val.data as AddressResult).addressStr) {
       setText({
         ...text,
-        five: (val.data as AddressResult).addressStr,
-      })
+        five: (val.data as AddressResult).addressStr
+      });
     }
-
+    setNormal2((val.data as AddressResult).addressIdStr.split('_'));
     setShowPopup({
       ...showPopup,
-      normal2: false,
-    })
-  }
+      normal2: false
+    });
+  };
 
-  const close7 = (val: CalResult) => {
+  const close7 = (val: CloseCallBack) => {
     if ((val.data as AddressResult).addressStr) {
       setText({
         ...text,
-        five: (val.data as AddressResult).addressStr,
-      })
+        seven: (val.data as AddressResult).addressStr
+      });
     }
+    setNormal3((val.data as AddressResult).addressIdStr.split('_'));
 
     setShowPopup({
       ...showPopup,
-      normal3: false,
-    })
-  }
+      normal3: false
+    });
+  };
 
-  const close6 = (val: CalResult) => {
+  const close6 = (val: CloseCallBack) => {
+    console.log(val);
     if ((val.data as AddressResult).addressStr) {
       setText({
         ...text,
-        six: (val.data as AddressResult).addressStr,
-      })
+        six: (val.data as AddressResult).addressStr
+      });
     }
-
+    setSelect((val.data as AddressResult).addressIdStr.split('_'));
     setShowPopup({
       ...showPopup,
-      select: false,
-    })
-  }
+      select: false
+    });
+  };
 
   return (
     <>
       <div className="demo">
         <h2>{translated.title}</h2>
-        <Cell
-          title={translated.customAddress}
-          desc={text.one}
-          onClick={() => showAddress('normal')}
-        />
+        <Cell title={translated.customAddress} desc={text.one} onClick={() => showAddress('normal')} />
         <h2>{translated.selectCity}</h2>
-        <Cell
-          title={translated.title}
-          desc={text.six}
-          onClick={() => showAddress('select')}
-        />
+        <Cell title={translated.title} desc={text.six} onClick={() => showAddress('select')} />
         <h2>{translated.customAddress2}</h2>
-        <Cell
-          title={translated.title}
-          desc={text.five}
-          onClick={() => showAddress('normal2')}
-        />
-        <h2>热门城市</h2>
-        <Cell
-          title={translated.title}
-          desc={text.five}
-          onClick={() => showAddress('normal3')}
-        />
+        <Cell title={translated.title} desc={text.five} onClick={() => showAddress('normal2')} />
+        <h2>{translated.hotCity} </h2>
+        <Cell title={translated.title} desc={text.seven} onClick={() => showAddress('normal3')} />
         <h2>{translated.existAddress}</h2>
-        <Cell
-          title={translated.title}
-          desc={text.two}
-          onClick={() => showAddress('exist')}
-        />
+        <Cell title={translated.title} desc={text.two} onClick={() => showAddress('exist')} />
         <h2>{translated.icon}</h2>
-        <Cell
-          title={translated.title}
-          desc={text.three}
-          onClick={() => showAddress('customImg')}
-        />
+        <Cell title={translated.title} desc={text.three} onClick={() => showAddress('customImg')} />
         <h2>{translated.change}</h2>
-        <Cell
-          title={translated.title}
-          desc={text.four}
-          onClick={() => showAddress('other')}
-        />
+        <Cell title={translated.title} desc={text.four} onClick={() => showAddress('other')} />
 
         <Address
           modelValue={showPopup.normal}
+          modelSelect={normal}
           province={province}
           city={city}
           country={country}
@@ -451,7 +389,7 @@ const AddressDemo = () => {
 
         <Address
           modelValue={showPopup.select}
-          modelSelect={[1, 7, 3]}
+          modelSelect={select}
           province={addressData.province}
           city={addressData.city}
           country={addressData.country}
@@ -463,8 +401,8 @@ const AddressDemo = () => {
 
         <Address
           modelValue={showPopup.normal2}
-          type="custom2"
-          modelSelect={[1, 7, 3]}
+          type="elevator"
+          modelSelect={normal2}
           province={addressData.province}
           city={addressData.city}
           country={addressData.country}
@@ -477,8 +415,7 @@ const AddressDemo = () => {
 
         <Address
           modelValue={showPopup.normal3}
-          type="custom2"
-          modelSelect={[1, 7, 3]}
+          modelSelect={normal3}
           province={addressData.province}
           city={addressData.city}
           country={addressData.country}
@@ -510,8 +447,8 @@ const AddressDemo = () => {
           onClose={close3}
           isShowCustomAddress={false}
           onSelected={selected}
-          defaultIcon={icon.defaultIcon}
-          selectedIcon={icon.selectedIcon}
+          defaultIcon={<Icon name={icon.defaultIcon}></Icon>}
+          selectedIcon={<Icon name={icon.selectedIcon}></Icon>}
           closeBtnIcon={icon.closeBtnIcon}
         />
 
@@ -533,7 +470,7 @@ const AddressDemo = () => {
         />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default AddressDemo
+export default AddressDemo;

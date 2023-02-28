@@ -69,7 +69,7 @@ export const CustomRender: FunctionComponent<
   const regionLine = useRef(null)
 
   const isCustom2 = () => {
-    return type === 'custom2'
+    return type === 'elevator'
   }
 
   const transformData = (data: RegionData[]) => {
@@ -238,7 +238,7 @@ export const CustomRender: FunctionComponent<
             selectedRegionC[[tabName[index]] as any] = arr.filter(
               (item: RegionData) => item.id === val
             )[0]
-          } else if (privateType === 'custom2') {
+          } else if (privateType === 'elevator') {
             const sumArr: any = []
             arr.forEach((item) => {
               sumArr.push(...(item as any).list)
@@ -371,7 +371,7 @@ export const CustomRender: FunctionComponent<
         </div>
       )}
 
-      {privateType === 'custom2' && (
+      {privateType === 'elevator' && (
         <div className={b('elevator-group')}>
           <Elevator
             height={height}

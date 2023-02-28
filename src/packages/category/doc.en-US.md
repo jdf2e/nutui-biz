@@ -10,7 +10,7 @@ Components used to display product categories.
 import { Category } from '@nutui/nutui-biz';
 ```
 
-## Code
+## Demo
 
 ### Basic Usage
 

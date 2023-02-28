@@ -1,21 +1,22 @@
 import React, { FunctionComponent, ReactNode, CSSProperties, HTMLAttributes } from 'react'
 import { Price, Tag, Image } from '@nutui/nutui-react'
 import classNames from 'classnames'
+import {numericProp} from '@/utils/props'
 
 import {cn2} from '@/utils/bem'
 
 export interface CardProps {
   imgUrl: string
   title: string
-  price: number | string
-  vipPrice: number | string
+  price: numericProp
+  vipPrice: numericProp
   shopDesc: string
   delivery: string
   shopName: string
   className: string
   showType: string
   style: CSSProperties
-  titleLine: number | string
+  titleLine: numericProp
   prolistTpl: ReactNode
   shopTagTpl: ReactNode
   originTpl: ReactNode
@@ -84,7 +85,7 @@ export const Card: FunctionComponent<
   const b = cn2('card')
 
   const handleClick = () => {
-    onClick && onClick()
+    onClick()
   }
 
   const clampStyle = () => {

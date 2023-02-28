@@ -10,7 +10,7 @@ import { Icon } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
 ```
 
-## Code
+## Demo
 
 ### Basic Usage
 

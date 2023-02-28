@@ -1,6 +1,6 @@
 #  AddressEdit
 
-### Introduce
+### Intro
 
 Commonly found on the address management page, it is mainly used to add or edit addresses.
 
@@ -10,7 +10,7 @@ Commonly found on the address management page, it is mainly used to add or edit 
 import { AddressEdit } from '@nutui/nutui-biz';
 ```
 
-## Code Demo
+## Demo
 
 ### Basic usage
 

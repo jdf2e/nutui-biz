@@ -65,23 +65,28 @@ const SettleBarDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <SettleBar 
+          total={100}
           onSettle={() => Toast.text(translated.clicked)} 
         />
         <h2>{translated.title1}</h2>
         <SettleBar 
+          total={100}
           totalAlign="left" 
           onSettle={() => Toast.text(translated.clicked)} 
         />
         <h2>{translated.title2}</h2>
         <SettleBar 
+          total={100}
           disabled 
         />
         <h2>{translated.title3}</h2>
         <SettleBar 
+          total={100}
           loading 
         />
         <h2>{translated.title4}</h2>
         <SettleBar 
+          total={100}
           customSelectAll="" 
           noCount={true} 
           totalText={translated.totalText} 
@@ -90,17 +95,20 @@ const SettleBarDemo = () => {
         />
         <h2>{translated.title5}</h2>
         <SettleBar 
+          total={100}
           settleCount="100" 
           settleUnit={translated.settleUnit} 
           onSettle={() => Toast.text(translated.clicked)} 
         />
         <h2>{translated.title6}</h2>
         <SettleBar 
+          total={100}
           customTotalExtra={<div style={{fontSize: '12px'}}>{translated.reduced} ¥30.00</div>} 
           onSettle={() => Toast.text(translated.clicked)} 
         />
         <h2>{translated.title7}</h2>
         <SettleBar 
+          total={100}
           customWarning={customWarningHtml()} 
           onSettle={() => Toast.text(translated.clicked)} 
         />

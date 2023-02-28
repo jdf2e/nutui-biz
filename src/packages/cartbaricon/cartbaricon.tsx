@@ -10,7 +10,7 @@ import { IComponent } from '@/utils/typings'
 
 export interface CartBarIconProps extends IComponent {
   text: ReactNode
-  iconProps: Partial<IconProps>
+  iconProps: Partial<Omit<IconProps, "className">>
   badgeProps: Partial<BadgeProps>
   onClick: () => void
 }
@@ -46,7 +46,7 @@ export const CartBarIcon: FunctionComponent<
   }
 
   const handleClick = () => {
-    onClick && onClick()
+    onClick()
   }
 
   return (

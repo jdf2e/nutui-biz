@@ -1,12 +1,11 @@
 import React, {
   FunctionComponent,
-  CSSProperties,
   useState,
   ReactNode
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
+import {cn2} from '@/utils/bem'
 
 import { IComponent } from '@/utils/typings'
 import { Form, Radio, Input, Button } from '@nutui/nutui-react'
@@ -15,8 +14,6 @@ const { RadioGroup } = Radio
 const { Item } = Form
 
 export interface InvoiceTitleEditProps extends IComponent {
-  className: string
-  style: CSSProperties
   invoiceType: string
   bottom: ReactNode
   onSubmit: (arg: any) => void
@@ -39,7 +36,7 @@ export const InvoiceTitleEdit: FunctionComponent<
     ...props
   }
 
-  const b = bem('invoice-title-edit')
+  const b = cn2('invoice-title-edit')
 
   const [titleType, setTitleType] = useState<string>('1')
 
@@ -71,45 +68,45 @@ export const InvoiceTitleEdit: FunctionComponent<
           name="title"
           rules={[{ required: true, message: "请输入发票抬头" }]}
         >
-          <Input placeholder="请输入发票抬头" onChange={() => onInput && onInput()} />
+          <Input placeholder="请输入发票抬头" border={false} onChange={() => onInput && onInput()} />
         </Item>
         <Item 
           label="纳税人识别号"
           name="companyCode"
           rules={[{ required: (invoiceType === 'special' || (invoiceType === 'normal' && titleType === '1')), message: "请输入纳税人识别号" }]}
         >
-          <Input placeholder="请输入纳税人识别号" readonly={invoiceType === 'special'} />
+          <Input placeholder="请输入纳税人识别号" border={false} readonly={invoiceType === 'special'} />
         </Item>
         <Item 
           label="注册地址"
           name="address"
           rules={[{ required: invoiceType === 'special', message: "请输入注册地址" }]}
         >
-          <Input placeholder="请输入注册地址" />
+          <Input placeholder="请输入注册地址" border={false} />
         </Item>
         <Item 
           label="注册电话"
           name="companyPhone"  
           rules={[{ required: invoiceType === 'special', message: "请输入注册电话" }]}
         >
-          <Input placeholder="请输入注册电话" />
+          <Input placeholder="请输入注册电话" border={false} />
         </Item>
         <Item 
           label="开户行"
           name="bankDeposit"  
           rules={[{ required: invoiceType === 'special', message: "请输入开户行" }]}
         >
-          <Input placeholder="请输入开户行" />
+          <Input placeholder="请输入开户行" border={false} />
         </Item>
         <Item 
           label="银行账户"
           name="bankAccount"  
           rules={[{ required: invoiceType === 'special', message: "请输入银行账户" }]}
         >
-          <Input placeholder="请输入银行账户" />
+          <Input placeholder="请输入银行账户" border={false} />
         </Item>
         <Item>
-          <div className="nut-invoice-title-edit__submit">
+          <div className={b('submit')}>
             <Button type="primary" block>{invoiceType === 'special' ? '提交审批' : '提交'}</Button>
           </div>
         </Item>

@@ -139,7 +139,7 @@ const App = (props) => {
     <div>
       <HashRouter>
         <Header click={handleClick}></Header>
-        <Nav></Nav>
+        <Nav click={handleClick}></Nav>
         <div className="doc-content">
           { activeName === 'component' && <div className="doc-title">
             <div

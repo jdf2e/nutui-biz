@@ -1,8 +1,9 @@
 import React, {
-  CSSProperties,
   FunctionComponent,
   ReactNode,
   useState,
+  useRef,
+  useEffect
 } from 'react'
 import classNames from 'classnames';
 import {SearchBar, Icon} from '@nutui/nutui-react'
@@ -18,8 +19,6 @@ export type IsearchItem = {
 export interface SearchHistoryProps extends IComponent {
   recentSearchData: Array<IsearchItem>
   searchDiscoverData: Array<IsearchItem>
-  className?: string
-  style?: CSSProperties
   recentSearchText: string
   searchDiscoverText: string
   backIcon: ReactNode
@@ -48,6 +47,7 @@ export interface SearchHistoryProps extends IComponent {
 export const SearchHistory: FunctionComponent<
   Partial<SearchHistoryProps>
 > = (props) => {
+  const root = useRef<any>(null);
   const { locale } = useConfig()
   const {
     className,
@@ -100,6 +100,12 @@ export const SearchHistory: FunctionComponent<
     onClickSearchButton && onClickSearchButton(val)
   }
 
+  useEffect(() => {
+    if(root.current) {
+      console.log(root.current.offsetHeight)
+    }
+  }, [recentSearchData])
+
   const renderSearchBar = () => {
     return <SearchBar
       placeholder="input search text"
@@ -144,7 +150,7 @@ export const SearchHistory: FunctionComponent<
             }
           </div>
           {
-            <div className={b('recent-tags')}>
+            <div className={b('recent-tags')} ref={root}>
               {recentSearchData.map((item, index) => {
                 return <a key={index} onClick={()=>handleClickSearchItem(item)}>{item.key}{isShowDeleteSearchItemIcon && <span>X</span>}</a>
               })}
