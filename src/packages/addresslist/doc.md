@@ -153,10 +153,10 @@ export default App;
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
 | data   | 地址数组                                 | Array  | -         |
-| longPress   | 长按功能                                 | Boolean  | `false`         |
-| swipeEdition   | 右滑功能                                 | Boolean  | `false`         |
-| showBottomButton   | 是否展示底部按钮                                 | Boolean  | `true`         |
-| showSelect   | 是否可选择                                 | Boolean  | `false`         |
+| longPress   | 长按功能                                 | boolean  | `false`         |
+| swipeEdition   | 右滑功能                                 | boolean  | `false`         |
+| showBottomButton   | 是否展示底部按钮                                 | boolean  | `true`         |
+| showSelect   | 是否可选择                                 | boolean  | `false`         |
 
 
 ## Events

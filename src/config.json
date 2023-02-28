@@ -269,11 +269,6 @@
       ]
     },
     {
-      "name": "售后类",
-      "enName": "nav",
-      "packages": []
-    },
-    {
       "name": "发票类",
       "enName": "dentry",
       "packages": [
@@ -324,16 +319,6 @@
       ]
     },
     {
-      "name": "客服类",
-      "enName": "feedback",
-      "packages": []
-    },
-    {
-      "name": "履约类",
-      "enName": "exhibition",
-      "packages": []
-    },
-    {
       "name": "其他",
       "enName": "business",
       "packages": [
@@ -371,6 +356,21 @@
           "author": "yangjinjun3"
         }
       ]
+    },
+    {
+      "name": "售后类",
+      "enName": "nav",
+      "packages": []
+    },
+    {
+      "name": "客服类",
+      "enName": "feedback",
+      "packages": []
+    },
+    {
+      "name": "履约类",
+      "enName": "exhibition",
+      "packages": []
     }
   ]
 }

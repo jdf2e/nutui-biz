@@ -10,7 +10,7 @@
 import { OrderRemark } from '@nutui/nutui-biz';
 ```
 
-## 代码示例
+## 代码演示
 
 ### 基本用法
 

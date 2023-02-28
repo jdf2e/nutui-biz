@@ -36,7 +36,7 @@ export const CartBarButton: FunctionComponent<
   const b = cn2('cart-bar-button')
 
   const handleClick = () => {
-    onClick && onClick()
+    onClick()
   }
 
   return (

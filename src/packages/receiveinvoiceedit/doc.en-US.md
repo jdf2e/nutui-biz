@@ -1,6 +1,6 @@
 # ReceiveInvoiceEdit Edit receipt address
 
-### introduce
+### Intro
 
 Billing address editing, commonly found on the billing address management page, is mainly used to add or edit or modify addresses.
 
@@ -10,7 +10,7 @@ Billing address editing, commonly found on the billing address management page, 
 import { ReceiveInvoiceEdit } from '@nutui/nutui-react';
 ```
 
-## Code Demo
+## Demo
 
 ### Basic usage
 

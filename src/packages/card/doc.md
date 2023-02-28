@@ -328,32 +328,32 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| imgUrl   | 左侧图片Url                                 | String  | -         |
-| title     | 标题                   | String  | -    |
-| price | 商品价格                         | String \| Number  | -      |
-| vipPrice     | 会员价格                               | String \| Number | -    |
-| shopDesc  | 店铺介绍                                  | String | -    |
-| delivery     | 配送方式 | String  | -      |
-| shopName   | 店铺名称| String  | -      |
-| prolistTpl   | 自定义商品介绍| React.ReactNode  | -      |
-| priceTpl   | 价格自定义内容 | React.ReactNode  | -      |
-| originTpl   | 价格后方自定义内容| React.ReactNode  | -      |
-| shopTagTpl   | 店铺介绍自定义| React.ReactNode  | -      |
-| footerTpl   | 右下角内容自定义| React.ReactNode  | -      |
-| showType   | 展示形式，可选：`full-line`、`half-line`| String  | `full-line`      |
-| bottomTpl   | 底部内容自定义| React.ReactNode  | -      |
-| infotpl   | 信息内容自定义| React.ReactNode  | -      |
-| isNeedPrice   | 是否需要价格展示| Boolean  | `true`      |
-| imgTag   | 商品图片标签，常用于标志双 11、直播等| String  | -      |
-| imgTagDirection   | 商品图片标签呈现位置，可选：`top-left`、`top-right`| String  | `top-left`      |
-| isLazy   | 是否为懒加载图片| Boolean  | `false`      |
-| titleTag   | 标题左侧标签，常用于活动标记等，不设置此参数或此参数为空，不展示| React.ReactNode  | -      |
-| titleLine   | 标题行数，默认两行，想展示更多下面内容可设置为 1| String \| Number  | `2`      |
-| linkUrl   | 跳转链接，默认点击整个卡片以 href 的形式跳转，可通过点击事件自定义 | String  | -      |
-| imgWidth   | 宽度，默认单位`px` | String  | -      |
-| imgHeight   | 高度，默认单位`px` | String  | -      |
-| loadingImg   | 设置加载中提示图片，与slotLoding冲突，优先级高于slotLoding | String  | -      |
-| errorImg   | 设置错误提示图片，与slotError冲突，优先级高于slotError | String  | -      |
+| imgUrl   | 左侧图片 Url                                 | string  | -         |
+| title     | 标题                   | string  | -    |
+| price | 商品价格                         | string \| number  | -      |
+| vipPrice     | 会员价格                               | string \| number | -    |
+| shopDesc  | 店铺介绍                                  | string | -    |
+| delivery     | 配送方式 | string  | -      |
+| shopName   | 店铺名称| string  | -      |
+| prolistTpl   | 自定义商品介绍| ReactNode  | -      |
+| priceTpl   | 价格自定义内容 | ReactNode  | -      |
+| originTpl   | 价格后方自定义内容| ReactNode  | -      |
+| shopTagTpl   | 店铺介绍自定义| ReactNode  | -      |
+| footerTpl   | 右下角内容自定义| ReactNode  | -      |
+| showType   | 展示形式，可选：`full-line`、`half-line`| string  | `full-line`      |
+| bottomTpl   | 底部内容自定义| ReactNode  | -      |
+| infotpl   | 信息内容自定义| ReactNode  | -      |
+| isNeedPrice   | 是否需要价格展示| boolean  | `true`      |
+| imgTag   | 商品图片标签，常用于标志双 11、直播等| string  | -      |
+| imgTagDirection   | 商品图片标签呈现位置，可选：`top-left`、`top-right`| string  | `top-left`      |
+| isLazy   | 是否为懒加载图片| boolean  | `false`      |
+| titleTag   | 标题左侧标签，常用于活动标记等，不设置此参数或此参数为空，不展示| ReactNode  | -      |
+| titleLine   | 标题行数，默认两行，想展示更多下面内容可设置为 1| string \| number  | `2`      |
+| linkUrl   | 跳转链接，默认点击整个卡片以 href 的形式跳转，可通过点击事件自定义 | string  | -      |
+| imgWidth   | 宽度，默认单位`px` | string  | -      |
+| imgHeight   | 高度，默认单位`px` | string  | -      |
+| loadingImg   | 设置加载中提示图片，与slotLoding冲突，优先级高于slotLoding | string  | -      |
+| errorImg   | 设置错误提示图片，与slotError冲突，优先级高于slotError | string  | -      |
 
 
 ## Events

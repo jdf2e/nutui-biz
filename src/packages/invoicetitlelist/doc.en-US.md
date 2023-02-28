@@ -235,9 +235,9 @@ export default App;
 
 | Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
-| data   | 发票信息                                 | Object  | -         |
-| isShowOperate     | 是否展示操作区域                   | Boolean  | `true`    |
-| isShowEdit     | 右上角是否展示编辑按钮，适用于电子普通发票                   | Boolean  | `true`    |
+| data   | 发票信息                                 | object  | -         |
+| isShowOperate     | 是否展示操作区域                   | boolean  | `true`    |
+| isShowEdit     | 右上角是否展示编辑按钮，适用于电子普通发票                   | boolean  | `true`    |
 | otherOperate | 扩展其他操作                         | ReactNode  | -      |
 
 ### Data 字段说明
@@ -245,16 +245,16 @@ export default App;
 
 | Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
-| isSelected   | 是否选择                                 | Boolean  | `false`         |
-| type     | 每一个抬头可选择的发票类型：normal（电子普票）special （增值税专用发票）                   | String  | `special`    |
-| status     | 审批状态(审批中、审批通过（通过）、否决等) 只有「增值税专用发票抬头」展示                   | String  | -    |
-| isShowDefault | 是否展示“默认”标识                         | Boolean  | `false`      |
-| title | 发票抬头                        | String  | -      |
-| companyCode | 纳税人识别号（单位税号）                         | String  | -      |
-| address | 注册地址                         | String  | -      |
-| companyPhone | 公司电话（注册电话）                         | String  | -      |
-| bankDeposit | 开户行（开户银行）                         | String  | -      |
-| bankAccount | 银行账户                         | String  | -      |
+| isSelected   | 是否选择                                 | boolean  | `false`         |
+| type     | 每一个抬头可选择的发票类型：normal（电子普票）special （增值税专用发票）                   | string  | `special`    |
+| status     | 审批状态(审批中、审批通过（通过）、否决等) 只有「增值税专用发票抬头」展示                   | string  | -    |
+| isShowDefault | 是否展示“默认”标识                         | boolean  | `false`      |
+| title | 发票抬头                        | string  | -      |
+| companyCode | 纳税人识别号（单位税号）                         | string  | -      |
+| address | 注册地址                         | string  | -      |
+| companyPhone | 公司电话（注册电话）                         | string  | -      |
+| bankDeposit | 开户行（开户银行）                         | string  | -      |
+| bankAccount | 银行账户                         | string  | -      |
 
 
 ## Events

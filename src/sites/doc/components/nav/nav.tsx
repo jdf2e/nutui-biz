@@ -5,13 +5,18 @@ import './nav.scss'
 import useLocale from '@/sites/assets/locale/uselocale'
 import classNames from 'classnames'
 
-const Nav = () => {
+interface NavProps {
+  click: (activeName: string) => void
+}
+
+const Nav: React.FunctionComponent<NavProps> = (props) => {
   const history = useHistory()
   const [cNav] = useState<any>(nav)
   const [cDocs] = useState<any>(docs)
   const [lang] = useLocale()
   const [fixed, setFixed] = useState(false)
   const [activeName, setActiveName] = useState<string>('intro')
+  const [selected, setSelected] = useState<boolean>(true);
   const scrollNav = () => {
     let top = document.documentElement.scrollTop
     if (top > 64) {
@@ -27,17 +32,29 @@ const Nav = () => {
   const isGuideNav = location.href.includes('guide') || location.hash === '#/';
 
   const changeNav = (_nav: any) => {
+    props.click('guide')
+    setSelected(false)
     setActiveName(_nav.name)
     if(_nav.name.includes('releases')) {
       window.open(_nav.name, "_blank")
+    } else if(_nav.name === 'start-react') {
+      history.push('/zh-CN/guide/start-react')
     } else {
-      history.push(_nav.name)
+      history.push('/zh-CN/guide/intro')
     }
+  }
+
+  const handleSwichNav = () => {
+    setSelected(true)
+    setActiveName('')
+    props.click('component')
   }
 
   return (
     <div className={`doc-nav ${fixed ? 'fixed' : ''}`}>
-      { isGuideNav ? <ol><ul>
+      <ol>
+        <li>指南</li>
+        <ul>
         {
           cDocs.packages.map((_package, index) => {
             return <li className={classNames([{active: activeName === _package.name}])} key={index} onClick={()=>changeNav(_package)}>
@@ -45,7 +62,8 @@ const Nav = () => {
             </li>
           })
         }
-      </ul></ol> : <ol>
+      </ul></ol>
+      <ol>
         {cNav.map((cn: any) => {
           return (
             <React.Fragment key={Math.random()}>
@@ -55,8 +73,8 @@ const Nav = () => {
                   if (!cp.show) return null
                   return <NavLink
                     key={Math.random()}
-                    activeClassName="selected"
-                    to={`${lang ? `/${lang}` : ''}/component/${cp.name}`}
+                    activeClassName={selected ? 'selected' : ''}
+                    to={`${lang ? `/${lang}` : ''}/component/${cp.name}`} onClick={() => handleSwichNav()}
                   >
                     <li>
                       {cp.name}&nbsp;&nbsp;<b>{cp.cName}</b>
@@ -67,7 +85,7 @@ const Nav = () => {
             </React.Fragment>
           )
         })}
-      </ol>}
+      </ol>
     </div>
   )
 }
