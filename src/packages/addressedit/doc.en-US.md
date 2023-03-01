@@ -82,6 +82,7 @@ export default App;
 import  React from 'react';
 import { AddressEdit } from '@nutui/nutui-biz';
 
+
 const App = () => {
   const addressData2: any = {
      addressSelect: [1, 7, 3],
@@ -107,7 +108,7 @@ const App = () => {
      { id: 4, name: "Changying Township", title: "C" },
      ],
      town: [],
-     addressType: "custom2",
+     addressType: "custom",
      height: "270px",
    };
   const addressInfo2 = {
@@ -135,7 +136,6 @@ const App = () => {
     <AddressEdit
         address={addressData2}
         data={addressSetData}
-        addressType={"custom2"}
         addressInfo={addressInfo2}
         onSave={(formData) => {
             console.log(formData);
@@ -182,7 +182,7 @@ const App = () => {
      { id: 4, name: "Changying Township", title: "C" },
      ],
      town: [],
-     addressType: "custom2",
+     addressType: "custom",
      height: "270px",
    };
   const addressInfo2 = {
@@ -233,7 +233,7 @@ export default App;
 ```tsx
 import  React from 'react';
 import { AddressEdit } from '@nutui/nutui-biz';
-import {  Input } from "@nutui/nutui-react";
+import { Input } from "@nutui/nutui-react";
 
 const App = () => {
   const addressData: any = {
@@ -260,7 +260,7 @@ const App = () => {
      { id: 4, name: "Changying Township", title: "C" },
      ],
      town: [],
-     addressType: "custom2",
+     addressType: "custom",
      height: "270px",
    };
   const addressInfo = {
