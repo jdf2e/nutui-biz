@@ -257,7 +257,7 @@ export default App;
 | bankAccount | 银行账户                         | string  | -      |
 
 
-## Events
+### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onClick | 点击时触发 |  event: MouseEvent |

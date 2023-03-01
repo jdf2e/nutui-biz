@@ -26,6 +26,15 @@ const Nav: React.FunctionComponent<NavProps> = (props) => {
     }
   }
   useEffect(() => {
+    if(location.href.includes('start-react')){
+      setActiveName('start-react')
+    }
+    if(location.href.includes('intro')){
+      setActiveName('intro')
+    }
+    if(location.href.includes('component')){
+      setActiveName('')
+    }
     document.addEventListener('scroll', scrollNav)
   }, [])
 

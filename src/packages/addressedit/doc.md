@@ -384,7 +384,7 @@ export default App;
 
 
 
-## Events
+### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onChange | 输入框输入文字，返回输入文案和所在输入框的标识tag (name,tel,region,address) |  value,tag |

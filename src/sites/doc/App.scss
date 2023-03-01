@@ -19,6 +19,11 @@ $doc-title-height: 137px;
     width: 100%;
     height: $doc-title-height;
     z-index: 2;
+    .npm-package {
+      img {
+        margin-right: 5px;
+      }
+    }
     &-position {
       top: 0px;
       display: flex;

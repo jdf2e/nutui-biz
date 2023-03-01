@@ -337,7 +337,7 @@ export default App;
 
 
 
-## Events
+### Events
 | Attribute    | Description     | Callback |
 |----- | ----- | -----  |
 | onInputChange | Input text in the input box, return the input text and the identification tag of the input box (account,password,telOrMail,verifyCode) | value,tag |

@@ -354,7 +354,7 @@ export default App;
 | loadingImg   | Set the prompt image during loading, which conflicts with `slotLoding` and has a higher priority than `slotLoding` | string  | -      |
 | errorImg   | Set the error prompt image, which conflicts with `slotError` and has a higher priority than `slotError` | string  | -      |
 
-## Events
+### Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
 | onClick | Click event |  event: MouseEvent |

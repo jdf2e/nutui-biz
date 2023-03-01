@@ -274,7 +274,7 @@ export default App;
 | customButton | Customize button content | ReactNode  | -          |
 
 
-## Events
+### Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
 | onSelectAll | Select all button click event |  event: Event |

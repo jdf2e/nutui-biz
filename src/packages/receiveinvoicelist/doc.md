@@ -137,7 +137,7 @@ export default App;
 | value | 自定义值       | string |
 
 
-## Events
+### Events
 | 字段       | 说明     | 回调参数                 |
 |------------|----------|--------------------------|
 | onEdit     | 编辑事件 | item\:ReceiveInvoiceItem |

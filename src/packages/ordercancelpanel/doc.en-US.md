@@ -306,7 +306,7 @@ export default App;
 | key   | Key of cancellation reason          | string | --     |
 | value | Copy content of cancellation reason | string | --     |
 
-## Events
+### Events
 
 | 字段             | 说明                                             | 回调参数 |
 | ---------------- | ------------------------------------------------ | -------- |

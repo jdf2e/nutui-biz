@@ -335,7 +335,7 @@ export default App;
 
 
 
-## Events
+### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onInputChange | 输入框输入文字，返回输入文字和所在输入框的标识tag (account,password,telOrMail,verifyCode) |  value,tag |
