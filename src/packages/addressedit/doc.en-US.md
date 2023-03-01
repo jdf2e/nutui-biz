@@ -233,9 +233,10 @@ export default App;
 ```tsx
 import  React from 'react';
 import { AddressEdit } from '@nutui/nutui-biz';
+import {  Input } from "@nutui/nutui-react";
 
 const App = () => {
-  const addressData2: any = {
+  const addressData: any = {
      addressSelect: [1, 7, 3],
      addressTitle: "Select your region",
      province: [

@@ -17,7 +17,7 @@ import { Login } from '@nutui/nutui-biz';
 :::demo
 
 ```tsx
-import  React from 'react';
+import React, { useState, useEffect } from "react";
 import { Login } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -69,7 +69,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React from 'react';
+import React, { useState, useEffect } from "react";
 import { Login } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -126,7 +126,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React from 'react';
+import React, { useState, useEffect } from "react";
 import { Login } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -159,7 +159,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React from 'react';
+import React, { useState, useEffect } from "react";
 import { Login } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -209,8 +209,9 @@ export default App;
 :::demo
 
 ```tsx
-import  React from 'react';
+import React, { useState, useEffect } from "react";
 import { Login } from '@nutui/nutui-biz';
+import {Input } from "@nutui/nutui-react";
 
 const App = () => {
   const [formParams2, setformParams2] = useState({
@@ -246,9 +247,7 @@ const App = () => {
         loginType="pwd"
         onInputChange={onChange}
         isHideSwitchBtn={true}
-        onLoginBtnClick={queryLogin}
         loginButtonDisable={isDisable}
-        loginButtonText={translated.loginText}
         onClear={(tag) => {
             if (tag === "account") {
               setAccount("");
