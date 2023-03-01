@@ -251,8 +251,11 @@
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      .nut-icon {
+      &__icon {
         font-size: 8px;
+        &.expand {
+          transform: rotate(-180deg);
+        }
       }
     }
   }

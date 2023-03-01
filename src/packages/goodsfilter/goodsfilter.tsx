@@ -1,5 +1,5 @@
 import React, {
-  FunctionComponent, HTMLAttributes, useMemo, useState,
+  FunctionComponent, HTMLAttributes, useEffect, useMemo, useState,
 } from 'react'
 import { Icon, Popup } from '@nutui/nutui-react'
 import { IComponent } from '@/utils/typings'
@@ -24,6 +24,8 @@ export interface GoodsFilterProps extends IComponent {
   onClickAddress: () => void
   onSelectedAttrs: (attr: any, selected: boolean, selectedAttrs: Array<any>) => void
   onSelectedPrice: (range: any) => void
+  onBeforeSelected: (done: any, selectedValue: any) => void
+  onSelectedGoodsAttr: (attrs: any, value: any) => void
   bottom: React.ReactNode,
 }
 
@@ -36,7 +38,10 @@ const defaultProps = {
   maxLine: 2,
   selectedAddress: '',
   addressTitle: '配送地址',
-} as GoodsFilterProps
+  onBeforeSelected: (done: any) => {
+    done()
+  },
+} as unknown as GoodsFilterProps
 
 export const GoodsFilter: FunctionComponent<
   Partial<GoodsFilterProps> & HTMLAttributes<HTMLDivElement>
@@ -57,6 +62,8 @@ export const GoodsFilter: FunctionComponent<
     onClickAddress,
     onSelectedAttrs,
     onSelectedPrice,
+    onBeforeSelected,
+    onSelectedGoodsAttr,
     bottom
   } = {
     ...defaultProps,
@@ -67,7 +74,7 @@ export const GoodsFilter: FunctionComponent<
 
   const [selectedValues, setSelectedValues] = useState({
     filterAttrs: [] as any,
-    norGoodsAttrs: {} as any
+    goodsAttrs: {} as any,
   })
   const [priceLow, setPriceLow] = useState<number | string>('')
   const [priceHigh, setPriceHigh] = useState<number | string>('')
@@ -140,21 +147,88 @@ export const GoodsFilter: FunctionComponent<
 
   // 商品属性格式化
   const norGoodsAttrs = useMemo(() => {
-    return goodsAttrs.map((attrs, index) => {
+    return goodsAttrs.map((attr, index) => {
       const defaultItem = {
-        isExpandName:1,
-        isExpand: selectedValues.hasOwnProperty(attrs.id)?[1]:[], // 是否展开
-        showRow:1 // 折叠后，显示在外侧的行数
+        isExpand: selectedValues.goodsAttrs.hasOwnProperty(attr.id)
+          && selectedValues.goodsAttrs[attr.id].isExpand, // 是否展开
+        showRow: 1 // 折叠后，显示在外侧的行数
       }
-      return Object.assign(attrs, defaultItem)
+      return Object.assign(attr, defaultItem)
     })
-  }, [goodsAttrs])
+  }, [goodsAttrs, selectedValues.goodsAttrs])
+
+  // 副标题，选中的值
+  const renderSelectedValues = (attrs: any)=>{
+    const allAttrs = attrs.values
+    const id = selectedValues.goodsAttrs[attrs.id]
+    if (id) {
+      const sValues = id.values
+      const sAttrs = allAttrs.filter((attrs: any) => sValues.indexOf(attrs.id) != -1)
+      return sAttrs.map((s: any) => s.name).join(',')
+    }
+  }
+
+  // 商品属性选择
+  const selectedGoodsAttr = (attrs: any, attr: any) => {
+    const { filterAttrs, goodsAttrs } = selectedValues
+    let selectedVal = {}
+    if (goodsAttrs[attrs.id]) {
+      selectedVal = goodsAttrs[attrs.id]
+    } else {
+      selectedVal = {
+        id: attrs.id,
+        values: [],
+        isExpand: false
+      }
+    }
+
+    const done = () => {
+      if (goodsAttrs.hasOwnProperty(attrs.id)) {
+        const idx = goodsAttrs[attrs.id].values.indexOf(attr.id)
+        if (idx != -1) {
+          goodsAttrs[attrs.id].values.splice(idx, 1)
+        } else {
+          goodsAttrs[attrs.id].values.push(attr.id)
+        }
+      } else {
+        goodsAttrs[attrs.id] = {
+          id: attrs.id,
+          values: [attr.id]
+        }
+      }
+      setSelectedValues({
+        filterAttrs: filterAttrs.slice(),
+        goodsAttrs: Object.assign({}, goodsAttrs)
+      })
+
+      onSelectedGoodsAttr && onSelectedGoodsAttr(attrs, attr)
+    }
+    onBeforeSelected && onBeforeSelected(done, selectedVal)
+  }
+
+  const onClickIcon = (attrs: any) => {
+    const { filterAttrs, goodsAttrs } = selectedValues
+    if (goodsAttrs[attrs.id]) {
+      goodsAttrs[attrs.id].isExpand = !goodsAttrs[attrs.id].isExpand
+    } else {
+      const selectedVal = {
+        id: attrs.id,
+        values: [],
+        isExpand: !attrs.isExpand
+      }
+      goodsAttrs[attrs.id] = selectedVal
+    }
+    setSelectedValues({
+      filterAttrs: filterAttrs.slice(),
+      goodsAttrs: Object.assign({}, goodsAttrs)
+    })
+  }
 
   // 重置
   const reset = () => {
     setSelectedValues({
-      filterAttrs:[],
-      norGoodsAttrs:{}
+      filterAttrs: [],
+      goodsAttrs: {}
     })
     setPriceLow('')
     setPriceHigh('')
@@ -163,8 +237,8 @@ export const GoodsFilter: FunctionComponent<
 
   // 确定
   const confirm = () => {
-    const { filterAttrs, norGoodsAttrs } = selectedValues
-    const sGoods = Object.keys(norGoodsAttrs).map(id => (norGoodsAttrs[id]))
+    const { filterAttrs, goodsAttrs } = selectedValues
+    const sGoods = Object.keys(goodsAttrs).map(id => (goodsAttrs[id]))
     const res = {
       address: selectedAddress,
       price:{
@@ -273,18 +347,30 @@ export const GoodsFilter: FunctionComponent<
                 >
                   <div className={b('chunk__list--item__top')}>
                     <div className={b('chunk__list--item__title')}>{attrs.title}</div>
-                    <div className={b('chunk__list--item__subTitle')}>副标题</div>
-                    <Icon name='arrow-up'></Icon>
+                    <div className={b('chunk__list--item__subTitle')}>{renderSelectedValues(attrs)}</div>
+                    <Icon name='arrow-up' className={b('chunk__list--item__icon') + (attrs.isExpand ? ' expand' : '')}onClick={() => onClickIcon(attrs)}></Icon>
                   </div>
                   <div className={b('chunk__groups')}>
                     {
-                      attrs.values.slice(0, 4).map((attrsValue: any) => {
-                        return <div key={attrsValue.id} className={b('chunk__groups--item')}>{ attrsValue.name }</div>
+                      attrs.values.slice(0, 4).map((attr: any) => {
+                        return <div
+                          key={attr.id}
+                          className={b('chunk__groups--item') +
+                            (selectedValues.goodsAttrs[attrs.id] && selectedValues.goodsAttrs[attrs.id].values.includes(attr.id) ? ' active' : '')
+                          }
+                          onClick={() => selectedGoodsAttr(attrs, attr)}
+                        >{ attr.name }</div>
                       })
                     }
                     {
-                      attrs.values.slice(4).map((attrsValue: any) => {
-                        return <div key={attrsValue.id} className={b('chunk__groups--item')}>{ attrsValue.name }</div>
+                      attrs.isExpand && attrs.values.slice(4).map((attr: any) => {
+                        return <div
+                          key={attr.id}
+                          className={b('chunk__groups--item') +
+                            (selectedValues.goodsAttrs[attrs.id] && selectedValues.goodsAttrs[attrs.id].values.includes(attr.id) ? ' active' : '')
+                          }
+                          onClick={() => selectedGoodsAttr(attrs, attr)}
+                        >{ attr.name }</div>
                       })
                     }
                   </div>
