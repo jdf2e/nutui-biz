@@ -590,7 +590,9 @@ export default App;
 :::
 
 
-# API
+## API
+
+### Props
 
 | Attribute            | Description               | Type   | Default  |
 |----- | ----- | ----- | -----  |
@@ -614,7 +616,7 @@ export default App;
 | customAndExistTitle| Custom address and existing address switch button copywriting | String | `Choose Another Address`
 
 
-## Event
+### Events
 | Attribute            | Description               | Arguments   |
 |----- | ----- | -----  |
 | onChange | Emitted when to selected custom address |  reference onChange |
@@ -625,21 +627,21 @@ export default App;
 | onSwitchModule | Click to select another address or custom address to select the upper left corner of the return button triggered | {type:'exist'/'custom'/'elevator'} |
 
 
-## change 回调参数
+### change 回调参数
 | Attribute            | Description               | Options   |
 |----- | ----- | ----- 
 | custom | The administrative region currently clicked  |  province / city / country / town
 | next | The next level of the administrative region currently clicked | province / city / country / town
 | value | The value of the currently clicked administrative region | {}
 
-## selected 
+### selected 
 | Attribute            | Description               | Options   |
 |----- | ----- | ----- 
 | First Option（prevExistAdd） |  Select the previously selected address |  {}
 | Second Option（nowExistAdd） |  Currently selected address |  {}
 | Third Option（arr） |  After selecting the existing address list |  {}
 
-## close 
+### close 
 | Attribute            | Description               | Options   |
 |----- | ----- | ----- 
 | type | Selected Type  |  exist/custom/elevator

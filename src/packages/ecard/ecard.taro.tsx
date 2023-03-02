@@ -9,7 +9,7 @@ import { InputNumber } from "@nutui/nutui-react-taro";
 import bem from "@/utils/bem";
 import { useConfig } from "@/packages/configprovider/configprovider.taro";
 
-interface IDataList {
+interface DataListItem {
   price: number;
 }
 interface IState {
@@ -25,14 +25,14 @@ export interface EcardProps {
   chooseText: string;
   suffix: string;
   otherValueText: string;
-  dataList: Array<IDataList>;
+  dataList: Array<DataListItem>;
   cardAmountMin: number;
   cardAmountMax: number;
   cardBuyMin: number;
   cardBuyMax: number;
   money: number;
   placeholder: string;
-  onChange?: (item: IDataList) => void;
+  onChange?: (item: DataListItem) => void;
   onChangeInput?: (val: number) => void;
   onChangeStep?: (num: number, price: number) => void;
 }
@@ -162,9 +162,8 @@ export const Ecard: FunctionComponent<
           {dataList.map((item, index) => {
             return (
               <div
-                className={`${b("list__item")} ${
-                  state.currentIndex === index ? "active" : ""
-                }`}
+                className={`${b("list__item")} ${state.currentIndex === index ? "active" : ""
+                  }`}
                 key={index}
                 onClick={() => {
                   handleClick(item, index);
@@ -175,9 +174,8 @@ export const Ecard: FunctionComponent<
             );
           })}
           <div
-            className={`${b("list__input")} ${
-              state.currentIndex === -1 ? "active" : ""
-            }`}
+            className={`${b("list__input")} ${state.currentIndex === -1 ? "active" : ""
+              }`}
             onClick={() => {
               handleClickInput();
             }}

@@ -40,7 +40,7 @@ const App = () => {
     const onChangeInput = (val: number) => {
         console.log(val);
     };
-    const onChange = (item: IDataList) => {
+    const onChange = (item: DataListItem) => {
         console.log(item);
     };
     const onChangeStep = (num: number, price: number) => {

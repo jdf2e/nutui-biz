@@ -65,6 +65,11 @@ const Title = () => {
   return (
     <div className="title">
       {componentName.name}&nbsp;{getLocale() === 'zh-CN' && componentName.cName}
+      <div className="npm-package">
+        <a href="https://www.npmjs.com/package/@nutui/nutui-biz">
+          <img src="https://img.shields.io/badge/npm-%40nutui%2Fnutui--biz-brightgreen" alt="@nutui/nutui" />
+        </a>
+      </div>
     </div>
   )
 }

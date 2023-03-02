@@ -21,7 +21,7 @@ import  React from 'react';
 import { AddressEdit } from '@nutui/nutui-biz';
 
 const App = () => {
-    const addressData: any = {
+  const addressData: any = {
     addressSelect: [],
     addressTitle: "选择所在地区",
     province: [
@@ -108,7 +108,7 @@ const App = () => {
     { id: 4, name: "常营乡", title: "C" },
     ],
     town: [],
-    addressType: "custom2",
+    addressType: "custom",
     height: "270px",
   };
   const addressInfo2 = {
@@ -183,7 +183,7 @@ const App = () => {
     { id: 4, name: "常营乡", title: "C" },
     ],
     town: [],
-    addressType: "custom2",
+    addressType: "custom",
     height: "270px",
   };
   const addressInfo2 = {
@@ -234,34 +234,34 @@ export default App;
 ```tsx
 import  React from 'react';
 import { AddressEdit } from '@nutui/nutui-biz';
+import { Input } from "@nutui/nutui-react";
 
 const App = () => {
-  const addressData2: any = {
-    addressSelect: [1, 7, 3],
+  const addressData: any = {
+    addressSelect: [],
     addressTitle: "选择所在地区",
     province: [
-    { id: 1, name: "北京", title: "B" },
-    { id: 2, name: "广西", title: "G" },
-    { id: 3, name: "江西", title: "J" },
-    { id: 4, name: "四川", title: "S" },
-    { id: 5, name: "浙江", title: "Z" },
+      { id: 1, name: "北京", title: "B" },
+      { id: 2, name: "广西", title: "G" },
+      { id: 3, name: "江西", title: "J" },
+      { id: 4, name: "四川", title: "S" },
+      { id: 5, name: "浙江", title: "Z" },
     ],
     city: [
-    { id: 7, name: "朝阳区", title: "C" },
-    { id: 8, name: "崇文区", title: "C" },
-    { id: 9, name: "昌平区", title: "C" },
-    { id: 6, name: "石景山区", title: "S" },
-    { id: 3, name: "八里庄街道", title: "B" },
-    { id: 10, name: "北苑", title: "B" },
+      { id: 7, name: "朝阳区", title: "C" },
+      { id: 8, name: "崇文区", title: "C" },
+      { id: 9, name: "昌平区", title: "C" },
+      { id: 6, name: "石景山区", title: "S" },
+      { id: 3, name: "八里庄街道", title: "B" },
+      { id: 10, name: "北苑", title: "B" },
     ],
     country: [
-    { id: 3, name: "八里庄街道", title: "B" },
-    { id: 9, name: "北苑", title: "B" },
-    { id: 4, name: "常营乡", title: "C" },
+      { id: 3, name: "八里庄街道", title: "B" },
+      { id: 9, name: "北苑", title: "B" },
+      { id: 4, name: "常营乡", title: "C" },
     ],
     town: [],
-    addressType: "custom2",
-    height: "270px",
+    addressType: "custom",
   };
   const addressInfo = {
     name: "",
@@ -384,7 +384,7 @@ export default App;
 
 
 
-## Events
+### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onChange | 输入框输入文字，返回输入文案和所在输入框的标识tag (name,tel,region,address) |  value,tag |

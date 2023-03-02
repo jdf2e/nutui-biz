@@ -139,7 +139,7 @@ export default App;
 | errorImg | 设置错误提示图片 | String | -        |
 
 
-### Event
+### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onChange | 左侧一级导航点击触发 |  category |

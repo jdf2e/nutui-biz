@@ -217,7 +217,7 @@ export default App;
 | badgeProps   | Badge props                                 | [BadgeProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/badge)  | -         |
 
 
-## CartBarIcon Events
+### CartBarIcon Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
 | onClick | Click event |  - |
@@ -233,7 +233,7 @@ export default App;
 | buttonProps   | Button props                                 | [ButtonProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/button)  | -         |
 
 
-## CartBarButton Events
+### CartBarButton Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
 | onClick | Click event |  - |

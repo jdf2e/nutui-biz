@@ -159,7 +159,7 @@ export default App;
 | showSelect   | 是否可选择                                 | boolean  | `false`         |
 
 
-## Events
+### Events
 | Event | Description | Arguments |
 |----- | ----- | -----  |
 | onDelIcon | Click the delete icon |  event: Event,item |

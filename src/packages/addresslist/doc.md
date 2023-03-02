@@ -159,7 +159,7 @@ export default App;
 | showSelect   | 是否可选择                                 | boolean  | `false`         |
 
 
-## Events
+### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onDelIcon | 点击删除图标 |  event: Event,item |

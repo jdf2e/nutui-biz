@@ -297,7 +297,7 @@ export default App;
 | rightOutIcon | Custom right out icon, default is "Search" | ReactNode  | -          |
 
 
-## Events
+### Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
 | onClickSearchItem | Search item click event |  searchItem: IsearchItem |
@@ -307,3 +307,11 @@ export default App;
 | onClickBackIcon | Back icon click event |  - |
 | onRefresh | Search discover refresh icon click event  |  - |
 | onDelete | Delete event |  - |
+
+
+### IsearchItem 
+
+| Attribute    | Description                                       | Type    | 
+|---------|--------------------------------------------|---------|
+| key   | Search keyword                                | ReactNode |
+| url   | Search keyword jump link            | string  | 

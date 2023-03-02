@@ -361,7 +361,7 @@ export default App;
 | pullIcon    | Pull refresh `Icon` name           | string  | -    |
 | pullTxt     | Pull refresh text              | string  | `Loose to refresh` |
 
-## Events
+### Events
 | Attribute            | Description               | Arguments   |
 |----- | ----- | -----  |
 |----------- | --------------- | -------------------|
@@ -382,7 +382,7 @@ export default App;
 | loadingImg  | Image when product image loads        | string           | -      |
 | errorImg    | Image when product image is wrong        | string           | -      |
 
-## ProductFeedItem Events
+### ProductFeedItem Events
 | Attribute            | Description               | Arguments   |
 |----- | ----- | -----  |
 |--------- | -------- | ---------------|

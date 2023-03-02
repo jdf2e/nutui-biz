@@ -356,7 +356,7 @@ export default App;
 | errorImg   | 设置错误提示图片，与slotError冲突，优先级高于slotError | string  | -      |
 
 
-## Events
+### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onClick | 点击事件 |  event: MouseEvent |

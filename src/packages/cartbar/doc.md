@@ -218,7 +218,7 @@ export default App;
 | badgeProps   | 徽标 props                                 | [BadgeProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/badge)  | -         |
 
 
-## CartBarIcon Events
+### CartBarIcon Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onClick | 点击事件 |  - |
@@ -234,7 +234,7 @@ export default App;
 | buttonProps   | 按钮 props                                 | [ButtonProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/button)  | -         |
 
 
-## CartBarButton Events
+### CartBarButton Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onClick | 点击事件 |  - |
