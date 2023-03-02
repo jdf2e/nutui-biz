@@ -11,9 +11,9 @@ import { ProductFeed, ProductFeedItem } from "@nutui/nutui-biz";
 
 ## Demo
 
-### Biserial Columns
+### Double Columns
 
-When each line of goods has two columns, the goods data needs to be divided into two columns, which are transferred from 'leftProduct' and 'rightProduct'.
+When the goods has two columns, the goods data needs to be divided into two columns, which are transferred from 'leftProduct' and 'rightProduct'.
 
 :::demo
 
@@ -427,6 +427,8 @@ export default App;
 
 | Event  | Description     | Type    |
 |---------|--------------------------------------------|---------|
+| leftProduct | When the product is double-column, the information in the left column of the product    | () => ReactNode | - |
+| rightProduct| When the product is double-column, the information in the right column of the product    | () => ReactNode | - |
 | hasMore     | Has more data                  | boolean | `true`    |
 | containerId | When the `useWindow` property is `false`, custom set the node ID | string  | -    |
 | useWindow   | Add scroll listener to window otherwise listen to component"s parent  | boolean  | `true`  |

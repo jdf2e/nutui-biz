@@ -1,7 +1,7 @@
 import React, {
-  FunctionComponent, CSSProperties, HTMLAttributes, ReactNode
+  FunctionComponent, ReactNode
 } from "react"
-import { Infiniteloading } from "@nutui/nutui-react";
+import { Infiniteloading, InfiniteloadingProps } from "@nutui/nutui-react";
 import { IComponent } from "@/utils/typings"
 
 import classNames from "classnames"
@@ -10,6 +10,7 @@ import bem from "@/utils/bem"
 export interface ProductFeedProps extends IComponent {
   leftProduct: () => ReactNode
   rightProduct: () => ReactNode
+  infiniteloadingProps: Partial<InfiniteloadingProps>
   // 是否还有更多数据
   hasMore: boolean
   // 在 useWindow 属性为 false 的时候，自定义设置节点ID
@@ -44,7 +45,7 @@ const defaultProps = {
 } as ProductFeedProps
 
 export const ProductFeed: FunctionComponent<
-  Partial<ProductFeedProps> & Omit<React.HTMLAttributes<HTMLDivElement>, "">
+  Partial<ProductFeedProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
     className,
@@ -63,6 +64,7 @@ export const ProductFeed: FunctionComponent<
     pullTxt,
     onLoadMore,
     onRefresh,
+    infiniteloadingProps,
     ...rest
   } = {
     ...defaultProps,
@@ -71,28 +73,30 @@ export const ProductFeed: FunctionComponent<
   const b = bem("biz-productfeed")
 
   return (
-    <div className={classNames([b(), className])} style={style} >
+    <div className={classNames([b(), className])} style={style} {...rest}>
       <Infiniteloading
         containerId={containerId}
         useWindow={useWindow}
         hasMore={hasMore}
         loadMoreTxt={loadMoreTxt}
+        loadIcon={loadIcon}
+        loadTxt={loadTxt}
         isOpenRefresh={isOpenRefresh}
         pullIcon={pullIcon}
         pullTxt={pullTxt}
         onLoadMore={onLoadMore}
         onRefresh={onRefresh}
-        {...props}
+        // {...infiniteloadingProps}
       >
         <div className={b("main")}>
           {children ? children :
             <>
-            <div className={b("left")}>
-              {leftProduct()}
-            </div>
-            <div className={b("right")}>
-              {rightProduct()}
-            </div>
+              <div className={b("left")}>
+                {leftProduct()}
+              </div>
+              <div className={b("right")}>
+                {rightProduct()}
+              </div>
             </>
           }
         </div>

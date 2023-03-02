@@ -25,7 +25,7 @@ const ProductFeedDemo = () => {
       label: "自营"
     },
     "en-US": {
-      title1: "Biserial",
+      title1: "Double",
       title2: "Single",
       title3: "Pull down",
       name: "I am the title I am the title I am the title I am the title",
@@ -265,7 +265,7 @@ const ProductFeedDemo = () => {
       >
         <>
           <div className="name-box">
-            {item.id}{item.name}
+            {item.name}
           </div>
           {item.tag && <div className="name-box">
             {item.tag}

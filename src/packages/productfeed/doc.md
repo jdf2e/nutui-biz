@@ -13,7 +13,7 @@ import { ProductFeed, ProductFeedItem } from "@nutui/nutui-biz";
 
 ### 双列
 
-当每行商品双列时，需要将商品数据分为左右两列，分别从 `leftProduct`、`rightProduct` 传递。
+当商品是双列时，需要将商品数据分为左右两列，分别从 `leftProduct`、`rightProduct` 传递。
 
 :::demo
 
@@ -430,6 +430,8 @@ export default App;
 
 | 字段         | 说明                           | 类型     | 默认值    |
 |-------------|--------------------------------|---------|-----------|
+| leftProduct | 当商品是双列时，商品左列的信息      | () => ReactNode | - |
+| rightProduct| 当商品是双列时，商品右列的信息      | () => ReactNode | - |
 | hasMore     | 是否还有更多数据                  | boolean | `true`    |
 | containerId | 在 `useWindow` 属性为 `false` 的时候，自定义设置节点ID | string  | -    |
 | useWindow   | 将滚动侦听器添加到 window 否则侦听组件的父节点  | boolean  | `true`  |
