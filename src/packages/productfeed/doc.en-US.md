@@ -235,11 +235,13 @@ const App = () => {
         return (
           <ProductFeedItem
             key={item.id}
+            data={item}
             col={1}
             imgUrl={item.imgUrl}
             imgHeight="120"
             imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
             onClick={handleClick}
+            onImageClick={handleImageClick}
           >
             <>
               <div className="name-box">
@@ -450,10 +452,13 @@ export default App;
 
 | Event  | Description     | Type    |
 |---------|--------------------------------------------|---------|
-| col         | Quantity of items per row               | number \| string  | `2`    |
-| imgUrl      | Product Image Url                | string           | -     |
+| data        | Item data                  | Array    | -  |
+| col         | Quantity of items per row         | number \| string  | `2`    |
+| padding     | Product Inside Margin, default Unit ` px`   | number \| string  | `10px`  |
+| borderRadius | Item Fillet, default Unit ` px`    | number \| string  | `8px`  |
+| imgUrl      | Product image url                | string           | -     |
 | imgWidth    | Product image width, default unit `px`  | string           | -     |
-| imgHeight   | Product image height, default unit `px`  | string           | `150` |
+| imgHeight   | Product image height, default unit `px`  | string           | `150px` |
 | imgTag      | Product image tag               | string           | -      |
 | isImageLazy | Whether to enable product lazy loading          | boolean          | `true` |
 | loadingImg  | Image when product image loads        | string           | -      |

@@ -356,12 +356,14 @@ const ProductFeedDemo = () => {
                 return (
                   <ProductFeedItem
                     key={item.id}
+                    data={item}
                     col={1}
                     imgUrl={item.imgUrl}
                     imgWidth="100"
                     imgHeight="100"
                     imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
                     onClick={handleClick}
+                    onImageClick={handleImageClick}
                   >
                     <>
                       <div className="name-box">

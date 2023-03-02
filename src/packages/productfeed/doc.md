@@ -237,11 +237,13 @@ const App = () => {
         return (
           <ProductFeedItem
             key={item.id}
+            data={item}
             col={1}
             imgUrl={item.imgUrl}
             imgHeight="120"
             imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
             onClick={handleClick}
+            onImageClick={handleImageClick}
           >
             <>
               <div className="name-box">
@@ -452,12 +454,15 @@ export default App;
 
 | 字段         | 说明                     | 类型              | 默认值  |
 |-------------|--------------------------|------------------|--------|
-| col         | 每行商品数量               | number \| string  | `2`    |
+| data        | 商品数据                  | Array    | -  |
+| col         | 每行商品数量               | number \| string | `2`    |
+| padding     | 商品内边距，默认单位 `px`   | number \| string  | `10px`  |
+| borderRadius | 商品圆角，默认单位 `px`    | number \| string  | `8px`  |
 | imgUrl      | 商品图片Url                | string           | -     |
 | imgWidth    | 商品图片宽度，默认单位 `px`  | string           | -     |
-| imgHeight   | 商品图片高度，默认单位 `px`  | string           | `150` |
+| imgHeight   | 商品图片高度，默认单位 `px`  | string           | `150px` |
 | imgTag      | 商品图片标签               | imgTag           | -      |
-| isImageLazy | 是否开启商品图片懒加载          | boolean          | `true` |
+| isImageLazy | 是否开启商品图片懒加载       | boolean         | `true` |
 | loadingImg  | 商品图片加载时的图片        | string           | -      |
 | errorImg    | 商品图片错误时的图片        | string           | -      |
 
