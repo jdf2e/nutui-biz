@@ -9,7 +9,7 @@ The product feed flow component can be configured with pull-down refresh, list l
 import { ProductFeed, ProductFeedItem } from "@nutui/nutui-biz";
 ```
 
-## Code
+## Demo
 
 ### Biserial Columns
 
@@ -437,7 +437,7 @@ export default App;
 | pullIcon    | Pull refresh `Icon` name           | string  | -    |
 | pullTxt     | Pull refresh text              | string  | `Loose to refresh` |
 
-## Events
+### Events
 | Attribute            | Description               | Arguments   |
 |----- | ----- | -----  |
 |----------- | --------------- | -------------------|
@@ -457,7 +457,7 @@ export default App;
 | loadingImg  | Image when product image loads        | string           | -      |
 | errorImg    | Image when product image is wrong        | string           | -      |
 
-## ProductFeedItem Events
+### ProductFeedItem Events
 | Attribute            | Description               | Arguments   |
 |----- | ----- | -----  |
 |--------- | -------- | ---------------|

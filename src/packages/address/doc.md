@@ -10,7 +10,7 @@
 import { Address } from '@nutui/nutui-biz';
 ```
 
-## 代码示例
+## 代码演示
 ### 选择自定义地址
 
 :::demo
@@ -240,7 +240,7 @@ const App = () => {
       <Cell title="选择地址" desc={text}  onClick={()=>setNormal2(true)} />
       <Address
           modelValue={normal2}
-          type="custom2"
+          type="elevator"
           province={province}
           city={city}
           country={country}
@@ -596,14 +596,14 @@ export default App;
 | 字段 | 说明 | 类型 | 默认值 |
 |----- | ----- | ----- | -----  |
 | modelValue | 是否打开地址选择 | String | '' |
-| modelSelect`v1.3.0` | 设置默认选中地址 | String\|Number[] | [] |
-| type | 地址选择类型 exist/custom/custom2  | String | `custom` |
-| province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
-| city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
-| country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
-| town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
+| modelSelect`v1.3.0` | 设置默认选中地址，按照 province、city、country、town 顺序， Id 组成的数组   | String\|Number[] | [] |
+| type | 地址选择类型 exist/custom/elevator  | String | `custom` |
+| province | 省，每个省的对象中，必须有 name 字段，如果类型选择 elevator，必须指定 title 字段为首字母 | Array | [] |
+| city | 市，每个市的对象中，必须有 name 字段，如果类型选择 elevator，必须指定 title 字段为首字母 | Array | [] |
+| country | 县，每个县的对象中，必须有 name 字段，如果类型选择 elevator，必须指定 title 字段为首字母 | Array | [] |
+| town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 elevator，必须指定 title 字段为首字母 | Array | [] |
 | hotCities | 热门城市 | Array | [] |
-| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | String \| Number | `200px` |
+| height | 弹层中内容容器的高度，仅在type="elevator"时有效 | String \| Number | `200px` |
 | existAddress | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | Array | [] |
 | defaultIcon | 已有地址列表默认图标，type=‘exist’ 时生效 | String | '' |
 | selectedIcon | 已有地址列表选中图标，type=‘exist’ 时生效 | String | '' |
@@ -622,7 +622,7 @@ export default App;
   * addressDetail 具体地址
   * selectedAddress 字段用于判断当前地址列表的选中项。
 
-## Event
+### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onChange | 自定义选择地址时，选择地区时触发 |  参考 onChange |
@@ -630,26 +630,26 @@ export default App;
 | onClose | 地址选择弹框关闭时触发 | 参考 close |
 | onClickHotCity | 点击热门城市触发 | 被点击的热门城市数据 |
 | onCloseMask |点击遮罩层或点击右上角叉号关闭时触发 | {closeWay:'mask'/'cross'} |
-| onSwitchModule | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'/'custom2'} |
+| onSwitchModule | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'/'elevator'} |
 
 
-## change 回调参数
+### change 回调参数
 | 参数 | 说明 | 可能值  |
 |----- | ----- | ----- |
 | custom | 当前点击的行政区域  |  province(省) / city(市) / country(县) / town(乡) |
 | next | 当前点击的行政区域的下一级 | province(省) / city(市) / country(县) / town(乡) |
 | value | 当前点击的行政区域的值（返回传入的值） | {} |
 
-## selected 回调参数
+### selected 回调参数
 | 参数 | 说明 | 可能值  |
 |----- | ----- | ----- |
 | 第一个参数（prevExistAdd） |  选择前选中的地址 |  {} |
 | 第二个参数（nowExistAdd） |  当前选中的地址 |  {} |
 | 第三个参数（arr） |  选择完之后的已有地址列表（selectedAddress 值发生改变） |  {} |
 
-## close 回调参数
+### close 回调参数
 | 参数 | 说明 | 可能值 |
 |----- | ----- | ----- |
-| type | 地址选择类型 exist/custom/custom2  |  exist/custom/custom2 |
+| type | 地址选择类型 exist/custom/elevator  |  exist/custom/elevator |
 | data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | {}  |
     

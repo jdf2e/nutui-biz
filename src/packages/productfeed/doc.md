@@ -440,7 +440,7 @@ export default App;
 | pullIcon    | 下拉刷新 `Icon` 名称                  | string  | -    |
 | pullTxt     | 下拉刷新提示文案                  | string  | `松手刷新` |
 
-## Events
+### Events
 | 字段        | 说明            | 回调参数             |
 |----------- | --------------- | -------------------|
 | onLoadMore | 继续加载的回调函数 |  done 函数，用于关闭加载中状态 |
@@ -459,7 +459,7 @@ export default App;
 | loadingImg  | 商品图片加载时的图片        | string           | -      |
 | errorImg    | 商品图片错误时的图片        | string           | -      |
 
-## ProductFeedItem Events
+### ProductFeedItem Events
 | 字段      | 说明      | 回调参数        |
 |--------- | -------- | ---------------|
 | onClick  | 点击时触发 | data |

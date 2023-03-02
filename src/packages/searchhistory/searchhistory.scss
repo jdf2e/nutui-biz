@@ -1,6 +1,10 @@
 .nb-search-history {
     background-color: #fff;
 
+    .nut-icon {
+        vertical-align: middle;
+    }
+
     .nut-searchbar {
         border-bottom: 1px solid #e5e5e5;
 
@@ -26,6 +30,12 @@
     &__recent,
     &__discover {
         margin: 15px;
+    }
+
+    &__discover {
+        min-height: 80px;
+        display: flex;
+        flex-direction: column;
     }
 
     &__recent-tit, 
@@ -66,15 +76,29 @@
     }
 
     .no-discover-data {
-        height: 50px;
         font-size: 12px;
         color: gray;
-        text-align: center;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 13px;
     }
 
     &__recent-tags {
+        position: relative;
         display: flex;
         flex-wrap: wrap;
+
+        &.fixed-height {
+            height: 65px;
+            overflow: hidden;
+        }
+
+        .recent-tags-arrow {
+            position: absolute;
+            bottom: -10px;
+        }
 
         a {
             max-width: 100%;

@@ -2,32 +2,32 @@ import React, {
   ChangeEvent,
   CSSProperties,
   FunctionComponent,
+  ReactNode,
   useMemo,
   useState,
 } from "react";
 import { useConfig } from "@/packages/configprovider";
-
-import bem from "@/utils/bem";
-import { InputNumber } from "@nutui/nutui-react";
-
-interface IDataList {
+import { cn2 as nb } from "@/utils/bem";
+import { InputNumber, InputNumberProps, Input, InputProps } from "@nutui/nutui-react";
+import mathMethods from '@/utils/math'
+const { accurateMultiply } = mathMethods
+export interface DataListItem {
   price: number;
 }
 
 export interface EcardProps {
   className?: string;
   style?: CSSProperties;
-  chooseText: string;
+  chooseText: ReactNode;
   suffix: string;
-  otherValueText: string;
-  dataList: Array<IDataList>;
+  otherValueText: ReactNode;
+  dataList: Array<DataListItem>;
   cardAmountMin: number;
   cardAmountMax: number;
-  cardBuyMin: number;
-  cardBuyMax: number;
+  inputNumberProps: Partial<InputNumberProps>;
   modelValue: number;
   placeholder: string;
-  onChange?: (item: IDataList) => void;
+  onChange?: (item: DataListItem) => void;
   onChangeInput?: (val: number) => void;
   onChangeStep?: (num: number, price: number) => void;
 }
@@ -38,10 +38,12 @@ const defaultProps = {
   suffix: "¥",
   otherValueText: "",
   dataList: [],
+  inputNumberProps: {
+    min: 1,
+    max: 9999
+  },
   cardAmountMin: 1,
   cardAmountMax: 9999,
-  cardBuyMin: 1,
-  cardBuyMax: 9999,
   modelValue: 0,
   placeholder: "",
 } as EcardProps;
@@ -58,8 +60,7 @@ export const Ecard: FunctionComponent<
     dataList,
     cardAmountMin,
     cardAmountMax,
-    cardBuyMin,
-    cardBuyMax,
+    inputNumberProps,
     modelValue,
     placeholder,
     onChange,
@@ -70,7 +71,7 @@ export const Ecard: FunctionComponent<
     ...defaultProps,
     ...props,
   };
-  const b = bem("ecard");
+  const b = nb("ecard");
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [currentValue, setCurrentValue] = useState<number>(modelValue);
   const [customValue, setCustomValue] = useState<number | string>("");
@@ -78,12 +79,12 @@ export const Ecard: FunctionComponent<
 
   const totalPrice = useMemo(() => {
     if (!currentValue && !customValue) return 0
-    if (currentIndex >= 0 && cardAmount && currentValue) return Number(currentValue) * Number(cardAmount)
-    if (customValue && currentIndex === -1 && cardAmount) return Number(customValue) * Number(cardAmount)
+    if (currentIndex >= 0 && cardAmount && currentValue) return accurateMultiply(currentValue, cardAmount)
+    if (customValue && currentIndex === -1 && cardAmount) return accurateMultiply(customValue, cardAmount)
     return 0
   }, [currentIndex, currentValue, cardAmount, customValue])
-  
-  const handleClick = (item: { price: number }, index: number) => {
+
+  const handleClick = (item: DataListItem, index: number) => {
     setCurrentIndex(index)
     setCurrentValue(item.price)
     setCustomValue('')
@@ -94,10 +95,11 @@ export const Ecard: FunctionComponent<
     setCurrentIndex(-1)
   };
 
+  //todo：手机上切换中英文限制处理。
   const handleChangeInput = (event: Event) => {
     console.log({ cardAmountMax, cardAmountMin })
     const inputEle = event.target as HTMLInputElement;
-    let inputValueCache = +inputEle.value.replace(/[^\d]/g, "");
+    let inputValueCache = +inputEle.value;
     if (inputValueCache > cardAmountMax) {
       inputValueCache = cardAmountMax;
     } else if (inputValueCache < cardAmountMin) {
@@ -109,10 +111,9 @@ export const Ecard: FunctionComponent<
 
   const handleChangeStep = (
     param: string | number,
-    e: MouseEvent | ChangeEvent<HTMLInputElement>
   ) => {
     setCardAmount(Number(param))
-    onChangeStep && onChangeStep(+param, currentValue as any);
+    onChangeStep && onChangeStep(+param, currentValue);
   };
 
   return (
@@ -123,7 +124,7 @@ export const Ecard: FunctionComponent<
           {dataList.map((item, index) => {
             return (
               <div
-                className={`${b("list__item")} ${currentIndex === index ? "active" : ""
+                className={`${b("list__item")} ${currentIndex === index && "active"
                   }`}
                 key={index}
                 onClick={() => {
@@ -135,7 +136,7 @@ export const Ecard: FunctionComponent<
             );
           })}
           <div
-            className={`${b("list__input")} ${currentIndex === -1 ? "active" : ""
+            className={`${b("list__input")} ${currentIndex === -1 && "active"
               }`}
             onClick={() => {
               handleInputClick();
@@ -162,8 +163,7 @@ export const Ecard: FunctionComponent<
             </div>
             <InputNumber
               modelValue={cardAmount}
-              min={cardBuyMin}
-              max={cardBuyMax}
+              {...inputNumberProps}
               onChangeFuc={handleChangeStep}
             />
           </div>

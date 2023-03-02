@@ -66,9 +66,9 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
             <Icon name="left"></Icon>
           </div>
           {getComponentName()['name']}
-          <div className="translate" onClick={() => handleSwitchLocale()}>
+          {/* <div className="translate" onClick={() => handleSwitchLocale()}>
             <Icon name="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"></Icon>
-          </div>
+          </div> */}
         </div>
         <C key={Math.random()} />
       </>

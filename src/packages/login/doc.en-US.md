@@ -1,6 +1,6 @@
 # Login 
 
-### Introduce
+### Intro
 
 Mainly used on login pages. Dependent components: Input, Checkbox, Icon, Button
 
@@ -10,7 +10,7 @@ Mainly used on login pages. Dependent components: Input, Checkbox, Icon, Button
 import { Login } from '@nutui/nutui-biz';
 ```
 
-## Code Demo
+## Demo
 
 ### Basic usage
 
@@ -213,6 +213,7 @@ export default App;
 ```tsx
 import  React from 'react';
 import { Login } from '@nutui/nutui-biz';
+import {Input } from "@nutui/nutui-react";
 
 const App = () => {
   const [formParams2, setformParams2] = useState({
@@ -248,9 +249,7 @@ const App = () => {
         loginType="pwd"
         onInputChange={onChange}
         isHideSwitchBtn={true}
-        onLoginBtnClick={queryLogin}
         loginButtonDisable={isDisable}
-        loginButtonText={translated.loginText}
         onClear={(tag) => {
             if (tag === "account") {
               setAccount("");
@@ -337,7 +336,7 @@ export default App;
 
 
 
-## Events
+### Events
 | Attribute    | Description     | Callback |
 |----- | ----- | -----  |
 | onInputChange | Input text in the input box, return the input text and the identification tag of the input box (account,password,telOrMail,verifyCode) | value,tag |

@@ -116,7 +116,7 @@
           margin-bottom: 20px;
           font-size: $font-size-1;
           color: #333;
-          &.active {
+          .active {
             font-weight: bold;
           }
 
@@ -158,6 +158,16 @@
     .nut-address__elevator-group {
       display: flex;
       margin-top: 20px;
+      .active {
+        font-weight: bold;
+      }
+      .nut-elevator__list__item__name--highcolor{
+        color: #333;
+      }
+
+      .nut-address__region-item--icon {
+        margin-right: 6px;
+      }
     }
   }
 

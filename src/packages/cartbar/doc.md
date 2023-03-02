@@ -202,9 +202,9 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| hasCapsuleButtons   | 是否包含胶囊型按钮                                 | Boolean  | `false`          |
-| safeAreaInsetBottom   | 是否开启iphone系列全面屏底部安全区适配                                 | Boolean  | `true`          |
-| placeholder   | 固定在底部时，是否在标签位置生成一个等高的占位元素                                 | Boolean  | `false`          |
+| hasCapsuleButtons   | 是否包含胶囊型按钮                                 | boolean  | `false`          |
+| safeAreaInsetBottom   | 是否开启iphone系列全面屏底部安全区适配                                 | boolean  | `true`          |
+| placeholder   | 固定在底部时，是否在标签位置生成一个等高的占位元素                                 | boolean  | `false`          |
 | top | 自定义顶部内容 |ReactNode  | -          |
 
 
@@ -218,7 +218,7 @@ export default App;
 | badgeProps   | 徽标 props                                 | [BadgeProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/badge)  | -         |
 
 
-## CartBarIcon Events
+### CartBarIcon Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onClick | 点击事件 |  - |
@@ -234,7 +234,7 @@ export default App;
 | buttonProps   | 按钮 props                                 | [ButtonProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/button)  | -         |
 
 
-## CartBarButton Events
+### CartBarButton Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onClick | 点击事件 |  - |

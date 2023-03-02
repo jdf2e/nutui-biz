@@ -101,11 +101,11 @@ export default App;
 | Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
 | data   | 地址数组                                 | Array  | -         |
-| invoiceType   | Invoice type, optional value:  `normal`，`special`    | String  | `special`         |
+| invoiceType   | Invoice type, optional value:  `normal`，`special`    | string  | `special`         |
 | bottom   | Custom bottom content     | ReactNode  | -         |
 
 
-## Events
+### Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
 | onSubmit | Submit event |  event: Event,item |

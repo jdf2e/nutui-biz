@@ -3,7 +3,7 @@ import { Ecard } from "@/packages/nutui.react.taro";
 import { Cell } from '@nutui/nutui-react-taro';
 import { useTranslate } from '@/sites/assets/locale/taro'
 
-interface IDataList {
+interface DataListItem {
   price: number;
 }
 interface T {
@@ -23,7 +23,7 @@ const EcardDemo = () => {
     },
   });
   const [money, setModelValue] = useState(10);
-  const [dataList] = useState<IDataList[]>([
+  const [dataList] = useState<DataListItem[]>([
     {
       price: 10,
     },
@@ -40,7 +40,7 @@ const EcardDemo = () => {
   const onChangeInput = (val: number) => {
     console.log(val);
   };
-  const onChange = (item: IDataList) => {
+  const onChange = (item: DataListItem) => {
     console.log(item);
   };
   const onChangeStep = (num: number, price: number) => {

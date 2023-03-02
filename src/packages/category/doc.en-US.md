@@ -10,7 +10,7 @@ Components used to display product categories.
 import { Category } from '@nutui/nutui-biz';
 ```
 
-## Code
+## Demo
 
 ### Basic Usage
 
@@ -139,7 +139,7 @@ export default App;
 | errorImg | Set error prompt picture | String | -        |
 
 
-### Event
+### Events
 | Event  | Description     | Arguments    |
 |----- | ----- | -----  |
 | onChange | triggered by clicking on the left level navigation | category |

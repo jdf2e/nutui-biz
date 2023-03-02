@@ -201,9 +201,9 @@ export default App;
 
 | Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
-| hasCapsuleButtons   | Whether to include capsule buttons                                 | Boolean  | `false`          |
-| safeAreaInsetBottom   | Whether to enable bottom safe area adaptation                                 | Boolean  | `true`          |
-| placeholder   | Whether to generate a placeholder element when fixed                                 | Boolean  | `false`          |
+| hasCapsuleButtons   | Whether to include capsule buttons                                 | boolean  | `false`          |
+| safeAreaInsetBottom   | Whether to enable bottom safe area adaptation                                 | boolean  | `true`          |
+| placeholder   | Whether to generate a placeholder element when fixed                                 | boolean  | `false`          |
 | top | Custom top content |ReactNode  | -          |
 
 
@@ -217,7 +217,7 @@ export default App;
 | badgeProps   | Badge props                                 | [BadgeProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/badge)  | -         |
 
 
-## CartBarIcon Events
+### CartBarIcon Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
 | onClick | Click event |  - |
@@ -233,7 +233,7 @@ export default App;
 | buttonProps   | Button props                                 | [ButtonProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/button)  | -         |
 
 
-## CartBarButton Events
+### CartBarButton Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
 | onClick | Click event |  - |

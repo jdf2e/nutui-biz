@@ -101,11 +101,11 @@ export default App;
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
 | data   | 地址数组                                 | Array  | -         |
-| invoiceType   | 发票类型，可选 `normal`，`special`    | String  | `special`         |
+| invoiceType   | 发票类型，可选 `normal`，`special`    | string  | `special`         |
 | bottom   | 底部自定义内容     | ReactNode  | -         |
 
 
-## Events
+### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onSubmit | 点击提交审批按钮事件 |  event: Event,item |

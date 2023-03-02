@@ -355,7 +355,7 @@ const AddressDemo = () => {
 
         {/* <Address
           modelValue={showPopup.normal2}
-          type="custom2"
+          type="elevator"
           modelSelect={[1, 7, 3]}
           province={addressData.province}
           city={addressData.city}

@@ -327,34 +327,34 @@ export default App;
 
 | Attribute            | Description               | Type   | Default  |
 |---------|--------------------------------------------|---------|-----------|
-| imgUrl   | Left thumb image                                  | String  | -         |
-| title     | Title                   | String  | -    |
-| price | Price                         | String \| Number  | -      |
-| vipPrice     | vip-price                               | String \| Number | -    |
-| shopDesc  | shop-desc                                   | String | -    |
-| delivery     | delivery | String  | -      |
-| shopName   | shop-name| String  | -      |
+| imgUrl   | Left thumb image                                  | string  | -         |
+| title     | Title                   | string  | -    |
+| price | Price                         | string \| number  | -      |
+| vipPrice     | vip-price                               | string \| number | -    |
+| shopDesc  | shop-desc                                   | string | -    |
+| delivery     | delivery | string  | -      |
+| shopName   | shop-name| string  | -      |
 | prolistTpl   | Custom product introduction| React.ReactNode  | -      |
 | priceTpl   | Custom price | React.ReactNode  | -      |
 | originTpl   | Custom content behind the price| React.ReactNode  | -      |
 | shopTagTpl   | Custom shop introduction| React.ReactNode  | -      |
 | footerTpl   | Customize bottom right content| React.ReactNode  | -      |
-| showType   | Display format, optional value: `full-line`、`half-line`| String  | `full-line`      |
+| showType   | Display format, optional value: `full-line`、`half-line`| string  | `full-line`      |
 | bottomTpl   | Customize bottom content| React.ReactNode  | -      |
 | infotpl   | Customize info content| React.ReactNode  | -      |
-| isNeedPrice   | Whether price display is required| Boolean  | `true`      |
-| imgTag   | Product image label, often used to mark Double 11, live broadcast, etc | String  | -      |
-| isLazy   | Whether to show image lazyload| Boolean  | `false`      |
-| imgTagDirection   | Display position of product image label, optional value: `top-left`、`top-right`| String  | `top-left`      |
+| isNeedPrice   | Whether price display is required| boolean  | `true`      |
+| imgTag   | Product image label, often used to mark Double 11, live broadcast, etc | string  | -      |
+| isLazy   | Whether to show image lazyload| boolean  | `false`      |
+| imgTagDirection   | Display position of product image label, optional value: `top-left`、`top-right`| string  | `top-left`      |
 | titleTag   | The label on the left side of the title, often used for activity tags, etc. If this parameter is not set or this parameter is empty, it will not be displayed| React.ReactNode  | -      |
-| titleLine   | The number of title lines, the default is two lines, if you want to display more content below, you can set it to 1| String \| Number  | `2`      |
-| linkUrl   | Jump link, click on the whole card by default to jump in the form of href, can be customized through click event| String  | -      |
-| imgWidth   | Width，Default unit px | String  | -      |
-| imgHeight   | Height，Default unit px | String  | -      |
-| loadingImg   | Set the prompt image during loading, which conflicts with `slotLoding` and has a higher priority than `slotLoding` | String  | -      |
-| errorImg   | Set the error prompt image, which conflicts with `slotError` and has a higher priority than `slotError` | String  | -      |
+| titleLine   | The number of title lines, the default is two lines, if you want to display more content below, you can set it to 1| string \| number  | `2`      |
+| linkUrl   | Jump link, click on the whole card by default to jump in the form of href, can be customized through click event| string  | -      |
+| imgWidth   | Width，Default unit px | string  | -      |
+| imgHeight   | Height，Default unit px | string  | -      |
+| loadingImg   | Set the prompt image during loading, which conflicts with `slotLoding` and has a higher priority than `slotLoding` | string  | -      |
+| errorImg   | Set the error prompt image, which conflicts with `slotError` and has a higher priority than `slotError` | string  | -      |
 
-## Events
+### Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
 | onClick | Click event |  event: MouseEvent |

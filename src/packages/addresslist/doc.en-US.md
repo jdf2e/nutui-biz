@@ -153,13 +153,13 @@ export default App;
 | Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
 | data   | Address array                                 | Array  | -         |
-| longPress   | Long Press Function                                 | Boolean  | `false`         |
-| swipeEdition   | Swipe right                                 | Boolean  | `false`         |
-| showBottomButton   | Whether to show the bottom button                                 | Boolean  | `true`         |
-| showSelect   | 是否可选择                                 | Boolean  | `false`         |
+| longPress   | Long Press Function                                 | boolean  | `false`         |
+| swipeEdition   | Swipe right                                 | boolean  | `false`         |
+| showBottomButton   | Whether to show the bottom button                                 | boolean  | `true`         |
+| showSelect   | 是否可选择                                 | boolean  | `false`         |
 
 
-## Events
+### Events
 | Event | Description | Arguments |
 |----- | ----- | -----  |
 | onDelIcon | Click the delete icon |  event: Event,item |

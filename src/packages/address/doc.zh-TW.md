@@ -241,7 +241,7 @@ const App = () => {
       <Cell title="選擇地址" desc={text}  onClick={()=>setNormal2(true)} />
       <Address
           modelValue={normal2}
-          type="custom2"
+          type="elevator"
           province={province}
           city={city}
           country={country}
@@ -596,12 +596,12 @@ export default App;
 |----- | ----- | ----- | -----  |
 | modelValue | 是否打開地址選擇 | String | '' |
 | modelSelect`v1.2.3` | 設置默認選中地址 | String\|Number[] | [] |
-| type | 地址選擇類型 exist/custom/custom2  | String | 'custom' |
-| province | 省，每個省的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | [] |
-| city | 市，每個市的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | [] |
-| country | 縣，每個縣的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | [] |
-| town | 鄉/鎮，每個鄉/鎮的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | [] |
-| height | 彈層中內容容器的高度，僅在type="custom2"時有效 | String、Number | '200px' |
+| type | 地址選擇類型 exist/custom/elevator  | String | 'custom' |
+| province | 省，每個省的對象中，必須有 name 字段，如果類型選擇 elevator，必須指定 title 字段為首字母 | Array | [] |
+| city | 市，每個市的對象中，必須有 name 字段，如果類型選擇 elevator，必須指定 title 字段為首字母 | Array | [] |
+| country | 縣，每個縣的對象中，必須有 name 字段，如果類型選擇 elevator，必須指定 title 字段為首字母 | Array | [] |
+| town | 鄉/鎮，每個鄉/鎮的對象中，必須有 name 字段，如果類型選擇 elevator，必須指定 title 字段為首字母 | Array | [] |
+| height | 彈層中內容容器的高度，僅在type="elevator"時有效 | String、Number | '200px' |
 | existAddress | 已存在地址列錶，每個地址對象中，必傳值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解釋見下） | Array | [] |
 | defaultIcon | 已有地址列錶默認圖標，type=‘exist’ 時生效 | String | '' |
 | selectedIcon | 已有地址列錶選中圖標，type=‘exist’ 時生效 | String | '' |
@@ -627,7 +627,7 @@ export default App;
 | onSelected | 選擇已有地址列錶時觸發 | 參考 selected |
 | onClose | 地址選擇彈框關閉時觸發 | 參考 close |
 | closeMask |點擊遮罩層或點擊右上角叉號關閉時觸發 | {closeWay:'mask'/'cross'} |
-| onSwitchModule | 點擊‘選擇其他地址’或自定義地址選擇左上角返回按鈕觸發 | {type:'exist'/'custom'/'custom2'} |
+| onSwitchModule | 點擊‘選擇其他地址’或自定義地址選擇左上角返回按鈕觸發 | {type:'exist'/'custom'/'elevator'} |
 
 
 ## change 回調參數
@@ -647,6 +647,6 @@ export default App;
 ## close 回調參數
 | 參數 | 說明 | 可能值 |
 |----- | ----- | ----- |
-| type | 地址選擇類型 exist/custom/custom2  |  exist/custom/custom2 |
+| type | 地址選擇類型 exist/custom/elevator  |  exist/custom/elevator |
 | data | 選擇地址的值,custom 時，addressStr 為選擇的地址組合 | {}  |
     

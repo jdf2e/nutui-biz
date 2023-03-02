@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { useTranslate } from "../../sites/assets/locale";
-import { Ecard } from "./ecard";
+import { Ecard, DataListItem } from "./ecard";
 import { Cell } from "@nutui/nutui-react";
 
-interface IDataList {
-  price: number;
-}
 interface T {
   [props: string]: string;
 }
@@ -22,8 +19,7 @@ const EcardDemo = () => {
       basic: "Basic Usage",
     },
   });
-  const [modelValue, setModelValue] = useState(10);
-  const [dataList] = useState<IDataList[]>([
+  const [dataList] = useState<DataListItem[]>([
     {
       price: 10,
     },
@@ -31,16 +27,17 @@ const EcardDemo = () => {
       price: 20,
     },
     {
-      price: 33,
+      price: 30,
     },
     {
       price: 40,
     },
   ]);
+  const modelValue = dataList[0].price;
   const onChangeInput = (val: number) => {
     console.log(val);
   };
-  const onChange = (item: IDataList) => {
+  const onChange = (item: DataListItem) => {
     console.log(item);
   };
   const onChangeStep = (num: number, price: number) => {

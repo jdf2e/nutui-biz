@@ -24,6 +24,7 @@ import { Toast } from '@nutui/nutui-react';
 const App = () => {
   return (
     <SettleBar
+      total={100}
       onSettle ={() => Toast.text('点击按钮')}
     />
   );
@@ -51,6 +52,7 @@ import { Toast } from '@nutui/nutui-react';
 const App = () => {
   return (
     <SettleBar 
+      total={100}
       totalAlign="left"
       onSettle ={() => Toast.text('点击按钮')}
     />
@@ -78,6 +80,7 @@ import { SettleBar } from '@nutui/nutui-biz';
 const App = () => {
   return (
     <SettleBar 
+      total={100}
       disabled
     />
   );
@@ -104,6 +107,7 @@ import { SettleBar } from '@nutui/nutui-biz';
 const App = () => {
   return (
     <SettleBar 
+      total={100}
       loading 
     />
   );
@@ -131,6 +135,7 @@ import { Toast } from '@nutui/nutui-react';
 const App = () => {
   return (
     <SettleBar 
+      total={100}
       customSelectAll="" 
       showZero={false} 
       totalText="总计" 
@@ -162,6 +167,7 @@ import { Toast } from '@nutui/nutui-react';
 const App = () => {
   return (
     <SettleBar 
+      total={100}
       settleCount="100" 
       settleUnit="个" 
       onSettle ={() => Toast.text('点击按钮')}
@@ -191,6 +197,7 @@ import { Toast } from '@nutui/nutui-react';
 const App = () => {
   return (
     <SettleBar 
+      total={100}
       customTotalExtra={<div style={{fontSize: '12px'}}>已减 ¥30.00</div>} 
       onSettle ={() => Toast.text('点击按钮')}
     />
@@ -223,6 +230,7 @@ const App = () => {
   
   return (
     <SettleBar 
+      total={100}
       customWarning={customWarningHtml()} 
       onSettle ={() => Toast.text('点击按钮')}
     />
@@ -247,28 +255,26 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| total   | 合计价格                                 | Number  | 0         |
-| totalText     | 合计文案                   | String  | `合计`    |
-| totalAlign | 合计区域对齐方式，可选值：`left`、`right`                       | String  | `right`      |
-| settleCount     | 结算数量                               | Number | 0    |
-| settleUnit  | 结算单位                                  | String | -    |
-| settleButtonText     | 结算按钮文案 | String  | `去结算`     |
-| disabled   | 结算按钮是否置灰| Boolean  | `false`      |
-| loading   | 结算按钮是否加载中| Boolean  | `false`      |
-| showZero   | 数量为0时是否展示                                 | Boolean  | `true`          |
-| safeAreaInsetBottom   | 是否开启iphone系列全面屏底部安全区适配                                 | Boolean  | `true`          |
-| placeholder   | 固定在底部时，是否在标签位置生成一个等高的占位元素                                 | Boolean  | `false`          |
+| total   | 合计价格                                 | number \| string | 0         |
+| totalText     | 合计文案                   | string  | `合计`    |
+| totalAlign | 合计区域对齐方式，可选值：`left`、`right`                       | string  | `right`      |
+| settleCount     | 结算数量                               | number | 0    |
+| settleUnit  | 结算单位                                  | string | -    |
+| settleButtonText     | 结算按钮文案 | string  | `去结算`     |
+| disabled   | 结算按钮是否置灰| boolean  | `false`      |
+| loading   | 结算按钮是否加载中| boolean  | `false`      |
+| showZero   | SettleCount 为 0 时，是否还展示结算按钮中的数量                                 | boolean  | `true`          |
+| safeAreaInsetBottom   | 是否开启iphone系列全面屏底部安全区适配                                 | boolean  | `true`          |
+| placeholder   | 固定在底部时，是否在标签位置生成一个等高的占位元素                                 | boolean  | `false`          |
 | customTotal | 合计区域自定义 | ReactNode  | -          |
 | customWarning | 上面提示内容自定义 | ReactNode  | -          |
 | customSelectAll | 全选内容自定义 | ReactNode  | -          |
 | customTotalPrice | 合计价格内容自定义 | ReactNode  | -          |
 | customTotalExtra | 合计额外区域自定义 | ReactNode  | -          |
 | customButton | 按钮内容自定义 | ReactNode  | -          |
-| iconProps   | 图标 props                                 | [IconProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)  | -         |
-| checkboxProps   | 复选框 props                                 | [CheckboxProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/checkbox)  | -         |
 
 
-## Events
+### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onSelectAll | 全选按钮点击事件 |  event: Event |

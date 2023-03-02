@@ -7,6 +7,7 @@ import React, {
   
   import { IComponent } from '@/utils/typings'
   import {ItemContents} from './itemContents'
+  import {cn2} from '@/utils/bem'
   
   export interface SwipeShellProps extends IComponent {
     onDelIcon: (event: Event, item: Object) => void
@@ -35,6 +36,8 @@ import React, {
     } = {
       ...props,
     }
+
+    const b = cn2('address-list')
 
     const [moveRef, setMoveRef] = useState<boolean>(false)
 
@@ -76,7 +79,7 @@ import React, {
   
     return (
         <Swipe rightAction={<Button shape="square" style={{height: '100%'}} type="danger" onClick={swipeDelClick}>{locale.swipeShell.delete}</Button>}>
-          <div className="nut-address-list-swipe">
+          <div className={b('swipe')}>
               <ItemContents
                 item={item}
                 onDelIcon={delClick}

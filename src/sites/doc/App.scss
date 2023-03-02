@@ -19,6 +19,11 @@ $doc-title-height: 137px;
     width: 100%;
     height: $doc-title-height;
     z-index: 2;
+    .npm-package {
+      img {
+        margin-right: 5px;
+      }
+    }
     &-position {
       top: 0px;
       display: flex;
@@ -33,7 +38,7 @@ $doc-title-height: 137px;
       // transition: opacity 0.8s linear, visibility 0.8s linear;
       transition: opacity 0.8s;
       &.fixed {
-        width: calc(100% - 290px);
+        width: calc(100% - 305px);
         position: fixed;
         padding: 24px 48px;
         .title {
@@ -52,7 +57,7 @@ $doc-title-height: 137px;
     }
   }
   &-content {
-    margin-left: 290px;
+    margin-left: 305px;
     display: flex;
     flex-direction: column;
 

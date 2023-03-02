@@ -97,6 +97,8 @@ export default App;
 
 ### Single Delete
 
+Click the delete icon of the recent search, the default is to delete all. Set `deleteType` to `single` to achieve single deletion of search results
+
 :::demo
 
 ```ts
@@ -280,22 +282,22 @@ export default App;
 
 | Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
-| recentSearchText   | Recent search text                                     | String  | `Recent Search`         |
-| searchDiscoverText     | Search discover text                   | String  | `Search Discover`    |
+| recentSearchText   | Recent search text                                     | string  | `Recent Search`         |
+| searchDiscoverText     | Search discover text                   | string  | `Search Discover`    |
 | recentSearchData      | Recent search data                               |  Array  | []      |
 | searchDiscoverData | Search discover data                        | Array  | []      |
-| keyword  | The search keyword passed in the searchBar                                 | String | ''    |
+| keyword  | The search keyword passed in the searchBar                                 | string | ''    |
 | backIcon     | Back icon, if set to empty, there will be no back icon | ReactNode  | `left`     |
 | deleteIcon   | Recent search delete icon | ReactNode  | `del`      |
-| searchDiscoverExtra   | Search discover extra info | String  | -      |
-| refreshIcon   | Recent search refresh icon| String  | `refresh`      |
-| recentSearchCollapse   | A drop-down arrow appears when there are more than two rows of recent search data | Boolean  | `true`          |
+| searchDiscoverExtra   | Search discover extra info | string  | -      |
+| refreshIcon   | Recent search refresh icon| string  | `refresh`      |
+| recentSearchCollapse   | A drop-down arrow appears when there are more than two rows of recent search data | boolean  | `true`          |
 | leftInIcon | Custom left in icon, default is search icon | ReactNode  | -          |
 | rightInIcon | Custom right in icon, default is photograph icon | ReactNode  | -          |
 | rightOutIcon | Custom right out icon, default is "Search" | ReactNode  | -          |
 
 
-## Events
+### Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
 | onClickSearchItem | Search item click event |  searchItem: IsearchItem |
@@ -305,3 +307,11 @@ export default App;
 | onClickBackIcon | Back icon click event |  - |
 | onRefresh | Search discover refresh icon click event  |  - |
 | onDelete | Delete event |  - |
+
+
+### IsearchItem 
+
+| Attribute    | Description                                       | Type    | 
+|---------|--------------------------------------------|---------|
+| key   | Search keyword                                | ReactNode |
+| url   | Search keyword jump link            | string  | 

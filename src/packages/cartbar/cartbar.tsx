@@ -1,6 +1,5 @@
 import React, {
   FunctionComponent,
-  CSSProperties,
   useRef,
   useState,
   useEffect,
@@ -13,8 +12,6 @@ import {getRect} from '@/utils/useClientRect'
 import { IComponent } from '@/utils/typings'
 
 export interface CartBarProps extends IComponent {
-  className: string
-  style: CSSProperties
   hasCapsuleButtons: boolean
   safeAreaInsetBottom: boolean
   placeholder: boolean

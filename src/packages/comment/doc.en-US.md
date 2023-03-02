@@ -10,6 +10,8 @@ Used to display the comment list
 import { Comment } from '@nutui/nutui-biz';
 ```
 
+## Demo
+
 ### Single Line Image
 
 By default, images of reviews for individual items are displayed in a single slide

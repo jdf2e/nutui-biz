@@ -10,6 +10,8 @@ Load on demand Load the  Icon、Popup、Elevator dependent component
 import { Address } from '@nutui/nutui-biz';
 ```
 
+## Demo
+
 ### Choose Custom Address
 
 :::demo
@@ -239,7 +241,7 @@ const App = () => {
       <Cell title="Choose Address" desc={text}  onClick={()=>setNormal2(true)} />
       <Address
           modelValue={normal2}
-          type="custom2"
+          type="elevator"
           province={province}
           city={city}
           country={country}
@@ -588,13 +590,15 @@ export default App;
 :::
 
 
-# API
+## API
+
+### Props
 
 | Attribute            | Description               | Type   | Default  |
 |----- | ----- | ----- | -----  |
 | modelValue | Whether to open address | String | '' |
 | modelSelect`v1.2.3` | Default address value | String\|Number[] | [] |
-| type | Choose type: exist/custom/custom2  | String |  `custom` |
+| type | Choose type: exist/custom/elevator  | String |  `custom` |
 | province | Province data | Array | [] |
 | city | City data | Array | [] |
 | country | Country data | Array | [] |
@@ -612,7 +616,7 @@ export default App;
 | customAndExistTitle| Custom address and existing address switch button copywriting | String | `Choose Another Address`
 
 
-## Event
+### Events
 | Attribute            | Description               | Arguments   |
 |----- | ----- | -----  |
 | onChange | Emitted when to selected custom address |  reference onChange |
@@ -620,26 +624,26 @@ export default App;
 | onClose | Emitted when to close  | reference close  |
 | onClickHotCity | Emitted when click hot city | clicked hot city data |
 | onCloseMask |Emitted when to close mask | {closeWay:'mask'/'cross'} |
-| onSwitchModule | Click to select another address or custom address to select the upper left corner of the return button triggered | {type:'exist'/'custom'/'custom2'} |
+| onSwitchModule | Click to select another address or custom address to select the upper left corner of the return button triggered | {type:'exist'/'custom'/'elevator'} |
 
 
-## change 回调参数
+### change 回调参数
 | Attribute            | Description               | Options   |
 |----- | ----- | ----- 
 | custom | The administrative region currently clicked  |  province / city / country / town
 | next | The next level of the administrative region currently clicked | province / city / country / town
 | value | The value of the currently clicked administrative region | {}
 
-## selected 
+### selected 
 | Attribute            | Description               | Options   |
 |----- | ----- | ----- 
 | First Option（prevExistAdd） |  Select the previously selected address |  {}
 | Second Option（nowExistAdd） |  Currently selected address |  {}
 | Third Option（arr） |  After selecting the existing address list |  {}
 
-## close 
+### close 
 | Attribute            | Description               | Options   |
 |----- | ----- | ----- 
-| type | Selected Type  |  exist/custom/custom2
+| type | Selected Type  |  exist/custom/elevator
 | data | Selected Data | {} 
     
