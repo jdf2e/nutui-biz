@@ -13,7 +13,7 @@ import { ProductFeed, ProductFeedItem } from "@nutui/nutui-biz";
 
 ### Biserial Columns
 
-When each line of goods has two columns, the goods data needs to be divided into two columns, which are transferred from 'leftproduct' and 'rightproduct'.
+When each line of goods has two columns, the goods data needs to be divided into two columns, which are transferred from 'leftProduct' and 'rightProduct'.
 
 :::demo
 
@@ -143,8 +143,8 @@ const App = () => {
       containerId="refreshScroll1"
       useWindow={false}
       onLoadMore={loadMore1}
-      leftproduct={leftProduct}
-      rightproduct={rightProduct}
+      leftProduct={leftProduct}
+      rightProduct={rightProduct}
     />
   );
 };
@@ -408,8 +408,8 @@ const App = () => {
       isOpenRefresh={true}
       onLoadMore={loadMore3}
       onRefresh={refresh}
-      leftproduct={leftProduct3}
-      rightproduct={rightProduct3}
+      leftProduct={leftProduct3}
+      rightProduct={rightProduct3}
     />
   );
 };

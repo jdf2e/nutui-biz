@@ -8,8 +8,8 @@ import classNames from "classnames"
 import bem from "@/utils/bem"
 
 export interface ProductFeedProps extends IComponent {
-  leftproduct: () => ReactNode
-  rightproduct: () => ReactNode
+  leftProduct: () => ReactNode
+  rightProduct: () => ReactNode
   // 是否还有更多数据
   hasMore: boolean
   // 在 useWindow 属性为 false 的时候，自定义设置节点ID
@@ -44,14 +44,14 @@ const defaultProps = {
 } as ProductFeedProps
 
 export const ProductFeed: FunctionComponent<
-  Partial<ProductFeedProps> & HTMLAttributes<HTMLDivElement>
+  Partial<ProductFeedProps> & Omit<React.HTMLAttributes<HTMLDivElement>, "">
 > = (props) => {
   const {
     className,
     style,
     children,
-    leftproduct,
-    rightproduct,
+    leftProduct,
+    rightProduct,
     hasMore,
     containerId,
     useWindow,
@@ -71,7 +71,7 @@ export const ProductFeed: FunctionComponent<
   const b = bem("biz-productfeed")
 
   return (
-    <div className={classNames([b(), className])} style={style} {...rest}>
+    <div className={classNames([b(), className])} style={style} >
       <Infiniteloading
         containerId={containerId}
         useWindow={useWindow}
@@ -88,10 +88,10 @@ export const ProductFeed: FunctionComponent<
           {children ? children :
             <>
             <div className={b("left")}>
-              {leftproduct()}
+              {leftProduct()}
             </div>
             <div className={b("right")}>
-              {rightproduct()}
+              {rightProduct()}
             </div>
             </>
           }

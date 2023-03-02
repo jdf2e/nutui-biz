@@ -13,7 +13,7 @@ import { ProductFeed, ProductFeedItem } from "@nutui/nutui-biz";
 
 ### 双列
 
-当每行商品双列时，需要将商品数据分为左右两列，分别从 `leftproduct`、`rightproduct` 传递。
+当每行商品双列时，需要将商品数据分为左右两列，分别从 `leftProduct`、`rightProduct` 传递。
 
 :::demo
 
@@ -145,8 +145,8 @@ const App = () => {
       containerId="refreshScroll1"
       useWindow={false}
       onLoadMore={loadMore1}
-      leftproduct={leftProduct}
-      rightproduct={rightProduct}
+      leftProduct={leftProduct}
+      rightProduct={rightProduct}
     />
   );
 };
@@ -411,8 +411,8 @@ const App = () => {
       isOpenRefresh={true}
       onLoadMore={loadMore3}
       onRefresh={refresh}
-      leftproduct={leftProduct3}
-      rightproduct={rightProduct3}
+      leftProduct={leftProduct3}
+      rightProduct={rightProduct3}
     />
   );
 };

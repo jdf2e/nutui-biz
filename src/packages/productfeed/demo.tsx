@@ -339,8 +339,8 @@ const ProductFeedDemo = () => {
               containerId="refreshScroll1"
               useWindow={false}
               onLoadMore={loadMore1}
-              leftproduct={leftProduct1}
-              rightproduct={rightProduct1}
+              leftProduct={leftProduct1}
+              rightProduct={rightProduct1}
             />
           </TabPane>
           <TabPane title={translated.title2}>
@@ -394,8 +394,8 @@ const ProductFeedDemo = () => {
               isOpenRefresh={true}
               onLoadMore={loadMore3}
               onRefresh={refresh}
-              leftproduct={leftProduct3}
-              rightproduct={rightProduct3}
+              leftProduct={leftProduct3}
+              rightProduct={rightProduct3}
             />
           </TabPane>
         </Tabs>
