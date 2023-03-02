@@ -11,7 +11,9 @@ import { ProductFeed, ProductFeedItem } from "@nutui/nutui-biz";
 
 ## Code
 
-### Multiple Columns
+### Biserial Columns
+
+When each line of goods has two columns, the goods data needs to be divided into two columns, which are transferred from 'leftproduct' and 'rightproduct'.
 
 :::demo
 
@@ -23,7 +25,8 @@ import React, { useEffect, useState } from "react"
 
 const App = () => {
 
-  const [list1, setList1] = useState([] as any)
+  const  [listLeft1, setListLeft1] = useState([] as any)
+  const  [listRight1, setListRight1] = useState([] as any)
 
   const [hasMore1, setHasMore1] = useState(true)
 
@@ -46,14 +49,16 @@ const App = () => {
 
   const loadMore1 = (done: () => void) => {
     setTimeout(() => {
-      const curLen = list1.length
-      if (list1.length >= data.length) {
+      const curLen1 = listLeft1.length
+      const curLen2 = listRight1.length
+      if (listLeft1.length >= data.length/2 && listRight1.length >= data.length/2) {
         setHasMore1(false)
       } else {
-        for (let i = curLen; i < (curLen + 6 > data.length ? data.length : curLen + 6) ; i++) {
-          list1.push(data[i])
+        for (let i = curLen1 + curLen2; i < (curLen1 + curLen2 + 6 > data.length ? data.length : curLen1 + curLen2 + 6) ; i++) {
+          i % 2 == 0 ? listLeft1.push(data[i]) : listRight1.push(data[i])
         }
-        setList1([...list1]) 
+        setListLeft1(listLeft1)
+        setListRight1(listRight1)
       }
       done()
     }, 500)
@@ -63,11 +68,67 @@ const App = () => {
     console.log("click")
   }
 
+  const handleImageClick = (item: object) => {
+    console.log("click image", item)
+  }
+
+  const productItem = (item: any)=>{
+    return (
+      <ProductFeedItem
+        key={item.id}
+        data={item}
+        col={2}
+        imgUrl={item.imgUrl}
+        imgWidth="144"
+        imgHeight="144"
+        imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+        onClick={handleClick}
+        onImageClick={handleImageClick}
+      >
+        <>
+          <div className="name-box">
+            {item.id}{item.name}
+          </div>
+          {item.tag && <div className="name-box">
+            {item.tag}
+          </div>}
+          <div className="bottom">
+            <div className="price-box">
+              <div className="price">
+                <Price price={item.price} />
+              </div>
+            </div>
+          </div>
+        </>
+      </ProductFeedItem>
+    )
+  }
+
+  const leftProduct1 = () => {
+    return (
+      listLeft1.map((item: any)=> {
+        return (
+          productItem(item)
+        )
+      })
+    )
+  }
+  const rightProduct1 = () => {
+    return (
+      listRight1.map((item: any)=> {
+        return (
+          productItem(item)
+        )
+      })
+    )
+  }
+
   const init1 = () => {
     for (let i = 0; i < 6; i++) {
-      list1.push(data[i])
+      i % 2 == 0 ? listLeft1.push(data[i]) : listRight1.push(data[i])
     }
-    setList1([...list1])
+    setListLeft1([...listLeft1])
+    setListRight1([...listRight1])
   }
 
   useEffect(() => {
@@ -82,35 +143,9 @@ const App = () => {
       containerId="refreshScroll1"
       useWindow={false}
       onLoadMore={loadMore1}
-    >
-      {list1.map((item: any)=> {
-        return (
-          <ProductFeedItem
-            key={item}
-            gutter={6}
-            col={2}
-            imgUrl={item.imgUrl}
-            imgHeight="164"
-            imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
-            onClick={handleClick}
-          >
-            <>
-              <div className="name-box">
-                <div className="label">Self</div>
-                {item.name}
-              </div>
-              <div className="bottom">
-                <div className="price-box">
-                  <div className="price">
-                    <Price price={item.price} />
-                  </div>
-                </div>
-              </div>
-            </>
-          </ProductFeedItem>
-        )
-      })}
-    </ProductFeed>
+      leftproduct={leftProduct}
+      rightproduct={rightProduct}
+    />
   );
 };
 export default App;
@@ -136,12 +171,14 @@ const App = () => {
 
   const data = [
     {
+      id: '1',
       imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
       name: "I am the title I am the title I am the title I am the title",
       desc: "buy more buy more",
       price: "388",
       vipPrice: "378",
     }, {
+      id: '2',
       imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
       name: "I am the title I am the title I am the title I am the title",
       desc: "buy more buy more",
@@ -170,6 +207,10 @@ const App = () => {
     console.log("click")
   }
 
+  const handleImageClick = (item: object) => {
+    console.log("click image", item)
+  }
+
   const init2 = () => {
     for (let i = 0; i < 6; i++) {
       list2.push(data[i])
@@ -193,8 +234,7 @@ const App = () => {
       {list2.map((item: any)=> {
         return (
           <ProductFeedItem
-            key={item}
-            gutter={6}
+            key={item.id}
             col={1}
             imgUrl={item.imgUrl}
             imgHeight="120"
@@ -228,6 +268,7 @@ export default App;
 
 ### Pull down to refresh
 
+`IsOpenRefresh ` can enable the pull-down refresh function
 :::demo
 
 ```ts
@@ -238,18 +279,21 @@ import React, { useEffect, useState } from "react"
 
 const App = () => {
 
-  const [list3, setList3] = useState([] as any)
+  const  [listLeft3, setListLeft3] = useState([] as any)
+  const  [listRight3, setListRight3] = useState([] as any)
 
   const [hasMore3, setHasMore3] = useState(true)
 
   const data = [
     {
+      id: '1',
       imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
       name: "I am the title I am the title I am the title I am the title",
       desc: "buy more buy more",
       price: "388",
       vipPrice: "378",
     }, {
+      id: '2',
       imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
       name: "I am the title I am the title I am the title I am the title",
       desc: "buy more buy more",
@@ -261,14 +305,16 @@ const App = () => {
 
   const loadMore3 = (done: () => void) => {
     setTimeout(() => {
-      const curLen = list3.length
-      if (list3.length >= data.length) {
-        setHasMore3(false)
+      const curLen1 = listLeft3.length
+      const curLen2 = listRight3.length
+      if (listLeft3.length >= data.length/2 && listRight3.length >= data.length/2) {
+        setHasMore1(false)
       } else {
-        for (let i = curLen; i < (curLen + 6 > data.length ? data.length : curLen + 6) ; i++) {
-          list3.push(data[i])
+        for (let i = curLen1 + curLen2; i < (curLen1 + curLen2 + 6 > data.length ? data.length : curLen1 + curLen2 + 6) ; i++) {
+          i % 2 == 0 ? listLeft3.push(data[i]) : listRight3.push(data[i])
         }
-        setList3([...list3]) 
+        setListLeft3(listLeft3)
+        setListRight3(listRight3)
       }
       done()
     }, 500)
@@ -276,6 +322,10 @@ const App = () => {
 
   const handleClick = () => {
     console.log("click")
+  }
+
+  const handleImageClick = (item: object) => {
+    console.log("click image", item)
   }
 
   const refresh = (done: () => void) => {
@@ -287,9 +337,61 @@ const App = () => {
 
   const init3 = () => {
     for (let i = 0; i < 6; i++) {
-      list3.push(data[i])
+      i % 2 == 0 ? listLeft3.push(data[i]) : listRight3.push(data[i])
     }
-    setList3([...list3])
+    setListLeft3([...listLeft3])
+    setListRight3([...listRight3])
+  }
+
+  const productItem = (item: any)=>{
+    return (
+      <ProductFeedItem
+        key={item.id}
+        data={item}
+        col={2}
+        imgUrl={item.imgUrl}
+        imgWidth="144"
+        imgHeight="144"
+        imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+        onClick={handleClick}
+        onImageClick={handleImageClick}
+      >
+        <>
+          <div className="name-box">
+            {item.id}{item.name}
+          </div>
+          {item.tag && <div className="name-box">
+            {item.tag}
+          </div>}
+          <div className="bottom">
+            <div className="price-box">
+              <div className="price">
+                <Price price={item.price} />
+              </div>
+            </div>
+          </div>
+        </>
+      </ProductFeedItem>
+    )
+  }
+
+  const leftProduct3 = () => {
+    return (
+      listLeft3.map((item: any)=> {
+        return (
+          productItem(item)
+        )
+      })
+    )
+  }
+  const rightProduct3 = () => {
+    return (
+      listRight3.map((item: any)=> {
+        return (
+          productItem(item)
+        )
+      })
+    )
   }
 
   useEffect(() => {
@@ -306,35 +408,9 @@ const App = () => {
       isOpenRefresh={true}
       onLoadMore={loadMore3}
       onRefresh={refresh}
-    >
-      {list3.map((item: any)=> {
-        return (
-          <ProductFeedItem
-            key={item}
-            gutter={6}
-            col={2}
-            imgUrl={item.imgUrl}
-            imgHeight="164"
-            imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
-            onClick={handleClick}
-          >
-            <>
-              <div className="name-box">
-                <div className="label">Self</div>
-                {item.name}
-              </div>
-              <div className="bottom">
-                <div className="price-box">
-                  <div className="price">
-                    <Price price={item.price} />
-                  </div>
-                </div>
-              </div>
-            </>
-          </ProductFeedItem>
-        )
-      })}
-    </ProductFeed>
+      leftproduct={leftProduct3}
+      rightproduct={rightProduct3}
+    />
   );
 };
 export default App;
@@ -373,7 +449,6 @@ export default App;
 | Event  | Description     | Type    |
 |---------|--------------------------------------------|---------|
 | col         | Quantity of items per row               | number \| string  | `2`    |
-| gutter      | The spacing between items in each row, the default unit is `px` | number \| string  | `6`    |
 | imgUrl      | Product Image Url                | string           | -     |
 | imgWidth    | Product image width, default unit `px`  | string           | -     |
 | imgHeight   | Product image height, default unit `px`  | string           | `150` |
@@ -387,4 +462,4 @@ export default App;
 |----- | ----- | -----  |
 |--------- | -------- | ---------------|
 | onClick  | fires on click | data |
-| onImageClick  | 点击时触发 |  data |
+| onImageClick  | Triggered when clicking the picture |  data |

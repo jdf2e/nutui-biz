@@ -7,6 +7,10 @@
     justify-content: space-between;
     flex-wrap: wrap;
   }
+  &__left, &__right {
+    width: 50%;
+    padding: 0 0.25rem;
+  }
   .nut-biz-card {
     margin-left: 2px;
     &:nth-of-type(2n+1) {

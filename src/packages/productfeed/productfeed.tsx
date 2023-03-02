@@ -1,13 +1,15 @@
 import React, {
-  FunctionComponent, CSSProperties, HTMLAttributes, useState, useEffect
-} from 'react'
-import { Infiniteloading } from '@nutui/nutui-react';
-import { IComponent } from '@/utils/typings'
+  FunctionComponent, CSSProperties, HTMLAttributes, ReactNode
+} from "react"
+import { Infiniteloading } from "@nutui/nutui-react";
+import { IComponent } from "@/utils/typings"
 
-import classNames from 'classnames'
-import bem from '@/utils/bem'
+import classNames from "classnames"
+import bem from "@/utils/bem"
 
 export interface ProductFeedProps extends IComponent {
+  leftproduct: () => ReactNode
+  rightproduct: () => ReactNode
   // 是否还有更多数据
   hasMore: boolean
   // 在 useWindow 属性为 false 的时候，自定义设置节点ID
@@ -35,10 +37,10 @@ export interface ProductFeedProps extends IComponent {
 const defaultProps = {
   hasMore: true,
   useWindow: true,
-  loadMoreTxt: '哎呀，这里是底部了啦',
-  loadTxt: '加载中...',
+  loadMoreTxt: "哎呀，这里是底部了啦",
+  loadTxt: "加载中...",
   isOpenRefresh: false,
-  pullTxt: '松手刷新'
+  pullTxt: "松手刷新"
 } as ProductFeedProps
 
 export const ProductFeed: FunctionComponent<
@@ -48,6 +50,8 @@ export const ProductFeed: FunctionComponent<
     className,
     style,
     children,
+    leftproduct,
+    rightproduct,
     hasMore,
     containerId,
     useWindow,
@@ -64,8 +68,7 @@ export const ProductFeed: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-
-  const b = bem('biz-productfeed')
+  const b = bem("biz-productfeed")
 
   return (
     <div className={classNames([b(), className])} style={style} {...rest}>
@@ -81,8 +84,17 @@ export const ProductFeed: FunctionComponent<
         onRefresh={onRefresh}
         {...props}
       >
-        <div className={b('main')}>
-          {children}
+        <div className={b("main")}>
+          {children ? children :
+            <>
+            <div className={b("left")}>
+              {leftproduct()}
+            </div>
+            <div className={b("right")}>
+              {rightproduct()}
+            </div>
+            </>
+          }
         </div>
       </Infiniteloading>
     </div>
@@ -90,4 +102,4 @@ export const ProductFeed: FunctionComponent<
 }
 
 ProductFeed.defaultProps = defaultProps
-ProductFeed.displayName = 'NutProductFeed'
+ProductFeed.displayName = "NutProductFeed"

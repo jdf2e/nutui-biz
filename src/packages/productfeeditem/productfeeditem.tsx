@@ -1,5 +1,5 @@
 import React, {
-  FunctionComponent, ReactNode, CSSProperties, HTMLAttributes, useState
+  FunctionComponent, ReactNode, CSSProperties
 } from 'react'
 import { Image } from '@nutui/nutui-react';
 
@@ -9,7 +9,6 @@ import Unit from '@/utils/unit'
 export interface ProductFeedItemProps {
   data: any
   col: number | string
-  gutter: number | string
   borderRadius: number | string
   padding: number | string
   imgUrl: string
@@ -25,7 +24,6 @@ export interface ProductFeedItemProps {
 
 const defaultProps = {
   col: 2,
-  gutter: 6,
   borderRadius: 8,
   padding: 10,
   imgWidth: '150',
@@ -46,7 +44,6 @@ export const ProductFeedItem: FunctionComponent<
     children,
     data,
     col,
-    gutter,
     borderRadius,
     padding,
     imgUrl,
@@ -68,8 +65,6 @@ export const ProductFeedItem: FunctionComponent<
 
   const itemStyle = () => {
     return {
-      "width": col == 1 ? "100%" : 
-                  `calc((100% - ${Unit.pxAdd(gutter)})/${col})`,
       "borderRadius": Unit.pxAdd(borderRadius),
       "padding": Unit.pxAdd(padding),
     }
