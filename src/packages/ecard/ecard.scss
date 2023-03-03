@@ -121,6 +121,12 @@
           background: $white;
         }
       }
+      .nut-input{
+        background: inherit;
+      }
+      // .suffix{
+      //   margin-right: 15px;
+      // }
     }
 
     &__step {
