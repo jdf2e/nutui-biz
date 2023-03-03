@@ -137,7 +137,7 @@ export default App;
 | value | Custom field value | string |
 
 
-## Events
+### Events
 | Attribute  | Description    | Arguments                |
 |------------|----------------|--------------------------|
 | onEdit     | Edit Event     | item\:ReceiveInvoiceItem |

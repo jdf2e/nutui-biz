@@ -296,7 +296,7 @@ export default App;
 | rightOutIcon | 文本框外右侧自定义，默认是“搜索” | ReactNode  | -          |
 
 
-## Events
+### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onClickSearchItem | 搜索项点击事件 |  searchItem: IsearchItem |
@@ -306,3 +306,11 @@ export default App;
 | onClickBackIcon | 左上角返回图标点击事件 |  - |
 | onRefresh | 搜索发现刷新图标点击事件 |  - |
 | onDelete | 删除事件 |  - |
+
+
+### IsearchItem 
+
+| 字段    | 说明                                       | 类型    | 
+|---------|--------------------------------------------|---------|
+| key   | 搜索关键词                                | ReactNode |
+| url   | 搜索关键词跳转链接            | string  | 

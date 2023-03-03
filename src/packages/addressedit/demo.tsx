@@ -112,7 +112,7 @@ const AddressEditDemo = () => {
       { id: 4, name: "常营乡", title: "C" },
     ],
     town: [],
-    addressType: "custom2",
+    addressType: "custom",
     height: "270px",
   };
 

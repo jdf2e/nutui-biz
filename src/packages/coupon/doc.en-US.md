@@ -182,7 +182,7 @@ export default App;
 | usedIcon        | Received icon                                                               | Boolean              | `true`      |
 | itemData        | The data passed by the parent component is returned to the parent component | Object               | -           |
 
-## Events
+### Events
 
 | Attribute | Description                                                                             | Arguments |
 | --------- | --------------------------------------------------------------------------------------- | --------- |

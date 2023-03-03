@@ -183,7 +183,7 @@ export const ReceiveInvoiceEdit: FunctionComponent<
         setErrorList(arr);
       }
     });
-    return arr.length>0 ?false:true;
+    return !arr.length;
   };
   const save = () => {
     if (validForm()) {

@@ -1,13 +1,16 @@
 import React, {
-  FunctionComponent, CSSProperties, HTMLAttributes, useState, useEffect
-} from 'react'
-import { Infiniteloading } from '@nutui/nutui-react';
-import { IComponent } from '@/utils/typings'
+  FunctionComponent, ReactNode
+} from "react"
+import { Infiniteloading, InfiniteloadingProps } from "@nutui/nutui-react";
+import { IComponent } from "@/utils/typings"
 
-import classNames from 'classnames'
-import bem from '@/utils/bem'
+import classNames from "classnames"
+import bem from "@/utils/bem"
 
 export interface ProductFeedProps extends IComponent {
+  leftProduct: () => ReactNode
+  rightProduct: () => ReactNode
+  infiniteloadingProps: Partial<InfiniteloadingProps>
   // 是否还有更多数据
   hasMore: boolean
   // 在 useWindow 属性为 false 的时候，自定义设置节点ID
@@ -35,19 +38,21 @@ export interface ProductFeedProps extends IComponent {
 const defaultProps = {
   hasMore: true,
   useWindow: true,
-  loadMoreTxt: '哎呀，这里是底部了啦',
-  loadTxt: '加载中...',
+  loadMoreTxt: "哎呀，这里是底部了啦",
+  loadTxt: "加载中...",
   isOpenRefresh: false,
-  pullTxt: '松手刷新'
+  pullTxt: "松手刷新"
 } as ProductFeedProps
 
 export const ProductFeed: FunctionComponent<
-  Partial<ProductFeedProps> & HTMLAttributes<HTMLDivElement>
+  Partial<ProductFeedProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
     className,
     style,
     children,
+    leftProduct,
+    rightProduct,
     hasMore,
     containerId,
     useWindow,
@@ -59,13 +64,13 @@ export const ProductFeed: FunctionComponent<
     pullTxt,
     onLoadMore,
     onRefresh,
+    infiniteloadingProps,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
-
-  const b = bem('biz-productfeed')
+  const b = bem("biz-productfeed")
 
   return (
     <div className={classNames([b(), className])} style={style} {...rest}>
@@ -74,15 +79,26 @@ export const ProductFeed: FunctionComponent<
         useWindow={useWindow}
         hasMore={hasMore}
         loadMoreTxt={loadMoreTxt}
+        loadIcon={loadIcon}
+        loadTxt={loadTxt}
         isOpenRefresh={isOpenRefresh}
         pullIcon={pullIcon}
         pullTxt={pullTxt}
         onLoadMore={onLoadMore}
         onRefresh={onRefresh}
-        {...props}
+        // {...infiniteloadingProps}
       >
-        <div className={b('main')}>
-          {children}
+        <div className={b("main")}>
+          {children ? children :
+            <>
+              <div className={b("left")}>
+                {leftProduct()}
+              </div>
+              <div className={b("right")}>
+                {rightProduct()}
+              </div>
+            </>
+          }
         </div>
       </Infiniteloading>
     </div>
@@ -90,4 +106,4 @@ export const ProductFeed: FunctionComponent<
 }
 
 ProductFeed.defaultProps = defaultProps
-ProductFeed.displayName = 'NutProductFeed'
+ProductFeed.displayName = "NutProductFeed"

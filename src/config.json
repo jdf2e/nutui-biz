@@ -123,7 +123,7 @@
           "cName": "商品筛选",
           "desc": "商品筛选",
           "sort": 6,
-          "show": false,
+          "show": true,
           "taro": false,
           "author": "yangjinjun3"
         },
@@ -207,7 +207,7 @@
           "cName": "地址",
           "desc": "地址",
           "sort": 15,
-          "show": true,
+          "show": false,
           "taro": true,
           "author": "yangjinjun3"
         },

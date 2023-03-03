@@ -7,7 +7,7 @@ import { trigger, triggerDrag } from '@/utils/test/event'
 import { ProductFeed } from '../productfeed'
 import { ProductFeedItem } from '../../productfeeditem/productfeeditem'
 
-test('col、gutter test', () => {
+test('col test', () => {
   const { container } = render(
     <ProductFeed
     >
@@ -20,7 +20,6 @@ test('col、gutter test', () => {
 //     <ProductFeed
 //     >
 //       <ProductFeedItem
-//         gutter={8}
 //         col={2}
 //         imgUrl='//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png'
 //       >
@@ -30,7 +29,6 @@ test('col、gutter test', () => {
 //         </div>
 //       </ProductFeedItem>
 //       <ProductFeedItem
-//         gutter={8}
 //         col={2}
 //         imgUrl='//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png'
 //       >
@@ -52,7 +50,6 @@ test('col、gutter test', () => {
 //     <ProductFeed
 //     >
 //       <ProductFeedItem
-//         gutter={8}
 //         col={2}
 //         imgUrl='https://img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png'
 //         imgWidth="160"
@@ -89,7 +86,6 @@ test('col、gutter test', () => {
 //       onRefresh={refresh}
 //     >
 //       <ProductFeedItem
-//         gutter={8}
 //         col={2}
 //         imgUrl='https://img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png'
 //         imgWidth="160"
@@ -160,7 +156,6 @@ test('col、gutter test', () => {
 //         return (
 //           <ProductFeedItem
 //             key={index}
-//             gutter={6}
 //             col={2}
 //             imgUrl='//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png'
 //             imgHeight="164"
