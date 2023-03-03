@@ -17,7 +17,7 @@ import { SearchHistory } from '@nutui/nutui-biz';
 :::demo
 
 ```ts
-import  React from 'react';
+import  React, {useState} from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -29,6 +29,75 @@ const App = () => {
     },
     {
       key: 'key2',
+      url: ''
+    }
+  ]
+
+  const handleClick = (val: string) => { 
+    if(val.trim() === '') return
+
+    let arr = JSON.parse(localStorage.getItem('recentSearchData') as string) || [];
+    let len = arr.filter((item: {
+      key: string,
+      url: string
+    }) => item.key === val).length
+
+    if(len > 0) {
+      arr = arr.filter((item: {
+        key: string,
+        url: string
+      }) => item.key !== val)
+    }
+
+    arr.unshift({
+      key: val,
+      url: ''
+    })
+
+    localStorage.setItem('recentSearchData', 
+      JSON.stringify(arr)
+    )
+    setRecentSearchData(arr)
+  }
+
+  const handleDelete = () => {
+    localStorage.removeItem('recentSearchData')
+    setRecentSearchData([])
+  }
+
+  return (
+    <SearchHistory 
+        onClickSearchButton={handleClick}
+        onDelete={handleDelete}
+        recentSearchData={recentSearchData} 
+        searchDiscoverData={searchDiscoverData} 
+    />
+  );
+};
+export default App;
+```
+
+:::
+
+### Single Delete
+
+Click the delete icon of the recent search, the default is to delete all. Set `deleteType` to `single` to achieve single deletion of search results
+
+:::demo
+
+```ts
+import  React, {useState} from 'react';
+import { SearchHistory } from '@nutui/nutui-biz';
+
+const App = () => {
+  const [recentSearchData, setRecentSearchData] = useState(JSON.parse(localStorage.getItem('recentSearchData') as string) || [])
+  const searchDiscoverData = [
+    {
+      key: '小米手环',
+      url: ''
+    },
+    {
+      key: '对讲机',
       url: ''
     }
   ]
@@ -84,31 +153,6 @@ const App = () => {
   return (
     <SearchHistory 
         onClickSearchButton={handleClick}
-        onDelete={handleDelete}
-        recentSearchData={recentSearchData} 
-        searchDiscoverData={searchDiscoverData} 
-    />
-  );
-};
-export default App;
-```
-
-:::
-
-### Single Delete
-
-Click the delete icon of the recent search, the default is to delete all. Set `deleteType` to `single` to achieve single deletion of search results
-
-:::demo
-
-```ts
-import  React from 'react';
-import { SearchHistory } from '@nutui/nutui-biz';
-
-const App = () => {
-  return (
-    <SearchHistory 
-        onClickSearchButton={handleClick}
         deleteType="single"
         onDelete={handleDelete}
         onDeleteSingle={handleDeleteSingle}
@@ -127,10 +171,54 @@ export default App;
 :::demo
 
 ```ts
-import  React from 'react';
+import  React, {useState} from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
+  const [recentSearchData, setRecentSearchData] = useState(JSON.parse(localStorage.getItem('recentSearchData') as string) || [])
+  const searchDiscoverData = [
+    {
+      key: '小米手环',
+      url: ''
+    },
+    {
+      key: '对讲机',
+      url: ''
+    }
+  ]
+
+  const handleClick = (val: string) => { 
+    if(val.trim() === '') return
+
+    let arr = JSON.parse(localStorage.getItem('recentSearchData') as string) || [];
+    let len = arr.filter((item: {
+      key: string,
+      url: string
+    }) => item.key === val).length
+
+    if(len > 0) {
+      arr = arr.filter((item: {
+        key: string,
+        url: string
+      }) => item.key !== val)
+    }
+
+    arr.unshift({
+      key: val,
+      url: ''
+    })
+
+    localStorage.setItem('recentSearchData', 
+      JSON.stringify(arr)
+    )
+    setRecentSearchData(arr)
+  }
+
+  const handleDelete = () => {
+    localStorage.removeItem('recentSearchData')
+    setRecentSearchData([])
+  }
+
   return (
     <SearchHistory 
         onClickSearchButton={handleClick}
@@ -152,10 +240,54 @@ export default App;
 :::demo
 
 ```ts
-import  React from 'react';
+import  React, {useState} from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
+  const [recentSearchData, setRecentSearchData] = useState(JSON.parse(localStorage.getItem('recentSearchData') as string) || [])
+  const searchDiscoverData = [
+    {
+      key: '小米手环',
+      url: ''
+    },
+    {
+      key: '对讲机',
+      url: ''
+    }
+  ]
+
+  const handleClick = (val: string) => { 
+    if(val.trim() === '') return
+
+    let arr = JSON.parse(localStorage.getItem('recentSearchData') as string) || [];
+    let len = arr.filter((item: {
+      key: string,
+      url: string
+    }) => item.key === val).length
+
+    if(len > 0) {
+      arr = arr.filter((item: {
+        key: string,
+        url: string
+      }) => item.key !== val)
+    }
+
+    arr.unshift({
+      key: val,
+      url: ''
+    })
+
+    localStorage.setItem('recentSearchData', 
+      JSON.stringify(arr)
+    )
+    setRecentSearchData(arr)
+  }
+
+  const handleDelete = () => {
+    localStorage.removeItem('recentSearchData')
+    setRecentSearchData([])
+  }
+
   return (
     <SearchHistory 
         onClickSearchButton={handleClick}
@@ -177,10 +309,54 @@ export default App;
 :::demo
 
 ```ts
-import  React from 'react';
+import  React, {useState} from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
+  const [recentSearchData, setRecentSearchData] = useState(JSON.parse(localStorage.getItem('recentSearchData') as string) || [])
+  const searchDiscoverData = [
+    {
+      key: '小米手环',
+      url: ''
+    },
+    {
+      key: '对讲机',
+      url: ''
+    }
+  ]
+
+  const handleClick = (val: string) => { 
+    if(val.trim() === '') return
+
+    let arr = JSON.parse(localStorage.getItem('recentSearchData') as string) || [];
+    let len = arr.filter((item: {
+      key: string,
+      url: string
+    }) => item.key === val).length
+
+    if(len > 0) {
+      arr = arr.filter((item: {
+        key: string,
+        url: string
+      }) => item.key !== val)
+    }
+
+    arr.unshift({
+      key: val,
+      url: ''
+    })
+
+    localStorage.setItem('recentSearchData', 
+      JSON.stringify(arr)
+    )
+    setRecentSearchData(arr)
+  }
+
+  const handleDelete = () => {
+    localStorage.removeItem('recentSearchData')
+    setRecentSearchData([])
+  }
+
   return (
     <SearchHistory 
         onClickSearchButton={handleClick}
@@ -203,10 +379,54 @@ export default App;
 :::demo
 
 ```ts
-import  React from 'react';
+import  React, {useState} from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
+  const [recentSearchData, setRecentSearchData] = useState(JSON.parse(localStorage.getItem('recentSearchData') as string) || [])
+  const searchDiscoverData = [
+    {
+      key: '小米手环',
+      url: ''
+    },
+    {
+      key: '对讲机',
+      url: ''
+    }
+  ]
+
+  const handleClick = (val: string) => { 
+    if(val.trim() === '') return
+
+    let arr = JSON.parse(localStorage.getItem('recentSearchData') as string) || [];
+    let len = arr.filter((item: {
+      key: string,
+      url: string
+    }) => item.key === val).length
+
+    if(len > 0) {
+      arr = arr.filter((item: {
+        key: string,
+        url: string
+      }) => item.key !== val)
+    }
+
+    arr.unshift({
+      key: val,
+      url: ''
+    })
+
+    localStorage.setItem('recentSearchData', 
+      JSON.stringify(arr)
+    )
+    setRecentSearchData(arr)
+  }
+
+  const handleDelete = () => {
+    localStorage.removeItem('recentSearchData')
+    setRecentSearchData([])
+  }
+
   return (
     <SearchHistory 
         onClickSearchButton={handleClick}
@@ -228,10 +448,54 @@ Click the hide icon to hide the search discoveries data, the default non-data te
 :::demo
 
 ```ts
-import  React from 'react';
+import  React, {useState} from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
+  const [recentSearchData, setRecentSearchData] = useState(JSON.parse(localStorage.getItem('recentSearchData') as string) || [])
+  const searchDiscoverData = [
+    {
+      key: '小米手环',
+      url: ''
+    },
+    {
+      key: '对讲机',
+      url: ''
+    }
+  ]
+
+  const handleClick = (val: string) => { 
+    if(val.trim() === '') return
+
+    let arr = JSON.parse(localStorage.getItem('recentSearchData') as string) || [];
+    let len = arr.filter((item: {
+      key: string,
+      url: string
+    }) => item.key === val).length
+
+    if(len > 0) {
+      arr = arr.filter((item: {
+        key: string,
+        url: string
+      }) => item.key !== val)
+    }
+
+    arr.unshift({
+      key: val,
+      url: ''
+    })
+
+    localStorage.setItem('recentSearchData', 
+      JSON.stringify(arr)
+    )
+    setRecentSearchData(arr)
+  }
+
+  const handleDelete = () => {
+    localStorage.removeItem('recentSearchData')
+    setRecentSearchData([])
+  }
+
   return (
     <SearchHistory 
         onClickSearchButton={handleClick}
@@ -252,18 +516,62 @@ export default App;
 :::demo
 
 ```ts
-import  React from 'react';
+import  React, {useState} from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
-import { Icon } from '@nutui/nutui-react';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
+  const [recentSearchData, setRecentSearchData] = useState(JSON.parse(localStorage.getItem('recentSearchData') as string) || [])
+  const searchDiscoverData = [
+    {
+      key: '小米手环',
+      url: ''
+    },
+    {
+      key: '对讲机',
+      url: ''
+    }
+  ]
+
+  const handleClick = (val: string) => { 
+    if(val.trim() === '') return
+
+    let arr = JSON.parse(localStorage.getItem('recentSearchData') as string) || [];
+    let len = arr.filter((item: {
+      key: string,
+      url: string
+    }) => item.key === val).length
+
+    if(len > 0) {
+      arr = arr.filter((item: {
+        key: string,
+        url: string
+      }) => item.key !== val)
+    }
+
+    arr.unshift({
+      key: val,
+      url: ''
+    })
+
+    localStorage.setItem('recentSearchData', 
+      JSON.stringify(arr)
+    )
+    setRecentSearchData(arr)
+  }
+
+  const handleDelete = () => {
+    localStorage.removeItem('recentSearchData')
+    setRecentSearchData([])
+  }
+  
   return (
     <SearchHistory 
         onClickSearchButton={handleClick}
         onDelete={handleDelete}
         recentSearchData={recentSearchData} 
         searchDiscoverData={searchDiscoverData} 
-        refreshIcon={<Icon name="refresh" style={marginRight: '10px'} />}
+        refreshIcon="refresh"
         onRefresh={() => Toast.text('Clicked refresh button')}
     />
   );

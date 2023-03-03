@@ -207,7 +207,7 @@
           "cName": "地址",
           "desc": "地址",
           "sort": 15,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
