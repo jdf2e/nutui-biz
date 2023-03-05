@@ -17,7 +17,7 @@ export interface InvoiceTitleEditProps extends IComponent {
   invoiceType: string
   bottom: ReactNode
   onSubmit: (arg: any) => void
-  onInput: () => void
+  onInput: () => void;
 }
 
 export const InvoiceTitleEdit: FunctionComponent<
