@@ -213,7 +213,7 @@ export default {
     }]
   }, {
     title: '钙含量',
-    id: 3,
+    id: 4,
     values: [{
       id: "83057",
       name: "高钙",
@@ -225,7 +225,7 @@ export default {
     }]
   }, {
     title: '蛋白质含量',
-    id: 4,
+    id: 5,
     values: [{
       id: "9756",
       name: "高蛋白",

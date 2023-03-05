@@ -17,6 +17,8 @@ const GoodsFilterDemo = () => {
           priceRanges={state.priceRanges}
           goodsAttrs={state.goodsAttrs}
           filterAttrs={state.filterAttrs}
+          maxLine={3}
+          icon={'heart'}
           onClose={() => { setVisiable1(false) }}
           onReset={() => { console.log('onReset')}}
           onConfirm={(res) => { console.log('onConfirm', res) }}
