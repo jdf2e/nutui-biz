@@ -75,8 +75,6 @@ export default App;
 | dataList      | 電子卡面值列表  | Array |  `DataList[]`  |
 | cardAmountMin | 其它面值最小值  | number | `1` |
 | cardAmountMax | 其他面值最大值  | number | `9999`            |
-| cardBuyMin    | 購買數量最小值  | number | `9999`            |
-| cardBuyMax    | 購買數量最大值  | number | `9999`            |
 | modelValue         | 購買電子卡所需價錢 | number | `0`            |
 | placeholder   | 其他面值默認提示語 | string | `請輸入1-9999整數`|
 

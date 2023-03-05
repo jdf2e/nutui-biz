@@ -31,11 +31,6 @@ const App = () => {
 };
 export default App;
 
-// css
-[class*="safe-area-bottom"] {
-    position: relative;
-}
-
 ```
 
 :::
@@ -60,11 +55,6 @@ const App = () => {
 };
 export default App;
 
-// css
-[class*="safe-area-bottom"] {
-    position: relative;
-}
-
 ```
 
 :::
@@ -87,11 +77,6 @@ const App = () => {
 };
 export default App;
 
-// css
-[class*="safe-area-bottom"] {
-    position: relative;
-}
-
 ```
 
 :::
@@ -113,11 +98,6 @@ const App = () => {
   );
 };
 export default App;
-
-// css
-[class*="safe-area-bottom"] {
-    position: relative;
-}
 
 ```
 
@@ -146,11 +126,6 @@ const App = () => {
 };
 export default App;
 
-// css
-[class*="safe-area-bottom"] {
-    position: relative;
-}
-
 ```
 
 :::
@@ -176,11 +151,6 @@ const App = () => {
 };
 export default App;
 
-// css
-[class*="safe-area-bottom"] {
-    position: relative;
-}
-
 ```
 
 :::
@@ -204,11 +174,6 @@ const App = () => {
   );
 };
 export default App;
-
-// css
-[class*="safe-area-bottom"] {
-    position: relative;
-}
 
 ```
 
@@ -237,11 +202,6 @@ const App = () => {
   );
 };
 export default App;
-
-// css
-[class*="safe-area-bottom"] {
-    position: relative;
-}
 
 ```
 

@@ -19,7 +19,7 @@ test('props test', () => {
   }
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
       vipPrice={state.vipPrice}
@@ -67,7 +67,7 @@ test('prolistTpl slot test', () => {
 
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
       vipPrice={state.vipPrice}
@@ -109,7 +109,7 @@ test('originTpl slot test', () => {
 
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
       vipPrice={state.vipPrice}
@@ -140,7 +140,7 @@ test('shopTagTpl slot test', () => {
 
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
       vipPrice={state.vipPrice}
@@ -171,7 +171,7 @@ test('footerTpl slot test', () => {
 
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
       vipPrice={state.vipPrice}
@@ -204,7 +204,7 @@ test('bottomTpl slot test', () => {
 
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
       vipPrice={state.vipPrice}
@@ -236,7 +236,7 @@ test('showType test', () => {
   }
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
       vipPrice={state.vipPrice}
@@ -264,7 +264,7 @@ test('titleLine test', () => {
   }
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
       vipPrice={state.vipPrice}
@@ -293,7 +293,7 @@ test('imgTag and imgTagDirection test', () => {
   }
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
       vipPrice={state.vipPrice}
@@ -323,7 +323,7 @@ test('titleTag test', () => {
   }
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
       vipPrice={state.vipPrice}
@@ -351,7 +351,7 @@ test('priceTpl test', () => {
   }
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
       vipPrice={state.vipPrice}
@@ -363,34 +363,6 @@ test('priceTpl test', () => {
   )
   const priceTpl = container.querySelector('.nut-biz-card__right__price')
   expect(priceTpl).toHaveTextContent('自定义价格')
-})
-
-test('linkUrl test', () => {
-  const state = {
-    imgUrl:
-      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title:
-      '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
-    price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
-  }
-  const { container } = render(
-    <Card
-      imgUrl={state.imgUrl}
-      title={state.title}
-      price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
-      delivery={state.delivery}
-      shopName={state.shopName}
-      linkUrl="https://www.jd.com/"
-    />
-  )
-  const linkUrl = container.querySelector('.nut-biz-card__left')
-  expect(linkUrl).toHaveAttribute('href', 'https://www.jd.com/')
 })
 
 test('click test', () => {
@@ -408,7 +380,7 @@ test('click test', () => {
   }
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
       vipPrice={state.vipPrice}

@@ -22,7 +22,6 @@ import { Cell } from '@nutui/nutui-react';
 import { Ecard } from '@nutui/nutui-biz';
 
 const App = () => {
-    const [modelValue, setModelValue] = useState(10);
     const [dataList]=useState([
         {
           price:10
@@ -49,7 +48,6 @@ const App = () => {
     return (
         <Cell>
             <Ecard
-                modelValue={modelValue}
                 onChangeInput={onChangeInput}
                 onChange={onChange}
                 onChangeStep={onChangeStep}
@@ -74,22 +72,26 @@ export default App;
 | otherValueText| 其它面值文案   | string |    `其它面值`   |
 | dataList      | 电子卡面值列表  | Array |  `DataListItem[]`  |
 | cardAmountMin | 其它面值最小值  | number | `1` |
-| cardAmountMax | 其它面值最大值  | number | `9999`            |
-| cardBuyMin    | 购买数量最小值  | number | `1`            |
-| cardBuyMax    | 购买数量最大值  | number | `9999`            |
-| modelValue         | 购买电子卡所需价钱 | number | `1`            |
+| inputNumberProps | inputNumber组件props  | `Partial<InputNumberProps> `| |
+| cardAmountMax | 其它面值最大值  | number | `9999`            ||
 | placeholder   | 其它面值默认提示语 | string | `请输入1-9999整数`|
 
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| onChange  | 选中电子卡事件 | 当前卡对应的DataListItem，例如{ price:100 } |
-| onInputChange  | 更改 `input` 框触发事件 |输入的数据 |
-| onChangeStep  | 更改数量时触发 | 当前数量，当前选中的卡面值 |
+| onChange  | 选中某固定面值卡触发 | item:当前卡对应的DataListItem，例如{ price:100 }，money:当前购卡总价值 |
+| onInputChange  | 其它面值更改触发 | val:输入的自定义面值,money:当前购卡总价值 |
+| onChangeStep  | 更改数量时触发 | num:当前购买数量，price:当前面值(固定面值或自定义面值) ,money:当前购卡总价值|
 
 ### DataList 数据结构
 
 | 键名 | 说明           | 类型     |
 |--------|----------------|--------------|
 | price  | 每张电子卡价格 | number  |
+
+### 依赖组件库最低版本
+
+| 组件库 | 版本           | 
+|--------|----------------|
+| @nutui/nutui-react |`v1.3.8` | 

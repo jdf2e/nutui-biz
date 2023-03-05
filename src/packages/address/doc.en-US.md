@@ -17,7 +17,7 @@ import { Address } from '@nutui/nutui-biz';
 :::demo
 ```tsx
 import  React, { useState } from 'react';
-import { Cell, Popup } from '@nutui/nutui-react';
+import { Cell } from '@nutui/nutui-react';
 import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -104,7 +104,7 @@ If you want to select a province, you need to set the region ID in the order of 
 :::demo
 ```tsx
 import  React, { useState } from 'react';
-import { Cell, Popup } from '@nutui/nutui-react';
+import { Cell } from '@nutui/nutui-react';
 import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -180,7 +180,7 @@ export default App;
 ```tsx
 
 import  React, { useState } from 'react';
-import { Cell, Popup } from '@nutui/nutui-react';
+import { Cell } from '@nutui/nutui-react';
 import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -264,7 +264,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from 'react';
-import { Cell, Popup } from '@nutui/nutui-react';
+import { Cell } from '@nutui/nutui-react';
 import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -348,7 +348,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from 'react';
-import { Cell, Popup } from '@nutui/nutui-react';
+import { Cell, Icon } from '@nutui/nutui-react';
 import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -427,8 +427,8 @@ const App = () => {
           onClose={close}
           isShowCustomAddress={false}
           onSelected={selected}
-          defaultIcon={icon.defaultIcon}
-          selectedIcon={icon.selectedIcon}
+          defaultIcon={<Icon name={icon.defaultIcon}></Icon>}
+          selectedIcon={<Icon name={icon.selectedIcon}></Icon>}
           closeBtnIcon={icon.closeBtnIcon}
        />
     </>
@@ -444,7 +444,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from 'react';
-import { Cell, Popup } from '@nutui/nutui-react';
+import { Cell } from '@nutui/nutui-react';
 import { Address } from '@nutui/nutui-biz';
 
 const App = () => {

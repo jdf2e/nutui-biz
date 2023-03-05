@@ -8,7 +8,7 @@ import classNames from 'classnames'
 import {cn2} from '@/utils/bem'
 
 import { IComponent } from '@/utils/typings'
-import { Form, Radio, Input, Button } from '@nutui/nutui-react'
+import { Form, Radio, Input, Button, ButtonProps } from '@nutui/nutui-react'
 
 const { RadioGroup } = Radio
 const { Item } = Form
@@ -16,6 +16,7 @@ const { Item } = Form
 export interface InvoiceTitleEditProps extends IComponent {
   invoiceType: string
   bottom: ReactNode
+  buttonProps: Partial<Omit<ButtonProps, "type | block">>;
   onSubmit: (arg: any) => void
   onInput: () => void;
 }
@@ -29,6 +30,7 @@ export const InvoiceTitleEdit: FunctionComponent<
     style,
     invoiceType = 'special',
     bottom,
+    buttonProps,
     onSubmit,
     onInput,
     ...rest
@@ -107,7 +109,7 @@ export const InvoiceTitleEdit: FunctionComponent<
         </Item>
         <Item>
           <div className={b('submit')}>
-            <Button type="primary" block>{invoiceType === 'special' ? '提交审批' : '提交'}</Button>
+            <Button type="primary" block {...buttonProps}>{invoiceType === 'special' ? '提交审批' : '提交'}</Button>
           </div>
         </Item>
       </Form>
