@@ -235,24 +235,5 @@ export default {
       name: "非高蛋白",
       extra: {},
     }]
-  }],
-
-  beforeSelected: (done: any, selectedValue: any) => {
-    if (selectedValue.values.length > 2) {
-      console.log('最多选4个')
-    } else {
-      done()
-    }
-  },
-
-  addressList: [{
-    id: 1,
-    detail: '北京市朝阳区八里庄街道'
-  }, {
-    id: 2,
-    detail: '钓鱼岛钓鱼岛全区'
-  }, {
-    id: 3,
-    detail: '北京市大兴区科创十一街18号院京东大厦'
   }]
 }

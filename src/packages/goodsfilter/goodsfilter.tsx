@@ -356,6 +356,7 @@ export const GoodsFilter: FunctionComponent<
               norGoodsAttrs.map((attrs) => {
                 return <div
                   className={b('chunk__list--item')}
+                  key={attrs.id}
                 >
                   <div className={b('chunk__list--item__top')}>
                     <div className={b('chunk__list--item__title')}>{attrs.title}</div>
