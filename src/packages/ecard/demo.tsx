@@ -34,7 +34,6 @@ const EcardDemo = () => {
       price: 40
     }
   ]);
-  const modelValue = dataList[0].price;
   const onChangeInput = (val: number) => {
     console.log(val);
   };
@@ -50,7 +49,6 @@ const EcardDemo = () => {
         <h2>{translated.basic}</h2>
         <Cell>
           <Ecard
-            modelValue={modelValue}
             onChangeInput={onChangeInput}
             onChange={onChange}
             onChangeStep={onChangeStep}
@@ -60,7 +58,6 @@ const EcardDemo = () => {
         <h2>{'自定义函数处理总面值'}</h2>
         <Cell>
           <Ecard
-            modelValue={modelValue}
             chooseText={<span>100以内打九折,超过100打八折!</span>}
             onChangeInput={onChangeInput}
             onChange={onChange}
