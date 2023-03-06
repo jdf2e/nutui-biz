@@ -27,6 +27,7 @@
     border-radius: 10px;
     max-height: 160px;
     overflow: scroll;
+    margin-bottom: 10px;
     &-header {
       font-size: 14px;
       text-align: left;
@@ -35,7 +36,6 @@
   }
   &__reason {
     font-size: 14px;
-    padding-top: 10px;
     max-height: 280px;
     overflow: scroll;
     &--list {
@@ -44,7 +44,16 @@
       align-items: center;
       justify-content: space-between;
       position: relative;
+      &__label {
+        // height: 35px;
+        // line-height: 35px;
+        width: 100%;
+        @include text-ellipsis;
+      }
       &__checkbox {
+        &--post-front {
+          margin-right: 10px;
+        }
         .nut-checkbox {
           display: flex;
           justify-content: right;
@@ -70,11 +79,22 @@
   &__btns {
     margin-top: 10px;
     width: 100%;
-    height: 75px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     box-shadow: 1px 14px 43px -7px rgb(0 0 0 / 50%);
+    &--tips {
+      font-size: 14px;
+      display: flex;
+      padding: 20px 20px 0px 20px;
+      justify-content: space-between;
+    }
+    &--button {
+      height: 75px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &--tap {
+      height: 30px;
+    }
   }
   .cancel-btn {
     width: 80%;
