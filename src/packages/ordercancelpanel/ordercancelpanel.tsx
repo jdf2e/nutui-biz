@@ -81,10 +81,13 @@ export const OrderCancelPanel: FunctionComponent<
   //处理切换原因list，复选框是否被选中
   const checkedReason = (item: IKeyValue) => {
     setShowOtherText(false);
-    if (canCancelReason && item.key === preChecked.current) {
-      setCurrActivedKey(preChecked.current ? "" : item.key);
-      preChecked.current = "";
+    if (item.key === preChecked.current) {
+      if (canCancelReason) {
+        setCurrActivedKey(preChecked.current ? "" : item.key);
+        preChecked.current = "";
+      }
     } else {
+      setCurrActivedKey(item.key);
       preChecked.current = item.key;
       if (item.key === "other") {
         setShowOtherText(true);
@@ -140,7 +143,9 @@ export const OrderCancelPanel: FunctionComponent<
       className={`${b()} ${className} `}
     >
       <div className={b("main")}>
-        <h1 className={b("header")}>{popupTitle}</h1>
+        <h1 className={b("header")}>
+          {popupTitle}-{currActivedKey}
+        </h1>
         {warmTips && (
           <div className={b("tips")}>
             <h2 className={b("tips-header")}>{tipsTitle}</h2>

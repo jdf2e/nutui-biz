@@ -287,6 +287,82 @@ export default App;
 
 :::
 
+### 可取消已经选中的原因
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Cell, ButtonProps } from "@nutui/nutui-react";
+import { OrderCancelPanel } from "@nutui/nutui-biz";
+
+const App = () => {
+  const cancelReason = [
+    {
+      key: "resons1",
+      value: "商品无货",
+    },
+    {
+      key: "resons2",
+      value: "发货时间问题",
+    },
+    {
+      key: "resons3",
+      value: "不想要了",
+    },
+    {
+      key: "resons4",
+      value: "商品选错/多选",
+    },
+    {
+      key: "resons5",
+      value: "地址信息填写错误",
+    },
+    {
+      key: "resons6",
+      value: "商品降价",
+    },
+  ];
+  const clickClosePopUp = () => {
+    setShowPanel(false);
+  };
+  const submitBtn = (currActivedKey: string, textAreaValue: string) => {
+    console.log(
+      `currActivedKey:${currActivedKey}, textAreaValue,${textAreaValue}`
+    );
+    setShowPanel(false);
+  };
+  //基本使用
+  const [showPanel, setShowPanel] = useState(false);
+  const buttonProps: Partial<ButtonProps> = React.useMemo(() => {
+    return {
+      type: "primary",
+      className: "cancel-btn",
+    };
+  }, []);
+  return (
+    <>
+      <div className="demo">
+        <Cell title="基本用法" onClick={() => setShowPanel(true)} />
+        <OrderCancelPanel
+          showCancelPanel={showPanel}
+          popupTitle="退款原因"
+          cancelReason={cancelReason}
+          buttonProps={buttonProps}
+          onClickCloseIcon={clickClosePopUp}
+          onClose={clickClosePopUp}
+          onClickOverlay={clickClosePopUp}
+          onSubmitBtn={submitBtn}
+        />
+      </div>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
 ## API
 
 ### Props
