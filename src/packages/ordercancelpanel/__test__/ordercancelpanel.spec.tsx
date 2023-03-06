@@ -9,7 +9,7 @@ test("should match snapshot", () => {
       <OrderCancelPanel
         showCancelPanel={true}
         popupTitle="退款原因"
-        cancelResons={[
+        cancelReason={[
           {
             key: "resons1",
             value: "商品无货",
@@ -49,7 +49,7 @@ test("prop of Basic Usage", () => {
   const closeClick = jest.fn();
   const state = {
     popupTitle: "退款原因",
-    cancelResons: [
+    cancelReason: [
       {
         key: "resons1",
         value: "商品无货",
@@ -80,7 +80,7 @@ test("prop of Basic Usage", () => {
     <OrderCancelPanel
       showCancelPanel={true}
       popupTitle={state.popupTitle}
-      cancelResons={state.cancelResons}
+      cancelReason={state.cancelReason}
       onClickCloseIcon={closeClick}
       buttonProps={{
         type: "primary",
@@ -95,7 +95,7 @@ test("prop of Basic Usage", () => {
     container.querySelectorAll(
       ".nut-biz-ordercancel .nut-biz-ordercancel__reason .nut-biz-ordercancel__reason--list"
     ).length
-  ).toBe(state.cancelResons.length);
+  ).toBe(state.cancelReason.length);
 
   expect(
     container.querySelector(
@@ -130,7 +130,7 @@ test("Overlay event of Basic Usage", () => {
   //   const closeClick2 = jest.fn();
   const state = {
     popupTitle: "退款原因",
-    cancelResons: [
+    cancelReason: [
       {
         key: "resons1",
         value: "商品无货",
@@ -161,7 +161,7 @@ test("Overlay event of Basic Usage", () => {
     <OrderCancelPanel
       showCancelPanel={true}
       popupTitle={state.popupTitle}
-      cancelResons={state.cancelResons}
+      cancelReason={state.cancelReason}
       onClickOverlay={closeClick}
       //   onClose={closeClick2}
       buttonProps={{
@@ -188,7 +188,7 @@ test("Components with warm tips", () => {
       "3. 支付券不予返还；支付优惠一并取消",
       "4. 订单一旦取消，无法恢复",
     ],
-    cancelResons: [
+    cancelReason: [
       {
         key: "resons1",
         value: "商品无货",
@@ -220,7 +220,7 @@ test("Components with warm tips", () => {
       warmTips={state.warmTips}
       showCancelPanel={true}
       popupTitle={state.popupTitle}
-      cancelResons={state.cancelResons}
+      cancelReason={state.cancelReason}
       canCancelReason={true}
       buttonProps={{
         type: "primary",
@@ -235,7 +235,7 @@ test("Components with warm tips", () => {
     container.querySelectorAll(
       ".nut-biz-ordercancel .nut-biz-ordercancel__reason .nut-biz-ordercancel__reason--list"
     ).length
-  ).toBe(state.cancelResons.length);
+  ).toBe(state.cancelReason.length);
   expect(
     container.querySelectorAll(
       ".nut-biz-ordercancel .nut-biz-ordercancel__tips .nut-biz-ordercancel__tips-list"
@@ -282,7 +282,7 @@ test("Components with other reason options", () => {
       "3. 支付券不予返还；支付优惠一并取消",
       "4. 订单一旦取消，无法恢复",
     ],
-    cancelResons: [
+    cancelReason: [
       {
         key: "resons1",
         value: "商品无货",
@@ -318,7 +318,7 @@ test("Components with other reason options", () => {
       warmTips={state.warmTips}
       showCancelPanel={true}
       popupTitle={state.popupTitle}
-      cancelResons={state.cancelResons}
+      cancelReason={state.cancelReason}
       onSubmitBtn={onClick1}
       buttonProps={{
         type: "primary",
@@ -329,7 +329,7 @@ test("Components with other reason options", () => {
   //点击其他选项
   const nutOrderCancelList = container.querySelectorAll(
     ".nut-biz-ordercancel .nut-biz-ordercancel__reason .nut-biz-ordercancel__reason--list"
-  )[state.cancelResons.length - 1] as HTMLElement;
+  )[state.cancelReason.length - 1] as HTMLElement;
   fireEvent.click(nutOrderCancelList);
   const textareaEl = container.querySelector(
     ".nut-biz-ordercancel .nut-biz-ordercancel__reason .nut-textarea"

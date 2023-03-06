@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useState, useRef } from "react";
+import React, {
+  FunctionComponent,
+  useState,
+  useRef,
+  CSSProperties,
+} from "react";
 import {
   Popup,
   Checkbox,
@@ -9,7 +14,7 @@ import {
 } from "@nutui/nutui-react";
 import { IComponent } from "@/utils/typings";
 import bem from "@/utils/bem";
-import { throttle } from "@/utils/throttle";
+
 export interface IKeyValue {
   key: string;
   value: string;
@@ -17,19 +22,20 @@ export interface IKeyValue {
 export interface OrderCancelPanelProps extends IComponent {
   showCancelPanel: boolean;
   warmTips: string[];
-  cancelResons: Array<IKeyValue>;
+  cancelReason: Array<IKeyValue>;
   canCancelReason: boolean;
   popupTitle: React.ReactNode | string;
   reasonTitle: React.ReactNode | string;
   btnsText: string;
   tipsTitle: string;
   className?: string;
+  style?: CSSProperties;
   buttonProps: Partial<ButtonProps>;
   textAreaProps: Partial<Omit<TextAreaProps, "defaultValue">>;
   onClose: () => void;
   onClickCloseIcon: () => void;
   onClickOverlay: () => void;
-  onSubmitBtn: (currActivedKey: string, textAreaValue: string) => void;
+  onSubmitBtn: (selectedReason: IKeyValue, textAreaValue: string) => void;
 }
 
 const defaultProps = {
@@ -47,7 +53,7 @@ export const OrderCancelPanel: FunctionComponent<
     showCancelPanel,
     className,
     warmTips,
-    cancelResons,
+    cancelReason,
     reasonTitle,
     popupTitle,
     canCancelReason,
@@ -55,11 +61,11 @@ export const OrderCancelPanel: FunctionComponent<
     tipsTitle,
     buttonProps,
     textAreaProps,
+    style,
     onClose,
     onClickOverlay,
     onClickCloseIcon,
     onSubmitBtn,
-    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -74,7 +80,6 @@ export const OrderCancelPanel: FunctionComponent<
 
   //处理切换原因list，复选框是否被选中
   const checkedReason = (item: IKeyValue) => {
-    setCurrActivedKey(item.key);
     setShowOtherText(false);
     if (canCancelReason && item.key === preChecked.current) {
       setCurrActivedKey(preChecked.current ? "" : item.key);
@@ -94,7 +99,16 @@ export const OrderCancelPanel: FunctionComponent<
       currTextarea = "";
       setTextAreaValue("");
     }
-    onSubmitBtn && onSubmitBtn(currActivedKey, currTextarea);
+    const selectedReason = cancelReason.filter((item) => {
+      return item.key === currActivedKey;
+    });
+    onSubmitBtn && onSubmitBtn(selectedReason[0], currTextarea);
+  };
+  //关闭弹窗的时候清空数据
+  const clearStatus = () => {
+    setCurrActivedKey("");
+    setTextAreaValue("");
+    setShowOtherText(false);
   };
   //关闭相关事件
   const closePopup = (type: string) => {
@@ -110,68 +124,69 @@ export const OrderCancelPanel: FunctionComponent<
         onClose && onClose();
         break;
     }
+    clearStatus();
   };
+
   return (
-    <div {...rest}>
-      <Popup
-        visible={showCancelPanel}
-        position="bottom"
-        round
-        closeable
-        onClose={() => closePopup("close")}
-        onClickCloseIcon={() => closePopup("icon")}
-        onClickOverlay={() => closePopup("overlay")}
-        className={`${b()} ${className} `}
-      >
-        <div className={b("main")}>
-          <h1 className={b("header")}>{popupTitle}</h1>
-          {warmTips && (
-            <div className={b("tips")}>
-              <h2 className={b("tips-header")}>{tipsTitle}</h2>
-              {warmTips.map((item, index) => {
-                return (
-                  <p key={index} className={b("tips-list")}>
-                    {item}
-                  </p>
-                );
-              })}
-            </div>
-          )}
-          {reasonTitle && <h1 className={b("reason-header")}>{reasonTitle}</h1>}
-          {cancelResons && (
-            <div className={b("reason")}>
-              {cancelResons.map((item) => {
-                return (
-                  <div
-                    key={item.key}
-                    className={b("reason--list")}
-                    onClick={() => checkedReason(item)}
-                  >
-                    <div>{item.value}</div>
-                    <div className={b("reason--list__checkbox")}>
-                      <Checkbox checked={currActivedKey === item.key} />
-                    </div>
+    <Popup
+      visible={showCancelPanel}
+      position="bottom"
+      round
+      closeable
+      style={style}
+      onClose={() => closePopup("close")}
+      onClickCloseIcon={() => closePopup("icon")}
+      onClickOverlay={() => closePopup("overlay")}
+      className={`${b()} ${className} `}
+    >
+      <div className={b("main")}>
+        <h1 className={b("header")}>{popupTitle}</h1>
+        {warmTips && (
+          <div className={b("tips")}>
+            <h2 className={b("tips-header")}>{tipsTitle}</h2>
+            {warmTips.map((item, index) => {
+              return (
+                <p key={index} className={b("tips-list")}>
+                  {item}
+                </p>
+              );
+            })}
+          </div>
+        )}
+        {reasonTitle && <h1 className={b("reason-header")}>{reasonTitle}</h1>}
+        {cancelReason && (
+          <div className={b("reason")}>
+            {cancelReason.map((item) => {
+              return (
+                <div key={item.key} className={b("reason--list")}>
+                  <div>{item.value}</div>
+                  <div className={b("reason--list__checkbox")}>
+                    <Checkbox checked={currActivedKey === item.key} />
                   </div>
-                );
-              })}
-              {showOtherText && (
-                <TextArea
-                  {...textAreaProps}
-                  className={b("area")}
-                  defaultValue={textAreaValue}
-                  onChange={(val) => setTextAreaValue(val)}
-                />
-              )}
-            </div>
-          )}
-        </div>
-        <div className={b("btns")}>
-          <Button {...buttonProps} onClick={submitContent}>
-            {btnsText}
-          </Button>
-        </div>
-      </Popup>
-    </div>
+                  <div
+                    className={b("reason--list__overlay")}
+                    onClick={() => checkedReason(item)}
+                  ></div>
+                </div>
+              );
+            })}
+            {showOtherText && (
+              <TextArea
+                {...textAreaProps}
+                className={b("area")}
+                defaultValue={textAreaValue}
+                onChange={(val) => setTextAreaValue(val)}
+              />
+            )}
+          </div>
+        )}
+      </div>
+      <div className={b("btns")}>
+        <Button {...buttonProps} onClick={submitContent}>
+          {btnsText}
+        </Button>
+      </div>
+    </Popup>
   );
 });
 
