@@ -1,3 +1,4 @@
+@import "../../styles/mixins/text-ellipsis.scss";
 .nut-quick-enter {
   &-content-slide {
     height: 100%;
@@ -23,13 +24,11 @@
     }
   }
   .desc {
+    @include oneline-ellipsis;
+    text-align: center;
     margin-top: 10px;
     font-size: 12px;
     color: rgba(102, 102, 102, 1);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    text-align: center;
     height: 18px;
   }
 

@@ -2,30 +2,31 @@ import React, {
   CSSProperties,
   FunctionComponent,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
 } from "react";
 import { IComponent } from "@/utils/typings";
 import classNames from "classnames";
 import bem from "@/utils/bem";
+import { throttle } from "@/utils/throttle";
 import { Swiper, SwiperItem } from "@nutui/nutui-react";
-interface IDataItem {
+export interface IDataItem {
   displayName: string; // 展示名称
   imageUrl: React.ReactNode; // icon 图片链接或html标签
 }
 export interface QuickEnterProps extends IComponent {
   className: string;
   style: CSSProperties;
-  columns: number; // 一行展示几个
-  rows: number; // 展示几行
+  columns: number | string; // 一行展示几个
+  rows: number | string; // 展示几行
   data: Array<IDataItem>; // 数据展示
   slideMode: "swiper" | "slide"; // 数据展示
   iconSize: Array<number>; // 图标大小
-  indicatorBg: string; // 指示器背景色
   indicatorVisible: boolean; // 指示器是否展示
   indicatorBgColor: string; // 指示器背景颜色
   indicatorActiveColor: string; // 指示器选中颜色
-  onClickItem: (val: IDataItem) => {}; //回调函数
+  onClickItem: (val: IDataItem) => void; //回调函数
 }
 
 const defaultProps = {
@@ -38,12 +39,12 @@ const defaultProps = {
   indicatorActiveColor: "#fa2c19",
 } as QuickEnterProps;
 
-export const QuickEnter: FunctionComponent<
-  Partial<QuickEnterProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, "onClick">
-> = (props) => {
+const soleId = Math.random().toString(36).slice(-8);
+export const QuickEnter: FunctionComponent<Partial<QuickEnterProps>> = (
+  props
+) => {
   const b = bem("quick-enter");
-  const time = new Date().getTime();
+
   const {
     className,
     style,
@@ -61,47 +62,45 @@ export const QuickEnter: FunctionComponent<
     ...defaultProps,
     ...props,
   };
-  const iconstyle = () => {
-    return {
-      width: `${iconSize?.[0]}px`,
-      height: `${iconSize?.[1]}px`,
-    };
+  const iconStyle = {
+    width: `${iconSize?.[0]}px`,
+    height: `${iconSize?.[1]}px`,
   };
   const formatIcons = () => {
-    const screenNumber = columns * rows;
-    let quicks: any[] = [];
+    const screenNumber = Number(columns) * Number(rows);
+    let quicks: IDataItem[][] = [];
     let index = 0;
     while (index < data.length) {
       quicks.push(data.slice(index, (index += screenNumber)));
     }
-
     return quicks;
   };
 
-  const [contentWidth, setContentWidth] = useState(document.body.clientWidth);
+  const [contentWidth, setContentWidth] = useState(
+    document.body.clientWidth || document.documentElement.clientWidth
+  );
   useEffect(() => {
-    const w = document.getElementsByClassName("nut-quick-enter-" + time)[0];
+    const w = document.getElementsByClassName("nut-quick-enter-" + soleId)[0];
     w && setContentWidth(w.clientWidth);
-  }, [document.getElementsByClassName("nut-quick-enter" + time)[0]]);
+  }, [document.getElementsByClassName("nut-quick-enter" + soleId)[0]]);
 
   const [init, setInit] = useState(false);
   useEffect(() => {
     setInit(true);
   }, [contentWidth]);
 
-  const scrollviewRef = useRef<any>(null);
-  const barbg = useRef<any>(null);
-  const barslide = useRef<any>(null);
+  const scrollviewRef = useRef<HTMLDivElement>(null);
+  const barbg = useRef<HTMLDivElement>(null);
+  const barslide = useRef<HTMLDivElement>(null);
   const [barStyle, setBarStyle] = useState({}); // 滚动条样式
-  const [timestamp, setTimestamp] = useState(new Date().getTime());
-
-  const scrollChange = () => {
+  const scrollChange = throttle(() => {
     const scrollContentW =
-      scrollviewRef.current.offsetWidth * formatIcons().length;
-    const bgBarW = barbg.current.offsetWidth; // 滚动条的背景长度
-    const barXWidth = barslide.current.offsetWidth; // 滚动条的长度
+      (scrollviewRef?.current as HTMLDivElement).offsetWidth *
+      formatIcons().length;
+    const bgBarW = (barbg?.current as HTMLDivElement).offsetWidth; // 滚动条的背景长度
+    const barXWidth = (barslide?.current as HTMLDivElement).offsetWidth; // 滚动条的长度
     let moveWidth = Number(
-      document.getElementsByClassName("nut-quick-enter-scroll" + timestamp)[0]
+      document.getElementsByClassName("nut-quick-enter-scroll" + soleId)[0]
         .scrollLeft
     );
     let barMoveDistance = 0; // 移动的位置
@@ -113,14 +112,15 @@ export const QuickEnter: FunctionComponent<
       barMoveDistance = 0;
     }
     getInnerStyle(barMoveDistance);
-  };
+  }, 50);
   const renderQuickScroll = () => {
     return (
-      <div className={`${b("")}-wrapper`} ref={scrollviewRef}>
+      <div className={`${b("")}-wrapper`}>
         <div
+          ref={scrollviewRef}
           className={classNames([
             `${b("")}-wrapper-content`,
-            `${b("")}-scroll` + timestamp,
+            `${b("")}-scroll` + soleId,
           ])}
         >
           {formatIcons().map((item, index) => {
@@ -147,23 +147,23 @@ export const QuickEnter: FunctionComponent<
       </div>
     );
   };
-  const renderScrollItem = (content: any[]) => {
+  const renderScrollItem = (content: IDataItem[]) => {
     return content.map((citem, _idx) => {
       return (
         <div
           className={classNames([`${b("")}-item`])}
-          key={"c" + _idx}
-          style={{ width: (100 / columns).toFixed(2) + "%" }}
+          key={"c" + citem.imageUrl}
+          style={{ width: (100 / Number(columns)).toFixed(2) + "%" }}
           onClick={() => clickCback(citem)}
         >
           {typeof citem.imageUrl === "string" ? (
             <img
               className={classNames([`${b("")}-icon`])}
               src={citem.imageUrl}
-              style={iconstyle()}
+              style={iconStyle}
             />
           ) : (
-            <div style={iconstyle()}>{citem.imageUrl}</div>
+            <div style={iconStyle}>{citem.imageUrl}</div>
           )}
           <p className="desc">{citem.displayName}</p>
         </div>
@@ -175,13 +175,11 @@ export const QuickEnter: FunctionComponent<
       setTimeout(() => {
         const _ref = scrollviewRef.current;
         if (_ref) {
-          document
-            .getElementsByClassName("nut-quick-enter-scroll" + timestamp)[0]
-            .addEventListener("scroll", scrollChange);
+          _ref.addEventListener("scroll", scrollChange);
         }
-      }, 300);
+      }, 500);
     }
-  }, [scrollviewRef]);
+  }, [scrollviewRef.current]);
 
   const getInnerStyle = (barMoveWidth: number) => {
     setBarStyle({
@@ -204,7 +202,7 @@ export const QuickEnter: FunctionComponent<
           return (
             <SwiperItem
               className={classNames([`${b("")}-content-slide`])}
-              key={"swiper-item-" + idx}
+              key={"swiper-item-" + item}
             >
               {renderSwiperItem(item)}
             </SwiperItem>
@@ -213,23 +211,19 @@ export const QuickEnter: FunctionComponent<
       </Swiper>
     );
   };
-  const renderSwiperItem = (content: any[]) => {
+  const renderSwiperItem = (content: IDataItem[]) => {
     return content.map((item, _index) => {
       return (
         <div
           className={classNames([`${b("")}-item`])}
-          style={{ width: (100 / columns).toFixed(2) + "%" }}
-          key={"quick-enter-item" + _index}
+          style={{ width: (100 / Number(columns)).toFixed(2) + "%" }}
+          key={"quick-enter-item" + item.imageUrl}
           onClick={() => clickCback(item)}
         >
           {typeof item.imageUrl === "string" ? (
-            <img
-              className="enter-icon"
-              src={item.imageUrl}
-              style={iconstyle()}
-            />
+            <img className="enter-icon" src={item.imageUrl} style={iconStyle} />
           ) : (
-            <div style={iconstyle()}>{item.imageUrl}</div>
+            <div style={iconStyle}>{item.imageUrl}</div>
           )}
           <p className="desc">{item.displayName}</p>
         </div>
@@ -237,12 +231,12 @@ export const QuickEnter: FunctionComponent<
     });
   };
   const clickCback = (item: IDataItem) => {
-    onClickItem && onClickItem(item);
+    onClickItem(item);
   };
 
   return (
     <div
-      className={classNames([b(), className, `${b("")}-` + time])}
+      className={classNames([b(), className, `${b("")}-` + soleId])}
       style={style}
       {...rest}
     >
