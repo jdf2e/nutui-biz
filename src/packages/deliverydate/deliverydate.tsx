@@ -51,12 +51,11 @@ export const DeliveryDate: FunctionComponent<
       const item = data.find((item: DateType) => item.label == activeKey);
       const currentItem = (activeKey == ACTIVEKEY || !item) ? data[0] : { ...item };
       setDate(currentItem);
-      // onSelect?.(currentItem);
     }
   }, [data]);
 
   return (
-    <div className={`${b('')} ${className}`} style={style}>
+    <div className={`${b('')} ${className || ''}`} style={style}>
       {
         data
           ?

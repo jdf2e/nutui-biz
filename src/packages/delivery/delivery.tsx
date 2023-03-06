@@ -112,42 +112,44 @@ export const Delivery: FunctionComponent<
           currentDeliveryTime = times.find((item: DateTimesType) => (item as DateType).selected);
           if (currentDeliveryTime) {
             setDeliveryTime(deliveryDateData[i].label);
+            setSelectedItem(currentDeliveryTime);
           }
           break;
         case 'date-time':
-          times.forEach((item: DateTimesType, index: number) => {
-            if (index === 0) {
-              setTimeDate((item as DateTimeType).label);
-            }
-            const children = (item as DateTimeType).children;
-            if (children && children.length) {
+          if (times.length) {
+            setTimeDate((times[0] as DateTimeType).label);
+            for (let j = 0; j < times.length; j++) {
+              let item = times[j];
+              const children = (item as DateTimeType).children || [];
               currentDeliveryTime = children.find((subitem: DateTimesType) => (subitem as DateType).selected);
               if (currentDeliveryTime) {
                 setTimeDate((item as DateTimeType).label);
                 setDeliveryTime(deliveryDateData[i].label);
+                setSelectedItem({ ...item as DateTimeType, children: [currentDeliveryTime]});
+                break;
               }
             }
-          })
+          }
           break;
         case 'date-time-accurate':
-          times.forEach((item: DateTimesType, index: number) => {
-            if (index === 0) {
-              setAccurateTimeDate((item as DateTimeAccurateType).label);
-            }
-            const children = (item as DateTimeType).children;
-            if (children && children.length) {
-              children.forEach((subitem: DateTimesType) => {
-                const subChildren = (subitem as DateTimeType).children;
-                if (subChildren && subChildren.length) {
-                  currentDeliveryTime = subChildren.find((item: DateTimesType) => (item as DateType).selected);
-                  if (currentDeliveryTime) {
-                    setAccurateTimeDate((item as DateTimeAccurateType).label);
-                    setDeliveryTime(deliveryDateData[i].label);
-                  }
+          if (times.length) {
+            setAccurateTimeDate((times[0] as DateTimeAccurateType).label);
+            for (let j = 0; j < times.length; j++) {
+              let item = times[j];
+              const children = (item as DateTimeType).children || [];
+              for (let k = 0; k < children.length; k++) {
+                let subitem = children[k] as DateTimesType;
+                const subChildren = (subitem as DateTimeType).children || [];
+                currentDeliveryTime = subChildren.find((item: DateTimesType) => (item as DateType).selected);
+                if (currentDeliveryTime) {
+                  setAccurateTimeDate((item as DateTimeAccurateType).label);
+                  setDeliveryTime(deliveryDateData[i].label);
+                  setSelectedItem({ ...item as DateTimeType, children: [{...{ ...(item as DateTimeType)?.children[k], children: [{...currentDeliveryTime}] }}]});
+                  break;
                 }
-              })
+              }
             }
-          })
+          }
           break;
         default:
           break;
@@ -164,6 +166,7 @@ export const Delivery: FunctionComponent<
   }
 
   const getSelectContainerHeight = () => {
+    // 基础组件问题：https://github.com/jdf2e/nutui-react/issues/763，使用setTimeout先处理下
     setTimeout(() => {
       if (selectRef.current && deliveryDateData && deliveryDateData.length) {
         (selectRef.current as HTMLDivElement).style.height =
@@ -173,12 +176,7 @@ export const Delivery: FunctionComponent<
   }
 
   const getDeliveryTypeItem = (label: string) => {
-    const deliveryType = deliveryTypes?.find((item: DeliveryTypes) => item.label === label);
-    return deliveryType
-  }
-
-  const handleDeliveryTimeChange = (label: string | number | boolean) => {
-    setDeliveryTime(label as string);
+    return deliveryTypes?.find((item: DeliveryTypes) => item.label === label)
   }
 
   const getDeliveryTimeItem = (label: string) => {
@@ -251,7 +249,7 @@ export const Delivery: FunctionComponent<
                       <>
                         <div className={`${b('content-deliverytime-title')}`}>{deliveryTimeTitle}</div>
                         <div className={`${b('content-deliverytime-tabs')}`}>
-                          <Radio.RadioGroup value={deliveryTime} onChange={handleDeliveryTimeChange}>
+                          <Radio.RadioGroup value={deliveryTime} onChange={(label: string | number | boolean) => { setDeliveryTime(label as string); }}>
                             {
                               deliveryDateData && deliveryDateData.slice(0, maxCount).map((item: DeliveryData) => (
                                 <Radio

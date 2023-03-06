@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Delivery } from './delivery'
 import DeliveryDate from './../deliverydate';
 import DeliveryDateTime from './../deliverydatetime';
-import { DeliveryTypes, DeliveryData, DateTimesType, DateType, DateTimeType, DateTimeAccurateType } from './type';
+import { DeliveryTypes, DeliveryData, DateTimesType, DateType, DateTimeType } from './type';
 import { Cell, Popup } from '@nutui/nutui-react'
 
 import './demo.scss';
@@ -13,6 +13,7 @@ const DeliveryDemo = () => {
     const [visible3, setVisible3] = useState(false);
     const [visible4, setVisible4] = useState(false);
     const [visible5, setVisible5] = useState(false);
+    const [visible6, setVisible6] = useState(false);
     const [desc1, setDesc1] = useState<any>("");
     const [desc2, setDesc2] = useState<any>("");
     const [desc3, setDesc3] = useState<any>("");
@@ -97,7 +98,7 @@ const DeliveryDemo = () => {
                         {
                             label: '11',
                             text: '09:00-15:00',
-                            selected: true,
+                            
                         },
                         {
                             label: '22',
@@ -112,7 +113,7 @@ const DeliveryDemo = () => {
                     children: [
                         {
                             label: '33',
-                            text: '09:00-15:00'
+                            text: '09:00-15:00',
                         },
                         {
                             label: '44',
@@ -139,11 +140,12 @@ const DeliveryDemo = () => {
                                 {
                                     label: '333',
                                     text: '09:00-10:00',
-
+                                    
                                 },
                                 {
                                     label: '444',
                                     text: '10:00-11:00',
+                                    selected: true,
                                 }
                             ]
                         },
@@ -318,17 +320,17 @@ const DeliveryDemo = () => {
         setDesc3(item.text);
     }
 
-    const show4 = (param: boolean) => {
-        setVisible4(param);
+    const show5 = (param: boolean) => {
+        setVisible5(param);
     }
 
-    const sure4 = (item: DateTimesType) => {
+    const sure5 = (item: DateTimesType) => {
         console.log(item)
     }
 
     const handleDeliveryDate4 = (item: DateTimeType) => {
         setActiveKey4(item.label);
-        setVisible5(false);
+        setVisible6(false);
         setDesc4(`${item.title},${item.children[0].text}`);
     }
 
@@ -401,28 +403,28 @@ const DeliveryDemo = () => {
                 <Cell
                     title="请选择"
                     desc={desc4}
-                    onClick={() => { show4(true) }}
+                    onClick={() => { show5(true) }}
                 />
                 <Delivery
-                    visible={visible4}
-                    onCloseMask={() => { show4(false) }}
-                    onClose={() => show4(false)}
-                    onSure={() => { sure4(desc4); }}
+                    visible={visible5}
+                    onCloseMask={() => { show5(false) }}
+                    onClose={() => show5(false)}
+                    onSure={() => { sure5(desc4); }}
                 >
-                    <div className="custom-content" onClick={() => { setVisible5(true) }}>
+                    <div className="custom-content" onClick={() => { setVisible6(true) }}>
                         <div className="left">请选择送货时间</div>
                         <div className="right">{desc4}</div>
                     </div>
                 </Delivery>
                 <Popup
-                    visible={visible5}
+                    visible={visible6}
                     position="bottom"
                     style={{ 'height': '80%' }}
                     closeable
                     round
-                    onClickOverlay={() => { setVisible5(false) }}
-                    onClickCloseIcon={() => { setVisible5(false) }}
-                    onClose={() => { setVisible5(false) }}
+                    onClickOverlay={() => { setVisible6(false) }}
+                    onClickCloseIcon={() => { setVisible6(false) }}
+                    onClose={() => { setVisible6(false) }}
                 >
                     <DeliveryDateTime
                         className="delivery-date4"
