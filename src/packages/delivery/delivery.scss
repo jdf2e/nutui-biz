@@ -1,8 +1,9 @@
-.nut-delivery{
+.nut-delivery {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    &__title{
+
+    &__title {
         width: 100%;
         height: 40px;
         line-height: 40px;
@@ -10,197 +11,109 @@
         font-size: 16px;
         font-weight: 600;
         color: #333;
+        @include text-ellipsis();
     }
-    &__content{
+
+    &__content {
         width: 100%;
-        &-type{
+        overflow: hidden;
+
+        &-type {
             width: 100%;
             margin-top: 20px;
             padding: 0 20px;
-            .nut-radio{
+
+            .nut-radio {
                 display: inline-block;
                 margin-right: 15px;
-                &__button--active{
+
+                &__button {
+                    display: inline-block;
+                    max-width: 100px;
+                    @include text-ellipsis();
+                }
+
+                &__button--active {
                     background-color: #ffece8;
                     font-size: 12px;
                 }
             }
-            &-tips{
+
+            &-tips {
+                width: 100%;
                 margin-top: 5px;
                 font-size: 12px;
                 color: #666;
+                @include text-ellipsis();
             }
         }
-        &-deliverytime{
+
+        &-deliverytime {
             margin-top: 25px;
-            &-title{
+            overflow: hidden;
+
+            &-title {
                 font-size: 14px;
                 color: #333;
                 padding: 0 20px;
+                @include text-ellipsis();
             }
-            &-tabs{
+
+            &-tabs {
                 margin-top: 10px;
                 padding: 0 20px;
-                .nut-radio{
+
+                .nut-radio {
                     display: inline-block;
                     margin-right: 15px;
-                    &__button--active{
+
+                    &__button {
+                        display: inline-block;
+                        max-width: 100px;
+                        @include text-ellipsis();
+                    }
+
+                    &__button--active {
                         background-color: #ffece8;
                         font-size: 12px;
                     }
                 }
             }
-            &-tips{
+
+            &-tips {
                 padding: 0 20px;
                 margin-top: 5px;
                 font-size: 12px;
                 color: #666;
+                @include text-ellipsis();
             }
-            &-select{
-                width: 100%;
-                height: 100%;
-                overflow: auto;
-                &-stage{
-                    width: 100%;
-                    height: calc(100% - 50px - 10px);
-                    display: flex;
-                    margin-top: 15px;
-                    &-pannel{
-                        width: 140px;
-                        height: 100%;
-                        overflow: auto;
-                        overflow-x: hidden;
-                        background-color: #f6f7f9;
-                        &-title{
-                            display: flex;
-                            width: 150px;
-                            height: 45px;
-                            padding: 15px 20px;
-                            align-items: center;
-                            color: #666666;
-                            font-size: 14px;
-                            box-sizing: border-box;
-                            &--current{
-                                background-color: #fff;
-                                color: #333333;
-                                font-weight: bold;
-                            }
-                        }
-                    }
-                    &-detail{
-                        flex: 1;
-                        height: 100%;
-                        overflow-y: auto;
-                        overflow-x: hidden;
-                        padding: 0 10px;
-                        &-item{
-                            width: 100%;
-                            height: 50px;
-                            line-height: 50px;
-                            text-align: center;
-                            margin-bottom: 10px;
-                            background-color: #f6f7f9;
-                            border-radius: 5px;
-                            color: #333333;
-                            font-size: 14px;
-                            border: 1px solid transparent;
-                            &--current{
-                                background-color: #fce0df;
-                                border: 1px solid #fa2c19;
-                                color: #fa2c19;
-                            }
-                        }
-                    }
-                }
-                &-date{
-                    width: 100%;
-                    margin-top: 15px;
-                    padding: 0 20px;
-                    &-item{
-                        width: 100%;
-                        height: 50px;
-                        line-height: 50px;
-                        text-align: center;
-                        margin-bottom: 10px;
-                        background-color: #f6f7f9;
-                        border-radius: 5px;
-                        color: #333333;
-                        font-size: 14px;
-                        border: 1px solid transparent;
-                        &--current{
-                            background-color: #fce0df;
-                            border: 1px solid #fa2c19;
-                            color: #fa2c19;
-                        }
-                    }
-                }
-                &-accurate{
-                    width: 100%;
-                    height: calc(100% - 50px - 10px);
-                    display: flex;
-                    margin-top: 15px;
-                    &-pannel{
-                        width: 140px;
-                        height: 100%;
-                        overflow: auto;
-                        overflow-x: hidden;
-                        background-color: #f6f7f9;
-                        &-title{
-                            display: flex;
-                            width: 150px;
-                            height: 45px;
-                            padding: 15px 20px;
-                            align-items: center;
-                            color: #666666;
-                            font-size: 14px;
-                            box-sizing: border-box;
-                            &--current{
-                                background-color: #fff;
-                                color: #333333;
-                                font-weight: bold;
-                            }
-                        }
-                    }
-                    &-detail{
-                        flex: 1;
-                        height: 100%;
-                        overflow-y: auto;
-                        overflow-x: hidden;
-                        padding: 0 10px;
-                        &-item{
-                            margin-bottom: 10px;
-                            &-title{
-                                font-size: 12px;
-                                color: #666;
-                            }
-                            &-times{
-                                width: 100%;
-                                margin-top: 5px;
-                                display: flex;
-                                flex-wrap: wrap;
-                                justify-content: space-between;
-                                &-time{
-                                    width: 48%;
-                                    height: 50px;
-                                    line-height: 50px;
-                                    text-align: center;
-                                    margin-bottom: 10px;
-                                    background-color: #f6f7f9;
-                                    border-radius: 5px;
-                                    color: #333;
-                                    font-size: 14px;
-                                    border: 1px solid transparent;
-                                    &--current{
-                                        background-color: #fce0df;
-                                        border: 1px solid #fa2c19;
-                                        color: #fa2c19;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+        }
+    }
+
+    &__select {
+        width: 100%;
+        overflow: auto;
+    }
+
+    &__btn {
+        height: 60px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0 -4px 12px 0 rgba(0, 0, 0, 0.05);
+
+        .nut-button {
+            width: 335px;
+            height: 40px;
+            background: linear-gradient(135deg,
+                    rgba(242, 20, 12, 1) 0%,
+                    rgba(242, 39, 12, 1) 69.83950099728881%,
+                    rgba(242, 77, 12, 1) 100%);
+            border-radius: 20px;
         }
     }
 }

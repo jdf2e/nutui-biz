@@ -104,7 +104,7 @@ const CardDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <Card
-          imgUrl={state.imgUrl}
+          imageProps={{src: state.imgUrl}}
           title={state.title}
           price={state.price}
           vipPrice={state.vipPrice}
@@ -114,7 +114,7 @@ const CardDemo = () => {
         />
         <h2>{translated.customProduct}</h2>
         <Card
-          imgUrl={state.imgUrl}
+          imageProps={{src: state.imgUrl}}
           title={state.title}
           price={state.price}
           vipPrice={state.vipPrice}
@@ -146,7 +146,7 @@ const CardDemo = () => {
         />
         <h2>{translated.customPriceIcon}</h2>
         <Card
-          imgUrl={state.imgUrl}
+          imageProps={{src: state.imgUrl}}
           title={state.title}
           price={state.price}
           vipPrice={state.vipPrice}
@@ -163,7 +163,7 @@ const CardDemo = () => {
         />
         <h2>{translated.customShop}</h2>
         <Card
-          imgUrl={state.imgUrl}
+          imageProps={{src: state.imgUrl}}
           title={state.title}
           price={state.price}
           vipPrice={state.vipPrice}
@@ -174,7 +174,7 @@ const CardDemo = () => {
         />
         <h2>{translated.customFooter}</h2>
         <Card
-          imgUrl={state.imgUrl}
+          imageProps={{src: state.imgUrl}}
           title={state.title}
           price={state.price}
           vipPrice={state.vipPrice}
@@ -187,7 +187,7 @@ const CardDemo = () => {
         />
         <h2>{translated.customBottom}</h2>
         <Card
-          imgUrl={state.imgUrl}
+          imageProps={{src: state.imgUrl}}
           title={state.title}
           price={state.price}
           vipPrice={state.vipPrice}
@@ -199,17 +199,28 @@ const CardDemo = () => {
           }
         />
         <h2>半行模式</h2>
-        <Card
-          imgUrl={state.imgUrl}
-          title={state.title}
-          price={state.price}
-          vipPrice={state.vipPrice}
-          shopDesc={state.shopDesc}
-          delivery={state.delivery}
-          shopName={state.shopName}
-          showType="half-line"
-          style={{width: '172px'}}
-        />
+        <>
+          <Card
+          imageProps={{src: state.imgUrl}}
+            title={state.title}
+            price={state.price}
+            vipPrice={state.vipPrice}
+            shopDesc={state.shopDesc}
+            delivery={state.delivery}
+            shopName={state.shopName}
+            showType="half-line"
+          />
+          <Card
+          imageProps={{src: state.imgUrl}}
+            title={state.title}
+            price={state.price}
+            vipPrice={state.vipPrice}
+            shopDesc={state.shopDesc}
+            delivery={state.delivery}
+            shopName={state.shopName}
+            showType="half-line"
+          />
+        </>
       </div>
     </>
   )

@@ -7,7 +7,6 @@
 ### 安装
 
 ```javascript
-import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 ```
 
@@ -19,7 +18,6 @@ import { Card } from '@nutui/nutui-biz';
 
 ```ts
 import  React from 'react';
-import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -56,7 +54,6 @@ export default App;
 
 ```ts
 import  React from 'react';
-import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -118,7 +115,6 @@ export default App;
 
 ```ts
 import  React from 'react';
-import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -168,7 +164,6 @@ export default App;
 :::demo
 ```ts
 import  React from 'react';
-import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -206,7 +201,6 @@ export default App;
 
 ```ts
 import  React from 'react';
-import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -246,7 +240,6 @@ export default App;
 
 ```ts
 import  React from 'react';
-import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -287,7 +280,6 @@ export default App;
 
 ```ts
 import  React from 'react';
-import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -303,17 +295,28 @@ const App = () => {
   }
   
   return (
-    <Card
-      imgUrl={state.imgUrl}
-      title={state.title}
-      price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
-      delivery={state.delivery}
-      shopName={state.shopName}
-      showType="half-line"
-      style={{width: '172px'}}
-    />
+    <>
+      <Card
+        imgUrl={state.imgUrl}
+        title={state.title}
+        price={state.price}
+        vipPrice={state.vipPrice}
+        shopDesc={state.shopDesc}
+        delivery={state.delivery}
+        shopName={state.shopName}
+        showType="half-line"
+      />
+      <Card
+        imgUrl={state.imgUrl}
+        title={state.title}
+        price={state.price}
+        vipPrice={state.vipPrice}
+        shopDesc={state.shopDesc}
+        delivery={state.delivery}
+        shopName={state.shopName}
+        showType="half-line"
+      />
+    </>
   );
 };
 export default App;
@@ -328,7 +331,7 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| imgUrl   | 左侧图片 Url                                 | string  | -         |
+| imageProps   | 图片基础组件 props                                 | ImageProps(https://nutui.jd.com/h5/react/1x/#/zh-CN/component/image)  | {isLazy: false, errorImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'}         |
 | title     | 标题                   | string  | -    |
 | price | 商品价格                         | string \| number  | -      |
 | vipPrice     | 会员价格                               | string \| number | -    |
@@ -346,17 +349,11 @@ export default App;
 | isNeedPrice   | 是否需要价格展示| boolean  | `true`      |
 | imgTag   | 商品图片标签，常用于标志双 11、直播等| string  | -      |
 | imgTagDirection   | 商品图片标签呈现位置，可选：`top-left`、`top-right`| string  | `top-left`      |
-| isLazy   | 是否为懒加载图片| boolean  | `false`      |
 | titleTag   | 标题左侧标签，常用于活动标记等，不设置此参数或此参数为空，不展示| ReactNode  | -      |
 | titleLine   | 标题行数，默认两行，想展示更多下面内容可设置为 1| string \| number  | `2`      |
-| linkUrl   | 跳转链接，默认点击整个卡片以 href 的形式跳转，可通过点击事件自定义 | string  | -      |
-| imgWidth   | 宽度，默认单位`px` | string  | -      |
-| imgHeight   | 高度，默认单位`px` | string  | -      |
-| loadingImg   | 设置加载中提示图片，与slotLoding冲突，优先级高于slotLoding | string  | -      |
-| errorImg   | 设置错误提示图片，与slotError冲突，优先级高于slotError | string  | -      |
 
 
 ### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
-| onClick | 点击事件 |  event: MouseEvent |
+| onClick | 点击事件 | - |

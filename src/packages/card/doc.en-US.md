@@ -7,7 +7,6 @@ Used to display product pictures, prices and other information.
 ### Install
 
 ```javascript
-import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 ```
 
@@ -19,7 +18,6 @@ import { Card } from '@nutui/nutui-biz';
 
 ```ts
 import  React from 'react';
-import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -56,7 +54,6 @@ export default App;
 
 ```ts
 import  React from 'react';
-import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -118,7 +115,6 @@ export default App;
 
 ```ts
 import  React from 'react';
-import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -168,7 +164,6 @@ export default App;
 :::demo
 ```ts
 import  React from 'react';
-import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -206,7 +201,6 @@ export default App;
 
 ```ts
 import  React from 'react';
-import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -246,7 +240,6 @@ export default App;
 
 ```ts
 import  React from 'react';
-import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -285,7 +278,6 @@ export default App;
 
 ```ts
 import  React from 'react';
-import { Price, Tag } from '@nutui/nutui-react';
 import { Card } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -301,17 +293,28 @@ const App = () => {
   }
   
   return (
-    <Card
-      imgUrl={state.imgUrl}
-      title={state.title}
-      price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
-      delivery={state.delivery}
-      shopName={state.shopName}
-      showType="half-line"
-      style={{width: '172px'}}
-    />
+    <>
+      <Card
+        imgUrl={state.imgUrl}
+        title={state.title}
+        price={state.price}
+        vipPrice={state.vipPrice}
+        shopDesc={state.shopDesc}
+        delivery={state.delivery}
+        shopName={state.shopName}
+        showType="half-line"
+      />
+      <Card
+        imgUrl={state.imgUrl}
+        title={state.title}
+        price={state.price}
+        vipPrice={state.vipPrice}
+        shopDesc={state.shopDesc}
+        delivery={state.delivery}
+        shopName={state.shopName}
+        showType="half-line"
+      />
+    </>
   );
 };
 export default App;
@@ -327,7 +330,7 @@ export default App;
 
 | Attribute            | Description               | Type   | Default  |
 |---------|--------------------------------------------|---------|-----------|
-| imgUrl   | Left thumb image                                  | string  | -         |
+| imageProps   | Image props                                  | ImageProps(https://nutui.jd.com/h5/react/1x/#/zh-CN/component/image)  | {isLazy: false, errorImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'}         |
 | title     | Title                   | string  | -    |
 | price | Price                         | string \| number  | -      |
 | vipPrice     | vip-price                               | string \| number | -    |
@@ -344,20 +347,14 @@ export default App;
 | infotpl   | Customize info content| React.ReactNode  | -      |
 | isNeedPrice   | Whether price display is required| boolean  | `true`      |
 | imgTag   | Product image label, often used to mark Double 11, live broadcast, etc | string  | -      |
-| isLazy   | Whether to show image lazyload| boolean  | `false`      |
 | imgTagDirection   | Display position of product image label, optional value: `top-left`、`top-right`| string  | `top-left`      |
 | titleTag   | The label on the left side of the title, often used for activity tags, etc. If this parameter is not set or this parameter is empty, it will not be displayed| React.ReactNode  | -      |
 | titleLine   | The number of title lines, the default is two lines, if you want to display more content below, you can set it to 1| string \| number  | `2`      |
-| linkUrl   | Jump link, click on the whole card by default to jump in the form of href, can be customized through click event| string  | -      |
-| imgWidth   | Width，Default unit px | string  | -      |
-| imgHeight   | Height，Default unit px | string  | -      |
-| loadingImg   | Set the prompt image during loading, which conflicts with `slotLoding` and has a higher priority than `slotLoding` | string  | -      |
-| errorImg   | Set the error prompt image, which conflicts with `slotError` and has a higher priority than `slotError` | string  | -      |
 
 ### Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
-| onClick | Click event |  event: MouseEvent |
+| onClick | Click event |  - |
 
 
 
