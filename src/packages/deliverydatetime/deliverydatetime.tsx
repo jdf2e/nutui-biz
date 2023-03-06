@@ -71,7 +71,7 @@ export const DeliveryDateTime: FunctionComponent<
   }, [data]);
 
   return (
-    <div className={`${b('')} ${className}`} style={style}>
+    <div className={`${b('')} ${className || ''}`} style={style}>
       <div className={`${b('pannel')}`}>
         {
           data && data.map((item: DateTimeType) => (

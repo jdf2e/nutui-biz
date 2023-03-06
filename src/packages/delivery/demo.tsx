@@ -98,7 +98,7 @@ const DeliveryDemo = () => {
                         {
                             label: '11',
                             text: '09:00-15:00',
-                            
+                            selected: true,
                         },
                         {
                             label: '22',
@@ -145,7 +145,6 @@ const DeliveryDemo = () => {
                                 {
                                     label: '444',
                                     text: '10:00-11:00',
-                                    selected: true,
                                 }
                             ]
                         },
