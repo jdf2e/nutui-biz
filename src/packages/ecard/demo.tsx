@@ -12,12 +12,11 @@ const EcardDemo = () => {
   const [translated] = useTranslate<T>({
     "zh-CN": {
       basic: "基本用法",
-    },
-    "zh-TW": {
-      basic: "基本用法",
+      handleMoney: "自定义函数处理总面值"
     },
     "en-US": {
       basic: "Basic Usage",
+      handleMoney: "A custom function to deal with the total price"
     },
   });
   const [dataList] = useState<Array<DataListItem>>([
@@ -55,7 +54,7 @@ const EcardDemo = () => {
             dataList={dataList}
           ></Ecard>
         </Cell>
-        <h2>{'自定义函数处理总面值'}</h2>
+        <h2>{translated.handleMoney}</h2>
         <Cell>
           <Ecard
             chooseText={<span>100以内打九折,超过100打八折!</span>}
