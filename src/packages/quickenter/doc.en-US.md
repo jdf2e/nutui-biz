@@ -19,10 +19,10 @@ import { QuickEnter } from "@nutui/nutui-biz";
 ```ts
 import React from "react";
 import { QuickEnter } from "@nutui/nutui-biz";
-import { data } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
+import { quickEnterData } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
 
 const App = () => {
-  return <QuickEnter data={data} />;
+  return <QuickEnter data={quickEnterData} />;
 };
 export default App;
 ```
@@ -38,27 +38,27 @@ When the length of the links array exceeds the maximum display number on one scr
 ```ts
 import React from "react";
 import { QuickEnter } from "@nutui/nutui-biz";
-import { data } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
+import { quickEnterData } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
 
 const App = () => {
-  return <QuickEnter data={data} indicatorVisible={true} />;
+  return <QuickEnter data={quickEnterData} indicatorVisible={true} />;
 };
 export default App;
 ```
 
 :::
 
-### single line
+### Single line
 
 :::demo
 
 ```ts
 import React from "react";
 import { QuickEnter } from "@nutui/nutui-biz";
-import { data } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
+import { quickEnterData } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
 
 const App = () => {
-  return <QuickEnter data={data} rows={1} indicatorVisible={true} />;
+  return <QuickEnter data={quickEnterData} rows={1} indicatorVisible={true} />;
 };
 export default App;
 ```
@@ -72,10 +72,10 @@ export default App;
 ```ts
 import React from "react";
 import { QuickEnter } from "@nutui/nutui-biz";
-import { data } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
+import { quickEnterData } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
 
 const App = () => {
-  return <QuickEnter slideMode={"slide"} data={data} rows={2} />;
+  return <QuickEnter slideMode={"slide"} data={quickEnterData} rows={2} />;
 };
 export default App;
 ```
@@ -93,7 +93,7 @@ export default App;
 | data                 | display data                                                | QuickEnterData[] | `[]`                 |
 | slideMode            | Multi-screen display effect, optional values: swiper, slide | string           | `swiper`             |
 | iconSize             | icon size, the unit is 'px'                                 | Array            | `[40,40]`            |
-| indicatorVisible     | Whether the indicator is displayed                          | boolean          | `false`              |
+| indicatorVisible     | Does the indicator show                                     | boolean          | `false`              |
 | indicatorBgColor     | indicator background color                                  | string           | `rgba(0, 0, 0, 0.2)` |
 | indicatorActiveColor | indicator active color                                      | string           | `#fa2c19`            |
 
@@ -108,4 +108,4 @@ export default App;
 
 | Event Name  | Description                             | Callback Parameters |
 | ----------- | --------------------------------------- | ------------------- |
-| onClickItem | Triggered when the icon area is clicked | item                |
+| onClickItem | Triggered when the icon area is clicked | QuickEnterData      |
