@@ -182,10 +182,9 @@ export default App;
 | pricePosition   | 价格和标签的前后位置 `front` `back`            | String               | `back`     |
 | coupon          | 渲染优惠券内容                                 | ICouponType          | -          |
 | btnText         | 按钮文案                                       | Stringe              | `立即领取` |
-| isReceived      | 是否领取优惠券                                 | Boolean              | -          |
+| isReceived      | 是否领取优惠券                                 | Boolean              | `false`    |
 | className       | 自定义类名                                     | String               | -          |
 | buttonProps     | 按钮 props，来自于 nutui-react 中 Button 组件  | Partial<ButtonProps> | -          |
-| usedIcon        | 已领取 icon                                    | Boolean              | `true`     |
 | itemData        | 父组件传递过来的数据，作为函数参数返回给父组件 | any                  | -          |
 
 ### ICouponType
@@ -203,4 +202,4 @@ export default App;
 
 | 字段    | 说明                                                           | 回调参数 |
 | ------- | -------------------------------------------------------------- | -------- |
-| onClick | 点击事件，参数为父组件传递过来的数据，作为函数参数返回给父组件 | any      |
+| onClick | 点击事件，参数为父组件传递过来的数据，作为函数参数返回给父组件 | itemData |
