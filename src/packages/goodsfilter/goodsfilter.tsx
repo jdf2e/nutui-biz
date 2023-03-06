@@ -7,7 +7,7 @@ import bem from '@/utils/bem'
 import { InputNum } from './components/InputNum'
 
 export interface GoodsFilterProps extends IComponent {
-  visiable: boolean
+  visible: boolean
   confirmText: string
   resetText: string
   priceRangeTitle: string
@@ -33,7 +33,7 @@ export interface GoodsFilterProps extends IComponent {
 }
 
 const defaultProps = {
-  visiable: false,
+  visible: false,
   confirmText: '确定',
   resetText: '重置',
   priceRangeTitle: '价格区间',
@@ -52,7 +52,7 @@ export const GoodsFilter: FunctionComponent<
   Partial<GoodsFilterProps> & HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
-    visiable,
+    visible,
     confirmText,
     resetText,
     priceRangeTitle,
@@ -143,7 +143,7 @@ export const GoodsFilter: FunctionComponent<
 
   // 价格区间格式化
   const norPriceRanges = useMemo(() => {
-    return priceRanges.map((range, index: number) => {
+    return priceRanges?.map((range, index: number) => {
       const defaultItem = {
         id: 0,
         low: "",
@@ -157,7 +157,7 @@ export const GoodsFilter: FunctionComponent<
 
   // 商品属性格式化
   const norGoodsAttrs = useMemo(() => {
-    return goodsAttrs.map((attr, index) => {
+    return goodsAttrs?.map((attr, index) => {
       const defaultItem = {
         isExpand: selectedValues.goodsAttrs.hasOwnProperty(attr.id)
           && selectedValues.goodsAttrs[attr.id].isExpand, // 是否展开
@@ -265,7 +265,7 @@ export const GoodsFilter: FunctionComponent<
 
   return (
     <Popup
-      visible={visiable}
+      visible={visible}
       position='right'
       round
       style={{ width: '80%', height: '100%' }}
@@ -328,7 +328,7 @@ export const GoodsFilter: FunctionComponent<
             </div>
             {/* 推荐价格范围 */}
             {
-              norPriceRanges.length ? <div className={b('chunk__price--recommend')}>
+              norPriceRanges?.length ? <div className={b('chunk__price--recommend')}>
                 {
                   norPriceRanges.map((range) => {
                     return <div
