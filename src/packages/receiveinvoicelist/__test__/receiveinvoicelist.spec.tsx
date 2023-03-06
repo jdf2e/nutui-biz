@@ -37,7 +37,7 @@ test('test props && event', async () => {
   const { container } = render(
     <ReceiveInvoiceList list={state.list} modelValue={state.modelValue} onSelected={event.onSelected} onEdit={event.onEdit} />
   )
-  const comp = container.querySelector('.nut-receive-invoice-list') as HTMLElement;
+  const comp = container.querySelector('.nb-receive-invoice-list') as HTMLElement;
   let el = expect(comp);
   el.toBeTruthy();
 
@@ -50,11 +50,11 @@ test('test props && event', async () => {
 
   // 测试 select 事件
   let testSelectIndex = 0;
-  const selectEl = container.querySelectorAll('.nut-receive-invoice-list__item-header')[testSelectIndex];
+  const selectEl = container.querySelectorAll('.nb-receive-invoice-list__item-header')[testSelectIndex];
   selectEl && fireEvent.click(selectEl);
   expect(clickSelectHandel.mock.lastCall[0]).toBe(state.list[testSelectIndex]);
 
-  const selectFooterEl = container.querySelectorAll('.nut-receive-invoice-list__item-footer')[testSelectIndex];
+  const selectFooterEl = container.querySelectorAll('.nb-receive-invoice-list__item-footer')[testSelectIndex];
   selectFooterEl && fireEvent.click(selectFooterEl);
   expect(clickSelectHandel.mock.lastCall[0]).toBe(state.list[testSelectIndex]);
 

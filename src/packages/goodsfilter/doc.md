@@ -13,49 +13,175 @@ import { GoodsFilter } from '@nutui/nutui-biz';
 ## 代码演示
 
 ### 基础用法
-```js
-import React, { useState } from 'react';
+:::demo
+```tsx
+import React, { useState,useEffect } from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { GoodsFilter } from '@nutui/nutui-biz';
-import data from "./GoodsFilter.js";
 
 const App = () => {
-
-  const [state, setState] = useState(data)
-  const [visiable1, setVisiable1] = useState(false)
+  const [state, setState] = useState({
+    priceRanges: [],
+    goodsAttrs: [],
+    filterAttrs: []
+  })
+  const [visible, setVisible] = useState(false)
+  useEffect(()=>{
+    fetch('https://storage.360buyimg.com/nutui/3x/data.json')
+      .then((response) => response.json())
+      .then((res) => {
+        setState(res)
+      }) //执行结果是 resolve就调用then方法
+      .catch((err) => console.log('Oh, error', err)); //执行结果是 reject就调用catch方法
+  },[])
   return (
     <>
-      <div className='demo'>
-        <h2>基础用法</h2>
-        <Cell onClick={() => { setVisiable1(true) }}>点击进行商品筛选</Cell>
-        <GoodsFilter
-          visiable={visiable1}
-          priceRanges={state.priceRanges}
-          goodsAttrs={state.goodsAttrs}
-          filterAttrs={state.filterAttrs}
-          maxLine={3}
-          icon={'heart'}
-          onClose={() => { setVisiable1(false) }}
-          onReset={() => { console.log('onReset')}}
-          onConfirm={(res) => { console.log('onConfirm', res) }}
-          onClickAddress={() => {
-            console.log('onClickAddress')
-          }}
-          onSelectedAttrs={(attr: any, selected: boolean, selectedAttrs: any) => {
-            console.log('onSelectedAttrs', attr)
-            console.log('selected', selected)
-            console.log('selectedAttrs', selectedAttrs)
-          }}
-          onSelectedPrice={(range: any) => {
-            console.log('onSelectedPrice', range)
-          }}
-        ></GoodsFilter>
-      </div>
+      <Cell onClick={() => { setVisible(true) }}>点击进行商品筛选</Cell>
+      <GoodsFilter
+        visible={visible}
+        priceRanges={state.priceRanges}
+        goodsAttrs={state.goodsAttrs}
+        filterAttrs={state.filterAttrs}
+        onClose={() => { setVisible(false) }}
+      ></GoodsFilter>
     </>
   );
 };
+export default App;
 ```
+:::
 
+### 自定义图标
+:::demo
+```tsx
+import React, { useState,useEffect } from 'react';
+import { Cell } from '@nutui/nutui-react';
+import { GoodsFilter } from '@nutui/nutui-biz';
+
+const App = () => {
+  const [state, setState] = useState({
+    priceRanges: [],
+    goodsAttrs: [],
+    filterAttrs: []
+  })
+  const [visible, setVisible] = useState(false)
+  useEffect(()=>{
+    fetch('https://storage.360buyimg.com/nutui/3x/data.json')
+      .then((response) => response.json())
+      .then((res) => {
+        setState(res)
+      }) //执行结果是 resolve就调用then方法
+      .catch((err) => console.log('Oh, error', err)); //执行结果是 reject就调用catch方法
+  },[])
+  return (
+    <>
+      <Cell onClick={() => { setVisible(true) }}>点击进行商品筛选</Cell>
+      <GoodsFilter
+        visible={visible}
+        priceRanges={state.priceRanges}
+        goodsAttrs={state.goodsAttrs}
+        filterAttrs={state.filterAttrs}
+        icon="heart"
+        onClose={() => { setVisible(false) }}
+      ></GoodsFilter>
+    </>
+  );
+};
+export default App;
+```
+:::
+
+### 设置默认展示行数
+:::demo
+```tsx
+import React, { useState,useEffect } from 'react';
+import { Cell } from '@nutui/nutui-react';
+import { GoodsFilter } from '@nutui/nutui-biz';
+
+const App = () => {
+  const [state, setState] = useState({
+    priceRanges: [],
+    goodsAttrs: [],
+    filterAttrs: []
+  })
+  const [visible, setVisible] = useState(false)
+  useEffect(()=>{
+    fetch('https://storage.360buyimg.com/nutui/3x/data.json')
+      .then((response) => response.json())
+      .then((res) => {
+        setState(res)
+      }) //执行结果是 resolve就调用then方法
+      .catch((err) => console.log('Oh, error', err)); //执行结果是 reject就调用catch方法
+  },[])
+  return (
+    <>
+      <Cell onClick={() => { setVisible(true) }}>点击进行商品筛选</Cell>
+      <GoodsFilter
+        visible={visible}
+        priceRanges={state.priceRanges}
+        goodsAttrs={state.goodsAttrs}
+        filterAttrs={state.filterAttrs}
+        maxLine={3}
+        onClose={() => { setVisible(false) }}
+      ></GoodsFilter>
+    </>
+  );
+};
+export default App;
+```
+:::
+
+### 点击事件
+:::demo
+```tsx
+import React, { useState,useEffect } from 'react';
+import { Cell } from '@nutui/nutui-react';
+import { GoodsFilter } from '@nutui/nutui-biz';
+
+const App = () => {
+  const [state, setState] = useState({
+    priceRanges: [],
+    goodsAttrs: [],
+    filterAttrs: []
+  })
+  const [visible, setVisible] = useState(false)
+  useEffect(()=>{
+    fetch('https://storage.360buyimg.com/nutui/3x/data.json')
+      .then((response) => response.json())
+      .then((res) => {
+        setState(res)
+      }) //执行结果是 resolve就调用then方法
+      .catch((err) => console.log('Oh, error', err)); //执行结果是 reject就调用catch方法
+  },[])
+  return (
+    <>
+      <Cell onClick={() => { setVisible(true) }}>点击进行商品筛选</Cell>
+      <GoodsFilter
+        visible={visible}
+        priceRanges={state.priceRanges}
+        goodsAttrs={state.goodsAttrs}
+        filterAttrs={state.filterAttrs}
+        onClose={() => { setVisible(false) }}
+        onReset={() => { console.log('onReset')}}
+        onConfirm={(res) => { console.log('onConfirm', res) }}
+        onClickAddress={() => {
+          console.log('onClickAddress')
+        }}
+        onSelectedAttrs={(attr: any, selected: boolean, selectedAttrs: any) => {
+          console.log('onSelectedAttrs', attr)
+          console.log('selected', selected)
+          console.log('selectedAttrs', selectedAttrs)
+        }}
+        onSelectedPrice={(range: any) => {
+          console.log('onSelectedPrice', range)
+        }}
+      ></GoodsFilter>
+    </>
+  );
+};
+export default App;
+```
+:::
 
 ## API
 
@@ -90,4 +216,4 @@ const App = () => {
 | onSelectedAttrs  | 点击筛选条件时触发 | `attr: any, selected: boolean, selectedAttrs: Array<any>` |
 | onSelectedPrice  | 点击推荐价格时触发 | `range: any` |
 | onBeforeSelected   | 在选中属性前进行的操作，调用 done() 函数进行选中 | `done: Function, selectedValue: any` |
-| onSelectedGoodsAttr | 点击商品属性筛选时触发 | `attrs: any, value: any` |
+| onSelectedGoodsAttr | 点击商品属性筛选时触发123 | `attrs: any, value: any` |

@@ -26,8 +26,7 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
+    marketingType: '自营',
     delivery: '厂商配送',
     shopName: '阳澄湖大闸蟹自营店>',
   }
@@ -36,8 +35,7 @@ const App = () => {
       imgUrl={state.imgUrl}
       title={state.title}
       price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
+      marketingType={state.marketingType}
       delivery={state.delivery}
       shopName={state.shopName}
     />
@@ -62,8 +60,7 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
+    marketingType: '自营',
     delivery: '厂商配送',
     shopName: '阳澄湖大闸蟹自营店>',
   }
@@ -82,8 +79,7 @@ const App = () => {
       imgUrl={state.imgUrl}
       title={state.title}
       price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
+      marketingType={state.marketingType}
       delivery={state.delivery}
       shopName={state.shopName}
       prolistTpl={
@@ -123,8 +119,7 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
+    marketingType: '自营',
     delivery: '厂商配送',
     shopName: '阳澄湖大闸蟹自营店>',
   }
@@ -140,11 +135,10 @@ const App = () => {
       imgUrl={state.imgUrl}
       title={state.title}
       price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
+      marketingType={state.marketingType}
       delivery={state.delivery}
       shopName={state.shopName}
-      originTpl={
+      priceAfterTpl={
         <img
           style={tagStyles}
           src="https://img11.360buyimg.com/jdphoto/s58x28_jfs/t9451/359/415622649/15318/b0943e5d/59a78495N3bd2a9f8.png"
@@ -172,8 +166,7 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
+    marketingType: '自营',
     delivery: '厂商配送',
     shopName: '阳澄湖大闸蟹自营店>',
   }
@@ -182,11 +175,10 @@ const App = () => {
       imgUrl={state.imgUrl}
       title={state.title}
       price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
+      marketingType={state.marketingType}
       delivery={state.delivery}
       shopName={state.shopName}
-      shopTagTpl={<div>自定义店铺介绍</div>}
+      productTagsTpl={<div>自定义店铺介绍</div>}
     />
   );
 };
@@ -209,8 +201,7 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
+    marketingType: '自营',
     delivery: '厂商配送',
     shopName: '阳澄湖大闸蟹自营店>',
   }
@@ -220,8 +211,7 @@ const App = () => {
       imgUrl={state.imgUrl}
       title={state.title}
       price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
+      marketingType={state.marketingType}
       delivery={state.delivery}
       shopName={state.shopName}
       footerTpl={<div style={{ fontSize: '12px' }}>自定义</div>}
@@ -248,8 +238,7 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
+    marketingType: '自营',
     delivery: '厂商配送',
     shopName: '阳澄湖大闸蟹自营店>',
   }
@@ -259,11 +248,10 @@ const App = () => {
       imgUrl={state.imgUrl}
       title={state.title}
       price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
+      marketingType={state.marketingType}
       delivery={state.delivery}
       shopName={state.shopName}
-      bottomTpl={<div style={{ fontSize: '12px' }}>自定义</div>}
+      bottomTpl={<div style={{ fontSize: '12px', paddingBottom: '15px', textAlign: 'center' }}>自定义促销信息等</div>}
     />
   );
 };
@@ -288,8 +276,7 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
+    marketingType: '自营',
     delivery: '厂商配送',
     shopName: '阳澄湖大闸蟹自营店>',
   }
@@ -300,8 +287,7 @@ const App = () => {
         imgUrl={state.imgUrl}
         title={state.title}
         price={state.price}
-        vipPrice={state.vipPrice}
-        shopDesc={state.shopDesc}
+        marketingType={state.marketingType}
         delivery={state.delivery}
         shopName={state.shopName}
         showType="half-line"
@@ -310,8 +296,7 @@ const App = () => {
         imgUrl={state.imgUrl}
         title={state.title}
         price={state.price}
-        vipPrice={state.vipPrice}
-        shopDesc={state.shopDesc}
+        marketingType={state.marketingType}
         delivery={state.delivery}
         shopName={state.shopName}
         showType="half-line"
@@ -333,15 +318,11 @@ export default App;
 |---------|--------------------------------------------|---------|-----------|
 | imageProps   | 图片基础组件 props                                 | ImageProps(https://nutui.jd.com/h5/react/1x/#/zh-CN/component/image)  | {isLazy: false, errorImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'}         |
 | title     | 标题                   | string  | -    |
-| price | 商品价格                         | string \| number  | -      |
-| vipPrice     | 会员价格                               | string \| number | -    |
-| shopDesc  | 店铺介绍                                  | string | -    |
-| delivery     | 配送方式 | string  | -      |
+| price | 商品价格                         | ReactNode  | -      |
+| priceAfterTpl   | 价格后方自定义内容| ReactNode  | -      |
 | shopName   | 店铺名称| string  | -      |
-| prolistTpl   | 自定义商品介绍| ReactNode  | -      |
-| priceTpl   | 价格自定义内容 | ReactNode  | -      |
-| originTpl   | 价格后方自定义内容| ReactNode  | -      |
-| shopTagTpl   | 店铺介绍自定义| ReactNode  | -      |
+| prolistTpl   | 自定义商品介绍，位于标题和价格中间 | ReactNode  | -      |
+| productTagsTpl   | 商品标签自定义| ReactNode  | -      |
 | footerTpl   | 右下角内容自定义| ReactNode  | -      |
 | showType   | 展示形式，可选：`full-line`、`half-line`| string  | `full-line`      |
 | bottomTpl   | 底部内容自定义| ReactNode  | -      |
@@ -357,3 +338,4 @@ export default App;
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onClick | 点击事件 | - |
+| onClickShop | 点击店铺事件 | - |

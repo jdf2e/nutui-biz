@@ -72,9 +72,11 @@ export default App;
 | otherValueText| 其它面值文案   | string |    `其它面值`   |
 | dataList      | 电子卡面值列表  | Array |  `DataListItem[]`  |
 | cardAmountMin | 其它面值最小值  | number | `1` |
-| inputNumberProps | inputNumber组件props  | `Partial<InputNumberProps> `| |
+| inputNumberProps | inputNumber组件props  | `Partial<InputNumberProps> `| ` { min: 1,max: 9999}`|
 | cardAmountMax | 其它面值最大值  | number | `9999`            ||
 | placeholder   | 其它面值默认提示语 | string | `请输入1-9999整数`|
+| rowNum   | 每行展示卡数量 | number | 2|
+
 
 ### Events
 
