@@ -22,20 +22,20 @@ import data from "./GoodsFilter.js";
 const App = () => {
 
   const [state, setState] = useState(data)
-  const [visiable1, setVisiable1] = useState(false)
+  const [visible1, setVisible1] = useState(false)
   return (
     <>
       <div className='demo'>
         <h2>Basic Usage</h2>
-        <Cell onClick={() => { setVisiable1(true) }}>Click to select goods</Cell>
+        <Cell onClick={() => { setVisible1(true) }}>Click to select goods</Cell>
         <GoodsFilter
-          visiable={visiable1}
+          visible={visible1}
           priceRanges={state.priceRanges}
           goodsAttrs={state.goodsAttrs}
           filterAttrs={state.filterAttrs}
           maxLine={3}
           icon={'heart'}
-          onClose={() => { setVisiable1(false) }}
+          onClose={() => { setVisible1(false) }}
           onReset={() => { console.log('onReset')}}
           onConfirm={(res) => { console.log('onConfirm', res) }}
           onClickAddress={() => {

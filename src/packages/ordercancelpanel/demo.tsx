@@ -1,18 +1,15 @@
 import React, { useState, CSSProperties } from "react";
-import { OrderCancelPanel } from "./ordercancelpanel";
+import { OrderCancelPanel, IKeyValue } from "./ordercancelpanel";
 import { Cell, Button, ButtonProps, TextAreaProps } from "@nutui/nutui-react";
 import { useTranslate } from "../../sites/assets/locale";
 
-interface IKeyValue {
-  key: string;
-  value: string;
-}
 interface T {
   basic: string;
   tipsText: string;
   otherText: string;
   cellTitle: string;
   btnsText: string;
+  cancelText: string;
   cancelReasonTitle: string;
   reasonTitle: string;
   tipsTitle: string;
@@ -28,6 +25,7 @@ const CouponDemo = () => {
       basic: "基本用法",
       tipsText: "带有温馨提示的组件",
       otherText: "带有其他原因选项的组件",
+      cancelText: "可取消已选中的原因",
       cellTitle: "显示弹窗",
       btnsText: "确认",
       cancelReasonTitle: "退款原因",
@@ -78,6 +76,7 @@ const CouponDemo = () => {
       tipsText: "Components with warm tips",
       otherText: "Components with other reason options",
       cellTitle: "Show Dialog",
+      cancelText: "",
       tipsTitle: "reminder",
       reasonTitle: "Please select the reason for canceling the order",
       cancelReasonTitle: "Refund reason",
@@ -144,7 +143,7 @@ const CouponDemo = () => {
     };
   }, []);
   const popupTitleMemo = React.useMemo(() => {
-    return <div>{translated.cancelReasonTitle}</div>;
+    return translated.cancelReasonTitle;
   }, []);
   const reasonTitleMemo = React.useMemo(() => {
     return <div>{translated.reasonTitle}</div>;
@@ -152,33 +151,40 @@ const CouponDemo = () => {
 
   //基本使用
   const [showPanel, setShowPanel] = useState(false);
-  //带有温馨提示的组件
-  const [showCancelPanel, setShowCancelPanel] = useState(false);
-  //带有其他原因选项的组件
-  const [showOtherCancelPanel, setShowOtherCancelPanel] = useState(false);
-
   //关闭弹窗触发的事件
   const clickClosePopUp = React.useCallback(() => {
     setShowPanel(false);
   }, [showPanel]);
 
+  //带有温馨提示的组件
+  const [showCancelPanel, setShowCancelPanel] = useState(false);
   const clickClosePopUpSec = React.useCallback(() => {
     setShowCancelPanel(false);
   }, [showCancelPanel]);
 
+  //带有其他原因选项的组件
+  const [showOtherCancelPanel, setShowOtherCancelPanel] = useState(false);
   const clickClosePopUpThree = React.useCallback(() => {
     setShowOtherCancelPanel(false);
   }, [showOtherCancelPanel]);
 
+  //可以取消已选择原因选项的组件
+  const [showCancelCancelPanel, setShowCancelCancelPanel] = useState(false);
+  const clickClosePopUpCancel = React.useCallback(() => {
+    setShowCancelCancelPanel(false);
+  }, [showCancelCancelPanel]);
   //提交事件
   const submitBtn = React.useCallback(
-    (currActivedKey: string, textAreaValue: string) => {
+    (selectedReason: IKeyValue, textAreaValue: string) => {
       console.log(
-        `currActivedKey:${currActivedKey}, textAreaValue,${textAreaValue}`
+        `selectedReason:${JSON.stringify(
+          selectedReason
+        )}, textAreaValue:${textAreaValue}`
       );
       clickClosePopUp();
       clickClosePopUpSec();
       clickClosePopUpThree();
+      clickClosePopUpCancel();
     },
     []
   );
@@ -191,7 +197,7 @@ const CouponDemo = () => {
         <OrderCancelPanel
           showCancelPanel={showPanel}
           popupTitle={popupTitleMemo}
-          cancelResons={translated.cancelReason}
+          cancelReason={translated.cancelReason}
           buttonProps={buttonProps}
           onClickCloseIcon={clickClosePopUp}
           onClose={clickClosePopUp}
@@ -207,7 +213,7 @@ const CouponDemo = () => {
           showCancelPanel={showCancelPanel}
           popupTitle={popupTitleMemo}
           reasonTitle={reasonTitleMemo}
-          cancelResons={translated.cancelReason}
+          cancelReason={translated.cancelReason}
           warmTips={translated.warmTips}
           tipsTitle={translated.tipsTitle}
           btnsText={translated.btnsText}
@@ -225,16 +231,32 @@ const CouponDemo = () => {
         <OrderCancelPanel
           showCancelPanel={showOtherCancelPanel}
           popupTitle={popupTitleMemo}
-          canCancelReason={true}
           tipsTitle={translated.tipsTitle}
           btnsText={translated.btnsText}
           warmTips={translated.warmTips}
-          cancelResons={otherReasonList}
+          cancelReason={otherReasonList}
           buttonProps={buttonProps}
           textAreaProps={textareaProps}
           onClickCloseIcon={clickClosePopUpThree}
           onClose={clickClosePopUpThree}
           onClickOverlay={clickClosePopUpThree}
+          onSubmitBtn={submitBtn}
+        />
+        <h2>{translated.cancelText}</h2>
+        <Cell
+          title={translated.cellTitle}
+          onClick={() => setShowCancelCancelPanel(true)}
+        />
+        <OrderCancelPanel
+          showCancelPanel={showCancelCancelPanel}
+          popupTitle={popupTitleMemo}
+          canCancelReason={true}
+          cancelReason={translated.cancelReason}
+          buttonProps={buttonProps}
+          textAreaProps={textareaProps}
+          onClickCloseIcon={clickClosePopUpCancel}
+          onClose={clickClosePopUpCancel}
+          onClickOverlay={clickClosePopUpCancel}
           onSubmitBtn={submitBtn}
         />
       </div>

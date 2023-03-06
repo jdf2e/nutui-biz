@@ -8,7 +8,7 @@ const state = data
 test('Show GoodsFilter', async () => {
   const { asFragment } = render(
     <GoodsFilter
-      visiable={true}
+      visible={true}
       priceRanges={state.priceRanges}
       goodsAttrs={state.goodsAttrs}
       filterAttrs={state.filterAttrs}
@@ -35,7 +35,7 @@ test('Show GoodsFilter', async () => {
 test('Custome icon', async () => {
   const { container } = render(
     <GoodsFilter
-      visiable={true}
+      visible={true}
       priceRanges={state.priceRanges}
       goodsAttrs={state.goodsAttrs}
       filterAttrs={state.filterAttrs}
@@ -54,7 +54,7 @@ test('Click test', async () => {
   const onSelectedPrice = jest.fn()
   const { container } = render(
     <GoodsFilter
-      visiable={true}
+      visible={true}
       priceRanges={state.priceRanges}
       goodsAttrs={state.goodsAttrs}
       filterAttrs={state.filterAttrs}

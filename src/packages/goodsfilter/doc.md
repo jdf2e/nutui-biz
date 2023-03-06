@@ -13,29 +13,266 @@ import { GoodsFilter } from '@nutui/nutui-biz';
 ## 代码演示
 
 ### 基础用法
-```js
-import React, { useState } from 'react';
+:::demo
+```tsx
+import React, { useState,useEffect } from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { GoodsFilter } from '@nutui/nutui-biz';
-import data from "./GoodsFilter.js";
 
 const App = () => {
-
-  const [state, setState] = useState(data)
-  const [visiable1, setVisiable1] = useState(false)
+  const [state, setState] = useState({
+  // 默认选中项
+  selectedValue: {
+    filterAttrs: [0],
+    goodsAttrs: [{ id: 1, values: ["12690", "19306"] }]
+  },
+  filterAttrs: [{
+    id: 0,
+    name: '仅看有货'
+  }, {
+    id: 1,
+    name: '京东物流'
+  }, {
+    id: 2,
+    name: '货到付款'
+  }, {
+    id: 3,
+    name: '放心购'
+  }],
+  // 价格区间
+  priceRanges: [{
+    low: '53',
+    high: '132',
+    desc: '14%选择',
+    extra: {}
+  }, {
+    low: '132',
+    high: '314',
+    desc: '45%选择',
+    extra: {}
+  }, {
+    low: '3141',
+    high: '13291329',
+    desc: '27%选择',
+    extra: {}
+  }],
+  // 商品属性筛选
+  goodsAttrs: [{
+    title: '品牌',
+    id: 1,
+    values: [{
+      id: "12690",
+      name: "蒙牛",
+      extra: {},
+    }, {
+      id: "19306",
+      name: "伊利",
+      extra: {},
+    }, {
+      id: "15139",
+      name: "三元（SAN YUAN）",
+      extra: {},
+    }, {
+      id: "575367",
+      name: "麦趣尔",
+      extra: {},
+    }, {
+      id: "6024",
+      name: "德亚（Weidendorf）",
+      extra: {},
+    }, {
+      id: "3492",
+      name: "安佳（Anchor）",
+      extra: {},
+    }, {
+      id: "376553",
+      name: "认养一头牛",
+      extra: {},
+    }, {
+      id: "1",
+      name: "小西牛",
+      extra: {},
+    }, {
+      id: "2",
+      name: "澳牧",
+      extra: {},
+    }, {
+      id: "3",
+      name: "光明",
+      extra: {},
+    }, {
+      id: "4",
+      name: "旺旺",
+      extra: {},
+    }, {
+      id: "5",
+      name: "西域春",
+      extra: {},
+    }, {
+      id: "6",
+      name: "新希望",
+      extra: {},
+    }, {
+      id: "7",
+      name: "Bio-E",
+      extra: {},
+    }, {
+      id: "8",
+      name: "植选",
+      extra: {},
+    }, {
+      id: "9",
+      name: "百菲酪",
+      extra: {},
+    }, {
+      id: "10",
+      name: "新农",
+      extra: {},
+    }, {
+      id: "11",
+      name: "卡士",
+      extra: {},
+    }, {
+      id: "12",
+      name: "君乐宝",
+      extra: {},
+    }, {
+      id: "13",
+      name: "甘蒂牧场",
+      extra: {},
+    }, {
+      id: "14",
+      name: "爱氏晨曦",
+      extra: {},
+    }, {
+      id: "15",
+      name: "简颜轻",
+      extra: {},
+    }, {
+      id: "16",
+      name: "歌帝梵",
+      extra: {},
+    }, {
+      id: "17",
+      name: "瑞士莲",
+      extra: {},
+    }, {
+      id: "18",
+      name: "BEAUTYBUFFET",
+      extra: {},
+    }, {
+      id: "19",
+      name: "纽麦福",
+      extra: {},
+    }, {
+      id: "20",
+      name: "TAUPO PURE",
+      extra: {},
+    }, {
+      id: "21",
+      name: "西域美农",
+      extra: {},
+    }, {
+      id: "22",
+      name: "风车牧场",
+      extra: {},
+    }]
+  }, {
+    title: '类别',
+    id: 2,
+    values: [{
+      id: "76437",
+      name: "鲜牛奶",
+      extra: {},
+    }, {
+      id: "83307",
+      name: "低温酸奶",
+      extra: {},
+    }, {
+      id: "101080",
+      name: "调味鲜牛奶",
+      extra: {},
+    }, {
+      id: "86611",
+      name: "低温牛奶",
+      extra: {},
+    }]
+  }, {
+    title: '口味',
+    id: 3,
+    values: [{
+      id: "21484",
+      name: "水果味",
+      extra: {},
+    }, {
+      id: "154960",
+      name: "白桃味",
+      extra: {},
+    }, {
+      id: "32593",
+      name: "巧克力味",
+      extra: {},
+    }, {
+      id: "9689",
+      name: "原味",
+      extra: {},
+    }, {
+      id: "9787",
+      name: "草莓味",
+      extra: {},
+    }, {
+      id: "114540",
+      name: "红枣味",
+      extra: {},
+    }, {
+      id: "82221",
+      name: "香蕉味",
+      extra: {},
+    }, {
+      id: "82690",
+      name: "水蜜桃味",
+      extra: {},
+    }]
+  }, {
+    title: '钙含量',
+    id: 4,
+    values: [{
+      id: "83057",
+      name: "高钙",
+      extra: {},
+    }, {
+      id: "131114",
+      name: "非高钙",
+      extra: {},
+    }]
+  }, {
+    title: '蛋白质含量',
+    id: 5,
+    values: [{
+      id: "9756",
+      name: "高蛋白",
+      extra: {},
+    }, {
+      id: "131113",
+      name: "非高蛋白",
+      extra: {},
+    }]
+  }]
+})
+  const [visible1, setVisible1] = useState(false)
   return (
     <>
       <div className='demo'>
         <h2>基础用法</h2>
-        <Cell onClick={() => { setVisiable1(true) }}>点击进行商品筛选</Cell>
+        <Cell onClick={() => { setVisible1(true) }}>点击进行商品筛选</Cell>
         <GoodsFilter
-          visiable={visiable1}
+          visible={visible1}
           priceRanges={state.priceRanges}
           goodsAttrs={state.goodsAttrs}
           filterAttrs={state.filterAttrs}
           maxLine={3}
           icon={'heart'}
-          onClose={() => { setVisiable1(false) }}
+          onClose={() => { setVisible1(false) }}
           onReset={() => { console.log('onReset')}}
           onConfirm={(res) => { console.log('onConfirm', res) }}
           onClickAddress={() => {
@@ -54,7 +291,9 @@ const App = () => {
     </>
   );
 };
+export default App;
 ```
+:::
 
 
 ## API
@@ -90,4 +329,4 @@ const App = () => {
 | onSelectedAttrs  | 点击筛选条件时触发 | `attr: any, selected: boolean, selectedAttrs: Array<any>` |
 | onSelectedPrice  | 点击推荐价格时触发 | `range: any` |
 | onBeforeSelected   | 在选中属性前进行的操作，调用 done() 函数进行选中 | `done: Function, selectedValue: any` |
-| onSelectedGoodsAttr | 点击商品属性筛选时触发 | `attrs: any, value: any` |
+| onSelectedGoodsAttr | 点击商品属性筛选时触发123 | `attrs: any, value: any` |
