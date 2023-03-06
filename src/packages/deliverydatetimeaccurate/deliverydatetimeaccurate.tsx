@@ -59,18 +59,13 @@ export const DeliveryDateTimeAccurate: FunctionComponent<
   const initData = () => {
     const list = ((activeKey == ACTIVEKEY || !activeKey) ? data[0] : data.find((item: DateTimeAccurateType) => item.label == activeKey)) as DateTimeAccurateType;
     let date = list.children[0].children[0];
-    let currItem = {...list.children[0], children: [list.children[0].children[0]]};
     for(let i = 0; i < list?.children.length; i++) {
       const item = list?.children[i].children;
       date = item.find((subitem: DateType) => subitem.selected) as DateType;
-      if(date) {
-        currItem = { ...list?.children[i], children: [{...date}] };
-        break;
-      }
+      if(date) break;
     }
     setDate(!date ? list.children[0].children[0] : date);
     setList(list?.children as DateTimeType[]);
-    // onSelect?.({ ...list as DateTimeAccurateType, children: [{...currItem}]});
   }
 
   useEffect(() => {

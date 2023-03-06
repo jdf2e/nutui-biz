@@ -62,7 +62,6 @@ export const DeliveryDateTime: FunctionComponent<
     date = date ? date : (list?.children as DateType[])[0];
     setList(list?.children as DateType[]);
     setDate(date);
-    // onSelect?.({ ...list as DateTimeType, children: [date]});
   }
 
   useEffect(() => {
