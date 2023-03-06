@@ -21,7 +21,7 @@ import { GoodsFilter } from '@nutui/nutui-biz';
 
 const App = () => {
   const [state, setState] = useState()
-  const [visiable1, setVisiable1] = useState(false)
+  const [visible1, setVisible1] = useState(false)
   useEffect(()=>{
     fetch('https://storage.360buyimg.com/nutui/3x/data.json')
           .then((response) => response.json())
@@ -34,15 +34,15 @@ const App = () => {
     <>
       <div className='demo'>
         <h2>基础用法</h2>
-        <Cell onClick={() => { setVisiable1(true) }}>点击进行商品筛选</Cell>
+        <Cell onClick={() => { setVisible1(true) }}>点击进行商品筛选</Cell>
         <GoodsFilter
-          visiable={visiable1}
+          visible={visible1}
           priceRanges={state.priceRanges}
           goodsAttrs={state.goodsAttrs}
           filterAttrs={state.filterAttrs}
           maxLine={3}
           icon={'heart'}
-          onClose={() => { setVisiable1(false) }}
+          onClose={() => { setVisible1(false) }}
           onReset={() => { console.log('onReset')}}
           onConfirm={(res) => { console.log('onConfirm', res) }}
           onClickAddress={() => {

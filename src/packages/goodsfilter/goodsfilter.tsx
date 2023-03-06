@@ -7,7 +7,7 @@ import bem from '@/utils/bem'
 import { InputNum } from './components/InputNum'
 
 export interface GoodsFilterProps extends IComponent {
-  visiable: boolean
+  visible: boolean
   confirmText: string
   resetText: string
   priceRangeTitle: string
@@ -33,7 +33,7 @@ export interface GoodsFilterProps extends IComponent {
 }
 
 const defaultProps = {
-  visiable: false,
+  visible: false,
   confirmText: '确定',
   resetText: '重置',
   priceRangeTitle: '价格区间',
@@ -52,7 +52,7 @@ export const GoodsFilter: FunctionComponent<
   Partial<GoodsFilterProps> & HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
-    visiable,
+    visible,
     confirmText,
     resetText,
     priceRangeTitle,
@@ -265,7 +265,7 @@ export const GoodsFilter: FunctionComponent<
 
   return (
     <Popup
-      visible={visiable}
+      visible={visible}
       position='right'
       round
       style={{ width: '80%', height: '100%' }}

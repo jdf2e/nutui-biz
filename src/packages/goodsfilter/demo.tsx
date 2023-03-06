@@ -6,50 +6,50 @@ import data from './data'
 const GoodsFilterDemo = () => {
 
   const [state, setState] = useState(data)
-  const [visiable1, setVisiable1] = useState(false)
-  const [visiable2, setVisiable2] = useState(false)
-  const [visiable3, setVisiable3] = useState(false)
-  const [visiable4, setVisiable4] = useState(false)
+  const [visible1, setVisible1] = useState(false)
+  const [visible2, setVisible2] = useState(false)
+  const [visible3, setVisible3] = useState(false)
+  const [visible4, setVisible4] = useState(false)
   return (
     <>
       <div className='demo'>
         <h2>基础用法</h2>
-        <Cell onClick={() => { setVisiable1(true) }}>点击进行商品筛选</Cell>
+        <Cell onClick={() => { setVisible1(true) }}>点击进行商品筛选</Cell>
         <GoodsFilter
-          visiable={visiable1}
+          visible={visible1}
           priceRanges={state.priceRanges}
           goodsAttrs={state.goodsAttrs}
           filterAttrs={state.filterAttrs}
-          onClose={() => { setVisiable1(false) }}
+          onClose={() => { setVisible1(false) }}
         ></GoodsFilter>
         <h2>自定义图标</h2>
-        <Cell onClick={() => { setVisiable2(true) }}>点击进行商品筛选</Cell>
+        <Cell onClick={() => { setVisible2(true) }}>点击进行商品筛选</Cell>
         <GoodsFilter
-          visiable={visiable2}
+          visible={visible2}
           priceRanges={state.priceRanges}
           goodsAttrs={state.goodsAttrs}
           filterAttrs={state.filterAttrs}
           icon={'heart'}
-          onClose={() => { setVisiable2(false) }}
+          onClose={() => { setVisible2(false) }}
         ></GoodsFilter>
         <h2>设置默认展示行数</h2>
-        <Cell onClick={() => { setVisiable3(true) }}>点击进行商品筛选</Cell>
+        <Cell onClick={() => { setVisible3(true) }}>点击进行商品筛选</Cell>
         <GoodsFilter
-          visiable={visiable3}
+          visible={visible3}
           priceRanges={state.priceRanges}
           goodsAttrs={state.goodsAttrs}
           filterAttrs={state.filterAttrs}
           maxLine={3}
-          onClose={() => { setVisiable3(false) }}
+          onClose={() => { setVisible3(false) }}
         ></GoodsFilter>
         <h2>点击事件</h2>
-        <Cell onClick={() => { setVisiable4(true) }}>点击进行商品筛选</Cell>
+        <Cell onClick={() => { setVisible4(true) }}>点击进行商品筛选</Cell>
         <GoodsFilter
-          visiable={visiable4}
+          visible={visible4}
           priceRanges={state.priceRanges}
           goodsAttrs={state.goodsAttrs}
           filterAttrs={state.filterAttrs}
-          onClose={() => { setVisiable4(false) }}
+          onClose={() => { setVisible4(false) }}
           onReset={() => { console.log('onReset')}}
           onConfirm={(res) => { console.log('onConfirm', res) }}
           onClickAddress={() => {
