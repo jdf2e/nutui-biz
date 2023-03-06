@@ -27,6 +27,7 @@ export interface EcardProps {
   cardAmountMax: number;
   inputNumberProps: Partial<InputNumberProps>;
   placeholder: string;
+  rowNum?: number
   handleMoney?: (money: number) => any;
   onChange?: (item: DataListItem, money: number) => void;
   onChangeInput?: (val: number, money: number) => void;
@@ -47,6 +48,7 @@ const defaultProps = {
   cardAmountMax: 9999,
   handleMoney: (money: number) => money,
   placeholder: '请输入1-9999整数',
+  rowNum: 2
 } as EcardProps;
 
 export const Ecard: FunctionComponent<
@@ -64,6 +66,7 @@ export const Ecard: FunctionComponent<
     cardAmountMax,
     inputNumberProps,
     placeholder,
+    rowNum,
     onChange,
     onChangeInput,
     handleMoney,
@@ -78,6 +81,7 @@ export const Ecard: FunctionComponent<
   const [customValue, setCustomValue] = useState<string | number>("");
   const [cardAmount, setCardAmount] = useState(cardAmountMin);
   const [money, setMoney] = useState<number>(accurateMultiply(dataList[0].price, 1))
+  const listItemWidth = rowNum ? Number((96 / rowNum).toFixed(0)) : 48
 
   useEffect(() => {
     const getTotalPrice = () => {
@@ -131,6 +135,7 @@ export const Ecard: FunctionComponent<
               <div
                 className={`${b("list__item")} ${currentIndex === index && "active"
                   }`}
+                style={{ width: `${listItemWidth}%` }}
                 key={index}
                 onClick={() => {
                   handleClick(item, index);
