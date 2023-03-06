@@ -156,8 +156,6 @@ export const ReceiveInvoiceEdit: FunctionComponent<
   const closeAddress = (val: CloseCallBack) => {
     //地址id格式处理
     let ids = (val.data as CloseCallBackData ).addressIdStr.split("_").map((item: string) => +item * 1);
-    console.log(ids);
-    
     //删除数组中为0的项
     ids.splice(ids.indexOf(0));
     //提交信息数据同步
