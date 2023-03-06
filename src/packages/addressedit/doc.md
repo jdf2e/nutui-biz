@@ -338,7 +338,7 @@ export default App;
 | address   | 地址组件相关信息                                | Object  | {}        |
 | data   | 编辑地址数据格式设置                                 | Object  | {}         |
 | addressInfo   | 地址信息                                 | Object  |{}         |
-| bottomInputTpl   | 自定义输入框                                 | ReactNode  | --         |
+| bottomInputTpl   | 自定义输入框                                 | ReactNode  | -         |
 | showSave   | 保存按钮是否显示                          | Boolean | `true`         |
 
 
@@ -346,14 +346,14 @@ export default App;
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
 | addressSelect   | 设置默认选中地址 | String\|Number[] | [] |
-| addressStr   | 地址信息                                 | String  |   --      |
+| addressStr   | 地址信息                                 | String  |   -      |
 | province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
-| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | String、Number | `200px` |
+| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | String | Number | `200px` |
 | customAddressTitle  | 自定义地址选择文案，type='custom' 时生效 | String | `请选择所在地区` |
-| addressType   | 地址组件类型，可选'custom'/'custom2'                                 | string  | `custom`         |
+| addressType   | 地址组件类型，可选`custom`/`custom2`                                 | string  | `custom`         |
 
 ### Props data
 | 字段    | 说明                                       | 类型    | 默认值    |
@@ -375,12 +375,12 @@ export default App;
 ### Props addressInfo
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| name | 收货人信息 | String | '-- |
-| tel | 电话号码信息 | String | -- |
-| region | 所在区域信息 | String | -- |
-| regionIds | 所在区域已选地址id信息 | String | -- |
-| address | 详细地址信息 | String | -- |
-| default | 是否为默认地址 |  Boolean  | false |
+| name | 收货人信息 | String | - |
+| tel | 电话号码信息 | String | - |
+| region | 所在区域信息 | String | - |
+| regionIds | 所在区域已选地址id信息 | String | - |
+| address | 详细地址信息 | String | - |
+| default | 是否为默认地址 |  Boolean  | `false` |
 
 
 

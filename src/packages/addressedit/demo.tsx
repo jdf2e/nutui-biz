@@ -157,7 +157,8 @@ const AddressEditDemo = () => {
             }}
           />
         </>
-      ) : radioVal == "2" ? (
+      ) : null}
+      {radioVal == "2" ? (
         <>
           <h2>{translated.selected}</h2>
           <AddressEdit
@@ -171,7 +172,8 @@ const AddressEditDemo = () => {
             onCloseAddress={onClose}
           />
         </>
-      ) : radioVal == "3" ? (
+      ) : null}
+      {radioVal == "3" ? (
         <>
           <h2>{translated.custom1}</h2>
           <AddressEdit
@@ -188,7 +190,8 @@ const AddressEditDemo = () => {
             onCloseAddress={onClose}
           />
         </>
-      ) : (
+      ) : null}
+      {radioVal == "4" ? (
         <>
           <h2>{translated.custom2}</h2>
           <AddressEdit
@@ -233,7 +236,7 @@ const AddressEditDemo = () => {
             }
           />
         </>
-      )}
+      ) : null}
     </div>
   );
 };
