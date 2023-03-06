@@ -18,7 +18,7 @@ import { OrderRemark } from '@nutui/nutui-biz';
 
 ```tsx
 import React, { useState } from 'react';
-import { OrderRemark } from './orderremark';
+import { OrderRemark } from '@nutui/nutui-biz';
 import { Cell, Toast } from '@nutui/nutui-react';
 const App = () => {
   const [show, setShow] = useState(false);
@@ -38,6 +38,7 @@ const App = () => {
     </div>
   );
 };
+export default App;
 ```
 
 :::
@@ -48,7 +49,7 @@ const App = () => {
 
 ```tsx
 import React, { useState } from 'react';
-import { OrderRemark } from './orderremark';
+import { OrderRemark } from '@nutui/nutui-biz';
 import { Cell, Toast } from '@nutui/nutui-react';
 const App = () => {
   const [show, setShow] = useState(false);
@@ -77,6 +78,7 @@ const App = () => {
     </div>
   );
 };
+export default App;
 ```
 
 :::
@@ -87,7 +89,7 @@ const App = () => {
 
 ```tsx
 import React, { useState } from 'react';
-import { OrderRemark } from './orderremark';
+import { OrderRemark } from '@nutui/nutui-biz';
 import { Cell, Toast } from '@nutui/nutui-react';
 const App = () => {
   const [show, setShow] = useState(false);
@@ -119,6 +121,7 @@ const App = () => {
     </div>
   );
 };
+export default App;
 ```
 
 ### Event Demonstration
@@ -127,7 +130,7 @@ const App = () => {
 
 ```tsx
 import React, { useState } from 'react';
-import { OrderRemark } from './orderremark';
+import { OrderRemark } from '@nutui/nutui-biz';
 import { Cell, Toast } from '@nutui/nutui-react';
 const App = () => {
   const [show, setShow] = useState(false);
@@ -174,6 +177,7 @@ const App = () => {
     </div>
   );
 };
+export default App;
 ```
 
 :::

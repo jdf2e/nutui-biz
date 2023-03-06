@@ -19,7 +19,7 @@ export interface OrderRemarkProps extends IComponent {
   onClose?: (val: string) => void;
   onOpen?: () => void;
   onChange?: (val: string) => void;
-  onClickTag?: (tag: string) => void;
+  onClickTag?: (tag: string, index: number) => void;
   onSubmit?: (val: string) => void;
 }
 
@@ -76,12 +76,12 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
     onOpen && onOpen();
   };
 
-  const clickTag = (tag: string) => {
+  const clickTag = (tag: string, index: number) => {
     setInnerMark(tag);
-    onClickTag && onClickTag(tag);
+    onClickTag && onClickTag(tag, index);
     onChange && onChange(tag);
   };
-  const textareaChange = (val: any) => {
+  const textareaChange = (val: string) => {
     setInnerMark(val);
     onChange && onChange(val);
   };
@@ -128,7 +128,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
             <div className={b('tag-content')}>
               {recommendTags.map((item: string, index: number) => {
                 return (
-                  <div key={index} className={b('tag')} onClick={(e) => clickTag(item)}>
+                  <div key={index} className={b('tag')} onClick={() => clickTag(item, index)}>
                     {item}
                   </div>
                 );
@@ -137,7 +137,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
           </div>
         )}
         <div className={b('opt-container')}>
-          <Button onClick={(e) => onBtnSubmit()} type="primary">
+          <Button onClick={() => onBtnSubmit()} type="primary">
             {submitText || locale.orderRemark.submitText}
           </Button>
         </div>

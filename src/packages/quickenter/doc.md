@@ -19,10 +19,10 @@ import { QuickEnter } from "@nutui/nutui-biz";
 ```ts
 import React from "react";
 import { QuickEnter } from "@nutui/nutui-biz";
-import { data } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
+import { quickEnterData } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
 
 const App = () => {
-  return <QuickEnter data={data} />;
+  return <QuickEnter data={quickEnterData} />;
 };
 export default App;
 ```
@@ -38,10 +38,10 @@ export default App;
 ```ts
 import React from "react";
 import { QuickEnter } from "@nutui/nutui-biz";
-import { data } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
+import { quickEnterData } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
 
 const App = () => {
-  return <QuickEnter data={data} indicatorVisible={true} />;
+  return <QuickEnter data={quickEnterData} indicatorVisible={true} />;
 };
 export default App;
 ```
@@ -55,10 +55,10 @@ export default App;
 ```ts
 import React from "react";
 import { QuickEnter } from "@nutui/nutui-biz";
-import { data } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
+import { quickEnterData } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
 
 const App = () => {
-  return <QuickEnter data={data} rows={1} indicatorVisible={true} />;
+  return <QuickEnter data={quickEnterData} rows={1} indicatorVisible={true} />;
 };
 export default App;
 ```
@@ -72,10 +72,10 @@ export default App;
 ```ts
 import React from "react";
 import { QuickEnter } from "@nutui/nutui-biz";
-import { data } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
+import { quickEnterData } from "https://storage.360buyimg.com/nutui/biz/static/quick-enter-data.js";
 
 const App = () => {
-  return <QuickEnter slideMode={"slide"} data={data} rows={2} />;
+  return <QuickEnter slideMode={"slide"} data={quickEnterData} rows={2} />;
 };
 export default App;
 ```
@@ -92,8 +92,8 @@ export default App;
 | rows                 | 展示行数                            | number \| string | `2`                  |
 | data                 | 展示数据                            | QuickEnterData[] | `[]`                 |
 | slideMode            | 多屏展示效果，可选值：swiper、slide | string           | `swiper`             |
-| iconSize             | 图标大小 ,单位为 'px'               | Array            | `[40,40]`            |
-| indicatorVisible     | 指示器背是否展示                    | boolean          | `false`              |
+| iconSize             | 图标大小 ,单位为 'px'               | Array            | `[30,30]`            |
+| indicatorVisible     | 指示器是否展示                      | boolean          | `false`              |
 | indicatorBgColor     | 指示器背景色                        | string           | `rgba(0, 0, 0, 0.2)` |
 | indicatorActiveColor | 指示器选中颜色                      | string           | `#fa2c19`            |
 
@@ -106,6 +106,6 @@ export default App;
 
 ### Events
 
-| 事件名      | 说明             | 回调参数 |
-| ----------- | ---------------- | -------- |
-| onClickItem | 点击图标区时触发 | item     |
+| 事件名      | 说明             | 回调参数       |
+| ----------- | ---------------- | -------------- |
+| onClickItem | 点击图标区时触发 | QuickEnterData |

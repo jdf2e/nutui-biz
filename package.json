@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-biz",
-  "version": "0.0.1-beta.13",
+  "version": "0.0.1-beta.17",
   "style": "dist/style.css",
   "main": "dist/nutui.biz.umd.js",
   "module": "dist/esm/nutui-biz.es.js",

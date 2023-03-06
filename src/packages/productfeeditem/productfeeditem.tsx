@@ -5,6 +5,7 @@ import { Image } from '@nutui/nutui-react';
 
 import bem from '@/utils/bem'
 import Unit from '@/utils/unit'
+import { errorImg } from '@/utils'
 
 export interface ProductFeedItemProps {
   data: Array<any>
@@ -30,8 +31,8 @@ const defaultProps = {
   imgWidth: '150px',
   imgHeight: '150px',
   isImageLazy: true,
-  loadingImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
-  errorImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
+  loadingImg: errorImg,
+  errorImg,
   onClick: () => { },
   onImageClick: () => { }
 } as unknown as ProductFeedItemProps

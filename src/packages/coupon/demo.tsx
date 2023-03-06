@@ -62,7 +62,7 @@ const CouponDemo = () => {
   //渲染组件文案内容
   const baseCouponObj = React.useMemo(() => {
     return {
-      price: "9.1234123123789123712893",
+      price: "9.12",
       currency: "¥",
       mainTitle: translated.mainTitle,
       subTitle: translated.subTitle,
@@ -157,7 +157,6 @@ const CouponDemo = () => {
                   couponMainStyle={couponMainSmallStyle}
                   couponStyle={couponSmallStyle}
                   coupon={couponObj}
-                  buttonProps={buttonProps}
                   itemData={item}
                   btnText={translated.btnText}
                   onBtnClick={receivedBtn}

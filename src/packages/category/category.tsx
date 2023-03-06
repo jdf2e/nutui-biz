@@ -10,6 +10,7 @@ import classNames from 'classnames'
 import { CategoryPane } from './categorypane'
 import { IComponent } from '@/utils/typings'
 import bem from '@/utils/bem'
+import { errorImg } from '@/utils'
 
 
 interface Category {
@@ -53,8 +54,8 @@ const defaultProps = {
   showSecondLevelQuickNav:false,
   isLeftAutoSlide:true,
   isLazy:true,
-  loadingImg:'https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
-  errorImg:'https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
+  loadingImg: errorImg,
+  errorImg,
   onChange: () => {},
   onPanelNavClick:()=>{},
   onPanelThirdClick: ()=>{}

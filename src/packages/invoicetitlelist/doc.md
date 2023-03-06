@@ -7,7 +7,6 @@
 ### 安装
 
 ```javascript
-import { Button, Icon } from '@nutui/nutui-react';
 import { InvoiceTitleList } from '@nutui/nutui-biz';
 ```
 
@@ -19,7 +18,7 @@ import { InvoiceTitleList } from '@nutui/nutui-biz';
 
 ```ts
 import  React from 'react';
-import { Button, Icon } from '@nutui/nutui-react';
+import { Toast } from '@nutui/nutui-react';
 import { InvoiceTitleList } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -54,7 +53,7 @@ export default App;
 
 ```ts
 import  React from 'react';
-import { Button, Icon } from '@nutui/nutui-react';
+import { Toast } from '@nutui/nutui-react';
 import { InvoiceTitleList } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -90,7 +89,7 @@ export default App;
 
 ```ts
 import  React from 'react';
-import { Button, Icon } from '@nutui/nutui-react';
+import { Toast } from '@nutui/nutui-react';
 import { InvoiceTitleList } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -126,7 +125,7 @@ export default App;
 
 ```ts
 import  React from 'react';
-import { Button, Icon } from '@nutui/nutui-react';
+import { Toast } from '@nutui/nutui-react';
 import { InvoiceTitleList } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -162,7 +161,7 @@ export default App;
 
 ```ts
 import  React from 'react';
-import { Button, Icon } from '@nutui/nutui-react';
+import { Toast, Button } from '@nutui/nutui-react';
 import { InvoiceTitleList } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -199,7 +198,7 @@ export default App;
 
 ```ts
 import  React from 'react';
-import { Button, Icon } from '@nutui/nutui-react';
+import { Toast } from '@nutui/nutui-react';
 import { InvoiceTitleList } from '@nutui/nutui-biz';
 
 const App = () => {

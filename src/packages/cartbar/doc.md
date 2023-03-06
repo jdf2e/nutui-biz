@@ -32,11 +32,6 @@ const App = () => {
 };
 export default App;
 
-// css
-[class*="safe-area-bottom"] {
-    position: relative;
-}
-
 ```
 
 :::
@@ -61,11 +56,6 @@ const App = () => {
 };
 export default App;
 
-// css
-[class*="safe-area-bottom"] {
-    position: relative;
-}
-
 ```
 
 :::
@@ -89,11 +79,6 @@ const App = () => {
   );
 };
 export default App;
-
-// css
-[class*="safe-area-bottom"] {
-    position: relative;
-}
 
 ```
 
@@ -120,11 +105,6 @@ const App = () => {
 };
 export default App;
 
-// css
-[class*="safe-area-bottom"] {
-    position: relative;
-}
-
 ```
 
 :::
@@ -148,11 +128,6 @@ const App = () => {
   );
 };
 export default App;
-
-// css
-[class*="safe-area-bottom"] {
-    position: relative;
-}
 
 ```
 
@@ -181,11 +156,6 @@ const App = () => {
   );
 };
 export default App;
-
-// css
-[class*="safe-area-bottom"] {
-    position: relative;
-}
 
 ```
 
@@ -231,7 +201,7 @@ export default App;
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
 | text   | 按钮文字                                 | ReactNode  | -         |
-| buttonProps   | 按钮 props                                 | [ButtonProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/button)  | -         |
+| buttonProps   | 按钮基础组件 props                                 | [ButtonProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/button)  | -         |
 
 
 ### CartBarButton Events

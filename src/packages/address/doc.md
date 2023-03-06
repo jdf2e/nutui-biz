@@ -16,7 +16,7 @@ import { Address } from '@nutui/nutui-biz';
 :::demo
 ```tsx
 import  React, { useState } from 'react';
-import { Cell, Popup } from '@nutui/nutui-react';
+import { Cell } from '@nutui/nutui-react';
 import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -103,7 +103,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from 'react';
-import { Cell, Popup } from '@nutui/nutui-react';
+import { Cell } from '@nutui/nutui-react';
 import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -179,7 +179,7 @@ export default App;
 ```tsx
 
 import  React, { useState } from 'react';
-import { Cell, Popup } from '@nutui/nutui-react';
+import { Cell } from '@nutui/nutui-react';
 import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -263,7 +263,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from 'react';
-import { Cell, Popup } from '@nutui/nutui-react';
+import { Cell } from '@nutui/nutui-react';
 import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -347,7 +347,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from 'react';
-import { Cell, Popup } from '@nutui/nutui-react';
+import { Cell, Icon } from '@nutui/nutui-react';
 import { Address } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -426,8 +426,8 @@ const App = () => {
           onClose={close}
           isShowCustomAddress={false}
           onSelected={selected}
-          defaultIcon={icon.defaultIcon}
-          selectedIcon={icon.selectedIcon}
+          defaultIcon={<Icon name="heart-fill"></Icon>}
+          selectedIcon={<Icon name="heart-fill"></Icon>}
           closeBtnIcon={icon.closeBtnIcon}
        />
     </>
@@ -443,7 +443,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from 'react';
-import { Cell, Popup } from '@nutui/nutui-react';
+import { Cell } from '@nutui/nutui-react';
 import { Address } from '@nutui/nutui-biz';
 
 const App = () => {

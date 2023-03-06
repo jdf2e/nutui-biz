@@ -1,14 +1,21 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
 import { IComponent } from "@/utils/typings";
+import {
+  RegionData,
+  NextListObj,
+  CloseCallBack,
+  CloseCallBackData,
+} from '../address/type';
 import { Input, Button } from "@nutui/nutui-react";
 import { Address } from "../address/address";
 import { useConfig } from "@/packages/configprovider";
+
 
 interface InvoiceInfo {
   name?: string;
   tel?: string;
   region?: string;
-  regionIds?: any;
+  regionIds?: Array<number>;
   address?: string;
   [key: string]: any;
 }
@@ -25,18 +32,18 @@ interface InvoiceData {
   addressText?: string;
   addressPlaceholder?: string;
   addressErrorMsg?: string;
-  required?: string[];
+  required?: Array<string>;
   showSaveBtn?: boolean;
   bottomText?: string;
   [key: string]: any;
 }
 interface AddressResult {
-  addressSelect: any;
-  province: [];
-  city: [];
-  country: [];
-  town: [];
-  addressTitle: string;
+  addressSelect?: (string | number)[];
+  province?: Array<RegionData>;
+  city?: Array<RegionData>;
+  country?: Array<RegionData>;
+  town?: Array<RegionData>;
+  addressTitle?: string;
   [key: string]: any;
 }
 
@@ -45,9 +52,9 @@ export interface ReceiveInvoiceEditProps extends IComponent {
   data: InvoiceData;
   address: AddressResult;
   onChange?: (val: string, tag: string) => void;
-  onAddressChange?: (data: any) => void;
-  onAddressClose?: (data: any) => void; // 地址弹窗关闭时触发事件
-  onSave?: (data: any) => void; // 保存按钮事件
+  onAddressChange?: (data: NextListObj) => void;
+  onAddressClose?: (data: CloseCallBack) => void; // 地址弹窗关闭时触发事件
+  onSave?: (data: InvoiceInfo) => void; // 保存按钮事件
 }
 
 const defaultProps = {
@@ -71,8 +78,7 @@ const defaultProps = {
 } as ReceiveInvoiceEditProps;
 
 export const ReceiveInvoiceEdit: FunctionComponent<
-  Partial<ReceiveInvoiceEditProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">
+  Partial<ReceiveInvoiceEditProps>
 > = (props) => {
   const { locale } = useConfig();
   const {
@@ -120,7 +126,7 @@ export const ReceiveInvoiceEdit: FunctionComponent<
     addressErrorMsg: locale.receiveInvoiceEdit.addressErrorMsg,
     bottomText: locale.receiveInvoiceEdit.bottomText,
   });
-  const [errorList, setErrorList] = useState<any>([]);
+  const [errorList, setErrorList] = useState<Array<string>>([]);
   const [addressVisible, setAddressVisible] = useState(false);
 
   useEffect(() => {
@@ -134,37 +140,37 @@ export const ReceiveInvoiceEdit: FunctionComponent<
       setFormData({ ...formData, ...invoiceInfo });
       setAddressData({
         ...address,
-        addressSelect: invoiceInfo.regionIds,
+        addressSelect: invoiceInfo?.regionIds,
       });
     }
     setErrorList([]);
   }, [address, data, invoiceInfo]);
-  const changeAddress = (cal: any) => {
-    setErrorList(errorList.filter((i: any) => i != "region"));
+  const changeAddress = (cal:NextListObj) => {
+    setErrorList(errorList.filter((i: string) => i != "region"));
     const name = addressData[cal.next];
     if (name.length < 1) {
       setAddressVisible(false);
     }
     onAddressChange && onAddressChange(cal);
   };
-  const closeAddress = (val: any) => {
+  const closeAddress = (val: CloseCallBack) => {
     //地址id格式处理
-    let ids = val.data.addressIdStr.split("_").map((item: any) => item * 1);
+    let ids = (val.data as CloseCallBackData ).addressIdStr.split("_").map((item: string) => +item * 1);
     //删除数组中为0的项
     ids.splice(ids.indexOf(0));
     //提交信息数据同步
-    setFormData({ ...formData, region: val.data.addressStr, regionIds: ids });
+    setFormData({ ...formData, region: (val.data as CloseCallBackData ).addressStr, regionIds: ids });
     //地址组件数据同步
     setAddressData({ ...addressData, addressSelect: ids });
     onAddressClose && onAddressClose(val);
     setAddressVisible(false);
   };
-  const inputOnchange = (val: any, tag: string) => {
+  const inputOnchange = (val: string, tag: string) => {
     let data = { ...formData };
     if (val.length != 0) {
-      setErrorList(errorList.filter((i: any) => i != tag));
+      setErrorList(errorList.filter((i: string) => i != tag));
     }
-    Object.keys(formData).map((key: any) => {
+    Object.keys(formData).map((key: string) => {
       if (key === tag) {
           data[tag] = val;
       }
@@ -174,7 +180,7 @@ export const ReceiveInvoiceEdit: FunctionComponent<
   };
   const validForm = () => {
     let form = formData;
-    let arr: any = [].concat(errorList);
+    let arr: Array<string> = ([] as Array<string>).concat(errorList);
     Object.keys(form).map((key) => {
       if (required.includes(key) && formData[key] == "") {
         if(!errorList.includes(key)){

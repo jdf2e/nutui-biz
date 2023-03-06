@@ -17,7 +17,8 @@ import { Coupon } from "@nutui/nutui-biz";
 :::demo
 
 ```ts
-import React, { useState } from "react";
+import React, { useState, CSSProperties } from "react";
+import { ButtonProps } from "@nutui/nutui-react";
 import { Coupon } from "@nutui/nutui-biz";
 
 const App = () => {
@@ -102,7 +103,7 @@ export default App;
 :::demo
 
 ```ts
-import React, { useState } from "react";
+import React, { CSSProperties } from "react";
 import { Coupon } from "@nutui/nutui-biz";
 
 const App = () => {
@@ -128,8 +129,8 @@ const App = () => {
     return {
       price: 9,
       currency: "¥",
-      mainTitle: translated.mainTitle,
-      subTitle: translated.subTitle,
+      mainTitle: "满100元可用",
+      subTitle: "仅可购买满折券测试",
       label: "618",
     };
   }, []);
@@ -154,7 +155,6 @@ const App = () => {
               couponMainStyle={couponMainSmallStyle}
               couponStyle={couponSmallStyle}
               coupon={couponObj}
-              buttonProps={buttonProps}
               itemData={item}
               btnText="立即领取"
               onBtnClick={receivedBtn}
@@ -174,20 +174,29 @@ export default App;
 
 ### Props
 
-| 字段            | 说明                                           | 类型                 | 默认值      |
-| --------------- | ---------------------------------------------- | -------------------- | ----------- |
-| type            | 优惠券的类型 可选值是 `large` `small`          | String               | `large`     |
-| couponStyle     | 每张优惠券的样式                               | CSSProperties        | --          |
-| couponMainStyle | 优惠券主体的样式                               | CSSProperties        | --          |
-| pricePosition   | 价格和标签的前后位置 `front` `back`            | String               | `back`      |
-| coupon          | 渲染优惠券内容                                 | Object               | -           |
-| btnText         | 按钮文案                                       | Stringe              | -           |
-| isReceived      | 是否领取优惠券                                 | Boolean              | -           |
-| receivedBtnText | 领取后的按钮文案                               | String               | `full-line` |
-| className       | 自定义类名                                     | String               | -           |
-| buttonProps     | 按钮 props，来自于 nutui-react 中 Button 组件  | Partial<ButtonProps> | --          |
-| usedIcon        | 已领取 icon                                    | Boolean              | `true`      |
-| itemData        | 父组件传递过来的数据，作为函数参数返回给父组件 | Object               | -           |
+| 字段            | 说明                                           | 类型                 | 默认值     |
+| --------------- | ---------------------------------------------- | -------------------- | ---------- |
+| type            | 优惠券的类型 可选值是 `large` `small`          | String               | `large`    |
+| couponStyle     | 每张优惠券的样式                               | CSSProperties        | -          |
+| couponMainStyle | 优惠券主体的样式                               | CSSProperties        | -          |
+| pricePosition   | 价格和标签的前后位置 `front` `back`            | String               | `back`     |
+| coupon          | 渲染优惠券内容                                 | ICouponType          | -          |
+| btnText         | 按钮文案                                       | Stringe              | `立即领取` |
+| isReceived      | 是否领取优惠券                                 | Boolean              | `false`    |
+| className       | 自定义类名                                     | String               | -          |
+| buttonProps     | 按钮 props，来自于 nutui-react 中 Button 组件  | Partial<ButtonProps> | -          |
+| itemData        | 父组件传递过来的数据，作为函数参数返回给父组件 | any                  | -          |
+
+### ICouponType
+
+| 字段      | 说明                   | 类型           | 默认值 |
+| --------- | ---------------------- | -------------- | ------ |
+| price     | 优惠券的价格           | String\/Number | -      |
+| currency  | 货币符号               | String         | -      |
+| mainTitle | 主标题                 | String         | -      |
+| subTitle  | 副标题                 | String         | -      |
+| timeRange | 优惠券使用时间范围     | String         | -      |
+| label     | 优惠券左上角的标签内容 | String         | -      |
 
 ### Events
 

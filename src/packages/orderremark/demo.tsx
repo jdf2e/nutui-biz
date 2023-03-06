@@ -67,7 +67,7 @@ const OrderRemarkDemo = () => {
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
   const [show4, setShow4] = useState(false);
-  const [mark, setMark] = useState('');
+  const [mark, setMark] = useState('1111');
   const [mark2, setMark2] = useState('');
   const [mark3, setMark3] = useState('');
   const [mark4, setMark4] = useState('');

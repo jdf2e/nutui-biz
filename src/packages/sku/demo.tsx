@@ -220,6 +220,8 @@ const SkuDemo = () => {
     setAddressDesc(`${provinceName}${countyName}${cityName}`)
   };
 
+  const close = (num: number)=>{}
+
   return (
     <>
       <div className="demo">
@@ -301,6 +303,7 @@ const SkuDemo = () => {
           modelValue={showAddressPopup}
           type="exist"
           existAddress={existAddress}
+          // @ts-ignore
           onClose={close}
           isShowCustomAddress={false}
           // @ts-ignore
