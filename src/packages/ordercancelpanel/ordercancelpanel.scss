@@ -1,8 +1,4 @@
-@mixin ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+@import "../../styles/mixins/text-ellipsis.scss";
 .nut-biz-ordercancel {
   font-weight: normal;
   &__main {
@@ -12,7 +8,7 @@
     margin-top: 10px;
     width: 90%;
     font-size: 18px;
-    @include ellipsis;
+    @include text-ellipsis;
   }
   &__header {
     width: 90%;
@@ -20,7 +16,7 @@
     font-size: 18px;
     height: 50px;
     line-height: 50px;
-    @include ellipsis;
+    @include text-ellipsis;
   }
   &__tips {
     font-size: 14px;
@@ -47,6 +43,7 @@
       height: 35px;
       align-items: center;
       justify-content: space-between;
+      position: relative;
       &__checkbox {
         .nut-checkbox {
           display: flex;
@@ -56,11 +53,19 @@
           }
         }
       }
+      &__overlay {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 35px;
+        width: 100%;
+        opacity: 0;
+      }
     }
   }
   &__area {
     border: 1px solid #eee;
-    padding: 10px 10px;
+    padding: 5px 10px;
   }
   &__btns {
     margin-top: 10px;

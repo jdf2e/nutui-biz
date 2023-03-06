@@ -23,7 +23,7 @@ import { Cell, ButtonProps } from "@nutui/nutui-react";
 import { OrderCancelPanel } from "@nutui/nutui-biz";
 
 const App = () => {
-  const cancelResons = [
+  const cancelReason = [
     {
       key: "resons1",
       value: "No goods",
@@ -72,7 +72,7 @@ const App = () => {
         <OrderCancelPanel
           showCancelPanel={showPanel}
           popupTitle={<div>Refund reason</div>}
-          cancelResons={cancelResons}
+          cancelReason={cancelReason}
           buttonProps={buttonProps}
           onClickCloseIcon={clickClosePopUp}
           onClose={clickClosePopUp}
@@ -104,7 +104,7 @@ const App = () => {
     "3. The payment voucher will not be returned; Cancellation of payment preference",
     "4. Once the order is cancelled, it cannot be recovered",
   ];
-  const cancelResons = [
+  const cancelReason = [
     {
       key: "resons1",
       value: "No goods",
@@ -160,7 +160,7 @@ const App = () => {
           tipsTitle="Refund reason"
           btnsText="confirm"
           warmTips={warmTips}
-          cancelResons={cancelResons}
+          cancelReason={cancelReason}
           buttonProps={buttonProps}
           textAreaProps={textareaProps}
           onClickCloseIcon={clickClosePopUp}
@@ -193,7 +193,7 @@ const App = () => {
     "3. The payment voucher will not be returned; Cancellation of payment preference",
     "4. Once the order is cancelled, it cannot be recovered",
   ];
-  const cancelResons = [
+  const cancelReason = [
     {
       key: "resons1",
       value: "No goods",
@@ -232,7 +232,6 @@ const App = () => {
     );
     setShowOtherCancelPanel(false);
   };
-  //基本使用
   const [showOtherCancelPanel, setShowOtherCancelPanel] = useState(false);
   const buttonProps: Partial<ButtonProps> = React.useMemo(() => {
     return {
@@ -265,7 +264,7 @@ const App = () => {
           tipsTitle="reminder"
           btnsText="confirm"
           warmTips={warmTips}
-          cancelResons={cancelResons}
+          cancelReason={cancelReason}
           buttonProps={buttonProps}
           textAreaProps={textareaProps}
           onClickCloseIcon={clickClosePopUp}
@@ -286,11 +285,11 @@ export default App;
 
 ### Props
 
-| 字段            | 说明                                                 | 类型                 | 默认值   |
+| Attribute       | Description                                          | Type                 | Default  |
 | --------------- | ---------------------------------------------------- | -------------------- | -------- |
 | showCancelPanel | Whether to display or cancel the order pop-up window | Boolean              | `false`  |
 | warmTips        | Warm prompt content, no prompt content               | Array<string>        | --       |
-| cancelResons    | Reason for cancellation                              | Array<IResonsObject> | --       |
+| cancelReason    | Reason for cancellation                              | Array<IResonsObject> | --       |
 | canCancelReason | Click again to cancel the selected reason            | Boolean              | `false`  |
 | popupTitle      | Main title of pop-up window                          | ReactNode            | --       |
 | reasonTitle     | Title of cancellation reason                         | ReactNode            | --       |
@@ -301,16 +300,16 @@ export default App;
 
 ### IResonsObject
 
-| 字段  | 说明                                | 类型   | 默认值 |
-| ----- | ----------------------------------- | ------ | ------ |
-| key   | Key of cancellation reason          | string | --     |
-| value | Copy content of cancellation reason | string | --     |
+| Attribute | Description                         | Type   | Default |
+| --------- | ----------------------------------- | ------ | ------- |
+| key       | Key of cancellation reason          | string | --      |
+| value     | Copy content of cancellation reason | string | --      |
 
 ### Events
 
-| 字段             | 说明                                             | 回调参数 |
-| ---------------- | ------------------------------------------------ | -------- |
-| onClose          | Triggered when clicking the pop-up box           | --       |
-| onClickCloseIcon | Triggered when the close icon is clicked         | --       |
-| onClickOverlay   | Click the mask to trigger                        | --       |
-| onSubmitBtn      | Click the submit button to trigger The parameter | --       |
+| Attribute        | Description                                      | Arguments |
+| ---------------- | ------------------------------------------------ | --------- |
+| onClose          | Triggered when clicking the pop-up box           | --        |
+| onClickCloseIcon | Triggered when the close icon is clicked         | --        |
+| onClickOverlay   | Click the mask to trigger                        | --        |
+| onSubmitBtn      | Click the submit button to trigger The parameter | --        |
