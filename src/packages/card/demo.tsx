@@ -14,8 +14,7 @@ interface T {
   customFooter: string
   customBottom: string
   customContent: string
-  desc: string
-  delivery: string
+  customContent2: string
   shopName: string
 }
 const CardDemo = () => {
@@ -33,26 +32,8 @@ const CardDemo = () => {
       customFooter: '自定义右下角内容',
       customBottom: '自定义底部内容',
       customContent: '自定义',
-      desc: '自营',
-      delivery: '厂商配送',
+      customContent2: '自定义促销信息等',
       shopName: '阳澄湖大闸蟹自营店>',
-    },
-    'zh-TW': {
-      basic: '基本用法',
-      customProduct: '自定義商品標簽',
-      customPro1: '活鮮',
-      customPro2: '禮盒',
-      customPro3: '國產',
-      title:
-        '【活蟹】湖塘煙雨 陽澄湖大閘蟹公4.5兩 母3.5兩 4對8只 鮮活生鮮螃蟹現貨水產禮盒海鮮水',
-      customShop: '自定義店鋪介紹',
-      customPriceIcon: '價格後自定義標簽',
-      customFooter: '自定義右下角內容',
-      customBottom: '自定義底部內容',
-      customContent: '自定義',
-      desc: '自營',
-      delivery: '廠商配送',
-      shopName: '陽澄湖大閘蟹自營店>',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -66,8 +47,7 @@ const CardDemo = () => {
       customFooter: 'Customize bottom right content',
       customBottom: 'Customize bottom content',
       customContent: 'custom',
-      desc: 'desc',
-      delivery: 'delivery',
+      customContent2: 'Customize promotional information, etc.',
       shopName: 'shopName>',
     },
   })
@@ -76,9 +56,6 @@ const CardDemo = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: translated.title,
     price: '388',
-    vipPrice: '378',
-    shopDesc: translated.desc,
-    delivery: translated.delivery,
     shopName: translated.shopName,
   }
   const tagStyles = {
@@ -98,36 +75,32 @@ const CardDemo = () => {
     color: '#999',
     backgroundColor: '#f2f2f7',
     marginRight: '5px',
+    marginTop: '3px',
+    flexShrink: 0
   }
   return (
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
         <Card
-          imgUrl={state.imgUrl}
+          imageProps={{src: state.imgUrl}}
           title={state.title}
           price={state.price}
-          vipPrice={state.vipPrice}
-          shopDesc={state.shopDesc}
-          delivery={state.delivery}
           shopName={state.shopName}
         />
         <h2>{translated.customProduct}</h2>
         <Card
-          imgUrl={state.imgUrl}
+          imageProps={{src: state.imgUrl}}
           title={state.title}
           price={state.price}
-          vipPrice={state.vipPrice}
-          shopDesc={state.shopDesc}
-          delivery={state.delivery}
           shopName={state.shopName}
           prolistTpl={
             <div
               className="search_prolist_attr"
               style={{
                 display: 'inline-flex',
-                margin: '3px 0 1px',
-                height: '15px',
+                marginBottom: '1px',
+                flexWrap: 'wrap'
               }}
             >
               {[
@@ -146,14 +119,11 @@ const CardDemo = () => {
         />
         <h2>{translated.customPriceIcon}</h2>
         <Card
-          imgUrl={state.imgUrl}
+          imageProps={{src: state.imgUrl}}
           title={state.title}
           price={state.price}
-          vipPrice={state.vipPrice}
-          shopDesc={state.shopDesc}
-          delivery={state.delivery}
           shopName={state.shopName}
-          originTpl={
+          priceAfterTpl={
             <img
               style={tagStyles}
               src="https://img11.360buyimg.com/jdphoto/s58x28_jfs/t9451/359/415622649/15318/b0943e5d/59a78495N3bd2a9f8.png"
@@ -163,23 +133,17 @@ const CardDemo = () => {
         />
         <h2>{translated.customShop}</h2>
         <Card
-          imgUrl={state.imgUrl}
+          imageProps={{src: state.imgUrl}}
           title={state.title}
           price={state.price}
-          vipPrice={state.vipPrice}
-          shopDesc={state.shopDesc}
-          delivery={state.delivery}
           shopName={state.shopName}
-          shopTagTpl={<div>{translated.customShop}</div>}
+          productTagsTpl={<div>{translated.customShop}</div>}
         />
         <h2>{translated.customFooter}</h2>
         <Card
-          imgUrl={state.imgUrl}
+          imageProps={{src: state.imgUrl}}
           title={state.title}
           price={state.price}
-          vipPrice={state.vipPrice}
-          shopDesc={state.shopDesc}
-          delivery={state.delivery}
           shopName={state.shopName}
           footerTpl={
             <div style={{ fontSize: '12px' }}>{translated.customContent}</div>
@@ -187,29 +151,31 @@ const CardDemo = () => {
         />
         <h2>{translated.customBottom}</h2>
         <Card
-          imgUrl={state.imgUrl}
+          imageProps={{src: state.imgUrl}}
           title={state.title}
           price={state.price}
-          vipPrice={state.vipPrice}
-          shopDesc={state.shopDesc}
-          delivery={state.delivery}
           shopName={state.shopName}
           bottomTpl={
-            <div style={{ fontSize: '12px' }}>{translated.customContent}</div>
+            <div style={{ fontSize: '12px', paddingBottom: '15px', textAlign: 'center' }}>{translated.customContent2}</div>
           }
         />
         <h2>半行模式</h2>
-        <Card
-          imgUrl={state.imgUrl}
-          title={state.title}
-          price={state.price}
-          vipPrice={state.vipPrice}
-          shopDesc={state.shopDesc}
-          delivery={state.delivery}
-          shopName={state.shopName}
-          showType="half-line"
-          style={{width: '172px'}}
-        />
+        <>
+          <Card
+          imageProps={{src: state.imgUrl}}
+            title={state.title}
+            price={state.price}
+            shopName={state.shopName}
+            showType="half-line"
+          />
+          <Card
+          imageProps={{src: state.imgUrl}}
+            title={state.title}
+            price={state.price}
+            shopName={state.shopName}
+            showType="half-line"
+          />
+        </>
       </div>
     </>
   )

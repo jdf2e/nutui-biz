@@ -12,19 +12,13 @@ test('props test', () => {
     title:
       '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
     shopName: '阳澄湖大闸蟹自营店>',
   }
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
-      delivery={state.delivery}
       shopName={state.shopName}
     />
   )
@@ -39,13 +33,6 @@ test('props test', () => {
     state.title
   )
   expect(priceDoms[0].innerHTML).toBe(state.price)
-  expect(priceDoms[1].innerHTML).toBe(state.vipPrice)
-  expect(tagDoms[0]).toContainHTML(
-    `<span class="text">${state.shopDesc}</span>`
-  )
-  expect(tagDoms[1]).toContainHTML(
-    `<span class="text">${state.delivery}</span>`
-  )
   expect(container.querySelector('.nut-card__right__shop__name')).toContainHTML(
     state.shopName
   )
@@ -59,20 +46,16 @@ test('prolistTpl slot test', () => {
     title:
       '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
+    marketingType: '自营',
+    delivery: ['厂商配送'],
     shopName: '阳澄湖大闸蟹自营店>',
   }
 
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
-      delivery={state.delivery}
       shopName={state.shopName}
       prolistTpl={
         <div className="search_prolist_attr">
@@ -91,16 +74,15 @@ test('prolistTpl slot test', () => {
   expect(container).toMatchSnapshot()
 })
 
-test('originTpl slot test', () => {
+test('priceAfterTpl slot test', () => {
   const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title:
       '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
+    marketingType: '自营',
+    delivery: ['厂商配送'],
     shopName: '阳澄湖大闸蟹自营店>',
   }
 
@@ -109,14 +91,11 @@ test('originTpl slot test', () => {
 
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
-      delivery={state.delivery}
       shopName={state.shopName}
-      originTpl={<img src={plusIconUrl} alt="" />}
+      priceAfterTpl={<img src={plusIconUrl} alt="" />}
     />
   )
   expect(
@@ -132,22 +111,18 @@ test('shopTagTpl slot test', () => {
     title:
       '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
+    marketingType: '自营',
+    delivery: ['厂商配送'],
     shopName: '阳澄湖大闸蟹自营店>',
   }
 
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
-      delivery={state.delivery}
       shopName={state.shopName}
-      shopTagTpl={<div>这里是自定义区域</div>}
+      productTagsTpl={<div>这里是自定义区域</div>}
     />
   )
   expect(container.querySelector('.nut-card__right__other')?.innerHTML).toBe(
@@ -163,20 +138,16 @@ test('footerTpl slot test', () => {
     title:
       '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
+    marketingType: '自营',
+    delivery: ['厂商配送'],
     shopName: '阳澄湖大闸蟹自营店>',
   }
 
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
-      delivery={state.delivery}
       shopName={state.shopName}
       footerTpl={<div style={{ fontSize: '12px' }}>自定义</div>}
     />
@@ -196,20 +167,16 @@ test('bottomTpl slot test', () => {
     title:
       '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
+    marketingType: '自营',
+    delivery: ['厂商配送'],
     shopName: '阳澄湖大闸蟹自营店>',
   }
 
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
-      delivery={state.delivery}
       shopName={state.shopName}
       bottomTpl={<div style={{ fontSize: '12px' }}>自定义</div>}
     />
@@ -229,19 +196,15 @@ test('showType test', () => {
     title:
       '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
+    marketingType: '自营',
+    delivery: ['厂商配送'],
     shopName: '阳澄湖大闸蟹自营店>',
   }
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
-      delivery={state.delivery}
       shopName={state.shopName}
       showType="half-line"
     />
@@ -257,19 +220,15 @@ test('titleLine test', () => {
     title:
       '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
+    marketingType: '自营',
+    delivery: ['厂商配送'],
     shopName: '阳澄湖大闸蟹自营店>',
   }
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
-      delivery={state.delivery}
       shopName={state.shopName}
       showType="half-line"
       titleLine={1}
@@ -286,19 +245,13 @@ test('imgTag and imgTagDirection test', () => {
     title:
       '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
     shopName: '阳澄湖大闸蟹自营店>',
   }
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
-      delivery={state.delivery}
       shopName={state.shopName}
       imgTag={<img src="" />}
       imgTagDirection="top-right"
@@ -316,81 +269,21 @@ test('titleTag test', () => {
     title:
       '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
+    marketingType: '自营',
+    delivery: ['厂商配送'],
     shopName: '阳澄湖大闸蟹自营店>',
   }
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
-      delivery={state.delivery}
       shopName={state.shopName}
       titleTag={<div>标题标签</div>}
     />
   )
   const titleTag = container.querySelector('.nut-biz-card__right__title')
   expect(titleTag).toHaveTextContent('标题标签')
-})
-
-test('priceTpl test', () => {
-  const state = {
-    imgUrl:
-      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title:
-      '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
-    price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
-  }
-  const { container } = render(
-    <Card
-      imgUrl={state.imgUrl}
-      title={state.title}
-      price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
-      delivery={state.delivery}
-      shopName={state.shopName}
-      priceTpl={<div>自定义价格</div>}
-    />
-  )
-  const priceTpl = container.querySelector('.nut-biz-card__right__price')
-  expect(priceTpl).toHaveTextContent('自定义价格')
-})
-
-test('linkUrl test', () => {
-  const state = {
-    imgUrl:
-      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title:
-      '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
-    price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
-  }
-  const { container } = render(
-    <Card
-      imgUrl={state.imgUrl}
-      title={state.title}
-      price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
-      delivery={state.delivery}
-      shopName={state.shopName}
-      linkUrl="https://www.jd.com/"
-    />
-  )
-  const linkUrl = container.querySelector('.nut-biz-card__left')
-  expect(linkUrl).toHaveAttribute('href', 'https://www.jd.com/')
 })
 
 test('click test', () => {
@@ -401,19 +294,15 @@ test('click test', () => {
     title:
       '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
+    marketingType: '自营',
+    delivery: ['厂商配送'],
     shopName: '阳澄湖大闸蟹自营店>',
   }
   const { container } = render(
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
-      delivery={state.delivery}
       shopName={state.shopName}
       onClick={onClick1}
     />

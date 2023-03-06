@@ -7,7 +7,6 @@
 ### 安装
 
 ```javascript
-import { Form, Radio, Input, Button } from '@nutui/nutui-react'
 import { InvoiceTitleEdit } from '@nutui/nutui-biz';
 ```
 
@@ -20,6 +19,7 @@ import { InvoiceTitleEdit } from '@nutui/nutui-biz';
 
 ```ts
 import  React from "react";
+import { Toast } from '@nutui/nutui-react'
 import { InvoiceTitleEdit } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -55,9 +55,20 @@ export default App;
 
 ```ts
 import  React from "react";
+import { Toast } from '@nutui/nutui-react'
 import { InvoiceTitleEdit } from '@nutui/nutui-biz';
 
 const App = () => {
+  const handleSubmit = (arg: any) => {
+    if (Array.isArray(arg)) {
+      Toast.fail('callback: submitFailed error')
+      console.log('failed error', arg)
+    } else {
+      Toast.success('succeed')
+      console.log('succeed', arg)
+    }
+  }
+
   return (
     <InvoiceTitleEdit 
       onSubmit={handleSubmit}
@@ -76,9 +87,20 @@ export default App;
 
 ```ts
 import  React from "react";
+import { Toast } from '@nutui/nutui-react'
 import { InvoiceTitleEdit } from '@nutui/nutui-biz';
 
 const App = () => {
+  const handleSubmit = (arg: any) => {
+    if (Array.isArray(arg)) {
+      Toast.fail('callback: submitFailed error')
+      console.log('failed error', arg)
+    } else {
+      Toast.success('succeed')
+      console.log('succeed', arg)
+    }
+  }
+
   return (
     <InvoiceTitleEdit 
       onSubmit={handleSubmit}

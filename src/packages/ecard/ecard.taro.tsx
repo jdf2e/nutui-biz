@@ -1,40 +1,36 @@
 import React, {
-  ChangeEvent,
   CSSProperties,
   FunctionComponent,
+  ReactNode,
   useState,
+  useRef,
+  useEffect
 } from "react";
-
-import { InputNumber } from "@nutui/nutui-react-taro";
-import bem from "@/utils/bem";
-import { useConfig } from "@/packages/configprovider/configprovider.taro";
-
-interface DataListItem {
+import { useConfig } from "@/packages/configprovider";
+import { cn2 as nb } from "@/utils/bem";
+import { InputNumber, InputNumberProps } from "@nutui/nutui-react";
+import mathMethods from '@/utils/math'
+const { accurateMultiply } = mathMethods
+const b = nb("ecard");
+export interface DataListItem {
   price: number;
 }
-interface IState {
-  currentIndex: number;
-  currentValue: number;
-  inputValue: number | string;
-  stepValue: number;
-  moneyValue: number | string;
-}
+
 export interface EcardProps {
   className?: string;
   style?: CSSProperties;
-  chooseText: string;
+  chooseText: ReactNode;
   suffix: string;
-  otherValueText: string;
+  otherValueText: ReactNode;
   dataList: Array<DataListItem>;
   cardAmountMin: number;
   cardAmountMax: number;
-  cardBuyMin: number;
-  cardBuyMax: number;
-  money: number;
+  inputNumberProps: Partial<InputNumberProps>;
   placeholder: string;
-  onChange?: (item: DataListItem) => void;
-  onChangeInput?: (val: number) => void;
-  onChangeStep?: (num: number, price: number) => void;
+  handleMoney?: (money: number) => any;
+  onChange?: (item: DataListItem, money: number) => void;
+  onChangeInput?: (val: number, money: number) => void;
+  onChangeStep?: (num: number, price: number, money: number) => void;
 }
 
 const defaultProps = {
@@ -43,18 +39,21 @@ const defaultProps = {
   suffix: "¥",
   otherValueText: "",
   dataList: [],
+  inputNumberProps: {
+    min: 1,
+    max: 9999
+  },
   cardAmountMin: 1,
   cardAmountMax: 9999,
-  cardBuyMin: 1,
-  cardBuyMax: 9999,
-  money: 0,
-  placeholder: "",
+  handleMoney: (money: number) => money,
+  placeholder: '请输入1-9999整数',
 } as EcardProps;
 
 export const Ecard: FunctionComponent<
   Partial<EcardProps> & Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">
 > = (props) => {
   const { locale } = useConfig();
+  const inputRef = useRef<HTMLInputElement>(null)
   const {
     className,
     chooseText,
@@ -63,95 +62,63 @@ export const Ecard: FunctionComponent<
     dataList,
     cardAmountMin,
     cardAmountMax,
-    cardBuyMin,
-    cardBuyMax,
-    money,
+    inputNumberProps,
     placeholder,
     onChange,
     onChangeInput,
+    handleMoney,
     onChangeStep,
-
     ...rest
   } = {
     ...defaultProps,
     ...props,
   };
-  const b = bem("ecard");
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [currentPrice, setCurrentPrice] = useState<number>(dataList[0].price || 0); //当前非自定义面值
+  const [customValue, setCustomValue] = useState<string | number>("");
+  const [cardAmount, setCardAmount] = useState(cardAmountMin);
+  const [money, setMoney] = useState<number>(accurateMultiply(dataList[0].price, 1))
 
-  const [state, setState] = useState<IState>({
-    currentIndex: -2,
-    currentValue: money,
-    inputValue: "",
-    stepValue: cardAmountMin,
-    moneyValue: money,
-  });
+  useEffect(() => {
+    const getTotalPrice = () => {
+      if (!currentPrice && !customValue) return 0
+      if (currentIndex >= 0 && cardAmount && currentPrice) return accurateMultiply(currentPrice, cardAmount)
+      if (customValue && currentIndex === -1 && cardAmount) return accurateMultiply(customValue, cardAmount)
+      return 0
+    }
+    const realMoney = handleMoney ? handleMoney(getTotalPrice()) : getTotalPrice()
+    setMoney(realMoney)
+  }, [currentIndex, currentPrice, cardAmount, customValue])
 
-  const handleClick = (item: { price: number }, index: number) => {
-    setState((stateOld) => {
-      return {
-        ...stateOld,
-        ...{
-          currentIndex: index,
-          currentValue: item.price,
-          stepValue: cardAmountMin,
-          moneyValue: item.price * cardAmountMin,
-        },
-      };
-    });
-    onChange && onChange(item);
+  const handleClick = (item: DataListItem, index: number) => {
+    setCurrentIndex(index)
+    setCurrentPrice(item.price)
+    setCustomValue('')
+    onChange && onChange(item, money);
   };
 
-  const handleClickInput = () => {
-    setState((stateOld) => {
-      return {
-        ...stateOld,
-        ...{
-          currentIndex: -1,
-          currentValue: stateOld.inputValue ? +stateOld.inputValue : 0,
-          stepValue: cardAmountMin,
-          moneyValue: stateOld.inputValue
-            ? +stateOld.inputValue * cardAmountMin
-            : "",
-        },
-      };
-    });
+  const handleInputClick = () => {
+    inputRef && inputRef.current && inputRef.current.focus()
+    setCurrentIndex(-1)
   };
 
-  const handleChangeInput = (event: Event) => {
-    const inputEle = event.target as HTMLInputElement;
-    let inputValueCache = +inputEle.value.replace(/[^\d]/g, "");
+  const handleChangeInput = (value: any) => {
+    let inputValueCache = (value.replace(/[^\d]/g, ""));
     if (inputValueCache > cardAmountMax) {
       inputValueCache = cardAmountMax;
     } else if (inputValueCache < cardAmountMin) {
       inputValueCache = cardAmountMin;
     }
-    setState((stateOld) => {
-      return {
-        ...stateOld,
-        ...{
-          currentValue: inputValueCache,
-          inputValue: inputValueCache,
-          moneyValue: inputValueCache * stateOld.stepValue,
-        },
-      };
-    });
-    onChangeInput && onChangeInput(inputValueCache);
+    setCurrentPrice(0)
+    setCustomValue(inputValueCache)
+    onChangeInput && onChangeInput(inputValueCache, money);
   };
 
   const handleChangeStep = (
     param: string | number,
-    e: MouseEvent | ChangeEvent<HTMLInputElement>
   ) => {
-    setState((stateOld) => {
-      return {
-        ...stateOld,
-        ...{
-          stepValue: +param,
-          moneyValue: stateOld.currentValue * +param,
-        },
-      };
-    });
-    onChangeStep && onChangeStep(+param, state.currentValue as number);
+    setCardAmount(Number(param))
+    onChangeStep && onChangeStep(+param, currentPrice || Number(customValue), money);
   };
 
   return (
@@ -162,7 +129,7 @@ export const Ecard: FunctionComponent<
           {dataList.map((item, index) => {
             return (
               <div
-                className={`${b("list__item")} ${state.currentIndex === index ? "active" : ""
+                className={`${b("list__item")} ${currentIndex === index && "active"
                   }`}
                 key={index}
                 onClick={() => {
@@ -174,44 +141,35 @@ export const Ecard: FunctionComponent<
             );
           })}
           <div
-            className={`${b("list__input")} ${state.currentIndex === -1 ? "active" : ""
+            className={`${b("list__input")} ${currentIndex === -1 && "active"
               }`}
-            onClick={() => {
-              handleClickInput();
-            }}
+            onClick={
+              handleInputClick
+            }
           >
             <div>{otherValueText || locale.ecard.otherValueText}</div>
             <div className={b("list__input--con")}>
-              {/* <Input
-                className={b("list__input--input")}
-                type="number"
-                inputAlign="right"
-                border={false}
-                defaultValue={state.inputValue}
-                onChange={handleChangeInput}
-                placeholder={placeholder || locale.ecard.placeholder}
-              /> */}
               <input
                 className={b("list__input--input")}
                 type="number"
-                value={state.inputValue}
-                onInput={(e: any) => {
-                  handleChangeInput(e);
+                ref={inputRef}
+                value={customValue}
+                onChange={(e: any) => {
+                  handleChangeInput(e.target.value);
                 }}
                 placeholder={placeholder || locale.ecard.placeholder}
               />
-              {suffix}
+              <span>{suffix}</span>
             </div>
           </div>
           <div className={b("list__step")}>
             <div className={b("list__step--price")}>
               {suffix}
-              {state.moneyValue}
+              {money}
             </div>
             <InputNumber
-              modelValue={state.stepValue}
-              min={cardBuyMin}
-              max={cardBuyMax}
+              modelValue={cardAmount}
+              {...inputNumberProps}
               onChangeFuc={handleChangeStep}
             />
           </div>

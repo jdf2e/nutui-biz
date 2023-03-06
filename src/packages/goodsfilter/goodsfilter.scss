@@ -159,10 +159,9 @@
 
   &__chunk__groups {
     padding-top: 18px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
 
     &.PT0 {
       padding-top: 0;

@@ -1,9 +1,4 @@
-import React, {
-  FunctionComponent,
-  useEffect,
-  ReactNode,
-  CSSProperties,
-} from "react";
+import React, { FunctionComponent, ReactNode, CSSProperties } from "react";
 import { IComponent } from "@/utils/typings";
 import { Button, ButtonProps } from "@nutui/nutui-react";
 import bem from "@/utils/bem";
@@ -22,6 +17,7 @@ export type CouponType = "large" | "small";
 export type IPricePosition = "front" | "back";
 
 export interface CouponProps extends IComponent {
+  style?: CSSProperties;
   type: CouponType; //优惠券的类型尺寸
   couponStyle: CSSProperties; //优惠券的样式
   couponMainStyle: CSSProperties; //优惠券主体的样式
@@ -29,11 +25,10 @@ export interface CouponProps extends IComponent {
   coupon: ICouponType; //渲染优惠券文案内容
   btnText: string; //按钮文案
   isReceived: boolean; //是否领取
-  receivedBtnText: string; //领取后的按钮文案
   className: string;
   buttonProps: Partial<ButtonProps>; //按钮props
   usedIcon: ReactNode;
-  onBtnClick: (item: any) => void;
+  onBtnClick?: (item: any) => void;
   itemData: any; //父组件传递过来的数据，用户函数参数返回
 }
 
@@ -41,20 +36,21 @@ const defaultProps = {
   type: "large",
   pricePosition: "back",
   isReceived: false,
+  btnText: "立即领取",
 } as CouponProps;
 
 export const Coupon: FunctionComponent<
-  Partial<CouponProps> & Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">
+  Partial<CouponProps> & React.HTMLAttributes<HTMLDivElement>
 > = React.memo((props) => {
   const {
     type,
+    style,
     couponStyle,
     couponMainStyle,
     pricePosition,
     coupon,
     btnText,
     isReceived,
-    receivedBtnText,
     className,
     usedIcon,
     itemData,
@@ -67,29 +63,38 @@ export const Coupon: FunctionComponent<
   };
   const b = bem("biz-coupon");
   const disabdb = bem("biz-dis-coupon");
+  //价格
+  const priceNumber = (price: number | string) => {
+    return (
+      <div className={b("main-price--number")}>
+        {Number(price).toFixed(2).toString().substring(0, 5)}
+      </div>
+    );
+  };
+  //单位
+  const priceCurrency = (currency: string) => {
+    return <div className={b("main-price--currency")}>{currency}</div>;
+  };
   const renderPrice = () => {
     return pricePosition === "front" ? (
       <div className={b("main-price")}>
-        <div className={b("main-price--number")}>
-          {Number(coupon?.price).toFixed(2).toString().substring(0, 5)}
-        </div>
-        <div className={b("main-price--currency")}>{coupon?.currency}</div>
+        {priceNumber(coupon?.price)}
+        {priceCurrency(coupon?.currency)}
       </div>
     ) : (
       <div className={b("main-price")}>
-        <div className={b("main-price--currency")}>{coupon?.currency}</div>
-        <div className={b("main-price--number")}>
-          {Number(coupon?.price).toFixed(2).toString().substring(0, 5)}
-        </div>
+        {priceCurrency(coupon?.currency)}
+        {priceNumber(coupon?.price)}
       </div>
     );
   };
   const handleClick = () => {
-    onBtnClick && onBtnClick(itemData);
+    onBtnClick?.(itemData);
   };
   return (
     <div
       className={`${b()} ${isReceived ? disabdb() : ""} ${className} `}
+      style={style}
       {...rest}
     >
       <div

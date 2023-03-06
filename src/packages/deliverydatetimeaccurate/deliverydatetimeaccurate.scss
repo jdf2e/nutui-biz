@@ -1,0 +1,80 @@
+.nut-delivery-date-time-accurate {
+    width: 100%;
+    height: calc(100% - 50px - 10px);
+    display: flex;
+    margin-top: 15px;
+
+    &__pannel {
+        width: 140px;
+        height: 100%;
+        overflow: auto;
+        overflow-x: hidden;
+        background-color: #f6f7f9;
+
+        &-title {
+            display: flex;
+            width: 150px;
+            height: 45px;
+            padding: 15px 20px;
+            align-items: center;
+            color: #666666;
+            font-size: 14px;
+            box-sizing: border-box;
+            @include text-ellipsis();
+
+            &--current {
+                background-color: #fff;
+                color: #333333;
+                font-weight: bold;
+            }
+        }
+    }
+
+    &__detail {
+        flex: 1;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 0 10px;
+
+        &-item {
+            margin-bottom: 10px;
+
+            &-title {
+                width: 100%;
+                font-size: 12px;
+                color: #666;
+                @include text-ellipsis();
+            }
+
+            &-times {
+                width: 100%;
+                margin-top: 5px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+
+                &-time {
+                    width: 48%;
+                    height: 50px;
+                    line-height: 50px;
+                    text-align: center;
+                    padding: 0 10px;
+                    margin-bottom: 10px;
+                    background-color: #f6f7f9;
+                    border-radius: 5px;
+                    color: #333;
+                    font-size: 14px;
+                    border: 1px solid transparent;
+                    @include text-ellipsis();
+
+                    &--current {
+                        background-color: #fce0df;
+                        border: 1px solid #fa2c19;
+                        color: #fa2c19;
+                    }
+                }
+            }
+        }
+    }
+}

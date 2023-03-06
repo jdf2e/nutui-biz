@@ -1,17 +1,17 @@
 import React, {
-  FunctionComponent, ReactNode, CSSProperties, HTMLAttributes, useState
+  FunctionComponent, ReactNode, CSSProperties
 } from 'react'
 import { Image } from '@nutui/nutui-react';
 
 import bem from '@/utils/bem'
 import Unit from '@/utils/unit'
+import { errorImg } from '@/utils'
 
 export interface ProductFeedItemProps {
-  data: any
+  data: Array<any>
   col: number | string
-  gutter: number | string
-  borderRadius: number | string
   padding: number | string
+  borderRadius: number | string
   imgUrl: string
   imgWidth: string
   imgHeight: string
@@ -24,15 +24,15 @@ export interface ProductFeedItemProps {
 }
 
 const defaultProps = {
+  data: [],
   col: 2,
-  gutter: 6,
-  borderRadius: 8,
-  padding: 10,
-  imgWidth: '150',
-  imgHeight: '150',
+  padding: '10px',
+  borderRadius: '8px',
+  imgWidth: '150px',
+  imgHeight: '150px',
   isImageLazy: true,
-  loadingImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
-  errorImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
+  loadingImg: errorImg,
+  errorImg,
   onClick: () => { },
   onImageClick: () => { }
 } as unknown as ProductFeedItemProps
@@ -46,9 +46,8 @@ export const ProductFeedItem: FunctionComponent<
     children,
     data,
     col,
-    gutter,
-    borderRadius,
     padding,
+    borderRadius,
     imgUrl,
     imgWidth,
     imgHeight,
@@ -68,8 +67,6 @@ export const ProductFeedItem: FunctionComponent<
 
   const itemStyle = () => {
     return {
-      "width": col == 1 ? "100%" : 
-                  `calc((100% - ${Unit.pxAdd(gutter)})/${col})`,
       "borderRadius": Unit.pxAdd(borderRadius),
       "padding": Unit.pxAdd(padding),
     }
