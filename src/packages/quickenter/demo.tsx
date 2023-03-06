@@ -17,12 +17,6 @@ const QuickEnterDemo = () => {
       title2: "单行",
       title3: "滑动展示",
     },
-    "zh-TW": {
-      basic: "基本用法",
-      title1: "輪播展示",
-      title2: "單行",
-      title3: "滑動展示",
-    },
     "en-US": {
       basic: "Basic usage",
       title1: "carousel display",
