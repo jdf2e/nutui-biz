@@ -1,5 +1,5 @@
 import React, {
-  FunctionComponent, HTMLAttributes, useEffect, useMemo, useState,
+  FunctionComponent, HTMLAttributes, useEffect, useMemo, useState, CSSProperties
 } from 'react'
 import { Icon, Popup } from '@nutui/nutui-react'
 import { IComponent } from '@/utils/typings'
@@ -10,14 +10,17 @@ export interface GoodsFilterProps extends IComponent {
   visiable: boolean
   confirmText: string
   resetText: string
-  resetDisable: boolean
   priceRangeTitle: string
+  addressTitle: string
+  selectedAddress: string
+  resetDisable: boolean
   priceRanges: Array<any>
   filterAttrs: Array<any>
   goodsAttrs: Array<any>
+  specStyle: CSSProperties
+  selectedSpecShow: boolean
   maxLine: number
-  selectedAddress: string
-  addressTitle: string
+  icon: string
   onClose: () => void
   onReset: () => void
   onConfirm: (res: any) => void
@@ -33,11 +36,13 @@ const defaultProps = {
   visiable: false,
   confirmText: '确定',
   resetText: '重置',
-  resetDisable: false,
   priceRangeTitle: '价格区间',
-  maxLine: 2,
-  selectedAddress: '',
   addressTitle: '配送地址',
+  selectedAddress: '',
+  resetDisable: false,
+  selectedSpecShow: true,
+  maxLine: 2,
+  icon: 'arrow-up',
   onBeforeSelected: (done: any) => {
     done()
   },
@@ -50,12 +55,17 @@ export const GoodsFilter: FunctionComponent<
     visiable,
     confirmText,
     resetText,
-    selectedAddress,
+    priceRangeTitle,
     addressTitle,
+    selectedAddress,
+    resetDisable,
+    priceRanges,
     filterAttrs,
     goodsAttrs,
-    priceRangeTitle,
-    priceRanges,
+    specStyle,
+    selectedSpecShow,
+    maxLine,
+    icon,
     onClose,
     onReset,
     onConfirm,
@@ -226,13 +236,15 @@ export const GoodsFilter: FunctionComponent<
 
   // 重置
   const reset = () => {
-    setSelectedValues({
-      filterAttrs: [],
-      goodsAttrs: {}
-    })
-    setPriceLow('')
-    setPriceHigh('')
-    onReset && onReset()
+    if (!resetDisable) { 
+      setSelectedValues({
+        filterAttrs: [],
+        goodsAttrs: {}
+      })
+      setPriceLow('')
+      setPriceHigh('')
+      onReset && onReset()
+    }
   }
 
   // 确定
@@ -266,7 +278,7 @@ export const GoodsFilter: FunctionComponent<
           <div className={b('chunk__group')}>
             <Icon
               className={b('chunk__group__icon')}
-              name="location2"
+              name='location2'
               size="12"
             ></Icon>
             <div className={b('chunk__group__address')} onClick={chooseAddress}>
@@ -344,31 +356,24 @@ export const GoodsFilter: FunctionComponent<
               norGoodsAttrs.map((attrs) => {
                 return <div
                   className={b('chunk__list--item')}
+                  key={attrs.id}
                 >
                   <div className={b('chunk__list--item__top')}>
                     <div className={b('chunk__list--item__title')}>{attrs.title}</div>
-                    <div className={b('chunk__list--item__subTitle')}>{renderSelectedValues(attrs)}</div>
-                    <Icon name='arrow-up' className={b('chunk__list--item__icon') + (attrs.isExpand ? ' expand' : '')}onClick={() => onClickIcon(attrs)}></Icon>
+                    {
+                      selectedSpecShow && <div className={b('chunk__list--item__subTitle')}>{renderSelectedValues(attrs)}</div>
+                    }
+                    <Icon name={icon} className={b('chunk__list--item__icon') + (attrs.isExpand ? ' expand' : '')}onClick={() => onClickIcon(attrs)}></Icon>
                   </div>
                   <div className={b('chunk__groups')}>
                     {
-                      attrs.values.slice(0, 4).map((attr: any) => {
+                      (attrs.isExpand ? attrs.values : attrs.values.slice(0, 3 * maxLine)).map((attr: any) => {
                         return <div
                           key={attr.id}
                           className={b('chunk__groups--item') +
                             (selectedValues.goodsAttrs[attrs.id] && selectedValues.goodsAttrs[attrs.id].values.includes(attr.id) ? ' active' : '')
                           }
-                          onClick={() => selectedGoodsAttr(attrs, attr)}
-                        >{ attr.name }</div>
-                      })
-                    }
-                    {
-                      attrs.isExpand && attrs.values.slice(4).map((attr: any) => {
-                        return <div
-                          key={attr.id}
-                          className={b('chunk__groups--item') +
-                            (selectedValues.goodsAttrs[attrs.id] && selectedValues.goodsAttrs[attrs.id].values.includes(attr.id) ? ' active' : '')
-                          }
+                          style={specStyle}
                           onClick={() => selectedGoodsAttr(attrs, attr)}
                         >{ attr.name }</div>
                       })

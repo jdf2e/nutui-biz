@@ -18,7 +18,7 @@ export interface InvoiceTitleEditProps extends IComponent {
   bottom: ReactNode
   buttonProps: Partial<Omit<ButtonProps, "type | block">>;
   onSubmit: (arg: any) => void
-  onInput: () => void
+  onInput: () => void;
 }
 
 export const InvoiceTitleEdit: FunctionComponent<

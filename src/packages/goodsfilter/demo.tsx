@@ -6,7 +6,7 @@ import data from './data'
 const GoodsFilterDemo = () => {
 
   const [state, setState] = useState(data)
-  const [visiable1, setVisiable1] = useState(true)
+  const [visiable1, setVisiable1] = useState(false)
   return (
     <>
       <div className='demo'>
@@ -17,6 +17,8 @@ const GoodsFilterDemo = () => {
           priceRanges={state.priceRanges}
           goodsAttrs={state.goodsAttrs}
           filterAttrs={state.filterAttrs}
+          maxLine={3}
+          icon={'heart'}
           onClose={() => { setVisiable1(false) }}
           onReset={() => { console.log('onReset')}}
           onConfirm={(res) => { console.log('onConfirm', res) }}
@@ -32,12 +34,6 @@ const GoodsFilterDemo = () => {
             console.log('onSelectedPrice', range)
           }}
         ></GoodsFilter>
-
-        <h2>更新地址</h2>
-        <Cell onClick={() => { setVisiable1(true) }}>点击进行商品筛选</Cell>
-
-        <h2>设置默认值</h2>
-        <Cell onClick={() => { setVisiable1(true) }}>点击进行商品筛选</Cell>
       </div>
     </>
   );

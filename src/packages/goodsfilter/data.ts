@@ -213,7 +213,7 @@ export default {
     }]
   }, {
     title: '钙含量',
-    id: 3,
+    id: 4,
     values: [{
       id: "83057",
       name: "高钙",
@@ -225,7 +225,7 @@ export default {
     }]
   }, {
     title: '蛋白质含量',
-    id: 4,
+    id: 5,
     values: [{
       id: "9756",
       name: "高蛋白",
@@ -235,24 +235,5 @@ export default {
       name: "非高蛋白",
       extra: {},
     }]
-  }],
-
-  beforeSelected: (done: any, selectedValue: any) => {
-    if (selectedValue.values.length > 2) {
-      console.log('最多选4个')
-    } else {
-      done()
-    }
-  },
-
-  addressList: [{
-    id: 1,
-    detail: '北京市朝阳区八里庄街道'
-  }, {
-    id: 2,
-    detail: '钓鱼岛钓鱼岛全区'
-  }, {
-    id: 3,
-    detail: '北京市大兴区科创十一街18号院京东大厦'
   }]
 }
