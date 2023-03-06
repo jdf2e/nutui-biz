@@ -157,7 +157,6 @@ const CouponDemo = () => {
                   couponMainStyle={couponMainSmallStyle}
                   couponStyle={couponSmallStyle}
                   coupon={couponObj}
-                  buttonProps={buttonProps}
                   itemData={item}
                   btnText={translated.btnText}
                   onBtnClick={receivedBtn}

@@ -17,7 +17,8 @@ import { Coupon } from "@nutui/nutui-biz";
 :::demo
 
 ```ts
-import React, { useState } from "react";
+import React, { useState, CSSProperties } from "react";
+import { ButtonProps } from "@nutui/nutui-react";
 import { Coupon } from "@nutui/nutui-biz";
 
 const App = () => {
@@ -102,7 +103,7 @@ export default App;
 :::demo
 
 ```ts
-import React, { useState } from "react";
+import React, { CSSProperties } from "react";
 import { Coupon } from "@nutui/nutui-biz";
 
 const App = () => {
@@ -128,8 +129,8 @@ const App = () => {
     return {
       price: 9,
       currency: "¥",
-      mainTitle: translated.mainTitle,
-      subTitle: translated.subTitle,
+      mainTitle: "满100元可用",
+      subTitle: "仅可购买满折券测试",
       label: "618",
     };
   }, []);
@@ -154,7 +155,6 @@ const App = () => {
               couponMainStyle={couponMainSmallStyle}
               couponStyle={couponSmallStyle}
               coupon={couponObj}
-              buttonProps={buttonProps}
               itemData={item}
               btnText="立即领取"
               onBtnClick={receivedBtn}
