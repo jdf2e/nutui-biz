@@ -266,7 +266,7 @@ const App = () => {
         <h2>基础用法</h2>
         <Cell onClick={() => { setVisible1(true) }}>点击进行商品筛选</Cell>
         <GoodsFilter
-          visiable={visible1}
+          visible={visible1}
           priceRanges={state.priceRanges}
           goodsAttrs={state.goodsAttrs}
           filterAttrs={state.filterAttrs}
