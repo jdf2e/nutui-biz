@@ -1,4 +1,4 @@
-.nut-orderRemark {
+.nb-orderRemark {
   &__title {
     height: 50px;
     line-height: 50px;
@@ -48,15 +48,17 @@
   &__tag-container {
     padding: 10px 15px;
     padding-top: 15px;
-    .nut-orderRemark__tag-title {
+    .nb-orderRemark__tag-title {
       font-size: 12px;
       font-family: PingFangSC;
       font-weight: normal;
       color: rgba(0, 0, 0, 0.44);
       margin-bottom: 10px;
     }
-    .nut-orderRemark__tag-content {
-      .nut-orderRemark__tag {
+    .nb-orderRemark__tag-content {
+      max-height: 200px;
+      overflow-y: auto;
+      .nb-orderRemark__tag {
         // height: 28px;
         background: rgba(233, 233, 233, 1);
         border-radius: 14px;
@@ -74,7 +76,7 @@
     }
   }
 }
-.nut-orderRemark__popup {
+.nb-orderRemark__popup {
   .nutui-popup__close-icon {
     top: 12px !important;
   }

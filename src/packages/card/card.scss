@@ -17,12 +17,13 @@
 
 .nb-card {
   width: 100%;
+  background-color: #fff;
 
-  .nb-card__main {
+  &__main {
     display: flex;
   }
 
-  .nb-card__left {
+  &__left {
     width: 120px;
     height: 120px;
     flex-shrink: 0;
@@ -35,9 +36,9 @@
     }
   }
 
-  .nb-card__right {
+  &__right {
     flex: 1;
-    padding: 0 10px 8px;
+    padding: 10px;
     width: calc(100% - 130px);
 
     .nb-card__right__title {
@@ -57,7 +58,11 @@
       align-items: center;
       flex-wrap: wrap;
       line-height: 18px;
-      margin-top: 9px;
+
+      > * {
+        margin-top: 9px;
+      }
+
       .nut-price {
         .nut-price__big {
           font-size: 18px;
@@ -67,29 +72,6 @@
         .nut-price__small {
           font-size: 12px;
         }
-      }
-      .nb-card__right__price__origin {
-        &.nut-price {
-          margin-left: 2px;
-          color: #d2a448;
-          .nut-price__big,
-          .nut-price__symbol,
-          .nut-price__point,
-          .nut-price__small {
-            font-size: 12px;
-          }
-        }
-      }
-    }
-    .nb-card__right__other {
-      display: flex;
-      align-items: center;
-      padding: 5px 0 2px;
-      .nut-tag {
-        border: none;
-        padding: 0 2px;
-        margin-right: 5px;
-        font-size: $font-size-0;
       }
     }
     .nb-card__right__shop {
@@ -105,18 +87,37 @@
     }
   }
 
-  .half-line {
+  &.half-line {
+    display: inline-flex;
+    flex-direction: column;
+    width: 48%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    .nb-card__main {
+      display: inline-flex;
+      flex-direction: column;
+    }
+
+    &:nth-child(2n+1) {
+      margin-right: 0;
+    }
+
+    .nut-image {
+      position: absolute;
+      top: 0;
+    }
+
     img {
       width: 100%;
     }
 
-    &-img {
+    .half-line-img {
       position: relative;
     }
 
-    &-title {
+    .nb-card__right__title {
       color: #333;
-      font-size: 14px;
       margin-top: 8px;
 
       &.one-line {
@@ -128,9 +129,18 @@
       }
     }
 
-    &-shop-name {
-      font-size: 12px;
-      color: #999;
+    .nb-card__left {
+      width: 100%;
+      padding-top: 100%;
+
+    }
+
+    .nb-card__right {
+      width: 100%;
+    }
+
+    .half-line-bottom {
+      padding: 10px;
     }
   }
 

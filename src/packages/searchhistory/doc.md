@@ -17,7 +17,76 @@ import { SearchHistory } from '@nutui/nutui-biz';
 :::demo
 
 ```ts
-import  React from 'react';
+import  React, {useState} from 'react';
+import { SearchHistory } from '@nutui/nutui-biz';
+
+const App = () => {
+  const [recentSearchData, setRecentSearchData] = useState(JSON.parse(localStorage.getItem('recentSearchData') as string) || [])
+  const searchDiscoverData = [
+    {
+      key: '小米手环',
+      url: ''
+    },
+    {
+      key: '对讲机',
+      url: ''
+    }
+  ]
+
+  const handleClick = (val: string) => { 
+    if(val.trim() === '') return
+
+    let arr = JSON.parse(localStorage.getItem('recentSearchData') as string) || [];
+    let len = arr.filter((item: {
+      key: string,
+      url: string
+    }) => item.key === val).length
+
+    if(len > 0) {
+      arr = arr.filter((item: {
+        key: string,
+        url: string
+      }) => item.key !== val)
+    }
+
+    arr.unshift({
+      key: val,
+      url: ''
+    })
+
+    localStorage.setItem('recentSearchData', 
+      JSON.stringify(arr)
+    )
+    setRecentSearchData(arr)
+  }
+
+  const handleDelete = () => {
+    localStorage.removeItem('recentSearchData')
+    setRecentSearchData([])
+  }
+
+  return (
+    <SearchHistory 
+        onClickSearchButton={handleClick}
+        onDelete={handleDelete}
+        recentSearchData={recentSearchData} 
+        searchDiscoverData={searchDiscoverData} 
+    />
+  );
+};
+export default App;
+```
+
+:::
+
+### 单个删除
+
+点击最近搜索的删除图标，默认是全部删除。设置 `deleteType` 为 `single`，可实现搜索结果的单个删除。
+
+:::demo
+
+```ts
+import  React, {useState} from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -84,31 +153,6 @@ const App = () => {
   return (
     <SearchHistory 
         onClickSearchButton={handleClick}
-        onDelete={handleDelete}
-        recentSearchData={recentSearchData} 
-        searchDiscoverData={searchDiscoverData} 
-    />
-  );
-};
-export default App;
-```
-
-:::
-
-### 单个删除
-
-点击最近搜索的删除图标，默认是全部删除。设置 `deleteType` 为 `single`，可实现搜索结果的单个删除。
-
-:::demo
-
-```ts
-import  React from 'react';
-import { SearchHistory } from '@nutui/nutui-biz';
-
-const App = () => {
-  return (
-    <SearchHistory 
-        onClickSearchButton={handleClick}
         deleteType="single"
         onDelete={handleDelete}
         onDeleteSingle={handleDeleteSingle}
@@ -127,10 +171,54 @@ export default App;
 :::demo
 
 ```ts
-import  React from 'react';
+import  React, {useState} from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
+  const [recentSearchData, setRecentSearchData] = useState(JSON.parse(localStorage.getItem('recentSearchData') as string) || [])
+  const searchDiscoverData = [
+    {
+      key: '小米手环',
+      url: ''
+    },
+    {
+      key: '对讲机',
+      url: ''
+    }
+  ]
+
+  const handleClick = (val: string) => { 
+    if(val.trim() === '') return
+
+    let arr = JSON.parse(localStorage.getItem('recentSearchData') as string) || [];
+    let len = arr.filter((item: {
+      key: string,
+      url: string
+    }) => item.key === val).length
+
+    if(len > 0) {
+      arr = arr.filter((item: {
+        key: string,
+        url: string
+      }) => item.key !== val)
+    }
+
+    arr.unshift({
+      key: val,
+      url: ''
+    })
+
+    localStorage.setItem('recentSearchData', 
+      JSON.stringify(arr)
+    )
+    setRecentSearchData(arr)
+  }
+
+  const handleDelete = () => {
+    localStorage.removeItem('recentSearchData')
+    setRecentSearchData([])
+  }
+
   return (
     <SearchHistory 
         onClickSearchButton={handleClick}
@@ -152,10 +240,54 @@ export default App;
 :::demo
 
 ```ts
-import  React from 'react';
+import  React, {useState} from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
+  const [recentSearchData, setRecentSearchData] = useState(JSON.parse(localStorage.getItem('recentSearchData') as string) || [])
+  const searchDiscoverData = [
+    {
+      key: '小米手环',
+      url: ''
+    },
+    {
+      key: '对讲机',
+      url: ''
+    }
+  ]
+
+  const handleClick = (val: string) => { 
+    if(val.trim() === '') return
+
+    let arr = JSON.parse(localStorage.getItem('recentSearchData') as string) || [];
+    let len = arr.filter((item: {
+      key: string,
+      url: string
+    }) => item.key === val).length
+
+    if(len > 0) {
+      arr = arr.filter((item: {
+        key: string,
+        url: string
+      }) => item.key !== val)
+    }
+
+    arr.unshift({
+      key: val,
+      url: ''
+    })
+
+    localStorage.setItem('recentSearchData', 
+      JSON.stringify(arr)
+    )
+    setRecentSearchData(arr)
+  }
+
+  const handleDelete = () => {
+    localStorage.removeItem('recentSearchData')
+    setRecentSearchData([])
+  }
+
   return (
     <SearchHistory 
         onClickSearchButton={handleClick}
@@ -177,10 +309,54 @@ export default App;
 :::demo
 
 ```ts
-import  React from 'react';
+import  React, {useState} from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
+  const [recentSearchData, setRecentSearchData] = useState(JSON.parse(localStorage.getItem('recentSearchData') as string) || [])
+  const searchDiscoverData = [
+    {
+      key: '小米手环',
+      url: ''
+    },
+    {
+      key: '对讲机',
+      url: ''
+    }
+  ]
+
+  const handleClick = (val: string) => { 
+    if(val.trim() === '') return
+
+    let arr = JSON.parse(localStorage.getItem('recentSearchData') as string) || [];
+    let len = arr.filter((item: {
+      key: string,
+      url: string
+    }) => item.key === val).length
+
+    if(len > 0) {
+      arr = arr.filter((item: {
+        key: string,
+        url: string
+      }) => item.key !== val)
+    }
+
+    arr.unshift({
+      key: val,
+      url: ''
+    })
+
+    localStorage.setItem('recentSearchData', 
+      JSON.stringify(arr)
+    )
+    setRecentSearchData(arr)
+  }
+
+  const handleDelete = () => {
+    localStorage.removeItem('recentSearchData')
+    setRecentSearchData([])
+  }
+
   return (
     <SearchHistory 
         onClickSearchButton={handleClick}
@@ -203,10 +379,54 @@ export default App;
 :::demo
 
 ```ts
-import  React from 'react';
+import  React, {useState} from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
+  const [recentSearchData, setRecentSearchData] = useState(JSON.parse(localStorage.getItem('recentSearchData') as string) || [])
+  const searchDiscoverData = [
+    {
+      key: '小米手环',
+      url: ''
+    },
+    {
+      key: '对讲机',
+      url: ''
+    }
+  ]
+
+  const handleClick = (val: string) => { 
+    if(val.trim() === '') return
+
+    let arr = JSON.parse(localStorage.getItem('recentSearchData') as string) || [];
+    let len = arr.filter((item: {
+      key: string,
+      url: string
+    }) => item.key === val).length
+
+    if(len > 0) {
+      arr = arr.filter((item: {
+        key: string,
+        url: string
+      }) => item.key !== val)
+    }
+
+    arr.unshift({
+      key: val,
+      url: ''
+    })
+
+    localStorage.setItem('recentSearchData', 
+      JSON.stringify(arr)
+    )
+    setRecentSearchData(arr)
+  }
+
+  const handleDelete = () => {
+    localStorage.removeItem('recentSearchData')
+    setRecentSearchData([])
+  }
+
   return (
     <SearchHistory 
         onClickSearchButton={handleClick}
@@ -228,10 +448,54 @@ export default App;
 :::demo
 
 ```ts
-import  React from 'react';
+import  React, {useState} from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
 
 const App = () => {
+  const [recentSearchData, setRecentSearchData] = useState(JSON.parse(localStorage.getItem('recentSearchData') as string) || [])
+  const searchDiscoverData = [
+    {
+      key: '小米手环',
+      url: ''
+    },
+    {
+      key: '对讲机',
+      url: ''
+    }
+  ]
+
+  const handleClick = (val: string) => { 
+    if(val.trim() === '') return
+
+    let arr = JSON.parse(localStorage.getItem('recentSearchData') as string) || [];
+    let len = arr.filter((item: {
+      key: string,
+      url: string
+    }) => item.key === val).length
+
+    if(len > 0) {
+      arr = arr.filter((item: {
+        key: string,
+        url: string
+      }) => item.key !== val)
+    }
+
+    arr.unshift({
+      key: val,
+      url: ''
+    })
+
+    localStorage.setItem('recentSearchData', 
+      JSON.stringify(arr)
+    )
+    setRecentSearchData(arr)
+  }
+
+  const handleDelete = () => {
+    localStorage.removeItem('recentSearchData')
+    setRecentSearchData([])
+  }
+
   return (
     <SearchHistory 
         onClickSearchButton={handleClick}
@@ -252,18 +516,62 @@ export default App;
 :::demo
 
 ```ts
-import  React from 'react';
+import  React, {useState} from 'react';
 import { SearchHistory } from '@nutui/nutui-biz';
-import { Icon } from '@nutui/nutui-react';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
+  const [recentSearchData, setRecentSearchData] = useState(JSON.parse(localStorage.getItem('recentSearchData') as string) || [])
+  const searchDiscoverData = [
+    {
+      key: '小米手环',
+      url: ''
+    },
+    {
+      key: '对讲机',
+      url: ''
+    }
+  ]
+
+  const handleClick = (val: string) => { 
+    if(val.trim() === '') return
+
+    let arr = JSON.parse(localStorage.getItem('recentSearchData') as string) || [];
+    let len = arr.filter((item: {
+      key: string,
+      url: string
+    }) => item.key === val).length
+
+    if(len > 0) {
+      arr = arr.filter((item: {
+        key: string,
+        url: string
+      }) => item.key !== val)
+    }
+
+    arr.unshift({
+      key: val,
+      url: ''
+    })
+
+    localStorage.setItem('recentSearchData', 
+      JSON.stringify(arr)
+    )
+    setRecentSearchData(arr)
+  }
+
+  const handleDelete = () => {
+    localStorage.removeItem('recentSearchData')
+    setRecentSearchData([])
+  }
+
   return (
     <SearchHistory 
         onClickSearchButton={handleClick}
         onDelete={handleDelete}
         recentSearchData={recentSearchData} 
         searchDiscoverData={searchDiscoverData} 
-        refreshIcon={<Icon name="refresh" style={marginRight: '10px'} />}
+        refreshIcon="refresh"
         onRefresh={() => Toast.text('点击了刷新按钮')}
     />
   );

@@ -342,21 +342,21 @@ export default App;
 | address | Information about address components | Object | {} |
 | data | Edit address data format settings | Object | {} |
 | addressInfo | address information | Object |{} |
-| bottomInputTpl   | custom input box                                 | ReactNode  | --         |
+| bottomInputTpl   | custom input box                                 | ReactNode  | -         |
 | showSave   | Whether to display the save button button                 | Boolean | `true`         |
 
 ### Props address
 | Attribute    | Description     | Type    | Default   |
 |---------|--------------------------------------------|---------|-----------|
 | addressSelect   | Default address value | String\|Number[] | [] |
-| addressStr   | address information                                 | String  |""        |
+| addressStr   | address information                                 | String  | -        |
 | province | Province data | Array | [] |
 | city | City data | Array | [] |
 | country | Country data | Array | [] |
 | town | Town data | Array | [] |
 | height | Popup height | String、Number | `200px` |
-| customAddressTitle  | Custom address title | String | 'Select Region' |
-| addressType | address component type, optional 'custom'/'custom2' | string | `custom `|
+| customAddressTitle  | Custom address title | String | `Select Region` |
+| addressType | address component type, optional `custom`/`custom2` | string | `custom `|
 
 ### Props data
 
@@ -379,21 +379,21 @@ export default App;
 ### Props addressInfo
 | Attribute    | Description     | Type    | Default   |
 |---------|--------------------------------------------|---------|-----------|
-| name | consignee information | String | -- |
-| tel | phone number information | String | -- |
-| region | region information | String | -- |
-| regionIds | The id information of the selected address in the region | String | -- |
-| address | detailed address information | String | -- |
-| default | Whether it is the default address | Boolean | false |
+| name | consignee information | String | - |
+| tel | phone number information | String | - |
+| region | region information | String | - |
+| regionIds | The id information of the selected address in the region | String | - |
+| address | detailed address information | String | - |
+| default | Whether it is the default address | Boolean | `false` |
 
 
 
 ### Events
 | Attribute    | Description  | Callback |
 |----- | ----- | -----  |
-| onChange | Emitted when to input address information， |  value,tag (name,tel,region,address) |
+| onChange | Emitted when to input address information，tag(name、tel、region、address) |  value、tag  |
 | onChangeAddress |  Emitted when to selected address |  reference `Address` onChange |
 | onCloseAddress | Emitted when to close address | reference `Address` close |
 | onSave | Emitted when to save address|  formData |
-| onSwitch | Default address switch callback |  state，formData |
+| onSwitch | Default address switch callback |  state、formData |
 

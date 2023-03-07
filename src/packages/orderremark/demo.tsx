@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslate } from '../../sites/assets/locale';
 import { OrderRemark } from './orderremark';
 import { Cell, Toast } from '@nutui/nutui-react';
+import "./demo.scss"
 interface tarnslatedOption {
   basic: string;
   title: string;
@@ -28,7 +29,13 @@ const OrderRemarkDemo = () => {
       tagTitle: '快捷选择',
       cellTitle: '订单备注',
       emptyText: '请输入备注信息',
-      tagArr: ['京东快递', '轻拿轻放', '周末配送', '配送前，需提前电话联系', '如家中无人，可电话后，放置于门口']
+      tagArr: [
+        '京东快递',
+        '轻拿轻放',
+        '周末配送',
+        '配送前，需提前电话联系',
+        '如家中无人，可电话后，放置于门口',
+      ]
     },
     'zh-TW': {
       basic: '基本用法',
@@ -67,27 +74,26 @@ const OrderRemarkDemo = () => {
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
   const [show4, setShow4] = useState(false);
-  const [mark, setMark] = useState('');
+  const [mark, setMark] = useState('轻拿轻放');
   const [mark2, setMark2] = useState('');
   const [mark3, setMark3] = useState('');
   const [mark4, setMark4] = useState('');
 
-  // const tagArr = ['京东快递', '轻拿轻放', '周末配送', '配送前，需提前电话联系', '如家中无人，可电话后，放置于门口'];
   const onChange = (val: string) => {
     console.log('onChange', val);
   };
   const onOpen = () => {
     Toast.text('onOpen');
   };
-  const onClickTag = (val: string) => {
-    console.log('onClickTag', val);
+  const onClickTag = (val: string, index: number, str: string) => {
+    console.log('onClickTag', val, index, str);
     Toast.text(`onClickTag:${val}`);
   };
   const onClickOverlay = (val: string) => {
     console.log('onClickOverlay', val);
   };
   return (
-    <div className="demo">
+    <div className="demo orderremarkDemo">
       <h2>{translated.basic}</h2>
       <Cell
         onClick={(e) => setShow(true)}
@@ -130,7 +136,7 @@ const OrderRemarkDemo = () => {
         recommendTags={translated.tagArr}
         submitText={translated.submitText}
         placeholderText={translated.placeholderText}
-        title={translated.title}
+        title={translated.topTitle}
         tagTitle={translated.tagTitle}
         onClose={(e) => {
           setShow3(false);

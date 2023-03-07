@@ -1,16 +1,17 @@
 import React, {
-  ChangeEvent,
   CSSProperties,
   FunctionComponent,
   ReactNode,
-  useMemo,
   useState,
+  useRef,
+  useEffect
 } from "react";
 import { useConfig } from "@/packages/configprovider";
 import { cn2 as nb } from "@/utils/bem";
-import { InputNumber, InputNumberProps, Input, InputProps } from "@nutui/nutui-react";
+import { InputNumber, InputNumberProps } from "@nutui/nutui-react";
 import mathMethods from '@/utils/math'
 const { accurateMultiply } = mathMethods
+const b = nb("ecard");
 export interface DataListItem {
   price: number;
 }
@@ -25,11 +26,12 @@ export interface EcardProps {
   cardAmountMin: number;
   cardAmountMax: number;
   inputNumberProps: Partial<InputNumberProps>;
-  modelValue: number;
   placeholder: string;
-  onChange?: (item: DataListItem) => void;
-  onChangeInput?: (val: number) => void;
-  onChangeStep?: (num: number, price: number) => void;
+  rowNum?: number
+  handleMoney?: (money: number) => any;
+  onChange?: (item: DataListItem, money: number) => void;
+  onChangeInput?: (val: number, money: number) => void;
+  onChangeStep?: (num: number, price: number, money: number) => void;
 }
 
 const defaultProps = {
@@ -44,14 +46,16 @@ const defaultProps = {
   },
   cardAmountMin: 1,
   cardAmountMax: 9999,
-  modelValue: 0,
-  placeholder: "",
+  handleMoney: (money: number) => money,
+  placeholder: '请输入1-9999整数',
+  rowNum: 2
 } as EcardProps;
 
 export const Ecard: FunctionComponent<
   Partial<EcardProps> & Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">
 > = (props) => {
   const { locale } = useConfig();
+  const inputRef = useRef<HTMLInputElement>(null)
   const {
     className,
     chooseText,
@@ -61,59 +65,64 @@ export const Ecard: FunctionComponent<
     cardAmountMin,
     cardAmountMax,
     inputNumberProps,
-    modelValue,
     placeholder,
+    rowNum,
     onChange,
     onChangeInput,
+    handleMoney,
     onChangeStep,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   };
-  const b = nb("ecard");
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [currentValue, setCurrentValue] = useState<number>(modelValue);
-  const [customValue, setCustomValue] = useState<number | string>("");
+  const [currentPrice, setCurrentPrice] = useState<number>(dataList[0].price || 0); //当前非自定义面值
+  const [customValue, setCustomValue] = useState<string | number>("");
   const [cardAmount, setCardAmount] = useState(cardAmountMin);
+  const [money, setMoney] = useState<number>(accurateMultiply(dataList[0].price, 1))
+  const listItemWidth = rowNum ? Number((96 / rowNum).toFixed(0)) : 48
 
-  const totalPrice = useMemo(() => {
-    if (!currentValue && !customValue) return 0
-    if (currentIndex >= 0 && cardAmount && currentValue) return accurateMultiply(currentValue, cardAmount)
-    if (customValue && currentIndex === -1 && cardAmount) return accurateMultiply(customValue, cardAmount)
-    return 0
-  }, [currentIndex, currentValue, cardAmount, customValue])
+  useEffect(() => {
+    const getTotalPrice = () => {
+      if (!currentPrice && !customValue) return 0
+      if (currentIndex >= 0 && cardAmount && currentPrice) return accurateMultiply(currentPrice, cardAmount)
+      if (customValue && currentIndex === -1 && cardAmount) return accurateMultiply(customValue, cardAmount)
+      return 0
+    }
+    const realMoney = handleMoney ? handleMoney(getTotalPrice()) : getTotalPrice()
+    setMoney(realMoney)
+  }, [currentIndex, currentPrice, cardAmount, customValue])
 
   const handleClick = (item: DataListItem, index: number) => {
     setCurrentIndex(index)
-    setCurrentValue(item.price)
+    setCurrentPrice(item.price)
     setCustomValue('')
-    onChange && onChange(item);
+    onChange && onChange(item, money);
   };
 
   const handleInputClick = () => {
+    inputRef && inputRef.current && inputRef.current.focus()
     setCurrentIndex(-1)
   };
 
-  //todo：手机上切换中英文限制处理。
-  const handleChangeInput = (event: Event) => {
-    console.log({ cardAmountMax, cardAmountMin })
-    const inputEle = event.target as HTMLInputElement;
-    let inputValueCache = +inputEle.value;
+  const handleChangeInput = (value: any) => {
+    let inputValueCache = (value.replace(/[^\d]/g, ""));
     if (inputValueCache > cardAmountMax) {
       inputValueCache = cardAmountMax;
     } else if (inputValueCache < cardAmountMin) {
       inputValueCache = cardAmountMin;
     }
+    setCurrentPrice(0)
     setCustomValue(inputValueCache)
-    onChangeInput && onChangeInput(inputValueCache);
+    onChangeInput && onChangeInput(inputValueCache, money);
   };
 
   const handleChangeStep = (
     param: string | number,
   ) => {
     setCardAmount(Number(param))
-    onChangeStep && onChangeStep(+param, currentValue);
+    onChangeStep && onChangeStep(+param, currentPrice || Number(customValue), money);
   };
 
   return (
@@ -126,6 +135,7 @@ export const Ecard: FunctionComponent<
               <div
                 className={`${b("list__item")} ${currentIndex === index && "active"
                   }`}
+                style={{ width: `${listItemWidth}%` }}
                 key={index}
                 onClick={() => {
                   handleClick(item, index);
@@ -138,28 +148,29 @@ export const Ecard: FunctionComponent<
           <div
             className={`${b("list__input")} ${currentIndex === -1 && "active"
               }`}
-            onClick={() => {
-              handleInputClick();
-            }}
+            onClick={
+              handleInputClick
+            }
           >
             <div>{otherValueText || locale.ecard.otherValueText}</div>
             <div className={b("list__input--con")}>
               <input
                 className={b("list__input--input")}
                 type="number"
+                ref={inputRef}
                 value={customValue}
                 onChange={(e: any) => {
-                  handleChangeInput(e);
+                  handleChangeInput(e.target.value);
                 }}
                 placeholder={placeholder || locale.ecard.placeholder}
               />
-              {suffix}
+              <span>{suffix}</span>
             </div>
           </div>
           <div className={b("list__step")}>
             <div className={b("list__step--price")}>
               {suffix}
-              {totalPrice}
+              {money}
             </div>
             <InputNumber
               modelValue={cardAmount}

@@ -335,61 +335,63 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| address   | 地址组件相关信息                                | Object  | {}        |
-| data   | 编辑地址数据格式设置                                 | Object  | {}         |
-| addressInfo   | 地址信息                                 | Object  |{}         |
-| bottomInputTpl   | 自定义输入框                                 | ReactNode  | --         |
-| showSave   | 保存按钮是否显示                          | Boolean | `true`         |
+| address   | 地址组件相关信息                                | Object<AddressResult>  | -        |
+| data   | 编辑地址数据格式设置                                 | Object<AddressData>  | -         |
+| addressInfo   | 地址信息                                 | Object<AddressInfo>  |-         |
+| bottomInputTpl   | 自定义输入框                                 | ReactNode  | -         |
+| showSave   | 保存按钮是否显示                          | boolean | `true`         |
+| showDefault| 是否显示默认地址按钮 | boolean | `true` |
+| buttonProps| 按钮基础组件 props |  [ButtonProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/button) | - |
 
 
 ### Props address
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| addressSelect   | 设置默认选中地址 | String\|Number[] | [] |
-| addressStr   | 地址信息                                 | String  |   --      |
+| addressSelect   | 设置默认选中地址 | string\|number[] | [] |
+| addressStr   | 地址信息                                 | string  |   -      |
 | province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
-| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | String、Number | `200px` |
-| customAddressTitle  | 自定义地址选择文案，type='custom' 时生效 | String | `请选择所在地区` |
-| addressType   | 地址组件类型，可选'custom'/'custom2'                                 | string  | `custom`         |
+| customAddressTitle  | 自定义地址选择文案，type='custom' 时生效 | string | `请选择所在地区` |
+| addressType   | 地址组件类型，可选`custom`/`custom2`                                 | string  | `custom`         |
+| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | string | number | `200px` |
 
 ### Props data
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| nameText  | 自定义收货人文案 | String | `收货人` |
-| namePlaceholder  | 自定义收货人占位文案 | String | `请输入收货人` |
-| nameErrorMsg  | 自定义收货人非空校验错误提示文案 | String | `该项为必填项，请填写完后提交` |
-| telText  | 自定义手机号码文案 | String | `手机号码` |
-| telPlaceholder  | 自定义手机号码占位文案 | String | `请输入手机号码` |
-| telErrorMsg  | 自定义手机号码非空校验错误提示文案 | String | `该项为必填项，请填写完后提交` |
-| regionText  | 自定义所在地区文案 | String | `所在地区` |
-| regionPlaceholder  | 自定义所在地区占位文案 | String | `请选择所在地区` |
-| regionErrorMsg  | 自定义所在地区非空校验错误提示文案 | String | `该项为必填项，请填写完后提交` |
-| addressText  | 自定义详细地址文案 | String | `详细地址` |
-| addressPlaceholder  | 自定义详细地址占位文案 | String | `街道、楼牌号` |
-| addressErrorMsg  | 自定义详细地址非空校验错误提示文案 | String | `该项为必填项，请填写完后提交` |
-|bottomText|自定义底部保存按钮文案 | String | `保存` |
+| nameText  | 自定义收货人文案 | string | `收货人` |
+| namePlaceholder  | 自定义收货人占位文案 | string | `请输入收货人` |
+| nameErrorMsg  | 自定义收货人非空校验错误提示文案 | string | `该项为必填项，请填写完后提交` |
+| telText  | 自定义手机号码文案 | string | `手机号码` |
+| telPlaceholder  | 自定义手机号码占位文案 | string | `请输入手机号码` |
+| telErrorMsg  | 自定义手机号码非空校验错误提示文案 | string | `该项为必填项，请填写完后提交` |
+| regionText  | 自定义所在地区文案 | string | `所在地区` |
+| regionPlaceholder  | 自定义所在地区占位文案 | string | `请选择所在地区` |
+| regionErrorMsg  | 自定义所在地区非空校验错误提示文案 | string | `该项为必填项，请填写完后提交` |
+| addressText  | 自定义详细地址文案 | string | `详细地址` |
+| addressPlaceholder  | 自定义详细地址占位文案 | string | `街道、楼牌号` |
+| addressErrorMsg  | 自定义详细地址非空校验错误提示文案 | string | `该项为必填项，请填写完后提交` |
+| bottomText|自定义底部保存按钮文案 | string | `保存` |
 
 ### Props addressInfo
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| name | 收货人信息 | String | '-- |
-| tel | 电话号码信息 | String | -- |
-| region | 所在区域信息 | String | -- |
-| regionIds | 所在区域已选地址id信息 | String | -- |
-| address | 详细地址信息 | String | -- |
-| default | 是否为默认地址 |  Boolean  | false |
+| name | 收货人信息 | string | - |
+| tel | 电话号码信息 | string | - |
+| region | 所在区域信息 | string | - |
+| regionIds | 所在区域已选地址id信息 | string | - |
+| address | 详细地址信息 | string | - |
+| default | 是否为默认地址 |  boolean  | `false` |
 
 
 
 ### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
-| onChange | 输入框输入文字，返回输入文案和所在输入框的标识tag (name,tel,region,address) |  value,tag |
-| onChangeAddress | 自定义选择地址时，选择地区时触发 |  参考Address地址组件 onChange |
-| onCloseAddress | 地址选择弹框关闭时触发 | 参考Address地址组件 close |
-| onSave | 点击底部保存地址按钮,返回保存的信息 |  formData |
-| onSwitch | 默认地址切换回调,返回开关状态和保存的信息 |  state，formData |
+| onChange | 输入框输入文字，返回输入文案和所在输入框的标识tag (name，tel，region，address) |  value，tag |
+| onChangeAddress | 自定义选择地址时，选择地区时触发 |  参考Address地址组件 [onChange](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/address) |
+| onCloseAddress | 地址选择弹框关闭时触发 | 参考Address地址组件 [close](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/address) |
+| onSave | 点击底部保存地址按钮，返回保存的信息 |  formData:<AddressInfo>  |
+| onSwitch | 默认地址切换回调，返回开关状态和保存的信息 |  state，formData:<AddressInfo> |
 

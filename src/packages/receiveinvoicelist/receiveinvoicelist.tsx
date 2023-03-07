@@ -1,9 +1,9 @@
-import React, {
-  FunctionComponent, useState,
-} from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import { Checkbox, Icon, Tag, Cell, CellGroup, Swipe, Button } from '@nutui/nutui-react';
 import { IComponent } from '@/utils/typings'
+import { cn2 } from '@/utils/bem'
+import classNames from 'classnames';
 
 export interface ReceiveInvoiceItemExt {
   label: String;
@@ -24,34 +24,33 @@ export interface ReceiveInvoiceItem {
 export interface ReceiveInvoiceListProps extends IComponent {
   modelValue: String | Number;
   list: Array<ReceiveInvoiceItem>,
-  onEdit: Function,
-  onSelected: Function,
-  onDelete: Function,
   enableDelete: Boolean,
+  onEdit?: (item: ReceiveInvoiceItem) => void,
+  onSelected?: (item: ReceiveInvoiceItem) => void,
+  onDelete?: (item: ReceiveInvoiceItem) => void,
 }
 
 const defaultProps = {
   modelValue: "",
   list: new Array<ReceiveInvoiceItem>,
-  onEdit: (item: ReceiveInvoiceItem) => { },
-  onSelected: (item: ReceiveInvoiceItem) => { },
-  onDelete: (item: ReceiveInvoiceItem) => { },
   enableDelete: false
 } as ReceiveInvoiceListProps;
 
 
-export const ReceiveInvoiceList: FunctionComponent<
-  Partial<ReceiveInvoiceListProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
-> = (props) => {
+export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListProps>> = (props) => {
   const { locale } = useConfig();
   const [modelValue, setModelValue] = useState(props.modelValue);
+  const b = cn2('receive-invoice-list');
 
   const {
+    style,
+    className,
     list,
     onSelected,
     onEdit,
     onDelete,
     enableDelete,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -59,12 +58,12 @@ export const ReceiveInvoiceList: FunctionComponent<
 
   const onSelect = (item: ReceiveInvoiceItem) => {
     setModelValue(item.id);
-    onSelected(item);
+    onSelected?.(item);
   }
 
   const RenderItem = (item: ReceiveInvoiceItem) => {
-    return (<CellGroup className='nut-receive-invoice-list__item'>
-      <Cell className="nut-receive-invoice-list__item-header"
+    return (<CellGroup className={b('item')}>
+      <Cell className={b('item-header')}
         onClick={() => onSelect(item)}
         title={
           <>
@@ -73,22 +72,22 @@ export const ReceiveInvoiceList: FunctionComponent<
           </>
         }
         linkSlot={
-          <Icon name="edit" color='#666' onClick={(e) => { e.stopPropagation(); onEdit(item) }}></Icon>
+          <Icon name="edit" color='#666' onClick={(e) => { e.stopPropagation(); onEdit?.(item) }}></Icon>
         } />
-      <Cell className="nut-receive-invoice-list__item-footer" onClick={() => onSelect(item)}>
+      <Cell className={b('item-footer')} onClick={() => onSelect(item)}>
         <Checkbox textPosition="right" label="" checked={item.id == modelValue} />
-        <div className="nut-receive-invoice-list__item-footer infobox">
-          <div className="nut-receive-invoice-list__item-footer-info">
+        <div className={b('item-footer infobox')}>
+          <div className={b('item-footer-info')} >
             <span>{locale.tel}</span>
             <p>{item.tel}</p>
           </div>
-          <div className="nut-receive-invoice-list__item-footer-info">
+          <div className={b('item-footer-info')} >
             <span>{locale.addres}</span>
             <p>{item.addres}</p>
           </div>
           {item?.extends?.map((i, index) => {
             return (
-              <div key={index} className="nut-receive-invoice-list__item-footer-info">
+              <div key={index} className={b('item-footer-info')} >
                 <span>{i.label}</span>
                 <p>{i.value}</p>
               </div>)
@@ -100,13 +99,13 @@ export const ReceiveInvoiceList: FunctionComponent<
   }
 
   return (
-    <div className='nut-receive-invoice-list'>
+    <div className={classNames([b(), className])} style={style} {...rest}>
       {list.map((item) => {
         return (
           <React.Fragment key={item.id.toString()}>
             {enableDelete ?
               <Swipe rightAction={
-                <Button type="primary" shape="square" onClick={() => onDelete(item)}>{locale.swipeShell.delete}</Button>
+                <Button type="primary" shape="square" onClick={() => onDelete?.(item)}>{locale.swipeShell.delete}</Button>
               }>
                 {RenderItem(item)}
               </Swipe>

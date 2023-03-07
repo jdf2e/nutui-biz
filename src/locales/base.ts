@@ -210,4 +210,7 @@ export interface BaseLang {
     forgetPwdText: string;
     loginButtonText: string;
   };
+  category:{
+    pullUpText:string
+  }
 }

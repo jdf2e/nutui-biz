@@ -2,7 +2,7 @@
 
 ### 介绍
 
-订单取消面板
+订单取消面板组件，可用来选择取消订单的原因。
 
 ### 安装
 
@@ -22,7 +22,7 @@ import { Cell, ButtonProps } from "@nutui/nutui-react";
 import { OrderCancelPanel } from "@nutui/nutui-biz";
 
 const App = () => {
-  const cancelResons = [
+  const cancelReason = [
     {
       key: "resons1",
       value: "商品无货",
@@ -72,7 +72,7 @@ const App = () => {
         <OrderCancelPanel
           showCancelPanel={showPanel}
           popupTitle="退款原因"
-          cancelResons={cancelResons}
+          cancelReason={cancelReason}
           buttonProps={buttonProps}
           onClickCloseIcon={clickClosePopUp}
           onClose={clickClosePopUp}
@@ -95,7 +95,7 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Cell, ButtonProps } from "@nutui/nutui-react";
-import { OrderCancelPanel } from "@nutui/nutui-biz";
+import { OrderCancelPanel, IResonsObject } from "@nutui/nutui-biz";
 
 const App = () => {
   const warmTips = [
@@ -104,7 +104,7 @@ const App = () => {
     "3. 支付券不予返还；支付优惠一并取消",
     "4. 订单一旦取消，无法恢复",
   ];
-  const cancelResons = [
+  const cancelReason = [
     {
       key: "resons1",
       value: "商品无货",
@@ -158,7 +158,7 @@ const App = () => {
           showCancelPanel={showCancelPanel}
           popupTitle="退款原因"
           reasonTitle="请选择取消订单原因"
-          cancelResons={cancelResons}
+          cancelReason={cancelReason}
           warmTips={warmTips}
           tipsTitle="温馨提示"
           btnsText="确认"
@@ -177,7 +177,9 @@ export default App;
 
 :::
 
-### 带有其他原因选项的优惠组件
+### 带有其它原因选项的优惠组件
+
+- 当数据 `cancelReason` 中 `key` 是 `other` 的时候，选择其它选项可以出现文本框。
 
 :::demo
 
@@ -193,7 +195,7 @@ const App = () => {
     "3. 支付券不予返还；支付优惠一并取消",
     "4. 订单一旦取消，无法恢复",
   ];
-  const cancelResons = [
+  const cancelReason = [
     {
       key: "resons1",
       value: "商品无货",
@@ -220,15 +222,17 @@ const App = () => {
     },
     {
       key: "other",
-      value: "其他",
+      value: "其它",
     },
   ];
   const clickClosePopUp = () => {
     setShowOtherCancelPanel(false);
   };
-  const submitBtn = (currActivedKey: string, textAreaValue: string) => {
+  const submitBtn = (selectedReason: IResonsObject, textAreaValue: string) => {
     console.log(
-      `currActivedKey:${currActivedKey}, textAreaValue,${textAreaValue}`
+      `selectedReason:${JSON.stringify(
+        selectedReason
+      )}, textAreaValue:${textAreaValue}`
     );
     setShowOtherCancelPanel(false);
   };
@@ -255,7 +259,7 @@ const App = () => {
     <>
       <div className="demo">
         <Cell
-          title="带有其他原因选项的组件"
+          title="带有其它原因选项的组件"
           onClick={() => setShowOtherCancelPanel(true)}
         />
         <OrderCancelPanel
@@ -265,9 +269,177 @@ const App = () => {
           tipsTitle="温馨提示"
           btnsText="确认"
           warmTips={warmTips}
-          cancelResons={cancelResons}
+          cancelReason={cancelReason}
           buttonProps={buttonProps}
           textAreaProps={textareaProps}
+          onClickCloseIcon={clickClosePopUp}
+          onClose={clickClosePopUp}
+          onClickOverlay={clickClosePopUp}
+          onSubmitBtn={submitBtn}
+        />
+      </div>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 可取消已经选中的原因
+
+- 设置 `canCancelReason` 为 `true`，可以取消已选择的原因。
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Cell, ButtonProps } from "@nutui/nutui-react";
+import { OrderCancelPanel } from "@nutui/nutui-biz";
+
+const App = () => {
+  const cancelReason = [
+    {
+      key: "resons1",
+      value: "商品无货",
+    },
+    {
+      key: "resons2",
+      value: "发货时间问题",
+    },
+    {
+      key: "resons3",
+      value: "不想要了",
+    },
+    {
+      key: "resons4",
+      value: "商品选错/多选",
+    },
+    {
+      key: "resons5",
+      value: "地址信息填写错误",
+    },
+    {
+      key: "resons6",
+      value: "商品降价",
+    },
+  ];
+  const clickClosePopUp = () => {
+    setShowPanel(false);
+  };
+  const submitBtn = (currActivedKey: string, textAreaValue: string) => {
+    console.log(
+      `currActivedKey:${currActivedKey}, textAreaValue,${textAreaValue}`
+    );
+    setShowPanel(false);
+  };
+  //基本使用
+  const [showPanel, setShowPanel] = useState(false);
+  const buttonProps: Partial<ButtonProps> = React.useMemo(() => {
+    return {
+      type: "primary",
+      className: "cancel-btn",
+    };
+  }, []);
+  return (
+    <>
+      <div className="demo">
+        <Cell title="基本用法" onClick={() => setShowPanel(true)} />
+        <OrderCancelPanel
+          showCancelPanel={showPanel}
+          popupTitle="退款原因"
+          cancelReason={cancelReason}
+          canCancelReason={true}
+          buttonProps={buttonProps}
+          onClickCloseIcon={clickClosePopUp}
+          onClose={clickClosePopUp}
+          onClickOverlay={clickClosePopUp}
+          onSubmitBtn={submitBtn}
+        />
+      </div>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### checkbox 选择框和原因文案的前后位置
+
+- 1、showBtntips 为 true 的时候，显示 `提交后，将本单商品放回购物车中` 区域；
+- 2、 `checkboxType` 设置 checkbox 选择框和原因文案的前后位置；
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Cell, ButtonProps } from "@nutui/nutui-react";
+import { OrderCancelPanel } from "@nutui/nutui-biz";
+
+const App = () => {
+  const cancelReason = [
+    {
+      key: "resons1",
+      value: "商品无货",
+    },
+    {
+      key: "resons2",
+      value: "发货时间问题",
+    },
+    {
+      key: "resons3",
+      value: "不想要了",
+    },
+    {
+      key: "resons4",
+      value: "商品选错/多选",
+    },
+    {
+      key: "resons5",
+      value: "地址信息填写错误",
+    },
+    {
+      key: "resons6",
+      value: "商品降价",
+    },
+  ];
+  const clickClosePopUp = () => {
+    setShowPanel(false);
+  };
+  const submitBtn = (
+    currActivedKey: string,
+    textAreaValue: string,
+    switchStatus: boolean
+  ) => {
+    console.log(
+      `currActivedKey:${currActivedKey}, textAreaValue,${textAreaValue},switchStatus:${switchStatus}`
+    );
+    setShowcheckboxCancelPanel(false);
+  };
+  //基本使用
+  const [showcheckboxCancelPanel, setShowcheckboxCancelPanel] = useState(false);
+  const buttonProps: Partial<ButtonProps> = React.useMemo(() => {
+    return {
+      type: "primary",
+      className: "cancel-btn",
+    };
+  }, []);
+  return (
+    <>
+      <div className="demo">
+        <Cell
+          title="基本用法"
+          onClick={() => setShowcheckboxCancelPanel(true)}
+        />
+        <OrderCancelPanel
+          showCancelPanel={showcheckboxCancelPanel}
+          checkboxType="front"
+          showBtntips={true}
+          popupTitle="退款原因"
+          cancelReason={cancelReason}
+          canCancelReason={true}
+          buttonProps={buttonProps}
           onClickCloseIcon={clickClosePopUp}
           onClose={clickClosePopUp}
           onClickOverlay={clickClosePopUp}
@@ -286,31 +458,35 @@ export default App;
 
 ### Props
 
-| 字段            | 说明                               | 类型                 | 默认值  |
-| --------------- | ---------------------------------- | -------------------- | ------- |
-| showCancelPanel | 是否显示或取消订单弹窗             | Boolean              | `false` |
-| warmTips        | 温馨提示内容,无则不展示提示内容    | Array<string>        | --      |
-| cancelResons    | 取消原因                           | Array<IResonsObject> | --      |
-| canCancelReason | 再次点击是否可以取消已选中的原因   | Boolean              | `false` |
-| popupTitle      | 弹窗的主标题                       | ReactNode/string     | --      |
-| reasonTitle     | 取消原因的标题                     | ReactNode/string     | --      |
-| btnsText        | 弹窗按钮文案                       | string               | `提交`  |
-| tipsTitle       | 温馨提示的标题                     | string               | --      |
-| buttonProps     | 按钮组件的 props                   | ButtonProps          | --      |
-| textAreaProps   | 其他原因对应的 TextArea 组件 props | TextAreaProps        | --      |
+| 字段                 | 说明                                | 类型                 | 默认值  |
+| -------------------- | ----------------------------------- | -------------------- | ------- |
+| showCancelPanel      | 是否显示或取消订单弹窗              | Boolean              | `false` |
+| warmTips             | 温馨提示内容,无则不展示提示内容     | Array<string>        | -       |
+| cancelReason         | 取消原因                            | Array<IResonsObject> | -       |
+| canCancelReason      | 再次点击是否可以取消已选中的原因    | Boolean              | `false` |
+| popupTitle           | 弹窗的主标题                        | ReactNode\|String    | -       |
+| reasonTitle          | 取消原因的标题                      | ReactNode\|String    | -       |
+| btnsText             | 弹窗按钮文案                        | String               | `提交`  |
+| tipsTitle            | 温馨提示的标题                      | ReactNode\|String    | -       |
+| buttonProps          | 按钮组件的 props                    | ButtonProps          | -       |
+| textAreaProps        | 其它原因对应的 TextArea 组件 props  | TextAreaProps        | -       |
+| popupProsp           | Popup 组件的 props                  | PopupProps           | -       |
+| checkboxType         | checkbox 选择框和原因文案的前后位置 | `back`\|`front`      | `back`  |
+| safeAreaCancelBottom | 按钮区域是否渲染 iphone 安全区域    | Boolean              | `false` |
+| showBtntips          | 是否在按钮区域显示提示区域          | Boolean              | `false` |
 
 ### IResonsObject
 
 | 字段  | 说明                            | 类型   | 默认值 |
 | ----- | ------------------------------- | ------ | ------ |
-| key   | 取消原因的 key 字段每项的值不同 | string | --     |
-| value | 取消原因的文案内容              | string | --     |
+| key   | 取消原因的 key 字段每项的值不同 | String | -      |
+| value | 取消原因的文案内容              | String | -      |
 
 ### Events
 
-| 字段             | 说明                                                                                | 回调参数 |
-| ---------------- | ----------------------------------------------------------------------------------- | -------- |
-| onClose          | 点击弹框时触发                                                                      | --       |
-| onClickCloseIcon | 点击关闭图标时触发                                                                  | --       |
-| onClickOverlay   | 点击遮罩触发                                                                        | --       |
-| onSubmitBtn      | 点击提交按钮触发，参数是选中的原因 key：currActivedKey，以及文本内容：textAreaValue | --       |
+| 字段             | 说明               | 回调参数                                    |
+| ---------------- | ------------------ | ------------------------------------------- |
+| onClose          | 关闭弹框时触发     | -                                           |
+| onClickCloseIcon | 点击关闭图标时触发 | -                                           |
+| onClickOverlay   | 点击遮罩触发       | -                                           |
+| onSubmitBtn      | 点击提交按钮触发   | `item:IResonsObject` `textAreaValue:String` |

@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test props & event 1`] = `
+<div>
+  <div
+    class="nut-receive-invoice-edit"
+  >
+    <div
+      class="nut-receive-invoice-edit-item"
+    >
+      <div
+        class="nut-input nut-input-required nut-input-border  nut-input-text"
+      >
+        <div
+          class="nut-input-label "
+          style="width: 80px; text-align: left;"
+        >
+          <div
+            class="label-string"
+          >
+            收件人
+          </div>
+        </div>
+        <div
+          class="nut-input-value"
+        >
+          <div
+            class="nut-input-main-con"
+          >
+            <div
+              class="nut-input-inner"
+            >
+              <input
+                class="input-text"
+                maxlength="9999"
+                name="name"
+                placeholder="请输入收件人姓名"
+                style="text-align: left;"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-receive-invoice-edit-item"
+    >
+      <div
+        class="nut-input nut-input-required nut-input-border  nut-input-text"
+      >
+        <div
+          class="nut-input-label "
+          style="width: 80px; text-align: left;"
+        >
+          <div
+            class="label-string"
+          >
+            手机号码
+          </div>
+        </div>
+        <div
+          class="nut-input-value"
+        >
+          <div
+            class="nut-input-main-con"
+          >
+            <div
+              class="nut-input-inner"
+            >
+              <input
+                class="input-text"
+                maxlength="9999"
+                name="tel"
+                placeholder="请输入收货人手机号码"
+                style="text-align: left;"
+                type="tel"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-receive-invoice-edit-item"
+    >
+      <div
+        class="nut-input nut-input-required nut-input-border  nut-input-text"
+      >
+        <div
+          class="nut-input-label "
+          style="width: 80px; text-align: left;"
+        >
+          <div
+            class="label-string"
+          >
+            所在地区
+          </div>
+        </div>
+        <div
+          class="nut-input-value"
+        >
+          <div
+            class="nut-input-main-con"
+          >
+            <div
+              class="nut-input-inner"
+            >
+              <input
+                class="input-text"
+                maxlength="9999"
+                name="region"
+                placeholder="请选择所在地区"
+                readonly=""
+                style="text-align: left;"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-receive-invoice-edit-item"
+    >
+      <div
+        class="nut-input nut-input-required nut-input-border  nut-input-text"
+      >
+        <div
+          class="nut-input-label "
+          style="width: 80px; text-align: left;"
+        >
+          <div
+            class="label-string"
+          >
+            详细地址
+          </div>
+        </div>
+        <div
+          class="nut-input-value"
+        >
+          <div
+            class="nut-input-main-con"
+          >
+            <div
+              class="nut-input-inner"
+            >
+              <input
+                class="input-text"
+                maxlength="9999"
+                name="address"
+                placeholder="街道、楼牌号"
+                style="text-align: left;"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="first-render hidden-render nut-overlay"
+      style="z-index: 1000; animation-duration: 0.3s;"
+    />
+    <div
+      class="nut-receive-invoice-edit-bottom"
+    >
+      <button
+        class="nut-button nut-button--danger nut-button--normal nut-button--round nut-button--block "
+      >
+        <div
+          class="nut-button__warp"
+        >
+          <div
+            class=""
+          >
+            保存
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+`;

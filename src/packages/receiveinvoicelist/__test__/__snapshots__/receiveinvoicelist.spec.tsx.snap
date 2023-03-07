@@ -2,16 +2,17 @@
 
 exports[`test props && event 1`] = `
 <div
-  class="nut-receive-invoice-list"
+  class="nb-receive-invoice-list"
+  modelvalue="1"
 >
   <div
-    class="nut-cell-group nut-receive-invoice-list__item"
+    class="nut-cell-group nb-receive-invoice-list__item"
   >
     <div
       class="nut-cell-group__wrap"
     >
       <div
-        class="nut-cell nut-receive-invoice-list__item-header "
+        class="nut-cell nb-receive-invoice-list__item-header "
         style="border-radius: 6px;"
         to=""
       >
@@ -40,7 +41,7 @@ exports[`test props && event 1`] = `
         />
       </div>
       <div
-        class="nut-cell nut-receive-invoice-list__item-footer "
+        class="nut-cell nb-receive-invoice-list__item-footer "
         style="border-radius: 6px;"
         to=""
       >
@@ -56,10 +57,10 @@ exports[`test props && event 1`] = `
           />
         </div>
         <div
-          class="nut-receive-invoice-list__item-footer infobox"
+          class="nb-receive-invoice-list__item-footer infobox"
         >
           <div
-            class="nut-receive-invoice-list__item-footer-info"
+            class="nb-receive-invoice-list__item-footer-info"
           >
             <span>
               电话
@@ -69,7 +70,7 @@ exports[`test props && event 1`] = `
             </p>
           </div>
           <div
-            class="nut-receive-invoice-list__item-footer-info"
+            class="nb-receive-invoice-list__item-footer-info"
           >
             <span>
               地址
@@ -83,13 +84,13 @@ exports[`test props && event 1`] = `
     </div>
   </div>
   <div
-    class="nut-cell-group nut-receive-invoice-list__item"
+    class="nut-cell-group nb-receive-invoice-list__item"
   >
     <div
       class="nut-cell-group__wrap"
     >
       <div
-        class="nut-cell nut-receive-invoice-list__item-header "
+        class="nut-cell nb-receive-invoice-list__item-header "
         style="border-radius: 6px;"
         to=""
       >
@@ -108,7 +109,7 @@ exports[`test props && event 1`] = `
         />
       </div>
       <div
-        class="nut-cell nut-receive-invoice-list__item-footer "
+        class="nut-cell nb-receive-invoice-list__item-footer "
         style="border-radius: 6px;"
         to=""
       >
@@ -124,10 +125,10 @@ exports[`test props && event 1`] = `
           />
         </div>
         <div
-          class="nut-receive-invoice-list__item-footer infobox"
+          class="nb-receive-invoice-list__item-footer infobox"
         >
           <div
-            class="nut-receive-invoice-list__item-footer-info"
+            class="nb-receive-invoice-list__item-footer-info"
           >
             <span>
               电话
@@ -137,7 +138,7 @@ exports[`test props && event 1`] = `
             </p>
           </div>
           <div
-            class="nut-receive-invoice-list__item-footer-info"
+            class="nb-receive-invoice-list__item-footer-info"
           >
             <span>
               地址
@@ -147,7 +148,7 @@ exports[`test props && event 1`] = `
             </p>
           </div>
           <div
-            class="nut-receive-invoice-list__item-footer-info"
+            class="nb-receive-invoice-list__item-footer-info"
           >
             <span>
               扩展1
@@ -157,7 +158,7 @@ exports[`test props && event 1`] = `
             </p>
           </div>
           <div
-            class="nut-receive-invoice-list__item-footer-info"
+            class="nb-receive-invoice-list__item-footer-info"
           >
             <span>
               扩展2

@@ -2,39 +2,30 @@ import React, {
   useRef,
   CSSProperties,
   useState,
-  useImperativeHandle
+  useImperativeHandle,
+  ReactNode
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames';
-import bem from '@/utils/bem'
+import {cn2} from '@/utils/bem'
 import { IComponent } from '@/utils/typings'
 import { throttle } from "@/utils/throttle";
-import { Image } from '@nutui/nutui-react';
+import { Image, Icon } from '@nutui/nutui-react';
+import { errorImg } from '@/utils'
+import { CategoryPane as BaseCategoryPane, CategoryPaneItem, CategoryPaneHandler } from './props';
 
 
-interface CategoryPane {
-  catId: string | number,
-  catName: string,
-  children?: Array<CategoryPaneItem>,
-  [props: string]: any
-}
-
-interface CategoryPaneItem {
-  backImg?: string,
-  catId: string,
-  catName: string,
-  showPic?: boolean,
-  [props: string]: any
-}
 export interface CategoryPaneProps extends IComponent {
   className?: string,
   style?: CSSProperties,
   showSkuImg: boolean,
-  categoryChild: CategoryPane[],
+  categoryChild: BaseCategoryPane[],
   showSecondLevelQuickNav: boolean,
   isLazy:boolean,
   loadingImg:string,
   errorImg:string,
+  showPullUp?:boolean,
+  pullUpText?:ReactNode | string,
   onPanelNavClick:(index:number)=>void,
   onPanelThirdClick: (sku:CategoryPaneItem)=>void
 }
@@ -44,13 +35,14 @@ const defaultProps = {
   showSkuImg: true,
   showSecondLevelQuickNav: false,
   isLazy:true,
-  loadingImg:'https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
-  errorImg:'https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
+  loadingImg: errorImg,
+  errorImg,
+  showPullUp:false,
   onPanelNavClick:()=>{},
   onPanelThirdClick: ()=>{}
 } as CategoryPaneProps
 
-export const CategoryPane = React.forwardRef<unknown, Partial<CategoryPaneProps>>((props,ref) => {
+export const CategoryPane = React.forwardRef<CategoryPaneHandler, Partial<CategoryPaneProps>>((props,ref) => {
   const { locale } = useConfig()
   const {
     categoryChild,
@@ -59,6 +51,8 @@ export const CategoryPane = React.forwardRef<unknown, Partial<CategoryPaneProps>
     isLazy,
     loadingImg,
     errorImg,
+    showPullUp,
+    pullUpText,
     onPanelNavClick,
     onPanelThirdClick
   } = {
@@ -66,10 +60,10 @@ export const CategoryPane = React.forwardRef<unknown, Partial<CategoryPaneProps>
     ...props,
   }
 
-  const b = bem('category-pane')
+  const b = cn2('category-pane')
 
-  const bodyRef = useRef(null);
-  const quickRef = useRef(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const quickRef = useRef<HTMLDivElement>(null);
   const [paneIndex, setPaneIndex] = useState(0)
   const [forbidden, setForbidden] = useState(false)
 
@@ -87,11 +81,11 @@ export const CategoryPane = React.forwardRef<unknown, Partial<CategoryPaneProps>
   const checkActiveIndex = throttle(() => {
 
     if (forbidden) return
-    const body: any = bodyRef.current
+    const body = bodyRef.current
     if (!body) return
     const scrollTop = body.scrollTop
 
-    const elements = body.getElementsByClassName('nut-category-pane__child-anchor')
+    const elements = body.getElementsByClassName('nb-category-pane__child-anchor')
 
     for (let i = 0; i < elements.length; i++) {
       const panel = elements.item(i) as HTMLElement
@@ -109,10 +103,10 @@ export const CategoryPane = React.forwardRef<unknown, Partial<CategoryPaneProps>
   }, 50)
 
   const bodyScroll = (index:number) => {
-    const body: any = bodyRef.current
+    const body = bodyRef.current
     if (!body) return
 
-    const elements = body.getElementsByClassName('nut-category-pane__child-anchor')
+    const elements = body.getElementsByClassName('nb-category-pane__child-anchor')
 
     const idx = index || paneIndex
     const panel = elements.item(idx) as HTMLElement
@@ -131,7 +125,7 @@ export const CategoryPane = React.forwardRef<unknown, Partial<CategoryPaneProps>
   // 快捷导航滚动
   const quickNavScroll = (index:number) => {
 
-    const quick: any = quickRef.current
+    const quick = quickRef.current
     if (!quick) return
 
     const currentScroll = quick.scrollLeft
@@ -163,8 +157,8 @@ export const CategoryPane = React.forwardRef<unknown, Partial<CategoryPaneProps>
     <div className={classNames(b())}>
 
       {showSecondLevelQuickNav && (
-        <div className={classNames(b('quick'))}>
-          <div className={classNames(b('quick-box'))} ref={quickRef}>
+        <div className={b('quick')}>
+          <div className={b('quick-box')} ref={quickRef}>
             {
               categoryChild.map((child, index) => (
                 <div key={index} onClick={() => changePane(index)} className={classNames([b('quick-child'), index == paneIndex && b('quick-child-active')])}>{child.catName}</div>
@@ -174,19 +168,19 @@ export const CategoryPane = React.forwardRef<unknown, Partial<CategoryPaneProps>
         </div>
       )}
 
-      <div className={classNames(b('cate-list-right'))} ref={bodyRef} onScroll={checkActiveIndex}>
+      <div className={b('cate-list-right')} ref={bodyRef} onScroll={checkActiveIndex}>
         {
           categoryChild.map((child, index) => (
-            <div key={index} className={classNames(b('child-anchor'))} data-index={index}>
-              <div className={classNames(b('child-title'))} >{child.catName}</div>
+            <div key={index} className={b('child-anchor')} data-index={index}>
+              <div className={b('child-title')} >{child.catName}</div>
 
-              <div className={classNames(b('child-item-list'))}>
+              <div className={b('child-item-list')}>
                 {
                   child.children?.map((sku, idx) => (
                     <div className={classNames([b('child-item'),!showSkuImg && b('child-item-no')])} key={idx} onClick={()=>panelSkuClick(sku)}>
-
+                      
                       {
-                        showSkuImg && (<Image className={classNames(b('child-img'))} src={sku.backImg}  isLazy={isLazy} loadingImg={loadingImg}  errorImg={errorImg} />)
+                        showSkuImg && (<Image className={b('child-img')} src={sku.backImg}  isLazy={isLazy} loadingImg={loadingImg}  errorImg={errorImg} />)
                       }
                       <div className={classNames(b(showSkuImg ? 'sku-img' : 'sku-name'))}>{sku?.catName}</div>
                     </div>
@@ -197,6 +191,11 @@ export const CategoryPane = React.forwardRef<unknown, Partial<CategoryPaneProps>
 
           ))
         }
+        {
+          showPullUp && (<div className={b('cate-list-bottom')} ><Icon name="top" size="12px" color="#fa2c19" /> <div>{pullUpText}</div></div>)
+        }
+        
+        
       </div>
     </div>
   )

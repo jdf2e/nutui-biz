@@ -1,5 +1,6 @@
 import React, {
   FunctionComponent,
+  CSSProperties,
   ReactNode
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
@@ -10,6 +11,8 @@ import { Button, Icon } from '@nutui/nutui-react'
 import { IComponent } from '@/utils/typings'
 
 export interface InvoiceTitleListProps extends IComponent {
+  className: string
+  style: CSSProperties
   isShowOperate: boolean
   isShowEdit: boolean
   data: {
