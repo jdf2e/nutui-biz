@@ -462,7 +462,7 @@ export default App;
 | imgUrl      | 商品图片Url                | string           | -     |
 | imgWidth    | 商品图片宽度，默认单位 `px`  | string           | -     |
 | imgHeight   | 商品图片高度，默认单位 `px`  | string           | `150px` |
-| imgTag      | 商品图片标签               | imgTag           | -      |
+| imgTag      | 商品图片标签               | ReactNode           | -      |
 | isImageLazy | 是否开启商品图片懒加载       | boolean         | `true` |
 | loadingImg  | 商品图片加载时的图片        | string           | -      |
 | errorImg    | 商品图片错误时的图片        | string           | -      |
@@ -470,5 +470,5 @@ export default App;
 ### ProductFeedItem Events
 | 字段      | 说明      | 回调参数        |
 |--------- | -------- | ---------------|
-| onClick  | 点击时触发 | data |
-| onImageClick  | 点击商品图片时触发 | data |
+| onClick  | 点击时触发 | item, index |
+| onImageClick  | 点击商品图片时触发 | item, index |

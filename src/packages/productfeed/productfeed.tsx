@@ -5,8 +5,9 @@ import { Infiniteloading } from "@nutui/nutui-react";
 import { IComponent } from "@/utils/typings"
 
 import classNames from "classnames"
-import bem from "@/utils/bem"
+import {cn2} from '@/utils/bem'
 import { ProductFeedItem } from "./productfeeditem"
+import {numericProp} from '@/utils/props'
 
 export interface ProductFeedProps extends IComponent {
   customProduct: (item: any) => ReactNode
@@ -35,9 +36,9 @@ export interface ProductFeedProps extends IComponent {
   onRefresh: (param: () => void) => void
   // 实时监听滚动高度
   onScrollChange: () => void
-  col: number | string
-  padding: number | string
-  borderRadius: number | string
+  col: numericProp
+  padding: numericProp
+  borderRadius: numericProp
   imgUrl: string
   imgWidth: string
   imgHeight: string
@@ -45,8 +46,8 @@ export interface ProductFeedProps extends IComponent {
   isImageLazy: boolean
   loadingImg: string
   errorImg: string
-  onClick: (item: any) => void
-  onImageClick: (item: any) => void
+  onClick: (item: object, number: number) => void
+  onImageClick: (item: object, number: number) => void
 
 }
 
@@ -108,15 +109,17 @@ export const ProductFeed: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const b = bem("biz-productfeed")
+
+  const b = cn2('productfeed')
 
   const  [listLeft, setListLeft] = useState([] as any)
   const  [listRight, setListRight] = useState([] as any)
 
-  const productItem = (item: any)=>{
+  const productItem = (item: any, index: number)=>{
     return (
       <ProductFeedItem
         key={item.id}
+        index={index}
         data={item}
         col={col}
         imgUrl={item.imgUrl}
@@ -167,24 +170,24 @@ export const ProductFeed: FunctionComponent<
       >
         <div className={b("main")}>
         { col == 1 ? 
-            data.map((item: any)=> {
+            data.map((item: any, index: number)=> {
               return (
-                productItem(item)
+                productItem(item, index)
               )
             }) 
           :
             <>
               <div className={b("left")}>
-                { listLeft.map((item: any)=> {
+                { listLeft.map((item: any, index: number)=> {
                   return (
-                    productItem(item)
+                    productItem(item, index)
                   )
                 }) }
               </div>
               <div className={b("right")}>
-                { listRight.map((item: any)=> {
+                { listRight.map((item: any, index: number)=> {
                   return (
-                    productItem(item)
+                    productItem(item, index)
                   )
                 }) }
               </div>

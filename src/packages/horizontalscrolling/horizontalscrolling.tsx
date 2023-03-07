@@ -7,8 +7,9 @@ import { useConfig } from '@/packages/configprovider'
 import { IComponent } from '@/utils/typings'
 import { Icon, IconProps } from '@nutui/nutui-react';
 import classNames from 'classnames'
-import bem from '@/utils/bem'
+import {cn2} from '@/utils/bem'
 import Unit from '@/utils/unit'
+import {numericProp} from '@/utils/props'
 
 
 export type MaskPositionType = "left" | "right";
@@ -20,8 +21,8 @@ export interface HorizontalScrollingProps extends IComponent {
   // 遮罩层位置
   maskPosition: MaskPositionType
   maskShadowType: MaskShadowTypeType
-  maskWidth: number | string
-  maskDistance: number | string
+  maskWidth: numericProp
+  maskDistance: numericProp
   maskContent: ReactNode
   iconProps: Partial<IconProps>
   onClickMask: () => void,
@@ -62,7 +63,7 @@ export const HorizontalScrolling: FunctionComponent<
     ...props,
   }
 
-  const b = bem('biz-horizontalscrolling')
+  const b = cn2('horizontalscrolling')
 
   const scrollRef = useRef(null)
 

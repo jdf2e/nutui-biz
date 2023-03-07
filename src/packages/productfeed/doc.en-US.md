@@ -460,7 +460,7 @@ export default App;
 | imgUrl      | Product image url                      | string           | -     |
 | imgWidth    | Product image width, default unit `px` | string           | -     |
 | imgHeight   | Product image height, default unit `px`| string           | `150px` |
-| imgTag      | Product image tag                      | string           | -      |
+| imgTag      | Product image tag                      | ReactNode           | -      |
 | isImageLazy | Whether to enable product lazy loading | boolean          | `true` |
 | loadingImg  | Image when product image loads         | string           | -      |
 | errorImg    | Image when product image is wrong      | string           | -      |
@@ -469,5 +469,5 @@ export default App;
 | Attribute            | Description               | Arguments   |
 |----- | ----- | -----  |
 |--------- | -------- | ---------------|
-| onClick  | fires on click | data |
-| onImageClick  | Triggered when clicking the picture |  data |
+| onClick  | fires on click | item, index |
+| onImageClick  | Triggered when clicking the picture |  item, index |

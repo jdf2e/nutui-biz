@@ -212,12 +212,12 @@ const ProductFeedDemo = () => {
     }, 1000)
   }
 
-  const handleClick = (item: object) => {
-    console.log("click", item)
+  const handleClick = (item: object, index: number) => {
+    console.log("click", item, index)
   }
 
-  const handleImageClick = (item: object) => {
-    console.log("click image", item)
+  const handleImageClick = (item: object, index: number) => {
+    console.log("click image", item, index)
   }
 
   const init1 = () => {
