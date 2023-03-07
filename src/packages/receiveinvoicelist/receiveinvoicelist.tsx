@@ -3,6 +3,7 @@ import { useConfig } from '@/packages/configprovider'
 import { Checkbox, Icon, Tag, Cell, CellGroup, Swipe, Button } from '@nutui/nutui-react';
 import { IComponent } from '@/utils/typings'
 import { cn2 } from '@/utils/bem'
+import classNames from 'classnames';
 
 export interface ReceiveInvoiceItemExt {
   label: String;
@@ -42,11 +43,14 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
   const b = cn2('receive-invoice-list');
 
   const {
+    style,
+    className,
     list,
     onSelected,
     onEdit,
     onDelete,
     enableDelete,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -95,7 +99,7 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
   }
 
   return (
-    <div className={b()}>
+    <div className={classNames([b(), className])} style={style} {...rest}>
       {list.map((item) => {
         return (
           <React.Fragment key={item.id.toString()}>
