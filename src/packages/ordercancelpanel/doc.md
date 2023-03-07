@@ -161,7 +161,7 @@ const App = () => {
           cancelReason={cancelReason}
           warmTips={warmTips}
           tipsTitle="温馨提示"
-          btnsText="确认"
+          submitText="确认"
           buttonProps={buttonProps}
           onClickCloseIcon={clickClosePopUp}
           onClose={clickClosePopUp}
@@ -267,7 +267,7 @@ const App = () => {
           popupTitle={popupTitleMemo}
           canCancelReason={true}
           tipsTitle="温馨提示"
-          btnsText="确认"
+          submitText="确认"
           warmTips={warmTips}
           cancelReason={cancelReason}
           buttonProps={buttonProps}
@@ -466,7 +466,7 @@ export default App;
 | canCancelReason      | 再次点击是否可以取消已选中的原因    | Boolean              | `false` |
 | popupTitle           | 弹窗的主标题                        | ReactNode\|String    | -       |
 | reasonTitle          | 取消原因的标题                      | ReactNode\|String    | -       |
-| btnsText             | 弹窗按钮文案                        | String               | `提交`  |
+| submitText           | 弹窗按钮文案                        | String               | `提交`  |
 | tipsTitle            | 温馨提示的标题                      | ReactNode\|String    | -       |
 | buttonProps          | 按钮组件的 props                    | ButtonProps          | -       |
 | textAreaProps        | 其它原因对应的 TextArea 组件 props  | TextAreaProps        | -       |

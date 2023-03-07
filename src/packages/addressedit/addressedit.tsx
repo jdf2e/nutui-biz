@@ -182,7 +182,6 @@ export const AddressEdit: FunctionComponent<
 
     //编辑地址所需字段设置获取
     if (data) {
-      console.log("addressset", editSeting, data);
       setEditSeting({ ...editSeting, ...data });
       if (data?.isRequired) {
         setIsRequired(data.isRequired);
@@ -232,10 +231,10 @@ export const AddressEdit: FunctionComponent<
   const inputOnchange = (val: any, tag: string) => {
     let data = { ...formData };
     if (val.length != 0) {
-      setErrorList(errorList.filter((i: any) => i != tag));
+      setErrorList(errorList.filter((i: string) => i != tag));
     }
 
-    Object.keys(formData).map((key: any) => {
+    Object.keys(formData).map((key: string) => {
       if (key === tag) {
         if (key === "tel") {
           const regTel = /^1\d{10}$/;

@@ -8,7 +8,7 @@ interface T {
   tipsText: string;
   otherText: string;
   cellTitle: string;
-  btnsText: string;
+  submitText: string;
   checkboxText: string;
   cancelText: string;
   cancelReasonTitle: string;
@@ -29,7 +29,7 @@ const CouponDemo = () => {
       cancelText: "可取消已选中的原因",
       checkboxText: "checkbox框选择在前面",
       cellTitle: "显示弹窗",
-      btnsText: "确认",
+      submitText: "确认",
       cancelReasonTitle: "退款原因",
       reasonTitle: "请选择取消订单原因",
       tipsTitle: "温馨提示",
@@ -83,7 +83,7 @@ const CouponDemo = () => {
       tipsTitle: "reminder",
       reasonTitle: "Please select the reason for canceling the order",
       cancelReasonTitle: "Refund reason",
-      btnsText: "confirm",
+      submitText: "confirm",
       textareaPlaceholder: "Please enter content",
       warmTips: [
         "1. Limited time special offers, reservation qualifications and other purchase privileges may be cancelled at the same time",
@@ -228,7 +228,7 @@ const CouponDemo = () => {
           cancelReason={translated.cancelReason}
           warmTips={translated.warmTips}
           tipsTitle={translated.tipsTitle}
-          btnsText={translated.btnsText}
+          submitText={translated.submitText}
           buttonProps={buttonProps}
           onClose={clickClosePopUpSec}
           onSubmitBtn={submitBtn}
@@ -242,7 +242,7 @@ const CouponDemo = () => {
           showCancelPanel={showOtherCancelPanel}
           popupTitle={popupTitleMemo}
           tipsTitle={""}
-          btnsText={translated.btnsText}
+          submitText={translated.submitText}
           warmTips={[]}
           cancelReason={otherReasonList}
           buttonProps={buttonProps}

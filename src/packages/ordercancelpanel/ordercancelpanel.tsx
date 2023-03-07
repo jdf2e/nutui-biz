@@ -31,7 +31,7 @@ export interface OrderCancelPanelProps extends IComponent {
   canCancelReason: boolean;
   popupTitle: React.ReactNode | string;
   reasonTitle: React.ReactNode | string;
-  btnsText: string;
+  submitText: string;
   tipsTitle: React.ReactNode | string;
   className?: string;
   showBtntips: boolean;
@@ -53,7 +53,7 @@ export interface OrderCancelPanelProps extends IComponent {
 const defaultProps = {
   showCancelPanel: false,
   canCancelReason: false,
-  btnsText: "提交",
+  submitText: "提交",
   tipsTitle: "温馨提示",
   checkboxType: "back",
   safeAreaCancelBottom: false,
@@ -72,7 +72,7 @@ export const OrderCancelPanel: FunctionComponent<
     reasonTitle,
     popupTitle,
     canCancelReason,
-    btnsText,
+    submitText,
     tipsTitle,
     buttonProps,
     textAreaProps,
@@ -223,7 +223,7 @@ export const OrderCancelPanel: FunctionComponent<
         )}
         <div className={b("btns--button")}>
           <Button {...buttonProps} onClick={submitContent}>
-            {btnsText}
+            {submitText}
           </Button>
         </div>
         {safeAreaCancelBottom && <div className={b("btns--safe")}></div>}
