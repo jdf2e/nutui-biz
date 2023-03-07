@@ -591,8 +591,8 @@ export default App;
 |---------|--------------------------------------------|---------|-----------|
 | recentSearchText   | 最近搜索文案                                     | string  | `最近搜索`         |
 | searchDiscoverText     | 搜索发现文案                   | string  | `搜索发现`    |
-| recentSearchData      | 最近搜索数据                               |  Array  | []      |
-| searchDiscoverData | 搜索发现数据                        | Array  | []      |
+| recentSearchData      | 最近搜索数据                               |  Array<IsearchItem>  | []      |
+| searchDiscoverData | 搜索发现数据                        | Array<IsearchItem>  | []      |
 | keyword  | 传入文本框内的搜索词                                  | string | ''    |
 | backIcon     | 左上角返回按钮图标，设置为空则无返回按钮，类型为字符串时，等同于 Icon 组件的 [name 属性](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon) | ReactNode  | `left`     |
 | deleteIcon   | 最近搜索删除图标，类型为字符串时，等同于 Icon 组件的 [name 属性](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)| ReactNode  | `del`      |

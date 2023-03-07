@@ -592,8 +592,8 @@ export default App;
 |---------|--------------------------------------------|---------|-----------|
 | recentSearchText   | Recent search text                                     | string  | `Recent Search`         |
 | searchDiscoverText     | Search discover text                   | string  | `Search Discover`    |
-| recentSearchData      | Recent search data                               |  Array  | []      |
-| searchDiscoverData | Search discover data                        | Array  | []      |
+| recentSearchData      | Recent search data                               |  Array<IsearchItem>  | []      |
+| searchDiscoverData | Search discover data                        | Array<IsearchItem>  | []      |
 | keyword  | The search keyword passed in the searchBar                                 | string | ''    |
 | backIcon     | Back icon, if set to empty, there will be no back icon | ReactNode  | `left`     |
 | deleteIcon   | Recent search delete icon | ReactNode  | `del`      |
