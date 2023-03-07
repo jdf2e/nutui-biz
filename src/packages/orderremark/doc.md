@@ -171,13 +171,13 @@ export default App;
 | 字段                | 说明                 | 类型     | 默认值           |
 | ------------------- | -------------------- | -------- | ---------------- |
 | visible             | 是否显示弹窗         | boolean  | `false`          |
-| closeOnClickOverlay | 点击遮罩是否可以关闭 | boolean  | `false`          |
+| closeOnClickOverlay | 点击遮罩是否可以关闭 | boolean  | `true`          |
 | maxLength           | 备注内容长度限制     | number   | `50`             |
 | placeholderText     | 输入框为空时占位符   | string   | `请输入备注内容` |
-| title               | 弹窗的主标题         | string   | `订单备注`       |
-| tagTitle            | 标签内容标题         | string   | `推荐标签`       |
+| title               | 弹窗的主标题         | ReactNode   | `订单备注`       |
+| tagTitle            | 标签内容标题         | ReactNode   | `推荐标签`       |
 | remark              | 备注信息             | string   | --               |
-| submitText          | 提交按钮文案         | string   | `提交`           |
+| submitText          | 提交按钮文案         | string   | `确定`           |
 | recommendTags       | 标签渲染数据     | string[] | `[]`             |
 
 ## Events
@@ -186,7 +186,7 @@ export default App;
 | -------------- | ------------------ | ------------ |
 | onClickOverlay | 点击弹窗遮罩时触发 | 当前备注信息 |
 | onClose        | 弹出层关闭时触发   | 当前备注信息 |
-| onOpen         | 弹出层打开时触发   | 当前备注信息 |
+| onOpen         | 弹出层打开时触发   | -- |
 | onChange       | 输入内容改变时触发 | 当前备注信息 |
-| onClickTag     | 点击标签时触发     | 当前标签信息 |
+| onClickTag     | 点击标签时触发     | `tag:string,index:numer,innerMarkStr:string` |
 | onSubmit       | 点击提交按钮触发   | 当前备注信息 |

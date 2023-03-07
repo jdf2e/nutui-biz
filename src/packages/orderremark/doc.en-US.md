@@ -188,11 +188,11 @@ export default App;
 | 字段                | 说明                 | 类型     | 默认值           |
 | ------------------- | -------------------- | -------- | ---------------- |
 | visible             | Whether to display pop-up window         | boolean  | `false`          |
-| closeOnClickOverlay | Click whether the mask can be closed | boolean  | `false`          |
+| closeOnClickOverlay | Click whether the mask can be closed | boolean  | `true`          |
 | maxLength           | Note content length limit     | number   | `50`             |
 | placeholderText     | Placeholder when input box is empty   | string   | `Please enter the content of the remarks` |
-| title               | Main title of pop-up window         | string   | `Order Remarks`       |
-| tagTitle            | Tag content title         | string   | `Recommended Tags`       |
+| title               | Main title of pop-up window         | ReactNode   | `Order Remarks`       |
+| tagTitle            | Tag content title         | ReactNode   | `Recommended Tags`       |
 | remark              | Remark content             | string   | --               |
 | submitText          | Submit button copy         | string   | `Confirm`           |
 | recommendTags       | Tag render data     | string[] | `[]`             |
@@ -203,7 +203,7 @@ export default App;
 | -------------- | ------------------ | ------------ |
 | onClickOverlay | Triggered when clicking the pop-up mask | Current remarks |
 | onClose        | Triggered when the pop-up layer is closed   | Current remarks |
-| onOpen         | Trigger when the pop-up layer is opened   | Current remarks |
+| onOpen         | Trigger when the pop-up layer is opened   | -- |
 | onChange       | Triggered when the input content changes | Current remarks |
-| onClickTag     | Triggered when the tag is clicked     | Current tag |
+| onClickTag     | Triggered when the tag is clicked     | `tag:string,index:numer,innerMarkStr:string` |
 | onSubmit       | Click the submit button to trigger   | Current remarks |

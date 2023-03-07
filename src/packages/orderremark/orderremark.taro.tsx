@@ -20,7 +20,7 @@ export interface OrderRemarkProps extends IComponent {
   onClose?: (val: string) => void;
   onOpen?: () => void;
   onChange?: (val: string) => void;
-  onClickTag?: (tag: string) => void;
+  onClickTag?: (tag: string, index: number, remark: string) => void;
   onSubmit?: (val: string) => void;
 }
 
@@ -78,10 +78,20 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
     onOpen && onOpen();
   };
 
-  const clickTag = (tag: string) => {
-    setInnerMark(tag);
-    onClickTag && onClickTag(tag);
-    onChange && onChange(tag);
+  const clickTag = (tag: string, index: number) => {
+    let innerMarkStr = innerMark;
+    if (innerMarkStr.length > 0) {
+      innerMarkStr = innerMarkStr + '，' + tag;
+    } else {
+      innerMarkStr = tag;
+    }
+    onClickTag && onClickTag(tag, index, innerMarkStr);
+
+    if (innerMarkStr.length > maxLength) {
+      innerMarkStr = innerMarkStr.slice(0, maxLength);
+    }
+    setInnerMark(innerMarkStr);
+    onChange && onChange(innerMarkStr);
   };
   const textareaChange = (val: any) => {
     setInnerMark(val);
@@ -92,8 +102,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
     setInnerVisible(false);
   };
   useEffect(() => {
-    visible && setInnerVisible(visible);
-    !visible && setInnerVisible(visible);
+    setInnerVisible(visible);
   }, [visible]);
 
   useEffect(() => {
