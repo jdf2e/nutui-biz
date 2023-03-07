@@ -84,6 +84,9 @@ const CommentDemo = () => {
             info={cmt.info}
             ellipsis="6"
             onClickImages={onClickImages}
+            onClickOperate={(type: string) => {
+              console.log(type);
+            }}
             commentLabels={
               <img
                 src="https://storage.360buyimg.com/imgtools/78925d9440-f9e874d0-e93d-11eb-8e5c-0da9e18a13b1.png"

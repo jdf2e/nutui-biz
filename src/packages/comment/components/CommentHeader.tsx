@@ -1,10 +1,11 @@
 import React, { FunctionComponent, HTMLAttributes, ReactNode } from "react";
 import { IComponent } from "@/utils/typings";
 import { Rate } from "@nutui/nutui-react";
-
+import {cn2} from '@/utils/bem'
+import { CommentInfo } from "../comment";
 export interface CommentHeaderProps extends IComponent {
   type: "default" | "complex";
-  info: any;
+  info: CommentInfo;
   commentLabels: ReactNode;
   onHandleClick: () => void;
 }
@@ -21,22 +22,24 @@ export const CommentHeader: FunctionComponent<
     ...props,
   };
 
+  const b = cn2('comment-header')
+
   return (
     <div>
       {info && (
-        <div className="nut-comment-header" onClick={onHandleClick}>
-          <div className="nut-comment-header__user">
-            <div className="nut-comment-header__user-avter">
+        <div className={b()} onClick={onHandleClick}>
+          <div className={b('user')}>
+            <div className={b('user-avter')}>
               {info.avatar && <img src={info.avatar} />}
             </div>
             {type === "default" ? (
-              <div className={`nut-comment-header__user-${type}`}>
-                <div className={`nut-comment-header__user-${type}-name`}>
+              <div className={b(`user-${type}`)}>
+                <div className={b(`user-${type}-name`)}>
                   {info.nickName && <span>{info.nickName}</span>}
                   {commentLabels}
                 </div>
 
-                <div className="nut-comment-header__user-score">
+                <div className={b(`user-score`)}>
                   <Rate
                     modelValue={info.score}
                     iconSize={12}
@@ -46,8 +49,8 @@ export const CommentHeader: FunctionComponent<
                 </div>
               </div>
             ) : (
-              <div className={`nut-comment-header__user-${type}`}>
-                <span className={`nut-comment-header__user-${type}-name`}>
+              <div className={b(`user-${type}`)}>
+                <span className={b(`user-${type}-name`)}>
                   {info.nickName}
                 </span>
                 {commentLabels}
@@ -55,15 +58,15 @@ export const CommentHeader: FunctionComponent<
             )}
           </div>
           {info.time && (
-            <div className="nut-comment-header__time">{info.time}</div>
+            <div className={b('time')}>{info.time}</div>
           )}
         </div>
       )}
       {type === "complex" && (
-        <div className={`nut-comment-header__${type}-score`}>
+        <div className={b(`${type}-score`)}>
           <Rate modelValue={info?.score} iconSize={12} spacing={3} readonly />
-          <i className={`nut-comment-header__${type}-score-i`}></i>
-          <div className={`nut-comment-header__${type}-score-size`}>
+          <i className={b(`${type}-score-i`)}></i>
+          <div className={b(`${type}-score-size`)}>
             {info?.size}
           </div>
         </div>

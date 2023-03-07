@@ -3,28 +3,39 @@ import { IComponent } from "@/utils/typings";
 import { CommentHeader } from "./components/CommentHeader";
 import { CommentBottom } from "./components/CommentBottom";
 import { CommentImages } from "./components/CommentImages";
-import { VideosType, ImagesType } from "./components/CommentImages";
-import bem from "@/utils/bem";
+import { VideosType, ImagesType, GoodsClickParams } from "./components/CommentImages";
+import {cn2} from '@/utils/bem'
 import { Icon } from "@nutui/nutui-react";
 
+export interface CommentInfo {
+  content: string, // 评论详情
+  nickName: string, // 评论人的姓名
+  score: number, // 评论星星数
+  avatar: string, // 评论人头像
+  time: string, // 评论时间
+  size?: string, // 评论人购买的商品规格
+  reply?: number, // 此评论的回复数
+  like?: number, // 此评论的点赞数
+}
+export interface CommentFollow {
+  days: number, // 购买多少天后进行追评
+  content: string, // 追评内容
+  images?: string[], // 追评图片
+}
 export interface CommentProps extends IComponent {
   type: "default" | "complex";
   imagesRows: "one" | "multi";
   ellipsis: string | number;
   videos: Array<VideosType>;
   images: Array<ImagesType>;
-  info: any;
-  follow: any;
-  operation: Array<any>;
+  info: CommentInfo;
+  follow: CommentFollow;
+  operation: Array<string>;
   commentLabels: ReactNode;
   commentShopReply: ReactNode;
   onClickOperate: (type: string) => void;
   onClick: (info: any) => void;
-  onClickImages: (imgs: {
-    type: string;
-    index: string | number;
-    value: any;
-  }) => void;
+  onClickImages: (imgs: GoodsClickParams) => void;
 }
 
 const defaultProps = {
@@ -56,7 +67,7 @@ export const Comment: FunctionComponent<
     ...props,
   };
 
-  const b = bem("comment");
+  const b = cn2('comment')
 
   const onHandleClick = () => {
     onClick && onClick(info);
@@ -78,7 +89,7 @@ export const Comment: FunctionComponent<
 
       {info && info.content && (
         <div
-          className="nut-comment__main"
+          className={b('main')}
           style={{
             WebkitLineClamp: conEllipsis(),
           }}
@@ -97,13 +108,13 @@ export const Comment: FunctionComponent<
       ></CommentImages>
 
       {follow && follow.days > 0 && (
-        <div className="nut-comment__follow" onClick={onHandleClick}>
-          <div className="nut-comment__follow-title">
+        <div className={b("follow")} onClick={onHandleClick}>
+          <div className={b("follow-title")}>
             购买 {follow.days} 天后追评
           </div>
-          <div className="nut-comment__follow-com">{follow.content}</div>
+          <div className={b("follow-com")}>{follow.content}</div>
           {follow.images && follow.images.length > 0 && (
-            <div className="nut-comment__follow-img">
+            <div className={b("follow-img")}>
               {follow.images.length} 张追评图片
               <Icon name="right" width="12px"></Icon>
             </div>
