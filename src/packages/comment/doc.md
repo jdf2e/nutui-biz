@@ -203,8 +203,8 @@ export default App;
 | info        | 评论详情                                      | object           | `{}`                        |
 | follow      | 追评内容                                      | object           | `{}`                        |
 | operation   | 配置底部按钮                                  | Array            | `["reply", "like", "more"]` |
-| commentLabels | 评论用户的标签 | React.ReactNode | - |
-| commentShopReply | 评论最底部，用于展示商家回复 | React.ReactNode | - |
+| commentLabels | 评论用户的标签 | ReactNode | - |
+| commentShopReply | 评论最底部，用于展示商家回复 | ReactNode | - |
 
 ### Events
 

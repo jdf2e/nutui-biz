@@ -151,7 +151,7 @@ export default App;
 
 ### Category 
 
-| Event  | Description     | Type    |
+| Attribute  | Description     | Type    |
 |---------|--------------------------------------------|---------|
 | catId   | first class category id                                | string \| number  |
 | catName   | Classification name            | string  | 
@@ -160,7 +160,7 @@ export default App;
 
 ### CategoryPane 
 
-| Event  | Description     | Type    |
+| Attribute  | Description     | Type    |
 |---------|--------------------------------------------|---------|
 | catId   | Secondary classification id                               | string \| number  |
 | catName   | Secondary classification name           | string  | 
@@ -168,7 +168,7 @@ export default App;
 
 ### CategoryPaneItem 
 
-| Event  | Description     | Type    |
+| Attribute  | Description     | Type    |
 |---------|--------------------------------------------|---------|
 | catId   | Three-level classification id             | string \| number  |
 | catName   | Three-level classification name            | string  | 

@@ -196,17 +196,17 @@ export default App;
 | info     | Comment data                      | object | `{}`             |
 | follow     | Additional review data                      | object | `{}`             |
 | operation | Bottom button   | Array | `["reply", "like", "more"]` |
-| comment-labels  | Comment user label | React.ReactNode | - |
-| comment-shop-reply  | At the bottom of the comment is the display of the merchant's response | React.ReactNode | - |
+| comment-labels  | Comment user label | ReactNode | - |
+| comment-shop-reply  | At the bottom of the comment is the display of the merchant's response | ReactNode | - |
 
 
 ### Events
 
 | Event            | Description               | Arguments   |
 |--------|----------------|--------------|
-| clickOperate  | Emitted when to click bottom button | `type` |
-| click  | Emitted when to click comment | `type` |
-| clickImages | Emitted when to click images or videos | `{type,index,value}` |
+| onClickOperate  | Emitted when to click bottom button | `type`, like `operation`  |
+| onClick  | Emitted when to click comment | The `info` parameter is passed in |
+| onClickImages | Emitted when to click images or videos | `{type,index,value}` |
 
 ### images data
 
