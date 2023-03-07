@@ -315,7 +315,7 @@ export default App;
 
 | Attribute            | Description               | Type   | Default  |
 |---------|--------------------------------------------|---------|-----------|
-| imageProps   | Image props                                  | ImageProps(https://nutui.jd.com/h5/react/1x/#/zh-CN/component/image)  | {isLazy: false, errorImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'}         |
+| imageProps   | Image props                                  | [ImageProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/image)  | {isLazy: false, errorImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'}         |
 | title     | Title                   | string  | -    |
 | price | Price                         | ReactNode  | -      |
 | priceAfterTpl   | Custom content behind the price| ReactNode  | -      |

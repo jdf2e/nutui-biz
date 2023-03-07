@@ -316,7 +316,7 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| imageProps   | 图片基础组件 props                                 | ImageProps(https://nutui.jd.com/h5/react/1x/#/zh-CN/component/image)  | {isLazy: false, errorImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'}         |
+| imageProps   | 图片基础组件 props                                 | [ImageProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/image)  | {isLazy: false, errorImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'}         |
 | title     | 标题                   | string  | -    |
 | price | 商品价格                         | ReactNode  | -      |
 | priceAfterTpl   | 价格后方自定义内容| ReactNode  | -      |
