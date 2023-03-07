@@ -87,7 +87,7 @@ export const Category: FunctionComponent<
     if(!listDom) return
     const height = listDom?.clientHeight / 2
     const elements = listDom.getElementsByClassName('nb-category__cate-list-item')
-    const panel = elements[index]
+    const panel:any = elements[index]
     listDom.scrollTo({
       top: Math.max(0,panel.offsetTop - height + 25),
       behavior: 'auto'
