@@ -6,12 +6,18 @@ import React, {
   ReactNode,
 } from "react";
 import { useConfig } from "@/packages/configprovider";
-import classNames from "classnames";
 import { cn2 } from "@/utils/bem";
 import { IComponent } from "@/utils/typings";
-import { Input, Button, Icon, Checkbox, Toast } from "@nutui/nutui-react";
+import {
+  Input,
+  Button,
+  ButtonProps,
+  Icon,
+  Checkbox,
+  Toast,
+} from "@nutui/nutui-react";
 
-interface LoginParamsProps {
+export interface LoginParamsProps {
   account?: string;
   accountPlaceholder?: string;
   accountErrorText?: string;
@@ -47,8 +53,9 @@ export interface LoginProps extends IComponent {
   countDownTime?: number;
   isHideSwitchBtn?: boolean;
   slotInput?: ReactNode;
+  buttonProps?: ButtonProps;
   onInputChange?: (value: string, tag: string) => void;
-  onLoginBtnClick?: (data: any) => void;
+  onLoginBtnClick?: (data: LoginParamsProps) => void;
   onVerifyBtnClick?: (formData: LoginParamsProps) => void;
   onForgetBtnClick?: () => void;
   onInputClear?: (tag: string) => void;
@@ -91,6 +98,7 @@ export const Login: FunctionComponent<
     countDownTime = 60,
     isHideSwitchBtn,
     slotInput,
+    buttonProps,
     onInputChange,
     onLoginBtnClick,
     onVerifyBtnClick,
@@ -333,7 +341,7 @@ export const Login: FunctionComponent<
           </>
         )}
         {slotInput ? slotInput : null}
-        {slotProtocolText ? (
+        {slotProtocolText && (
           <Checkbox
             className="login-protocal"
             iconSize={14}
@@ -344,7 +352,7 @@ export const Login: FunctionComponent<
           >
             {slotProtocolText}
           </Checkbox>
-        ) : null}
+        )}
       </div>
       <div className={`${b("btn")}`}>
         <Button
@@ -353,18 +361,19 @@ export const Login: FunctionComponent<
           shape="square"
           disabled={isLoginDisable}
           onClick={loginClick}
+          {...buttonProps}
         >
           {loginButtonText}
         </Button>
       </div>
-      {!isHideSwitchBtn ? (
+      {!isHideSwitchBtn && (
         <div className="switch-type" onClick={switchLogin}>
           {currLoginType === "verify"
             ? loginParams.switchLoginText1
             : loginParams.switchLoginText2}
         </div>
-      ) : null}
-      {slotBottom ? <div className="custom-slot">{slotBottom}</div> : null}
+      )}
+      {slotBottom && <div className="custom-slot">{slotBottom}</div>}
     </div>
   );
 };
