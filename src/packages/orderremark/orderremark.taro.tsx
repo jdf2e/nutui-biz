@@ -139,7 +139,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
             <div className={b('tag-content')}>
               {recommendTags.map((item: string, index: number) => {
                 return (
-                  <div key={index} className={b('tag')} onClick={(e) => clickTag(item)}>
+                  <div key={index} className={b('tag')} onClick={(e) => clickTag(item, index)}>
                     {item}
                   </div>
                 );
