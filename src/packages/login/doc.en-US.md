@@ -299,16 +299,16 @@ export default App;
 
 | Attribute    | Description     | Type    | Default   |
 |---------|--------------------------------------------|---------|-----------|
-| logo | logo url | String | -- |
-| title | header title | String | -- |
-| formParams | input box configuration information | Object |{} |
-| loginType | login type (optional verification code verification `verify`, account password verification `pwd`), default verify | String | `verify` |
-| loginButtonDisable | Whether the login button is disabled |Boolean | true |
-| loginButtonText | Login button text |String | `Login` |
-| hasForgetPassWord | Whether there is a forgot password text button |Boolean |true |
-| isGetCode | Whether to get the verification code successfully |Boolean |false |
+| logo | logo url | string | -- |
+| title | header title | string | -- |
+| formParams | input box configuration information | Object:<LoginParamsProps> | - |
+| loginType | login type (optional verification code verification `verify`, account password verification `pwd`), default verify | string | `verify` |
+| loginButtonDisable | Whether the login button is disabled |Boolean | `true` |
+| loginButtonText | Login button text |string | `Login` |
+| hasForgetPassWord | Whether there is a forgot password text button |Boolean |`true` |
+| isGetCode | Whether to get the verification code successfully |Boolean |`false` |
 | isHideSwitchBtn | Whether to hide the login type switch button |Boolean |true |
-| countDownTime | countdown time for checking code acquisition anti-frequency |number |60 |
+| countDownTime | countdown time for checking code acquisition anti-frequency |number |`60` |
 | slotProtocolText | Custom check informed consent content |React.ReactNode |- |
 | slotBottom | Customize the content below the login button |React.ReactNode |- |
 | slotInput   | Custom Input  |ReactNode  |--        |
@@ -318,24 +318,24 @@ export default App;
 
 | Attribute    | Description     | Type    | Default   |
 |---------|--------------------------------------------|---------|-----------|
-| account | account name | String | -- |
-| accountPlaceholder | Placeholder text of the account input box | String | `Please enter the account` |
-| accountErrorText | account error prompt text | String | -- |
-| telOrMail | mobile phone or email | String | -- |
-| telOrMailPlaceholder | Phone or email placeholder text | String | `Please enter your phone number or email` |
-| telOrMailErrorText | Phone or email error prompt text | String | -- |
-| password | password | String | -- |
-| passwordPlaceholder | password placeholder text | String | `Please enter a password` |
-| passwordErrorText | password error prompt text | String | -- |
+| account | account name | string | - |
+| accountPlaceholder | Placeholder text of the account input box | string | `Please enter the account` |
+| accountErrorText | account error prompt text | string | - |
+| telOrMail | mobile phone or email | string | - |
+| telOrMailPlaceholder | Phone or email placeholder text | string | `Please enter your phone number or email` |
+| telOrMailErrorText | Phone or email error prompt text | string | - |
+| password | password | string | - |
+| passwordPlaceholder | password placeholder text | string | `Please enter a password` |
+| passwordErrorText | password error prompt text | string | - |
 | isShowPwdInput | Whether to show the password input box | Boolean | true |
-| verify | verification code | String | -- |
-| verifyPlaceholder | Verification code placeholder text | String | `Please enter the verify code` |
-| verifyButtonText | Verification code get button text | String | `Get code` |
-| verifyErrorText | verification code error prompt text | String | -- |
-| getCodeErrorToast | Get the verification code button and click the verification error prompt, which is used to prompt the phone or email input format error | String | `Please fill in the correct phone number or email` |
-| switchLoginText1 | Prompt text 1 for switching login type, which is a non-default login type | String | `Account password login` |
-| switchLoginText2 | Login type switch prompt text 2, which is the default login type | String | `Mobile login / Email login` |
-| forgetPwdText | Forgot password button text | String | `Forgot password` |
+| verify | verification code | string | - |
+| verifyPlaceholder | Verification code placeholder text | string | `Please enter the verify code` |
+| verifyButtonText | Verification code get button text | string | `Get code` |
+| verifyErrorText | verification code error prompt text | string | - |
+| getCodeErrorToast | Get the verification code button and click the verification error prompt, which is used to prompt the phone or email input format error | string | `Please fill in the correct phone number or email` |
+| switchLoginText1 | Prompt text 1 for switching login type, which is a non-default login type | string | `Account password login` |
+| switchLoginText2 | Login type switch prompt text 2, which is the default login type | string | `Mobile login / Email login` |
+| forgetPwdText | Forgot password button text | string | `Forgot password` |
 
 
 
@@ -343,10 +343,10 @@ export default App;
 | Attribute    | Description     | Callback |
 |----- | ----- | -----  |
 | onInputChange | Input text in the input box, return the input text and the identification tag of the input box (account,password,telOrMail,verify) | value,tag |
-| onLoginBtnClick | Login button click callback | formData |
-| onVerifyBtnClick | Get verification code button click callback | formData |
+| onLoginBtnClick | Login button click callback | formData:<LoginParamsProps> |
+| onVerifyBtnClick | Get verification code button click callback | formData:<LoginParamsProps> |
 | onForgetBtnClick | Click forgot password callback | - |
 | onInputClear | Triggered when the clear button of the input box is clicked, `tag`(account,password,telOrMail,verify)|tag|
-| onLoginTypeClick | Click switch login type callback | -- |
+| onLoginTypeClick | Click switch login type callback | - |
 
 

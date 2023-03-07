@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Login } from "./login";
+import { Login, LoginParamsProps } from "./login";
 import { useTranslate } from "../../sites/assets/locale";
 import { Radio, Cell, CellGroup, Input } from "@nutui/nutui-react";
 const { RadioGroup } = Radio;
@@ -90,7 +90,7 @@ const LoginDemo = () => {
       setAccount(value);
     }
   };
-  const queryVerifyCode = (formData: any) => {
+  const queryVerifyCode = (formData: LoginParamsProps) => {
     setGetVerify(false);
     console.log("getcode", formData);
     //异步获取校验码成功
@@ -98,7 +98,7 @@ const LoginDemo = () => {
       setGetVerify(true);
     }, 300);
   };
-  const queryLogin = (formData: any) => {
+  const queryLogin = (formData: LoginParamsProps) => {
     console.log("login", formData);
   };
   const [radioVal, setRadioVal] = useState("1");
@@ -135,7 +135,7 @@ const LoginDemo = () => {
         </Cell>
       </CellGroup>
 
-      {radioVal === "1" ? (
+      {radioVal === "1" && (
         <>
           <h2>{translated.basic}</h2>
           <Login
@@ -153,8 +153,8 @@ const LoginDemo = () => {
             }}
           />
         </>
-      ) : null}
-      {radioVal === "2" ? (
+      )}
+      {radioVal === "2" && (
         <>
           <h2>{translated.hasProtocol}</h2>
           <Login
@@ -174,8 +174,8 @@ const LoginDemo = () => {
             }
           />
         </>
-      ) : null}
-      {radioVal === "3" ? (
+      )}
+      {radioVal === "3" && (
         <>
           <h2>{translated.hasError}</h2>
           <Login
@@ -186,8 +186,8 @@ const LoginDemo = () => {
             loginButtonText={translated.loginText}
           />
         </>
-      ) : null}
-      {radioVal === "4" ? (
+      )}
+      {radioVal === "4" && (
         <>
           <h2>{translated.hasCustom}</h2>
           <Login
@@ -210,9 +210,9 @@ const LoginDemo = () => {
             }
           />
         </>
-      ) : null}
+      )}
 
-      {radioVal === "5" ? (
+      {radioVal === "5" && (
         <>
           <h2>{translated.hasCustomInput}</h2>
           {isDisable}
@@ -257,7 +257,7 @@ const LoginDemo = () => {
             }
           />
         </>
-      ) : null}
+      )}
     </div>
   );
 };
