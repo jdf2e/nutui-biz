@@ -18,11 +18,11 @@ import { Category } from '@nutui/nutui-biz';
 
 ```ts
 
-import  React from 'react';
+import  React,{useEffect,useState} from 'react';
 import { Category } from '@nutui/nutui-biz';
 
 const App = () => {
-
+	const [category, setCategory] = useState();
   const getData = () => {
     fetch("https://storage.360buyimg.com/nutui/3x/new-categoryData.js")
       .then((response) => response.json())
@@ -61,11 +61,11 @@ export default App;
 
 ```ts
 
-import  React from 'react';
+import  React,{useEffect,useState} from 'react';
 import { Category } from '@nutui/nutui-biz';
 
 const App = () => {
-
+  const [category, setCategory] = useState();
   const getData = () => {
     fetch("https://storage.360buyimg.com/nutui/3x/new-categoryData.js")
       .then((response) => response.json())
@@ -96,11 +96,11 @@ export default App;
 
 ```ts
 
-import  React from 'react';
+import  React,{useEffect,useState} from 'react';
 import { Category } from '@nutui/nutui-biz';
 
 const App = () => {
-
+  const [category, setCategory] = useState();
   const getData = () => {
     fetch("https://storage.360buyimg.com/nutui/3x/new-categoryData.js")
       .then((response) => response.json())
@@ -131,12 +131,14 @@ export default App;
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
 | category   | 分类商品信息                                 | Category[]  | `[]`          |
-| showSecondLevelQuickNav   | 是否展示二级分类快捷导航            | Boolean  | `false`          |
-| isLeftAutoSlide   | 左侧导航，即一级分类，选中值是否居中展示     | Boolean  | `true`          |
-| showSkuImg | 三级分类图片是否展示 | Boolean | `true`        |
-| isLazy | 三级分类图片是否懒加载 | Boolean | `true`        |
-| loadingImg | 设置加载中提示图片 | String | -       |
-| errorImg | 设置错误提示图片 | String | -        |
+| showSecondLevelQuickNav   | 是否展示二级分类快捷导航            | boolean  | `false`          |
+| isLeftAutoSlide   | 左侧导航，即一级分类，选中值是否居中展示     | boolean  | `true`          |
+| showSkuImg | 三级分类图片是否展示 | boolean | `true`        |
+| isLazy | 三级分类图片是否懒加载 | boolean | `true`        |
+| loadingImg | 设置加载中提示图片 | string | -       |
+| errorImg | 设置错误提示图片 | string | -        |
+| showPullUp | 是否展示“向上拉继续浏览” | boolean | `false`      |
+| pullUpText | 自定义 “向上拉继续浏览” 文案 | ReactNode | `向上拉继续浏览`      |
 
 
 ### Events
