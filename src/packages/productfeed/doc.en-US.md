@@ -447,22 +447,23 @@ export default App;
 |----------- | --------------- | -------------------|
 | onLoadMore | Emitted when continues to load |  done() |
 | onRefresh  | Emitted when pull refresh      |  done() |
+| onScrollChange  | Real-time monitoring of roll height   |  height |
 
 ### ProductFeedItem Props
 
 | Event  | Description     | Type    |
 |---------|--------------------------------------------|---------|
-| data        | Item data                  | Array    | -  |
-| col         | Quantity of items per row         | number \| string  | `2`    |
+| data        | Item data                  | Array     | -  |
+| col         | Quantity of items per row              | number \| string  | `2`    |
 | padding     | Product Inside Margin, default Unit ` px`   | number \| string  | `10px`  |
-| borderRadius | Item Fillet, default Unit ` px`    | number \| string  | `8px`  |
-| imgUrl      | Product image url                | string           | -     |
-| imgWidth    | Product image width, default unit `px`  | string           | -     |
-| imgHeight   | Product image height, default unit `px`  | string           | `150px` |
-| imgTag      | Product image tag               | string           | -      |
-| isImageLazy | Whether to enable product lazy loading          | boolean          | `true` |
-| loadingImg  | Image when product image loads        | string           | -      |
-| errorImg    | Image when product image is wrong        | string           | -      |
+| borderRadius | Item Fillet, default Unit ` px`       | number \| string  | `8px`  |
+| imgUrl      | Product image url                      | string           | -     |
+| imgWidth    | Product image width, default unit `px` | string           | -     |
+| imgHeight   | Product image height, default unit `px`| string           | `150px` |
+| imgTag      | Product image tag                      | string           | -      |
+| isImageLazy | Whether to enable product lazy loading | boolean          | `true` |
+| loadingImg  | Image when product image loads         | string           | -      |
+| errorImg    | Image when product image is wrong      | string           | -      |
 
 ### ProductFeedItem Events
 | Attribute            | Description               | Arguments   |

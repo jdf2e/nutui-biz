@@ -181,18 +181,6 @@
           "show": true,
           "taro": false,
           "author": "ailululu"
-        },
-        {
-          "version": "0.1.0",
-          "name": "ProductFeedItem",
-          "type": "component",
-          "cName": "商品 Feed 流商品组件",
-          "desc": "商品 Feed 流商品组件",
-          "sort": 11,
-          "show": false,
-          "taro": false,
-          "exportEmpty": true,
-          "author": "ailululu"
         }
       ]
     },

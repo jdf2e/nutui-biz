@@ -11,10 +11,24 @@
     width: 50%;
     padding: 0 0.25rem;
   }
-  .nut-biz-card {
-    margin-left: 2px;
-    &:nth-of-type(2n+1) {
-      margin-left: 0;
+}
+.nut-biz-productfeedItem {
+  position: relative;
+  background: #fff;
+  &__single {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  &__image {
+    margin: 0 auto;
+    &-tag {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
     }
+  }
+  &__content {
   }
 }

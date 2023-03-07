@@ -45,38 +45,38 @@ test('col test', () => {
 //   )
 // })
 
-// test('image test', () => {
-//   const { container } = render(
-//     <ProductFeed
-//     >
-//       <ProductFeedItem
-//         col={2}
-//         imgUrl='https://img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png'
-//         imgWidth="160"
-//         imgHeight="160"
-//         imgTag={<div className='img-label'><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
-//       >
-//         <div className="name-box">
-//           <div className="label">自营</div>
-//           我是标题我是标题我是标题我是标题
-//         </div>
-//       </ProductFeedItem>
-//     </ProductFeed>
-//   )
+test('image test', () => {
+  const { container } = render(
+    <ProductFeed
+    >
+      {/* <ProductFeedItem
+        col={2}
+        imgUrl='https://img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png'
+        imgWidth="160"
+        imgHeight="160"
+        imgTag={<div className='img-label'><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+      >
+        <div className="name-box">
+          <div className="label">自营</div>
+          我是标题我是标题我是标题我是标题
+        </div>
+      </ProductFeedItem> */}
+    </ProductFeed>
+  )
 
-//   expect(container.querySelector('.nut-img')).toHaveAttribute(
-//     'src',
-//     'https://img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png'
-//   )
+  expect(container.querySelector('.nut-img')).toHaveAttribute(
+    'src',
+    'https://img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png'
+  )
 
-//   expect(container.querySelector('.nut-image')).toHaveAttribute(
-//     'style',
-//     'height: 160px; width: 160px;'
-//   )
+  expect(container.querySelector('.nut-image')).toHaveAttribute(
+    'style',
+    'height: 160px; width: 160px;'
+  )
 
-//   const imgTag = container.querySelectorAll('.img-label')
-//   expect(imgTag.length).toBe(1)
-// })
+  const imgTag = container.querySelectorAll('.img-label')
+  expect(imgTag.length).toBe(1)
+})
 
 // test('onRefresh test', () => {
 //   const refresh = jest.fn()
