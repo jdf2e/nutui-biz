@@ -54,7 +54,7 @@ const CommentDemo = () => {
 
       { switchIdx == 0 && (
         <div className="demo nut-category-demo" style={{padding:'57px 0 0'}}>
-          <Category category={category} onClick={onClassifyClick} onPanelThirdClick={onPanelThirdClick}></Category>
+          <Category category={category} isLazy={false} onClick={onClassifyClick} onPanelThirdClick={onPanelThirdClick}></Category>
         </div>
       )}
 

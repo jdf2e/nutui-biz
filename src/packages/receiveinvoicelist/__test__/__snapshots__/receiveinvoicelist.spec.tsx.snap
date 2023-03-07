@@ -3,6 +3,7 @@
 exports[`test props && event 1`] = `
 <div
   class="nb-receive-invoice-list"
+  modelvalue="1"
 >
   <div
     class="nut-cell-group nb-receive-invoice-list__item"

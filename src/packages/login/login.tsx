@@ -22,7 +22,7 @@ interface LoginParamsProps {
   passwordPlaceholder?: string;
   passwordErrorText?: string;
   isShowPwdInput?: boolean;
-  verifyCode?: string;
+  verify?: string;
   verifyPlaceholder?: string;
   verifyButtonText?: string;
   verifyErrorText?: string;
@@ -30,6 +30,7 @@ interface LoginParamsProps {
   switchLoginText1?: string;
   switchLoginText2?: string;
   forgetPwdText?: string;
+  [key: string]: any;
 }
 export interface LoginProps extends IComponent {
   logo: string;
@@ -128,7 +129,7 @@ export const Login: FunctionComponent<
     passwordPlaceholder: locale.login.passwordPlaceholder,
     passwordErrorText: "",
     isShowPwdInput: true,
-    verifyCode: "",
+    verify: "",
     verifyPlaceholder: locale.login.verifyPlaceholder,
     verifyButtonText: locale.login.verifyButtonText,
     verifyErrorText: "",
@@ -157,7 +158,7 @@ export const Login: FunctionComponent<
       telOrMailErrorText: "",
       password: "",
       passwordErrorText: "",
-      verifyCode: "",
+      verify: "",
       verifyErrorText: "",
     };
     setLoginParams({ ...loginParams, ...clearObj });
@@ -167,7 +168,7 @@ export const Login: FunctionComponent<
     setCountTime(countDownTime);
   };
   useEffect(() => {
-    const { account, telOrMail, password, verifyCode, isShowPwdInput } =
+    const { account, telOrMail, password, verify, isShowPwdInput } =
       loginParams;
     //登录状态可点击情况
     let status1 =
@@ -176,8 +177,7 @@ export const Login: FunctionComponent<
       password != "" &&
       isShowPwdInput;
     let status2 = currLoginType === "pwd" && account != "" && !isShowPwdInput;
-    let status3 =
-      currLoginType === "verify" && telOrMail != "" && verifyCode != "";
+    let status3 = currLoginType === "verify" && telOrMail != "" && verify != "";
     //用户自定义输入框slotInput时，登录按钮是否可点击用户控制
     if (slotProtocolText) {
       if ((status1 || status2 || status3) && isProtocol && !slotInput) {
@@ -204,10 +204,6 @@ export const Login: FunctionComponent<
   const getCode = () => {
     const { telOrMail, getCodeErrorToast } = loginParams;
     //校验手机号和邮箱
-    const telreg = /^[1][3,4,5,7,8][0-9]{9}$/;
-    const mailreg =
-      /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-    // if (telreg.test(telOrMail) || mailreg.test(telOrMail)) {
     if (telOrMail.length) {
       onVerifyBtnClick && onVerifyBtnClick(loginParams);
     } else {
@@ -252,22 +248,67 @@ export const Login: FunctionComponent<
   };
 
   const isError = (tag: string) => {
-    switch (tag) {
-      case "account":
-        return loginParams.accountErrorText != "";
-        break;
-      case "password":
-        return loginParams.passwordErrorText != "";
-        break;
-      case "telOrMail":
-        return loginParams.telOrMailErrorText != "";
-        break;
-      case "verifyCode":
-        return loginParams.verifyErrorText != "";
-        break;
-      default:
-        break;
-    }
+    let name = tag + "ErrorText";
+    return loginParams[name] != "";
+  };
+
+  const inputTpl = (tag: string) => {
+    let placeholder = tag + "Placeholder";
+    let errorText = tag + "ErrorText";
+
+    return (
+      <div className={`input-wrap ${isError(tag) ? "error" : ""}`}>
+        <div className="input-item">
+          <Input
+            className="nut-input-text"
+            border={false}
+            defaultValue={loginParams[tag]}
+            name={tag}
+            placeholder={loginParams[placeholder]}
+            type={isHidePwd && tag === "password" ? "password" : "text"}
+            clearable
+            onChange={(e) => {
+              inputOnChange(e, tag);
+            }}
+            onClear={() => {
+              inputClear(tag);
+            }}
+          />
+          {tag === "password" && hasHidePwd ? (
+            <div
+              className="pwd-hide-icon"
+              onClick={() => {
+                setIsHidePwd(!isHidePwd);
+              }}
+            >
+              <Icon
+                name={isHidePwd ? "marshalling" : "eye"}
+                size="14"
+                color={isHidePwd ? "#ccc" : "#666"}
+              />
+            </div>
+          ) : null}
+          {tag === "verify" &&
+            (!inCountDown ? (
+              <div className="code-box" onClick={getCode}>
+                {loginParams.verifyButtonText}
+              </div>
+            ) : (
+              <div className="code-box disabled">
+                <div className="counts">{countTime}s</div>
+              </div>
+            ))}
+        </div>
+        {tag === "password" && hasForgetPassWord ? (
+          <div className="forget-pwd" onClick={forgetClick}>
+            {loginParams.forgetPwdText}
+          </div>
+        ) : null}
+        {loginParams[errorText] ? (
+          <div className="error-msg">{loginParams[errorText]}</div>
+        ) : null}
+      </div>
+    );
   };
 
   const b = cn2("login");
@@ -282,137 +323,13 @@ export const Login: FunctionComponent<
       <div className={`${b("content")}`}>
         {currLoginType == "pwd" ? (
           <>
-            <div className={`input-wrap ${isError("account") ? "error" : ""}`}>
-              <div className="input-item">
-                <Input
-                  className="nut-input-text"
-                  border={false}
-                  defaultValue={loginParams.account}
-                  name="account"
-                  placeholder={loginParams.accountPlaceholder}
-                  type="text"
-                  clearable
-                  onChange={(e) => {
-                    inputOnChange(e, "account");
-                  }}
-                  onClear={() => {
-                    inputClear("account");
-                  }}
-                />
-              </div>
-              {loginParams.accountErrorText ? (
-                <div className="error-msg">{loginParams.accountErrorText}</div>
-              ) : null}
-            </div>
-            {loginParams.isShowPwdInput ? (
-              <div
-                className={`input-wrap ${isError("password") ? "error" : ""}`}
-              >
-                <div className="input-item">
-                  <Input
-                    className="nut-input-text"
-                    border={false}
-                    defaultValue={loginParams.password}
-                    name="password"
-                    placeholder={loginParams.passwordPlaceholder}
-                    type={isHidePwd ? "password" : "text"}
-                    clearable
-                    onChange={(e) => {
-                      inputOnChange(e, "password");
-                    }}
-                    onClear={() => {
-                      inputClear("password");
-                    }}
-                  />
-                  {hasHidePwd ? (
-                    <div
-                      className="pwd-hide-icon"
-                      onClick={() => {
-                        setIsHidePwd(!isHidePwd);
-                      }}
-                    >
-                      <Icon
-                        name={isHidePwd ? "marshalling" : "eye"}
-                        size="14"
-                        color={isHidePwd ? "#ccc" : "#666"}
-                      />
-                    </div>
-                  ) : null}
-                </div>
-                {hasForgetPassWord ? (
-                  <div className="forget-pwd" onClick={forgetClick}>
-                    {loginParams.forgetPwdText}
-                  </div>
-                ) : null}
-                {loginParams.passwordErrorText ? (
-                  <div className="error-msg">
-                    {loginParams.passwordErrorText}
-                  </div>
-                ) : null}
-              </div>
-            ) : null}
+            {inputTpl("account")}
+            {loginParams.isShowPwdInput && inputTpl("password")}
           </>
         ) : (
           <>
-            <div
-              className={`input-wrap ${isError("telOrMail") ? "error" : ""}`}
-            >
-              <div className="input-item">
-                <Input
-                  className="nut-input-text"
-                  border={false}
-                  defaultValue={loginParams.telOrMail}
-                  name="telOrMail"
-                  placeholder={loginParams.telOrMailPlaceholder}
-                  type="text"
-                  clearable
-                  onChange={(e) => {
-                    inputOnChange(e, "telOrMail");
-                  }}
-                  onClear={() => {
-                    inputClear("telOrMail");
-                  }}
-                />
-              </div>
-              {loginParams.telOrMailErrorText ? (
-                <div className="error-msg">
-                  {loginParams.telOrMailErrorText}
-                </div>
-              ) : null}
-            </div>
-            <div
-              className={`input-wrap ${isError("verifyCode") ? "error" : ""}`}
-            >
-              <div className="input-item">
-                <Input
-                  className="nut-input-text"
-                  border={false}
-                  defaultValue={loginParams.verifyCode}
-                  name="verifyCode"
-                  placeholder={loginParams.verifyPlaceholder}
-                  type="text"
-                  clearable
-                  onChange={(e) => {
-                    inputOnChange(e, "verifyCode");
-                  }}
-                  onClear={() => {
-                    inputClear("verifyCode");
-                  }}
-                />
-                {!inCountDown ? (
-                  <div className="code-box" onClick={getCode}>
-                    {loginParams.verifyButtonText}
-                  </div>
-                ) : (
-                  <div className="code-box disabled">
-                    <div className="counts">{countTime}s</div>
-                  </div>
-                )}
-              </div>
-              {loginParams.verifyErrorText ? (
-                <div className="error-msg">{loginParams.verifyErrorText}</div>
-              ) : null}
-            </div>
+            {inputTpl("telOrMail")}
+            {inputTpl("verify")}
           </>
         )}
         {slotInput ? slotInput : null}

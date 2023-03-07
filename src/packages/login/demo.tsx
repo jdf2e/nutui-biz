@@ -58,7 +58,7 @@ const LoginDemo = () => {
     telOrMailErrorText: "",
     password: "",
     passwordErrorText: "",
-    verifyCode: "",
+    verify: "",
     verifyButtonText: translated.codeText,
   });
   const [formParams2, setformParams2] = useState({
@@ -68,7 +68,7 @@ const LoginDemo = () => {
     telOrMailErrorText: "",
     password: "",
     passwordErrorText: "",
-    verifyCode: "",
+    verify: "",
     isShowPwdInput: false,
   });
   const [formParams3, setformParams3] = useState({
@@ -78,7 +78,7 @@ const LoginDemo = () => {
     telOrMailErrorText: "",
     password: "123",
     passwordErrorText: translated.errorText2,
-    verifyCode: "",
+    verify: "",
   });
   const [getVerify, setGetVerify] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
@@ -148,6 +148,9 @@ const LoginDemo = () => {
             onVerifyBtnClick={queryVerifyCode}
             onLoginBtnClick={queryLogin}
             countDownTime={30}
+            onForgetBtnClick={() => {
+              console.log("点击忘记密码");
+            }}
           />
         </>
       ) : null}

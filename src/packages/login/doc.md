@@ -30,7 +30,7 @@ const App = () => {
     telOrMailErrorText: "",
     password: "",
     passwordErrorText: "",
-    verifyCode: "",
+    verify: "",
   });
   const [getVerify, setGetVerify] = useState(false);
   const onChange = (value: any, tag: string) => {
@@ -57,6 +57,9 @@ const App = () => {
         onVerifyBtnClick={queryVerifyCode}
         onLoginBtnClick={queryLogin}
         countDownTime={30}
+        onForgetBtnClick={() => {
+              console.log("点击忘记密码");
+            }}
         />
   );
 };
@@ -82,7 +85,7 @@ const App = () => {
     telOrMailErrorText: "",
     password: "",
     passwordErrorText: "",
-    verifyCode: "",
+    verify: "",
   });
   const [getVerify, setGetVerify] = useState(false);
   const onChange = (value: any, tag: string) => {
@@ -295,38 +298,38 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| logo   | 头部图标链接，不配置不显示                                | String  | --        |
-| title  | 头部标题，不配置不显示                                 | String  | --         |
+| logo   | 头部图标链接，不配置不显示                                | String  | -        |
+| title  | 头部标题，不配置不显示                                 | String  | -         |
 | formParams   | 输入框配置信息                                 | Object  |{}         |
 | loginType   | 登录类型(可选验证码校验`verify`，账号密码校验`pwd` )，默认verify                                | String  | `verify`         |
-| loginButtonDisable   | 登录按钮是否禁用  |Boolean  | true        |
-| loginButtonText   | 登录按钮文案  |String  | 登录        |
-| hasForgetPassWord   | 是否有忘记密码文字按钮  |Boolean  |true        |
+| loginButtonDisable   | 登录按钮是否禁用  |Boolean  | `true`        |
+| loginButtonText   | 登录按钮文案  |String  | `登录`        |
+| hasForgetPassWord   | 是否有忘记密码文字按钮  |Boolean  |`true`        |
 | isGetCode   | 是否成功获取校验码 |Boolean  |false        |
-| isHideSwitchBtn   | 是否隐藏登录类型切换按钮  |Boolean  |true        |
-| countDownTime   | 校验码获取防频倒计时时间  |number  |60        |
+| isHideSwitchBtn   | 是否隐藏登录类型切换按钮  |Boolean  |`true`        |
+| countDownTime   | 校验码获取防频倒计时时间  |number  |`60`       |
 | slotProtocolText   | 自定义勾选知情同意内容  |ReactNode  |-        |
-| slotBottom   | 自定义登录按钮下方内容  |ReactNode  |--       |
-| slotInput   | 自定义输入框  |ReactNode  |--        |
+| slotBottom   | 自定义登录按钮下方内容  |ReactNode  |-       |
+| slotInput   | 自定义输入框  |ReactNode  |-        |
 
 
 ### Props formParams
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| account   | 账号名 | String | -- |
+| account   | 账号名 | String | - |
 | accountPlaceholder   | 账号输入框占位文字    | String  |   `请输入登录码`      |
-| accountErrorText | 账号错误提示文字  | String | -- |
-| telOrMail | 手机或邮箱 | String | -- |
+| accountErrorText | 账号错误提示文字  | String | - |
+| telOrMail | 手机或邮箱 | String | - |
 | telOrMailPlaceholder | 手机或邮箱占位文字 | String | `请输入手机号或邮箱` |
-| telOrMailErrorText | 手机或邮箱错误提示文字 | String | -- |
-| password | 密码 | String | -- |
+| telOrMailErrorText | 手机或邮箱错误提示文字 | String | - |
+| password | 密码 | String | - |
 | passwordPlaceholder  | 密码占位文字 | String | `请输入密码` |
-| passwordErrorText  | 密码错误提示文字 | String | -- |
-| isShowPwdInput  | 是否展示密码输入框 | Boolean | true |
-| verifyCode  | 验证码 | String | -- |
+| passwordErrorText  | 密码错误提示文字 | String | - |
+| isShowPwdInput  | 是否展示密码输入框 | Boolean | `true` |
+| verify  | 验证码 | String | - |
 | verifyPlaceholder  | 验证码占位文字 | String | `请输入验证码` |
 | verifyButtonText  |验证码获取按钮文字 | String | `获取验证码` |
-| verifyErrorText  | 验证码错误提示文字 | String | -- |
+| verifyErrorText  | 验证码错误提示文字 | String | - |
 | getCodeErrorToast  | 获取验证码按钮点击校验错误提示，用于提示手机或邮箱输入格式错误问题 | String | `请填写正确的手机号或邮箱` |
 | switchLoginText1  | 登录类型切换提示文字1，为非默认的登录类型 | String | `账号密码登录` |
 | switchLoginText2  |  登录类型切换提示文字2，为默认的登录类型| String | `手机/邮箱登录` |
@@ -337,12 +340,12 @@ export default App;
 ### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
-| onInputChange | 输入框输入文字，返回输入文字和所在输入框的标识tag (account,password,telOrMail,verifyCode) |  value,tag |
+| onInputChange | 输入框输入文字，返回输入文字和所在输入框的标识tag (account,password,telOrMail,verify) |  value,tag |
 | onLoginBtnClick | 登录按钮点击回调 |  formData |
 | onVerifyBtnClick | 获取校验码按钮点击回调 | formData |
 | onForgetBtnClick | 点击忘记密码回调 |  - |
-| onInputClear | 输入框点击清除按钮回调，返回tag(account,password,telOrMail,verifyCode) | tag |
-| onLoginTypeClick | 点击切换登录方式回调 | -- |
+| onInputClear | 输入框点击清除按钮回调，返回tag(account,password,telOrMail,verify) | tag |
+| onLoginTypeClick | 点击切换登录方式回调 | - |
 
 
 

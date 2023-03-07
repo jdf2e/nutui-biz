@@ -30,7 +30,7 @@ const App = () => {
     telOrMailErrorText: "",
     password: "",
     passwordErrorText: "",
-    verifyCode: "",
+    verify: "",
   });
   const [getVerify, setGetVerify] = useState(false);
   const onChange = (value: any, tag: string) => {
@@ -57,6 +57,9 @@ const App = () => {
         onVerifyBtnClick={queryVerifyCode}
         onLoginBtnClick={queryLogin}
         countDownTime={30}
+        onForgetBtnClick={() => {
+              console.log("点击忘记密码");
+            }}
         />
   );
 };
@@ -82,7 +85,7 @@ const App = () => {
     telOrMailErrorText: "",
     password: "",
     passwordErrorText: "",
-    verifyCode: "",
+    verify: "",
   });
   const [getVerify, setGetVerify] = useState(false);
   const onChange = (value: any, tag: string) => {
@@ -325,7 +328,7 @@ export default App;
 | passwordPlaceholder | password placeholder text | String | `Please enter a password` |
 | passwordErrorText | password error prompt text | String | -- |
 | isShowPwdInput | Whether to show the password input box | Boolean | true |
-| verifyCode | verification code | String | -- |
+| verify | verification code | String | -- |
 | verifyPlaceholder | Verification code placeholder text | String | `Please enter the verify code` |
 | verifyButtonText | Verification code get button text | String | `Get code` |
 | verifyErrorText | verification code error prompt text | String | -- |
@@ -339,11 +342,11 @@ export default App;
 ### Events
 | Attribute    | Description     | Callback |
 |----- | ----- | -----  |
-| onInputChange | Input text in the input box, return the input text and the identification tag of the input box (account,password,telOrMail,verifyCode) | value,tag |
+| onInputChange | Input text in the input box, return the input text and the identification tag of the input box (account,password,telOrMail,verify) | value,tag |
 | onLoginBtnClick | Login button click callback | formData |
 | onVerifyBtnClick | Get verification code button click callback | formData |
 | onForgetBtnClick | Click forgot password callback | - |
-| onInputClear | Triggered when the clear button of the input box is clicked, `tag`(account,password,telOrMail,verifyCode)|tag|
+| onInputClear | Triggered when the clear button of the input box is clicked, `tag`(account,password,telOrMail,verify)|tag|
 | onLoginTypeClick | Click switch login type callback | -- |
 
 
