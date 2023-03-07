@@ -1,16 +1,13 @@
 import React, { FunctionComponent, HTMLAttributes, useEffect, useState } from "react";
 import { IComponent } from "@/utils/typings";
 import { Icon } from "@nutui/nutui-react";
+import classNames from 'classnames';
+import {cn2} from '@/utils/bem'
 
-export interface CommentImagesProps extends IComponent {
-  type: "one" | "multi";
-  videos: Array<VideosType>;
-  images: Array<ImagesType>;
-  onClickImages: (imgs: {
-    type: string;
-    index: string | number;
-    value: VideosType | ImagesType;
-  }) => void;
+export interface GoodsClickParams {
+  type: string;
+  index: string | number;
+  value: VideosType | ImagesType;
 }
 
 export interface VideosType {
@@ -25,6 +22,14 @@ export interface ImagesType {
   bigImgUrl?: string;
   imgUrl?: string;
 }
+export interface CommentImagesProps extends IComponent {
+  type: "one" | "multi";
+  videos: Array<VideosType>;
+  images: Array<ImagesType>;
+  onClickImages: (imgs: GoodsClickParams) => void;
+}
+
+
 
 const defaultProps = {
   type: "one",
@@ -37,40 +42,39 @@ export const CommentImages: FunctionComponent<
     ...defaultProps,
     ...props,
   };
+  const b = cn2('comment-images')
 
   const [totalImages, setTotalImages] = useState(
     [] as Array<VideosType | ImagesType>
   );
 
-  const showImages = (type: string, index: string | number) => {
-    const i = type === "img" ? (index as number) - videos.length : index;
+  const showImages = (type: string, index: number) => {
+    const i = type === "img" ? (index) - videos.length : index;
     onClickImages &&
       onClickImages({
         type,
         index: i,
-        value: type == "img" ? images[i as number] : videos[i as number],
+        value: type == "img" ? images[i] : videos[i],
       });
   };
 
   useEffect(() => {
-    setTotalImages(
-      ([] as Array<VideosType | ImagesType>).concat(videos).concat(images)
-    );
+    if (videos && images) setTotalImages([...videos, ...images]);
   }, [videos, images]);
 
   return (
-    <div className={`nut-comment-images nut-comment-images--${type}`}>
+    <div className={classNames([b(),b(`${type}`)]) }>
       {/* videos */}
       {videos &&
         videos.map((itV, index) => {
           return (
             <div
-              className="nut-comment-images__item nut-comment-images__item--video"
-              key={itV.id}
+              className={classNames([b('item'),b(`item-video`)])}
+              key={index}
               onClick={() => showImages("video", index)}
             >
               <img src={itV.mainUrl} />
-              <div className="nut-comment-images__play"></div>
+              <div className={b('play')}></div>
             </div>
           );
         })}
@@ -80,8 +84,8 @@ export const CommentImages: FunctionComponent<
           return (type === "multi" && videos.length + index < 9) ||
             type != "multi" ? (
             <div
-              className="nut-comment-images__item nut-comment-images__item--imgbox"
-              key={itI.id}
+              className={classNames([b('item'),b(`item--imgbox`)])}
+              key={index}
               onClick={() => showImages("img", index + videos.length)}
             >
               <img src={itI.smallImgUrl ? itI.smallImgUrl : itI.imgUrl} />
@@ -89,7 +93,7 @@ export const CommentImages: FunctionComponent<
                 totalImages.length > 9 &&
                 videos.length + index > 7 && (
                   <div
-                    className="nut-comment-images__mask"
+                    className={b('mask')}
                     onClick={() => showImages("more", index + videos.length)}
                   >
                     <span>共 {totalImages.length} 张</span>

@@ -19,7 +19,7 @@ import { Comment } from "@nutui/nutui-biz";
 :::demo
 
 ```js
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Comment } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -83,7 +83,7 @@ export default App;
 :::demo
 
 ```js
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import { Comment } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -147,7 +147,7 @@ export default App;
 :::demo
 
 ```js
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import { Comment } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -203,16 +203,16 @@ export default App;
 | info        | 评论详情                                      | object           | `{}`                        |
 | follow      | 追评内容                                      | object           | `{}`                        |
 | operation   | 配置底部按钮                                  | Array            | `["reply", "like", "more"]` |
-| commentLabels | 评论用户的标签 | React.ReactNode | - |
-| commentShopReply | 评论最底部，用于展示商家回复 | React.ReactNode | - |
+| commentLabels | 评论用户的标签 | ReactNode | - |
+| commentShopReply | 评论最底部，用于展示商家回复 | ReactNode | - |
 
 ### Events
 
 | 事件名        | 说明                     | 回调参数             |
 | ------------- | ------------------------ | -------------------- |
-| clickOperate | 点击底部操作按钮回调函数 | `type`               |
-| click         | 点击评论内容回调函数     | `type`               |
-| clickImages  | 点击图片或视频触发       | `{type,index,value}` |
+| onClickOperate | 点击底部操作按钮回调函数 | `type` 底部按钮类型，同 `operation`             |
+| onClick         | 点击评论内容回调函数     | 传入的 `info` 参数            |
+| onClickImages  | 点击图片或视频触发       | `{type,index,value}` |
 
 ### images 数组
 
