@@ -460,27 +460,27 @@ export default App;
 
 | 字段                 | 说明                                | 类型                 | 默认值  |
 | -------------------- | ----------------------------------- | -------------------- | ------- |
-| showCancelPanel      | 是否显示或取消订单弹窗              | Boolean              | `false` |
+| showCancelPanel      | 是否显示或取消订单弹窗              | boolean              | `false` |
 | warmTips             | 温馨提示内容,无则不展示提示内容     | Array<string>        | -       |
 | cancelReason         | 取消原因                            | Array<IResonsObject> | -       |
-| canCancelReason      | 再次点击是否可以取消已选中的原因    | Boolean              | `false` |
-| popupTitle           | 弹窗的主标题                        | ReactNode\|String    | -       |
-| reasonTitle          | 取消原因的标题                      | ReactNode\|String    | -       |
-| submitText           | 弹窗按钮文案                        | String               | `提交`  |
-| tipsTitle            | 温馨提示的标题                      | ReactNode\|String    | -       |
+| canCancelReason      | 再次点击是否可以取消已选中的原因    | boolean              | `false` |
+| popupTitle           | 弹窗的主标题                        | ReactNode\|string    | -       |
+| reasonTitle          | 取消原因的标题                      | ReactNode\|string    | -       |
+| submitText           | 弹窗按钮文案                        | string               | `提交`  |
+| tipsTitle            | 温馨提示的标题                      | ReactNode\|string    | -       |
 | buttonProps          | 按钮组件的 props                    | ButtonProps          | -       |
 | textAreaProps        | 其它原因对应的 TextArea 组件 props  | TextAreaProps        | -       |
 | popupProsp           | Popup 组件的 props                  | PopupProps           | -       |
 | checkboxType         | checkbox 选择框和原因文案的前后位置 | `back`\|`front`      | `back`  |
-| safeAreaCancelBottom | 按钮区域是否渲染 iphone 安全区域    | Boolean              | `false` |
-| showBtntips          | 是否在按钮区域显示提示区域          | Boolean              | `false` |
+| safeAreaCancelBottom | 按钮区域是否渲染 iphone 安全区域    | boolean              | `false` |
+| showBtntips          | 是否在按钮区域显示提示区域          | boolean              | `false` |
 
 ### IResonsObject
 
 | 字段  | 说明                            | 类型   | 默认值 |
 | ----- | ------------------------------- | ------ | ------ |
-| key   | 取消原因的 key 字段每项的值不同 | String | -      |
-| value | 取消原因的文案内容              | String | -      |
+| key   | 取消原因的 key 字段每项的值不同 | string | -      |
+| value | 取消原因的文案内容              | string | -      |
 
 ### Events
 
