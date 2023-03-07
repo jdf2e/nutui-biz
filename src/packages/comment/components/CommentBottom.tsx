@@ -1,10 +1,12 @@
 import React, { FunctionComponent, HTMLAttributes, useEffect, useState } from "react";
 import { IComponent } from "@/utils/typings";
 import { Icon } from "@nutui/nutui-react";
-
+import classNames from 'classnames';
+import {cn2} from '@/utils/bem'
+import { CommentInfo } from "../comment";
 export interface CommentBottomProps extends IComponent {
   type: "default" | "complex";
-  info: any;
+  info: CommentInfo;
   operation: Array<string>;
   onHandleClick: () => void;
   onClickOperate: (type: string) => void;
@@ -23,9 +25,11 @@ export const CommentBottom: FunctionComponent<
     ...props,
   };
 
+  const b = cn2('comment-bottom')
+
   const [showPopver, setShowPopover] = useState(false);
 
-  const [mergeOp, setMergeOp] = useState([] as Array<string>);
+  const [mergeOp, setMergeOp] = useState<Array<string>>([]);
 
   const operate = (type: string) => {
     if (type === "more") {
@@ -39,49 +43,34 @@ export const CommentBottom: FunctionComponent<
   };
 
   useEffect(() => {
-    const deOp = ["reply", "like", "more"];
-    if (operation) {
-      const Op = [] as Array<string>;
-      operation.forEach((name: string) => {
-        if (deOp.includes(name)) {
-          Op.push(name);
-        }
-      });
-      setMergeOp(Op);
-    }
+    setMergeOp(operation)
   }, []);
 
   return (
-    <div className="nut-comment-bottom">
-      <div className="nut-comment-bottom__lable" onClick={handleClick}>
+    <div className={b()}>
+      <div className={b('lable')} onClick={handleClick}>
         {type !== "complex" && <span>{info?.size}</span>}
       </div>
-      <div className="nut-comment-bottom__cpx">
+      <div className={b('cpx')}>
         {mergeOp.map((name, i) => {
           return (
             <div
-              className={
-                "nut-comment-bottom__cpx-item" +
-                ` nut-comment-bottom__cpx-item--${name}`
-              }
+              className={classNames([b('cpx-item'),b(`cpx-item--${name}`)])}
               onClick={() => operate(name)}
               key={i}
             >
-              {name !== "more" ? (
-                <>
-                  <span>{info?.[name]}</span>
-                  {name === "like" ? (
-                    <Icon name="fabulous"></Icon>
-                  ) : (
-                    <Icon name="comment"></Icon>
-                  )}
-                </>
-              ) : (
+              {
+                name == 'reply' && (<><span>{info?.reply}</span><Icon name="comment"></Icon></>)
+              }
+              {
+                name == 'like' &&  (<><span>{info?.like}</span><Icon name="fabulous"></Icon></>)
+              }
+              {name == "more" && (
                 <>
                   <Icon name="more-x"></Icon>
                   {showPopver && (
                     <div
-                      className="nut-comment-bottom__cpx-item-popover"
+                      className={b('cpx-item-popover')}
                       onClick={() => operate("popover")}
                     >
                       我要投诉
