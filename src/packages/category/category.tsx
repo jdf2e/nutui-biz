@@ -4,46 +4,28 @@ import React, {
   useRef,
   useState,
   CSSProperties,
+  ElementRef,
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames'
-import { CategoryPane } from './categorypane'
 import { IComponent } from '@/utils/typings'
-import bem from '@/utils/bem'
+import {CategoryPane} from './categorypane'
+import {cn2} from '@/utils/bem'
 import { errorImg } from '@/utils'
+import {Category as BaseCategory , CategoryPaneItem, CategoryPaneHandler } from './props';
 
 
-interface Category {
-  catId: string | number,
-  catName: string,
-  children?: Array<CategoryPane>,
-  [props: string]: any
-}
-
-interface CategoryPane {
-  catId: string | number,
-  catName: string,
-  children?: Array<CategoryPaneItem>,
-  [props: string]: any
-}
-
-interface CategoryPaneItem {
-  backImg?: string,
-  catId: string,
-  catName: string,
-  [props: string]: any
-}
 export interface CategoryProps extends IComponent {
   className?: string,
   style?: CSSProperties,
   showSkuImg: boolean,
-  category: Category[],
+  category: BaseCategory[],
   showSecondLevelQuickNav:boolean,
   isLeftAutoSlide:boolean,
   isLazy:boolean,
   loadingImg:string,
   errorImg:string,
-  onChange: (index:Category) => void,
+  onChange: (index:BaseCategory) => void,
   onPanelNavClick:(index:number)=>void,
   onPanelThirdClick: (sku:CategoryPaneItem)=>void
 }
@@ -81,30 +63,30 @@ export const Category: FunctionComponent<
     ...props,
   }
 
-  const b = bem('biz-category')
+  const b = cn2('category')
 
-  const panelRef = useRef(null);
-  const listRef = useRef(null)
+  const panelRef = useRef<CategoryPaneHandler>(null);
+  const listRef = useRef<HTMLDivElement>(null)
   const [checkIndex, setCheckIndex] = useState<number>(0)
 
   const changeTabs = (tab:number) => {
     if(tab !== checkIndex){
       setCheckIndex(tab)
 
-      const panel:any =  panelRef?.current
-      panel.reset();
+      const panel =  panelRef?.current
+      panel && panel.reset();
 
       isLeftAutoSlide && scrollListTo(tab)
 
-      onChange && onChange(category[tab])
+      onChange(category[tab])
     }
   }
 
   const scrollListTo = (index:number)=>{
-    const listDom: any = listRef.current
+    const listDom = listRef?.current
     if(!listDom) return
     const height = listDom?.clientHeight / 2
-    const elements = listDom.getElementsByClassName('nut-biz-category__cate-list-item')
+    const elements = listDom.getElementsByClassName('nb-category__cate-list-item')
     const panel = elements[index]
     listDom.scrollTo({
       top: Math.max(0,panel.offsetTop - height + 25),
@@ -116,9 +98,9 @@ export const Category: FunctionComponent<
     <div className={classNames([b()])} >
       {
         category &&category?.length > 0 && (
-          <div className={classNames(b('cate-list'))} >
+          <div className={b('cate-list')} >
             {
-              <div className={classNames(b('cate-list-left'))} ref={listRef}>
+              <div className={b('cate-list-left')} ref={listRef}>
                 {
                   props.category?.map((item, index) => (
                     <div 
@@ -138,7 +120,7 @@ export const Category: FunctionComponent<
               categoryChild={props.category && props.category[checkIndex].children}
               showSkuImg={showSkuImg}
               showSecondLevelQuickNav={showSecondLevelQuickNav}
-              isLazy
+              isLazy={isLazy}
               loadingImg={loadingImg}
               errorImg={errorImg}
               onPanelNavClick={onPanelNavClick}
