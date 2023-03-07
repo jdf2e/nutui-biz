@@ -4,7 +4,7 @@ import React, {
   useRef,
   useState,
   CSSProperties,
-  ElementRef,
+  ReactNode,
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames'
@@ -25,6 +25,8 @@ export interface CategoryProps extends IComponent {
   isLazy:boolean,
   loadingImg:string,
   errorImg:string,
+  showPullUp?: boolean,
+  pullUpText?: ReactNode,
   onChange: (index:BaseCategory) => void,
   onPanelNavClick:(index:number)=>void,
   onPanelThirdClick: (sku:CategoryPaneItem)=>void
@@ -38,6 +40,7 @@ const defaultProps = {
   isLazy:true,
   loadingImg: errorImg,
   errorImg,
+  showPullUp: false,
   onChange: () => {},
   onPanelNavClick:()=>{},
   onPanelThirdClick: ()=>{}
@@ -55,6 +58,8 @@ export const Category: FunctionComponent<
     isLazy,
     loadingImg,
     errorImg,
+    showPullUp,
+    pullUpText,
     onChange,
     onPanelNavClick,
     onPanelThirdClick
@@ -123,6 +128,8 @@ export const Category: FunctionComponent<
               isLazy={isLazy}
               loadingImg={loadingImg}
               errorImg={errorImg}
+              showPullUp={showPullUp}
+              pullUpText={pullUpText || locale.category.pullUpText}
               onPanelNavClick={onPanelNavClick}
               onPanelThirdClick={onPanelThirdClick}
               ></CategoryPane>

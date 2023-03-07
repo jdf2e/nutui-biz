@@ -2,14 +2,15 @@ import React, {
   useRef,
   CSSProperties,
   useState,
-  useImperativeHandle
+  useImperativeHandle,
+  ReactNode
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames';
 import {cn2} from '@/utils/bem'
 import { IComponent } from '@/utils/typings'
 import { throttle } from "@/utils/throttle";
-import { Image } from '@nutui/nutui-react';
+import { Image, Icon } from '@nutui/nutui-react';
 import { errorImg } from '@/utils'
 import { CategoryPane as BaseCategoryPane, CategoryPaneItem, CategoryPaneHandler } from './props';
 
@@ -23,6 +24,8 @@ export interface CategoryPaneProps extends IComponent {
   isLazy:boolean,
   loadingImg:string,
   errorImg:string,
+  showPullUp?:boolean,
+  pullUpText?:ReactNode | string,
   onPanelNavClick:(index:number)=>void,
   onPanelThirdClick: (sku:CategoryPaneItem)=>void
 }
@@ -34,6 +37,7 @@ const defaultProps = {
   isLazy:true,
   loadingImg: errorImg,
   errorImg,
+  showPullUp:false,
   onPanelNavClick:()=>{},
   onPanelThirdClick: ()=>{}
 } as CategoryPaneProps
@@ -47,6 +51,8 @@ export const CategoryPane = React.forwardRef<CategoryPaneHandler, Partial<Catego
     isLazy,
     loadingImg,
     errorImg,
+    showPullUp,
+    pullUpText,
     onPanelNavClick,
     onPanelThirdClick
   } = {
@@ -185,6 +191,11 @@ export const CategoryPane = React.forwardRef<CategoryPaneHandler, Partial<Catego
 
           ))
         }
+        {
+          showPullUp && (<div className={b('cate-list-bottom')} ><Icon name="top" size="12px" color="#fa2c19" /> <div>{pullUpText}</div></div>)
+        }
+        
+        
       </div>
     </div>
   )

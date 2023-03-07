@@ -9,23 +9,18 @@ import { useConfig } from "@/packages/configprovider";
 import classNames from "classnames";
 import { cn2 } from "@/utils/bem";
 import { IComponent } from "@/utils/typings";
-import {
-  Input,
-  Button,
-  ButtonProps,
-  Address,
-  AddressProps,
-  Switch,
-} from "@nutui/nutui-react";
-// import Address from "../address";
+import { Input, Button, ButtonProps, Switch, Toast } from "@nutui/nutui-react";
+import Address from "../address";
+import { AddressProps, AddressType, RegionData } from "../address/type";
 
 interface CalResult {
   type: string;
   data: any;
 }
-export type AddressType = "exist" | "custom" | "elevator";
+// export type AddressType = "exist" | "custom" | "elevator";
+export type showErrorType = "toast" | "bottomMsg";
 
-interface AddressInfo {
+export interface AddressInfo {
   name?: string;
   tel?: string;
   region?: string;
@@ -34,45 +29,45 @@ interface AddressInfo {
   default?: boolean;
   [key: string]: any;
 }
-interface AddressData {
+export interface AddressData {
   id?: string | number | any;
-  nameText?: string;
-  namePlaceholder?: string;
-  nameErrorMsg?: string;
-  telText?: string;
-  telPlaceholder?: string;
-  telErrorMsg?: string;
-  telFormatter?: string;
-  regionText?: string;
-  regionPlaceholder?: string;
-  regionErrorMsg?: string;
-  addressText?: string;
-  addressPlaceholder?: string;
-  addressErrorMsg?: string;
+  nameText: string;
+  namePlaceholder: string;
+  nameErrorMsg: string;
+  telText: string;
+  telPlaceholder: string;
+  telErrorMsg: string;
+  regionText: string;
+  regionPlaceholder: string;
+  regionErrorMsg: string;
+  addressText: string;
+  addressPlaceholder: string;
+  addressErrorMsg: string;
   isDefualtAddress?: boolean;
   isRequired?: string[];
-  bottomText?: string;
+  bottomText: string;
+  errorShowType?: string;
   [key: string]: any;
 }
-interface AddressResult {
-  addressSelect?: [];
+export interface AddressResult {
+  addressSelect?: (string | number)[];
   addressStr?: string;
-  province?: [];
-  city?: [];
-  country?: [];
-  town?: [];
+  province?: RegionData[];
+  city?: RegionData[];
+  country?: RegionData[];
+  town?: RegionData[];
   addressTitle?: string;
-  addressType?: AddressType | string;
-  [key: string]: any;
+  type?: AddressType | undefined;
+  height?: string;
 }
 
 export interface AddressEditProps extends IComponent {
   addressInfo: AddressInfo;
-  data: AddressData;
+  data: Partial<AddressData>;
   address: AddressResult;
   bottomInputTpl?: ReactNode;
   showSave?: Boolean;
-  addressProps?: Partial<AddressProps>;
+  showDefault?: Boolean;
   buttonProps?: Partial<ButtonProps>;
   onChange?: (val: string, tag: string) => void;
   onChangeAddress?: (data: any) => void;
@@ -99,10 +94,11 @@ const defaultProps = {
     country: [],
     town: [],
     addressTitle: "选择所在地区",
-    addressType: "custom",
+    type: "custom",
     height: "",
   },
   showSave: true,
+  showDefault: true,
 } as AddressEditProps;
 
 export const AddressEdit: FunctionComponent<
@@ -115,10 +111,10 @@ export const AddressEdit: FunctionComponent<
     style,
     addressInfo,
     showSave,
+    showDefault,
     data,
     address,
     bottomInputTpl,
-    addressProps,
     buttonProps,
     onChange,
     onSave,
@@ -155,7 +151,7 @@ export const AddressEdit: FunctionComponent<
     country: [],
     town: [],
     addressTitle: "选择所在地区",
-    addressType: "custom",
+    type: "custom",
     height: "200px",
   });
   //地址编辑数据形式兜底文案配置
@@ -173,6 +169,7 @@ export const AddressEdit: FunctionComponent<
     addressPlaceholder: locale.addressedit.addressPlaceholder,
     addressErrorMsg: locale.addressedit.addressErrorMsg,
     bottomText: locale.addressedit.bottomText,
+    errorShowType: "toast",
   });
   const [errorList, setErrorList] = useState<any>([]);
   const [showPopup, setShowPopup] = useState(false);
@@ -185,6 +182,7 @@ export const AddressEdit: FunctionComponent<
 
     //编辑地址所需字段设置获取
     if (data) {
+      console.log("addressset", editSeting, data);
       setEditSeting({ ...editSeting, ...data });
       if (data?.isRequired) {
         setIsRequired(data.isRequired);
@@ -260,29 +258,25 @@ export const AddressEdit: FunctionComponent<
     let form = { ...formData };
     let arr: any = [].concat(errorList);
     Object.keys(form).map((key) => {
-      if (isRequired.includes(key) && form[key] === "") {
-        switch (key) {
-          case key:
-            if (!errorList.includes(key)) {
-              arr.push(key);
-            }
-            break;
-          default:
-            break;
-        }
-        setErrorList(arr);
-        return false;
+      if (
+        isRequired.includes(key) &&
+        form[key] === "" &&
+        !errorList.includes(key)
+      ) {
+        arr.push(key);
       }
     });
-
-    return true;
+    setErrorList(arr);
+    return arr.length === 0;
   };
   //保存按钮控制
   const save = () => {
+    console.log("save", validForm());
     if (validForm()) {
       onSave && onSave(formData);
     } else {
-      console.log("校验不通过");
+      console.log("error");
+      editSeting.errorShowType === "toast" && Toast.text("请完成必填项");
     }
   };
   const inputClear = (tag: string) => {
@@ -313,12 +307,16 @@ export const AddressEdit: FunctionComponent<
             if (tag !== "region") return;
             setShowPopup(true);
           }}
-          errorMessage={errorList.includes(tag) && editSeting[errorMsg]}
+          errorMessage={
+            editSeting.errorShowType != "toast" &&
+            errorList.includes(tag) &&
+            editSeting[errorMsg]
+          }
         />
-        {tag === "region" ? (
+        {tag === "region" && (
           <Address
             modelValue={showPopup}
-            type={addressData.addressType}
+            type={addressData.type}
             modelSelect={addressData.addressSelect}
             province={addressData.province}
             city={addressData.city}
@@ -328,9 +326,8 @@ export const AddressEdit: FunctionComponent<
             customAddressTitle={addressData.addressTitle}
             onChange={(cal) => changeAddress(cal)}
             onClose={closeAddress}
-            {...addressProps}
           />
-        ) : null}
+        )}
       </div>
     );
   };
@@ -348,23 +345,25 @@ export const AddressEdit: FunctionComponent<
       {inputTpl("region")}
       {inputTpl("address")}
       {bottomInputTpl ? <>{bottomInputTpl}</> : null}
-      <div className={`${b("item")} setdefualt`}>
-        <span className="label">{locale.addressedit.setDefaultText}</span>
-        <Switch
-          checked={formData.default}
-          onChange={(state) => {
-            setFormData({ ...formData, default: state });
-            onSwitch && onSwitch(state, { ...formData, default: state });
-          }}
-        />
-      </div>
-      {showSave ? (
+      {showDefault && (
+        <div className={`${b("item")} setdefualt`}>
+          <span className="label">{locale.addressedit.setDefaultText}</span>
+          <Switch
+            checked={formData.default}
+            onChange={(state) => {
+              setFormData({ ...formData, default: state });
+              onSwitch && onSwitch(state, { ...formData, default: state });
+            }}
+          />
+        </div>
+      )}
+      {showSave && (
         <div className={`${b("bottom")}`}>
           <Button block type="danger" onClick={save} {...buttonProps}>
             {editSeting.bottomText}
           </Button>
         </div>
-      ) : null}
+      )}
     </div>
   );
 };

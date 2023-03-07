@@ -211,5 +211,8 @@ const enUS: BaseLang = {
     forgetPwdText: "Forgot Password",
     loginButtonText: "Login",
   },
+  category:{
+    pullUpText:'Scroll up to continue browsing'
+  }
 };
 export default enUS;
