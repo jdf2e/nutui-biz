@@ -47,7 +47,6 @@ export interface SearchHistoryProps extends IComponent {
 export const SearchHistory: FunctionComponent<
   Partial<SearchHistoryProps>
 > = (props) => {
-  const root = useRef<any>(null);
   const { locale } = useConfig()
   const {
     className,
@@ -85,7 +84,6 @@ export const SearchHistory: FunctionComponent<
   const [value, setValue] = useState<string>(keyword)
   const [eyeOpened, setEyeOpened] = useState<boolean>(true)
   const [isShowDeleteSearchItemIcon, setIsShowDeleteSearchItemIcon] = useState<boolean>(false)
-  const [isFixedHeight, setIsFixedHeight] = useState<boolean>(false)
 
   const handleChange = (val: string, event: Event) => {
     setValue(val)
@@ -100,12 +98,6 @@ export const SearchHistory: FunctionComponent<
     handleClear();
     onClickSearchButton && onClickSearchButton(val)
   }
-
-  useEffect(() => {
-    if(root.current) {
-      setIsFixedHeight(root.current.offsetHeight > 70)
-    }
-  }, [recentSearchData])
 
   const renderSearchBar = () => {
     return <SearchBar
@@ -151,11 +143,10 @@ export const SearchHistory: FunctionComponent<
             }
           </div>
           {
-            <div className={classNames(b('recent-tags'), {'fixed-height': isFixedHeight})} ref={root}>
+            <div className={b('recent-tags')}>
               {recentSearchData.map((item, index) => {
                 return <a key={index} onClick={()=>handleClickSearchItem(item)}>{item.key}{isShowDeleteSearchItemIcon && <span>X</span>}</a>
               })}
-              {isFixedHeight && <div className='recent-tags-arrow'></div>}
             </div>
           }
       </div>

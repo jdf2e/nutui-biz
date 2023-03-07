@@ -48,12 +48,12 @@ test('test totalText and settleButtonText', async () => {
   expect(settleBarMainData).toHaveTextContent('jiesuan')
 })
 
-test('test settleCount and settleUnit', async () => {
+test('test settleCount', async () => {
   const { container } = render(
-    <SettleBar settleCount="100" settleUnit="个" />
+    <SettleBar settleCount="100" />
   )
   const settleBarMainData = container.querySelector('.num')
-  expect(settleBarMainData).toHaveTextContent('100个')
+  expect(settleBarMainData).toHaveTextContent('100')
 })
 
 test('test customTotal', async () => {

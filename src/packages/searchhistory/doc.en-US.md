@@ -603,6 +603,10 @@ export default App;
 | leftInIcon | Custom left in icon, default is search icon | ReactNode  | -          |
 | rightInIcon | Custom right in icon, default is photograph icon | ReactNode  | -          |
 | rightOutIcon | Custom right out icon, default is "Search" | ReactNode  | -          |
+| openEyeIcon | Show search discover icon  | ReactNode  | `<Icon name="eye" />`          |
+| closeEyeIcon | Hide search discover icon | ReactNode  | `<Icon name="marshalling" />`         |
+| noDiscoverDataText | No discover data text | string  | `No Discover Data Text`          |
+| deleteType | Delete Type, optional value: `all`、`single` | string  | -          |
 
 
 ### Events
@@ -615,6 +619,7 @@ export default App;
 | onClickBackIcon | Back icon click event |  - |
 | onRefresh | Search discover refresh icon click event  |  - |
 | onDelete | Delete event |  - |
+| onDeleteSingle | Delete single event |  item: IsearchItem |
 
 
 ### IsearchItem 

@@ -10,27 +10,31 @@ import { Button, Icon } from '@nutui/nutui-react'
 
 import { IComponent } from '@/utils/typings'
 
+export interface Idata {
+  isSelected?: boolean
+  type: string
+  status?: string
+  isShowDefault?: boolean
+  title: string
+  companyCode?: string
+  address?: string
+  companyPhone?: string
+  bankDeposit?: string
+  bankAccount?: string
+  isDelete?: boolean
+  isEdit?: boolean
+}
+
 export interface InvoiceTitleListProps extends IComponent {
   className: string
   style: CSSProperties
   isShowOperate: boolean
   isShowEdit: boolean
-  data: {
-    isSelected?: boolean
-    type: string
-    status?: string
-    isShowDefault?: boolean
-    title: string
-    companyCode?: string
-    address?: string
-    companyPhone?: string
-    bankDeposit?: string
-    bankAccount?: string
-  }
+  data: Idata
   otherOperate: ReactNode
-  onClick: () => void
-  onDelete: () => void
-  onEdit: () => void
+  onClick: (data: Idata) => void
+  onDelete: (data: Idata) => void
+  onEdit: (data: Idata) => void
 }
 
 export const InvoiceTitleList: FunctionComponent<
@@ -67,16 +71,16 @@ export const InvoiceTitleList: FunctionComponent<
 
   return (
     <div className={classNames([b(),className])} style={style} {...rest}>
-      <div className={b('main')} onClick={() => onClick && onClick()}>
+      <div className={b('main')} onClick={() => onClick && onClick(data)}>
         {data?.isSelected && <i className="nutui-iconfont nut-icon nut-icon-checked nut-checkbox__icon" style={{fontSize: '18px', width: '18px',height: '18px'}}></i>}
         <div style={{marginLeft: data?.isSelected ? '17px' : 0}}>
           <div className={b('main-title')}>
             {data?.isShowDefault && <div className={b('main-default')}>默认</div>}
             <div className={b('main-text')}>{data?.title}</div>
             {data?.type === 'special' && <div className={classNames(b('main-status'), {pass: data?.status === '通过'}, {veto: data?.status === '否决'}, {approval: data?.status === '审批中'})}>{data?.status}</div>}
-            {data?.type === 'normal' && isShowEdit && <Icon name="edit" onClick={e => {
+            {data?.type === 'normal' && data?.isEdit && isShowEdit && <Icon name="edit" onClick={e => {
               e.stopPropagation()
-              onEdit && onEdit()
+              onEdit && onEdit(data)
             }} />}
           </div>
           <ul>
@@ -105,8 +109,8 @@ export const InvoiceTitleList: FunctionComponent<
       </div>
       {isShowOperate && <div className={b('buttons')}>
         {otherOperate}
-        <Button className={b('buttons-delete')} onClick={() => onDelete && onDelete()}>删除</Button>
-        <Button className={b('buttons-edit')} onClick={() => onEdit && onEdit()}>编辑</Button>
+        {data?.isDelete && <Button className={b('buttons-delete')} onClick={() => onDelete && onDelete(data)}>删除</Button>}
+        {data?.isEdit && <Button className={b('buttons-edit')} onClick={() => onEdit && onEdit(data)}>编辑</Button>}
       </div>}
     </div>
   )

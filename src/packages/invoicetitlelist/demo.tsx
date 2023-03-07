@@ -1,5 +1,5 @@
 import React from 'react'
-import { InvoiceTitleList } from './invoicetitlelist'
+import { InvoiceTitleList, Idata } from './invoicetitlelist'
 import { useTranslate } from '../../sites/assets/locale'
 import { Button, Toast } from '@nutui/nutui-react'
 
@@ -58,9 +58,18 @@ const InvoiceTitleListDemo = () => {
               bankDeposit: '中国银行股份有限公司北京分行',
               bankAccount: '5833 2153 4243 2654'
             }}
-            onClick={() => Toast.text('触发点击事件')}
-            onEdit={() => Toast.text('触发编辑事件')}
-            onDelete={() => Toast.text('触发删除事件')}
+            onClick={(data: Idata) => {
+              Toast.text('触发点击事件')
+              console.log('data', data)
+            }}
+            onEdit={(data: Idata) => {
+              Toast.text('触发编辑事件')
+              console.log('data', data)
+            }}
+            onDelete={(data: Idata) => {
+              Toast.text('触发删除事件')
+              console.log('data', data)
+            }}
           />
           <h2>{translated.title2}</h2>
           <InvoiceTitleList 
@@ -76,9 +85,18 @@ const InvoiceTitleListDemo = () => {
               bankDeposit: '中国银行股份有限公司北京分行',
               bankAccount: '5833 2153 4243 2654'
             }}
-            onClick={() => Toast.text('触发点击事件')}
-            onEdit={() => Toast.text('触发编辑事件')}
-            onDelete={() => Toast.text('触发删除事件')}
+            onClick={(data: Idata) => {
+              Toast.text('触发点击事件')
+              console.log('data', data)
+            }}
+            onEdit={(data: Idata) => {
+              Toast.text('触发编辑事件')
+              console.log('data', data)
+            }}
+            onDelete={(data: Idata) => {
+              Toast.text('触发删除事件')
+              console.log('data', data)
+            }}
           />
           <h2>{translated.title3}</h2>
           <InvoiceTitleList 
@@ -94,9 +112,18 @@ const InvoiceTitleListDemo = () => {
               bankDeposit: '中国银行股份有限公司北京分行',
               bankAccount: '5833 2153 4243 2654'
             }}
-            onClick={() => Toast.text('触发点击事件')}
-            onEdit={() => Toast.text('触发编辑事件')}
-            onDelete={() => Toast.text('触发删除事件')}
+            onClick={(data: Idata) => {
+              Toast.text('触发点击事件')
+              console.log('data', data)
+            }}
+            onEdit={(data: Idata) => {
+              Toast.text('触发编辑事件')
+              console.log('data', data)
+            }}
+            onDelete={(data: Idata) => {
+              Toast.text('触发删除事件')
+              console.log('data', data)
+            }}
           />
           <h2>{translated.title4}</h2>
           <InvoiceTitleList 
@@ -112,9 +139,18 @@ const InvoiceTitleListDemo = () => {
               bankDeposit: '中国银行股份有限公司北京分行',
               bankAccount: '5833 2153 4243 2654'
             }}
-            onClick={() => Toast.text('触发点击事件')}
-            onEdit={() => Toast.text('触发编辑事件')}
-            onDelete={() => Toast.text('触发删除事件')}
+            onClick={(data: Idata) => {
+              Toast.text('触发点击事件')
+              console.log('data', data)
+            }}
+            onEdit={(data: Idata) => {
+              Toast.text('触发编辑事件')
+              console.log('data', data)
+            }}
+            onDelete={(data: Idata) => {
+              Toast.text('触发删除事件')
+              console.log('data', data)
+            }}
           />
           <h2>{translated.title5}</h2>
           <InvoiceTitleList 
@@ -130,9 +166,18 @@ const InvoiceTitleListDemo = () => {
               bankDeposit: '中国银行股份有限公司北京分行',
               bankAccount: '5833 2153 4243 2654'
             }}
-            onClick={() => Toast.text('触发点击事件')}
-            onEdit={() => Toast.text('触发编辑事件')}
-            onDelete={() => Toast.text('触发删除事件')}
+            onClick={(data: Idata) => {
+              Toast.text('触发点击事件')
+              console.log('data', data)
+            }}
+            onEdit={(data: Idata) => {
+              Toast.text('触发编辑事件')
+              console.log('data', data)
+            }}
+            onDelete={(data: Idata) => {
+              Toast.text('触发删除事件')
+              console.log('data', data)
+            }}
             otherOperate = {<Button onClick={() => Toast.success('同步成功')}>同步到电子发票</Button>}
           />
           <h2>{translated.title6}</h2>
@@ -151,7 +196,10 @@ const InvoiceTitleListDemo = () => {
             }}
             isShowEdit = {false}
             isShowOperate = {false}
-            onClick={() => Toast.text('触发点击事件')}
+            onClick={(data: Idata) => {
+              Toast.text('触发点击事件')
+              console.log('data', data)
+            }}
           />
         </div>
       </>
