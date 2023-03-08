@@ -606,7 +606,7 @@ export default App;
 | openEyeIcon | Show search discover icon  | ReactNode  | `<Icon name="eye" />`          |
 | closeEyeIcon | Hide search discover icon | ReactNode  | `<Icon name="marshalling" />`         |
 | noDiscoverDataText | No discover data text | string  | `No Discover Data Text`          |
-| deleteType | Delete Type, optional value: `all`、`single` | string  | -          |
+| deleteType | Delete Type, optional value: `all`、`single` | string  | `all`          |
 
 
 ### Events

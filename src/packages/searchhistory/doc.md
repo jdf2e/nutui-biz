@@ -605,7 +605,7 @@ export default App;
 | openEyeIcon | 显示搜索发现图标 | ReactNode  | `<Icon name="eye" />`          |
 | closeEyeIcon | 隐藏搜索发现图标  | ReactNode  | `<Icon name="marshalling" />`          |
 | noDiscoverDataText | 无搜索发现数据文案 | string  | `当前搜索发现已隐藏`          |
-| deleteType | 删除类型，可选值：`all`、`single` | string  | -          |
+| deleteType | 删除类型，可选值：`all`、`single` | string  | `all`          |
 
 
 ### Events

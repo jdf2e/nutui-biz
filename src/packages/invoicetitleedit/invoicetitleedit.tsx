@@ -17,6 +17,7 @@ export interface InvoiceTitleEditProps extends IComponent {
   invoiceType: string
   bottom: ReactNode
   buttonProps: Partial<Omit<ButtonProps, "type | block">>;
+  submitButtonText: string
   onSubmit: (arg: any) => void
   onInput: () => void;
 }
@@ -31,6 +32,7 @@ export const InvoiceTitleEdit: FunctionComponent<
     invoiceType = 'special',
     bottom,
     buttonProps,
+    submitButtonText = '提交审批',
     onSubmit,
     onInput,
     ...rest
@@ -109,7 +111,7 @@ export const InvoiceTitleEdit: FunctionComponent<
         </Item>
         <Item>
           <div className={b('submit')}>
-            <Button type="primary" block {...buttonProps}>{invoiceType === 'special' ? '提交审批' : '提交'}</Button>
+            <Button type="primary" block {...buttonProps}>{submitButtonText}</Button>
           </div>
         </Item>
       </Form>

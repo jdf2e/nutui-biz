@@ -37,6 +37,25 @@ export interface InvoiceTitleListProps extends IComponent {
   onEdit: (data: Idata) => void
 }
 
+const defaultProps = {
+  isShowOperate: true,
+  isShowEdit: true,
+  data: {
+    isSelected: false,
+    type: 'special',
+    status: '-',
+    isShowDefault: true,
+    title: '-',
+    companyCode: '-',
+    address: '-',
+    companyPhone: '-',
+    bankDeposit: '-',
+    bankAccount: '-',
+    isDelete: true,
+    isEdit: true
+  }
+} as InvoiceTitleListProps
+
 export const InvoiceTitleList: FunctionComponent<
   Partial<InvoiceTitleListProps>
 > = (props) => {
@@ -44,26 +63,16 @@ export const InvoiceTitleList: FunctionComponent<
   const {
     className,
     style,
-    isShowOperate = true,
-    isShowEdit = true,
-    data = { //todo 设置默认值失效
-      isSelected: false,
-      type: 'special',
-      status: '-',
-      isShowDefault: true,
-      title: '-',
-      companyCode: '-',
-      address: '-',
-      companyPhone: '-',
-      bankDeposit: '-',
-      bankAccount: '-'
-    },
+    isShowOperate,
+    isShowEdit,
+    data,
     otherOperate,
     onClick,
     onDelete,
     onEdit,
     ...rest
   } = {
+    ...defaultProps,
     ...props,
   }
 
@@ -109,11 +118,12 @@ export const InvoiceTitleList: FunctionComponent<
       </div>
       {isShowOperate && <div className={b('buttons')}>
         {otherOperate}
-        {data?.isDelete && <Button className={b('buttons-delete')} onClick={() => onDelete && onDelete(data)}>删除</Button>}
-        {data?.isEdit && <Button className={b('buttons-edit')} onClick={() => onEdit && onEdit(data)}>编辑</Button>}
+        {data.isDelete && <Button className={b('buttons-delete')} onClick={() => onDelete && onDelete(data)}>删除</Button>}
+        {data.isEdit && <Button className={b('buttons-edit')} onClick={() => onEdit && onEdit(data)}>编辑</Button>}
       </div>}
     </div>
   )
 }
 
+InvoiceTitleList.defaultProps = defaultProps
 InvoiceTitleList.displayName = 'NutInvoiceTitleList'
