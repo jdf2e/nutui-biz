@@ -88,21 +88,21 @@ export default App;
 
 | Parameter            | Description                                                 | Type             | Default              |
 | -------------------- | ----------------------------------------------------------- | ---------------- | -------------------- |
-| columns              | number of rows to display                                   | number \| string | `5`                  |
-| rows                 | number of display rows                                      | number \| string | `2`                  |
-| data                 | display data                                                | QuickEnterData[] | `[]`                 |
+| columns              | Number of rows to display                                   | number \| string | `5`                  |
+| rows                 | Number of display rows                                      | number \| string | `2`                  |
+| data                 | Display data                                                | QuickEnterData[] | `[]`                 |
 | slideMode            | Multi-screen display effect, optional values: swiper, slide | string           | `swiper`             |
-| iconSize             | icon size, the unit is 'px'                                 | Array            | `[40,40]`            |
+| iconSize             | Icon size, the unit is 'px'                                 | Array<number \| string>            | [30,30]            |
 | indicatorVisible     | Does the indicator show                                     | boolean          | `false`              |
-| indicatorBgColor     | indicator background color                                  | string           | `rgba(0, 0, 0, 0.2)` |
-| indicatorActiveColor | indicator active color                                      | string           | `#fa2c19`            |
+| indicatorBgColor     | Indicator background color                                  | string           | `rgba(0, 0, 0, 0.2)` |
+| indicatorActiveColor | Indicator active color                                      | string           | `#fa2c19`            |
 
 ### QuickEnterData
 
-| parameter   | description                                  | type      |
+| Parameter   | Description                                  | Type      |
 | ----------- | -------------------------------------------- | --------- |
 | displayName | Shortcut entry description                   | string    |
-| imageUrl    | shortcut entry icon (image link or html tag) | ReactNode |
+| imageUrl    | Shortcut entry icon (image link or html tag) | ReactNode |
 
 ### Events
 

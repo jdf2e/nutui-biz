@@ -34,7 +34,7 @@ const defaultProps = {
   showMask: true,
   maskPosition: "right",
   maskShadowType: "triangle",
-  maskWidth: 100,
+  maskWidth: '100px',
   maskDistance: 0,
   maskContent: '',
   onClickMask: () => { },
@@ -71,15 +71,8 @@ export const HorizontalScrolling: FunctionComponent<
   const scrollRef = useRef(null)
 
   const containStyles = (() => {
-    // a
     return {
       [`padding${maskPosition[0].toUpperCase() + maskPosition.substr(1)}`]: Unit.pxAdd(maskDistance) ? Unit.pxAdd(maskDistance) : Unit.pxAdd(maskWidth)
-    }
-
-    // b
-    const key = maskPosition == 'right' ? 'paddingRight' : 'paddingLeft'
-    return {
-      [key]: Unit.pxAdd(maskDistance) ? Unit.pxAdd(maskDistance) : Unit.pxAdd(maskWidth)
     }
   })
 
