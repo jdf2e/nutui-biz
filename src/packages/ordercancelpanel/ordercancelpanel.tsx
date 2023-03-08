@@ -16,6 +16,7 @@ import {
 } from "@nutui/nutui-react";
 import { IComponent } from "@/utils/typings";
 import bem from "@/utils/bem";
+import { cn2 } from "@/utils/bem";
 
 export type ICheckboxPosition = "front" | "back";
 export interface IreasonsObject {
@@ -33,16 +34,12 @@ export interface OrderCancelPanelProps extends IComponent {
   reasonTitle: React.ReactNode;
   submitText: string;
   tipsTitle: React.ReactNode;
-  className?: string;
   showBtntips: boolean;
-  style?: CSSProperties;
   checkboxType: ICheckboxPosition;
   buttonProps: Partial<ButtonProps>;
   safeAreaCancelBottom: boolean;
   textAreaProps: Partial<Omit<TextAreaProps, "defaultValue">>;
   onClose: () => void;
-  onClickCloseIcon: () => void;
-  onClickOverlay: () => void;
   onSubmitBtn: (
     selectedReason: IreasonsObject,
     textAreaValue: string,
@@ -86,7 +83,7 @@ export const OrderCancelPanel: FunctionComponent<
     ...defaultProps,
     ...props,
   };
-  const b = bem("biz-ordercancel");
+  const b = cn2("biz-ordercancel");
   const [currActivedKey, setCurrActivedKey] = useState("");
   const preChecked = useRef("");
   //其它文本框输入
