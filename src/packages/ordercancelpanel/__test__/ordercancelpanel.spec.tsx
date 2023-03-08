@@ -11,27 +11,27 @@ test("should match snapshot", () => {
         popupTitle="退款原因"
         cancelReason={[
           {
-            key: "resons1",
+            key: "reasons1",
             value: "商品无货",
           },
           {
-            key: "resons2",
+            key: "reasons2",
             value: "发货时间问题",
           },
           {
-            key: "resons3",
+            key: "reasons3",
             value: "不想要了",
           },
           {
-            key: "resons4",
+            key: "reasons4",
             value: "商品选错/多选",
           },
           {
-            key: "resons5",
+            key: "reasons5",
             value: "地址信息填写错误",
           },
           {
-            key: "resons6",
+            key: "reasons6",
             value: "商品降价",
           },
         ]}
@@ -51,27 +51,27 @@ test("prop of Basic Usage", () => {
     popupTitle: "退款原因",
     cancelReason: [
       {
-        key: "resons1",
+        key: "reasons1",
         value: "商品无货",
       },
       {
-        key: "resons2",
+        key: "reasons2",
         value: "发货时间问题",
       },
       {
-        key: "resons3",
+        key: "reasons3",
         value: "不想要了",
       },
       {
-        key: "resons4",
+        key: "reasons4",
         value: "商品选错/多选",
       },
       {
-        key: "resons5",
+        key: "reasons5",
         value: "地址信息填写错误",
       },
       {
-        key: "resons6",
+        key: "reasons6",
         value: "商品降价",
       },
     ],
@@ -81,7 +81,6 @@ test("prop of Basic Usage", () => {
       showCancelPanel={true}
       popupTitle={state.popupTitle}
       cancelReason={state.cancelReason}
-      onClickCloseIcon={closeClick}
       buttonProps={{
         type: "primary",
         className: "cancel-btn",
@@ -132,27 +131,27 @@ test("Overlay event of Basic Usage", () => {
     popupTitle: "退款原因",
     cancelReason: [
       {
-        key: "resons1",
+        key: "reasons1",
         value: "商品无货",
       },
       {
-        key: "resons2",
+        key: "reasons2",
         value: "发货时间问题",
       },
       {
-        key: "resons3",
+        key: "reasons3",
         value: "不想要了",
       },
       {
-        key: "resons4",
+        key: "reasons4",
         value: "商品选错/多选",
       },
       {
-        key: "resons5",
+        key: "reasons5",
         value: "地址信息填写错误",
       },
       {
-        key: "resons6",
+        key: "reasons6",
         value: "商品降价",
       },
     ],
@@ -162,7 +161,6 @@ test("Overlay event of Basic Usage", () => {
       showCancelPanel={true}
       popupTitle={state.popupTitle}
       cancelReason={state.cancelReason}
-      onClickOverlay={closeClick}
       //   onClose={closeClick2}
       buttonProps={{
         type: "primary",
@@ -190,27 +188,27 @@ test("Components with warm tips", () => {
     ],
     cancelReason: [
       {
-        key: "resons1",
+        key: "reasons1",
         value: "商品无货",
       },
       {
-        key: "resons2",
+        key: "reasons2",
         value: "发货时间问题",
       },
       {
-        key: "resons3",
+        key: "reasons3",
         value: "不想要了",
       },
       {
-        key: "resons4",
+        key: "reasons4",
         value: "商品选错/多选",
       },
       {
-        key: "resons5",
+        key: "reasons5",
         value: "地址信息填写错误",
       },
       {
-        key: "resons6",
+        key: "reasons6",
         value: "商品降价",
       },
     ],
@@ -284,27 +282,27 @@ test("Components with other reason options", () => {
     ],
     cancelReason: [
       {
-        key: "resons1",
+        key: "reasons1",
         value: "商品无货",
       },
       {
-        key: "resons2",
+        key: "reasons2",
         value: "发货时间问题",
       },
       {
-        key: "resons3",
+        key: "reasons3",
         value: "不想要了",
       },
       {
-        key: "resons4",
+        key: "reasons4",
         value: "商品选错/多选",
       },
       {
-        key: "resons5",
+        key: "reasons5",
         value: "地址信息填写错误",
       },
       {
-        key: "resons6",
+        key: "reasons6",
         value: "商品降价",
       },
       {

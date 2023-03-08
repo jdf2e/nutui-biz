@@ -24,36 +24,40 @@ import { OrderCancelPanel } from "@nutui/nutui-biz";
 const App = () => {
   const cancelReason = [
     {
-      key: "resons1",
+      key: "reasons1",
       value: "商品无货",
     },
     {
-      key: "resons2",
+      key: "reasons2",
       value: "发货时间问题",
     },
     {
-      key: "resons3",
+      key: "reasons3",
       value: "不想要了",
     },
     {
-      key: "resons4",
+      key: "reasons4",
       value: "商品选错/多选",
     },
     {
-      key: "resons5",
+      key: "reasons5",
       value: "地址信息填写错误",
     },
     {
-      key: "resons6",
+      key: "reasons6",
       value: "商品降价",
     },
   ];
   const clickClosePopUp = () => {
     setShowPanel(false);
   };
-  const submitBtn = (currActivedKey: string, textAreaValue: string) => {
+  const submitBtn = (
+    currActivedKey: string,
+    textAreaValue: string,
+    switchStatus: boolean
+  ) => {
     console.log(
-      `currActivedKey:${currActivedKey}, textAreaValue,${textAreaValue}`
+      `currActivedKey:${currActivedKey}, textAreaValue,${textAreaValue},switchStatus:${switchStatus}`
     );
     setShowPanel(false);
   };
@@ -74,9 +78,7 @@ const App = () => {
           popupTitle="退款原因"
           cancelReason={cancelReason}
           buttonProps={buttonProps}
-          onClickCloseIcon={clickClosePopUp}
           onClose={clickClosePopUp}
-          onClickOverlay={clickClosePopUp}
           onSubmitBtn={submitBtn}
         />
       </div>
@@ -95,7 +97,7 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Cell, ButtonProps } from "@nutui/nutui-react";
-import { OrderCancelPanel, IResonsObject } from "@nutui/nutui-biz";
+import { OrderCancelPanel, IreasonsObject } from "@nutui/nutui-biz";
 
 const App = () => {
   const warmTips = [
@@ -106,36 +108,40 @@ const App = () => {
   ];
   const cancelReason = [
     {
-      key: "resons1",
+      key: "reasons1",
       value: "商品无货",
     },
     {
-      key: "resons2",
+      key: "reasons2",
       value: "发货时间问题",
     },
     {
-      key: "resons3",
+      key: "reasons3",
       value: "不想要了",
     },
     {
-      key: "resons4",
+      key: "reasons4",
       value: "商品选错/多选",
     },
     {
-      key: "resons5",
+      key: "reasons5",
       value: "地址信息填写错误",
     },
     {
-      key: "resons6",
+      key: "reasons6",
       value: "商品降价",
     },
   ];
   const clickClosePopUp = () => {
     setShowCancelPanel(false);
   };
-  const submitBtn = (currActivedKey: string, textAreaValue: string) => {
+  const submitBtn = (
+    currActivedKey: string,
+    textAreaValue: string,
+    switchStatus: boolean
+  ) => {
     console.log(
-      `currActivedKey:${currActivedKey}, textAreaValue,${textAreaValue}`
+      `currActivedKey:${currActivedKey}, textAreaValue,${textAreaValue},switchStatus:${switchStatus}`
     );
     setShowCancelPanel(false);
   };
@@ -163,9 +169,7 @@ const App = () => {
           tipsTitle="温馨提示"
           submitText="确认"
           buttonProps={buttonProps}
-          onClickCloseIcon={clickClosePopUp}
           onClose={clickClosePopUp}
-          onClickOverlay={clickClosePopUp}
           onSubmitBtn={submitBtn}
         />
       </div>
@@ -197,27 +201,27 @@ const App = () => {
   ];
   const cancelReason = [
     {
-      key: "resons1",
+      key: "reasons1",
       value: "商品无货",
     },
     {
-      key: "resons2",
+      key: "reasons2",
       value: "发货时间问题",
     },
     {
-      key: "resons3",
+      key: "reasons3",
       value: "不想要了",
     },
     {
-      key: "resons4",
+      key: "reasons4",
       value: "商品选错/多选",
     },
     {
-      key: "resons5",
+      key: "reasons5",
       value: "地址信息填写错误",
     },
     {
-      key: "resons6",
+      key: "reasons6",
       value: "商品降价",
     },
     {
@@ -228,11 +232,15 @@ const App = () => {
   const clickClosePopUp = () => {
     setShowOtherCancelPanel(false);
   };
-  const submitBtn = (selectedReason: IResonsObject, textAreaValue: string) => {
+  const submitBtn = (
+    selectedReason: IreasonsObject,
+    textAreaValue: string,
+    switchStatus: boolean
+  ) => {
     console.log(
       `selectedReason:${JSON.stringify(
         selectedReason
-      )}, textAreaValue:${textAreaValue}`
+      )}, textAreaValue:${textAreaValue},switchStatus:${switchStatus}`
     );
     setShowOtherCancelPanel(false);
   };
@@ -272,9 +280,7 @@ const App = () => {
           cancelReason={cancelReason}
           buttonProps={buttonProps}
           textAreaProps={textareaProps}
-          onClickCloseIcon={clickClosePopUp}
           onClose={clickClosePopUp}
-          onClickOverlay={clickClosePopUp}
           onSubmitBtn={submitBtn}
         />
       </div>
@@ -300,36 +306,40 @@ import { OrderCancelPanel } from "@nutui/nutui-biz";
 const App = () => {
   const cancelReason = [
     {
-      key: "resons1",
+      key: "reasons1",
       value: "商品无货",
     },
     {
-      key: "resons2",
+      key: "reasons2",
       value: "发货时间问题",
     },
     {
-      key: "resons3",
+      key: "reasons3",
       value: "不想要了",
     },
     {
-      key: "resons4",
+      key: "reasons4",
       value: "商品选错/多选",
     },
     {
-      key: "resons5",
+      key: "reasons5",
       value: "地址信息填写错误",
     },
     {
-      key: "resons6",
+      key: "reasons6",
       value: "商品降价",
     },
   ];
   const clickClosePopUp = () => {
     setShowPanel(false);
   };
-  const submitBtn = (currActivedKey: string, textAreaValue: string) => {
+  const submitBtn = (
+    currActivedKey: string,
+    textAreaValue: string,
+    switchStatus: boolean
+  ) => {
     console.log(
-      `currActivedKey:${currActivedKey}, textAreaValue,${textAreaValue}`
+      `currActivedKey:${currActivedKey}, textAreaValue,${textAreaValue},switchStatus:${switchStatus}`
     );
     setShowPanel(false);
   };
@@ -351,9 +361,7 @@ const App = () => {
           cancelReason={cancelReason}
           canCancelReason={true}
           buttonProps={buttonProps}
-          onClickCloseIcon={clickClosePopUp}
           onClose={clickClosePopUp}
-          onClickOverlay={clickClosePopUp}
           onSubmitBtn={submitBtn}
         />
       </div>
@@ -380,27 +388,27 @@ import { OrderCancelPanel } from "@nutui/nutui-biz";
 const App = () => {
   const cancelReason = [
     {
-      key: "resons1",
+      key: "reasons1",
       value: "商品无货",
     },
     {
-      key: "resons2",
+      key: "reasons2",
       value: "发货时间问题",
     },
     {
-      key: "resons3",
+      key: "reasons3",
       value: "不想要了",
     },
     {
-      key: "resons4",
+      key: "reasons4",
       value: "商品选错/多选",
     },
     {
-      key: "resons5",
+      key: "reasons5",
       value: "地址信息填写错误",
     },
     {
-      key: "resons6",
+      key: "reasons6",
       value: "商品降价",
     },
   ];
@@ -440,9 +448,7 @@ const App = () => {
           cancelReason={cancelReason}
           canCancelReason={true}
           buttonProps={buttonProps}
-          onClickCloseIcon={clickClosePopUp}
           onClose={clickClosePopUp}
-          onClickOverlay={clickClosePopUp}
           onSubmitBtn={submitBtn}
         />
       </div>
@@ -458,24 +464,24 @@ export default App;
 
 ### Props
 
-| 字段                 | 说明                                | 类型                 | 默认值  |
-| -------------------- | ----------------------------------- | -------------------- | ------- |
-| showCancelPanel      | 是否显示或取消订单弹窗              | boolean              | `false` |
-| warmTips             | 温馨提示内容,无则不展示提示内容     | Array<string>        | -       |
-| cancelReason         | 取消原因                            | Array<IResonsObject> | -       |
-| canCancelReason      | 再次点击是否可以取消已选中的原因    | boolean              | `false` |
-| popupTitle           | 弹窗的主标题                        | ReactNode\|string    | -       |
-| reasonTitle          | 取消原因的标题                      | ReactNode\|string    | -       |
-| submitText           | 弹窗按钮文案                        | string               | `提交`  |
-| tipsTitle            | 温馨提示的标题                      | ReactNode\|string    | -       |
-| buttonProps          | 按钮组件的 props                    | ButtonProps          | -       |
-| textAreaProps        | 其它原因对应的 TextArea 组件 props  | TextAreaProps        | -       |
-| popupProsp           | Popup 组件的 props                  | PopupProps           | -       |
-| checkboxType         | checkbox 选择框和原因文案的前后位置 | `back`\|`front`      | `back`  |
-| safeAreaCancelBottom | 按钮区域是否渲染 iphone 安全区域    | boolean              | `false` |
-| showBtntips          | 是否在按钮区域显示提示区域          | boolean              | `false` |
+| 字段                 | 说明                                | 类型                  | 默认值  |
+| -------------------- | ----------------------------------- | --------------------- | ------- |
+| showCancelPanel      | 是否显示或取消订单弹窗              | boolean               | `false` |
+| warmTips             | 温馨提示内容,无则不展示提示内容     | Array<string>         | -       |
+| cancelReason         | 取消原因                            | Array<IreasonsObject> | -       |
+| canCancelReason      | 再次点击是否可以取消已选中的原因    | boolean               | `false` |
+| popupTitle           | 弹窗的主标题                        | ReactNode             | -       |
+| reasonTitle          | 取消原因的标题                      | ReactNode             | -       |
+| submitText           | 弹窗按钮文案                        | string                | `提交`  |
+| tipsTitle            | 温馨提示的标题                      | ReactNode             | `温馨提示`       |
+| buttonProps          | 按钮组件的 props                    | ButtonProps           | -       |
+| textAreaProps        | 其它原因对应的 TextArea 组件 props  | TextAreaProps         | -       |
+| popupProsp           | Popup 组件的 props                  | PopupProps            | -       |
+| checkboxType         | checkbox 选择框和原因文案的前后位置 | `back`\|`front`       | `back`  |
+| safeAreaCancelBottom | 按钮区域是否渲染 iphone 安全区域    | boolean               | `false` |
+| showBtntips          | 是否在按钮区域显示提示区域          | boolean               | `false` |
 
-### IResonsObject
+### IreasonsObject
 
 | 字段  | 说明                            | 类型   | 默认值 |
 | ----- | ------------------------------- | ------ | ------ |
@@ -484,9 +490,7 @@ export default App;
 
 ### Events
 
-| 字段             | 说明               | 回调参数                                    |
-| ---------------- | ------------------ | ------------------------------------------- |
-| onClose          | 关闭弹框时触发     | -                                           |
-| onClickCloseIcon | 点击关闭图标时触发 | -                                           |
-| onClickOverlay   | 点击遮罩触发       | -                                           |
-| onSubmitBtn      | 点击提交按钮触发   | `item:IResonsObject` `textAreaValue:String` |
+| 字段        | 说明             | 回调参数                                                            |
+| ----------- | ---------------- | ------------------------------------------------------------------- |
+| onClose     | 关闭弹框时触发   | -                                                                   |
+| onSubmitBtn | 点击提交按钮触发 | `item:IreasonsObject`,`textAreaValue:string`,`switchStatus:boolean` |
