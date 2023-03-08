@@ -34,7 +34,7 @@ const App = () => {
   }
 
   const handleInput = () => {
-
+    console.log('Invoice title input event is triggered')
   }
 
   return (
@@ -73,6 +73,7 @@ const App = () => {
     <InvoiceTitleEdit 
       onSubmit={handleSubmit}
       invoiceType="normal"
+      submitButtonText="提交"
     />
   );
 };
@@ -105,6 +106,7 @@ const App = () => {
     <InvoiceTitleEdit 
       onSubmit={handleSubmit}
       invoiceType="normal"
+      submitButtonText="提交"
       bottom={<div style={{textAlign: 'center', lineHeight: '40px'}}>我是自定义的底部</div>}
     />
   );
@@ -125,6 +127,7 @@ export default App;
 | data   | 地址数组                                 | Array  | -         |
 | invoiceType   | 发票类型，可选 `normal`，`special`    | string  | `special`         |
 | bottom   | 底部自定义内容     | ReactNode  | -         |
+| submitButtonText   | 提交按钮文案     | string  | `提交审批`         |
 
 
 ### Events

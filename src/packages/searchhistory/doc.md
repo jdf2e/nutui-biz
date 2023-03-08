@@ -591,8 +591,8 @@ export default App;
 |---------|--------------------------------------------|---------|-----------|
 | recentSearchText   | 最近搜索文案                                     | string  | `最近搜索`         |
 | searchDiscoverText     | 搜索发现文案                   | string  | `搜索发现`    |
-| recentSearchData      | 最近搜索数据                               |  Array  | []      |
-| searchDiscoverData | 搜索发现数据                        | Array  | []      |
+| recentSearchData      | 最近搜索数据                               |  Array<IsearchItem>  | []      |
+| searchDiscoverData | 搜索发现数据                        | Array<IsearchItem>  | []      |
 | keyword  | 传入文本框内的搜索词                                  | string | ''    |
 | backIcon     | 左上角返回按钮图标，设置为空则无返回按钮，类型为字符串时，等同于 Icon 组件的 [name 属性](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon) | ReactNode  | `left`     |
 | deleteIcon   | 最近搜索删除图标，类型为字符串时，等同于 Icon 组件的 [name 属性](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)| ReactNode  | `del`      |
@@ -602,6 +602,10 @@ export default App;
 | leftInIcon | 文本框内左侧自定义，默认是放大图标 | ReactNode  | -          |
 | rightInIcon | 文本框内右侧自定义，默认是拍照图标 | ReactNode  | -          |
 | rightOutIcon | 文本框外右侧自定义，默认是“搜索” | ReactNode  | -          |
+| openEyeIcon | 显示搜索发现图标 | ReactNode  | `<Icon name="eye" />`          |
+| closeEyeIcon | 隐藏搜索发现图标  | ReactNode  | `<Icon name="marshalling" />`          |
+| noDiscoverDataText | 无搜索发现数据文案 | string  | `当前搜索发现已隐藏`          |
+| deleteType | 删除类型，可选值：`all`、`single` | string  | `all`          |
 
 
 ### Events
@@ -613,7 +617,8 @@ export default App;
 | onClickRightInIcon | 照相机图标点击事件 |  - |
 | onClickBackIcon | 左上角返回图标点击事件 |  - |
 | onRefresh | 搜索发现刷新图标点击事件 |  - |
-| onDelete | 删除事件 |  - |
+| onDelete | 删除全部搜索项事件 |  - |
+| onDeleteSingle | 删除单个搜索项事件 |  item: IsearchItem |
 
 
 ### IsearchItem 

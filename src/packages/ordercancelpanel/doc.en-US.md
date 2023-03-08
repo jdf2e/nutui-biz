@@ -158,7 +158,7 @@ const App = () => {
           popupTitle={popupTitleMemo}
           canCancelReason={true}
           tipsTitle="Refund reason"
-          btnsText="confirm"
+          submitText="confirm"
           warmTips={warmTips}
           cancelReason={cancelReason}
           buttonProps={buttonProps}
@@ -262,7 +262,7 @@ const App = () => {
           popupTitle={popupTitleMemo}
           canCancelReason={true}
           tipsTitle="reminder"
-          btnsText="confirm"
+          submitText="confirm"
           warmTips={warmTips}
           cancelReason={cancelReason}
           buttonProps={buttonProps}
@@ -293,7 +293,7 @@ export default App;
 | canCancelReason | Click again to cancel the selected reason            | Boolean              | `false`  |
 | popupTitle      | Main title of pop-up window                          | ReactNode            | --       |
 | reasonTitle     | Title of cancellation reason                         | ReactNode            | --       |
-| btnsText        | Popup Button content                                 | string               | `submit` |
+| submitText      | Popup Button content                                 | string               | `submit` |
 | tipsTitle       | Warm prompt title                                    | string               | --       |
 | buttonProps     | Props of button components                           | ButtonProps          | --       |
 | textAreaProps   | props of TextAre                                     | TextAreaProps        | --       |
