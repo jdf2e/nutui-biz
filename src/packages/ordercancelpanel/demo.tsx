@@ -178,10 +178,10 @@ const CouponDemo = () => {
   }, [showCancelCancelPanel]);
 
   // checkbox在前面
-  const [showcheckboxCancelPanel, setShowcheckboxCancelPanel] = useState(false);
+  const [showCheckboxCancelPanel, setShowcheckboxCancelPanel] = useState(false);
   const clickClosePopUpCheckbox = React.useCallback(() => {
     setShowcheckboxCancelPanel(false);
-  }, [showcheckboxCancelPanel]);
+  }, [showCheckboxCancelPanel]);
   //提交事件
   const submitBtn = React.useCallback(
     (
@@ -241,9 +241,7 @@ const CouponDemo = () => {
         <OrderCancelPanel
           showCancelPanel={showOtherCancelPanel}
           popupTitle={popupTitleMemo}
-          tipsTitle={""}
           submitText={translated.submitText}
-          warmTips={[]}
           cancelReason={otherReasonList}
           buttonProps={buttonProps}
           textAreaProps={textareaProps}
@@ -261,7 +259,6 @@ const CouponDemo = () => {
           canCancelReason={true}
           cancelReason={translated.cancelReason}
           buttonProps={buttonProps}
-          textAreaProps={textareaProps}
           onClose={clickClosePopUpCancel}
           onSubmitBtn={submitBtn}
         />
@@ -271,13 +268,12 @@ const CouponDemo = () => {
           onClick={() => setShowcheckboxCancelPanel(true)}
         />
         <OrderCancelPanel
-          showCancelPanel={showcheckboxCancelPanel}
+          showCancelPanel={showCheckboxCancelPanel}
           checkboxType="front"
           showBtntips={true}
           popupTitle={popupTitleMemo}
           cancelReason={translated.cancelReason}
           buttonProps={buttonProps}
-          textAreaProps={textareaProps}
           onClose={clickClosePopUpCheckbox}
           onSubmitBtn={submitBtn}
         />

@@ -25,7 +25,6 @@ export interface IreasonsObject {
   [x: string]: any;
 }
 export interface OrderCancelPanelProps extends IComponent {
-  popupProps: Partial<PopupProps>;
   showCancelPanel: boolean;
   warmTips: string[];
   cancelReason: Array<IreasonsObject>;
@@ -34,11 +33,12 @@ export interface OrderCancelPanelProps extends IComponent {
   reasonTitle: React.ReactNode;
   submitText: string;
   tipsTitle: React.ReactNode;
-  showBtntips: boolean;
-  checkboxType: ICheckboxPosition;
   buttonProps: Partial<ButtonProps>;
-  safeAreaCancelBottom: boolean;
   textAreaProps: Partial<Omit<TextAreaProps, "defaultValue">>;
+  popupProps: Partial<PopupProps>;
+  checkboxType: ICheckboxPosition;
+  safeAreaCancelBottom: boolean;
+  showBtntips: boolean;
   onClose: () => void;
   onSubmitBtn: (
     selectedReason: IreasonsObject,

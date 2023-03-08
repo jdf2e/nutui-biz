@@ -48,21 +48,29 @@ const App = () => {
       value: "商品降价",
     },
   ];
-  const clickClosePopUp = () => {
-    setShowPanel(false);
-  };
-  const submitBtn = (
-    currActivedKey: string,
-    textAreaValue: string,
-    switchStatus: boolean
-  ) => {
-    console.log(
-      `currActivedKey:${currActivedKey}, textAreaValue,${textAreaValue},switchStatus:${switchStatus}`
-    );
-    setShowPanel(false);
-  };
+
+  const submitBtn = React.useCallback(
+    (
+      selectedReason: IreasonsObject,
+      textAreaValue: string,
+      switchStatus: boolean
+    ) => {
+      console.log(
+        `selectedReason:${JSON.stringify(
+          selectedReason
+        )}, textAreaValue:${textAreaValue},switchStatus:${switchStatus}`
+      );
+      clickClosePopUp();
+    },
+    []
+  );
+
   //基本使用
   const [showPanel, setShowPanel] = useState(false);
+  //关闭弹窗触发的事件
+  const clickClosePopUp = React.useCallback(() => {
+    setShowPanel(false);
+  }, [showPanel]);
   const buttonProps: Partial<ButtonProps> = React.useMemo(() => {
     return {
       type: "primary",
@@ -132,21 +140,28 @@ const App = () => {
       value: "商品降价",
     },
   ];
-  const clickClosePopUp = () => {
-    setShowCancelPanel(false);
-  };
-  const submitBtn = (
-    currActivedKey: string,
-    textAreaValue: string,
-    switchStatus: boolean
-  ) => {
-    console.log(
-      `currActivedKey:${currActivedKey}, textAreaValue,${textAreaValue},switchStatus:${switchStatus}`
-    );
-    setShowCancelPanel(false);
-  };
+
+  const submitBtn = React.useCallback(
+    (
+      selectedReason: IreasonsObject,
+      textAreaValue: string,
+      switchStatus: boolean
+    ) => {
+      console.log(
+        `selectedReason:${JSON.stringify(
+          selectedReason
+        )}, textAreaValue:${textAreaValue},switchStatus:${switchStatus}`
+      );
+      clickClosePopUpSec();
+    },
+    []
+  );
   //基本使用
   const [showCancelPanel, setShowCancelPanel] = useState(false);
+  const clickClosePopUpSec = React.useCallback(() => {
+    setShowCancelPanel(false);
+  }, [showCancelPanel]);
+
   const buttonProps: Partial<ButtonProps> = React.useMemo(() => {
     return {
       type: "primary",
@@ -169,7 +184,7 @@ const App = () => {
           tipsTitle="温馨提示"
           submitText="确认"
           buttonProps={buttonProps}
-          onClose={clickClosePopUp}
+          onClose={clickClosePopUpSec}
           onSubmitBtn={submitBtn}
         />
       </div>
@@ -229,23 +244,28 @@ const App = () => {
       value: "其它",
     },
   ];
-  const clickClosePopUp = () => {
-    setShowOtherCancelPanel(false);
-  };
-  const submitBtn = (
-    selectedReason: IreasonsObject,
-    textAreaValue: string,
-    switchStatus: boolean
-  ) => {
-    console.log(
-      `selectedReason:${JSON.stringify(
-        selectedReason
-      )}, textAreaValue:${textAreaValue},switchStatus:${switchStatus}`
-    );
-    setShowOtherCancelPanel(false);
-  };
+
+  const submitBtn = React.useCallback(
+    (
+      selectedReason: IreasonsObject,
+      textAreaValue: string,
+      switchStatus: boolean
+    ) => {
+      console.log(
+        `selectedReason:${JSON.stringify(
+          selectedReason
+        )}, textAreaValue:${textAreaValue},switchStatus:${switchStatus}`
+      );
+      clickClosePopUpThree();
+    },
+    []
+  );
   //基本使用
   const [showOtherCancelPanel, setShowOtherCancelPanel] = useState(false);
+  const clickClosePopUpThree = React.useCallback(() => {
+    setShowOtherCancelPanel(false);
+  }, [showOtherCancelPanel]);
+
   const buttonProps: Partial<ButtonProps> = React.useMemo(() => {
     return {
       type: "primary",
@@ -273,14 +293,11 @@ const App = () => {
         <OrderCancelPanel
           showCancelPanel={showOtherCancelPanel}
           popupTitle={popupTitleMemo}
-          canCancelReason={true}
-          tipsTitle="温馨提示"
           submitText="确认"
-          warmTips={warmTips}
           cancelReason={cancelReason}
           buttonProps={buttonProps}
           textAreaProps={textareaProps}
-          onClose={clickClosePopUp}
+          onClose={clickClosePopUpThree}
           onSubmitBtn={submitBtn}
         />
       </div>
@@ -330,21 +347,28 @@ const App = () => {
       value: "商品降价",
     },
   ];
-  const clickClosePopUp = () => {
-    setShowPanel(false);
-  };
-  const submitBtn = (
-    currActivedKey: string,
-    textAreaValue: string,
-    switchStatus: boolean
-  ) => {
-    console.log(
-      `currActivedKey:${currActivedKey}, textAreaValue,${textAreaValue},switchStatus:${switchStatus}`
-    );
-    setShowPanel(false);
-  };
+
+  const submitBtn = React.useCallback(
+    (
+      selectedReason: IreasonsObject,
+      textAreaValue: string,
+      switchStatus: boolean
+    ) => {
+      console.log(
+        `selectedReason:${JSON.stringify(
+          selectedReason
+        )}, textAreaValue:${textAreaValue},switchStatus:${switchStatus}`
+      );
+      clickClosePopUpCancel();
+    },
+    []
+  );
   //基本使用
-  const [showPanel, setShowPanel] = useState(false);
+  const [showCancelCancelPanel, setShowCancelCancelPanel] = useState(false);
+  const clickClosePopUpCancel = React.useCallback(() => {
+    setShowCancelCancelPanel(false);
+  }, [showCancelCancelPanel]);
+
   const buttonProps: Partial<ButtonProps> = React.useMemo(() => {
     return {
       type: "primary",
@@ -354,14 +378,14 @@ const App = () => {
   return (
     <>
       <div className="demo">
-        <Cell title="基本用法" onClick={() => setShowPanel(true)} />
+        <Cell title="基本用法" onClick={() => setShowCancelCancelPanel(true)} />
         <OrderCancelPanel
-          showCancelPanel={showPanel}
+          showCancelPanel={showCancelCancelPanel}
           popupTitle="退款原因"
           cancelReason={cancelReason}
           canCancelReason={true}
           buttonProps={buttonProps}
-          onClose={clickClosePopUp}
+          onClose={clickClosePopUpCancel}
           onSubmitBtn={submitBtn}
         />
       </div>
@@ -412,21 +436,26 @@ const App = () => {
       value: "商品降价",
     },
   ];
-  const clickClosePopUp = () => {
-    setShowPanel(false);
-  };
-  const submitBtn = (
-    currActivedKey: string,
-    textAreaValue: string,
-    switchStatus: boolean
-  ) => {
-    console.log(
-      `currActivedKey:${currActivedKey}, textAreaValue,${textAreaValue},switchStatus:${switchStatus}`
-    );
-    setShowcheckboxCancelPanel(false);
-  };
-  //基本使用
   const [showcheckboxCancelPanel, setShowcheckboxCancelPanel] = useState(false);
+  const clickClosePopUpCheckbox = React.useCallback(() => {
+    setShowcheckboxCancelPanel(false);
+  }, [showCheckboxCancelPanel]);
+  const submitBtn = React.useCallback(
+    (
+      selectedReason: IreasonsObject,
+      textAreaValue: string,
+      switchStatus: boolean
+    ) => {
+      console.log(
+        `selectedReason:${JSON.stringify(
+          selectedReason
+        )}, textAreaValue:${textAreaValue},switchStatus:${switchStatus}`
+      );
+      clickClosePopUpCheckbox();
+    },
+    []
+  );
+  //基本使用
   const buttonProps: Partial<ButtonProps> = React.useMemo(() => {
     return {
       type: "primary",
@@ -446,9 +475,8 @@ const App = () => {
           showBtntips={true}
           popupTitle="退款原因"
           cancelReason={cancelReason}
-          canCancelReason={true}
           buttonProps={buttonProps}
-          onClose={clickClosePopUp}
+          onClose={clickClosePopUpCheckbox}
           onSubmitBtn={submitBtn}
         />
       </div>
