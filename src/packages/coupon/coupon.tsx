@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode, CSSProperties } from "react";
 import { IComponent } from "@/utils/typings";
 import { Button, ButtonProps } from "@nutui/nutui-react";
-import bem from "@/utils/bem";
+import { cn2 } from "@/utils/bem";
 
 export type ButtonPropsType = ButtonProps;
 export interface ICouponType {
@@ -61,8 +61,9 @@ export const Coupon: FunctionComponent<
     ...defaultProps,
     ...props,
   };
-  const b = bem("biz-coupon");
-  const disabdb = bem("biz-dis-coupon");
+
+  const b = cn2("coupon");
+  const disabdb = cn2("dis-coupon");
   //价格
   const priceNumber = (price: number | string) => {
     return (
