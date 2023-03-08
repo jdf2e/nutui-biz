@@ -214,7 +214,7 @@ const App = () => {
     "3. 支付券不予返还；支付优惠一并取消",
     "4. 订单一旦取消，无法恢复",
   ];
-  const cancelReason = [
+  const otherReasonList = [
     {
       key: "reasons1",
       value: "商品无货",
@@ -294,7 +294,7 @@ const App = () => {
           showCancelPanel={showOtherCancelPanel}
           popupTitle={popupTitleMemo}
           submitText="确认"
-          cancelReason={cancelReason}
+          cancelReason={otherReasonList}
           buttonProps={buttonProps}
           textAreaProps={textareaProps}
           onClose={clickClosePopUpThree}
@@ -382,8 +382,8 @@ const App = () => {
         <OrderCancelPanel
           showCancelPanel={showCancelCancelPanel}
           popupTitle="退款原因"
-          cancelReason={cancelReason}
           canCancelReason={true}
+          cancelReason={cancelReason}
           buttonProps={buttonProps}
           onClose={clickClosePopUpCancel}
           onSubmitBtn={submitBtn}
@@ -492,22 +492,22 @@ export default App;
 
 ### Props
 
-| 字段                 | 说明                                | 类型                  | 默认值  |
-| -------------------- | ----------------------------------- | --------------------- | ------- |
-| showCancelPanel      | 是否显示或取消订单弹窗              | boolean               | `false` |
-| warmTips             | 温馨提示内容,无则不展示提示内容     | Array<string>         | -       |
-| cancelReason         | 取消原因                            | Array<IreasonsObject> | -       |
-| canCancelReason      | 再次点击是否可以取消已选中的原因    | boolean               | `false` |
-| popupTitle           | 弹窗的主标题                        | ReactNode             | -       |
-| reasonTitle          | 取消原因的标题                      | ReactNode             | -       |
-| submitText           | 弹窗按钮文案                        | string                | `提交`  |
-| tipsTitle            | 温馨提示的标题                      | ReactNode             | `温馨提示`       |
-| buttonProps          | 按钮组件的 props                    | ButtonProps           | -       |
-| textAreaProps        | 其它原因对应的 TextArea 组件 props  | TextAreaProps         | -       |
-| popupProsp           | Popup 组件的 props                  | PopupProps            | -       |
-| checkboxType         | checkbox 选择框和原因文案的前后位置 | `back`\|`front`       | `back`  |
-| safeAreaCancelBottom | 按钮区域是否渲染 iphone 安全区域    | boolean               | `false` |
-| showBtntips          | 是否在按钮区域显示提示区域          | boolean               | `false` |
+| 字段                 | 说明                                | 类型                  | 默认值     |
+| -------------------- | ----------------------------------- | --------------------- | ---------- |
+| showCancelPanel      | 是否显示或取消订单弹窗              | boolean               | `false`    |
+| warmTips             | 温馨提示内容,无则不展示提示内容     | Array<string>         | -          |
+| cancelReason         | 取消原因                            | Array<IreasonsObject> | -          |
+| canCancelReason      | 再次点击是否可以取消已选中的原因    | boolean               | `false`    |
+| popupTitle           | 弹窗的主标题                        | ReactNode             | -          |
+| reasonTitle          | 取消原因的标题                      | ReactNode             | -          |
+| submitText           | 弹窗按钮文案                        | string                | `提交`     |
+| tipsTitle            | 温馨提示的标题                      | ReactNode             | `温馨提示` |
+| buttonProps          | 按钮组件的 props                    | ButtonProps           | -          |
+| textAreaProps        | 其它原因对应的 TextArea 组件 props  | TextAreaProps         | -          |
+| popupProsp           | Popup 组件的 props                  | PopupProps            | -          |
+| checkboxType         | checkbox 选择框和原因文案的前后位置 | `back`\|`front`       | `back`     |
+| safeAreaCancelBottom | 按钮区域是否渲染 iphone 安全区域    | boolean               | `false`    |
+| showBtntips          | 是否在按钮区域显示提示区域          | boolean               | `false`    |
 
 ### IreasonsObject
 
