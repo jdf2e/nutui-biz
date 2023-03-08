@@ -3,7 +3,6 @@ import "./demo-preview.scss";
 import { useHistory, useLocation } from "react-router-dom";
 
 const DemoPreview = (props: any) => {
-  const history = useHistory();
   const location = useLocation();
   const path = location.pathname.split("/");
   const [URL, setURL] = useState(path[path.length - 1]);

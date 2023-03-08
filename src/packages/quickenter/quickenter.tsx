@@ -2,7 +2,6 @@ import React, {
   CSSProperties,
   FunctionComponent,
   useEffect,
-  useLayoutEffect,
   useRef,
   useState,
 } from "react";
@@ -10,6 +9,7 @@ import { IComponent } from "@/utils/typings";
 import classNames from "classnames";
 import bem from "@/utils/bem";
 import { throttle } from "@/utils/throttle";
+import {numericProp} from '@/utils/props'
 import { Swiper, SwiperItem } from "@nutui/nutui-react";
 export interface IDataItem {
   displayName: string; // 展示名称
@@ -18,11 +18,11 @@ export interface IDataItem {
 export interface QuickEnterProps extends IComponent {
   className: string;
   style: CSSProperties;
-  columns: number | string; // 一行展示几个
-  rows: number | string; // 展示几行
+  columns: numericProp; // 一行展示几个
+  rows: numericProp; // 展示几行
   data: Array<IDataItem>; // 数据展示
   slideMode: "swiper" | "slide"; // 数据展示
-  iconSize: Array<number>; // 图标大小
+  iconSize: Array<numericProp>; // 图标大小
   indicatorVisible: boolean; // 指示器是否展示
   indicatorBgColor: string; // 指示器背景颜色
   indicatorActiveColor: string; // 指示器选中颜色
@@ -31,8 +31,8 @@ export interface QuickEnterProps extends IComponent {
 
 const defaultProps = {
   iconSize: [30, 30],
-  columns: 5,
-  rows: 2,
+  columns: '5',
+  rows: '2',
   slideMode: "swiper",
   indicatorVisible: false,
   indicatorBgColor: "rgba(0, 0, 0, 0.2)",
