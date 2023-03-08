@@ -560,18 +560,18 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| visible         | 是否显示商品规格弹框               | Boolean |  `false`              |
+| visible         | 是否显示商品规格弹框               | boolean |  `false`              |
 | sku         | 商品 sku 数据 | Array | []               |
-| goods |  商品信息    | Object | - |
-| stepperMax         | 设置 inputNumber 最大值  | String \| Number | 99999               |
-| stepperMin         | 设置 inputNumber 最小值  | String \| Number | 1               |
+| goods |  商品信息    | object | - |
+| stepperMax         | 设置 inputNumber 最大值  | string \| number | 99999               |
+| stepperMin         | 设置 inputNumber 最小值  | string \| number | 1               |
 | btnOptions        |           底部按钮设置。['confirm','buy','cart' ] 分别对应确定、立即购买、加入购物车              | Array | [`confirm`]           |
-| btnExtraText | 按钮上部添加文案，默认为空，有值时显示 | String | -            |
-| stepperTitle         | 数量选择组件左侧文案 | String | `购买数量`                |
-| stepperExtraText        |   inputNumber 与标题之间的文案       | () => ReactNode \| Boolean | `false`              |
-| buyText |  立即购买按钮文案    | String | `立即购买` |
-| addCartText          |        加入购物车按钮文案                 | String | `加入购物车`             |
-| confirmText          |           确定按钮文案              | String | `确定`             |
+| btnExtraText | 按钮上部添加文案，默认为空，有值时显示 | string | -            |
+| stepperTitle         | 数量选择组件左侧文案 | string | `购买数量`                |
+| stepperExtraText        |   inputNumber 与标题之间的文案       | () => ReactNode \| boolean | `false`              |
+| buyText |  立即购买按钮文案    | string | `立即购买` |
+| addCartText          |        加入购物车按钮文案                 | string | `加入购物车`             |
+| confirmText          |           确定按钮文案              | string | `确定`             |
 | skuHeader  | 商品信息展示区，包含商品图片、价格、编号 | ReactNode | -             |
 | skuHeaderPrice  | 商品信息展示区，价格区域展示| ReactNode | -             |
 | skuHeaderExtra  | 商品信息展示区，编号区域展示 | ReactNode | -             |

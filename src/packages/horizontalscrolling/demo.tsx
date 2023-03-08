@@ -63,7 +63,7 @@ const HorizontalScrollingDemo = () => {
             {[1, 2, 3, 4, 5, 6].map((item) => {
               return (
                 <div   
-                  className="nut-biz-horizontalscrolling__contain-item"
+                  className="nb-horizontalscrolling__contain-item"
                   key={item}
                 >
                   <img
@@ -82,7 +82,7 @@ const HorizontalScrollingDemo = () => {
             {[1, 2, 3, 4, 5, 6].map((item) => {
               return (
                 <div   
-                  className="nut-biz-horizontalscrolling__contain-item"
+                  className="nb-horizontalscrolling__contain-item"
                   key={item}
                 >
                   <img
@@ -109,7 +109,7 @@ const HorizontalScrollingDemo = () => {
             {[1, 2, 3, 4, 5, 6].map((item) => {
               return (
                 <div   
-                  className="nut-biz-horizontalscrolling__contain-item"
+                  className="nb-horizontalscrolling__contain-item"
                   key={item}
                 >
                   <img
@@ -129,7 +129,7 @@ const HorizontalScrollingDemo = () => {
             maskWidth="50px"
             maskDistance="10px"
             maskContent={
-              <div className="nut-biz-horizontalscrolling__mask-box buy-price">
+              <div className="nb-horizontalscrolling__mask-box buy-price">
                 <div><i>{translated.symbol}</i>199</div>
                 <div>{translated.more}</div>
               </div>}
@@ -137,7 +137,7 @@ const HorizontalScrollingDemo = () => {
             {[1, 2, 3, 4, 5, 6].map((item) => {
               return (
                 <div   
-                  className="nut-biz-horizontalscrolling__contain-item"
+                  className="nb-horizontalscrolling__contain-item"
                   key={item}
                 >
                   <img
@@ -166,7 +166,7 @@ const HorizontalScrollingDemo = () => {
             {[1, 2, 3, 4, 5, 6].map((item) => {
               return (
                 <div   
-                  className="nut-biz-horizontalscrolling__contain-item"
+                  className="nb-horizontalscrolling__contain-item"
                   key={item}
                 >
                   <img
@@ -186,7 +186,7 @@ const HorizontalScrollingDemo = () => {
             {[1, 2, 3, 4, 5, 6].map((item) => {
               return (
                 <div   
-                  className="nut-biz-horizontalscrolling__contain-item"
+                  className="nb-horizontalscrolling__contain-item"
                   key={item}
                 >
                   <img
@@ -209,7 +209,7 @@ const HorizontalScrollingDemo = () => {
             {[1, 2, 3, 4, 5, 6].map((item) => {
               return (
                 <div   
-                  className="nut-biz-horizontalscrolling__contain-item"
+                  className="nb-horizontalscrolling__contain-item"
                   key={item}
                 >
                   <img

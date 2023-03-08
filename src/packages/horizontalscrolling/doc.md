@@ -325,3 +325,5 @@ export default App;
 |----------------|-----------------|------------|
 | onClickMask    | 点击遮罩层时触发   | - |
 | onScrollRight  | 滑动到右边时会触发 | - |
+| onScrollChange | 滑动时获取滚动距离  | val |
+
