@@ -86,16 +86,16 @@ export default App;
 
 ### Props
 
-| Parameter            | Description                                                 | Type             | Default              |
-| -------------------- | ----------------------------------------------------------- | ---------------- | -------------------- |
-| columns              | Number of rows to display                                   | number \| string | `5`                  |
-| rows                 | Number of display rows                                      | number \| string | `2`                  |
-| data                 | Display data                                                | QuickEnterData[] | `[]`                 |
-| slideMode            | Multi-screen display effect, optional values: swiper, slide | string           | `swiper`             |
-| iconSize             | Icon size, the unit is 'px'                                 | Array<number \| string>            | [30,30]            |
-| indicatorVisible     | Does the indicator show                                     | boolean          | `false`              |
-| indicatorBgColor     | Indicator background color                                  | string           | `rgba(0, 0, 0, 0.2)` |
-| indicatorActiveColor | Indicator active color                                      | string           | `#fa2c19`            |
+| Parameter            | Description                                                 | Type                    | Default              |
+| -------------------- | ----------------------------------------------------------- | ----------------------- | -------------------- |
+| columns              | Number of rows to display                                   | number \| string        | `5`                  |
+| rows                 | Number of display rows                                      | number \| string        | `2`                  |
+| data                 | Display data                                                | QuickEnterData[]        | `-`                  |
+| slideMode            | Multi-screen display effect, optional values: swiper, slide | string                  | `swiper`             |
+| iconSize             | Icon size, the unit is 'px'                                 | Array<number \| string> | [30,30]              |
+| indicatorVisible     | Does the indicator show                                     | boolean                 | `false`              |
+| indicatorBgColor     | Indicator background color                                  | string                  | `rgba(0, 0, 0, 0.2)` |
+| indicatorActiveColor | Indicator active color                                      | string                  | `#fa2c19`            |
 
 ### QuickEnterData
 
