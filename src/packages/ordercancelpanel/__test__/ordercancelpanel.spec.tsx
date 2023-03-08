@@ -81,7 +81,6 @@ test("prop of Basic Usage", () => {
       showCancelPanel={true}
       popupTitle={state.popupTitle}
       cancelReason={state.cancelReason}
-      onClickCloseIcon={closeClick}
       buttonProps={{
         type: "primary",
         className: "cancel-btn",
@@ -162,7 +161,6 @@ test("Overlay event of Basic Usage", () => {
       showCancelPanel={true}
       popupTitle={state.popupTitle}
       cancelReason={state.cancelReason}
-      onClickOverlay={closeClick}
       //   onClose={closeClick2}
       buttonProps={{
         type: "primary",
