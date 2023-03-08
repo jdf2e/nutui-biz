@@ -473,7 +473,7 @@ export default App;
 | popupTitle           | 弹窗的主标题                        | ReactNode             | -       |
 | reasonTitle          | 取消原因的标题                      | ReactNode             | -       |
 | submitText           | 弹窗按钮文案                        | string                | `提交`  |
-| tipsTitle            | 温馨提示的标题                      | ReactNode             | -       |
+| tipsTitle            | 温馨提示的标题                      | ReactNode             | `温馨提示`       |
 | buttonProps          | 按钮组件的 props                    | ButtonProps           | -       |
 | textAreaProps        | 其它原因对应的 TextArea 组件 props  | TextAreaProps         | -       |
 | popupProsp           | Popup 组件的 props                  | PopupProps            | -       |
@@ -493,4 +493,4 @@ export default App;
 | 字段        | 说明             | 回调参数                                                            |
 | ----------- | ---------------- | ------------------------------------------------------------------- |
 | onClose     | 关闭弹框时触发   | -                                                                   |
-| onSubmitBtn | 点击提交按钮触发 | `item:IreasonsObject` `textAreaValue:string` `switchStatus:boolean` |
+| onSubmitBtn | 点击提交按钮触发 | `item:IreasonsObject`,`textAreaValue:string`,`switchStatus:boolean` |
