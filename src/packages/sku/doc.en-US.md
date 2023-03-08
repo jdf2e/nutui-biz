@@ -608,18 +608,18 @@ export default App;
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| visible         | Whether to open popup               | Boolean |  `false`              |
+| visible         | Whether to open popup               | boolean |  `false`              |
 | sku         | Sku data | Array | []               |
-| goods |  Product Info    | Object | - |
-| stepperMax         | Stepper max  | String \| Number | 99999               |
-| stepperMin         | Stepper min  | String \| Number | 1               |
+| goods |  Product Info    | object | - |
+| stepperMax         | Stepper max  | string \| number | 99999               |
+| stepperMin         | Stepper min  | string \| number | 1               |
 | btnOptions        |           Bottom button              | Array | [`confirm`]           |
-| btnExtraText | Add text above button | String | -            |
-| stepperTitle         | Stepper left text | String | `Buy Num`                |
-| stepperExtraText        |   The text between the stepper and the headline       | () => ReactNode \| Boolean | `false`              |
-| buyText |  Buy button text    | String | `Buy It Now` |
-| addCartText          |        Add cart button text                 | String | `Add To cart`             |
-| confirmText          |           Confirm button text              | String | `Confirm`             |
+| btnExtraText | Add text above button | string | -            |
+| stepperTitle         | Stepper left text | string | `Buy Num`                |
+| stepperExtraText        |   The text between the stepper and the headline       | () => ReactNode \| boolean | `false`              |
+| buyText |  Buy button text    | string | `Buy It Now` |
+| addCartText          |        Add cart button text                 | string | `Add To cart`             |
+| confirmText          |           Confirm button text              | string | `Confirm`             |
 | skuHeader  | Custom header | ReactNode | -             |
 | skuHeaderPrice  | Custom header price area| ReactNode | -             |
 | skuHeaderExtra  | Extra header area | ReactNode | -             |

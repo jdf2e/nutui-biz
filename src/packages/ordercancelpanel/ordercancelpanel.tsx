@@ -15,36 +15,32 @@ import {
   Switch,
 } from "@nutui/nutui-react";
 import { IComponent } from "@/utils/typings";
-import bem from "@/utils/bem";
+import { cn2 } from "@/utils/bem";
 
 export type ICheckboxPosition = "front" | "back";
-export interface IResonsObject {
+export interface IreasonsObject {
   key: string;
   value: string;
   [x: string]: any;
 }
 export interface OrderCancelPanelProps extends IComponent {
-  popupProps: Partial<PopupProps>;
   showCancelPanel: boolean;
   warmTips: string[];
-  cancelReason: Array<IResonsObject>;
+  cancelReason: Array<IreasonsObject>;
   canCancelReason: boolean;
-  popupTitle: React.ReactNode | string;
-  reasonTitle: React.ReactNode | string;
+  popupTitle: React.ReactNode;
+  reasonTitle: React.ReactNode;
   submitText: string;
-  tipsTitle: React.ReactNode | string;
-  className?: string;
-  showBtntips: boolean;
-  style?: CSSProperties;
-  checkboxType: ICheckboxPosition;
+  tipsTitle: React.ReactNode;
   buttonProps: Partial<ButtonProps>;
-  safeAreaCancelBottom: boolean;
   textAreaProps: Partial<Omit<TextAreaProps, "defaultValue">>;
+  popupProps: Partial<PopupProps>;
+  checkboxType: ICheckboxPosition;
+  safeAreaCancelBottom: boolean;
+  showBtntips: boolean;
   onClose: () => void;
-  onClickCloseIcon: () => void;
-  onClickOverlay: () => void;
   onSubmitBtn: (
-    selectedReason: IResonsObject,
+    selectedReason: IreasonsObject,
     textAreaValue: string,
     switchStatus: boolean
   ) => void;
@@ -86,7 +82,7 @@ export const OrderCancelPanel: FunctionComponent<
     ...defaultProps,
     ...props,
   };
-  const b = bem("biz-ordercancel");
+  const b = cn2("ordercancel");
   const [currActivedKey, setCurrActivedKey] = useState("");
   const preChecked = useRef("");
   //其它文本框输入
@@ -95,12 +91,17 @@ export const OrderCancelPanel: FunctionComponent<
   const [showOtherText, setShowOtherText] = useState(false);
 
   //处理切换原因list，复选框是否被选中
-  const checkedReason = (item: IResonsObject) => {
+  const checkedReason = (item: IreasonsObject) => {
     setShowOtherText(false);
+
     if (item.key === preChecked.current) {
       if (canCancelReason) {
         setCurrActivedKey(preChecked.current ? "" : item.key);
         preChecked.current = "";
+      } else {
+        if (item.key === "other") {
+          setShowOtherText(true);
+        }
       }
     } else {
       setCurrActivedKey(item.key);

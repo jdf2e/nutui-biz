@@ -25,19 +25,21 @@ export interface HorizontalScrollingProps extends IComponent {
   maskDistance: numericProp
   maskContent: ReactNode
   iconProps: Partial<IconProps>
-  onClickMask: () => void,
+  onClickMask: () => void
   onScrollRight: () => void
+  onScrollChange: (val: number) => void
 }
 
 const defaultProps = {
   showMask: true,
   maskPosition: "right",
   maskShadowType: "triangle",
-  maskWidth: 100,
+  maskWidth: '100px',
   maskDistance: 0,
   maskContent: '',
   onClickMask: () => { },
   onScrollRight: () => { },
+  onScrollChange: (val: number) => { },
 } as HorizontalScrollingProps
 
 export const HorizontalScrolling: FunctionComponent<
@@ -56,6 +58,7 @@ export const HorizontalScrolling: FunctionComponent<
     maskContent,
     onClickMask,
     onScrollRight,
+    onScrollChange,
     iconProps,
     ...rest
   } = {
@@ -68,15 +71,8 @@ export const HorizontalScrolling: FunctionComponent<
   const scrollRef = useRef(null)
 
   const containStyles = (() => {
-    // a
     return {
       [`padding${maskPosition[0].toUpperCase() + maskPosition.substr(1)}`]: Unit.pxAdd(maskDistance) ? Unit.pxAdd(maskDistance) : Unit.pxAdd(maskWidth)
-    }
-
-    // b
-    const key = maskPosition == 'right' ? 'paddingRight' : 'paddingLeft'
-    return {
-      [key]: Unit.pxAdd(maskDistance) ? Unit.pxAdd(maskDistance) : Unit.pxAdd(maskWidth)
     }
   })
 
@@ -85,9 +81,9 @@ export const HorizontalScrolling: FunctionComponent<
   }
 
   const onScroll = () => {
-    
     if (scrollRef.current) {
       const { scrollLeft, clientWidth, scrollWidth } = scrollRef.current;
+      onScrollChange(scrollLeft)
       if (scrollLeft + clientWidth >= scrollWidth) {
         onScrollRight();
       }
@@ -96,7 +92,7 @@ export const HorizontalScrolling: FunctionComponent<
 
   const maskRender = () => {
     return (
-      <div className={`${b('mask-')}${maskPosition} ${b('mask-')}${maskPosition}--${maskShadowType}`} style={{width: maskWidth}} onClick={handleMaskClick}>
+      <div className={classNames([b(`mask-${maskPosition}`), b(`mask-${maskPosition}--${maskShadowType}`)])} style={{width: maskWidth}} onClick={handleMaskClick}>
         {typeof maskContent !== 'string' ? maskContent : 
         <div className={b('mask-box')}>
           <Icon name="category" {...iconProps} className={b('mask-icon')}></Icon>

@@ -56,7 +56,7 @@ const InvoiceTitleListDemo = () => {
               address: '北京市通州区台湖镇',
               companyPhone: '88488848',
               bankDeposit: '中国银行股份有限公司北京分行',
-              bankAccount: '5833 2153 4243 2654'
+              bankAccount: '5833 2153 4243 2654',
             }}
             onClick={(data: Idata) => {
               Toast.text('触发点击事件')

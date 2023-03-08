@@ -1,5 +1,5 @@
 import React, { useState, CSSProperties } from "react";
-import { OrderCancelPanel, IResonsObject } from "./ordercancelpanel";
+import { OrderCancelPanel, IreasonsObject } from "./ordercancelpanel";
 import { Cell, Button, ButtonProps, TextAreaProps } from "@nutui/nutui-react";
 import { useTranslate } from "../../sites/assets/locale";
 
@@ -16,8 +16,8 @@ interface T {
   tipsTitle: string;
   textareaPlaceholder: string;
   warmTips: Array<string>;
-  cancelReason: Array<IResonsObject>;
-  otherReason: Array<IResonsObject>;
+  cancelReason: Array<IreasonsObject>;
+  otherReason: Array<IreasonsObject>;
 }
 
 const CouponDemo = () => {
@@ -42,27 +42,27 @@ const CouponDemo = () => {
       ],
       cancelReason: [
         {
-          key: "resons1",
+          key: "reasons1",
           value: "商品无货",
         },
         {
-          key: "resons2",
+          key: "reasons2",
           value: "发货时间问题",
         },
         {
-          key: "resons3",
+          key: "reasons3",
           value: "不想要了",
         },
         {
-          key: "resons4",
+          key: "reasons4",
           value: "商品选错/多选",
         },
         {
-          key: "resons5",
+          key: "reasons5",
           value: "地址信息填写错误",
         },
         {
-          key: "resons6",
+          key: "reasons6",
           value: "商品降价",
         },
       ],
@@ -93,27 +93,27 @@ const CouponDemo = () => {
       ],
       cancelReason: [
         {
-          key: "resons1",
+          key: "reasons1",
           value: "No goods",
         },
         {
-          key: "resons2",
+          key: "reasons2",
           value: "Delivery time problem",
         },
         {
-          key: "resons3",
+          key: "reasons3",
           value: "do not want goods",
         },
         {
-          key: "resons4",
+          key: "reasons4",
           value: "Wrong goods selected",
         },
         {
-          key: "resons5",
+          key: "reasons5",
           value: "Incorrect address information",
         },
         {
-          key: "resons6",
+          key: "reasons6",
           value: "Commodity price reduction",
         },
       ],
@@ -178,14 +178,14 @@ const CouponDemo = () => {
   }, [showCancelCancelPanel]);
 
   // checkbox在前面
-  const [showcheckboxCancelPanel, setShowcheckboxCancelPanel] = useState(false);
+  const [showCheckboxCancelPanel, setShowcheckboxCancelPanel] = useState(false);
   const clickClosePopUpCheckbox = React.useCallback(() => {
     setShowcheckboxCancelPanel(false);
-  }, [showcheckboxCancelPanel]);
+  }, [showCheckboxCancelPanel]);
   //提交事件
   const submitBtn = React.useCallback(
     (
-      selectedReason: IResonsObject,
+      selectedReason: IreasonsObject,
       textAreaValue: string,
       switchStatus: boolean
     ) => {
@@ -241,9 +241,7 @@ const CouponDemo = () => {
         <OrderCancelPanel
           showCancelPanel={showOtherCancelPanel}
           popupTitle={popupTitleMemo}
-          tipsTitle={""}
           submitText={translated.submitText}
-          warmTips={[]}
           cancelReason={otherReasonList}
           buttonProps={buttonProps}
           textAreaProps={textareaProps}
@@ -261,7 +259,6 @@ const CouponDemo = () => {
           canCancelReason={true}
           cancelReason={translated.cancelReason}
           buttonProps={buttonProps}
-          textAreaProps={textareaProps}
           onClose={clickClosePopUpCancel}
           onSubmitBtn={submitBtn}
         />
@@ -271,13 +268,12 @@ const CouponDemo = () => {
           onClick={() => setShowcheckboxCancelPanel(true)}
         />
         <OrderCancelPanel
-          showCancelPanel={showcheckboxCancelPanel}
+          showCancelPanel={showCheckboxCancelPanel}
           checkboxType="front"
           showBtntips={true}
           popupTitle={popupTitleMemo}
           cancelReason={translated.cancelReason}
           buttonProps={buttonProps}
-          textAreaProps={textareaProps}
           onClose={clickClosePopUpCheckbox}
           onSubmitBtn={submitBtn}
         />

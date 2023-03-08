@@ -37,19 +37,6 @@ const OrderRemarkDemo = () => {
         '如家中无人，可电话后，放置于门口',
       ]
     },
-    'zh-TW': {
-      basic: '基本用法',
-      title: '帶有標籤',
-      title2: '自定義文案',
-      title3: '事件演示',
-      submitText: '提交',
-      placeholderText: '請填寫備註信息',
-      topTitle: '備註信息',
-      tagTitle: '快捷選擇',
-      cellTitle: '訂單備註',
-      emptyText: '請輸入備註信息',
-      tagArr: ['京東快遞', '輕拿輕放', '週末配送', '配送前，需提前電話聯繫', '如家中無人，可電話後，放置於門口']
-    },
     'en-US': {
       basic: 'Basic Usage',
       title: 'With Tag',

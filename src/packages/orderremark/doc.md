@@ -176,7 +176,7 @@ export default App;
 | placeholderText     | 输入框为空时占位符   | string   | `请输入备注内容` |
 | title               | 弹窗的主标题         | ReactNode   | `订单备注`       |
 | tagTitle            | 标签内容标题         | ReactNode   | `推荐标签`       |
-| remark              | 备注信息             | string   | --               |
+| remark              | 备注信息             | string   | -               |
 | submitText          | 提交按钮文案         | string   | `确定`           |
 | recommendTags       | 标签渲染数据     | string[] | `[]`             |
 
@@ -186,7 +186,7 @@ export default App;
 | -------------- | ------------------ | ------------ |
 | onClickOverlay | 点击弹窗遮罩时触发 | 当前备注信息 |
 | onClose        | 弹出层关闭时触发   | 当前备注信息 |
-| onOpen         | 弹出层打开时触发   | -- |
+| onOpen         | 弹出层打开时触发   | - |
 | onChange       | 输入内容改变时触发 | 当前备注信息 |
 | onClickTag     | 点击标签时触发     | `tag:string,index:numer,innerMarkStr:string` |
 | onSubmit       | 点击提交按钮触发   | 当前备注信息 |

@@ -18,9 +18,42 @@ import { Delivery } from '@nutui/nutui-biz';
 
 ```tsx
 import React, { useState } from 'react';
-import { Delivery } from './delivery';
-import { DeliveryTypes, DeliveryData, DateTimesType, DateType } from './type';
 import { Cell } from '@nutui/nutui-react';
+import { Delivery } from '@nutui/nutui-biz';
+export interface DeliveryBaseType {
+    label: string;
+    text: ReactNode;
+    selected?: boolean;
+}
+
+export type DeliveryDateType = 'date' | 'date-time' | 'date-time-accurate'
+
+export interface DateType extends DeliveryBaseType { }
+
+export interface DateTimeType {
+    label: string;
+    title: ReactNode;
+    children: Array<DateType>;
+}
+
+export interface DateTimeAccurateType {
+    label: string;
+    title: ReactNode;
+    children: DateTimeType[]
+}
+
+export type DateTimesType = DateType | DateTimeType | DateTimeAccurateType;
+
+export interface DeliveryTypes extends DeliveryBaseType {
+    disabled?: boolean;
+    desc?: ReactNode;
+    children?: ReactNode;
+}
+
+export interface DeliveryData extends DeliveryTypes {
+    type: DeliveryDateType;
+    times: DateTimesType[];
+}
 const App = () => {
   const [visible1, setVisible1] = useState(false);
   const [desc1, setDesc1] = useState<any>("");
@@ -121,8 +154,9 @@ const App = () => {
     </>
   );
 };
-```
+export default App;
 
+```
 :::
 
 ### 标准达、京准达
@@ -131,9 +165,42 @@ const App = () => {
 
 ```tsx
 import React, { useState } from 'react';
-import { Delivery } from './delivery';
-import { DeliveryTypes, DeliveryData, DateTimesType, DateType } from './type';
 import { Cell } from '@nutui/nutui-react';
+import { Delivery } from '@nutui/nutui-biz';
+export interface DeliveryBaseType {
+    label: string;
+    text: ReactNode;
+    selected?: boolean;
+}
+
+export type DeliveryDateType = 'date' | 'date-time' | 'date-time-accurate'
+
+export interface DateType extends DeliveryBaseType { }
+
+export interface DateTimeType {
+    label: string;
+    title: ReactNode;
+    children: Array<DateType>;
+}
+
+export interface DateTimeAccurateType {
+    label: string;
+    title: ReactNode;
+    children: DateTimeType[]
+}
+
+export type DateTimesType = DateType | DateTimeType | DateTimeAccurateType;
+
+export interface DeliveryTypes extends DeliveryBaseType {
+    disabled?: boolean;
+    desc?: ReactNode;
+    children?: ReactNode;
+}
+
+export interface DeliveryData extends DeliveryTypes {
+    type: DeliveryDateType;
+    times: DateTimesType[];
+}
 const App = () => {
   const [visible2, setVisible2] = useState(false);
   const [desc2, setDesc2] = useState<any>("");
@@ -282,6 +349,7 @@ const App = () => {
     </>
   );
 };
+export default App;
 ```
 :::
 
@@ -290,10 +358,42 @@ const App = () => {
 :::demo
 ```tsx
 import React, { useState } from 'react';
-import { Delivery } from './delivery';
-import DeliveryDate from './../deliverydate';
-import { DeliveryTypes, DeliveryData, DateTimesType, DateType } from './type';
-import { Cell } from '@nutui/nutui-react';
+import { Cell, Popup } from '@nutui/nutui-react';
+import { Delivery, DeliveryDate } from '@nutui/nutui-biz';
+export interface DeliveryBaseType {
+    label: string;
+    text: ReactNode;
+    selected?: boolean;
+}
+
+export type DeliveryDateType = 'date' | 'date-time' | 'date-time-accurate'
+
+export interface DateType extends DeliveryBaseType { }
+
+export interface DateTimeType {
+    label: string;
+    title: ReactNode;
+    children: Array<DateType>;
+}
+
+export interface DateTimeAccurateType {
+    label: string;
+    title: ReactNode;
+    children: DateTimeType[]
+}
+
+export type DateTimesType = DateType | DateTimeType | DateTimeAccurateType;
+
+export interface DeliveryTypes extends DeliveryBaseType {
+    disabled?: boolean;
+    desc?: ReactNode;
+    children?: ReactNode;
+}
+
+export interface DeliveryData extends DeliveryTypes {
+    type: DeliveryDateType;
+    times: DateTimesType[];
+}
 const App = () => {
   const [visible3, setVisible3] = useState(false);
   const [visible4, setVisible4] = useState(false);
@@ -369,9 +469,9 @@ const App = () => {
             onClose={() => show3(false)}
             onSure={() => { sure3(desc3); }}
         >
-            <div className="custom-content" onClick={() => { setVisible4(true) }}>
-                <div className="left">请选择送货时间</div>
-                <div className="right">{desc3}</div>
+            <div className="custom-content" onClick={() => { setVisible4(true) }} style={{ 'padding': '10px 20px', 'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center', 'fontSize': '12px' }}>
+                <div className="left" style={{ 'color': '#999' }}>请选择送货时间</div>
+                <div className="right" style={{ 'color': '#333' }}>{desc3}</div>
             </div>
         </Delivery>
         <Popup
@@ -386,6 +486,7 @@ const App = () => {
         >
             <DeliveryDate
                 className="delivery-date3"
+                style={{ 'padding': '30px 10px' }}
                 activeKey={activeKey3}
                 data={deliveryDateData3}
                 onSelect={(item: DateType) => { handleDeliveryDate3(item) }}
@@ -394,6 +495,7 @@ const App = () => {
     </>
   );
 };
+export default App;
 ```
 :::
 
@@ -404,9 +506,43 @@ const App = () => {
 
 ```tsx
 import React, { useState } from 'react';
-import { Delivery } from './delivery';
-import { DeliveryTypes, DeliveryData, DateTimesType, DateType } from './type';
-import { Cell } from '@nutui/nutui-react';
+import { Cell, Popup } from '@nutui/nutui-react';
+import { Delivery, DeliveryDateTime } from '@nutui/nutui-biz';
+
+export interface DeliveryBaseType {
+    label: string;
+    text: ReactNode;
+    selected?: boolean;
+}
+
+export type DeliveryDateType = 'date' | 'date-time' | 'date-time-accurate'
+
+export interface DateType extends DeliveryBaseType { }
+
+export interface DateTimeType {
+    label: string;
+    title: ReactNode;
+    children: Array<DateType>;
+}
+
+export interface DateTimeAccurateType {
+    label: string;
+    title: ReactNode;
+    children: DateTimeType[]
+}
+
+export type DateTimesType = DateType | DateTimeType | DateTimeAccurateType;
+
+export interface DeliveryTypes extends DeliveryBaseType {
+    disabled?: boolean;
+    desc?: ReactNode;
+    children?: ReactNode;
+}
+
+export interface DeliveryData extends DeliveryTypes {
+    type: DeliveryDateType;
+    times: DateTimesType[];
+}
 const App = () => {
   const [visible5, setVisible5] = useState(false);
   const [visible6, setVisible6] = useState(false);
@@ -471,9 +607,9 @@ const App = () => {
             onClose={() => show5(false)}
             onSure={() => { sure5(desc4); }}
         >
-            <div className="custom-content" onClick={() => { setVisible6(true) }}>
-                <div className="left">请选择送货时间</div>
-                <div className="right">{desc4}</div>
+            <div className="custom-content" onClick={() => { setVisible6(true) }} style={{ 'padding': '10px 20px', 'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center', 'fontSize': '12px' }}>
+                <div className="left" style={{ 'color': '#999' }}>请选择送货时间</div>
+                <div className="right" style={{ 'color': '#333' }}>{desc4}</div>
             </div>
         </Delivery>
         <Popup
@@ -488,6 +624,7 @@ const App = () => {
         >
             <DeliveryDateTime
                 className="delivery-date4"
+                style={{ 'padding': '30px 0' }}
                 activeKey={activeKey4}
                 data={deliveryDateData4}
                 onSelect={(item: DateTimeType) => { handleDeliveryDate4(item) }}
@@ -496,6 +633,7 @@ const App = () => {
     </>
   );
 };
+export default App;
 ```
 :::
 

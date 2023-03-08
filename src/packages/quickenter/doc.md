@@ -86,16 +86,16 @@ export default App;
 
 ### Props
 
-| 参数                 | 说明                                | 类型             | 默认值               |
-| -------------------- | ----------------------------------- | ---------------- | -------------------- |
-| columns              | 每行展示的数量                      | number \| string | `5`                  |
-| rows                 | 展示行数                            | number \| string | `2`                  |
-| data                 | 展示数据                            | QuickEnterData[] | `[]`                 |
-| slideMode            | 多屏展示效果，可选值：swiper、slide | string           | `swiper`             |
-| iconSize             | 图标大小 ,单位为 'px'               | Array            | `[30,30]`            |
-| indicatorVisible     | 指示器是否展示                      | boolean          | `false`              |
-| indicatorBgColor     | 指示器背景色                        | string           | `rgba(0, 0, 0, 0.2)` |
-| indicatorActiveColor | 指示器选中颜色                      | string           | `#fa2c19`            |
+| 参数                 | 说明                                | 类型                    | 默认值               |
+| -------------------- | ----------------------------------- | ----------------------- | -------------------- |
+| columns              | 每行展示的数量                      | number \| string        | `5`                  |
+| rows                 | 展示行数                            | number \| string        | `2`                  |
+| data                 | 展示数据                            | QuickEnterData[]        | `-`                  |
+| slideMode            | 多屏展示效果，可选值：swiper、slide | string                  | `swiper`             |
+| iconSize             | 图标大小 ,单位为 'px'               | Array<number \| string> | [30,30]              |
+| indicatorVisible     | 指示器是否展示                      | boolean                 | `false`              |
+| indicatorBgColor     | 指示器背景色                        | string                  | `rgba(0, 0, 0, 0.2)` |
+| indicatorActiveColor | 指示器选中颜色                      | string                  | `#fa2c19`            |
 
 ### QuickEnterData
 

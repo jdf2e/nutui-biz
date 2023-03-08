@@ -317,7 +317,7 @@ export default App;
 | maskWidth      | 遮罩层宽度，默认单位为 `px`             | string \| number | `100px`     |
 | maskDistance   | 滚动内容和容器的遮罩层侧之间的距离，默认单位为 `px`   | string \| number | `0`        |
 | iconProps       | [Icon 组件的 props](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/icon)    | iconProps | - |
-| maskContent    | 自定义遮罩内容                         | ReactNode | - |
+| maskContent    | 自定义遮罩内容                         | ReactNode | `''` |
 
 ### Events
 
@@ -325,3 +325,5 @@ export default App;
 |----------------|-----------------|------------|
 | onClickMask    | 点击遮罩层时触发   | - |
 | onScrollRight  | 滑动到右边时会触发 | - |
+| onScrollChange | 滑动时获取滚动距离  | val |
+
