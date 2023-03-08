@@ -24,8 +24,7 @@ export interface SettleBarProps extends IComponent {
   loading: boolean
   safeAreaInsetBottom: boolean
   placeholder: boolean
-  settleCount: numericProp
-  settleUnit: string
+  settleCount: ReactNode
   showZero: boolean
   noCount: boolean
   customWarning: ReactNode
@@ -34,7 +33,8 @@ export interface SettleBarProps extends IComponent {
   customTotalPrice: ReactNode
   customTotalExtra: ReactNode
   customButton: ReactNode
-  onSettle: () => void
+  isCheckedAll: boolean
+  onClickButton: () => void
   onSelectAll: (checked: boolean) => void
 }
 
@@ -53,7 +53,6 @@ export const SettleBar: FunctionComponent<
     className,
     style,
     settleCount = 0,
-    settleUnit = '',
     customWarning,
     safeAreaInsetBottom = true,
     placeholder = false,
@@ -64,7 +63,8 @@ export const SettleBar: FunctionComponent<
     customTotalPrice,
     customButton,
     customTotalExtra = '',
-    onSettle = () => {},
+    isCheckedAll = false,
+    onClickButton = () => {},
     onSelectAll = (checked: boolean) => {},
     ...rest
   } = {
@@ -72,7 +72,7 @@ export const SettleBar: FunctionComponent<
   }
 
   const handleSettle = () => {
-    !disabled && !loading && onSettle()
+    !disabled && !loading && onClickButton()
   }
 
   let totalStyle = {
@@ -96,7 +96,7 @@ export const SettleBar: FunctionComponent<
 
   const renderCountAndUnit = () => {
     if(showZero || settleCount !== 0) {
-      return <span className={b('main-num')}>({settleCount}{settleUnit})</span>
+      return <span className={b('main-num')}>({settleCount})</span>
     }
   }
 
@@ -112,7 +112,7 @@ export const SettleBar: FunctionComponent<
   const renderSelectAll = () => {
     if(!customSelectAll && customSelectAll !== undefined) return null;
 
-    return <div className={b('main-select-all')}>{customSelectAll ? customSelectAll : <Checkbox label={locale.settleBar.selectAll} onChange={handleSelectAll} />}</div>
+    return <div className={b('main-select-all')}>{customSelectAll ? customSelectAll : <Checkbox checked={isCheckedAll} label={locale.settleBar.selectAll} onChange={handleSelectAll} />}</div>
   }
 
   const renderSettleBar = () => {

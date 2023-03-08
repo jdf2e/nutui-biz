@@ -35,7 +35,7 @@ const InvoiceTitleEditDemo = () => {
   }
 
   const handleInput = () => {
-    console.log(111)
+    console.log('Invoice title input event is triggered')
   }
 
   return (
@@ -50,11 +50,13 @@ const InvoiceTitleEditDemo = () => {
         <InvoiceTitleEdit 
           onSubmit={handleSubmit}
           invoiceType="normal"
+          submitButtonText="提交"
         />
         <h2>{translated.customBottom}</h2>
         <InvoiceTitleEdit
           onSubmit={handleSubmit}
           invoiceType="normal"
+          submitButtonText="提交"
           bottom={<div style={{textAlign: 'center', lineHeight: '40px'}}>{translated.customBottom}</div>}
         />
       </div>

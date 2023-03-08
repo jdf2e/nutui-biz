@@ -166,13 +166,13 @@ export const Delivery: FunctionComponent<
   }
 
   const getSelectContainerHeight = () => {
-    // 基础组件问题：https://github.com/jdf2e/nutui-react/issues/763，使用setTimeout先处理下
+    // 基础组件问题：https://github.com/jdf2e/nutui-react/issues/763，使用setTimeout处理下
     setTimeout(() => {
       if (selectRef.current && deliveryDateData && deliveryDateData.length) {
         (selectRef.current as HTMLDivElement).style.height =
           `calc(100% - ${titleRef.current?.offsetHeight}px - ${contentRef.current?.offsetHeight}px - ${buttonRef.current?.offsetHeight}px)`;
       }
-    }, 100);
+    }, 0);
   }
 
   const getDeliveryTypeItem = (label: string) => {

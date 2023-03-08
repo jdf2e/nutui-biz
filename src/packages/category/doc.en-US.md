@@ -18,11 +18,11 @@ import { Category } from '@nutui/nutui-biz';
 
 ```ts
 
-import  React from 'react';
+import  React,{useEffect,useState} from 'react';
 import { Category } from '@nutui/nutui-biz';
 
 const App = () => {
-
+  const [category, setCategory] = useState();
   const getData = () => {
     fetch("https://storage.360buyimg.com/nutui/3x/new-categoryData.js")
       .then((response) => response.json())
@@ -61,11 +61,11 @@ By setting the `showSkuImg` property will not show the image
 
 ```ts
 
-import  React from 'react';
+import  React,{useEffect,useState} from 'react';
 import { Category } from '@nutui/nutui-biz';
 
 const App = () => {
-
+  const [category, setCategory] = useState();
   const getData = () => {
     fetch("https://storage.360buyimg.com/nutui/3x/new-categoryData.js")
       .then((response) => response.json())
@@ -96,11 +96,11 @@ By setting `showSecondLevelQuickNav`, the horizontal secondary category navigati
 
 ```ts
 
-import  React from 'react';
+import  React,{useEffect,useState} from 'react';
 import { Category } from '@nutui/nutui-biz';
 
 const App = () => {
-
+  const [category, setCategory] = useState();
   const getData = () => {
     fetch("https://storage.360buyimg.com/nutui/3x/new-categoryData.js")
       .then((response) => response.json())
@@ -131,12 +131,14 @@ export default App;
 | Attribute         | Description                             | Type   | Default          |
 |---------|--------------------------------------------|---------|-----------|
 | category   | Classified product information                                 | Category[]  | `[]`          |
-| showSecondLevelQuickNav   | Whether to display the secondary classification shortcut navigation           | Boolean  | `false`          |
-| isLeftAutoSlide   | Left navigation, that is, first-level classification, whether the selected value is displayed in the center    | Boolean  | `true`          |
-| showSkuImg | Left navigation, that is, first-level classification, whether the selected value is displayed in the center | Boolean | `true`        |
-| isLazy | Whether the three-level classification pictures are lazy loaded | Boolean | `true`        |
-| loadingImg | Whether the three-level classification pictures are lazy loaded | String | -       |
-| errorImg | Set error prompt picture | String | -        |
+| showSecondLevelQuickNav   | Whether to display the secondary classification shortcut navigation           | boolean  | `false`          |
+| isLeftAutoSlide   | Left navigation, that is, first-level classification, whether the selected value is displayed in the center    | boolean  | `true`          |
+| showSkuImg | Left navigation, that is, first-level classification, whether the selected value is displayed in the center | boolean | `true`        |
+| isLazy | Whether the three-level classification pictures are lazy loaded | boolean | `true`        |
+| loadingImg | Whether the three-level classification pictures are lazy loaded | string | -       |
+| errorImg | Set error prompt picture | string | -        |
+| showPullUp | Whether to display Pull up to continue browsing | boolean | `false`      |
+| pullUpText | Custom Pull up to continue browsing | ReactNode | `向上拉继续浏览`      |
 
 
 ### Events
@@ -149,7 +151,7 @@ export default App;
 
 ### Category 
 
-| Event  | Description     | Type    |
+| Attribute  | Description     | Type    |
 |---------|--------------------------------------------|---------|
 | catId   | first class category id                                | string \| number  |
 | catName   | Classification name            | string  | 
@@ -158,7 +160,7 @@ export default App;
 
 ### CategoryPane 
 
-| Event  | Description     | Type    |
+| Attribute  | Description     | Type    |
 |---------|--------------------------------------------|---------|
 | catId   | Secondary classification id                               | string \| number  |
 | catName   | Secondary classification name           | string  | 
@@ -166,7 +168,7 @@ export default App;
 
 ### CategoryPaneItem 
 
-| Event  | Description     | Type    |
+| Attribute  | Description     | Type    |
 |---------|--------------------------------------------|---------|
 | catId   | Three-level classification id             | string \| number  |
 | catName   | Three-level classification name            | string  | 

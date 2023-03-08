@@ -3,7 +3,7 @@ import { render, waitFor, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { AddressEdit } from "../addressedit";
 
-const addressData = {
+const addressData: any = {
   addressSelect: [],
   addressTitle: "选择所在地区",
   province: [

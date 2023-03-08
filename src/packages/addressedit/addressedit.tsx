@@ -9,66 +9,71 @@ import { useConfig } from "@/packages/configprovider";
 import classNames from "classnames";
 import { cn2 } from "@/utils/bem";
 import { IComponent } from "@/utils/typings";
-import { Input, Button, Address, Switch } from "@nutui/nutui-react";
+import { Input, Button, ButtonProps, Switch, Toast } from "@nutui/nutui-react";
+import Address from "../address";
+import { AddressProps, AddressType, RegionData } from "../address/type";
 
 interface CalResult {
   type: string;
   data: any;
 }
-interface RegionData {
-  name?: string;
-  [key: string]: any;
-}
-interface AddressInfo {
+// export type AddressType = "exist" | "custom" | "elevator";
+export type showErrorType = "toast" | "bottomMsg";
+
+export interface AddressInfo {
   name?: string;
   tel?: string;
   region?: string;
-  regionIds?: any;
+  regionIds?: (string | number)[] | any;
   address?: string;
   default?: boolean;
+  [key: string]: any;
 }
-interface AddressData {
+export interface AddressData {
   id?: string | number | any;
-  nameText?: string;
-  namePlaceholder?: string;
-  nameErrorMsg?: string;
-  telText?: string;
-  telPlaceholder?: string;
-  telErrorMsg?: string;
-  telFormatter?: string;
-  regionText?: string;
-  regionPlaceholder?: string;
-  regionErrorMsg?: string;
-  addressText?: string;
-  addressPlaceholder?: string;
-  addressErrorMsg?: string;
+  nameText: string;
+  namePlaceholder: string;
+  nameErrorMsg: string;
+  telText: string;
+  telPlaceholder: string;
+  telErrorMsg: string;
+  regionText: string;
+  regionPlaceholder: string;
+  regionErrorMsg: string;
+  addressText: string;
+  addressPlaceholder: string;
+  addressErrorMsg: string;
   isDefualtAddress?: boolean;
-  isRequired?: any;
-  bottomText?: string;
+  isRequired?: string[];
+  bottomText: string;
+  errorShowType?: string;
+  [key: string]: any;
 }
-interface AddressResult {
-  addressSelect?: any;
+export interface AddressResult {
+  addressSelect?: (string | number)[];
   addressStr?: string;
-  province?: RegionData[] | any;
-  city?: RegionData[] | any;
-  country?: RegionData[] | any;
-  town?: RegionData[] | any;
-  customAddressTitle?: string;
+  province?: RegionData[];
+  city?: RegionData[];
+  country?: RegionData[];
+  town?: RegionData[];
+  addressTitle?: string;
+  type?: AddressType | undefined;
   height?: string;
-  addressType?: string;
 }
 
 export interface AddressEditProps extends IComponent {
   addressInfo: AddressInfo;
-  data: AddressData;
+  data: Partial<AddressData>;
   address: AddressResult;
   bottomInputTpl?: ReactNode;
   showSave?: Boolean;
-  onChange: (val: string, tag: string) => void;
-  onChangeAddress: (data: any) => void;
-  onCloseAddress: (data: any) => void;
-  onSave: (data: any) => void;
-  onSwitch: (state: boolean, data: any) => void;
+  showDefault?: Boolean;
+  buttonProps?: Partial<ButtonProps>;
+  onChange?: (val: string, tag: string) => void;
+  onChangeAddress?: (data: any) => void;
+  onCloseAddress?: (data: any) => void;
+  onSave?: (data: any) => void;
+  onSwitch?: (state: boolean, data: any) => void;
 }
 
 const defaultProps = {
@@ -81,17 +86,20 @@ const defaultProps = {
     default: false,
   },
   data: {},
-  addressType: "custom",
   address: {
-    modelValue: false,
     addressSelect: [],
+    addressStr: "",
     province: [],
     city: [],
     country: [],
     town: [],
-    customAddressTitle: "选择所在地区",
+    addressTitle: "选择所在地区",
+    type: "custom",
+    height: "",
   },
-} as unknown as AddressEditProps;
+  showSave: true,
+  showDefault: true,
+} as AddressEditProps;
 
 export const AddressEdit: FunctionComponent<
   Partial<AddressEditProps> &
@@ -101,11 +109,13 @@ export const AddressEdit: FunctionComponent<
   const {
     className,
     style,
-    addressInfo = null,
-    showSave = true,
-    data = null,
+    addressInfo,
+    showSave,
+    showDefault,
+    data,
     address,
     bottomInputTpl,
+    buttonProps,
     onChange,
     onSave,
     onChangeAddress,
@@ -113,10 +123,11 @@ export const AddressEdit: FunctionComponent<
     onSwitch,
     ...rest
   } = {
+    ...defaultProps,
     ...props,
   };
   //提交数据格式
-  const [formData, setFormData] = useState<any>({
+  const [formData, setFormData] = useState<AddressInfo>({
     name: "",
     tel: "",
     region: "",
@@ -132,18 +143,19 @@ export const AddressEdit: FunctionComponent<
     "address",
   ]);
   //地址组件相关数据
-  const [addressData, setAddressData] = useState({
+  const [addressData, setAddressData] = useState<AddressResult>({
     addressSelect: [],
+    addressStr: "",
     province: [],
     city: [],
     country: [],
     town: [],
     addressTitle: "选择所在地区",
+    type: "custom",
     height: "200px",
-    addressType: "custom",
   });
   //地址编辑数据形式兜底文案配置
-  const [editSeting, setEditSeting] = useState({
+  const [editSeting, setEditSeting] = useState<AddressData>({
     nameText: locale.addressedit.nameText,
     namePlaceholder: locale.addressedit.namePlaceholder,
     nameErrorMsg: locale.addressedit.nameErrorMsg,
@@ -157,6 +169,7 @@ export const AddressEdit: FunctionComponent<
     addressPlaceholder: locale.addressedit.addressPlaceholder,
     addressErrorMsg: locale.addressedit.addressErrorMsg,
     bottomText: locale.addressedit.bottomText,
+    errorShowType: "toast",
   });
   const [errorList, setErrorList] = useState<any>([]);
   const [showPopup, setShowPopup] = useState(false);
@@ -190,7 +203,7 @@ export const AddressEdit: FunctionComponent<
     setErrorList([]);
   }, [address, data, addressInfo]);
 
-  const changeAddress = (cal: any, tag: string) => {
+  const changeAddress = (cal: any) => {
     setErrorList(errorList.filter((i: any) => i != "region"));
     if (cal.next === "town") {
       setShowPopup(false);
@@ -200,7 +213,7 @@ export const AddressEdit: FunctionComponent<
 
   //地址组件关闭事件数据处理
   const closeAddress = (val: CalResult) => {
-    if ((val.data as AddressResult).addressStr) {
+    if (val.data.addressStr) {
       //地址id格式处理
       let ids = val.data.addressIdStr.split("_").map((item: any) => item * 1);
       //删除数组中为0的项
@@ -218,14 +231,13 @@ export const AddressEdit: FunctionComponent<
   const inputOnchange = (val: any, tag: string) => {
     let data = { ...formData };
     if (val.length != 0) {
-      setErrorList(errorList.filter((i: any) => i != tag));
+      setErrorList(errorList.filter((i: string) => i != tag));
     }
 
-    Object.keys(formData).map((key: any) => {
+    Object.keys(formData).map((key: string) => {
       if (key === tag) {
         if (key === "tel") {
-          const regTel =
-            /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
+          const regTel = /^1\d{10}$/;
           const regNumber = /[^-0-9]/g;
           let number =
             !regTel.test(val) && val.length > 11
@@ -245,45 +257,25 @@ export const AddressEdit: FunctionComponent<
     let form = { ...formData };
     let arr: any = [].concat(errorList);
     Object.keys(form).map((key) => {
-      if (isRequired.includes(key) && form[key] === "") {
-        switch (key) {
-          case "name":
-            if (!errorList.includes("name")) {
-              arr.push("name");
-            }
-            break;
-          case "tel":
-            if (!errorList.includes("tel")) {
-              arr.push("tel");
-            }
-            break;
-          case "region":
-            if (!errorList.includes("region")) {
-              arr.push("region");
-            }
-            break;
-          case "address":
-            if (!errorList.includes("address")) {
-              arr.push("address");
-            }
-            break;
-
-          default:
-            break;
-        }
-        setErrorList(arr);
-        return false;
+      if (
+        isRequired.includes(key) &&
+        form[key] === "" &&
+        !errorList.includes(key)
+      ) {
+        arr.push(key);
       }
     });
-
-    return true;
+    setErrorList(arr);
+    return arr.length === 0;
   };
   //保存按钮控制
   const save = () => {
+    console.log("save", validForm());
     if (validForm()) {
       onSave && onSave(formData);
     } else {
-      console.log("校验不通过");
+      console.log("error");
+      editSeting.errorShowType === "toast" && Toast.text("请完成必填项");
     }
   };
   const inputClear = (tag: string) => {
@@ -292,103 +284,85 @@ export const AddressEdit: FunctionComponent<
     setFormData({ ...formData, ...data });
   };
 
+  const inputTpl = (tag: string) => {
+    const label = tag + "Text";
+    const errorMsg = tag + "ErrorMsg";
+    const placeholder = tag + "Placeholder";
+    return (
+      <div className={`${b("item")}`}>
+        <Input
+          className="nut-input-text"
+          label={editSeting[label]}
+          defaultValue={formData[tag]}
+          name={tag}
+          placeholder={editSeting[placeholder]}
+          type={tag == "tel" ? "tel" : "text"}
+          clearable
+          readonly={tag === "region"}
+          required={isRequired.includes(tag) || false}
+          onChange={(e) => inputOnchange(e, tag)}
+          onClear={() => inputClear(tag)}
+          onClick={() => {
+            if (tag !== "region") return;
+            setShowPopup(true);
+          }}
+          errorMessage={
+            editSeting.errorShowType != "toast" &&
+            errorList.includes(tag) &&
+            editSeting[errorMsg]
+          }
+        />
+        {tag === "region" && (
+          <Address
+            modelValue={showPopup}
+            type={addressData.type}
+            modelSelect={addressData.addressSelect}
+            province={addressData.province}
+            city={addressData.city}
+            country={addressData.country}
+            town={addressData.town}
+            height={addressData.height}
+            customAddressTitle={addressData.addressTitle}
+            onChange={(cal) => changeAddress(cal)}
+            onClose={closeAddress}
+          />
+        )}
+      </div>
+    );
+  };
+
   const b = cn2("addressedit");
   return (
-    <div className={classNames([b(), className])} id={data?.id} style={style}>
-      <div className={`${b("item")}`}>
-        <Input
-          className="nut-input-text"
-          label={editSeting.nameText}
-          defaultValue={formData.name}
-          name="name"
-          placeholder={editSeting?.namePlaceholder}
-          type="text"
-          clearable
-          required={isRequired.includes("name") || false}
-          onChange={(e) => inputOnchange(e, "name")}
-          onClear={() => inputClear("name")}
-          errorMessage={errorList.includes("name") && editSeting.nameErrorMsg}
-        />
-      </div>
-      <div className={`${b("item")}`}>
-        <Input
-          className="nut-input-text"
-          label={editSeting.telText}
-          defaultValue={formData.tel}
-          name="tel"
-          placeholder={editSeting.telPlaceholder}
-          type="tel"
-          clearable
-          required={isRequired.includes("tel") || false}
-          onChange={(e) => inputOnchange(e, "tel")}
-          onClear={() => inputClear("tel")}
-          errorMessage={errorList.includes("tel") && editSeting.telErrorMsg}
-        />
-      </div>
-      <div className={`${b("item")}`}>
-        <Input
-          className="nut-input-text"
-          label={editSeting.regionText}
-          defaultValue={formData.region}
-          name="region"
-          readonly
-          placeholder={editSeting.regionPlaceholder}
-          type="text"
-          required={isRequired.includes("region") || false}
-          onClick={() => setShowPopup(true)}
-          errorMessage={
-            errorList.includes("region") && editSeting.regionErrorMsg
-          }
-        />
-        <Address
-          modelValue={showPopup}
-          type={addressData.addressType}
-          modelSelect={addressData.addressSelect}
-          province={addressData.province}
-          city={addressData.city}
-          country={addressData.country}
-          town={addressData.town}
-          height={addressData.height}
-          customAddressTitle={addressData.addressTitle}
-          existAddressTitle={addressData.addressTitle}
-          onChange={(cal) => changeAddress(cal, "select")}
-          onClose={closeAddress}
-        />
-      </div>
-      <div className={`${b("item")}`}>
-        <Input
-          label={editSeting.addressText}
-          className="nut-input-text"
-          defaultValue={formData.address}
-          placeholder={editSeting.addressPlaceholder}
-          type="text"
-          clearable
-          required={isRequired.includes("address") || false}
-          onChange={(e) => inputOnchange(e, "address")}
-          onClear={() => inputClear("address")}
-          errorMessage={
-            errorList.includes("address") && editSeting.addressErrorMsg
-          }
-        />
-      </div>
+    <div
+      className={classNames([b(), className])}
+      id={data?.id}
+      style={style}
+      {...rest}
+    >
+      {inputTpl("name")}
+      {inputTpl("tel")}
+      {inputTpl("region")}
+      {inputTpl("address")}
       {bottomInputTpl ? <>{bottomInputTpl}</> : null}
-      <div className={`${b("item")} setdefualt`}>
-        <span className="label">{locale.addressedit.setDefaultText}</span>
-        <Switch
-          checked={formData.default}
-          onChange={(state) => {
-            setFormData({ ...formData, default: state });
-            onSwitch && onSwitch(state, { ...formData, default: state });
-          }}
-        />
-      </div>
-      {showSave ? (
+      {showDefault && (
+        <div className={`${b("item")} setdefualt`}>
+          <span className="label">{locale.addressedit.setDefaultText}</span>
+          <Switch
+            checked={formData.default}
+            onChange={(state) => {
+              setFormData({ ...formData, default: state });
+              onSwitch && onSwitch(state, { ...formData, default: state });
+            }}
+          />
+        </div>
+      )}
+      {showSave && (
         <div className={`${b("bottom")}`}>
-          <Button block type="danger" onClick={save}>
+          <Button block type="danger" onClick={save} {...buttonProps}>
             {editSeting.bottomText}
           </Button>
         </div>
-      ) : null}
+      )}
     </div>
   );
 };

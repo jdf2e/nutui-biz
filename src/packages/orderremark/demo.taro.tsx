@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslate } from '@/sites/assets/locale/taro';
 import { OrderRemark } from '@/packages/nutui.react.taro';
 import { Cell, Toast } from '@nutui/nutui-react-taro';
+
 interface tarnslatedOption {
   basic: string;
   title: string;
@@ -72,7 +73,6 @@ const OrderRemarkDemo = () => {
   const [mark3, setMark3] = useState('');
   const [mark4, setMark4] = useState('');
 
-  // const tagArr = ['京东快递', '轻拿轻放', '周末配送', '配送前，需提前电话联系', '如家中无人，可电话后，放置于门口'];
   const onChange = (val: string) => {
     console.log('onChange', val);
   };
@@ -129,7 +129,7 @@ const OrderRemarkDemo = () => {
         recommendTags={translated.tagArr}
         submitText={translated.submitText}
         placeholderText={translated.placeholderText}
-        title={translated.title}
+        title={translated.topTitle}
         tagTitle={translated.tagTitle}
         onClose={(e) => {
           setShow3(false);

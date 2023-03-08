@@ -211,5 +211,8 @@ const zhCN: BaseLang = {
     forgetPwdText: "忘记密码",
     loginButtonText: "登录",
   },
+  category:{
+    pullUpText:'向上拉继续浏览'
+  }
 };
 export default zhCN;

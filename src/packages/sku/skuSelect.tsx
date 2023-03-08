@@ -46,7 +46,7 @@ export const SkuSelect: FunctionComponent<
     }
   }, [sku])
 
-  const changeSaleChild = (attrItem: any, index: any, parentItem: any, parentIndex: any) => {
+  const changeSaleChild = (attrItem: SkuInfo, index: number, parentItem: SkuInfo, parentIndex: number) => {
     if (attrItem.checkFlag || attrItem.disable) {
       return;
     }

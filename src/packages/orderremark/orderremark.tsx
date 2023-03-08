@@ -1,7 +1,7 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react';
 
 import { Popup, TextArea, Button } from '@nutui/nutui-react';
-import bem from '@/utils/bem';
+import { cn2 as bem } from '@/utils/bem';
 import { useConfig } from '@/packages/configprovider';
 import { IComponent } from '@/utils/typings';
 
@@ -10,8 +10,8 @@ export interface OrderRemarkProps extends IComponent {
   closeOnClickOverlay: boolean;
   maxLength: number;
   placeholderText: string;
-  title: string;
-  tagTitle: string;
+  title: ReactNode;
+  tagTitle: ReactNode;
   remark: string;
   submitText: string;
   recommendTags: string[];
@@ -19,7 +19,7 @@ export interface OrderRemarkProps extends IComponent {
   onClose?: (val: string) => void;
   onOpen?: () => void;
   onChange?: (val: string) => void;
-  onClickTag?: (tag: string) => void;
+  onClickTag?: (tag: string, index: number, remark: string) => void;
   onSubmit?: (val: string) => void;
 }
 
@@ -76,12 +76,22 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
     onOpen && onOpen();
   };
 
-  const clickTag = (tag: string) => {
-    setInnerMark(tag);
-    onClickTag && onClickTag(tag);
-    onChange && onChange(tag);
+  const clickTag = (tag: string, index: number) => {
+    let innerMarkStr = innerMark;
+    if (innerMarkStr.length > 0) {
+      innerMarkStr = innerMarkStr + '，' + tag;
+    } else {
+      innerMarkStr = tag;
+    }
+    onClickTag && onClickTag(tag, index, innerMarkStr);
+
+    if (innerMarkStr.length > maxLength) {
+      innerMarkStr = innerMarkStr.slice(0, maxLength);
+    }
+    setInnerMark(innerMarkStr);
+    onChange && onChange(innerMarkStr);
   };
-  const textareaChange = (val: any) => {
+  const textareaChange = (val: string) => {
     setInnerMark(val);
     onChange && onChange(val);
   };
@@ -90,8 +100,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
     setInnerVisible(false);
   };
   useEffect(() => {
-    visible && setInnerVisible(visible);
-    !visible && setInnerVisible(visible);
+    setInnerVisible(visible);
   }, [visible]);
 
   useEffect(() => {
@@ -112,7 +121,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
       onOpen={() => {
         onOpenFun();
       }}>
-      <div className={`${b()} ${className || ''}`} style={{ ...style }} {...rest}>
+      <div className={`${b()} ${className || ''}`} style={style} {...rest}>
         <div className={b('title')}>{title || locale.orderRemark.title}</div>
         <div className={b('textarea-container')}>
           <TextArea
@@ -128,7 +137,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
             <div className={b('tag-content')}>
               {recommendTags.map((item: string, index: number) => {
                 return (
-                  <div key={index} className={b('tag')} onClick={(e) => clickTag(item)}>
+                  <div key={index} className={b('tag')} onClick={() => clickTag(item, index)}>
                     {item}
                   </div>
                 );
@@ -137,7 +146,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
           </div>
         )}
         <div className={b('opt-container')}>
-          <Button onClick={(e) => onBtnSubmit()} type="primary">
+          <Button onClick={() => onBtnSubmit()} type="primary">
             {submitText || locale.orderRemark.submitText}
           </Button>
         </div>

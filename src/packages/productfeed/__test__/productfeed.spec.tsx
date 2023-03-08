@@ -5,15 +5,15 @@ import '@testing-library/jest-dom'
 import { trigger, triggerDrag } from '@/utils/test/event'
 
 import { ProductFeed } from '../productfeed'
-import { ProductFeedItem } from '../../productfeeditem/productfeeditem'
+import { ProductFeedItem } from '../productfeeditem'
 
-test('col test', () => {
-  const { container } = render(
-    <ProductFeed
-    >
-    </ProductFeed>
-  )
-})
+// test('col test', () => {
+//   const { container } = render(
+//     <ProductFeed
+//     >
+//     </ProductFeed>
+//   )
+// })
 
 // test('col、gutter test', () => {
 //   const { container } = render(

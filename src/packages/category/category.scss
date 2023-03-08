@@ -1,4 +1,4 @@
-.nut-biz-category {
+.nb-category {
     height: 100%;
     width: 100%;
     position: relative;
@@ -53,7 +53,7 @@
 
 
 
-.nut-category-pane {
+.nb-category-pane {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -163,6 +163,19 @@
         background: rgba(242,39,12,.07);
         border: 1px solid #f2270c;
         color:#f2270c ;
+      }
+    }
+
+    &__cate-list-bottom{
+      margin: 12px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      color: #999;
+
+      >div{
+        margin-left: 6px;
       }
     }
   }

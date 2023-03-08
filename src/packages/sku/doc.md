@@ -35,11 +35,17 @@ interface SkuItem {
   [key: string]: any;
 }
 
+interface goods {
+  price: number
+  imagePath: string
+  skuId: string
+}
+
 const App = () => {
   const [base, setBase] = useState<boolean>(false)
-  const [skuData, setSkuData] = useState<Skus>([] as unknown as Skus)
-  const [goodsInfo, setGoodsInfo] = useState({})
-  const [imagePathMap, setImagePathMap] = useState({})
+  const [skuData, setSkuData] = useState<Skus[]>([])
+  const [goodsInfo, setGoodsInfo] = useState({} as goods)
+  const [imagePathMap, setImagePathMap] = useState<any>({})
 
   const getData = () => {
     fetch('//storage.360buyimg.com/nutui/3x/data.js')
@@ -73,7 +79,7 @@ const App = () => {
     setGoodsInfo({
       skuId: sku.id,
       imagePath: "//img14.360buyimg.com/n4/jfs/t1/216079/14/3895/201095/618a5c0cEe0b9e2ba/cf5b98fb6128a09e.jpg",
-      price: '4599.00' // 商品信息展示区，商品价格
+      price: 4599.00 // 商品信息展示区，商品价格
     })
     
     let goodsInfoBck = goodsInfo;
@@ -132,11 +138,17 @@ interface SkuItem {
   [key: string]: any;
 }
 
+interface goods {
+  price: number
+  imagePath: string
+  skuId: string
+}
+
 const App = () => {
   const [notSell, setNotSell] = useState<boolean>(false)
-  const [skuData, setSkuData] = useState<Skus>([] as unknown as Skus)
-  const [goodsInfo, setGoodsInfo] = useState({})
-  const [imagePathMap, setImagePathMap] = useState({})
+  const [skuData, setSkuData] = useState<Skus[]>([])
+  const [goodsInfo, setGoodsInfo] = useState({} as goods)
+  const [imagePathMap, setImagePathMap] = useState<any>({})
 
   const getData = () => {
     fetch('//storage.360buyimg.com/nutui/3x/data.js')
@@ -174,7 +186,7 @@ const App = () => {
     setGoodsInfo({
       skuId: sku.id,
       imagePath: "//img14.360buyimg.com/n4/jfs/t1/216079/14/3895/201095/618a5c0cEe0b9e2ba/cf5b98fb6128a09e.jpg",
-      price: '4599.00' // 商品信息展示区，商品价格
+      price: 4599.00 // 商品信息展示区，商品价格
     })
     
     let goodsInfoBck = goodsInfo;
@@ -254,10 +266,17 @@ interface SkuItem {
   [key: string]: any;
 }
 
+interface goods {
+  price: number
+  imagePath: string
+  skuId: string
+}
+
 const App = () => {
   const [customStepper, setCustomStepper] = useState<boolean>(false)
-  const [skuData, setSkuData] = useState<Skus>([] as unknown as Skus)
-  const [goodsInfo, setGoodsInfo] = useState({})
+  const [skuData, setSkuData] = useState<Skus[]>([])
+  const [goodsInfo, setGoodsInfo] = useState({} as goods)
+  const [count, setCount] = useState<number>(2)
 
   const getData = () => {
     fetch('//storage.360buyimg.com/nutui/3x/data.js')
@@ -276,7 +295,7 @@ const App = () => {
   }, [])
 
   const stepperExtraText = () => {
-    return <div style={{width:"100%",textAlign:"right",color:"#F00"}}>2 件起售</div>;
+    return <div style={{width:"100%",textAlign:"right",color:"#F00"}}>{count} 件起售</div>;
   };
 
   const overLimit = () => {
@@ -284,7 +303,7 @@ const App = () => {
   };
 
   const changeStepper = (count: number) => {
-    console.log('购买数量', count);
+    setCount(count)
   };
 
   const selectSku = (s: any) => {
@@ -303,7 +322,7 @@ const App = () => {
     setGoodsInfo({
       skuId: sku.id,
       imagePath: "//img14.360buyimg.com/n4/jfs/t1/216079/14/3895/201095/618a5c0cEe0b9e2ba/cf5b98fb6128a09e.jpg",
-      price: '4599.00' // 商品信息展示区，商品价格
+      price: 4599.00 // 商品信息展示区，商品价格
     })
     
     let goodsInfoBck = goodsInfo;
@@ -350,7 +369,7 @@ export default App;
 :::demo
 
 ```ts
-import  React, { useState, useEffect } from 'react';
+import  React, { useState, useEffect, CSSProperties } from 'react';
 import { Sku, Address } from '@nutui/nutui-biz';
 import { Cell, Price, Button } from '@nutui/nutui-react'
 
@@ -368,12 +387,36 @@ interface SkuItem {
   [key: string]: any;
 }
 
+interface goods {
+  price: number
+  imagePath: string
+  skuId: string
+}
+
+interface RegionData {
+  name?: string;
+  [key: string]: any;
+}
+
+interface AddressList {
+  id?: string | number;
+  provinceName: string;
+  cityName: string;
+  countyName: string;
+  townName: string;
+  addressDetail: string;
+  selectedAddress: boolean;
+  name?: string;
+  phone?: string;
+}
+
 const App = () => {
   const [customByContent, setCustomByContent] = useState<boolean>(false)
   const [addressDesc, setAddressDesc] = useState<string>('(配送地会影响库存，请先确认)')
   const [showAddressPopup, setShowAddressPopup] = useState<boolean>(false)
-  const [skuData, setSkuData] = useState<Skus>([] as unknown as Skus)
-  const [goodsInfo, setGoodsInfo] = useState({})
+  const [skuData, setSkuData] = useState<Skus[]>([])
+  const [goodsInfo, setGoodsInfo] = useState({} as goods)
+  const [imagePathMap, setImagePathMap] = useState<any>({})
 
   const getData = () => {
     fetch('//storage.360buyimg.com/nutui/3x/data.js')
@@ -485,7 +528,7 @@ const App = () => {
     setGoodsInfo({
       skuId: sku.id,
       imagePath: "//img14.360buyimg.com/n4/jfs/t1/216079/14/3895/201095/618a5c0cEe0b9e2ba/cf5b98fb6128a09e.jpg",
-      price: '4599.00' // 商品信息展示区，商品价格
+      price: 4599.00 // 商品信息展示区，商品价格
     })
     
     let goodsInfoBck = goodsInfo;
@@ -498,12 +541,13 @@ const App = () => {
     // setGoodsInfo(goodsInfoBck)
   };
 
-  const selectedAddress = (prevExistAdd: any, nowExistAdd: any) => {
+  const selectedAddress = (prevExistAdd: any, nowExistAdd: any, arr: any[]) => {
+    console.log(prevExistAdd,nowExistAdd)
     const { provinceName, countyName, cityName } = nowExistAdd;
     setAddressDesc(`${provinceName}${countyName}${cityName}`)
-  };
+  }
 
-  const close = (num: number)=>{}
+  const close = ()=>{setShowAddressPopup(false)}
 
   return (
     <div>
@@ -538,11 +582,11 @@ const App = () => {
       />
       <Address
         modelValue={showAddressPopup}
-        type="exit"
+        type="exist"
         existAddress={existAddress}
         onClose={close}
         isShowCustomAddress={false}
-        onSelect={() => selectedAddress()}
+        onSelected={(prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => selectedAddress(prevExistAdd, nowExistAdd, arr)}
         existAddressTitle="配送至"
       />
     </div>
@@ -560,18 +604,18 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| visible         | 是否显示商品规格弹框               | Boolean |  `false`              |
+| visible         | 是否显示商品规格弹框               | boolean |  `false`              |
 | sku         | 商品 sku 数据 | Array | []               |
-| goods |  商品信息    | Object | - |
-| stepperMax         | 设置 inputNumber 最大值  | String \| Number | 99999               |
-| stepperMin         | 设置 inputNumber 最小值  | String \| Number | 1               |
+| goods |  商品信息    | object | - |
+| stepperMax         | 设置 inputNumber 最大值  | string \| number | 99999               |
+| stepperMin         | 设置 inputNumber 最小值  | string \| number | 1               |
 | btnOptions        |           底部按钮设置。['confirm','buy','cart' ] 分别对应确定、立即购买、加入购物车              | Array | [`confirm`]           |
-| btnExtraText | 按钮上部添加文案，默认为空，有值时显示 | String | -            |
-| stepperTitle         | 数量选择组件左侧文案 | String | `购买数量`                |
-| stepperExtraText        |   inputNumber 与标题之间的文案       | () => ReactNode \| Boolean | `false`              |
-| buyText |  立即购买按钮文案    | String | `立即购买` |
-| addCartText          |        加入购物车按钮文案                 | String | `加入购物车`             |
-| confirmText          |           确定按钮文案              | String | `确定`             |
+| btnExtraText | 按钮上部添加文案，默认为空，有值时显示 | string | -            |
+| stepperTitle         | 数量选择组件左侧文案 | string | `购买数量`                |
+| stepperExtraText        |   inputNumber 与标题之间的文案       | () => ReactNode \| boolean | `false`              |
+| buyText |  立即购买按钮文案    | string | `立即购买` |
+| addCartText          |        加入购物车按钮文案                 | string | `加入购物车`             |
+| confirmText          |           确定按钮文案              | string | `确定`             |
 | skuHeader  | 商品信息展示区，包含商品图片、价格、编号 | ReactNode | -             |
 | skuHeaderPrice  | 商品信息展示区，价格区域展示| ReactNode | -             |
 | skuHeaderExtra  | 商品信息展示区，编号区域展示 | ReactNode | -             |

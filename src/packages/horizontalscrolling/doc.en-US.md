@@ -321,3 +321,4 @@ export default App;
 |--------------- | ----- | -----  |
 | onClickMask    | Triggered when the mask layer is clicked | - |
 | onScrollRight  | Fired when swiping to the right | - |
+| onScrollChange | Get the scrolling distance when sliding  | val |
