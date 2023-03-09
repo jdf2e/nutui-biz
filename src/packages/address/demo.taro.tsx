@@ -353,20 +353,6 @@ const AddressDemo = () => {
           onClose={close6}
         />
 
-        {/* <Address
-          modelValue={showPopup.normal2}
-          type="elevator"
-          modelSelect={[1, 7, 3]}
-          province={addressData.province}
-          city={addressData.city}
-          country={addressData.country}
-          town={addressData.town}
-          height="270px"
-          onChange={(cal) => onChange(cal, 'normal2')}
-          onClose={close5}
-          customAddressTitle="请选择所在地区"
-        /> */}
-
         <Address
           modelValue={showPopup.exist}
           type="exist"

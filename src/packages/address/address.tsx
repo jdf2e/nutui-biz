@@ -23,10 +23,10 @@ export const Address: FunctionComponent<Partial<AddressProps>> = (props) => {
     children,
     type = 'custom',
     height = '200px',
-    customAddressTitle = '请选择所在地区',
+    customAddressTitle = locale.address.selectRegion,
     existAddress = [],
-    hotCities = [],
-    existAddressTitle = '配送至',
+    // hotCities = [],
+    existAddressTitle = locale.address.deliveryTo,
     province = [],
     city = [],
     country = [],
@@ -40,7 +40,7 @@ export const Address: FunctionComponent<Partial<AddressProps>> = (props) => {
     onChange,
     onSelected,
     onClose,
-    onClickHotCity,
+    onClickItem,
     onCloseMask,
     onSwitchModule,
     onTabChecked,
@@ -48,6 +48,8 @@ export const Address: FunctionComponent<Partial<AddressProps>> = (props) => {
     className,
     iconClassPrefix,
     iconFontClassName,
+    loading = false,
+    bottom = '',
     ...rest
   } = {
     ...props
@@ -76,7 +78,7 @@ export const Address: FunctionComponent<Partial<AddressProps>> = (props) => {
     onCloseMask && onCloseMask({ closeWay: 'mask' });
   };
   // 切换下一级列表
-  const nextAreaList = (item: NextListObj) => {
+  const nextAreaList = (item: NextListObj, resStatus: boolean) => {
     // onchange 接收的参数
     const callbackParams = {
       next: item.next,
@@ -89,6 +91,9 @@ export const Address: FunctionComponent<Partial<AddressProps>> = (props) => {
     });
 
     onChange && onChange(callbackParams);
+    if (!resStatus && onClickItem) {
+      handClose();
+    }
   };
   // 选择现有地址
   const selectedExist = (prevExistAdd: AddressList, item: AddressList, copyExistAdd: AddressList[]) => {
@@ -96,7 +101,7 @@ export const Address: FunctionComponent<Partial<AddressProps>> = (props) => {
     onSelected && onSelected(prevExistAdd, item, copyExistAdd);
     handClose();
   };
-  // 初始化
+  // 初始化 重置已选择数据
   const initAddress = () => {
     for (let i = 0; i < tabName.length; i++) {
       setSelectedRegion({
@@ -145,11 +150,7 @@ export const Address: FunctionComponent<Partial<AddressProps>> = (props) => {
   };
   // 选择其他地址
   const handleSwitchModule = () => {
-    if (privateType === 'exist') {
-      setPrivateType('custom');
-    } else {
-      setPrivateType('exist');
-    }
+    setPrivateType(privateType === "exist" ? "custom" : "exist");
     initAddress();
     onSwitchModule && onSwitchModule({ type: privateType });
   };
@@ -162,16 +163,12 @@ export const Address: FunctionComponent<Partial<AddressProps>> = (props) => {
     return (
       <div className={b('header')}>
         <div className="arrow-back" onClick={handleSwitchModule}>
-          {privateType === 'custom' && backBtnIcon && (
+          {type == 'exist' && privateType == 'custom' && backBtnIcon && (
             <Icon classPrefix={iconClassPrefix} fontClassName={iconFontClassName} name={backBtnIcon} color="#cccccc" />
           )}
         </div>
 
-        <div className={b('header__title')}>
-          {privateType === 'custom'
-            ? customAddressTitle || locale.address.selectRegion
-            : existAddressTitle || locale.address.deliveryTo}
-        </div>
+        <div className={b('header__title')}>{privateType === 'custom' ? customAddressTitle : existAddressTitle}</div>
 
         <div onClick={() => handClose()}>
           {closeBtnIcon && (
@@ -195,12 +192,6 @@ export const Address: FunctionComponent<Partial<AddressProps>> = (props) => {
     setPrivateType(type);
   }, [type]);
 
-  // useEffect(() => {
-  //   if (!showPopup) {
-  //     closeFun();
-  //   }
-  // }, [showPopup]);
-
   return (
     <Popup
       visible={showPopup}
@@ -219,10 +210,11 @@ export const Address: FunctionComponent<Partial<AddressProps>> = (props) => {
             city={city}
             country={country}
             town={town}
-            hotCities={hotCities}
+            loading={loading}
+            // hotCities={hotCities}
             height={height}
-            onNextArea={(cal) => {
-              nextAreaList && nextAreaList(cal);
+            onNextArea={(cal, resStatus) => {
+              nextAreaList && nextAreaList(cal, resStatus);
             }}
             onTabClick={(type) => {
               onTabChecked && onTabChecked(type);
@@ -231,7 +223,7 @@ export const Address: FunctionComponent<Partial<AddressProps>> = (props) => {
               initSelectValue(cal);
             }}
             onClose={handClose}
-            onClickHotCity={onClickHotCity}
+            onClickItem={onClickItem}
           />
         )}
         {privateType === 'exist' && (
@@ -246,7 +238,7 @@ export const Address: FunctionComponent<Partial<AddressProps>> = (props) => {
             onSwitchModule={handleSwitchModule}
           />
         )}
-        {props.bottom ? props.bottom : null}
+        {bottom}
       </div>
     </Popup>
   );

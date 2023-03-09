@@ -106,7 +106,7 @@ export const ExistRender: FunctionComponent<Partial<ExistRenderProps> & React.HT
       </div>
       {isShowCustomAddress && (
         <div className={b('choose-other')} onClick={switchModule}>
-          <div className={b('choose-other-btn')}>{locale.address.chooseAnotherAddress || customAndExistTitle}</div>
+          <div className={b('choose-other-btn')}>{customAndExistTitle || locale.address.chooseAnotherAddress}</div>
         </div>
       )}
     </div>

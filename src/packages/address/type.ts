@@ -8,7 +8,7 @@ export interface RegionData {
 
 export interface ChangeCallBack {
   next: string;
-  value: string | RegionData;
+  value: RegionData;
   custom: string;
 }
 export interface CloseCallBackData extends SelectedRegionObj {
@@ -34,7 +34,7 @@ export interface AddressList {
 }
 export interface NextListObj {
   next: string;
-  value: string | RegionData;
+  value: RegionData;
   custom: string;
   selectedRegion?: SelectedRegionObj;
 }
@@ -68,7 +68,7 @@ export interface ExistRenderProps {
   defaultIcon: ReactNode;
   selectedIcon: ReactNode;
   isShowCustomAddress: boolean;
-  customAndExistTitle: string;
+  customAndExistTitle: ReactNode;
   onSelected?: (prevExistAdd: AddressList, item: AddressList, copyExistAdd: AddressList[]) => void;
   onClose?: (cal: { closeWay: string }) => void;
   onSwitchModule?: (cal: { type: string }) => void;
@@ -80,12 +80,13 @@ export interface AddressProps extends IComponent, baseAddressInfo {
   modelValue: boolean;
   modelSelect: (string | number)[];
   type: AddressType;
-  customAddressTitle: string;
   isShowCustomAddress: boolean;
   existAddress: AddressList[];
-  hotCities: HotCityList;
-  existAddressTitle: string;
-  customAndExistTitle: string;
+  loading: boolean;
+  // hotCities: HotCityList;
+  customAddressTitle: ReactNode;
+  existAddressTitle: ReactNode;
+  customAndExistTitle: ReactNode;
   height: string | number;
   defaultIcon: ReactNode;
   selectedIcon: ReactNode;
@@ -94,10 +95,11 @@ export interface AddressProps extends IComponent, baseAddressInfo {
   bottom: ReactNode;
   onSelected?: (prevExistAdd: AddressList, item: AddressList, copyExistAdd: AddressList[]) => void;
   onClose?: (cal: CloseCallBack) => void;
-  onClickHotCity?: (city: { id: number; name: string }) => void;
+  // onClickHotCity?: (city: { id: number; name: string }) => void;
   onCloseMask?: (cal: { closeWay: string }) => void;
   onSwitchModule?: (cal: { type: string }) => void;
   onChange?: (cal: ChangeCallBack) => void;
+  onClickItem?: (cal: ChangeCallBack, resolve: (value: boolean | PromiseLike<boolean>) => void) => Promise<void>;
   onTabChecked?: (cal: string) => void;
 }
 
@@ -105,12 +107,15 @@ export interface CustomRenderProps extends baseAddressInfo {
   modelValue: (string | number)[];
   type: string;
   height: string | number;
-  hotCities: HotCityList;
-  onNextArea?: (cal: NextListObj) => void;
+  loading: boolean;
+  // hotCities: HotCityList;
+  onNextArea?: (cal: NextListObj, lazyStatus: boolean) => void;
   emitSelectedRegion?: (cal: SelectedRegionObj) => void;
   onTabClick?: (type: string) => void;
   onClose?: () => void;
-  onClickHotCity?: (city: { id: number; name: string; title: string }) => void;
+  onClickItem?: (cal: ChangeCallBack, resolve: (value: boolean | PromiseLike<boolean>) => void) => Promise<void>;
+
+  // onClickHotCity?: (city: { id: number; name: string; title: string }) => void;
 }
 export interface CustomRegionData {
   title: string;

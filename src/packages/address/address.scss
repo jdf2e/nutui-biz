@@ -119,13 +119,22 @@
           .active {
             font-weight: bold;
           }
-
           .nut-address__region-item--icon {
             margin-right: 6px;
           }
+          .nut-address__region-item--loading{
+            margin-right: 6px;
 
-          > div {
-            width: 100%;
+          }
+        }
+        .loading_box {
+          height: 70%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .nut-icon-loading {
+            color: $primary-color;
           }
         }
       }
@@ -161,12 +170,22 @@
       .active {
         font-weight: bold;
       }
-      .nut-elevator__list__item__name--highcolor{
+      .nut-elevator__list__item__name--highcolor {
         color: #333;
       }
 
-      .nut-address__region-item--icon {
-        margin-right: 6px;
+      .nut-address__region-item {
+        display: flex;
+        align-items: center;
+        font-size: $font-size-1;
+        color: #333;
+        .nut-address__region-item--icon {
+          margin-right: 6px;
+        }
+        .nut-address__region-item--loading{
+          margin-right: 6px;
+
+        }
       }
     }
   }
