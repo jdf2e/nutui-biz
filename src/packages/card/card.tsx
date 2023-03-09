@@ -17,7 +17,6 @@ export interface CardProps {
   prolistTpl: ReactNode
   productTagsTpl: ReactNode
   priceAfterTpl: ReactNode
-  footerTpl: ReactNode
   bottomTpl: ReactNode
   infoTpl: ReactNode
   imgTag: ReactNode
@@ -57,7 +56,6 @@ export const Card: FunctionComponent<
     productTagsTpl,
     priceAfterTpl,
     prolistTpl,
-    footerTpl,
     bottomTpl,
     infoTpl,
     imgTagDirection,
@@ -100,8 +98,7 @@ export const Card: FunctionComponent<
                 e.stopPropagation()
                 onClickShop()
               }}>
-                {shopName && <div className={b('right__shop__name')}>{shopName}</div>}
-                {footerTpl}
+                {shopName && <div className={b('right__shop__name')}><span>{shopName}</span>&gt;</div>}
               </div>
             </>}
           </div>
@@ -123,8 +120,7 @@ export const Card: FunctionComponent<
               </div>}
               {productTagsTpl}
               <div className={b('right__shop')}>
-                {shopName && <div className={b('right__shop__name')}>{shopName}</div>}
-                {footerTpl}
+                {shopName && <div className={b('right__shop__name')}><span>{shopName}</span>&gt;</div>}
               </div>
             </>}
           </div>

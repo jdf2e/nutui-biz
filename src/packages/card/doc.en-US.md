@@ -198,42 +198,6 @@ export default App;
 
 :::
 
-### Customize bottom right content
-
-:::demo
-
-```ts
-import  React from 'react';
-import { Card } from '@nutui/nutui-biz';
-
-const App = () => {
-  const state = {
-    imgUrl:
-      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title: 'title',
-    price: '388',
-    marketingType: 'marketingType',
-    delivery: 'delivery',
-    shopName: 'shopName>',
-  }
-  
-  return (
-    <Card
-      imgUrl={state.imgUrl}
-      title={state.title}
-      price={state.price}
-      marketingType={state.marketingType}
-      delivery={state.delivery}
-      shopName={state.shopName}
-      footerTpl={<div style={{ fontSize: '12px' }}>custom</div>}
-    />
-  );
-};
-export default App;
-```
-
-:::
-
 
 ### Customize bottom content
 
@@ -333,7 +297,6 @@ export default App;
 | shopName   | shop-name| string  | -      |
 | prolistTpl   | Custom product introduction, between title and price| ReactNode  | -      |
 | productTagsTpl   | Custom product tags| ReactNode  | -      |
-| footerTpl   | Customize bottom right content| ReactNode  | -      |
 | showType   | Display format, optional value: `full-line`、`half-line`| string  | `full-line`      |
 | bottomTpl   | Customize bottom content| ReactNode  | -      |
 | infotpl   | Customize info content| ReactNode  | -      |

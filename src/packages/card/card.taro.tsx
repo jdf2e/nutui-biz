@@ -16,7 +16,6 @@ export interface CardProps {
   prolistTpl: React.ReactNode
   shopTagTpl: React.ReactNode
   originTpl: React.ReactNode
-  footerTpl: React.ReactNode
 }
 const defaultProps = {} as CardProps
 export const Card: FunctionComponent<
@@ -35,7 +34,6 @@ export const Card: FunctionComponent<
     shopTagTpl,
     originTpl,
     prolistTpl,
-    footerTpl,
     ...rest
   } = {
     ...defaultProps,
@@ -66,7 +64,6 @@ export const Card: FunctionComponent<
         </div>
         <div className={b('right__shop')}>
           <div className={b('right__shop__name')}>{shopName}</div>
-          {footerTpl}
         </div>
       </div>
     </div>
