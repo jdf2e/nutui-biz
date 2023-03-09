@@ -49,6 +49,10 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
     ...props,
   }
   const onSelect = (item: ReceiveInvoiceItem, index: number) => {
+    if(item.id == modelValue){
+      setModelValue("")
+      return
+    }
     setModelValue(item.id);
     onSelected?.(item, index);
   }
