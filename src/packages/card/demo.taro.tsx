@@ -90,7 +90,13 @@ const CardDemo = () => {
     color: '#999',
     backgroundColor: '#f2f2f7',
     marginRight: '5px',
-  }
+    marginTop: '3px',
+    flexShrink: 0,
+    maxWidth: '100%',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
+  } as CSSProperties
   return (
     <>
       <div className="demo">
@@ -118,8 +124,9 @@ const CardDemo = () => {
               className="search_prolist_attr"
               style={{
                 display: 'inline-flex',
-                margin: '3px 0 1px',
-                height: '15px',
+                marginBottom: '1px',
+                flexWrap: 'wrap',
+                width: '100%'
               }}
             >
               {[

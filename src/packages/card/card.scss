@@ -64,8 +64,15 @@
       }
 
       .nut-price {
+        @include text-ellipsis;
+
         .nut-price__big {
           font-size: 18px;
+        }
+        .nut-price__symbol, 
+        .nut-price__integer, 
+        .nut-price__decimal {
+          display: inline;
         }
         .nut-price__symbol,
         .nut-price__point,

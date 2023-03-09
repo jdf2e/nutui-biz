@@ -90,7 +90,7 @@ export default App;
 | -------------------- | ----------------------------------------------------------- | ----------------------- | -------------------- |
 | columns              | Number of rows to display                                   | number \| string        | `5`                  |
 | rows                 | Number of display rows                                      | number \| string        | `2`                  |
-| data                 | Display data                                                | QuickEnterData[]        | `-`                  |
+| data                 | Display data                                                | QuickEnterData[]        | -                  |
 | slideMode            | Multi-screen display effect, optional values: swiper, slide | string                  | `swiper`             |
 | iconSize             | Icon size, the unit is 'px'                                 | Array<number \| string> | [30,30]              |
 | indicatorVisible     | Does the indicator show                                     | boolean                 | `false`              |

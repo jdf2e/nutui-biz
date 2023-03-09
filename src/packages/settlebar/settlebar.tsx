@@ -130,7 +130,7 @@ export const SettleBar: FunctionComponent<
           {
             customTotal ? customTotal : <>
               {
-                customTotalPrice ? customTotalPrice : <div>
+                customTotalPrice ? customTotalPrice : <div className={b('main-total-inner')}>
                   <span>{totalText}：</span>
                   <span>¥{total}</span>
                 </div>

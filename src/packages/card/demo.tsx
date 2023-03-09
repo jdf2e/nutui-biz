@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {CSSProperties} from 'react'
 import { Card } from './card'
 import { useTranslate } from '../../sites/assets/locale'
 
@@ -76,8 +76,12 @@ const CardDemo = () => {
     backgroundColor: '#f2f2f7',
     marginRight: '5px',
     marginTop: '3px',
-    flexShrink: 0
-  }
+    flexShrink: 0,
+    maxWidth: '100%',
+    whiteSpace: 'normal',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
+  } as CSSProperties
   return (
     <>
       <div className="demo">
@@ -100,7 +104,8 @@ const CardDemo = () => {
               style={{
                 display: 'inline-flex',
                 marginBottom: '1px',
-                flexWrap: 'wrap'
+                flexWrap: 'wrap',
+                width: '100%'
               }}
             >
               {[
@@ -156,20 +161,20 @@ const CardDemo = () => {
           price={state.price}
           shopName={state.shopName}
           bottomTpl={
-            <div style={{ fontSize: '12px', paddingBottom: '15px', textAlign: 'center' }}>{translated.customContent2}</div>
+            <div style={{ fontSize: '12px', paddingTop: '15px', paddingBottom: '15px', textAlign: 'center' }}>{translated.customContent2}</div>
           }
         />
         <h2>半行模式</h2>
         <>
           <Card
-          imageProps={{src: state.imgUrl}}
+            imageProps={{src: state.imgUrl}}
             title={state.title}
             price={state.price}
             shopName={state.shopName}
             showType="half-line"
           />
           <Card
-          imageProps={{src: state.imgUrl}}
+            imageProps={{src: state.imgUrl}}
             title={state.title}
             price={state.price}
             shopName={state.shopName}

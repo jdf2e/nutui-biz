@@ -79,6 +79,12 @@ const App = () => {
     color: '#999',
     backgroundColor: '#f2f2f7',
     marginRight: '5px',
+    marginTop: '3px',
+    flexShrink: 0,
+    maxWidth: '100%',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
   }
   return (
     <Card
@@ -92,7 +98,12 @@ const App = () => {
       prolistTpl={
         <div
           className="search_prolist_attr"
-          style={{ display: 'inline-flex', margin: '3px 0 1px', height: '15px' }}
+          style={{
+            display: 'inline-flex',
+            marginBottom: '1px',
+            flexWrap: 'wrap',
+            width: '100%'
+          }}
         >
           {['鮮活', '禮盒', '國產'].map((item) => {
             return (
