@@ -2,7 +2,6 @@ import React, {
   CSSProperties,
   FunctionComponent,
   useEffect,
-  useLayoutEffect,
   useRef,
   useState,
 } from "react";
@@ -10,6 +9,7 @@ import { IComponent } from "@/utils/typings";
 import classNames from "classnames";
 import bem from "@/utils/bem";
 import { throttle } from "@/utils/throttle";
+import { numericProp } from "@/utils/props";
 import { Swiper, SwiperItem } from "@nutui/nutui-react";
 export interface IDataItem {
   displayName: string; // 展示名称
@@ -18,11 +18,11 @@ export interface IDataItem {
 export interface QuickEnterProps extends IComponent {
   className: string;
   style: CSSProperties;
-  columns: number | string; // 一行展示几个
-  rows: number | string; // 展示几行
+  columns: numericProp; // 一行展示几个
+  rows: numericProp; // 展示几行
   data: Array<IDataItem>; // 数据展示
   slideMode: "swiper" | "slide"; // 数据展示
-  iconSize: Array<number>; // 图标大小
+  iconSize: Array<numericProp>; // 图标大小
   indicatorVisible: boolean; // 指示器是否展示
   indicatorBgColor: string; // 指示器背景颜色
   indicatorActiveColor: string; // 指示器选中颜色
@@ -31,15 +31,14 @@ export interface QuickEnterProps extends IComponent {
 
 const defaultProps = {
   iconSize: [30, 30],
-  columns: 5,
-  rows: 2,
+  columns: "5",
+  rows: "2",
   slideMode: "swiper",
   indicatorVisible: false,
   indicatorBgColor: "rgba(0, 0, 0, 0.2)",
   indicatorActiveColor: "#fa2c19",
 } as QuickEnterProps;
 
-const soleId = Math.random().toString(36).slice(-8);
 export const QuickEnter: FunctionComponent<Partial<QuickEnterProps>> = (
   props
 ) => {
@@ -70,7 +69,7 @@ export const QuickEnter: FunctionComponent<Partial<QuickEnterProps>> = (
     const screenNumber = Number(columns) * Number(rows);
     let quicks: IDataItem[][] = [];
     let index = 0;
-    while (index < data.length) {
+    while (data && index < data.length) {
       quicks.push(data.slice(index, (index += screenNumber)));
     }
     return quicks;
@@ -79,10 +78,11 @@ export const QuickEnter: FunctionComponent<Partial<QuickEnterProps>> = (
   const [contentWidth, setContentWidth] = useState(
     document.body.clientWidth || document.documentElement.clientWidth
   );
+  const wrapperRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const w = document.getElementsByClassName("nut-quick-enter-" + soleId)[0];
-    w && setContentWidth(w.clientWidth);
-  }, [document.getElementsByClassName("nut-quick-enter" + soleId)[0]]);
+    const w = (wrapperRef?.current as HTMLDivElement).clientWidth;
+    setContentWidth(w);
+  }, [wrapperRef.current]);
 
   const [init, setInit] = useState(false);
   useEffect(() => {
@@ -99,10 +99,7 @@ export const QuickEnter: FunctionComponent<Partial<QuickEnterProps>> = (
       formatIcons().length;
     const bgBarW = (barbg?.current as HTMLDivElement).offsetWidth; // 滚动条的背景长度
     const barXWidth = (barslide?.current as HTMLDivElement).offsetWidth; // 滚动条的长度
-    let moveWidth = Number(
-      document.getElementsByClassName("nut-quick-enter-scroll" + soleId)[0]
-        .scrollLeft
-    );
+    let moveWidth = (scrollviewRef?.current as HTMLDivElement).scrollLeft;
     let barMoveDistance = 0; // 移动的位置
     barMoveDistance = (bgBarW / scrollContentW) * moveWidth;
     if (barMoveDistance >= bgBarW - barXWidth) {
@@ -120,7 +117,7 @@ export const QuickEnter: FunctionComponent<Partial<QuickEnterProps>> = (
           ref={scrollviewRef}
           className={classNames([
             `${b("")}-wrapper-content`,
-            `${b("")}-scroll` + soleId,
+            `${b("")}-scroll`,
           ])}
         >
           {formatIcons().map((item, index) => {
@@ -236,7 +233,8 @@ export const QuickEnter: FunctionComponent<Partial<QuickEnterProps>> = (
 
   return (
     <div
-      className={classNames([b(), className, `${b("")}-` + soleId])}
+      ref={wrapperRef}
+      className={classNames([b(), className, `${b("")}`])}
       style={style}
       {...rest}
     >

@@ -8,7 +8,7 @@
   padding: 0 20px 20px;
   background: #eee;
 }
-.nut-biz-productfeed {
+.nb-productfeed {
   height: calc(100vh - 145px);
   width: 100%;
   padding: 0;
@@ -17,7 +17,7 @@
   &::-webkit-scrollbar { width: 0 !important }
 }
 // 商品样式
-.nut-biz-productfeedItem {
+.nb-productfeedItem {
   margin-bottom: 6px;
   .img-label {
     width: 63px;
@@ -74,7 +74,7 @@
 }
 
 .demo2 {
-  .nut-biz-productfeedItem__content {
+  .nb-productfeedItem__content {
     // margin-left: 6px;
   }
   .name-box {

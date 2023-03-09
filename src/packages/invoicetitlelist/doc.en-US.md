@@ -21,24 +21,46 @@ import  React from 'react';
 import { Toast } from '@nutui/nutui-react';
 import { InvoiceTitleList } from '@nutui/nutui-biz';
 
+export interface Idata {
+  isSelected?: boolean
+  type: string
+  status?: string
+  isShowDefault?: boolean
+  title: string
+  companyCode?: string
+  address?: string
+  companyPhone?: string
+  bankDeposit?: string
+  bankAccount?: string
+}
+
 const App = () => {
   return (
     <InvoiceTitleList 
-        data={{
-            isSelected: false,
-            type: 'special',
-            status: '通过',
-            isShowDefault: true,
-            title: '北京环球影城娱乐信息技术有限公司',
-            companyCode: '91110302MA222LU88A',
-            address: '北京市通州区台湖镇',
-            companyPhone: '88488848',
-            bankDeposit: '中国银行股份有限公司北京分行',
-            bankAccount: '5833 2153 4243 2654'
-        }}
-        onClick={() => Toast.text('触发点击事件')}
-        onEdit={() => Toast.text('触发编辑事件')}
-        onDelete={() => Toast.text('触发删除事件')}
+      data={{
+        isSelected: false,
+        type: 'special',
+        status: '通过',
+        isShowDefault: true,
+        title: '北京环球影城娱乐信息技术有限公司',
+        companyCode: '91110302MA222LU88A',
+        address: '北京市通州区台湖镇',
+        companyPhone: '88488848',
+        bankDeposit: '中国银行股份有限公司北京分行',
+        bankAccount: '5833 2153 4243 2654'
+      }}
+      onClick={(data: Idata) => {
+        Toast.text('触发点击事件')
+        console.log('data', data)
+      }}
+      onEdit={(data: Idata) => {
+        Toast.text('触发编辑事件')
+        console.log('data', data)
+      }}
+      onDelete={(data: Idata) => {
+        Toast.text('触发删除事件')
+        console.log('data', data)
+      }}
     />
   );
 };
@@ -56,24 +78,46 @@ import  React from 'react';
 import { Toast } from '@nutui/nutui-react';
 import { InvoiceTitleList } from '@nutui/nutui-biz';
 
+export interface Idata {
+  isSelected?: boolean
+  type: string
+  status?: string
+  isShowDefault?: boolean
+  title: string
+  companyCode?: string
+  address?: string
+  companyPhone?: string
+  bankDeposit?: string
+  bankAccount?: string
+}
+
 const App = () => {
   return (
     <InvoiceTitleList 
-        data={{
-            isSelected: false,
-            type: 'special',
-            status: '否决',
-            isShowDefault: true,
-            title: '北京环球影城娱乐信息技术有限公司',
-            companyCode: '91110302MA222LU88A',
-            address: '北京市通州区台湖镇',
-            companyPhone: '88488848',
-            bankDeposit: '中国银行股份有限公司北京分行',
-            bankAccount: '5833 2153 4243 2654'
-        }}
-        onClick={() => Toast.text('触发点击事件')}
-        onEdit={() => Toast.text('触发编辑事件')}
-        onDelete={() => Toast.text('触发删除事件')}
+      data={{
+        isSelected: false,
+        type: 'special',
+        status: '否决',
+        isShowDefault: true,
+        title: '北京环球影城娱乐信息技术有限公司',
+        companyCode: '91110302MA222LU88A',
+        address: '北京市通州区台湖镇',
+        companyPhone: '88488848',
+        bankDeposit: '中国银行股份有限公司北京分行',
+        bankAccount: '5833 2153 4243 2654'
+      }}
+      onClick={(data: Idata) => {
+        Toast.text('触发点击事件')
+        console.log('data', data)
+      }}
+      onEdit={(data: Idata) => {
+        Toast.text('触发编辑事件')
+        console.log('data', data)
+      }}
+      onDelete={(data: Idata) => {
+        Toast.text('触发删除事件')
+        console.log('data', data)
+      }}
     />
   );
 };
@@ -92,24 +136,46 @@ import  React from 'react';
 import { Toast } from '@nutui/nutui-react';
 import { InvoiceTitleList } from '@nutui/nutui-biz';
 
+export interface Idata {
+  isSelected?: boolean
+  type: string
+  status?: string
+  isShowDefault?: boolean
+  title: string
+  companyCode?: string
+  address?: string
+  companyPhone?: string
+  bankDeposit?: string
+  bankAccount?: string
+}
+
 const App = () => {
   return (
     <InvoiceTitleList 
-        data={{
-            isSelected: false,
-            type: 'normal',
-            status: '否决',
-            isShowDefault: true,
-            title: '北京环球影城娱乐信息技术有限公司',
-            companyCode: '91110302MA222LU88A',
-            address: '北京市通州区台湖镇',
-            companyPhone: '88488848',
-            bankDeposit: '中国银行股份有限公司北京分行',
-            bankAccount: '5833 2153 4243 2654'
-        }}
-        onClick={() => Toast.text('触发点击事件')}
-        onEdit={() => Toast.text('触发编辑事件')}
-        onDelete={() => Toast.text('触发删除事件')}
+      data={{
+        isSelected: false,
+        type: 'normal',
+        status: '否决',
+        isShowDefault: true,
+        title: '北京环球影城娱乐信息技术有限公司',
+        companyCode: '91110302MA222LU88A',
+        address: '北京市通州区台湖镇',
+        companyPhone: '88488848',
+        bankDeposit: '中国银行股份有限公司北京分行',
+        bankAccount: '5833 2153 4243 2654'
+      }}
+      onClick={(data: Idata) => {
+        Toast.text('触发点击事件')
+        console.log('data', data)
+      }}
+      onEdit={(data: Idata) => {
+        Toast.text('触发编辑事件')
+        console.log('data', data)
+      }}
+      onDelete={(data: Idata) => {
+        Toast.text('触发删除事件')
+        console.log('data', data)
+      }}
     />
   );
 };
@@ -128,24 +194,46 @@ import  React from 'react';
 import { Toast } from '@nutui/nutui-react';
 import { InvoiceTitleList } from '@nutui/nutui-biz';
 
+export interface Idata {
+  isSelected?: boolean
+  type: string
+  status?: string
+  isShowDefault?: boolean
+  title: string
+  companyCode?: string
+  address?: string
+  companyPhone?: string
+  bankDeposit?: string
+  bankAccount?: string
+}
+
 const App = () => {
   return (
     <InvoiceTitleList 
-        data={{
-            isSelected: true,
-            type: 'normal',
-            status: '否决',
-            isShowDefault: true,
-            title: '北京环球影城娱乐信息技术有限公司',
-            companyCode: '91110302MA222LU88A',
-            address: '北京市通州区台湖镇',
-            companyPhone: '88488848',
-            bankDeposit: '中国银行股份有限公司北京分行',
-            bankAccount: '5833 2153 4243 2654'
-        }}
-        onClick={() => Toast.text('触发点击事件')}
-        onEdit={() => Toast.text('触发编辑事件')}
-        onDelete={() => Toast.text('触发删除事件')}
+      data={{
+        isSelected: true,
+        type: 'normal',
+        status: '否决',
+        isShowDefault: true,
+        title: '北京环球影城娱乐信息技术有限公司',
+        companyCode: '91110302MA222LU88A',
+        address: '北京市通州区台湖镇',
+        companyPhone: '88488848',
+        bankDeposit: '中国银行股份有限公司北京分行',
+        bankAccount: '5833 2153 4243 2654'
+      }}
+      onClick={(data: Idata) => {
+        Toast.text('触发点击事件')
+        console.log('data', data)
+      }}
+      onEdit={(data: Idata) => {
+        Toast.text('触发编辑事件')
+        console.log('data', data)
+      }}
+      onDelete={(data: Idata) => {
+        Toast.text('触发删除事件')
+        console.log('data', data)
+      }}
     />
   );
 };
@@ -164,25 +252,47 @@ import  React from 'react';
 import { Toast, Button } from '@nutui/nutui-react';
 import { InvoiceTitleList } from '@nutui/nutui-biz';
 
+export interface Idata {
+  isSelected?: boolean
+  type: string
+  status?: string
+  isShowDefault?: boolean
+  title: string
+  companyCode?: string
+  address?: string
+  companyPhone?: string
+  bankDeposit?: string
+  bankAccount?: string
+}
+
 const App = () => {
   return (
     <InvoiceTitleList 
-        data={{
-            isSelected: false,
-            type: 'normal',
-            status: '否决',
-            isShowDefault: true,
-            title: '北京环球影城娱乐信息技术有限公司',
-            companyCode: '91110302MA222LU88A',
-            address: '北京市通州区台湖镇',
-            companyPhone: '88488848',
-            bankDeposit: '中国银行股份有限公司北京分行',
-            bankAccount: '5833 2153 4243 2654'
-        }}
-        onClick={() => Toast.text('触发点击事件')}
-        onEdit={() => Toast.text('触发编辑事件')}
-        onDelete={() => Toast.text('触发删除事件')}
-        otherOperate = {<Button onClick={() => Toast.success('同步成功')}>同步到电子发票</Button>}
+      data={{
+        isSelected: false,
+        type: 'normal',
+        status: '否决',
+        isShowDefault: true,
+        title: '北京环球影城娱乐信息技术有限公司',
+        companyCode: '91110302MA222LU88A',
+        address: '北京市通州区台湖镇',
+        companyPhone: '88488848',
+        bankDeposit: '中国银行股份有限公司北京分行',
+        bankAccount: '5833 2153 4243 2654'
+      }}
+      onClick={(data: Idata) => {
+        Toast.text('触发点击事件')
+        console.log('data', data)
+      }}
+      onEdit={(data: Idata) => {
+        Toast.text('触发编辑事件')
+        console.log('data', data)
+      }}
+      onDelete={(data: Idata) => {
+        Toast.text('触发删除事件')
+        console.log('data', data)
+      }}
+      otherOperate = {<Button onClick={() => Toast.success('同步成功')}>同步到电子发票</Button>}
     />
   );
 };
@@ -201,6 +311,19 @@ import  React from 'react';
 import { Toast } from '@nutui/nutui-react';
 import { InvoiceTitleList } from '@nutui/nutui-biz';
 
+export interface Idata {
+  isSelected?: boolean
+  type: string
+  status?: string
+  isShowDefault?: boolean
+  title: string
+  companyCode?: string
+  address?: string
+  companyPhone?: string
+  bankDeposit?: string
+  bankAccount?: string
+}
+
 const App = () => {
   return (
     <InvoiceTitleList 
@@ -218,7 +341,10 @@ const App = () => {
       }}
       isShowEdit = {false}
       isShowOperate = {false}
-      onClick={() => Toast.text('触发点击事件')}
+      onClick={(data: Idata) => {
+        Toast.text('触发点击事件')
+        console.log('data', data)
+      }}
     />
   );
 };
@@ -259,8 +385,25 @@ export default App;
 ### Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
-| onClick | 点击时触发 |  event: MouseEvent |
-| onEdit | 编辑时触发 |  event: MouseEvent |
-| onDelete | 删除时触发 |  event: MouseEvent |
+| onClick | 点击时触发 |  data: Idata |
+| onEdit | 编辑时触发 |  data: Idata |
+| onDelete | 删除时触发 |  data: Idata |
 
 
+
+### Idata 
+
+| 字段    | 说明                                       | 类型    | 
+|---------|--------------------------------------------|---------|
+| isSelected   | 是否是选中状态                                | boolean |
+| type   | 发票类型，可选`增值税专用发票`和`电子普通发票`            | string  | 
+| status   | 发票状态，仅限`增值税专用发票`            | string  | 
+| isShowDefault   | 是否显示默认标识            | boolean  | 
+| title   | 发票抬头名称            | string  | 
+| companyCode   | 纳税人识别号            | string  | 
+| address   | 注册地址            | string  | 
+| companyPhone   | 公司电话            | string  | 
+| bankDeposit   | 开户行            | string  | 
+| bankAccount   | 银行账户            | string  | 
+| isDelete   | 是否可删除            | boolean  | 
+| isEdit   | 是否可编辑            | boolean  | 

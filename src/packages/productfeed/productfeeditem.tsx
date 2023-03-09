@@ -3,15 +3,17 @@ import React, {
 } from 'react'
 import { Image } from '@nutui/nutui-react';
 
-import bem from '@/utils/bem'
+import {cn2} from '@/utils/bem'
 import Unit from '@/utils/unit'
 import { errorImg } from '@/utils'
+import {numericProp} from '@/utils/props'
 
 export interface ProductFeedItemProps {
+  index: number
   data: Array<any>
-  col: number | string
-  padding: number | string
-  borderRadius: number | string
+  col: numericProp
+  padding: numericProp
+  borderRadius: numericProp
   imgUrl: string
   imgWidth: string
   imgHeight: string
@@ -19,8 +21,8 @@ export interface ProductFeedItemProps {
   isImageLazy: boolean
   loadingImg: string
   errorImg: string
-  onClick: (item: any) => void
-  onImageClick: (item: any) => void
+  onClick: (item: object, number: number) => void
+  onImageClick: (item: object, number: number) => void
 }
 
 const defaultProps = {
@@ -45,6 +47,7 @@ export const ProductFeedItem: FunctionComponent<
     style,
     children,
     data,
+    index,
     col,
     padding,
     borderRadius,
@@ -63,7 +66,7 @@ export const ProductFeedItem: FunctionComponent<
     ...props,
   }
 
-  const b = bem("biz-productfeedItem")
+  const b = cn2('productfeedItem')
 
   const itemStyle = () => {
     return {
@@ -79,11 +82,11 @@ export const ProductFeedItem: FunctionComponent<
   }
 
   const handleClick = () => {
-    onClick(data);
+    onClick(data, index);
   };
 
   const handleImageClick = (event: any) => {
-    onImageClick(data);
+    onImageClick(data, index);
     event.stopPropagation();
   };
 

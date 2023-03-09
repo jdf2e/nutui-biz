@@ -10,7 +10,6 @@ interface T {
   customPro3: string
   title: string
   customShop: string
-  customFooter: string
   customContent: string
   desc: string
   delivery: string
@@ -27,7 +26,6 @@ const CardDemo = () => {
       title:
         '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
       customShop: '自定义店铺介绍',
-      customFooter: '自定义右下角内容',
       customContent: '自定义',
       desc: '自营',
       delivery: '厂商配送',
@@ -42,7 +40,6 @@ const CardDemo = () => {
       title:
         '【活蟹】湖塘煙雨 陽澄湖大閘蟹公4.5兩 母3.5兩 4對8只 鮮活生鮮螃蟹現貨水產禮盒海鮮水',
       customShop: '自定義店鋪介紹',
-      customFooter: '自定義右下角內容',
       customContent: '自定義',
       desc: '自營',
       delivery: '廠商配送',
@@ -56,7 +53,6 @@ const CardDemo = () => {
       customPro3: 'tag',
       title: 'title',
       customShop: 'Custom Content',
-      customFooter: 'Customize bottom right content',
       customContent: 'custom',
       desc: 'desc',
       delivery: 'delivery',
@@ -90,7 +86,13 @@ const CardDemo = () => {
     color: '#999',
     backgroundColor: '#f2f2f7',
     marginRight: '5px',
-  }
+    marginTop: '3px',
+    flexShrink: 0,
+    maxWidth: '100%',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
+  } as CSSProperties
   return (
     <>
       <div className="demo">
@@ -118,8 +120,9 @@ const CardDemo = () => {
               className="search_prolist_attr"
               style={{
                 display: 'inline-flex',
-                margin: '3px 0 1px',
-                height: '15px',
+                marginBottom: '1px',
+                flexWrap: 'wrap',
+                width: '100%'
               }}
             >
               {[
@@ -163,19 +166,6 @@ const CardDemo = () => {
           delivery={state.delivery}
           shopName={state.shopName}
           shopTagTpl={<div>{translated.customShop}</div>}
-        />
-        <h2>{translated.customFooter}</h2>
-        <Card
-          imgUrl={state.imgUrl}
-          title={state.title}
-          price={state.price}
-          vipPrice={state.vipPrice}
-          shopDesc={state.shopDesc}
-          delivery={state.delivery}
-          shopName={state.shopName}
-          footerTpl={
-            <div style={{ fontSize: '12px' }}>{translated.customContent}</div>
-          }
         />
       </div>
     </>

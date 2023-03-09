@@ -91,16 +91,6 @@
         display: flex;
         flex-wrap: wrap;
 
-        &.fixed-height {
-            height: 65px;
-            overflow: hidden;
-        }
-
-        .recent-tags-arrow {
-            position: absolute;
-            bottom: -10px;
-        }
-
         a {
             max-width: 100%;
             margin-right: 10px;

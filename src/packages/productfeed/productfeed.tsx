@@ -1,16 +1,17 @@
 import React, {
-  FunctionComponent, ReactNode
+  FunctionComponent, ReactNode, useEffect, useState
 } from "react"
-import { Infiniteloading, InfiniteloadingProps } from "@nutui/nutui-react";
+import { Infiniteloading } from "@nutui/nutui-react";
 import { IComponent } from "@/utils/typings"
 
 import classNames from "classnames"
-import bem from "@/utils/bem"
+import {cn2} from '@/utils/bem'
+import { ProductFeedItem } from "./productfeeditem"
+import {numericProp} from '@/utils/props'
 
 export interface ProductFeedProps extends IComponent {
-  leftProduct: () => ReactNode
-  rightProduct: () => ReactNode
-  infiniteloadingProps: Partial<InfiniteloadingProps>
+  customProduct: (item: any) => ReactNode
+  data: any // Array<any>
   // 是否还有更多数据
   hasMore: boolean
   // 在 useWindow 属性为 false 的时候，自定义设置节点ID
@@ -33,6 +34,21 @@ export interface ProductFeedProps extends IComponent {
   onLoadMore: (param: () => void) => void
   // 下拉刷新事件回调
   onRefresh: (param: () => void) => void
+  // 实时监听滚动高度
+  onScrollChange: () => void
+  col: numericProp
+  padding: numericProp
+  borderRadius: numericProp
+  imgUrl: string
+  imgWidth: string
+  imgHeight: string
+  imgTag: ReactNode
+  isImageLazy: boolean
+  loadingImg: string
+  errorImg: string
+  onClick: (item: object, number: number) => void
+  onImageClick: (item: object, number: number) => void
+
 }
 
 const defaultProps = {
@@ -41,18 +57,29 @@ const defaultProps = {
   loadMoreTxt: "哎呀，这里是底部了啦",
   loadTxt: "加载中...",
   isOpenRefresh: false,
-  pullTxt: "松手刷新"
+  pullTxt: "松手刷新",
+  data: [],
+  col: 2,
+  padding: '10px',
+  borderRadius: '8px',
+  imgWidth: '150px',
+  imgHeight: '150px',
+  isImageLazy: true,
+  loadingImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
+  errorImg: '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png',
+  // onClick: () => { },
+  // onImageClick: () => { }
 } as ProductFeedProps
 
 export const ProductFeed: FunctionComponent<
-  Partial<ProductFeedProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<ProductFeedProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const {
     className,
     style,
     children,
-    leftProduct,
-    rightProduct,
+    data,
+    customProduct,
     hasMore,
     containerId,
     useWindow,
@@ -64,13 +91,66 @@ export const ProductFeed: FunctionComponent<
     pullTxt,
     onLoadMore,
     onRefresh,
-    infiniteloadingProps,
+    onScrollChange,
+    col,
+    padding,
+    borderRadius,
+    imgUrl,
+    imgWidth,
+    imgHeight,
+    imgTag,
+    isImageLazy,
+    loadingImg,
+    errorImg,
+    onClick,
+    onImageClick,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
-  const b = bem("biz-productfeed")
+
+  const b = cn2('productfeed')
+
+  const  [listLeft, setListLeft] = useState([] as any)
+  const  [listRight, setListRight] = useState([] as any)
+
+  const productItem = (item: any, index: number)=>{
+    return (
+      <ProductFeedItem
+        key={item.id}
+        index={index}
+        data={item}
+        col={col}
+        imgUrl={item.imgUrl}
+        imgWidth={imgWidth}
+        imgHeight={imgHeight}
+        imgTag={imgTag}
+        onClick={onClick}
+        onImageClick={onImageClick}
+      >
+        {customProduct(item)}
+      </ProductFeedItem>
+    )
+  }
+
+  const init = () => {
+    const leftLen = listLeft.length
+    const rightLen = listRight.length
+
+    if (listLeft.length >= data.length/2 && listRight.length >= data.length/2) {
+    } else {
+      for (let i = leftLen + rightLen; i < (leftLen + rightLen + 6 > data.length ? data.length : leftLen + rightLen + 6) ; i++) {
+        i % 2 == 0 ? listLeft.push(data[i]) : listRight.push(data[i])
+      }
+      setListLeft([...listLeft])
+      setListRight([...listRight])
+    }
+  }
+
+  useEffect(() => {
+    col == 2 && init();
+  }, [data])
 
   return (
     <div className={classNames([b(), className])} style={style} {...rest}>
@@ -86,16 +166,30 @@ export const ProductFeed: FunctionComponent<
         pullTxt={pullTxt}
         onLoadMore={onLoadMore}
         onRefresh={onRefresh}
-        // {...infiniteloadingProps}
+        onScrollChange={onScrollChange}
       >
         <div className={b("main")}>
-          {children ? children :
+        { col == 1 ? 
+            data.map((item: any, index: number)=> {
+              return (
+                productItem(item, index)
+              )
+            }) 
+          :
             <>
               <div className={b("left")}>
-                {leftProduct()}
+                { listLeft.map((item: any, index: number)=> {
+                  return (
+                    productItem(item, index)
+                  )
+                }) }
               </div>
               <div className={b("right")}>
-                {rightProduct()}
+                { listRight.map((item: any, index: number)=> {
+                  return (
+                    productItem(item, index)
+                  )
+                }) }
               </div>
             </>
           }

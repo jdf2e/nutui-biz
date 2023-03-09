@@ -449,19 +449,20 @@ export default App;
 |----------- | --------------- | -------------------|
 | onLoadMore | 继续加载的回调函数 |  done 函数，用于关闭加载中状态 |
 | onRefresh  | 下拉刷新事件回调   |  done 函数，用于关闭加载中状态 |
+| onScrollChange  | 实时监听滚动高度   |  滚动高度 |
 
 ### ProductFeedItem Props
 
 | 字段         | 说明                     | 类型              | 默认值  |
 |-------------|--------------------------|------------------|--------|
-| data        | 商品数据                  | Array    | -  |
+| data        | 商品数据                  | Array            | -  |
 | col         | 每行商品数量               | number \| string | `2`    |
 | padding     | 商品内边距，默认单位 `px`   | number \| string  | `10px`  |
 | borderRadius | 商品圆角，默认单位 `px`    | number \| string  | `8px`  |
 | imgUrl      | 商品图片Url                | string           | -     |
 | imgWidth    | 商品图片宽度，默认单位 `px`  | string           | -     |
 | imgHeight   | 商品图片高度，默认单位 `px`  | string           | `150px` |
-| imgTag      | 商品图片标签               | imgTag           | -      |
+| imgTag      | 商品图片标签               | ReactNode           | -      |
 | isImageLazy | 是否开启商品图片懒加载       | boolean         | `true` |
 | loadingImg  | 商品图片加载时的图片        | string           | -      |
 | errorImg    | 商品图片错误时的图片        | string           | -      |
@@ -469,5 +470,5 @@ export default App;
 ### ProductFeedItem Events
 | 字段      | 说明      | 回调参数        |
 |--------- | -------- | ---------------|
-| onClick  | 点击时触发 | data |
-| onImageClick  | 点击商品图片时触发 | data |
+| onClick  | 点击时触发 | item, index |
+| onImageClick  | 点击商品图片时触发 | item, index |

@@ -79,6 +79,12 @@ const App = () => {
     color: '#999',
     backgroundColor: '#f2f2f7',
     marginRight: '5px',
+    marginTop: '3px',
+    flexShrink: 0,
+    maxWidth: '100%',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
   }
   return (
     <Card
@@ -92,7 +98,12 @@ const App = () => {
       prolistTpl={
         <div
           className="search_prolist_attr"
-          style={{ display: 'inline-flex', margin: '3px 0 1px', height: '15px' }}
+          style={{
+            display: 'inline-flex',
+            marginBottom: '1px',
+            flexWrap: 'wrap',
+            width: '100%'
+          }}
         >
           {['鮮活', '禮盒', '國產'].map((item) => {
             return (
@@ -200,45 +211,6 @@ export default App;
 
 :::
 
-### 自定義右下角內容
-
-:::demo
-
-```ts
-import  React from 'react';
-import { Price, Tag } from '@nutui/nutui-react';
-import { Card } from '@nutui/nutui-biz';
-
-const App = () => {
-  const state = {
-    imgUrl:
-      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title: '【活蟹】湖塘煙雨 陽澄湖大閘蟹公4.5兩 母3.5兩 4對8只 鮮活生鮮螃蟹現貨水產禮盒海鮮水',
-    price: '388',
-    vipPrice: '378',
-    shopDesc: '自營',
-    delivery: '廠商配送',
-    shopName: '陽澄湖大閘蟹自營店>',
-  }
-  
-  return (
-    <Card
-      imgUrl={state.imgUrl}
-      title={state.title}
-      price={state.price}
-      vipPrice={state.vipPrice}
-      shopDesc={state.shopDesc}
-      delivery={state.delivery}
-      shopName={state.shopName}
-      footerTpl={<div style={{ fontSize: '12px' }}>自定義</div>}
-    />
-  );
-};
-export default App;
-```
-
-:::
-
 ### 自定義底部內容
 
 :::demo
@@ -337,7 +309,6 @@ export default App;
 | priceTpl   | 价格自定义内容 | React.ReactNode  | -      |
 | originTpl   | 價格後方自定義內容| React.ReactNode  | -      |
 | shopTagTpl   | 店鋪介紹自定義| React.ReactNode  | -      |
-| footerTpl   | 右下角內容自定義| React.ReactNode  | -      |
 | showType   | 展示形式，可選：`full-line`、`half-line`| String  | `full-line`      |
 | bottomTpl   | 底部內容自定義 | React.ReactNode  | -      |
 | infotpl   | 信息內容自定義 | React.ReactNode  | -      |

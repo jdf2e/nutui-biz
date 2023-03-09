@@ -64,8 +64,15 @@
       }
 
       .nut-price {
+        @include text-ellipsis;
+
         .nut-price__big {
           font-size: 18px;
+        }
+        .nut-price__symbol, 
+        .nut-price__integer, 
+        .nut-price__decimal {
+          display: inline;
         }
         .nut-price__symbol,
         .nut-price__point,
@@ -83,6 +90,15 @@
         color: #999;
         font-size: 12px;
         padding-top: 4px;
+        width: 100%;
+
+        span {
+          @include text-ellipsis;
+          display: inline-block;
+          max-width: 90%;
+          vertical-align: -5px;
+          margin-right: 5px;
+        }
       }
     }
   }

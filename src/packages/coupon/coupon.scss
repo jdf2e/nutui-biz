@@ -3,11 +3,11 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.nut-biz-coupon__box {
+.nb-coupon__box {
   display: flex;
   background-size: 100% 100%;
   position: relative;
-  .nut-biz-coupon__main {
+  .nb-coupon__main {
     position: relative;
     display: flex;
     padding: 16px;
@@ -41,13 +41,13 @@
       right: 7px;
     }
   }
-  .nut-biz-coupon__btns {
+  .nb-coupon__btns {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .nut-biz-coupon__label {
+  .nb-coupon__label {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -63,9 +63,9 @@
     @include ellipsis;
   }
 }
-.nut-biz-coupon__box--small {
+.nb-coupon__box--small {
   height: 81px;
-  .nut-biz-coupon__main {
+  .nb-coupon__main {
     color: red;
     flex-direction: column;
     text-align: center;
@@ -99,7 +99,7 @@
       }
     }
   }
-  .nut-biz-coupon__btns {
+  .nb-coupon__btns {
     &-vertcal {
       display: flex;
       align-items: center;
@@ -109,7 +109,7 @@
       color: red;
     }
   }
-  .nut-biz-coupon__label {
+  .nb-coupon__label {
     background: red;
     color: #fff;
   }

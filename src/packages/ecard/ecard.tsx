@@ -82,23 +82,23 @@ export const Ecard: FunctionComponent<
   const [cardAmount, setCardAmount] = useState(cardAmountMin);
   const [money, setMoney] = useState<number>(accurateMultiply(dataList[0].price, 1))
   const listItemWidth = rowNum ? Number((96 / rowNum).toFixed(0)) : 48
-
+  const getTotalPrice = () => {
+    let total = 0
+    if (!currentPrice && !customValue) total = 0
+    if (currentIndex >= 0 && cardAmount && currentPrice) total = accurateMultiply(currentPrice, cardAmount)
+    if (customValue && currentIndex === -1 && cardAmount) total = accurateMultiply(customValue, cardAmount)
+    return handleMoney ? handleMoney(total) : total
+  }
   useEffect(() => {
-    const getTotalPrice = () => {
-      if (!currentPrice && !customValue) return 0
-      if (currentIndex >= 0 && cardAmount && currentPrice) return accurateMultiply(currentPrice, cardAmount)
-      if (customValue && currentIndex === -1 && cardAmount) return accurateMultiply(customValue, cardAmount)
-      return 0
-    }
-    const realMoney = handleMoney ? handleMoney(getTotalPrice()) : getTotalPrice()
-    setMoney(realMoney)
+    setMoney(getTotalPrice())
   }, [currentIndex, currentPrice, cardAmount, customValue])
 
   const handleClick = (item: DataListItem, index: number) => {
+    const { price } = item
     setCurrentIndex(index)
-    setCurrentPrice(item.price)
+    setCurrentPrice(price)
     setCustomValue('')
-    onChange && onChange(item, money);
+    onChange && onChange(item, handleMoney?.(accurateMultiply(price, cardAmount)));
   };
 
   const handleInputClick = () => {
@@ -115,14 +115,14 @@ export const Ecard: FunctionComponent<
     }
     setCurrentPrice(0)
     setCustomValue(inputValueCache)
-    onChangeInput && onChangeInput(inputValueCache, money);
+    onChangeInput && onChangeInput(inputValueCache, handleMoney?.(accurateMultiply(inputValueCache, cardAmount)));
   };
 
   const handleChangeStep = (
     param: string | number,
   ) => {
     setCardAmount(Number(param))
-    onChangeStep && onChangeStep(+param, currentPrice || Number(customValue), money);
+    onChangeStep && onChangeStep(+param, currentPrice || Number(customValue), handleMoney?.(accurateMultiply(param, currentPrice || Number(customValue))));
   };
 
   return (

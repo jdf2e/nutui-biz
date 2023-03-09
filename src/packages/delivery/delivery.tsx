@@ -6,7 +6,7 @@ import React, {
   useEffect,
   useRef
 } from 'react'
-import bem from '@/utils/bem'
+import { cn2 } from '@/utils/bem'
 import { Popup, Radio, Button } from '@nutui/nutui-react'
 
 import DeliveryDate from '@/packages/deliverydate'
@@ -80,7 +80,7 @@ export const Delivery: FunctionComponent<
     ...props,
   }
 
-  const b = bem('delivery')
+  const b = cn2('delivery')
 
   const [deliveryType, setDeliveryType] = useState(defaultDeliveryType);
   const [deliveryTime, setDeliveryTime] = useState(''); // 送货/安装/其他时间的默认选中
@@ -125,7 +125,7 @@ export const Delivery: FunctionComponent<
               if (currentDeliveryTime) {
                 setTimeDate((item as DateTimeType).label);
                 setDeliveryTime(deliveryDateData[i].label);
-                setSelectedItem({ ...item as DateTimeType, children: [currentDeliveryTime]});
+                setSelectedItem({ ...item as DateTimeType, children: [currentDeliveryTime] });
                 break;
               }
             }
@@ -144,7 +144,7 @@ export const Delivery: FunctionComponent<
                 if (currentDeliveryTime) {
                   setAccurateTimeDate((item as DateTimeAccurateType).label);
                   setDeliveryTime(deliveryDateData[i].label);
-                  setSelectedItem({ ...item as DateTimeType, children: [{...{ ...(item as DateTimeType)?.children[k], children: [{...currentDeliveryTime}] }}]});
+                  setSelectedItem({ ...item as DateTimeType, children: [{ ...{ ...(item as DateTimeType)?.children[k], children: [{ ...currentDeliveryTime }] } }] });
                   break;
                 }
               }
@@ -166,13 +166,13 @@ export const Delivery: FunctionComponent<
   }
 
   const getSelectContainerHeight = () => {
-    // 基础组件问题：https://github.com/jdf2e/nutui-react/issues/763，使用setTimeout先处理下
+    // 基础组件问题：https://github.com/jdf2e/nutui-react/issues/763，使用setTimeout处理下
     setTimeout(() => {
       if (selectRef.current && deliveryDateData && deliveryDateData.length) {
         (selectRef.current as HTMLDivElement).style.height =
           `calc(100% - ${titleRef.current?.offsetHeight}px - ${contentRef.current?.offsetHeight}px - ${buttonRef.current?.offsetHeight}px)`;
       }
-    }, 100);
+    }, 0);
   }
 
   const getDeliveryTypeItem = (label: string) => {

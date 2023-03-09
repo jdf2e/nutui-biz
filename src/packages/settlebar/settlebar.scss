@@ -1,4 +1,5 @@
 @import '../../styles/base.scss';
+@import '../../styles/mixins/text-ellipsis.scss';
 
 .nb-settle-bar {
     position: fixed;
@@ -46,6 +47,7 @@
 
         &-select-all {
             margin-right: 12px;
+            flex-shrink: 0;
         }
     
         &-total {
@@ -54,12 +56,9 @@
             flex-direction: column;
             margin-right: 12px;
 
-            &-main {
-                font-size: 16px;
-            }
-
-            &-tip {
-                font-size: 12px;
+            &-inner {
+                max-width: 120px;
+                @include text-ellipsis();
             }
         }
 
@@ -84,6 +83,7 @@
             height: 38px;
             width: 113px;
             cursor: pointer;
+            flex-shrink: 0;
     
             &.disabled {
                 opacity: .3;

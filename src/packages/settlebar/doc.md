@@ -25,7 +25,7 @@ const App = () => {
   return (
     <SettleBar
       total={100}
-      onSettle ={() => Toast.text('点击按钮')}
+      onClickButton ={() => Toast.text('点击按钮')}
     />
   );
 };
@@ -48,7 +48,7 @@ const App = () => {
     <SettleBar 
       total={100}
       totalAlign="left"
-      onSettle ={() => Toast.text('点击按钮')}
+      onClickButton ={() => Toast.text('点击按钮')}
     />
   );
 };
@@ -119,7 +119,7 @@ const App = () => {
       showZero={false} 
       totalText="总计" 
       settleButtonText="提交订单" 
-      onSettle ={() => Toast.text('点击按钮')}
+      onClickButton ={() => Toast.text('点击按钮')}
     />
   );
 };
@@ -129,7 +129,7 @@ export default App;
 
 :::
 
-### 去结算数量和单位
+### 去结算数量
 
 :::demo
 
@@ -143,8 +143,7 @@ const App = () => {
     <SettleBar 
       total={100}
       settleCount="100" 
-      settleUnit="个" 
-      onSettle ={() => Toast.text('点击按钮')}
+      onClickButton ={() => Toast.text('点击按钮')}
     />
   );
 };
@@ -168,7 +167,7 @@ const App = () => {
     <SettleBar 
       total={100}
       customTotalExtra={<div style={{fontSize: '12px'}}>已减 ¥30.00</div>} 
-      onSettle ={() => Toast.text('点击按钮')}
+      onClickButton ={() => Toast.text('点击按钮')}
     />
   );
 };
@@ -196,7 +195,7 @@ const App = () => {
     <SettleBar 
       total={100}
       customWarning={customWarningHtml()} 
-      onSettle ={() => Toast.text('点击按钮')}
+      onClickButton ={() => Toast.text('点击按钮')}
     />
   );
 };
@@ -217,8 +216,7 @@ export default App;
 | total   | 合计价格                                 | number \| string | 0         |
 | totalText     | 合计文案                   | string  | `合计`    |
 | totalAlign | 合计区域对齐方式，可选值：`left`、`right`                       | string  | `right`      |
-| settleCount     | 结算数量                               | number | 0    |
-| settleUnit  | 结算单位                                  | string | -    |
+| settleCount     | 结算数量                               | number \| string | 0    |
 | settleButtonText     | 结算按钮文案 | string  | `去结算`     |
 | disabled   | 结算按钮是否置灰| boolean  | `false`      |
 | loading   | 结算按钮是否加载中| boolean  | `false`      |
@@ -231,11 +229,11 @@ export default App;
 | customTotalPrice | 合计价格内容自定义 | ReactNode  | -          |
 | customTotalExtra | 合计额外区域自定义 | ReactNode  | -          |
 | customButton | 按钮内容自定义 | ReactNode  | -          |
+| isCheckedAll | 全选按钮是否选中 | boolean  | `false`      |
 
 
 ### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
-| onSelectAll | 全选按钮点击事件 |  event: Event |
-| onSettle | 去结算按钮点击事件 |  event: Event |
-| onDelete | 删除事件，isEdit 为 true 时生效 |  event: Event |
+| onSelectAll | 全选按钮点击事件 |  checked |
+| onClickButton | 按钮点击事件 |  - |

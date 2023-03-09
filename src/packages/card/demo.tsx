@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {CSSProperties} from 'react'
 import { Card } from './card'
 import { useTranslate } from '../../sites/assets/locale'
 
@@ -11,7 +11,6 @@ interface T {
   title: string
   customShop: string
   customPriceIcon: string
-  customFooter: string
   customBottom: string
   customContent: string
   customContent2: string
@@ -29,11 +28,10 @@ const CardDemo = () => {
         '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
       customShop: '自定义店铺介绍',
       customPriceIcon: '价格后自定义标签',
-      customFooter: '自定义右下角内容',
       customBottom: '自定义底部内容',
       customContent: '自定义',
       customContent2: '自定义促销信息等',
-      shopName: '阳澄湖大闸蟹自营店>',
+      shopName: '阳澄湖大闸蟹自营店',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -44,11 +42,10 @@ const CardDemo = () => {
       title: 'title',
       customShop: 'Custom Content',
       customPriceIcon: 'Price after custom tag',
-      customFooter: 'Customize bottom right content',
       customBottom: 'Customize bottom content',
       customContent: 'custom',
       customContent2: 'Customize promotional information, etc.',
-      shopName: 'shopName>',
+      shopName: 'shopName',
     },
   })
   const state = {
@@ -76,8 +73,12 @@ const CardDemo = () => {
     backgroundColor: '#f2f2f7',
     marginRight: '5px',
     marginTop: '3px',
-    flexShrink: 0
-  }
+    flexShrink: 0,
+    maxWidth: '100%',
+    whiteSpace: 'normal',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
+  } as CSSProperties
   return (
     <>
       <div className="demo">
@@ -100,7 +101,8 @@ const CardDemo = () => {
               style={{
                 display: 'inline-flex',
                 marginBottom: '1px',
-                flexWrap: 'wrap'
+                flexWrap: 'wrap',
+                width: '100%'
               }}
             >
               {[
@@ -139,16 +141,6 @@ const CardDemo = () => {
           shopName={state.shopName}
           productTagsTpl={<div>{translated.customShop}</div>}
         />
-        <h2>{translated.customFooter}</h2>
-        <Card
-          imageProps={{src: state.imgUrl}}
-          title={state.title}
-          price={state.price}
-          shopName={state.shopName}
-          footerTpl={
-            <div style={{ fontSize: '12px' }}>{translated.customContent}</div>
-          }
-        />
         <h2>{translated.customBottom}</h2>
         <Card
           imageProps={{src: state.imgUrl}}
@@ -156,20 +148,20 @@ const CardDemo = () => {
           price={state.price}
           shopName={state.shopName}
           bottomTpl={
-            <div style={{ fontSize: '12px', paddingBottom: '15px', textAlign: 'center' }}>{translated.customContent2}</div>
+            <div style={{ fontSize: '12px', paddingTop: '15px', paddingBottom: '15px', textAlign: 'center' }}>{translated.customContent2}</div>
           }
         />
         <h2>半行模式</h2>
         <>
           <Card
-          imageProps={{src: state.imgUrl}}
+            imageProps={{src: state.imgUrl}}
             title={state.title}
             price={state.price}
             shopName={state.shopName}
             showType="half-line"
           />
           <Card
-          imageProps={{src: state.imgUrl}}
+            imageProps={{src: state.imgUrl}}
             title={state.title}
             price={state.price}
             shopName={state.shopName}

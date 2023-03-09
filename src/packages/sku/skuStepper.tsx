@@ -36,7 +36,7 @@ export const SkuStepper: FunctionComponent<
     stepperTitle = '购买数量',
     onAdd,
     onReduce,
-    onOverLimit,
+    onOverLimit = () => {},
     handleStepper
   } = {
     ...props,
@@ -49,8 +49,6 @@ export const SkuStepper: FunctionComponent<
   }, [])
 
   const handleAdd = (value: any) => {
-    console.log('value', value);
-    
     onAdd && onAdd(value)
   }
 
@@ -59,7 +57,7 @@ export const SkuStepper: FunctionComponent<
   }
 
   const handleOverLimit = () => {
-    onOverLimit && onOverLimit()
+    onOverLimit()
   }
 
   const handleChangeFuc = (value: any) => {

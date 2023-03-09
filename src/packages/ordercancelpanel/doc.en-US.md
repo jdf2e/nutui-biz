@@ -25,27 +25,27 @@ import { OrderCancelPanel } from "@nutui/nutui-biz";
 const App = () => {
   const cancelReason = [
     {
-      key: "resons1",
+      key: "reasons1",
       value: "No goods",
     },
     {
-      key: "resons2",
+      key: "reasons2",
       value: "Delivery time problem",
     },
     {
-      key: "resons3",
+      key: "reasons3",
       value: "do not want goods",
     },
     {
-      key: "resons4",
+      key: "reasons4",
       value: "Wrong goods selected",
     },
     {
-      key: "resons5",
+      key: "reasons5",
       value: "Incorrect address information",
     },
     {
-      key: "resons6",
+      key: "reasons6",
       value: "Commodity price reduction",
     },
   ];
@@ -106,27 +106,27 @@ const App = () => {
   ];
   const cancelReason = [
     {
-      key: "resons1",
+      key: "reasons1",
       value: "No goods",
     },
     {
-      key: "resons2",
+      key: "reasons2",
       value: "Delivery time problem",
     },
     {
-      key: "resons3",
+      key: "reasons3",
       value: "do not want goods",
     },
     {
-      key: "resons4",
+      key: "reasons4",
       value: "Wrong goods selected",
     },
     {
-      key: "resons5",
+      key: "reasons5",
       value: "Incorrect address information",
     },
     {
-      key: "resons6",
+      key: "reasons6",
       value: "Commodity price reduction",
     },
   ];
@@ -158,7 +158,7 @@ const App = () => {
           popupTitle={popupTitleMemo}
           canCancelReason={true}
           tipsTitle="Refund reason"
-          btnsText="confirm"
+          submitText="confirm"
           warmTips={warmTips}
           cancelReason={cancelReason}
           buttonProps={buttonProps}
@@ -195,27 +195,27 @@ const App = () => {
   ];
   const cancelReason = [
     {
-      key: "resons1",
+      key: "reasons1",
       value: "No goods",
     },
     {
-      key: "resons2",
+      key: "reasons2",
       value: "Delivery time problem",
     },
     {
-      key: "resons3",
+      key: "reasons3",
       value: "do not want goods",
     },
     {
-      key: "resons4",
+      key: "reasons4",
       value: "Wrong goods selected",
     },
     {
-      key: "resons5",
+      key: "reasons5",
       value: "Incorrect address information",
     },
     {
-      key: "resons6",
+      key: "reasons6",
       value: "Commodity price reduction",
     },
     {
@@ -262,7 +262,7 @@ const App = () => {
           popupTitle={popupTitleMemo}
           canCancelReason={true}
           tipsTitle="reminder"
-          btnsText="confirm"
+          submitText="confirm"
           warmTips={warmTips}
           cancelReason={cancelReason}
           buttonProps={buttonProps}
@@ -285,20 +285,20 @@ export default App;
 
 ### Props
 
-| Attribute       | Description                                          | Type                 | Default  |
-| --------------- | ---------------------------------------------------- | -------------------- | -------- |
-| showCancelPanel | Whether to display or cancel the order pop-up window | Boolean              | `false`  |
-| warmTips        | Warm prompt content, no prompt content               | Array<string>        | --       |
-| cancelReason    | Reason for cancellation                              | Array<IResonsObject> | --       |
-| canCancelReason | Click again to cancel the selected reason            | Boolean              | `false`  |
-| popupTitle      | Main title of pop-up window                          | ReactNode            | --       |
-| reasonTitle     | Title of cancellation reason                         | ReactNode            | --       |
-| btnsText        | Popup Button content                                 | string               | `submit` |
-| tipsTitle       | Warm prompt title                                    | string               | --       |
-| buttonProps     | Props of button components                           | ButtonProps          | --       |
-| textAreaProps   | props of TextAre                                     | TextAreaProps        | --       |
+| Attribute       | Description                                          | Type                  | Default  |
+| --------------- | ---------------------------------------------------- | --------------------- | -------- |
+| showCancelPanel | Whether to display or cancel the order pop-up window | Boolean               | `false`  |
+| warmTips        | Warm prompt content, no prompt content               | Array<string>         | --       |
+| cancelReason    | Reason for cancellation                              | Array<IreasonsObject> | --       |
+| canCancelReason | Click again to cancel the selected reason            | Boolean               | `false`  |
+| popupTitle      | Main title of pop-up window                          | ReactNode             | --       |
+| reasonTitle     | Title of cancellation reason                         | ReactNode             | --       |
+| submitText      | Popup Button content                                 | string                | `submit` |
+| tipsTitle       | Warm prompt title                                    | string                | --       |
+| buttonProps     | Props of button components                           | ButtonProps           | --       |
+| textAreaProps   | props of TextAre                                     | TextAreaProps         | --       |
 
-### IResonsObject
+### IreasonsObject
 
 | Attribute | Description                         | Type   | Default |
 | --------- | ----------------------------------- | ------ | ------- |

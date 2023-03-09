@@ -25,7 +25,7 @@ const App = () => {
   return (
     <SettleBar
       total={100}
-      onSettle ={() => Toast.text('点击按钮')}
+      onClickButton ={() => Toast.text('点击按钮')}
     />
   );
 };
@@ -49,7 +49,7 @@ const App = () => {
     <SettleBar 
       total={100}
       totalAlign="left" 
-      onSettle ={() => Toast.text('点击按钮')}
+      onClickButton ={() => Toast.text('点击按钮')}
     />
   );
 };
@@ -120,7 +120,7 @@ const App = () => {
       showZero={false} 
       totalText="total" 
       settleButtonText="submit order" 
-      onSettle ={() => Toast.text('点击按钮')}
+      onClickButton ={() => Toast.text('点击按钮')}
     />
   );
 };
@@ -130,7 +130,7 @@ export default App;
 
 :::
 
-### To Settle Quantity And Unit
+### To Settle Quantity
 
 :::demo
 
@@ -144,8 +144,7 @@ const App = () => {
     <SettleBar 
       total={100}
       settleCount="100" 
-      settleUnit="indivual" 
-      onSettle ={() => Toast.text('点击按钮')}
+      onClickButton ={() => Toast.text('点击按钮')}
     />
   );
 };
@@ -169,7 +168,7 @@ const App = () => {
     <SettleBar 
       total={100}
       customTotalExtra={<div style={{fontSize: '12px'}}>reduced ¥30.00</div>} 
-      onSettle ={() => Toast.text('点击按钮')}
+      onClickButton ={() => Toast.text('点击按钮')}
     />
   );
 };
@@ -197,7 +196,7 @@ const App = () => {
     <SettleBar 
       total={100}
       customWarning={customWarningHtml()} 
-      onSettle ={() => Toast.text('点击按钮')}
+      onClickButton ={() => Toast.text('点击按钮')}
     />
   );
 };
@@ -218,8 +217,7 @@ export default App;
 | total   | Total price                                 | number \| string  | 0         |
 | totalText     | Total text                   | string  | `total`    |
 | totalAlign | Total area alignment, optional value：`left`、`right`                       | string  | `right`      |
-| settleCount     | Settlement quantity                               | number | 0    |
-| settleUnit  | Settlement unit                                  | string | -    |
+| settleCount     | Settlement quantity                               | number \| string | 0    |
 | settleButtonText     | Settlement button text | string  | `to settle`     |
 | disabled   | Whether the settlement button is disabled| boolean  | `false`      |
 | loading   | Whether the settlement button is loading| boolean  | `false`      |
@@ -232,11 +230,11 @@ export default App;
 | customTotalPrice | Customize total price content | ReactNode  | -          |
 | customTotalExtra | Customize total extra content | ReactNode  | -          |
 | customButton | Customize button content | ReactNode  | -          |
+| isCheckedAll | Whether the selectAll button is checked | boolean  | `false`      |
 
 
 ### Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
-| onSelectAll | Select all button click event |  event: Event |
-| onSettle | To settle button click event |  event: Event |
-| onDelete | Delete event, take effect when isEdit is true |  event: Event |
+| onSelectAll | Select all button click event |  checked |
+| onClickButton | Button click event |  - |

@@ -1,7 +1,8 @@
 import React, {useEffect, useState, CSSProperties} from 'react'
 import { Sku } from './sku'
 import Address from '../address'
-import {Cell, Button, Price} from '@nutui/nutui-react'
+import { AddressList, RegionData } from '../address/type'
+import { Cell, Button, Price } from '@nutui/nutui-react'
 import { useTranslate } from '../../sites/assets/locale'
 
 interface Skus {
@@ -66,6 +67,7 @@ const SkuDemo = () => {
   const [imagePathMap, setImagePathMap] = useState<any>({})
   const [addressDesc, setAddressDesc] = useState<string>('(配送地会影响库存，请先确认)')
   const [showAddressPopup, setShowAddressPopup] = useState<boolean>(false)
+  const [count, setCount] = useState<number>(2)
 
   const existAddress = [
     {
@@ -160,6 +162,10 @@ const SkuDemo = () => {
     console.log('购买数量', count);
   };
 
+  const changeStepper2 = (count: number) => {
+    setCount(count)
+  };
+
   // styles
   const skuOperateBoxStyle = {
     width: '100%',
@@ -212,15 +218,16 @@ const SkuDemo = () => {
   };
 
   const stepperExtraText = () => {
-    return <div style={{width:"100%",textAlign:"right",color:"#F00"}}>2 件起售</div>;
+    return <div style={{width:"100%",textAlign:"right",color:"#F00"}}>{count} 件起售</div>;
   };
 
-  const selectedAddress = (prevExistAdd: any, nowExistAdd: any) => {
+  const selectedAddress = (prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => {
+    console.log(prevExistAdd,nowExistAdd)
     const { provinceName, countyName, cityName } = nowExistAdd;
     setAddressDesc(`${provinceName}${countyName}${cityName}`)
-  };
+  }
 
-  const close = (num: number)=>{}
+  const close = ()=>{setShowAddressPopup(false)}
 
   return (
     <>
@@ -243,7 +250,6 @@ const SkuDemo = () => {
           goods={goodsInfo}
           btnExtraText="抱歉，此商品在所选区域暂无存货"
           onChangeStepper={changeStepper}
-          btnOptions={['buy', 'cart']}
           onSelectSku={selectSku}
           operateBtn = {
             <div style={skuOperateBoxStyle}>
@@ -262,7 +268,7 @@ const SkuDemo = () => {
           stepperMax={7}
           stepperMin={2}
           stepperExtraText={stepperExtraText}
-          onChangeStepper={changeStepper}
+          onChangeStepper={changeStepper2}
           onOverLimit={overLimit}
           btnOptions={['buy', 'cart']}
           onSelectSku={selectSku}
@@ -303,11 +309,9 @@ const SkuDemo = () => {
           modelValue={showAddressPopup}
           type="exist"
           existAddress={existAddress}
-          // @ts-ignore
           onClose={close}
           isShowCustomAddress={false}
-          // @ts-ignore
-          onSelect={() => selectedAddress()}
+          onSelected={(prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => selectedAddress(prevExistAdd, nowExistAdd, arr)}
           existAddressTitle={translated.deliverTo}
         />
       </div>

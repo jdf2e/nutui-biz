@@ -1,3 +1,5 @@
+@import '../../styles/mixins/text-ellipsis.scss';
+
 .nut-sku {
   height: 100%;
   display: flex;
@@ -118,12 +120,12 @@
       display: block;
       width: 100%;
       max-height: 94px;
-      padding: 10px 0;
+      padding: 10px;
       text-align: center;
       background: #fbf9da;
       color: #de6a1c;
       font-size: 12px;
-      overflow: hidden;
+      @include text-ellipsis
     }
     &-btn {
       height: 54px;

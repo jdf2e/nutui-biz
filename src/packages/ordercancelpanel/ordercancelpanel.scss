@@ -1,5 +1,5 @@
 @import "../../styles/mixins/text-ellipsis.scss";
-.nut-biz-ordercancel {
+.nb-ordercancel {
   font-weight: normal;
   &__main {
     padding: 0px 20px;
@@ -26,7 +26,7 @@
     line-height: 25px;
     border-radius: 10px;
     max-height: 160px;
-    overflow: scroll;
+    overflow: auto;
     margin-bottom: 10px;
     &-header {
       font-size: 14px;
@@ -37,7 +37,7 @@
   &__reason {
     font-size: 14px;
     max-height: 280px;
-    overflow: scroll;
+    overflow: auto;
     &--list {
       display: flex;
       height: 35px;
@@ -74,7 +74,6 @@
   }
   &__area {
     border: 1px solid #eee;
-    padding: 5px 10px;
   }
   &__btns {
     margin-top: 10px;
