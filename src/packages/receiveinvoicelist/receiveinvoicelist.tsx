@@ -6,25 +6,25 @@ import { cn2 } from '@/utils/bem'
 import classNames from 'classnames';
 export interface ReceiveInvoiceItemExt {
   label: String;
-  value: String,
+  value: String;
   [x: string]: any;
 }
 export interface ReceiveInvoiceItem {
   id: Number | String;
   name: String;
-  tel: String,
-  addres: String,
-  isDefault: Boolean,
-  extends?: Array<ReceiveInvoiceItemExt>,
+  tel: String;
+  addres: String;
+  isDefault: Boolean;
+  extends?: Array<ReceiveInvoiceItemExt>;
   [x: string]: any;
 }
 export interface ReceiveInvoiceListProps extends IComponent {
   modelValue: String | Number;
-  list: Array<ReceiveInvoiceItem>,
-  enableDelete: Boolean,
-  onEdit?: (item: ReceiveInvoiceItem, index: number) => void,
-  onSelected?: (item: ReceiveInvoiceItem, index: number) => void,
-  onDelete?: (item: ReceiveInvoiceItem, index: number) => void,
+  list: Array<ReceiveInvoiceItem>;
+  enableDelete: Boolean;
+  onEdit?: (item: ReceiveInvoiceItem, index: number) => void;
+  onSelected?: (item: ReceiveInvoiceItem, index: number) => void;
+  onDelete?: (item: ReceiveInvoiceItem, index: number) => void;
 }
 const defaultProps = {
   modelValue: "",
@@ -49,7 +49,7 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
     ...props,
   }
   const onSelect = (item: ReceiveInvoiceItem, index: number) => {
-    if(item.id == modelValue){
+    if (item.id == modelValue) {
       setModelValue("")
       return
     }
