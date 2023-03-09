@@ -140,6 +140,6 @@ export default App;
 ### Events
 | Attribute  | Description    | Arguments                |
 |------------|----------------|--------------------------|
-| onEdit     | Edit Event     | item\:ReceiveInvoiceItem |
-| onSelected | Selected Event | item\:ReceiveInvoiceItem |
-| onDelete   | Delete Event   | item\:ReceiveInvoiceItem |
+| onEdit     | Edit Event     | item\:ReceiveInvoiceItem,index\:number |
+| onSelected | Selected Event | item\:ReceiveInvoiceItem,index\:number |
+| onDelete   | Delete Event   | item\:ReceiveInvoiceItem,index\:number |

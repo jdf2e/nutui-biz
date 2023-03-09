@@ -4,13 +4,11 @@ import { Checkbox, Icon, Tag, Cell, CellGroup, Swipe, Button } from '@nutui/nutu
 import { IComponent } from '@/utils/typings'
 import { cn2 } from '@/utils/bem'
 import classNames from 'classnames';
-
 export interface ReceiveInvoiceItemExt {
   label: String;
   value: String,
   [x: string]: any;
 }
-
 export interface ReceiveInvoiceItem {
   id: Number | String;
   name: String;
@@ -20,28 +18,23 @@ export interface ReceiveInvoiceItem {
   extends?: Array<ReceiveInvoiceItemExt>,
   [x: string]: any;
 }
-
 export interface ReceiveInvoiceListProps extends IComponent {
   modelValue: String | Number;
   list: Array<ReceiveInvoiceItem>,
   enableDelete: Boolean,
-  onEdit?: (item: ReceiveInvoiceItem) => void,
-  onSelected?: (item: ReceiveInvoiceItem) => void,
-  onDelete?: (item: ReceiveInvoiceItem) => void,
+  onEdit?: (item: ReceiveInvoiceItem, index: number) => void,
+  onSelected?: (item: ReceiveInvoiceItem, index: number) => void,
+  onDelete?: (item: ReceiveInvoiceItem, index: number) => void,
 }
-
 const defaultProps = {
   modelValue: "",
   list: new Array<ReceiveInvoiceItem>,
   enableDelete: false
 } as ReceiveInvoiceListProps;
-
-
 export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListProps>> = (props) => {
   const { locale } = useConfig();
   const [modelValue, setModelValue] = useState(props.modelValue);
   const b = cn2('receive-invoice-list');
-
   const {
     style,
     className,
@@ -55,16 +48,14 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
     ...defaultProps,
     ...props,
   }
-
-  const onSelect = (item: ReceiveInvoiceItem) => {
+  const onSelect = (item: ReceiveInvoiceItem, index: number) => {
     setModelValue(item.id);
-    onSelected?.(item);
+    onSelected?.(item, index);
   }
-
-  const RenderItem = (item: ReceiveInvoiceItem) => {
+  const RenderItem = (item: ReceiveInvoiceItem, index: number) => {
     return (<CellGroup className={b('item')}>
       <Cell className={b('item-header')}
-        onClick={() => onSelect(item)}
+        onClick={() => onSelect(item, index)}
         title={
           <>
             {item.isDefault && <><Tag type="danger">{locale.default}</Tag>&nbsp;</>}
@@ -72,9 +63,9 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
           </>
         }
         linkSlot={
-          <Icon name="edit" color='#666' onClick={(e) => { e.stopPropagation(); onEdit?.(item) }}></Icon>
+          <Icon name="edit" color='#666' onClick={(e) => { e.stopPropagation(); onEdit?.(item, index) }}></Icon>
         } />
-      <Cell className={b('item-footer')} onClick={() => onSelect(item)}>
+      <Cell className={b('item-footer')} onClick={() => onSelect(item, index)}>
         <Checkbox textPosition="right" label="" checked={item.id == modelValue} />
         <div className={b('item-footer infobox')}>
           <div className={b('item-footer-info')} >
@@ -92,31 +83,27 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
                 <p>{i.value}</p>
               </div>)
           })}
-
         </div>
       </Cell>
     </CellGroup>);
   }
-
   return (
     <div className={classNames([b(), className])} style={style} {...rest}>
-      {list.map((item) => {
+      {list.map((item, index) => {
         return (
           <React.Fragment key={item.id.toString()}>
             {enableDelete ?
               <Swipe rightAction={
-                <Button type="primary" shape="square" onClick={() => onDelete?.(item)}>{locale.swipeShell.delete}</Button>
+                <Button type="primary" shape="square" onClick={() => onDelete?.(item, index)}>{locale.swipeShell.delete}</Button>
               }>
-                {RenderItem(item)}
+                {RenderItem(item, index)}
               </Swipe>
-              : RenderItem(item)}
+              : RenderItem(item, index)}
           </React.Fragment>
         )
       })}
-
-    </div >
+    </div>
   )
 }
-
 ReceiveInvoiceList.defaultProps = defaultProps;
 ReceiveInvoiceList.displayName = 'NutReceiveInvoiceList'
