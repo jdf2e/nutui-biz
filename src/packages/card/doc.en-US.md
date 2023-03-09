@@ -26,17 +26,13 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: 'title',
     price: '388',
-    marketingType: 'marketingType',
-    delivery: 'delivery',
-    shopName: 'shopName>',
+    shopName: 'shopName',
   }
   return (
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={state.imgUrl}
       title={state.title}
       price={state.price}
-      marketingType={state.marketingType}
-      delivery={state.delivery}
       shopName={state.shopName}
     />
   );
@@ -60,9 +56,7 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: 'title',
     price: '388',
-    marketingType: 'marketingType',
-    delivery: 'delivery',
-    shopName: 'shopName>',
+    shopName: 'shopName',
   }
   const wordStyles = {
     padding: '0 5px',
@@ -82,11 +76,9 @@ const App = () => {
   }
   return (
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={state.imgUrl}
       title={state.title}
       price={state.price}
-      marketingType={state.marketingType}
-      delivery={state.delivery}
       shopName={state.shopName}
       prolistTpl={
         <div
@@ -130,9 +122,7 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: 'title',
     price: '388',
-    marketingType: 'marketingType',
-    delivery: 'delivery',
-    shopName: 'shopName>',
+    shopName: 'shopName',
   }
   const tagStyles = {
     display: 'inline-block',
@@ -143,11 +133,9 @@ const App = () => {
   }
   return (
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={state.imgUrl}
       title={state.title}
       price={state.price}
-      marketingType={state.marketingType}
-      delivery={state.delivery}
       shopName={state.shopName}
       priceAfterTpl={
         <img
@@ -177,17 +165,13 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: 'title',
     price: '388',
-    marketingType: 'marketingType',
-    delivery: 'delivery',
-    shopName: 'shopName>',
+    shopName: 'shopName',
   }
   return (
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={state.imgUrl}
       title={state.title}
       price={state.price}
-      marketingType={state.marketingType}
-      delivery={state.delivery}
       shopName={state.shopName}
       productTagsTpl={<div>Custom Content</div>}
     />
@@ -213,18 +197,14 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: 'title',
     price: '388',
-    marketingType: 'marketingType',
-    delivery: 'delivery',
-    shopName: 'shopName>',
+    shopName: 'shopName',
   }
   
   return (
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={state.imgUrl}
       title={state.title}
       price={state.price}
-      marketingType={state.marketingType}
-      delivery={state.delivery}
       shopName={state.shopName}
       bottomTpl={<div style={{ fontSize: '12px', paddingBottom: '15px', textAlign: 'center' }}>Customize promotional information, etc.</div>}
     />
@@ -249,28 +229,22 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: 'title',
     price: '388',
-    marketingType: 'marketingType',
-    delivery: 'delivery',
-    shopName: 'shopName>',
+    shopName: 'shopName',
   }
   
   return (
     <>
       <Card
-        imgUrl={state.imgUrl}
+        imageProps={state.imgUrl}
         title={state.title}
         price={state.price}
-        marketingType={state.marketingType}
-        delivery={state.delivery}
         shopName={state.shopName}
         showType="half-line"
       />
       <Card
-        imgUrl={state.imgUrl}
+        imageProps={state.imgUrl}
         title={state.title}
         price={state.price}
-        marketingType={state.marketingType}
-        delivery={state.delivery}
         shopName={state.shopName}
         showType="half-line"
       />
