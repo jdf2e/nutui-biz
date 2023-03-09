@@ -4,7 +4,7 @@ import React, {
   useEffect
 } from 'react'
 import classNames from "classnames";
-import bem from '@/utils/bem'
+import { cn2 } from '@/utils/bem'
 
 import { IComponent } from '@/utils/typings'
 
@@ -37,7 +37,7 @@ export const DeliveryDateTime: FunctionComponent<
     ...props,
   }
 
-  const b = bem('delivery-date-time')
+  const b = cn2('delivery-date-time')
 
   const [timeDate, setTimeDate] = useState(activeKey);
   const [date, setDate] = useState<DateType>({ label: '', text: '' });
