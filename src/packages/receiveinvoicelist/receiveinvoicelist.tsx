@@ -19,7 +19,7 @@ export interface ReceiveInvoiceItem {
   [x: string]: any;
 }
 export interface ReceiveInvoiceListProps extends IComponent {
-  modelValue: string | number;
+  defaultValue: string | number;
   list: Array<ReceiveInvoiceItem>;
   enableDelete: boolean;
   onEdit?: (item: ReceiveInvoiceItem, index: number) => void;
@@ -27,13 +27,13 @@ export interface ReceiveInvoiceListProps extends IComponent {
   onDelete?: (item: ReceiveInvoiceItem, index: number) => void;
 }
 const defaultProps = {
-  modelValue: "",
+  defaultValue: "",
   list: new Array<ReceiveInvoiceItem>,
   enableDelete: false
 } as ReceiveInvoiceListProps;
 export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListProps>> = (props) => {
   const { locale } = useConfig();
-  const [modelValue, setModelValue] = useState(props.modelValue);
+  const [defaultValue, setDefaultValue] = useState(props.defaultValue);
   const b = cn2('receive-invoice-list');
   const {
     style,
@@ -49,11 +49,11 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
     ...props,
   }
   const onSelect = (item: ReceiveInvoiceItem, index: number) => {
-    if (item.id == modelValue) {
-      setModelValue("")
+    if (item.id == defaultValue) {
+      setDefaultValue("")
       return
     }
-    setModelValue(item.id);
+    setDefaultValue(item.id);
     onSelected?.(item, index);
   }
   const RenderItem = (item: ReceiveInvoiceItem, index: number) => {
@@ -70,7 +70,7 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
           <Icon name="edit" color='#666' onClick={(e) => { e.stopPropagation(); onEdit?.(item, index) }}></Icon>
         } />
       <Cell className={b('item-footer')} onClick={() => onSelect(item, index)}>
-        <Checkbox textPosition="right" label="" checked={item.id == modelValue} />
+        <Checkbox textPosition="right" label="" checked={item.id == defaultValue} />
         <div className={b('item-footer infobox')}>
           <div className={b('item-footer-info')} >
             <span>{locale.tel}</span>
