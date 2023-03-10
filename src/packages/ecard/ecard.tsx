@@ -10,6 +10,7 @@ import { useConfig } from "@/packages/configprovider";
 import { cn2 as nb } from "@/utils/bem";
 import { InputNumber, InputNumberProps } from "@nutui/nutui-react";
 import mathMethods from '@/utils/math'
+import classNames from 'classnames'
 import { numericProp } from '@/utils/props'
 const { accurateMultiply } = mathMethods
 const b = nb("ecard");
@@ -127,15 +128,14 @@ export const Ecard: FunctionComponent<
   };
 
   return (
-    <div className={`${b()} ${className}`} {...rest}>
+    <div className={classNames([b(), className])} {...rest}>
       <div className={b("title")}>{chooseText || locale.ecard.chooseText}</div>
       <div className={b("list")}>
         <>
           {dataList.map((item, index) => {
             return (
               <div
-                className={`${b("list__item")} ${currentIndex === index && "active"
-                  }`}
+                className={classNames([b("list__item"), currentIndex === index && "active"])}
                 style={{ width: `${listItemWidth}%` }}
                 key={index}
                 onClick={() => {

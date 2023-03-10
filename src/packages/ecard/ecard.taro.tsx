@@ -10,7 +10,8 @@ import { useConfig } from "@/packages/configprovider";
 import { cn2 as nb } from "@/utils/bem";
 import { InputNumber, InputNumberProps } from "@nutui/nutui-react";
 import mathMethods from '@/utils/math'
-import {numericProp} from '@/utils/props'
+import classNames from 'classnames'
+import { numericProp } from '@/utils/props'
 const { accurateMultiply } = mathMethods
 const b = nb("ecard");
 export interface DataListItem {
@@ -28,6 +29,7 @@ export interface EcardProps {
   cardAmountMax: number;
   inputNumberProps: Partial<InputNumberProps>;
   placeholder: string;
+  rowNum?: number
   handleMoney?: (money: number) => any;
   onChange?: (item: DataListItem, money: number) => void;
   onChangeInput?: (val: number, money: number) => void;
@@ -48,6 +50,7 @@ const defaultProps = {
   cardAmountMax: 9999,
   handleMoney: (money: number) => money,
   placeholder: '请输入1-9999整数',
+  rowNum: 2
 } as EcardProps;
 
 export const Ecard: FunctionComponent<
@@ -65,6 +68,7 @@ export const Ecard: FunctionComponent<
     cardAmountMax,
     inputNumberProps,
     placeholder,
+    rowNum,
     onChange,
     onChangeInput,
     handleMoney,
@@ -76,26 +80,27 @@ export const Ecard: FunctionComponent<
   };
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [currentPrice, setCurrentPrice] = useState<number>(dataList[0].price || 0); //当前非自定义面值
-  const [customValue, setCustomValue] = useState<snumericProp>("");
+  const [customValue, setCustomValue] = useState<numericProp>("");
   const [cardAmount, setCardAmount] = useState(cardAmountMin);
   const [money, setMoney] = useState<number>(accurateMultiply(dataList[0].price, 1))
-
+  const listItemWidth = rowNum ? Number((96 / rowNum).toFixed(0)) : 48
+  const getTotalPrice = () => {
+    let total = 0
+    if (!currentPrice && !customValue) total = 0
+    if (currentIndex >= 0 && cardAmount && currentPrice) total = accurateMultiply(currentPrice, cardAmount)
+    if (customValue && currentIndex === -1 && cardAmount) total = accurateMultiply(customValue, cardAmount)
+    return handleMoney ? handleMoney(total) : total
+  }
   useEffect(() => {
-    const getTotalPrice = () => {
-      if (!currentPrice && !customValue) return 0
-      if (currentIndex >= 0 && cardAmount && currentPrice) return accurateMultiply(currentPrice, cardAmount)
-      if (customValue && currentIndex === -1 && cardAmount) return accurateMultiply(customValue, cardAmount)
-      return 0
-    }
-    const realMoney = handleMoney ? handleMoney(getTotalPrice()) : getTotalPrice()
-    setMoney(realMoney)
+    setMoney(getTotalPrice())
   }, [currentIndex, currentPrice, cardAmount, customValue])
 
   const handleClick = (item: DataListItem, index: number) => {
+    const { price } = item
     setCurrentIndex(index)
-    setCurrentPrice(item.price)
+    setCurrentPrice(price)
     setCustomValue('')
-    onChange && onChange(item, money);
+    onChange && onChange(item, handleMoney?.(accurateMultiply(price, cardAmount)));
   };
 
   const handleInputClick = () => {
@@ -112,26 +117,26 @@ export const Ecard: FunctionComponent<
     }
     setCurrentPrice(0)
     setCustomValue(inputValueCache)
-    onChangeInput && onChangeInput(inputValueCache, money);
+    onChangeInput && onChangeInput(inputValueCache, handleMoney?.(accurateMultiply(inputValueCache, cardAmount)));
   };
 
   const handleChangeStep = (
     param: numericProp,
   ) => {
     setCardAmount(Number(param))
-    onChangeStep && onChangeStep(+param, currentPrice || Number(customValue), money);
+    onChangeStep && onChangeStep(+param, currentPrice || Number(customValue), handleMoney?.(accurateMultiply(param, currentPrice || Number(customValue))));
   };
 
   return (
-    <div className={`${b()} ${className}`} {...rest}>
+    <div className={classNames([b(), className])} {...rest}>
       <div className={b("title")}>{chooseText || locale.ecard.chooseText}</div>
       <div className={b("list")}>
         <>
           {dataList.map((item, index) => {
             return (
               <div
-                className={`${b("list__item")} ${currentIndex === index && "active"
-                  }`}
+                className={classNames([b("list__item"), currentIndex === index && "active"])}
+                style={{ width: `${listItemWidth}%` }}
                 key={index}
                 onClick={() => {
                   handleClick(item, index);
