@@ -3,17 +3,17 @@
 exports[`Password Login test 1`] = `
 <div>
   <div
-    class="nut-login"
+    class="nb-login undefined"
   >
     <div
-      class="nut-login__logo"
+      class="nb-login__logo"
     >
       <img
         src="https://img10.360buyimg.com/imagetools/jfs/t1/187998/28/32123/16333/63e346b8F0bff354b/c95da99ea108c463.png"
       />
     </div>
     <div
-      class="nut-login__content"
+      class="nb-login__content"
     >
       <div
         class="input-wrap "
@@ -96,7 +96,7 @@ exports[`Password Login test 1`] = `
       </div>
     </div>
     <div
-      class="nut-login__btn"
+      class="nb-login__btn"
     >
       <button
         class="nut-button nut-button--danger nut-button--normal nut-button--square nut-button--block nut-button--disabled "
@@ -124,17 +124,17 @@ exports[`Password Login test 1`] = `
 exports[`Verify Login test 1`] = `
 <div>
   <div
-    class="nut-login"
+    class="nb-login undefined"
   >
     <div
-      class="nut-login__logo"
+      class="nb-login__logo"
     >
       <img
         src="https://img10.360buyimg.com/imagetools/jfs/t1/187998/28/32123/16333/63e346b8F0bff354b/c95da99ea108c463.png"
       />
     </div>
     <div
-      class="nut-login__content"
+      class="nb-login__content"
     >
       <div
         class="input-wrap "
@@ -190,7 +190,7 @@ exports[`Verify Login test 1`] = `
                   <input
                     class="input-text"
                     maxlength="9999"
-                    name="verifyCode"
+                    name="verify"
                     placeholder="请输入验证码"
                     style="text-align: left;"
                     type="text"
@@ -209,7 +209,7 @@ exports[`Verify Login test 1`] = `
       </div>
     </div>
     <div
-      class="nut-login__btn"
+      class="nb-login__btn"
     >
       <button
         class="nut-button nut-button--danger nut-button--normal nut-button--square nut-button--block nut-button--disabled "

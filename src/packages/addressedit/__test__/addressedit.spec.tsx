@@ -27,7 +27,7 @@ const addressData: any = {
     { id: 4, name: "常营乡", title: "C" },
   ],
   town: [],
-  addressType: "custom",
+  type: "custom",
 };
 const addressInfo = {
   name: "",
@@ -61,7 +61,7 @@ const addressData2: any = {
     { id: 4, name: "常营乡", title: "C" },
   ],
   town: [],
-  addressType: "custom2",
+  type: "custom2",
   height: "270px",
 };
 const addressInfo2 = {
@@ -144,12 +144,12 @@ test("event onChangeAddress test", async () => {
     const inputEl = container.querySelectorAll(".nut-input-text")[2];
     inputEl && fireEvent.click(inputEl);
 
-    const regionEl = container.querySelector(".nut-address ");
+    const regionEl = container.querySelector(".nb-address ");
 
     expect(regionEl).toBeTruthy;
 
     const regionItem = regionEl?.querySelectorAll(
-      ".nut-address__region-item"
+      ".nb-address__region-item"
     )[0];
     regionItem && fireEvent.click(regionItem);
 
@@ -172,7 +172,7 @@ test("event onSave test", async () => {
   );
 
   const bottomEl = container.querySelector(
-    ".nut-addressedit__bottom .nut-button"
+    ".nb-addressedit__bottom .nut-button"
   ) as HTMLElement;
   fireEvent.click(bottomEl);
   expect(saveHandle).toBeCalled();

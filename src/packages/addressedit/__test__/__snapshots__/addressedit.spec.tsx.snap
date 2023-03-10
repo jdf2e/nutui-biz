@@ -3,10 +3,10 @@
 exports[`Add New Address 1`] = `
 <div>
   <div
-    class="nut-addressedit"
+    class="nb-addressedit"
   >
     <div
-      class="nut-addressedit__item"
+      class="nb-addressedit__item"
     >
       <div
         class="nut-input nut-input-required nut-input-border  nut-input-text"
@@ -45,7 +45,7 @@ exports[`Add New Address 1`] = `
       </div>
     </div>
     <div
-      class="nut-addressedit__item"
+      class="nb-addressedit__item"
     >
       <div
         class="nut-input nut-input-required nut-input-border  nut-input-text"
@@ -84,7 +84,7 @@ exports[`Add New Address 1`] = `
       </div>
     </div>
     <div
-      class="nut-addressedit__item"
+      class="nb-addressedit__item"
     >
       <div
         class="nut-input nut-input-required nut-input-border  nut-input-text"
@@ -122,9 +122,13 @@ exports[`Add New Address 1`] = `
           </div>
         </div>
       </div>
+      <div
+        class="first-render hidden-render nut-overlay"
+        style="z-index: 1000; animation-duration: 0.3s;"
+      />
     </div>
     <div
-      class="nut-addressedit__item"
+      class="nb-addressedit__item"
     >
       <div
         class="nut-input nut-input-required nut-input-border  nut-input-text"
@@ -151,7 +155,7 @@ exports[`Add New Address 1`] = `
               <input
                 class="input-text"
                 maxlength="9999"
-                name=""
+                name="address"
                 placeholder="街道、楼牌号"
                 style="text-align: left;"
                 type="text"
@@ -163,7 +167,7 @@ exports[`Add New Address 1`] = `
       </div>
     </div>
     <div
-      class="nut-addressedit__item setdefualt"
+      class="nb-addressedit__item setdefualt"
     >
       <span
         class="label"
@@ -183,7 +187,7 @@ exports[`Add New Address 1`] = `
       </div>
     </div>
     <div
-      class="nut-addressedit__bottom"
+      class="nb-addressedit__bottom"
     >
       <button
         class="nut-button nut-button--danger nut-button--normal nut-button--round nut-button--block "
