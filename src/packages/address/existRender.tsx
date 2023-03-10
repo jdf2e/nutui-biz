@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode, useEffect } from 'react';
 import { Icon } from '@nutui/nutui-react';
-import bem from '@/utils/bem';
+import { cn2 as bem } from '@/utils/bem';
 import { AddressList, ExistRenderProps } from './type';
 
 import { useConfig } from '@/packages/configprovider';
@@ -82,7 +82,7 @@ export const ExistRender: FunctionComponent<Partial<ExistRenderProps> & React.HT
         <ul className={b('exist-ul')}>
           {existAddress.map((item: AddressList, index: number) => {
             return (
-              <li className={b('exist-item')} key={index}>
+              <li className={`${b('exist-item')} ${item.selectedAddress ? 'active' : ''}`} key={index}>
                 <div onClick={() => selectedExist(item)}>
                   {item.selectedAddress ? renderIcon(selectedIcon, item) : renderIcon(defaultIcon, item)}
                   <div className={b('exist-item-info')}>
