@@ -1,6 +1,6 @@
 # NutUI-Biz
 
-NutUI-Biz 组件库，适用于 React 技术栈的 H5 电商应用，开箱即用，帮助研发快速开发用户界面，提升开发效率，改善开发体验。
+基于 [NutUI-react](https://nutui.jd.com/h5/react/1x/#/zh-CN/guide/intro-react) 的 NutUI-Biz 组件库，适用于移动端的电商应用，开箱即用，帮助研发再次提升开发效率，进一步改善开发体验。
 
 ![](https://img12.360buyimg.com/imagetools/jfs/t1/93525/10/35630/3509/63e5e07fFee1229de/364b5180962e277c.png)
 
@@ -11,7 +11,6 @@ NutUI-Biz 组件库，适用于 React 技术栈的 H5 电商应用，开箱即�
 * 🍭 支持按需引用
 * 📖 详尽的文档和示例
 * 💪 支持 TypeScript
-* 🌍 支持国际化
 * 🍭 单元测试覆盖率超过 80%，保障稳定性
 
 ## 扫码体验

@@ -7,7 +7,6 @@ Commonly used to display contact list information, etc.
 ### Install
 
 ```javascript
-import { Cell,CellGroup, Tag } from '@nutui/nutui-react';
 import { ReceiveInvoiceList } from '@nutui/nutui-biz';
 ```
 
@@ -19,13 +18,12 @@ import { ReceiveInvoiceList } from '@nutui/nutui-biz';
 
 ```ts
 import  React from 'react';
-import { Cell,CellGroup, Tag } from '@nutui/nutui-react';
 import { ReceiveInvoiceList } from '@nutui/nutui-biz';
 
 const App = () => {
   
   const state = {
-    modelValue: 1,
+    defaultValue: 1,
     list: [
       {
         id: 1,
@@ -54,7 +52,7 @@ const App = () => {
   }
 
   return (
-     <ReceiveInvoiceList list={state.list} modelValue={state.modelValue} onSelected={event.onSelected} onEdit={event.onEdit} />
+     <ReceiveInvoiceList list={state.list} defaultValue={state.defaultValue} onSelected={event.onSelected} onEdit={event.onEdit} />
   );
 };
 export default App;
@@ -67,13 +65,12 @@ export default App;
 
 ```ts
 import  React from 'react';
-import { Cell,CellGroup, Tag } from '@nutui/nutui-react';
 import { ReceiveInvoiceList } from '@nutui/nutui-biz';
 
 const App = () => {
   
   const state = {
-    modelValue: 1,
+    defaultValue: 1,
     list: [
       {
         id: 1,
@@ -101,7 +98,7 @@ const App = () => {
   }
 
   return (
-     <ReceiveInvoiceList enableDelete={true} list={state.list} modelValue={state.modelValue} onDelete={event.onDelete} />
+     <ReceiveInvoiceList enableDelete={true} list={state.list} defaultValue={state.defaultValue} onDelete={event.onDelete} />
   );
 };
 export default App;
@@ -116,19 +113,20 @@ export default App;
 
 | Attribute    | Description                           | Type                      | Default |
 |--------------|---------------------------------------|---------------------------|---------|
-| modelValue   | Id of chosen contact                  | number \| string          | -       |
+| defaultValue | Id of chosen contact                  | number \| string          | -       |
 | list         | Data List                             | Array<ReceiveInvoiceItem> | []      |
 | enableDelete | Whether to enable the delete function | boolean                   | `false` |
 
 ### ReceiveInvoiceItem Data Structure
 
-| key     | Description         | Type                         |
-|---------|---------------------|------------------------------|
-| id      | ID                  | number \| string             |
-| name    | Name                | string                       |
-| tel     | Phone               | string                       |
-| addres  | Addres              | string                       |
-| extends | Extend custom array | Array<ReceiveInvoiceItemExt> |
+| key       | Description               | Type                         |
+|-----------|---------------------------|------------------------------|
+| id        | ID                        | number \| string             |
+| name      | Name                      | string                       |
+| tel       | Phone                     | string                       |
+| addres    | Addres                    | string                       |
+| isDefault | Is it the default address | boolean                      |
+| extends   | Extend custom array       | Array<ReceiveInvoiceItemExt> |
 ### ReceiveInvoiceItemExt Data Structure
 
 | key   | Description        | Type   |
@@ -138,8 +136,8 @@ export default App;
 
 
 ### Events
-| Attribute  | Description    | Arguments                |
-|------------|----------------|--------------------------|
-| onEdit     | Edit Event     | item\:ReceiveInvoiceItem |
-| onSelected | Selected Event | item\:ReceiveInvoiceItem |
-| onDelete   | Delete Event   | item\:ReceiveInvoiceItem |
+| Attribute  | Description    | Arguments                              |
+|------------|----------------|----------------------------------------|
+| onEdit     | Edit Event     | item\:ReceiveInvoiceItem,index\:number |
+| onSelected | Selected Event | item\:ReceiveInvoiceItem,index\:number |
+| onDelete   | Delete Event   | item\:ReceiveInvoiceItem,index\:number |

@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Icon, Popup } from '@nutui/nutui-react';
-import bem from '@/utils/bem';
+import { cn2 } from '@/utils/bem';
 import { ExistRender } from './existRender';
 import { CustomRender } from './customRender';
 import { useConfig } from '@/packages/configprovider';
@@ -54,7 +54,7 @@ export const Address: FunctionComponent<Partial<AddressProps>> = (props) => {
   } = {
     ...props
   };
-  const b = bem('address');
+  const b = cn2('address');
 
   const [privateType, setPrivateType] = useState<AddressType>(type);
   const [tabName] = useState<string[]>(['province', 'city', 'country', 'town']);
@@ -150,7 +150,7 @@ export const Address: FunctionComponent<Partial<AddressProps>> = (props) => {
   };
   // 选择其他地址
   const handleSwitchModule = () => {
-    setPrivateType(privateType === "exist" ? "custom" : "exist");
+    setPrivateType(privateType === 'exist' ? 'custom' : 'exist');
     initAddress();
     onSwitchModule && onSwitchModule({ type: privateType });
   };

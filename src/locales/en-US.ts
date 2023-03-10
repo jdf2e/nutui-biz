@@ -197,6 +197,7 @@ const enUS: BaseLang = {
     addressErrorMsg: "This item is required, please fill it out and submit it",
     bottomText: "Save",
     setDefaultText: "Set default address",
+    errorToastText: "Please complete the required items",
   },
   login: {
     accountPlaceholder: "Please enter the account",
@@ -211,8 +212,8 @@ const enUS: BaseLang = {
     forgetPwdText: "Forgot Password",
     loginButtonText: "Login",
   },
-  category:{
-    pullUpText:'Scroll up to continue browsing'
-  }
+  category: {
+    pullUpText: "Scroll up to continue browsing",
+  },
 };
 export default enUS;

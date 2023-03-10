@@ -13,7 +13,6 @@ const DemoBlock: React.FunctionComponent<A> = (props) => {
 import ReactDOM from "react-dom";
 import '@nutui/nutui-react/dist/style.css';
 import "@nutui/nutui-biz/dist/style.css";
-import "@nutui/reset.css";
 import App from "./app.tsx";
 import "./app.scss";
 ReactDOM.render(

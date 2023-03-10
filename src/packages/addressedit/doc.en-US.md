@@ -45,7 +45,7 @@ const App = () => {
        { id: 4, name: "Changying Township", title: "C" },
      ],
      town: [],
-     addressType: "custom",
+     type: "custom",
    };
   const addressInfo = {
     name: "",
@@ -108,7 +108,7 @@ const App = () => {
      { id: 4, name: "Changying Township", title: "C" },
      ],
      town: [],
-     addressType: "custom",
+     type: "custom",
      height: "270px",
    };
   const addressInfo2 = {
@@ -182,7 +182,7 @@ const App = () => {
      { id: 4, name: "Changying Township", title: "C" },
      ],
      town: [],
-     addressType: "custom",
+     type: "custom",
      height: "270px",
    };
   const addressInfo2 = {
@@ -198,6 +198,7 @@ const App = () => {
      namePlaceholder: "Please enter the recipient's name",
      isRequired: ["name", "tel",],
      isDefualtAddress: false,
+     errorShowType: "errorMsg",
    };
   
 
@@ -260,7 +261,7 @@ const App = () => {
      { id: 4, name: "Changying Township", title: "C" },
      ],
      town: [],
-     addressType: "custom",
+     type: "custom",
      height: "270px",
    };
   const addressInfo = {
@@ -276,6 +277,7 @@ const App = () => {
      namePlaceholder: "Please enter the recipient's name",
      isRequired: ["name", "tel",],
      isDefualtAddress: false,
+     errorShowType: "errorMsg",
    };
 
 
@@ -348,42 +350,44 @@ export default App;
 ### Props address
 | Attribute    | Description     | Type    | Default   |
 |---------|--------------------------------------------|---------|-----------|
-| addressSelect   | Default address value | String\|Number[] | [] |
-| addressStr   | address information                                 | String  | -        |
+| addressSelect   | Default address value | string | number[] | [] |
+| addressStr   | address information                                 | string  | -        |
 | province | Province data | Array | [] |
 | city | City data | Array | [] |
 | country | Country data | Array | [] |
 | town | Town data | Array | [] |
-| height | Popup height | String、Number | `200px` |
-| customAddressTitle  | Custom address title | String | `Select Region` |
+| height | Popup height | string、number | `200px` |
+| customAddressTitle  | Custom address title | string | `Select Region` |
 | addressType | address component type, optional `custom`/`custom2` | string | `custom `|
 
 ### Props data
 
 | Attribute    | Description     | Type    | Default   |
 |---------|--------------------------------------------|---------|-----------|
-| nameText | Custom consignee text | String | `Consignee` |
-| namePlaceholder | Custom consignee placeholder text | String | `Please enter the consignee` |
-| nameErrorMsg | Custom consignee non-null verification error prompt text | String | `This item is required, please fill it out and submit it` |
-| telText | Custom  phone number text | String | `Tel` |
-| telPlaceholder | Custom phone number placeholder text | String | `Please enter your phone number` |
-| telErrorMsg | Prompt text for non-null mobile phone number verification error | String | `This item is required, please fill it out and submit it` |
-| regionText | Customize the region text | String | `Region` |
-| regionPlaceholder | Custom region placeholder text | String | `Please select your region` |
-| regionErrorMsg | Custom region non-null verification error prompt text | String | `This item is required, please fill it out and submit it` |
-| addressText | Custom detailed address text | String | `Address` |
-| addressPlaceholder | Custom detailed address placeholder text | String | `street, building number` |
-| addressErrorMsg | Custom detailed address non-null verification error prompt text | String | `This item is required, please fill it out and submit it` |
-|bottomText|Customize the text of the save button at the bottom | String | `Save` |
+| nameText | Custom consignee text | string | `Consignee` |
+| namePlaceholder | Custom consignee placeholder text | string | `Please enter the consignee` |
+| nameErrorMsg | Custom consignee non-null verification error prompt text | string | `This item is required, please fill it out and submit it` |
+| telText | Custom  phone number text | string | `Tel` |
+| telPlaceholder | Custom phone number placeholder text | string | `Please enter your phone number` |
+| telErrorMsg | Prompt text for non-null mobile phone number verification error | string | `This item is required, please fill it out and submit it` |
+| regionText | Customize the region text | string | `Region` |
+| regionPlaceholder | Custom region placeholder text | string | `Please select your region` |
+| regionErrorMsg | Custom region non-null verification error prompt text | string | `This item is required, please fill it out and submit it` |
+| addressText | Custom detailed address text | string | `Address` |
+| addressPlaceholder | Custom detailed address placeholder text | string | `street, building number` |
+| addressErrorMsg | Custom detailed address non-null verification error prompt text | string | `This item is required, please fill it out and submit it` |
+|bottomText|Customize the text of the save button at the bottom | string | `Save` |
+| errorShowType| input error prompt type, optional value `toast`/`errorMsg`|string |`toast`|
+| errorToastText| Toast error message content | string | `Please complete the required items`|
 
 ### Props addressInfo
 | Attribute    | Description     | Type    | Default   |
 |---------|--------------------------------------------|---------|-----------|
-| name | consignee information | String | - |
-| tel | phone number information | String | - |
-| region | region information | String | - |
-| regionIds | The id information of the selected address in the region | String | - |
-| address | detailed address information | String | - |
+| name | consignee information | string | - |
+| tel | phone number information | string | - |
+| region | region information | string | - |
+| regionIds | The id information of the selected address in the region | string | - |
+| address | detailed address information | string | - |
 | default | Whether it is the default address | Boolean | `false` |
 
 

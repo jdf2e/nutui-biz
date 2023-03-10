@@ -21,7 +21,7 @@ const ReceiveInvoiceListDemo = () => {
   });
 
   const state = {
-    modelValue: 1,
+    defaultValue: 1,
     list: [
       {
         id: 1,
@@ -45,17 +45,17 @@ const ReceiveInvoiceListDemo = () => {
   };
 
   const event = {
-    onEdit: (item: ReceiveInvoiceItem) => {
+    onEdit: (item: ReceiveInvoiceItem, index: number) => {
       Toast.text('onEdit ' + item.name);
-      console.log('onEdit', item);
+      console.log('onEdit', item, index);
     },
-    onSelected: (item: ReceiveInvoiceItem) => {
+    onSelected: (item: ReceiveInvoiceItem, index: number) => {
       Toast.text('onSelected ' + item.name);
-      console.log('onSelected', item);
+      console.log('onSelected', item, index);
     },
-    onDelete: (item: ReceiveInvoiceItem) => {
+    onDelete: (item: ReceiveInvoiceItem, index: number) => {
       Toast.text('onDelete ' + item.name);
-      console.log('onDelete', item);
+      console.log('onDelete', item, index);
     }
   }
 
@@ -64,9 +64,9 @@ const ReceiveInvoiceListDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <ReceiveInvoiceList list={state.list} modelValue={state.modelValue} onSelected={event.onSelected} onEdit={event.onEdit} />
+        <ReceiveInvoiceList list={state.list} defaultValue={state.defaultValue} onSelected={event.onSelected} onEdit={event.onEdit} />
         <h2>{translated.useSwipe}</h2>
-        <ReceiveInvoiceList enableDelete={true} list={state.list} modelValue={state.modelValue} onSelected={event.onSelected} onEdit={event.onEdit} onDelete={event.onDelete} />
+        <ReceiveInvoiceList enableDelete={true} list={state.list} defaultValue={state.defaultValue} onSelected={event.onSelected} onEdit={event.onEdit} onDelete={event.onDelete} />
       </div>
     </>
   )

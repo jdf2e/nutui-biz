@@ -26,17 +26,13 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    marketingType: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
+    shopName: '阳澄湖大闸蟹自营店',
   }
   return (
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={state.imgUrl}
       title={state.title}
       price={state.price}
-      marketingType={state.marketingType}
-      delivery={state.delivery}
       shopName={state.shopName}
     />
   );
@@ -60,9 +56,7 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    marketingType: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
+    shopName: '阳澄湖大闸蟹自营店',
   }
   const wordStyles = {
     padding: '0 5px',
@@ -82,11 +76,9 @@ const App = () => {
   }
   return (
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={state.imgUrl}
       title={state.title}
       price={state.price}
-      marketingType={state.marketingType}
-      delivery={state.delivery}
       shopName={state.shopName}
       prolistTpl={
         <div
@@ -130,9 +122,7 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    marketingType: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
+    shopName: '阳澄湖大闸蟹自营店',
   }
   const tagStyles = {
     display: 'inline-block',
@@ -143,11 +133,9 @@ const App = () => {
   }
   return (
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={state.imgUrl}
       title={state.title}
       price={state.price}
-      marketingType={state.marketingType}
-      delivery={state.delivery}
       shopName={state.shopName}
       priceAfterTpl={
         <img
@@ -177,17 +165,13 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    marketingType: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
+    shopName: '阳澄湖大闸蟹自营店',
   }
   return (
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={state.imgUrl}
       title={state.title}
       price={state.price}
-      marketingType={state.marketingType}
-      delivery={state.delivery}
       shopName={state.shopName}
       productTagsTpl={<div>自定义店铺介绍</div>}
     />
@@ -213,18 +197,14 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    marketingType: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
+    shopName: '阳澄湖大闸蟹自营店',
   }
   
   return (
     <Card
-      imgUrl={state.imgUrl}
+      imageProps={state.imgUrl}
       title={state.title}
       price={state.price}
-      marketingType={state.marketingType}
-      delivery={state.delivery}
       shopName={state.shopName}
       bottomTpl={<div style={{ fontSize: '12px', paddingTop: '15px', paddingBottom: '15px', textAlign: 'center' }}>自定义促销信息等</div>}
     />
@@ -251,28 +231,22 @@ const App = () => {
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
-    marketingType: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
+    shopName: '阳澄湖大闸蟹自营店',
   }
   
   return (
     <>
       <Card
-        imgUrl={state.imgUrl}
+        imageProps={state.imgUrl}
         title={state.title}
         price={state.price}
-        marketingType={state.marketingType}
-        delivery={state.delivery}
         shopName={state.shopName}
         showType="half-line"
       />
       <Card
-        imgUrl={state.imgUrl}
+        imageProps={state.imgUrl}
         title={state.title}
         price={state.price}
-        marketingType={state.marketingType}
-        delivery={state.delivery}
         shopName={state.shopName}
         showType="half-line"
       />
