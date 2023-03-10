@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { Children, FunctionComponent, useState } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import { Checkbox, Icon, Tag, Cell, CellGroup, Swipe, Button } from '@nutui/nutui-react';
 import { IComponent } from '@/utils/typings'
@@ -56,6 +56,14 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
     setDefaultValue(item.id);
     onSelected?.(item, index);
   }
+  function RenderRowInfo(props: { label: string; value: string; }) {
+    return (
+      <div className={b('item-footer-info')}>
+        <span>{props.label}</span>
+        <p>{props.value}</p>
+      </div>
+    );
+  }
   const RenderItem = (item: ReceiveInvoiceItem, index: number) => {
     return (<CellGroup className={b('item')}>
       <Cell className={b('item-header')}
@@ -72,20 +80,10 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
       <Cell className={b('item-footer')} onClick={() => onSelect(item, index)}>
         <Checkbox textPosition="right" label="" checked={item.id == defaultValue} />
         <div className={b('item-footer infobox')}>
-          <div className={b('item-footer-info')} >
-            <span>{locale.tel}</span>
-            <p>{item.tel}</p>
-          </div>
-          <div className={b('item-footer-info')} >
-            <span>{locale.addres}</span>
-            <p>{item.addres}</p>
-          </div>
+          <RenderRowInfo label={locale.tel} value={item.tel} />
+          <RenderRowInfo label={locale.addres} value={item.addres} />
           {item?.extends?.map((i, index) => {
-            return (
-              <div key={index} className={b('item-footer-info')} >
-                <span>{i.label}</span>
-                <p>{i.value}</p>
-              </div>)
+            return <RenderRowInfo key={index} label={i.label} value={i.value} />
           })}
         </div>
       </Cell>
