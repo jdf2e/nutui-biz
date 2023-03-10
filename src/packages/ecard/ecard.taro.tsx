@@ -10,6 +10,7 @@ import { useConfig } from "@/packages/configprovider";
 import { cn2 as nb } from "@/utils/bem";
 import { InputNumber, InputNumberProps } from "@nutui/nutui-react";
 import mathMethods from '@/utils/math'
+import {numericProp} from '@/utils/props'
 const { accurateMultiply } = mathMethods
 const b = nb("ecard");
 export interface DataListItem {
@@ -75,7 +76,7 @@ export const Ecard: FunctionComponent<
   };
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [currentPrice, setCurrentPrice] = useState<number>(dataList[0].price || 0); //当前非自定义面值
-  const [customValue, setCustomValue] = useState<string | number>("");
+  const [customValue, setCustomValue] = useState<snumericProp>("");
   const [cardAmount, setCardAmount] = useState(cardAmountMin);
   const [money, setMoney] = useState<number>(accurateMultiply(dataList[0].price, 1))
 
@@ -115,7 +116,7 @@ export const Ecard: FunctionComponent<
   };
 
   const handleChangeStep = (
-    param: string | number,
+    param: numericProp,
   ) => {
     setCardAmount(Number(param))
     onChangeStep && onChangeStep(+param, currentPrice || Number(customValue), money);

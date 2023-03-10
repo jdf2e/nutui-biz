@@ -84,7 +84,6 @@ const AddressEditDemo = () => {
   const addressSetData: Partial<AddressData> = {
     isRequired: ["name", "tel", "region", "address"],
     isDefualtAddress: true,
-    errorShowType: "errorMsg",
   };
 
   const addressSetData2: Partial<AddressData> = {
@@ -92,6 +91,7 @@ const AddressEditDemo = () => {
     namePlaceholder: "请输入收件人姓名",
     isRequired: ["name", "tel"],
     isDefualtAddress: false,
+    errorShowType: "errorMsg",
   };
 
   const addressData2: Partial<AddressResult> = {
@@ -135,10 +135,27 @@ const AddressEditDemo = () => {
     setRadioVal(v);
   };
 
-  const renderTpl = (radioVal: string) => {
-    switch (radioVal) {
-      case "1":
-        return (
+
+
+  return (
+    <div className="demo" style={{ paddingBottom: "100px" }}>
+      <>
+        <CellGroup>
+          <Cell>
+            <RadioGroup
+              value={radioVal}
+              onChange={handleChange}
+              style={{ flexFlow: "wrap" }}
+            >
+              <Radio value="1">{translated.notInfo}</Radio>
+              <Radio value="2">{translated.hasInfo}</Radio>
+              <Radio value="3">{translated.custom1}</Radio>
+              <Radio value="4">{translated.custom2}</Radio>
+            </RadioGroup>
+          </Cell>
+        </CellGroup>
+        {/* <>{renderTpl(radioVal)}</> */}
+        {radioVal === "1" && (
           <>
             <h2>{translated.basic}</h2>
             <AddressEdit
@@ -150,10 +167,8 @@ const AddressEditDemo = () => {
               }}
             />
           </>
-        );
-        break;
-      case "2":
-        return (
+        )}
+        {radioVal === "2" && (
           <>
             <h2>{translated.selected}</h2>
             <AddressEdit
@@ -167,17 +182,15 @@ const AddressEditDemo = () => {
               onCloseAddress={onClose}
             />
           </>
-        );
-        break;
-      case "3":
-        return (
+        )}
+        {radioVal === "3" && (
           <>
             <h2>{translated.custom1}</h2>
             <AddressEdit
               address={addressData2}
               data={addressSetData2}
               addressInfo={addressInfo2}
-              //   showSave={false}
+              showSave={false}
               onSwitch={(state, data) => {
                 console.log("switch", state, data);
               }}
@@ -187,11 +200,8 @@ const AddressEditDemo = () => {
               onCloseAddress={onClose}
             />
           </>
-        );
-        break;
-
-      default:
-        return (
+        )}
+        {radioVal === "4" && (
           <>
             <h2>{translated.custom2}</h2>
             <AddressEdit
@@ -236,75 +246,7 @@ const AddressEditDemo = () => {
               }
             />
           </>
-        );
-        break;
-    }
-  };
-
-  return (
-    <div className="demo" style={{ paddingBottom: "100px" }}>
-      <>
-        <CellGroup>
-          <Cell>
-            <RadioGroup
-              value={radioVal}
-              onChange={handleChange}
-              style={{ flexFlow: "wrap" }}
-            >
-              <Radio value="1">{translated.notInfo}</Radio>
-              <Radio value="2">{translated.hasInfo}</Radio>
-              <Radio value="3">{translated.custom1}</Radio>
-              <Radio value="4">{translated.custom2}</Radio>
-            </RadioGroup>
-          </Cell>
-        </CellGroup>
-        <>{renderTpl(radioVal)}</>
-        {/* {radioVal === "1" && (
-          <>
-            <h2>{translated.basic}</h2>
-            <AddressEdit
-              address={addressData}
-              data={addressSetData}
-              addressInfo={addressInfo}
-              onSave={(formData) => {
-                console.log(formData);
-              }}
-            />
-          </>
         )}
-        {radioVal === "2" && (
-          <>
-            <h2>{translated.selected}</h2>
-            <AddressEdit
-              address={addressData2}
-              data={addressSetData}
-              addressInfo={addressInfo2}
-              onSave={(formData) => {
-                console.log(formData);
-              }}
-              onChangeAddress={onChange}
-              onCloseAddress={onClose}
-            />
-          </>
-        )}
-        {radioVal === "3" && (
-          <>
-            <h2>{translated.custom1}</h2>
-            <AddressEdit
-              address={addressData2}
-              data={addressSetData2}
-              addressInfo={addressInfo2}
-              //   showSave={false}
-              onSwitch={(state, data) => {
-                console.log("switch", state, data);
-              }}
-              onChange={(value, tag) => {
-                console.log(tag, value);
-              }}
-              onCloseAddress={onClose}
-            />
-          </>
-        )} */}
       </>
     </div>
   );

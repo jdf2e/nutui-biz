@@ -47,6 +47,7 @@ export interface AddressData {
   isRequired?: string[];
   bottomText: string;
   errorShowType?: string;
+  errorToastText?: string;
   [key: string]: any;
 }
 export interface AddressResult {
@@ -170,8 +171,9 @@ export const AddressEdit: FunctionComponent<
     addressErrorMsg: locale.addressedit.addressErrorMsg,
     bottomText: locale.addressedit.bottomText,
     errorShowType: "toast",
+    errorToastText: locale.addressedit.errorToastText,
   });
-  const [errorList, setErrorList] = useState<any>([]);
+  const [errorList, setErrorList] = useState<string[] | any>([]);
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
