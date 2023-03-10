@@ -5,23 +5,23 @@ import { IComponent } from '@/utils/typings'
 import { cn2 } from '@/utils/bem'
 import classNames from 'classnames';
 export interface ReceiveInvoiceItemExt {
-  label: String;
-  value: String;
+  label: string;
+  value: string;
   [x: string]: any;
 }
 export interface ReceiveInvoiceItem {
-  id: Number | String;
-  name: String;
-  tel: String;
-  addres: String;
-  isDefault: Boolean;
+  id: number | string;
+  name: string;
+  tel: string;
+  addres: string;
+  isDefault: boolean;
   extends?: Array<ReceiveInvoiceItemExt>;
   [x: string]: any;
 }
 export interface ReceiveInvoiceListProps extends IComponent {
-  modelValue: String | Number;
+  modelValue: string | number;
   list: Array<ReceiveInvoiceItem>;
-  enableDelete: Boolean;
+  enableDelete: boolean;
   onEdit?: (item: ReceiveInvoiceItem, index: number) => void;
   onSelected?: (item: ReceiveInvoiceItem, index: number) => void;
   onDelete?: (item: ReceiveInvoiceItem, index: number) => void;
@@ -93,7 +93,7 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
   }
   return (
     <div className={classNames([b(), className])} style={style} {...rest}>
-      {list.map((item, index) => {
+      {list?.map((item, index) => {
         return (
           <React.Fragment key={item.id.toString()}>
             {enableDelete ?
