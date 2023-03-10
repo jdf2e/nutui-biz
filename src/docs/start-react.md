@@ -2,11 +2,12 @@
 
 ## 介绍
 
-通过本文你可以掌握 NutUI-React 的安装和使用方法，操作简单易上手，开发简洁快速。
+通过本文你可以掌握 NutUI-Biz 的安装和使用方法，操作简单易上手，开发简洁快速。
 
 ## NPM 安装
 
 ```bash
+npm i @nutui/nutui-react # 依赖的基础组件库
 npm i @nutui/nutui-biz
 ```
 
@@ -16,11 +17,17 @@ npm i @nutui/nutui-biz
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import '@nutui/nutui-biz/dist/style.css'
-import { Icon } from '@nutui/nutui-react';
+import '@nutui/nutui-react/dist/style.css'
+import { Card } from '@nutui/nutui-biz';
 
 ReactDOM.render(
   <div className="App">
-    <Icon name="dongdong"></Icon>
+    <Card
+      imageProps='//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg'
+      title='【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水'
+      price='388'
+      shopName='阳澄湖大闸蟹自营店'
+    />
   </div>,
   document.getElementById("app")
 );
@@ -29,7 +36,7 @@ ReactDOM.render(
 
 #### 为什么只按需引入样式
 
-NutUI-React 默认支持基于 ES modules 的 tree shaking，对于 JS 部分，直接引入 `import { Button } from '@nutui/nutui-react'` 就会有按需加载的效果。仅样式不是按需导入的，因此只需按需导入样式即可。
+NutUI-Biz 默认支持基于 ES modules 的 tree shaking，对于 JS 部分，直接引入 `import { Card } from '@nutui/nutui-biz'` 就会有按需加载的效果。仅样式不是按需导入的，因此只需按需导入样式即可。
 
 #### WebPack 构建工具 通过 babel 使用按需加载
 
@@ -47,22 +54,22 @@ npm install babel-plugin-import --save-dev
     [
       "import",
       {
-        "libraryName": "@nutui/nutui-react",
+        "libraryName": "@nutui/nutui-biz",
         "libraryDirectory": "dist/esm",
         "style": true,
         "camel2DashComponentName": false
       },
-      'nutui-react'
+      'nutui-biz'
     ]
   ]
 }
 ```
-在 webpack 配置中配置 sass-loader ，将 nutui-react 样式变量导入全局。
+在 webpack 配置中配置 sass-loader ，将 nutui-biz 样式变量导入全局。
 ```javascript
 //...
 // 给 sass-loader 传递选项
 scss: {
-    data: `@import "@nutui/nutui-react/dist/styles/variables.scss";`,
+    data: `@import "@nutui/nutui-biz/dist/styles/variables.scss";`,
 }
 //...
 ```
@@ -72,7 +79,7 @@ scss: {
 #### 创建项目
 
 ```shell
-npx create-react-app myNutUI-React
+npx create-react-app myNutUI-Biz
 ```
 
 #### 安装 craco 以及相关插件
@@ -94,7 +101,7 @@ module.exports = {
     sass: {
       loaderOptions: {
         sourceMap: true,
-        additionalData: `@import "@nutui/nutui-react/dist/styles/variables.scss";` /* Any sass-loader configuration options: https://github.com/webpack-contrib/sass-loader. */,
+        additionalData: `@import "@nutui/nutui-biz/dist/styles/variables.scss";` /* Any sass-loader configuration options: https://github.com/webpack-contrib/sass-loader. */,
       },
     },
   },
@@ -103,12 +110,12 @@ module.exports = {
       [
         "import",
         {
-          libraryName: "@nutui/nutui-react",
+          libraryName: "@nutui/nutui-biz",
           libraryDirectory: "dist/esm",
           style: true,
           camel2DashComponentName: false,
         },
-        "nutui-react",
+        "nutui-biz",
       ],
     ],
   },
@@ -138,7 +145,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         // 配置 nutui 全局 scss 变量
-        additionalData: `@import "@nutui/nutui-react/dist/styles/variables.scss";`,
+        additionalData: `@import "@nutui/nutui-biz/dist/styles/variables.scss";`,
       },
     },
   },
@@ -147,10 +154,10 @@ export default defineConfig({
     styleImport({
       libs: [
         {
-          libraryName: "@nutui/nutui-react",
+          libraryName: "@nutui/nutui-biz",
           libraryNameChangeCase: "pascalCase",
           resolveStyle: (name) => {
-            return `@nutui/nutui-react/dist/esm/${name}/style`
+            return `@nutui/nutui-biz/dist/esm/${name}/style`
           },
         },
       ],
@@ -172,7 +179,7 @@ export default defineConfig({
   <meta name='viewport' content='width=device-width, initial-scale=1.0' />
   <!-- 引入样式 -->
   <link rel='stylesheet'
-        href='https://cdn.jsdelivr.net/npm/@nutui/nutui-react/dist/style.css' />
+        href='https://cdn.jsdelivr.net/npm/@nutui/nutui-biz/dist/style.css' />
   <!-- 引入React -->
   <script crossorigin
           src='https://unpkg.com/react@17/umd/react.production.min.js'></script>
@@ -180,17 +187,17 @@ export default defineConfig({
           src='https://unpkg.com/react-dom@17/umd/react-dom.production.min.js'></script>
   <!-- 引入NutUI组件库 -->
   <script
-    src='https://cdn.jsdelivr.net/npm/@nutui/nutui-react/dist/nutui.react.umd.js'></script>
+    src='https://cdn.jsdelivr.net/npm/@nutui/nutui-biz/dist/nutui.biz.umd.js'></script>
 </head>
 <body>
 <div id='app'></div>
 <script>
-  // 在 #app 标签下渲染一个按钮组件
+  // 在 #app 标签下渲染一个商品卡片组件
   ReactDOM.render(
     React.createElement(
-      nutui.react.Button,
+      nutui.react.Card,
       null,
-      React.createElement("div", null, "主要按钮")
+      React.createElement("div", null)
     ),
     document.querySelector("#app")
   );
@@ -202,7 +209,7 @@ export default defineConfig({
 > 在页面中直接引入，将无法使用 **主题定制** 等功能。我们推荐使用 *NPM* 或 *YARN* 方式安装，不推荐在页面中直接引入的用法
 
 ## 使用注意事项
-- NutUI-React 基于 [react@^18.0.0](https://www.npmjs.com/package/react) 构建
-- NutUI-React 版本提供的 `.scss` 文件建议使用 [Dart Sass ^1.40.0](https://www.npmjs.com/package/sass) 以上版本
+- NutUI-Biz 基于 [react@^18.0.0](https://www.npmjs.com/package/react) 构建
+- NutUI-Biz 版本提供的 `.scss` 文件建议使用 [Dart Sass ^1.40.0](https://www.npmjs.com/package/sass) 以上版本
 - 组件 CSS 单位使用的是 **px**，如果你的项目中需要 **rem** 单位，可借助一些工具进行转换，比如 [webpack](https://www.webpackjs.com/) 的 [px2rem-loader](https://www.npmjs.com/package/px2rem-loader)、[postcss](https://github.com/postcss/postcss) 的 [postcss-plugin-px2rem](https://www.npmjs.com/package/postcss-plugin-px2rem) 插件等
 

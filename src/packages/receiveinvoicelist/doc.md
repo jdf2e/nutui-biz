@@ -140,6 +140,6 @@ export default App;
 ### Events
 | 字段       | 说明     | 回调参数                 |
 |------------|----------|--------------------------|
-| onEdit     | 编辑事件 | item\:ReceiveInvoiceItem |
-| onSelected | 选中事件 | item\:ReceiveInvoiceItem |
-| onDelete   | 删除事件 | item\:ReceiveInvoiceItem |
+| onEdit     | 编辑事件 | item\:ReceiveInvoiceItem,index\:number |
+| onSelected | 选中事件 | item\:ReceiveInvoiceItem,index\:number |
+| onDelete   | 删除事件 | item\:ReceiveInvoiceItem,index\:number |

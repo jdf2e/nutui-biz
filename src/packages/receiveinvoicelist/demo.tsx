@@ -45,17 +45,17 @@ const ReceiveInvoiceListDemo = () => {
   };
 
   const event = {
-    onEdit: (item: ReceiveInvoiceItem) => {
+    onEdit: (item: ReceiveInvoiceItem, index: number) => {
       Toast.text('onEdit ' + item.name);
-      console.log('onEdit', item);
+      console.log('onEdit', item, index);
     },
-    onSelected: (item: ReceiveInvoiceItem) => {
+    onSelected: (item: ReceiveInvoiceItem, index: number) => {
       Toast.text('onSelected ' + item.name);
-      console.log('onSelected', item);
+      console.log('onSelected', item, index);
     },
-    onDelete: (item: ReceiveInvoiceItem) => {
+    onDelete: (item: ReceiveInvoiceItem, index: number) => {
       Toast.text('onDelete ' + item.name);
-      console.log('onDelete', item);
+      console.log('onDelete', item, index);
     }
   }
 
