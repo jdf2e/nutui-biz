@@ -4,13 +4,14 @@ import { Checkbox, Icon, Tag, Cell, CellGroup, Swipe, Button } from '@nutui/nutu
 import { IComponent } from '@/utils/typings'
 import { cn2 } from '@/utils/bem'
 import classNames from 'classnames';
+import { numericProp } from '@/utils/props';
 export interface ReceiveInvoiceItemExt {
   label: string;
   value: string;
   [x: string]: any;
 }
 export interface ReceiveInvoiceItem {
-  id: number | string;
+  id: numericProp;
   name: string;
   tel: string;
   addres: string;
@@ -19,7 +20,7 @@ export interface ReceiveInvoiceItem {
   [x: string]: any;
 }
 export interface ReceiveInvoiceListProps extends IComponent {
-  defaultValue: string | number;
+  defaultValue: numericProp;
   list: Array<ReceiveInvoiceItem>;
   enableDelete: boolean;
   onEdit?: (item: ReceiveInvoiceItem, index: number) => void;
