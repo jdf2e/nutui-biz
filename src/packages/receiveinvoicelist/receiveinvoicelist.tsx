@@ -1,39 +1,40 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { Children, FunctionComponent, useState } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import { Checkbox, Icon, Tag, Cell, CellGroup, Swipe, Button } from '@nutui/nutui-react';
 import { IComponent } from '@/utils/typings'
 import { cn2 } from '@/utils/bem'
 import classNames from 'classnames';
+import { numericProp } from '@/utils/props';
 export interface ReceiveInvoiceItemExt {
-  label: String;
-  value: String;
+  label: string;
+  value: string;
   [x: string]: any;
 }
 export interface ReceiveInvoiceItem {
-  id: Number | String;
-  name: String;
-  tel: String;
-  addres: String;
-  isDefault: Boolean;
+  id: numericProp;
+  name: string;
+  tel: string;
+  addres: string;
+  isDefault: boolean;
   extends?: Array<ReceiveInvoiceItemExt>;
   [x: string]: any;
 }
 export interface ReceiveInvoiceListProps extends IComponent {
-  modelValue: String | Number;
+  defaultValue: numericProp;
   list: Array<ReceiveInvoiceItem>;
-  enableDelete: Boolean;
+  enableDelete: boolean;
   onEdit?: (item: ReceiveInvoiceItem, index: number) => void;
   onSelected?: (item: ReceiveInvoiceItem, index: number) => void;
   onDelete?: (item: ReceiveInvoiceItem, index: number) => void;
 }
 const defaultProps = {
-  modelValue: "",
+  defaultValue: "",
   list: new Array<ReceiveInvoiceItem>,
   enableDelete: false
 } as ReceiveInvoiceListProps;
 export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListProps>> = (props) => {
   const { locale } = useConfig();
-  const [modelValue, setModelValue] = useState(props.modelValue);
+  const [defaultValue, setDefaultValue] = useState(props.defaultValue);
   const b = cn2('receive-invoice-list');
   const {
     style,
@@ -49,12 +50,20 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
     ...props,
   }
   const onSelect = (item: ReceiveInvoiceItem, index: number) => {
-    if (item.id == modelValue) {
-      setModelValue("")
+    if (item.id == defaultValue) {
+      setDefaultValue("")
       return
     }
-    setModelValue(item.id);
+    setDefaultValue(item.id);
     onSelected?.(item, index);
+  }
+  function RenderRowInfo(props: { label: string; value: string; }) {
+    return (
+      <div className={b('item-footer-info')}>
+        <span>{props.label}</span>
+        <p>{props.value}</p>
+      </div>
+    );
   }
   const RenderItem = (item: ReceiveInvoiceItem, index: number) => {
     return (<CellGroup className={b('item')}>
@@ -70,22 +79,12 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
           <Icon name="edit" color='#666' onClick={(e) => { e.stopPropagation(); onEdit?.(item, index) }}></Icon>
         } />
       <Cell className={b('item-footer')} onClick={() => onSelect(item, index)}>
-        <Checkbox textPosition="right" label="" checked={item.id == modelValue} />
+        <Checkbox textPosition="right" label="" checked={item.id == defaultValue} />
         <div className={b('item-footer infobox')}>
-          <div className={b('item-footer-info')} >
-            <span>{locale.tel}</span>
-            <p>{item.tel}</p>
-          </div>
-          <div className={b('item-footer-info')} >
-            <span>{locale.addres}</span>
-            <p>{item.addres}</p>
-          </div>
+          <RenderRowInfo label={locale.tel} value={item.tel} />
+          <RenderRowInfo label={locale.addres} value={item.addres} />
           {item?.extends?.map((i, index) => {
-            return (
-              <div key={index} className={b('item-footer-info')} >
-                <span>{i.label}</span>
-                <p>{i.value}</p>
-              </div>)
+            return <RenderRowInfo key={index} label={i.label} value={i.value} />
           })}
         </div>
       </Cell>
@@ -93,7 +92,7 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
   }
   return (
     <div className={classNames([b(), className])} style={style} {...rest}>
-      {list.map((item, index) => {
+      {list?.map((item, index) => {
         return (
           <React.Fragment key={item.id.toString()}>
             {enableDelete ?

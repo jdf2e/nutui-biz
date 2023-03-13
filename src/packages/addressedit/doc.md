@@ -45,7 +45,7 @@ const App = () => {
       { id: 4, name: "常营乡", title: "C" },
     ],
     town: [],
-    addressType: "custom",
+    type: "custom",
   };
   const addressInfo = {
     name: "",
@@ -108,7 +108,7 @@ const App = () => {
     { id: 4, name: "常营乡", title: "C" },
     ],
     town: [],
-    addressType: "custom",
+    type: "custom",
     height: "270px",
   };
   const addressInfo2 = {
@@ -183,7 +183,7 @@ const App = () => {
     { id: 4, name: "常营乡", title: "C" },
     ],
     town: [],
-    addressType: "custom",
+    type: "custom",
     height: "270px",
   };
   const addressInfo2 = {
@@ -199,6 +199,7 @@ const App = () => {
     namePlaceholder: "请输入收件人姓名",
     isRequired: ["name", "tel"],
     isDefualtAddress:false,
+    errorShowType: "errorMsg",
   };
 
 
@@ -261,7 +262,7 @@ const App = () => {
       { id: 4, name: "常营乡", title: "C" },
     ],
     town: [],
-    addressType: "custom",
+    type: "custom",
   };
   const addressInfo = {
     name: "",
@@ -276,6 +277,7 @@ const App = () => {
     namePlaceholder: "请输入收件人姓名",
     isRequired: ["name", "tel"],
     isDefualtAddress:false,
+    errorShowType: "errorMsg",
   };
 
 
@@ -373,6 +375,8 @@ export default App;
 | addressPlaceholder  | 自定义详细地址占位文案 | string | `街道、楼牌号` |
 | addressErrorMsg  | 自定义详细地址非空校验错误提示文案 | string | `该项为必填项，请填写完后提交` |
 | bottomText|自定义底部保存按钮文案 | string | `保存` |
+| errorShowType| 输入框必填非空错误提示类型，可选值`toast`/`errorMsg`|string |`toast`|
+| errorToastText| toast错误提示内容 | string | `请完成必填项`|
 
 ### Props addressInfo
 | 字段    | 说明                                       | 类型    | 默认值    |

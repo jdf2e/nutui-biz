@@ -205,13 +205,13 @@ test('props test', () => {
         ></Delivery>
     )
 
-    const delivery_title = container.querySelector('.nut-delivery__title');
+    const delivery_title = container.querySelector('.nb-delivery__title');
     expect(delivery_title?.textContent).toEqual('自定义标题');
 
-    const content_delivery_title = container.querySelector('.nut-delivery__content-deliverytime-title');
+    const content_delivery_title = container.querySelector('.nb-delivery__content-deliverytime-title');
     expect(content_delivery_title?.textContent).toContain('送货时间');
 
-    const delivery_btn = container.querySelector('.nut-delivery__btn');
+    const delivery_btn = container.querySelector('.nb-delivery__btn');
     expect(delivery_btn?.innerHTML).toContain('ok')
 })
 
@@ -227,7 +227,7 @@ test('onsure click test', async () => {
         ></Delivery>
     )
 
-    const delivery_btn = container.querySelector('.nut-delivery__btn .nut-button');
+    const delivery_btn = container.querySelector('.nb-delivery__btn .nb-button');
     if (delivery_btn) {
         fireEvent.click(delivery_btn);
         expect(onHandleSure).toBeCalled();
@@ -243,11 +243,11 @@ test('click date item', async () => {
             deliveryDateData={deliveryDateData1}
         ></Delivery>
     )
-    const dateItem = container.querySelectorAll('.nut-delivery__select .nut-delivery-date .nut-delivery-date__item')[1] as Element;
+    const dateItem = container.querySelectorAll('.nb-delivery__select .nb-delivery-date .nb-delivery-date__item')[1] as Element;
     dateItem && fireEvent.click(dateItem);
 
     await waitFor(() => {
-        expect(dateItem.className).toContain("nut-delivery-date__item--current")
+        expect(dateItem.className).toContain("nb-delivery-date__item--current")
     })
 });
 
@@ -258,9 +258,9 @@ test('show date time list', () => {
             deliveryDateData={deliveryDateData2}
         ></Delivery>
     )
-    const time_tabs = container.querySelector('.nut-delivery__select .nut-delivery-date-time .nut-delivery-date-time__detail');
-    const detail = time_tabs?.querySelectorAll('.nut-delivery-date-time__detail-item') as NodeListOf<Element>;
-    expect(detail[0].className).toContain('nut-delivery-date-time__detail-item--current');
+    const time_tabs = container.querySelector('.nb-delivery__select .nb-delivery-date-time .nb-delivery-date-time__detail');
+    const detail = time_tabs?.querySelectorAll('.nb-delivery-date-time__detail-item') as NodeListOf<Element>;
+    expect(detail[0].className).toContain('nb-delivery-date-time__detail-item--current');
     fireEvent.click(detail[1]);
-    expect(detail[1].className).toContain('nut-delivery-date-time__detail-item--current');
+    expect(detail[1].className).toContain('nb-delivery-date-time__detail-item--current');
 });

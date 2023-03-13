@@ -197,6 +197,7 @@ export interface BaseLang {
     addressErrorMsg: string;
     bottomText: string;
     setDefaultText: string;
+    errorToastText: string;
   };
   login: {
     accountPlaceholder: string;
@@ -210,7 +211,7 @@ export interface BaseLang {
     forgetPwdText: string;
     loginButtonText: string;
   };
-  category:{
-    pullUpText:string
-  }
+  category: {
+    pullUpText: string;
+  };
 }
