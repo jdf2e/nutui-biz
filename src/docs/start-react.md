@@ -167,47 +167,6 @@ export default defineConfig({
 
 ```
 
-#### CDN 安装使用示例
-
-> 可以通过 CDN 的方式引入， 可以在 **jsdelivr** 和 **unpkg** 等公共 CDN 上获取到 NutUI。
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset='UTF-8' />
-  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-  <!-- 引入样式 -->
-  <link rel='stylesheet'
-        href='https://cdn.jsdelivr.net/npm/@nutui/nutui-biz/dist/style.css' />
-  <!-- 引入React -->
-  <script crossorigin
-          src='https://unpkg.com/react@17/umd/react.production.min.js'></script>
-  <script crossorigin
-          src='https://unpkg.com/react-dom@17/umd/react-dom.production.min.js'></script>
-  <!-- 引入NutUI组件库 -->
-  <script
-    src='https://cdn.jsdelivr.net/npm/@nutui/nutui-biz/dist/nutui.biz.umd.js'></script>
-</head>
-<body>
-<div id='app'></div>
-<script>
-  // 在 #app 标签下渲染一个商品卡片组件
-  ReactDOM.render(
-    React.createElement(
-      nutui.react.Card,
-      null,
-      React.createElement("div", null)
-    ),
-    document.querySelector("#app")
-  );
-</script>
-</body>
-</html>
-```
-
-> 在页面中直接引入，将无法使用 **主题定制** 等功能。我们推荐使用 *NPM* 或 *YARN* 方式安装，不推荐在页面中直接引入的用法
-
 ## 使用注意事项
 - NutUI-Biz 基于 [react@^18.0.0](https://www.npmjs.com/package/react) 构建
 - NutUI-Biz 版本提供的 `.scss` 文件建议使用 [Dart Sass ^1.40.0](https://www.npmjs.com/package/sass) 以上版本
