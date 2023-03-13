@@ -105,14 +105,15 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Cell, ButtonProps } from "@nutui/nutui-react";
-import { OrderCancelPanel } from "@nutui/nutui-biz";
+import { OrderCancelPanel, IreasonsObject } from "@nutui/nutui-biz";
 
-interface IreasonsObject {
-  key: string;
-  value: string;
-  [x: string]: any;
-}
 const App = () => {
+  const warmTips = [
+    "1. 限时特价、预约资格等购买优惠可能一并取消",
+    "2. 如遇订单拆分，京券将换成同价值京豆返还",
+    "3. 支付券不予返还；支付优惠一并取消",
+    "4. 订单一旦取消，无法恢复",
+  ];
   const cancelReason = [
     {
       key: "reasons1",
@@ -139,10 +140,7 @@ const App = () => {
       value: "商品降价",
     },
   ];
-  const [showcheckboxCancelPanel, setShowcheckboxCancelPanel] = useState(false);
-  const clickClosePopUpCheckbox = React.useCallback(() => {
-    setShowcheckboxCancelPanel(false);
-  }, [showcheckboxCancelPanel]);
+
   const submitBtn = React.useCallback(
     (
       selectedReason: IreasonsObject,
@@ -154,11 +152,16 @@ const App = () => {
           selectedReason
         )}, textAreaValue:${textAreaValue},switchStatus:${switchStatus}`
       );
-      clickClosePopUpCheckbox();
+      clickClosePopUpSec();
     },
     []
   );
   //基本使用
+  const [showCancelPanel, setShowCancelPanel] = useState(false);
+  const clickClosePopUpSec = React.useCallback(() => {
+    setShowCancelPanel(false);
+  }, [showCancelPanel]);
+
   const buttonProps: Partial<ButtonProps> = React.useMemo(() => {
     return {
       type: "primary",
@@ -169,17 +172,19 @@ const App = () => {
     <>
       <div className="demo">
         <Cell
-          title="基本用法"
-          onClick={() => setShowcheckboxCancelPanel(true)}
+          title="带有温馨提示的组件"
+          onClick={() => setShowCancelPanel(true)}
         />
         <OrderCancelPanel
-          showCancelPanel={showcheckboxCancelPanel}
-          checkboxType="front"
-          showBtntips={true}
+          showCancelPanel={showCancelPanel}
           popupTitle="退款原因"
+          reasonTitle="请选择取消订单原因"
           cancelReason={cancelReason}
+          warmTips={warmTips}
+          tipsTitle="温馨提示"
+          submitText="确认"
           buttonProps={buttonProps}
-          onClose={clickClosePopUpCheckbox}
+          onClose={clickClosePopUpSec}
           onSubmitBtn={submitBtn}
         />
       </div>
@@ -403,7 +408,11 @@ export default App;
 import React, { useState } from "react";
 import { Cell, ButtonProps } from "@nutui/nutui-react";
 import { OrderCancelPanel } from "@nutui/nutui-biz";
-
+interface IreasonsObject {
+  key: string;
+  value: string;
+  [x: string]: any;
+}
 const App = () => {
   const cancelReason = [
     {
@@ -434,7 +443,7 @@ const App = () => {
   const [showcheckboxCancelPanel, setShowcheckboxCancelPanel] = useState(false);
   const clickClosePopUpCheckbox = React.useCallback(() => {
     setShowcheckboxCancelPanel(false);
-  }, [showCheckboxCancelPanel]);
+  }, [showcheckboxCancelPanel]);
   const submitBtn = React.useCallback(
     (
       selectedReason: IreasonsObject,
