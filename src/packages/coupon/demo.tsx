@@ -1,5 +1,5 @@
 import React, { useState, CSSProperties } from "react";
-import { Coupon } from "./coupon";
+import { Coupon, ICouponType } from "./coupon";
 import { useTranslate } from "../../sites/assets/locale";
 import { ButtonProps } from "@nutui/nutui-react";
 interface T {
@@ -9,7 +9,7 @@ interface T {
   receivedBtnText: string;
   mainTitle: string;
   subTitle: string;
-  label: string;
+  label: React.ReactNode;
   mulDesc: string;
 }
 
@@ -22,7 +22,7 @@ const CouponDemo = () => {
       receivedBtnText: "已领取",
       mainTitle: "满100元可用",
       subTitle: "仅可购买满折券测试",
-      label: "内购专享",
+      label: <div style={{ color: "red" }}>内购专享</div>,
       mulDesc: "多行优惠券，在组件外层包裹元素上设置样式",
     },
     "en-US": {
@@ -62,7 +62,7 @@ const CouponDemo = () => {
   //渲染组件文案内容
   const baseCouponObj = React.useMemo(() => {
     return {
-      price: "9.12",
+      price: "9.212",
       currency: "¥",
       mainTitle: translated.mainTitle,
       subTitle: translated.subTitle,
@@ -121,9 +121,20 @@ const CouponDemo = () => {
       label: "618",
     };
   }, []);
-  const receivedBtn = React.useCallback((item: number) => {
-    console.log(item);
-  }, []);
+
+  const [arrReceived, setArrReceived] = useState<Array<number>>([]);
+  //点击小优惠券领取按钮交互
+  const receivedBtn = React.useCallback(
+    (item: ICouponType) => {
+      console.log(item);
+      if (!arrReceived.includes(item.item)) {
+        arrReceived.push(item.item);
+      }
+      setArrReceived([...arrReceived]);
+    },
+    [arrReceived]
+  );
+
   return (
     <>
       <div className="demo">
@@ -132,7 +143,7 @@ const CouponDemo = () => {
           pricePosition="back"
           couponStyle={couponBaseStyle}
           couponMainStyle={couponMainBaseStyle}
-          coupon={baseCouponObj}
+          couponData={baseCouponObj}
           btnText={btnText}
           isReceived={receivedStatus}
           usedIcon={usedIcon}
@@ -153,12 +164,14 @@ const CouponDemo = () => {
               return (
                 <Coupon
                   key={item}
+                  pricePosition="front"
                   type="small"
+                  usedIcon={usedIcon}
+                  isReceived={arrReceived.includes(item)}
                   couponMainStyle={couponMainSmallStyle}
                   couponStyle={couponSmallStyle}
-                  coupon={couponObj}
-                  itemData={item}
-                  btnText={translated.btnText}
+                  couponData={{ ...couponObj, item }}
+                  btnText={arrReceived.includes(item) ? "已领取" : "立即领取"}
                   onBtnClick={receivedBtn}
                 ></Coupon>
               );
