@@ -8,6 +8,7 @@ import React, {
 } from 'react'
 import { cn2 } from '@/utils/bem'
 import { Popup, Radio, Button } from '@nutui/nutui-react'
+import classNames from 'classnames';
 
 import DeliveryDate from '@/packages/deliverydate'
 import DeliveryDateTime from '@/packages/deliverydatetime'
@@ -15,20 +16,23 @@ import DeliveryDateTimeAccurate from '@/packages/deliverydatetimeaccurate'
 
 import { IComponent } from '@/utils/typings'
 
-import { DeliveryDateType, DateType, DateTimeType, DateTimeAccurateType, DateTimesType, DeliveryTypes, DeliveryData } from './type';
+import { numericProp } from '@/utils/props';
+
+import { DateType, DateTimeType, DateTimeAccurateType, DateTimesType, DeliveryTypes, DeliveryData } from './type';
 export interface DeliveryProps extends IComponent {
   visible: boolean;
-  title?: string;
+  title?: ReactNode;
   deliveryTypes?: Array<DeliveryTypes>;
   deliveryTimeTitle?: ReactNode;
-  deliveryDateType?: DeliveryDateType;
   deliveryDateData?: DeliveryData[];
   popStyle?: CSSProperties;
   popClassName?: string;
+  duration: number;
   buttonText?: ReactNode;
   onCloseMask?: () => void;
   onClose?: () => void;
-  onSure?: (item: DateTimesType, type: string) => void;
+  onSure?: (item: DateTimesType | null, type: string) => void;
+  onDeliveryTypeChange?: (label: numericProp | boolean) => void;
 }
 
 const defaultProps = {
@@ -42,17 +46,18 @@ const defaultProps = {
     desc: ''
   }],
   buttonText: '确定',
-  deliveryDateType: 'date',
   deliveryDateData: [],
   popStyle: { "height": '80%' },
   popClassName: '',
+  duration: 0.1,
   onCloseMask: () => { },
   onClose: () => { },
-  onSure: (item: DateTimesType, type: string) => { }
+  onSure: (item: DateTimesType | null, type: string) => { },
+  onDeliveryTypeChange: (label: numericProp | boolean) => { }
 } as DeliveryProps
 
 export const Delivery: FunctionComponent<
-  Partial<DeliveryProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<DeliveryProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
 
   const defaultDeliveryType = 'jd'; // 默认的配送方式key
@@ -64,16 +69,17 @@ export const Delivery: FunctionComponent<
     deliveryTimeTitle,
     deliveryTypes,
     buttonText,
-    deliveryDateType,
     deliveryDateData,
     popStyle,
     popClassName,
+    duration,
     className,
     style,
     children,
     onCloseMask,
     onClose,
     onSure,
+    onDeliveryTypeChange,
     ...rest
   } = {
     ...defaultProps,
@@ -84,6 +90,7 @@ export const Delivery: FunctionComponent<
 
   const [deliveryType, setDeliveryType] = useState(defaultDeliveryType);
   const [deliveryTime, setDeliveryTime] = useState(''); // 送货/安装/其他时间的默认选中
+  const [date, setDate] = useState("");
   const [timeDate, setTimeDate] = useState("");
   const [accurateTimeDate, setAccurateTimeDate] = useState("");
   const selectRef = useRef<HTMLDivElement>(null);
@@ -112,6 +119,7 @@ export const Delivery: FunctionComponent<
           currentDeliveryTime = times.find((item: DateTimesType) => (item as DateType).selected);
           if (currentDeliveryTime) {
             setDeliveryTime(deliveryDateData[i].label);
+            setDate(currentDeliveryTime.label);
             setSelectedItem(currentDeliveryTime);
           }
           break;
@@ -157,12 +165,14 @@ export const Delivery: FunctionComponent<
     }
   }
 
-  const handleTypeChange = (label: string | number | boolean) => {
+  const handleTypeChange = (label: numericProp | boolean) => {
     setDeliveryType(label as string);
     setSelectedItem(null);
     if (label == defaultDeliveryType) {
       getSelectContainerHeight();
+      initDeliveryTime();
     }
+    onDeliveryTypeChange?.(label);
   }
 
   const getSelectContainerHeight = () => {
@@ -187,8 +197,8 @@ export const Delivery: FunctionComponent<
     setSelectedItem(item);
   }
 
-  const onHandleSure = (selectedItem: DateTimesType, deliveryType: string) => {
-    onSure?.(selectedItem, deliveryType);
+  const onHandleSure = (selectedItem: DateTimesType | null, deliveryType: string) => {
+    onSure?.(deliveryType === defaultDeliveryType ? selectedItem : null, deliveryType);
     onClose?.();
   }
 
@@ -213,11 +223,12 @@ export const Delivery: FunctionComponent<
         className={popClassName}
         closeable
         round
+        duration={duration}
         onClickOverlay={clickOverlay}
         onClickCloseIcon={clickOverlay}
         onClose={closeFun}
       >
-        <div className={`${b()} ${className || ''}`} style={{ ...style }} {...rest}>
+        <div className={classNames([b(), className])} style={style} {...rest}>
           <div className={`${b('title')}`} ref={titleRef}>{title}</div>
           <div className={`${b('content')}`} ref={contentRef}>
             <div className={`${b('content-type')}`}>
@@ -249,7 +260,7 @@ export const Delivery: FunctionComponent<
                       <>
                         <div className={`${b('content-deliverytime-title')}`}>{deliveryTimeTitle}</div>
                         <div className={`${b('content-deliverytime-tabs')}`}>
-                          <Radio.RadioGroup value={deliveryTime} onChange={(label: string | number | boolean) => { setDeliveryTime(label as string); }}>
+                          <Radio.RadioGroup value={deliveryTime} onChange={(label: numericProp | boolean) => { setDeliveryTime(label as string); }}>
                             {
                               deliveryDateData && deliveryDateData.slice(0, maxCount).map((item: DeliveryData) => (
                                 <Radio
@@ -284,7 +295,7 @@ export const Delivery: FunctionComponent<
                   getDeliveryTimeItem(deliveryTime)?.type === 'date' &&
                   <DeliveryDate
                     data={getDeliveryTimeItem(deliveryTime)?.times as DateType[]}
-                    activeKey={deliveryTime}
+                    activeKey={date}
                     onSelect={(item: DateType) => { handleDeliveryDate(item) }}
                   ></DeliveryDate>
                 }
@@ -309,7 +320,7 @@ export const Delivery: FunctionComponent<
           }
           {children}
           <div className={b('btn')} ref={buttonRef}>
-            <Button onClick={() => { onHandleSure(selectedItem as DateTimesType, deliveryType) }} type="primary">
+            <Button onClick={() => { onHandleSure(selectedItem as (DateTimesType | null), deliveryType) }} type="primary">
               {buttonText}
             </Button>
           </div>
