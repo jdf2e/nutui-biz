@@ -1,0 +1,477 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`infiniteloading test 1`] = `
+<div>
+  <div
+    class="nb-productfeed demo3"
+  >
+    <div
+      class="nut-infiniteloading"
+    >
+      <div
+        class="nut-infinite-top"
+        style="height: 0px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
+      >
+        <div
+          class="top-box"
+        >
+          <img
+            class="nut-icon__img top-img "
+            src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png"
+          />
+          <span
+            class="top-text"
+          >
+            松开刷新
+          </span>
+        </div>
+      </div>
+      <div
+        class="nut-infinite-container"
+      >
+        <div
+          class="nb-productfeed__main"
+        >
+          <div
+            class="nb-productfeed__left"
+          >
+            <div
+              class="nb-productfeedItem nb-productfeedItem__multiple"
+              style="border-radius: 8px; padding: 10px;"
+            >
+              <div
+                class="nb-productfeedItem__image"
+              >
+                <div
+                  class="nut-image  "
+                  style="height: 150px; width: 150px;"
+                >
+                  <img
+                    alt=""
+                    class="nut-img lazyload"
+                    data-src="//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png"
+                    loading="lazy"
+                    style="object-fit: fill; object-position: center;"
+                  />
+                  <div
+                    class="nut-img-loading"
+                    style="background-image: url(//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png);"
+                  />
+                </div>
+              </div>
+              <div
+                class="nb-productfeedItem__content"
+              />
+            </div>
+            <div
+              class="nb-productfeedItem nb-productfeedItem__multiple"
+              style="border-radius: 8px; padding: 10px;"
+            >
+              <div
+                class="nb-productfeedItem__image"
+              >
+                <div
+                  class="nut-image  "
+                  style="height: 150px; width: 150px;"
+                >
+                  <img
+                    alt=""
+                    class="nut-img lazyload"
+                    data-src="//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png"
+                    loading="lazy"
+                    style="object-fit: fill; object-position: center;"
+                  />
+                  <div
+                    class="nut-img-loading"
+                    style="background-image: url(//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png);"
+                  />
+                </div>
+              </div>
+              <div
+                class="nb-productfeedItem__content"
+              />
+            </div>
+            <div
+              class="nb-productfeedItem nb-productfeedItem__multiple"
+              style="border-radius: 8px; padding: 10px;"
+            >
+              <div
+                class="nb-productfeedItem__image"
+              >
+                <div
+                  class="nut-image  "
+                  style="height: 150px; width: 150px;"
+                >
+                  <img
+                    alt=""
+                    class="nut-img lazyload"
+                    data-src="//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png"
+                    loading="lazy"
+                    style="object-fit: fill; object-position: center;"
+                  />
+                  <div
+                    class="nut-img-loading"
+                    style="background-image: url(//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png);"
+                  />
+                </div>
+              </div>
+              <div
+                class="nb-productfeedItem__content"
+              />
+            </div>
+          </div>
+          <div
+            class="nb-productfeed__right"
+          >
+            <div
+              class="nb-productfeedItem nb-productfeedItem__multiple"
+              style="border-radius: 8px; padding: 10px;"
+            >
+              <div
+                class="nb-productfeedItem__image"
+              >
+                <div
+                  class="nut-image  "
+                  style="height: 150px; width: 150px;"
+                >
+                  <img
+                    alt=""
+                    class="nut-img lazyload"
+                    data-src="//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png"
+                    loading="lazy"
+                    style="object-fit: fill; object-position: center;"
+                  />
+                  <div
+                    class="nut-img-loading"
+                    style="background-image: url(//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png);"
+                  />
+                </div>
+              </div>
+              <div
+                class="nb-productfeedItem__content"
+              />
+            </div>
+            <div
+              class="nb-productfeedItem nb-productfeedItem__multiple"
+              style="border-radius: 8px; padding: 10px;"
+            >
+              <div
+                class="nb-productfeedItem__image"
+              >
+                <div
+                  class="nut-image  "
+                  style="height: 150px; width: 150px;"
+                >
+                  <img
+                    alt=""
+                    class="nut-img lazyload"
+                    data-src="//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png"
+                    loading="lazy"
+                    style="object-fit: fill; object-position: center;"
+                  />
+                  <div
+                    class="nut-img-loading"
+                    style="background-image: url(//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png);"
+                  />
+                </div>
+              </div>
+              <div
+                class="nb-productfeedItem__content"
+              />
+            </div>
+            <div
+              class="nb-productfeedItem nb-productfeedItem__multiple"
+              style="border-radius: 8px; padding: 10px;"
+            >
+              <div
+                class="nb-productfeedItem__image"
+              >
+                <div
+                  class="nut-image  "
+                  style="height: 150px; width: 150px;"
+                >
+                  <img
+                    alt=""
+                    class="nut-img lazyload"
+                    data-src="//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png"
+                    loading="lazy"
+                    style="object-fit: fill; object-position: center;"
+                  />
+                  <div
+                    class="nut-img-loading"
+                    style="background-image: url(//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png);"
+                  />
+                </div>
+              </div>
+              <div
+                class="nb-productfeedItem__content"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-infinite-bottom"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`onRefresh test 1`] = `
+<div>
+  <div
+    class="nb-productfeed"
+    id="refreshScroll2"
+  >
+    <div
+      class="nut-infiniteloading"
+    >
+      <div
+        class="nut-infinite-top"
+        style="height: 10px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
+      >
+        <div
+          class="top-box"
+        >
+          <img
+            class="nut-icon__img top-img "
+            src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png"
+          />
+          <span
+            class="top-text"
+          >
+            松开刷新
+          </span>
+        </div>
+      </div>
+      <div
+        class="nut-infinite-container"
+      >
+        <div
+          class="nb-productfeed__main"
+        >
+          <div
+            class="nb-productfeed__left"
+          >
+            <div
+              class="nb-productfeedItem nb-productfeedItem__multiple"
+              style="border-radius: 8px; padding: 10px;"
+            >
+              <div
+                class="nb-productfeedItem__image"
+              >
+                <div
+                  class="nut-image  "
+                  style="height: 160px; width: 160px;"
+                >
+                  <img
+                    alt=""
+                    class="nut-img lazyload"
+                    data-src="//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png"
+                    loading="lazy"
+                    style="object-fit: fill; object-position: center;"
+                  />
+                  <div
+                    class="nut-img-loading"
+                    style="background-image: url(//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png);"
+                  />
+                </div>
+                <div
+                  class="nb-productfeedItem__image-tag"
+                >
+                  <div
+                    class="img-label"
+                  >
+                    <img
+                      src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="nb-productfeedItem__content"
+              />
+            </div>
+          </div>
+          <div
+            class="nb-productfeed__right"
+          >
+            <div
+              class="nb-productfeedItem nb-productfeedItem__multiple"
+              style="border-radius: 8px; padding: 10px;"
+            >
+              <div
+                class="nb-productfeedItem__image"
+              >
+                <div
+                  class="nut-image  "
+                  style="height: 160px; width: 160px;"
+                >
+                  <img
+                    alt=""
+                    class="nut-img lazyload"
+                    data-src="//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png"
+                    loading="lazy"
+                    style="object-fit: fill; object-position: center;"
+                  />
+                  <div
+                    class="nut-img-loading"
+                    style="background-image: url(//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png);"
+                  />
+                </div>
+                <div
+                  class="nb-productfeedItem__image-tag"
+                >
+                  <div
+                    class="img-label"
+                  >
+                    <img
+                      src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="nb-productfeedItem__content"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-infinite-bottom"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`onRefresh test 2`] = `
+<div>
+  <div
+    class="nb-productfeed"
+    id="refreshScroll2"
+  >
+    <div
+      class="nut-infiniteloading"
+    >
+      <div
+        class="nut-infinite-top"
+        style="height: 10px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
+      >
+        <div
+          class="top-box"
+        >
+          <img
+            class="nut-icon__img top-img "
+            src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png"
+          />
+          <span
+            class="top-text"
+          >
+            松开刷新
+          </span>
+        </div>
+      </div>
+      <div
+        class="nut-infinite-container"
+      >
+        <div
+          class="nb-productfeed__main"
+        >
+          <div
+            class="nb-productfeed__left"
+          >
+            <div
+              class="nb-productfeedItem nb-productfeedItem__multiple"
+              style="border-radius: 8px; padding: 10px;"
+            >
+              <div
+                class="nb-productfeedItem__image"
+              >
+                <div
+                  class="nut-image  "
+                  style="height: 160px; width: 160px;"
+                >
+                  <img
+                    alt=""
+                    class="nut-img lazyload"
+                    data-src="//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png"
+                    loading="lazy"
+                    style="object-fit: fill; object-position: center;"
+                  />
+                  <div
+                    class="nut-img-loading"
+                    style="background-image: url(//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png);"
+                  />
+                </div>
+                <div
+                  class="nb-productfeedItem__image-tag"
+                >
+                  <div
+                    class="img-label"
+                  >
+                    <img
+                      src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="nb-productfeedItem__content"
+              />
+            </div>
+          </div>
+          <div
+            class="nb-productfeed__right"
+          >
+            <div
+              class="nb-productfeedItem nb-productfeedItem__multiple"
+              style="border-radius: 8px; padding: 10px;"
+            >
+              <div
+                class="nb-productfeedItem__image"
+              >
+                <div
+                  class="nut-image  "
+                  style="height: 160px; width: 160px;"
+                >
+                  <img
+                    alt=""
+                    class="nut-img lazyload"
+                    data-src="//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png"
+                    loading="lazy"
+                    style="object-fit: fill; object-position: center;"
+                  />
+                  <div
+                    class="nut-img-loading"
+                    style="background-image: url(//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png);"
+                  />
+                </div>
+                <div
+                  class="nb-productfeedItem__image-tag"
+                >
+                  <div
+                    class="img-label"
+                  >
+                    <img
+                      src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="nb-productfeedItem__content"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-infinite-bottom"
+      />
+    </div>
+  </div>
+</div>
+`;

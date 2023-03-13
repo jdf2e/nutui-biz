@@ -12,6 +12,16 @@ interface T {
   desc: string
   label: string
 }
+interface dataType {
+  id: number,
+  imgUrl: string,
+  name: string,
+  desc: string,
+  tag: string | boolean,
+  price: string,
+  label: string
+}
+
 const ProductFeedDemo = () => {
   const [translated] = useTranslate<T>({
     "zh-CN": {
@@ -35,172 +45,96 @@ const ProductFeedDemo = () => {
 
   const [tab1value, setTab1value] = useState("0");
 
-  const [list1, setList1] = useState([] as any)
-  const [list2, setList2] = useState([] as any)
-  const [list3, setList3] = useState([] as any)
+  const [data, setData] = useState<dataType[]>([])
 
-  const [hasMore1, setHasMore1] = useState(true)
-  const [hasMore2, setHasMore2] = useState(true)
-  const [hasMore3, setHasMore3] = useState(true)
+  const [listDouble, setListDouble] = useState([] as any)
+  const [listSingle, setListSingle] = useState([] as any)
+  const [listRefresh, setListRefresh] = useState([] as any)
 
-  const data = [
-    {
-      id: '1',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: translated.name,
-      desc: translated.desc,
-      price: "388",
-      vipPrice: "378",
-      label: translated.label,
-    }, {
-      id: '2',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: translated.name,
-      tag: '标签标签',
-      desc: translated.desc,
-      price: "388",
-      vipPrice: "378",
-      label: translated.label,
-    }, {
-      id: '3',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: translated.name,
-      desc: translated.desc,
-      price: "388",
-      vipPrice: "378",
-      label: translated.label,
-    }, {
-      id: '4',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: translated.name,
-      desc: translated.desc,
-      price: "388",
-      vipPrice: "378",
-      label: translated.label,
-    }, {
-      id: '5',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: translated.name,
-      desc: translated.desc,
-      price: "388",
-      vipPrice: "378",
-      label: translated.label,
-    }, {
-      id: '6',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: translated.name,
-      desc: translated.desc,
-      price: "388",
-      vipPrice: "378",
-      label: translated.label,
-    }, {
-      id: '7',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: translated.name,
-      desc: translated.desc,
-      price: "388",
-      vipPrice: "378",
-      label: translated.label,
-    }, {
-      id: '8',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: translated.name,
-      desc: translated.desc,
-      price: "388",
-      vipPrice: "378",
-      label: translated.label,
-    }, {
-      id: '9',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: translated.name,
-      desc: translated.desc,
-      price: "388",
-      vipPrice: "378",
-      label: translated.label,
-    }, {
-      id: '10',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: translated.name,
-      desc: translated.desc,
-      price: "388",
-      vipPrice: "378",
-      label: translated.label,
-    }, {
-      id: '11',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: translated.name,
-      desc: translated.desc,
-      price: "388",
-      vipPrice: "378",
-      label: translated.label,
-    }, {
-      id: '12',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: translated.name,
-      desc: translated.desc,
-      price: "388",
-      vipPrice: "378",
-      label: translated.label,
-    }, {
-      id: '13',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: translated.name,
-      desc: translated.desc,
-      price: "388",
-      vipPrice: "378",
-      label: translated.label,
-    }, {
-      id: '14',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: translated.name,
-      desc: translated.desc,
-      price: "388",
-      vipPrice: "378",
-      label: translated.label,
+  const [hasMoreDouble, setHasMoreDouble] = useState(true)
+  const [hasMoreSingle, setHasMoreSingle] = useState(true)
+  const [hasMoreRefresh, setHasMoreRefresh] = useState(true)
+
+  useEffect(() => {
+    initData()
+  }, [])
+
+  const init = () => {
+    for (let i = 0; i < 6; i++) {
+      listDouble.push(data[i])
+      listSingle.push(data[i])
+      listRefresh.push(data[i])
     }
-  ]
+    setListDouble([...listDouble])
+    setListSingle([...listSingle])
+    setListRefresh([...listRefresh])
+  }
 
-  const loadMore1 = (done: () => void) => {
-    setTimeout(() => {
-      const curLen = list1.length
-      if (list1.length >= data.length) {
-        setHasMore1(false)
-      } else {
-        for (let i = curLen; i < (curLen + 6 > data.length ? data.length : curLen + 6) ; i++) {
-          list1.push(data[i])
-        }
-        setList1([...list1]) 
+  const initData = () => {
+    for(var i = 0; i < 12; i++) {
+      data.push({
+        id: i + 1,
+        imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
+        name: translated.name,
+        desc: translated.desc,
+        tag: i == 3 && '标签标签',
+        price: "388",
+        label: translated.label,
+      })
+    }
+    init()
+  }
+
+  const loadMore = (list: any) => {
+    const curLen = list.length
+    
+    if (list.length >= data.length) {
+      switch(list) {
+        case listDouble: 
+          setHasMoreDouble(false);
+          break;
+        case listSingle: 
+          setHasMoreSingle(false);
+          break;
+        case listRefresh: 
+          setHasMoreRefresh(false);
+          break;
       }
+    } else {
+      for (let i = curLen; i < (curLen + 6 > data.length ? data.length : curLen + 6) ; i++) {
+        list.push(data[i])
+      }
+      switch(list) {
+        case listDouble: 
+          setListDouble([...list]) 
+          break;
+        case listSingle: 
+          setListSingle([...list]) 
+          break;
+        case listRefresh: 
+          setListRefresh([...list]) 
+          break;
+      }
+    }
+  }
+
+  const loadMoreDouble = (done: () => void) => {
+    setTimeout(() => {
+      loadMore(listDouble)
       done()
     }, 500)
   }
 
-  const loadMore2 = (done: () => void) => {
+  const loadMoreSingle = (done: () => void) => {
     setTimeout(() => {
-      const curLen = list2.length
-      if (list2.length >= data.length) {
-        setHasMore2(false)
-      } else {
-        for (let i = curLen; i < (curLen + 6 > data.length ? data.length : curLen + 6) ; i++) {
-          list2.push(data[i])
-        }
-        setList2([...list2]) 
-      }
+      loadMore(listSingle)
       done()
     }, 500)
   }
 
-  const loadMore3 = (done: () => void) => {
+  const loadMoreRefresh = (done: () => void) => {
     setTimeout(() => {
-      const curLen = list3.length
-      if (list3.length >= data.length) {
-        setHasMore3(false)
-      } else {
-        for (let i = curLen; i < (curLen + 6 > data.length ? data.length : curLen + 6) ; i++) {
-          list3.push(data[i])
-        }
-        setList3([...list3]) 
-      }
+      loadMore(listRefresh)
       done()
     }, 500)
   }
@@ -220,31 +154,10 @@ const ProductFeedDemo = () => {
     console.log("click image", item, index)
   }
 
-  const init1 = () => {
-    for (let i = 0; i < 6; i++) {
-      list1.push(data[i])
-    }
-    setList1([...list1])
-  }
-  const init2 = () => {
-    for (let i = 0; i < 6; i++) {
-      list2.push(data[i])
-    }
-    setList2([...list2])
-  }
-  const init3 = () => {
-    for (let i = 0; i < 6; i++) {
-      list3.push(data[i])
-    }
-    setList3([...list3])
-  }
-
-  const customProduct1 = (item: any) => {
+  const customProductDouble = (item: any) => {
     return (
       <>
-        <div className="name-box">
-        {item.id}{item.name}
-        </div>
+        <div className="name-box">{item.name}</div>
         {item.tag && <div className="name-box">
           {item.tag}
         </div>}
@@ -259,7 +172,7 @@ const ProductFeedDemo = () => {
     )
   }
 
-  const customProduct2 = (item: any) => {
+  const customProductSingle = (item: any) => {
     return (
       <>
         <div className="name-box">
@@ -279,12 +192,6 @@ const ProductFeedDemo = () => {
       </>
     )
   }
-
-  useEffect(() => {
-    init1()
-    init2()
-    init3()
-  }, [])
   
   return (
     <div className="demo">
@@ -295,13 +202,15 @@ const ProductFeedDemo = () => {
           <TabPane title={translated.title1}>
             <ProductFeed
               className="demo1"
-              id="refreshScroll1"
-              hasMore={hasMore1}
-              containerId="refreshScroll1"
-              useWindow={false}
-              onLoadMore={loadMore1}
-              customProduct={customProduct1}
-              data={list1}
+              id="refreshScrollDouble"
+              infiniteloadingProps={{
+                hasMore: hasMoreDouble,
+                containerId: "refreshScrollDouble",
+                useWindow: false,
+                onLoadMore: loadMoreDouble
+              }}
+              customProduct={customProductDouble}
+              data={listDouble}
               col={2}
               imgUrl="imgUrl"
               imgWidth="144"
@@ -314,13 +223,15 @@ const ProductFeedDemo = () => {
           <TabPane title={translated.title2}>
             <ProductFeed
               className="demo2"
-              data={list2}
-              id="refreshScroll2"
-              hasMore={hasMore2}
-              containerId="refreshScroll2"
-              useWindow={false}
-              onLoadMore={loadMore2}
-              customProduct={customProduct2}
+              id="refreshScrollSingle"
+              data={listSingle}
+              infiniteloadingProps={{
+                hasMore: hasMoreSingle,
+                containerId: "refreshScrollSingle",
+                useWindow: false,
+                onLoadMore: loadMoreSingle
+              }}
+              customProduct={customProductSingle}
               col={1}
               imgUrl="imgUrl"
               imgWidth="100"
@@ -329,21 +240,22 @@ const ProductFeedDemo = () => {
               onClick={handleClick}
               onImageClick={handleImageClick}
             >
-             
             </ProductFeed>
           </TabPane>
           <TabPane title={translated.title3}>
             <ProductFeed
               className="demo3"
-              data={list3}
               id="refreshScroll3"
-              hasMore={hasMore3}
-              containerId="refreshScroll3"
-              useWindow={false}
-              isOpenRefresh={true}
-              onLoadMore={loadMore3}
-              onRefresh={refresh}
-              customProduct={customProduct1}
+              data={listRefresh}
+              infiniteloadingProps={{
+                hasMore: hasMoreRefresh,
+                containerId: "refreshScroll3",
+                useWindow: false,
+                isOpenRefresh: true,
+                onLoadMore: loadMoreRefresh,
+                onRefresh: refresh
+              }}
+              customProduct={customProductDouble}
               col={2}
               imgUrl="imgUrl"
               imgWidth="144"

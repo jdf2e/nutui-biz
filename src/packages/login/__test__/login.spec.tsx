@@ -15,7 +15,7 @@ const formParams = {
   password: "",
   passwordPlaceholder: "请输入账号密码",
   passwordErrorText: "",
-  verifyCode: "",
+  verify: "",
   verifyPlaceholder: "请输入验证码",
   verifyButtonText: "获取验证码",
 };
@@ -32,11 +32,11 @@ test("Verify Login test", async () => {
       countDownTime={30}
     />
   );
-  const logoImge = container.querySelector(".nut-login__logo img");
+  const logoImge = container.querySelector(".nb-login__logo img");
   const telEl = container.querySelector('.input-text[name="telOrMail"]');
-  const verifyEl = container.querySelector('.input-text[name="verifyCode"]');
+  const verifyEl = container.querySelector('.input-text[name="verify"]');
   const codeBtn = container.querySelector(".code-box") as HTMLElement;
-  const loginBtn = container.querySelector(".nut-login__btn .nut-button");
+  const loginBtn = container.querySelector(".nb-login__btn .nut-button");
   await waitFor(() => {
     expect(logoImge).toHaveAttribute("src", `${logoImg}`);
     expect(container.querySelector(".switch-type")?.innerHTML).toBe(
@@ -119,7 +119,7 @@ test("Has informed consent", async () => {
 
 const formParams2 = {
   telOrMail: "13123456789",
-  verifyCode: "1111",
+  verify: "1111",
   account: "张三",
   accountErrorText: "账号不存在",
   password: "123456",
@@ -144,11 +144,11 @@ test("event test", async () => {
     />
   );
   const telEl = container.querySelector('.input-text[name="telOrMail"]');
-  const verifyEl = container.querySelector('.input-text[name="verifyCode"]');
-  const loginBtn = container.querySelector(".nut-login__btn .nut-button");
+  const verifyEl = container.querySelector('.input-text[name="verify"]');
+  const loginBtn = container.querySelector(".nb-login__btn .nut-button");
   const codeBtn = container.querySelector(".code-box") as HTMLElement;
   expect(telEl).toHaveAttribute("value", `${formParams2.telOrMail}`);
-  expect(verifyEl).toHaveAttribute("value", `${formParams2.verifyCode}`);
+  expect(verifyEl).toHaveAttribute("value", `${formParams2.verify}`);
   expect(loginBtn).not.toHaveClass("nut-button--disabled");
   codeBtn && fireEvent.click(codeBtn);
   loginBtn && fireEvent.click(loginBtn);

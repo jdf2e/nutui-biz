@@ -9,7 +9,7 @@ test('Show Orderremark', async () => {
   const show = true;
   const mark = '';
   const { container } = render(<OrderRemark visible={show} remark={mark} />);
-  const orderRemarkContainer = container.querySelectorAll('.nut-orderRemark');
+  const orderRemarkContainer = container.querySelectorAll('.nb-orderRemark');
   expect(orderRemarkContainer.length).toBe(1);
 });
 
@@ -17,7 +17,7 @@ test('Show Tags', async () => {
   const show = true;
   const mark = '';
   const { container } = render(<OrderRemark visible={show} remark={mark} maxLength={100} recommendTags={tagArr} />);
-  const tagContainer = container.querySelectorAll('.nut-orderRemark__tag');
+  const tagContainer = container.querySelectorAll('.nb-orderRemark__tag');
   expect(tagContainer.length).toBe(tagArr.length);
 });
 
@@ -43,9 +43,9 @@ test('Custom Copywriting', async () => {
       tagTitle={'快捷选择'}
     />
   );
-  const orderRemark__title = container.querySelector('.nut-orderRemark__title');
+  const orderRemark__title = container.querySelector('.nb-orderRemark__title');
   const textarea__textarea = container.querySelector('.nut-textarea__textarea');
-  const orderRemark__tag_title = container.querySelector('.nut-orderRemark__tag-title');
+  const orderRemark__tag_title = container.querySelector('.nb-orderRemark__tag-title');
   const button__warp = container.querySelector('.nut-button__warp');
   expect(orderRemark__title).toHaveTextContent('备注信息');
   expect(orderRemark__tag_title).toHaveTextContent('快捷选择');
@@ -69,7 +69,7 @@ test('The corresponding event should be triggered when the tag or button is clic
       onChange={onChange}
     />
   );
-  const tagContainer = container.querySelectorAll('.nut-orderRemark__tag');
+  const tagContainer = container.querySelectorAll('.nb-orderRemark__tag');
   fireEvent.click(tagContainer[1]);
   expect(clickTag).toBeCalled();
   expect(onChange).toBeCalled();

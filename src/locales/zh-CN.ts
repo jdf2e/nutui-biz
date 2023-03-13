@@ -198,6 +198,7 @@ const zhCN: BaseLang = {
     addressErrorMsg: "该项为必填项，请填写完后提交",
     bottomText: "保存",
     setDefaultText: "设置默认地址",
+    errorToastText: "请填写必填项",
   },
   login: {
     accountPlaceholder: "请输入登录码",
@@ -211,8 +212,8 @@ const zhCN: BaseLang = {
     forgetPwdText: "忘记密码",
     loginButtonText: "登录",
   },
-  category:{
-    pullUpText:'向上拉继续浏览'
-  }
+  category: {
+    pullUpText: "向上拉继续浏览",
+  },
 };
 export default zhCN;

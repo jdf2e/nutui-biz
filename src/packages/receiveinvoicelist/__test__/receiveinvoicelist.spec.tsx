@@ -6,7 +6,7 @@ import { ReceiveInvoiceList } from '../receiveinvoicelist'
 
 test('test props && event', async () => {
   const state = {
-    modelValue: 1,
+    defaultValue: 2,
     list: [
       {
         id: 1,
@@ -35,7 +35,7 @@ test('test props && event', async () => {
     onSelected: clickSelectHandel
   }
   const { container } = render(
-    <ReceiveInvoiceList list={state.list} modelValue={state.modelValue} onSelected={event.onSelected} onEdit={event.onEdit} />
+    <ReceiveInvoiceList list={state.list} defaultValue={state.defaultValue} onSelected={event.onSelected} onEdit={event.onEdit} />
   )
   const comp = container.querySelector('.nb-receive-invoice-list') as HTMLElement;
   let el = expect(comp);
@@ -65,7 +65,7 @@ test('test props && event', async () => {
 
 test('test delete event', async () => {
   const state = {
-    modelValue: 1,
+    defaultValue: 1,
     list: [
       {
         id: 1,
@@ -92,7 +92,7 @@ test('test delete event', async () => {
     onDelete: clickDeleteHandel,
   }
   const { container } = render(
-    <ReceiveInvoiceList enableDelete={true} list={state.list} modelValue={state.modelValue} onDelete={event.onDelete} />
+    <ReceiveInvoiceList enableDelete={true} list={state.list} defaultValue={state.defaultValue} onDelete={event.onDelete} />
   )
 
   // 测试 delete 事件

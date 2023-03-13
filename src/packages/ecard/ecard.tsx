@@ -10,6 +10,8 @@ import { useConfig } from "@/packages/configprovider";
 import { cn2 as nb } from "@/utils/bem";
 import { InputNumber, InputNumberProps } from "@nutui/nutui-react";
 import mathMethods from '@/utils/math'
+import classNames from 'classnames'
+import { numericProp } from '@/utils/props'
 const { accurateMultiply } = mathMethods
 const b = nb("ecard");
 export interface DataListItem {
@@ -78,7 +80,7 @@ export const Ecard: FunctionComponent<
   };
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [currentPrice, setCurrentPrice] = useState<number>(dataList[0].price || 0); //当前非自定义面值
-  const [customValue, setCustomValue] = useState<string | number>("");
+  const [customValue, setCustomValue] = useState<numericProp>("");
   const [cardAmount, setCardAmount] = useState(cardAmountMin);
   const [money, setMoney] = useState<number>(accurateMultiply(dataList[0].price, 1))
   const listItemWidth = rowNum ? Number((96 / rowNum).toFixed(0)) : 48
@@ -119,22 +121,21 @@ export const Ecard: FunctionComponent<
   };
 
   const handleChangeStep = (
-    param: string | number,
+    param: numericProp,
   ) => {
     setCardAmount(Number(param))
     onChangeStep && onChangeStep(+param, currentPrice || Number(customValue), handleMoney?.(accurateMultiply(param, currentPrice || Number(customValue))));
   };
 
   return (
-    <div className={`${b()} ${className}`} {...rest}>
+    <div className={classNames([b(), className])} {...rest}>
       <div className={b("title")}>{chooseText || locale.ecard.chooseText}</div>
       <div className={b("list")}>
         <>
           {dataList.map((item, index) => {
             return (
               <div
-                className={`${b("list__item")} ${currentIndex === index && "active"
-                  }`}
+                className={classNames([b("list__item"), currentIndex === index && "active"])}
                 style={{ width: `${listItemWidth}%` }}
                 key={index}
                 onClick={() => {

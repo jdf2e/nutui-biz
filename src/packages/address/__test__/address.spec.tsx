@@ -1,7 +1,7 @@
-import React from 'react'
-import { render, waitFor, fireEvent } from '@testing-library/react'
-import '@testing-library/jest-dom'
-import { Address } from '../address'
+import React from 'react';
+import { render, waitFor, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { Address } from '../address';
 
 const addressData = {
   province: [
@@ -9,7 +9,7 @@ const addressData = {
     { id: 2, name: '广西', title: 'G' },
     { id: 3, name: '江西', title: 'J' },
     { id: 4, name: '四川', title: 'S' },
-    { id: 5, name: '浙江', title: 'Z' },
+    { id: 5, name: '浙江', title: 'Z' }
   ],
   city: [
     { id: 7, name: '朝阳区', title: 'C' },
@@ -17,15 +17,15 @@ const addressData = {
     { id: 9, name: '昌平区', title: 'C' },
     { id: 6, name: '石景山区', title: 'S' },
     { id: 3, name: '八里庄街道', title: 'B' },
-    { id: 10, name: '北苑', title: 'B' },
+    { id: 10, name: '北苑', title: 'B' }
   ],
   country: [
     { id: 3, name: '八里庄街道', title: 'B' },
     { id: 9, name: '北苑', title: 'B' },
-    { id: 4, name: '常营乡', title: 'C' },
+    { id: 4, name: '常营乡', title: 'C' }
   ],
-  town: [],
-}
+  town: []
+};
 
 const existAddress = [
   {
@@ -37,7 +37,7 @@ const existAddress = [
     selectedAddress: true,
     townName: '',
     name: '探探鱼',
-    phone: '182****1718',
+    phone: '182****1718'
   },
   {
     id: 2,
@@ -48,7 +48,7 @@ const existAddress = [
     selectedAddress: false,
     townName: '',
     name: '探探鱼',
-    phone: '182****1718',
+    phone: '182****1718'
   },
   {
     id: 3,
@@ -59,9 +59,9 @@ const existAddress = [
     selectedAddress: false,
     townName: '',
     name: '探探鱼',
-    phone: '182****1718',
-  },
-]
+    phone: '182****1718'
+  }
+];
 
 test('Show Address', async () => {
   const { container } = render(
@@ -73,13 +73,13 @@ test('Show Address', async () => {
       town={addressData.town}
       customAddressTitle="请选择所在地区"
     />
-  )
-  const regionItem = container.querySelectorAll('.nut-address__region-item')
-  expect(regionItem.length).toBe(5)
-})
+  );
+  const regionItem = container.querySelectorAll('.nb-address__region-item');
+  expect(regionItem.length).toBe(5);
+});
 
 test('choose address item', async () => {
-  const changeHandle = jest.fn()
+  const changeHandle = jest.fn();
   const { container } = render(
     <Address
       modelValue
@@ -90,22 +90,19 @@ test('choose address item', async () => {
       customAddressTitle="请选择所在地区"
       onChange={changeHandle}
     />
-  )
-  const regionItem = container.querySelectorAll('.nut-address__region-item')[0]
-    .firstElementChild
-  regionItem && fireEvent.click(regionItem)
+  );
+  const regionItem = container.querySelectorAll('.nb-address__region-item')[0];
+  regionItem && fireEvent.click(regionItem);
 
   await waitFor(() => {
-    const regionItemNext = container.querySelectorAll(
-      '.nut-address__tab-item '
-    )[0]
+    const regionItemNext = container.querySelectorAll('.nb-address__tab-item ')[0];
     expect(changeHandle.mock.calls[0][0].next).toEqual('city')
-    expect(regionItemNext.textContent).toEqual('北京')
-  })
-})
+    expect(regionItemNext.textContent).toEqual('北京');
+  });
+});
 
 test('default choose address', async () => {
-  const changeHandle = jest.fn()
+  const changeHandle = jest.fn();
   const { container } = render(
     <Address
       modelValue
@@ -116,14 +113,14 @@ test('default choose address', async () => {
       town={addressData.town}
       customAddressTitle="请选择所在地区"
     />
-  )
-  const regionItem = container.querySelectorAll('.nut-address__region-tab')[0]
-  const contentItem = container.querySelectorAll('.nut-address__region-item')[0]
+  );
+  const regionItem = container.querySelectorAll('.nb-address__region-tab')[0];
+  const contentItem = container.querySelectorAll('.nb-address__region-item')[0];
   await waitFor(() => {
-    expect(regionItem.textContent).toEqual('北京朝阳区请选择')
-    expect(contentItem.querySelector('.nutui-iconfont')).toBeEmptyDOMElement()
-  })
-})
+    expect(regionItem.textContent).toEqual('北京朝阳区请选择');
+    expect(contentItem.querySelector('.nutui-iconfont')).toBeEmptyDOMElement();
+  });
+});
 
 test('exist address', async () => {
   const { container } = render(
@@ -134,16 +131,16 @@ test('exist address', async () => {
       isShowCustomAddress={false}
       customAddressTitle="请选择所在地区"
     />
-  )
-  const existItem = container.querySelectorAll('.nut-address__exist-item')
+  );
+  const existItem = container.querySelectorAll('.nb-address__exist-item');
 
   await waitFor(() => {
-    expect(existItem.length).toBe(3)
-  })
-})
+    expect(existItem.length).toBe(3);
+  });
+});
 
 test('exist address choose event', async () => {
-  const selectHandle = jest.fn()
+  const selectHandle = jest.fn();
   const { container } = render(
     <Address
       modelValue
@@ -153,20 +150,18 @@ test('exist address choose event', async () => {
       isShowCustomAddress={false}
       onSelected={selectHandle}
     />
-  )
-  const existSecondItem = container.querySelectorAll(
-    '.nut-address__exist-item'
-  )[1].firstElementChild
-  existSecondItem && fireEvent.click(existSecondItem)
+  );
+  const existSecondItem = container.querySelectorAll('.nb-address__exist-item')[1].firstElementChild;
+  existSecondItem && fireEvent.click(existSecondItem);
 
   await waitFor(() => {
-    expect(selectHandle.mock.calls[0][1].id).toBe(2)
-  })
-})
+    expect(selectHandle.mock.calls[0][1].id).toBe(2);
+  });
+});
 
 test('exist address & list address', async () => {
-  const changeHandle = jest.fn()
-  const switchModule = jest.fn()
+  const changeHandle = jest.fn();
+  const switchModule = jest.fn();
   const { container } = render(
     <Address
       modelValue
@@ -180,16 +175,14 @@ test('exist address & list address', async () => {
       onSwitchModule={switchModule}
       onChange={changeHandle}
     />
-  )
-  const chooseBtn = container.querySelectorAll(
-    '.nut-address__choose-other-btn'
-  )[0]
-  chooseBtn && fireEvent.click(chooseBtn)
+  );
+  const chooseBtn = container.querySelectorAll('.nb-address__choose-other-btn')[0];
+  chooseBtn && fireEvent.click(chooseBtn);
 
   await waitFor(() => {
-    expect(switchModule).toBeCalled()
-  })
+    expect(switchModule).toBeCalled();
+  });
 
-  const regionItem = container.querySelectorAll('.nut-address__region-item')
-  expect(regionItem.length).toBe(5)
-})
+  const regionItem = container.querySelectorAll('.nb-address__region-item');
+  expect(regionItem.length).toBe(5);
+});

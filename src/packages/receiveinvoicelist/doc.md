@@ -7,7 +7,6 @@
 ### 安装
 
 ```javascript
-import { Cell,CellGroup, Tag } from '@nutui/nutui-react';
 import { ReceiveInvoiceList } from '@nutui/nutui-biz';
 ```
 
@@ -19,13 +18,12 @@ import { ReceiveInvoiceList } from '@nutui/nutui-biz';
 
 ```ts
 import  React from 'react';
-import { Cell,CellGroup, Tag } from '@nutui/nutui-react';
 import { ReceiveInvoiceList } from '@nutui/nutui-biz';
 
 const App = () => {
   
   const state = {
-    modelValue: 1,
+    defaultValue: 1,
     list: [
       {
         id: 1,
@@ -54,7 +52,7 @@ const App = () => {
   }
 
   return (
-     <ReceiveInvoiceList list={state.list} modelValue={state.modelValue} onSelected={event.onSelected} onEdit={event.onEdit} />
+     <ReceiveInvoiceList list={state.list} defaultValue={state.defaultValue} onSelected={event.onSelected} onEdit={event.onEdit} />
   );
 };
 export default App;
@@ -67,13 +65,12 @@ export default App;
 
 ```ts
 import  React from 'react';
-import { Cell,CellGroup, Tag } from '@nutui/nutui-react';
 import { ReceiveInvoiceList } from '@nutui/nutui-biz';
 
 const App = () => {
   
   const state = {
-    modelValue: 1,
+    defaultValue: 1,
     list: [
       {
         id: 1,
@@ -101,7 +98,7 @@ const App = () => {
   }
 
   return (
-     <ReceiveInvoiceList enableDelete={true} list={state.list} modelValue={state.modelValue} onDelete={event.onDelete} />
+     <ReceiveInvoiceList enableDelete={true} list={state.list} defaultValue={state.defaultValue} onDelete={event.onDelete} />
   );
 };
 export default App;
@@ -116,19 +113,20 @@ export default App;
 
 | 字段         | 说明                | 类型                      | 默认值  |
 |--------------|---------------------|---------------------------|---------|
-| modelValue   | 当前选中联系人的 id | number \| string          | -       |
+| defaultValue | 当前选中联系人的 id | number \| string          | -       |
 | list         | 联系人列表          | Array<ReceiveInvoiceItem> | []      |
 | enableDelete | 是否启用删除功能    | boolean                   | `false` |
 
 ### ReceiveInvoiceItem 数据结构
 
-| 键名    | 说明           | 类型                         |
-|---------|----------------|------------------------------|
-| id      | 联系人的 id    | number \| string             |
-| name    | 联系人姓名     | string                       |
-| tel     | 联系人手机号   | string                       |
-| addres  | 联系人地址信息 | string                       |
-| extends | 扩展自定义数组 | Array<ReceiveInvoiceItemExt> |
+| 键名      | 说明           | 类型                         |
+|-----------|----------------|------------------------------|
+| id        | 联系人的 id    | number \| string             |
+| name      | 联系人姓名     | string                       |
+| tel       | 联系人手机号   | string                       |
+| addres    | 联系人地址信息 | string                       |
+| isDefault | 是否为默认地址 | boolean                      |
+| extends   | 扩展自定义数组 | Array<ReceiveInvoiceItemExt> |
 ### ReceiveInvoiceItemExt 数据结构
 
 | 键名  | 说明           | 类型   |
@@ -138,8 +136,8 @@ export default App;
 
 
 ### Events
-| 字段       | 说明     | 回调参数                 |
-|------------|----------|--------------------------|
+| 字段       | 说明     | 回调参数                               |
+|------------|----------|----------------------------------------|
 | onEdit     | 编辑事件 | item\:ReceiveInvoiceItem,index\:number |
 | onSelected | 选中事件 | item\:ReceiveInvoiceItem,index\:number |
 | onDelete   | 删除事件 | item\:ReceiveInvoiceItem,index\:number |
