@@ -270,7 +270,7 @@ const AddressDemo = () => {
   };
 
   const selected = (prevExistAdd: AddressList, nowExistAdd: AddressList, arr: AddressList[]) => {
-    console.log('onSelected');
+    console.log(prevExistAdd, nowExistAdd);
   };
 
   const switchModule = (val: { type: string }) => {
