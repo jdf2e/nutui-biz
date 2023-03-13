@@ -58,7 +58,7 @@ interface DeliveryData extends DeliveryTypes {
 
 const App = () => {
   const [visible1, setVisible1] = useState(false);
-  const [desc1, setDesc1] = useState<any>("");
+  const [desc1, setDesc1] = useState<string>("...");
   const deliveryTypes1: DeliveryTypes[] = [
     {
         label: 'jd',
@@ -216,7 +216,7 @@ interface DeliveryData extends DeliveryTypes {
 }
 const App = () => {
   const [visible2, setVisible2] = useState(false);
-  const [desc2, setDesc2] = useState<any>("");
+  const [desc2, setDesc2] = useState<string>("...");
   const [deliveryDateData2, setDeliveryDateData2] = useState<DeliveryData[]>([
     {
         label: '1',
@@ -471,7 +471,7 @@ interface DeliveryData extends DeliveryTypes {
 const App = () => {
   const [visible3, setVisible3] = useState(false);
   const [visible4, setVisible4] = useState(false);
-  const [desc3, setDesc3] = useState<any>("");
+  const [desc3, setDesc3] = useState<string>("...");
   const deliveryDateData3 = [
     {
         label: '1',
@@ -543,7 +543,7 @@ const App = () => {
             onClose={() => show3(false)}
             onSure={() => { sure3(desc3); }}
         >
-            <div className="custom-content" onClick={() => { setVisible4(true) }}>
+            <div className="custom-content" style={{ 'padding': '10px 20px', 'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center', 'fontSize': '12px' }} onClick={() => { setVisible4(true) }}>
                 <div className="left">请选择送货时间</div>
                 <div className="right">{desc3}</div>
             </div>
@@ -561,6 +561,7 @@ const App = () => {
         >
             <DeliveryDate
                 className="delivery-date3"
+                style={{ 'padding': '30px 10px' }}
                 activeKey={activeKey3}
                 data={deliveryDateData3}
                 onSelect={(item: DateType) => { handleDeliveryDate3(item) }}
@@ -621,7 +622,7 @@ interface DeliveryData extends DeliveryTypes {
 const App = () => {
   const [visible5, setVisible5] = useState(false);
   const [visible6, setVisible6] = useState(false);
-  const [desc4, setDesc4] = useState<any>("");
+  const [desc4, setDesc4] = useState<any>("...");
   const [activeKey4, setActiveKey4] = useState('1');
   const [deliveryDateData4, setDeliveryDateData4] = useState<DateTimeType[]>([
     {
@@ -664,7 +665,26 @@ const App = () => {
     console.log(item)
   }
 
-  const handleDeliveryDate4 = (item: DateTimeType) => {
+  const handleDeliveryDate4 = (item: DateTimeType, deliveryDateData: DateTimeType[]) => {
+    const currentItemIndex = deliveryDateData.findIndex((value: DateTimesType) => value.label === item.label);
+    deliveryDateData.forEach((subItem: DateTimesType, index: number) => {
+        if (currentItemIndex === index) {
+            (subItem as DateTimeType).children = (subItem as DateTimeType).children.map((value: DateType) => {
+                return {
+                    ...value,
+                    selected: item.children[0].label === (value as DateType).label ? true : undefined
+                }
+            });
+        } else {
+            (subItem as DateTimeType).children = (subItem as DateTimeType).children.map((value: DateType) => {
+                return {
+                    ...value,
+                    selected: undefined
+                }
+            });
+        }
+    })
+    setDeliveryDateData4(deliveryDateData);
     setActiveKey4(item.label);
     setVisible6(false);
     setDesc4(`${item.title},${item.children[0].text}`);
@@ -682,7 +702,7 @@ const App = () => {
             onClose={() => show5(false)}
             onSure={() => { sure5(desc4); }}
         >
-            <div className="custom-content" onClick={() => { setVisible6(true) }}>
+            <div className="custom-content" style={{ 'padding': '10px 20px', 'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center', 'fontSize': '12px' }}  onClick={() => { setVisible6(true) }}>
                 <div className="left">请选择送货时间</div>
                 <div className="right">{desc4}</div>
             </div>
@@ -700,6 +720,7 @@ const App = () => {
         >
             <DeliveryDateTime
                 className="delivery-date4"
+                style={{ 'padding': '30px 0' }}
                 activeKey={activeKey4}
                 data={deliveryDateData4}
                 onSelect={(item: DateTimeType) => { handleDeliveryDate4(item, deliveryDateData4) }}
@@ -720,7 +741,7 @@ export default App;
 ```tsx
 import React, { useState, ReactNode } from 'react';
 import { Cell, Popup } from '@nutui/nutui-react';
-import { Delivery, DeliveryDateTime } from '@nutui/nutui-biz';
+import { DeliveryDate } from '@nutui/nutui-biz';
 
 interface DeliveryBaseType {
     label: string;
@@ -811,7 +832,7 @@ const App = () => {
     setVisible7(false);
     setDesc5(item.text as string);
   }
-  
+
   return (
     <>
         <Cell

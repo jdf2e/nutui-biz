@@ -404,7 +404,6 @@ const DeliveryDemo = () => {
         const currentItemIndex = deliveryDateData.findIndex((value: DateTimesType) => value.label === item.label);
         deliveryDateData.forEach((subItem: DateTimesType, index: number) => {
             if (currentItemIndex === index) {
-                console.log(subItem);
                 (subItem as DateTimeType).children = (subItem as DateTimeType).children.map((value: DateType) => {
                     return {
                         ...value,
