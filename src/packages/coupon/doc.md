@@ -16,7 +16,7 @@ import { Coupon } from "@nutui/nutui-biz";
 
 :::demo
 
-```ts
+```tsx
 import React, { useState, CSSProperties } from "react";
 import { ButtonProps } from "@nutui/nutui-react";
 import { Coupon } from "@nutui/nutui-biz";
@@ -49,7 +49,7 @@ const App = () => {
       currency: "¥",
       mainTitle: "满100元可用",
       subTitle: "仅可购买满折券测试",
-      label: <div style={{ color: "red" }}>内购专享</div>,,
+      label: <div style={{ color: "red" }}>内购专享</div>,
       timeRange: "2022.03.01-2022.04.01",
     };
   }, []);
@@ -78,8 +78,7 @@ const App = () => {
   }, [btnText, receivedStatus]);
   const demoStyle = {
     height: "100%",
-    overflowX: "hidden",
-    overflowY: "auto",
+    overflow: "auto",
     padding: "17px 17px 0 17px",
   };
   return (
@@ -107,8 +106,8 @@ export default App;
 
 :::demo
 
-```ts
-import React, { CSSProperties } from "react";
+```tsx
+import React, { CSSProperties, useState } from "react";
 import { Coupon } from "@nutui/nutui-biz";
 
 const App = () => {
@@ -149,13 +148,11 @@ const App = () => {
       />
     );
   }, []);
-  const receivedBtn = React.useCallback((item: number) => {
-    console.log(item);
-  }, []);
+
   const [arrReceived, setArrReceived] = useState<Array<number>>([]);
   //点击小优惠券领取按钮交互
   const receivedBtn = React.useCallback(
-    (item: ICouponType) => {
+    (item) => {
       console.log(item);
       if (!arrReceived.includes(item.item)) {
         arrReceived.push(item.item);
@@ -166,7 +163,13 @@ const App = () => {
   );
 
   return (
-    <div style={{ width: "100%", overflow: "scroll" }}>
+    <div
+      style={{
+        height: "100%",
+        overflow: "auto",
+        padding: "17px 17px 0 17px",
+      }}
+    >
       <div
         style={{
           display: "flex",
