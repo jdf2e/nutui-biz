@@ -17,7 +17,7 @@ import { Login } from '@nutui/nutui-biz';
 :::demo
 
 ```tsx
-import  React from 'react';
+import React, { useState, useEffect } from "react";
 import { Login } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -72,7 +72,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React from 'react';
+import React, { useState, useEffect } from "react";
 import { Login } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -88,6 +88,7 @@ const App = () => {
     verify: "",
   });
   const [getVerify, setGetVerify] = useState(false);
+   const [toastText, setToastText] = useState("");
   const onChange = (value: any, tag: string) => {
     console.log(tag, value);
   };
@@ -100,6 +101,10 @@ const App = () => {
   };
   const queryLogin = (formData: any) => {
     console.log("login", formData);
+    setToastText("toast 错误提示");
+    setTimeout(() => {
+        setToastText("");
+    }, 2000);
   };
   return (
      <Login
@@ -109,13 +114,71 @@ const App = () => {
         onInputChange={onChange}
         isGetCode={getVerify}
         onVerifyBtnClick={queryVerifyCode}
-        countDownTime={30}
+        toastErrorText={toastText}
         onLoginBtnClick={queryLogin}
         slotProtocolText={
-            <div>
+          <div>
             勾选后代表您已阅读并同意
             <span style={{ color: "red" }}>《用户隐私政策》</span>
-            </div>
+          </div>
+        }
+        />
+  );
+};
+export default App;
+```
+::::::demo
+
+```tsx
+import React, { useState, useEffect } from "react";
+import { Login } from '@nutui/nutui-biz';
+
+const App = () => {
+  const logoImg =
+    "https://img10.360buyimg.com/imagetools/jfs/t1/187998/28/32123/16333/63e346b8F0bff354b/c95da99ea108c463.png";
+  const [formParams, setformParams] = useState({
+    account: "",
+    accountErrorText: "",
+    telOrMail: "",
+    telOrMailErrorText: "",
+    password: "",
+    passwordErrorText: "",
+    verify: "",
+  });
+  const [getVerify, setGetVerify] = useState(false);
+   const [toastText, setToastText] = useState("");
+  const onChange = (value: any, tag: string) => {
+    console.log(tag, value);
+  };
+  const queryVerifyCode = (formData: any) => {
+    setGetVerify(false);
+    //异步获取校验码成功
+    setTimeout(() => {
+      setGetVerify(true);
+    }, 300);
+  };
+  const queryLogin = (formData: any) => {
+    console.log("login", formData);
+    setToastText("toast 错误提示");
+    setTimeout(() => {
+        setToastText("");
+    }, 2000);
+  };
+  return (
+     <Login
+        formParams={formParams}
+        loginType="verify"
+        logo={logoImg}
+        onInputChange={onChange}
+        isGetCode={getVerify}
+        onVerifyBtnClick={queryVerifyCode}
+        toastErrorText={toastText}
+        onLoginBtnClick={queryLogin}
+        slotProtocolText={
+          <div>
+            勾选后代表您已阅读并同意
+            <span style={{ color: "red" }}>《用户隐私政策》</span>
+          </div>
         }
         />
   );
@@ -129,7 +192,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React from 'react';
+import React, { useState, useEffect } from "react";
 import { Login } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -144,12 +207,13 @@ const App = () => {
   const onChange = (value: any, tag: string) => {
     console.log(tag, value);
   };
-  
+
   return (
      <Login
         formParams={formParams3}
         logo={logoImg}
         loginType="pwd"
+        showErrorType="bottomMsg"
         onInputChange={onChange}
         />
   );
@@ -158,12 +222,12 @@ export default App;
 ```
 :::
 
-### Custom login box
+### User only account login
 
 :::demo
 
 ```tsx
-import  React from 'react';
+import React, { useState, useEffect } from "react";
 import { Login } from '@nutui/nutui-biz';
 
 const App = () => {
@@ -175,7 +239,6 @@ const App = () => {
     passwordErrorText: "",
     isShowPwdInput: false,
   });
-  
   const onChange = (value: any, tag: string) => {
     console.log(tag, value);
   };
@@ -191,17 +254,6 @@ const App = () => {
         onInputChange={onChange}
         isHideSwitchBtn={true}
         onLoginBtnClick={queryLogin}
-        slotBottom={
-            <div
-            style={{
-                color: "#006FFF",
-                textAlign: "center",
-                fontSize: "14px",
-            }}
-            >
-            新用户注册
-            </div>
-        }
         />
   );
 };
@@ -214,7 +266,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React from 'react';
+import React, { useState, useEffect } from "react";
 import { Login } from '@nutui/nutui-biz';
 import {Input } from "@nutui/nutui-react";
 
@@ -253,35 +305,46 @@ const App = () => {
         onInputChange={onChange}
         isHideSwitchBtn={true}
         loginButtonDisable={isDisable}
-        onClear={(tag) => {
+        onInputClear={(tag) => {
             if (tag === "account") {
               setAccount("");
             }
         }}
         slotInput={
-          <div className={`input-wrap`}>
-            <div className="input-item">
-                <Input
+          <div className={`nb-login__input-wrap`}>
+            <div className="nb-login__input-item">
+              <Input
                 className="nut-input-text"
                 border={false}
                 defaultValue={customInput}
-                placeholder={'请输入验证码'}
+                placeholder={translated.placeholder}
                 type="text"
                 clearable
                 onChange={(value) => {
-                    setCustomInput(value);
+                  setCustomInput(value);
                 }}
                 onClear={() => {
-                    setCustomInput("");
+                  setCustomInput("");
                 }}
-                />
-                <div className="code-box">
+              />
+              <div className="nb-login__code-box">
                 <img
-                    style={{ width: "65px", height: "30px" }}
-                    src="https://img12.360buyimg.com/imagetools/jfs/t1/211415/19/9275/14512/61924b82E09366437/cc5cc7297b9073ae.jpg"
+                  style={{ width: "65px", height: "30px" }}
+                  src="https://img12.360buyimg.com/imagetools/jfs/t1/211415/19/9275/14512/61924b82E09366437/cc5cc7297b9073ae.jpg"
                 />
-                </div>
+              </div>
             </div>
+          </div>
+        }
+        slotBottom={
+          <div
+            style={{
+              color: "#006FFF",
+              textAlign: "center",
+              fontSize: "14px",
+            }}
+          >
+            新用户注册
           </div>
         }
         />
@@ -299,20 +362,23 @@ export default App;
 
 | Attribute    | Description     | Type    | Default   |
 |---------|--------------------------------------------|---------|-----------|
-| logo | logo url | string | -- |
-| title | header title | string | -- |
+| logo | logo url | string | '' |
+| title | header title | string | '' |
 | formParams | input box configuration information | Object<LoginParamsProps> | - |
 | loginType | login type (optional verification code verification `verify`, account password verification `pwd`), default verify | string | `verify` |
 | loginButtonDisable | Whether the login button is disabled |boolean | `true` |
 | loginButtonText | Login button text |string | `Login` |
 | hasForgetPassWord | Whether there is a forgot password text button |boolean |`true` |
+| hasHidePwd | Hide and show password button |boolean |`true` |
 | isGetCode | Whether to get the verification code successfully |boolean |`false` |
 | isHideSwitchBtn | Whether to hide the login type switch button |boolean |true |
 | countDownTime | countdown time for checking code acquisition anti-frequency |number |`60` |
-| slotProtocolText | Custom check informed consent content |React.ReactNode |- |
-| slotBottom | Customize the content below the login button |React.ReactNode |- |
-| slotInput   | Custom Input  |ReactNode  |--        |
-
+| showErrorType| The type of error prompt in the login box, optional value `toast`/`errorMsg`| string |`toast`|
+| toastErrorText| Toast error message content | string | ''|
+| slotProtocolText | Custom check informed consent content | ReactNode |- |
+| slotBottom | Customize the content below the login button | ReactNode |- |
+| slotInput   | Custom Input  | ReactNode  |-        |
+| buttonProps| button basic component props | [ButtonProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/button) | - |
 
 ### Props formParams
 

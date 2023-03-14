@@ -60,15 +60,15 @@ export interface LoginProps extends IComponent {
   loginButtonDisable?: boolean;
   loginButtonText?: string;
   hasForgetPassWord?: boolean;
-  slotProtocolText?: ReactNode;
   showErrorType?: showErrorType;
   toastErrorText?: string;
-  slotBottom?: ReactNode;
   hasHidePwd?: boolean;
   isGetCode?: boolean;
   countDownTime?: number | undefined;
   isHideSwitchBtn?: boolean;
+  slotProtocolText?: ReactNode;
   slotInput?: ReactNode;
+  slotBottom?: ReactNode;
   buttonProps?: ButtonProps;
   onInputChange?: (value: string, tag: string) => void;
   onLoginBtnClick?: (
@@ -417,7 +417,7 @@ export const Login: FunctionComponent<Partial<LoginProps>> = (props) => {
                 setIsPrtocal(state);
               }}
             ></Checkbox>
-            {slotProtocolText}
+            <div className="customer-protocal">{slotProtocolText}</div>
           </div>
         )}
       </div>

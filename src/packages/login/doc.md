@@ -320,7 +320,6 @@ export default App;
 | slotProtocolText   | 自定义勾选知情同意内容  |ReactNode  |-        |
 | slotBottom   | 自定义登录按钮下方内容  |ReactNode  |-       |
 | slotInput   | 自定义输入框  |ReactNode  |-        |
-| slotInput   | 自定义输入框  |ReactNode  |-        |
 | buttonProps| 按钮基础组件 props |  [ButtonProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/button) | - |
 
 
