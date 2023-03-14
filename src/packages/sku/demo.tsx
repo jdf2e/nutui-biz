@@ -68,8 +68,7 @@ const SkuDemo = () => {
   const [addressDesc, setAddressDesc] = useState<string>('(配送地会影响库存，请先确认)')
   const [showAddressPopup, setShowAddressPopup] = useState<boolean>(false)
   const [count, setCount] = useState<number>(2)
-
-  const existAddress = [
+  const [existAddress] = useState([
     {
       id: 1,
       addressDetail: 'th ',
@@ -106,7 +105,7 @@ const SkuDemo = () => {
       selectedAddress: false,
       townName: ''
     }
-  ];
+  ])
 
   const getData = () => {
     fetch('//storage.360buyimg.com/nutui/3x/data.js')
@@ -222,7 +221,6 @@ const SkuDemo = () => {
   };
 
   const selectedAddress = (prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => {
-    console.log(prevExistAdd,nowExistAdd)
     const { provinceName, countyName, cityName } = nowExistAdd;
     setAddressDesc(`${provinceName}${countyName}${cityName}`)
   }
@@ -311,7 +309,7 @@ const SkuDemo = () => {
           existAddress={existAddress}
           onClose={close}
           isShowCustomAddress={false}
-          onSelected={(prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => selectedAddress(prevExistAdd, nowExistAdd, arr)}
+          onSelected={selectedAddress}
           existAddressTitle={translated.deliverTo}
         />
       </div>

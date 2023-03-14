@@ -30,7 +30,7 @@ const App = () => {
   }
   return (
     <Card
-      imageProps={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
       shopName={state.shopName}
@@ -76,7 +76,7 @@ const App = () => {
   }
   return (
     <Card
-      imageProps={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
       shopName={state.shopName}
@@ -133,7 +133,7 @@ const App = () => {
   }
   return (
     <Card
-      imageProps={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
       shopName={state.shopName}
@@ -169,7 +169,7 @@ const App = () => {
   }
   return (
     <Card
-      imageProps={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
       shopName={state.shopName}
@@ -202,7 +202,7 @@ const App = () => {
   
   return (
     <Card
-      imageProps={state.imgUrl}
+      imageProps={{src: state.imgUrl}}
       title={state.title}
       price={state.price}
       shopName={state.shopName}
@@ -235,14 +235,14 @@ const App = () => {
   return (
     <>
       <Card
-        imageProps={state.imgUrl}
+        imageProps={{src: state.imgUrl}}
         title={state.title}
         price={state.price}
         shopName={state.shopName}
         showType="half-line"
       />
       <Card
-        imageProps={state.imgUrl}
+        imageProps={{src: state.imgUrl}}
         title={state.title}
         price={state.price}
         shopName={state.shopName}

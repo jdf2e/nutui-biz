@@ -642,3 +642,13 @@ export default App;
 | onClickCloseIcon  | Emitted when click close button | - |
 | onClickOverlay  | Emitted when click mask | - |
 | onClose  | Emitted when popup close | - |
+
+
+### SkuInfo 
+
+| 字段    | 说明                                       | 类型    | 
+|---------|--------------------------------------------|---------|
+| name   | 规格名称                                | string |
+| id   | 商品编号            | number  | 
+| active   | 是否选中            | boolean  | 
+| disable   | 是否置灰            | boolean  | 

@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="overlay-fade-enter-active nut-overlay"
+    style="z-index: 1000; animation-duration: 0.3s;"
+  />
+  <div
+    class="round nut-popup-bottom  nb-ordercancel undefined  nut-popup"
+    style="z-index: 1000; animation-duration: 0.3s;"
+  >
+    <div
+      class="nb-ordercancel__main"
+    >
+      <div
+        class="nb-ordercancel__header"
+      >
+        退款原因
+      </div>
+      <div
+        class="nb-ordercancel__reason"
+      >
+        <div
+          class="nb-ordercancel__reason--list"
+        >
+          <div
+            class="nb-ordercancel__reason--list__label"
+          >
+            商品无货
+          </div>
+          <div
+            class="nb-ordercancel__reason--list__checkbox"
+          >
+            <div
+              class="nut-checkbox "
+            >
+              <i
+                class="nutui-iconfont nut-icon nut-icon-check-normal nut-checkbox__icon--unchecked"
+                style="font-size: 18px; height: 18px; width: 18px;"
+              />
+              <span
+                class="nut-checkbox__label "
+              />
+            </div>
+          </div>
+          <div
+            class="nb-ordercancel__reason--list__overlay"
+          />
+        </div>
+        <div
+          class="nb-ordercancel__reason--list"
+        >
+          <div
+            class="nb-ordercancel__reason--list__label"
+          >
+            发货时间问题
+          </div>
+          <div
+            class="nb-ordercancel__reason--list__checkbox"
+          >
+            <div
+              class="nut-checkbox "
+            >
+              <i
+                class="nutui-iconfont nut-icon nut-icon-check-normal nut-checkbox__icon--unchecked"
+                style="font-size: 18px; height: 18px; width: 18px;"
+              />
+              <span
+                class="nut-checkbox__label "
+              />
+            </div>
+          </div>
+          <div
+            class="nb-ordercancel__reason--list__overlay"
+          />
+        </div>
+        <div
+          class="nb-ordercancel__reason--list"
+        >
+          <div
+            class="nb-ordercancel__reason--list__label"
+          >
+            不想要了
+          </div>
+          <div
+            class="nb-ordercancel__reason--list__checkbox"
+          >
+            <div
+              class="nut-checkbox "
+            >
+              <i
+                class="nutui-iconfont nut-icon nut-icon-check-normal nut-checkbox__icon--unchecked"
+                style="font-size: 18px; height: 18px; width: 18px;"
+              />
+              <span
+                class="nut-checkbox__label "
+              />
+            </div>
+          </div>
+          <div
+            class="nb-ordercancel__reason--list__overlay"
+          />
+        </div>
+        <div
+          class="nb-ordercancel__reason--list"
+        >
+          <div
+            class="nb-ordercancel__reason--list__label"
+          >
+            商品选错/多选
+          </div>
+          <div
+            class="nb-ordercancel__reason--list__checkbox"
+          >
+            <div
+              class="nut-checkbox "
+            >
+              <i
+                class="nutui-iconfont nut-icon nut-icon-check-normal nut-checkbox__icon--unchecked"
+                style="font-size: 18px; height: 18px; width: 18px;"
+              />
+              <span
+                class="nut-checkbox__label "
+              />
+            </div>
+          </div>
+          <div
+            class="nb-ordercancel__reason--list__overlay"
+          />
+        </div>
+        <div
+          class="nb-ordercancel__reason--list"
+        >
+          <div
+            class="nb-ordercancel__reason--list__label"
+          >
+            地址信息填写错误
+          </div>
+          <div
+            class="nb-ordercancel__reason--list__checkbox"
+          >
+            <div
+              class="nut-checkbox "
+            >
+              <i
+                class="nutui-iconfont nut-icon nut-icon-check-normal nut-checkbox__icon--unchecked"
+                style="font-size: 18px; height: 18px; width: 18px;"
+              />
+              <span
+                class="nut-checkbox__label "
+              />
+            </div>
+          </div>
+          <div
+            class="nb-ordercancel__reason--list__overlay"
+          />
+        </div>
+        <div
+          class="nb-ordercancel__reason--list"
+        >
+          <div
+            class="nb-ordercancel__reason--list__label"
+          >
+            商品降价
+          </div>
+          <div
+            class="nb-ordercancel__reason--list__checkbox"
+          >
+            <div
+              class="nut-checkbox "
+            >
+              <i
+                class="nutui-iconfont nut-icon nut-icon-check-normal nut-checkbox__icon--unchecked"
+                style="font-size: 18px; height: 18px; width: 18px;"
+              />
+              <span
+                class="nut-checkbox__label "
+              />
+            </div>
+          </div>
+          <div
+            class="nb-ordercancel__reason--list__overlay"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="nb-ordercancel__btns"
+    >
+      <div
+        class="nb-ordercancel__btns--button"
+      >
+        <button
+          class="nut-button nut-button--primary nut-button--normal nut-button--round cancel-btn"
+        >
+          <div
+            class="nut-button__warp"
+          >
+            <div
+              class=""
+            >
+              提交
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+    <div
+      class="nut-popup__close-icon nut-popup__close-icon--top-right"
+    >
+      <i
+        class="nutui-iconfont nut-icon nut-icon-close "
+        style="font-size: 12px; height: 12px; width: 12px;"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
