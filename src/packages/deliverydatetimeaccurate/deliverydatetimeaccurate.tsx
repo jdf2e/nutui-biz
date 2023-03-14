@@ -7,12 +7,13 @@ import classNames from "classnames";
 import { cn2 } from '@/utils/bem'
 
 import { IComponent } from '@/utils/typings'
+import { numericProp } from '@/utils/props';
 
 import { DateType, DateTimeType, DateTimeAccurateType, ACTIVEKEY } from '../delivery/type';
 
 export interface DeliveryDateTimeAccurateProps extends IComponent {
   data: DateTimeAccurateType[];
-  activeKey?: string | number;
+  activeKey?: numericProp;
   onSelect?: (item: DateTimeAccurateType) => void;
 }
 
@@ -44,6 +45,7 @@ export const DeliveryDateTimeAccurate: FunctionComponent<
   const [list, setList] = useState<DateTimeType[]>([]);
 
   const handleDate = (item: DateTimeType, subitem: DateType, accurateTimeDate: string) => {
+    if(subitem.disabled) return;
     const list = (data.find((value: DateTimeAccurateType) => value.label == accurateTimeDate)) as DateTimeAccurateType;
     setDate(subitem);
     onSelect?.({ ...list, children: [{ ...item ,children: [{...subitem}] }] });
@@ -75,7 +77,7 @@ export const DeliveryDateTimeAccurate: FunctionComponent<
   }, [data]);
 
   return (
-    <div className={`${b('')} ${className || ''}`} style={style}>
+    <div className={classNames([b(''), className])} style={style}>
       <div className={`${b('pannel')}`}>
         {
           data && data.map((item: DateTimeAccurateType) => (
@@ -102,6 +104,7 @@ export const DeliveryDateTimeAccurate: FunctionComponent<
                       className={classNames([
                         `${b('detail-item-times-time')}`,
                         `${(subitem.text === date.text && subitem.label === date.label) ? b('detail-item-times-time--current') : ''}`,
+                        `${subitem.disabled ? b('detail-item-times-time--disable') : ''}`
                       ])}
                       key={subitem.label}
                       onClick={() => { handleDate(item, subitem, accurateTimeDate as string) }}
