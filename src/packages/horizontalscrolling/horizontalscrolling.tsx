@@ -7,7 +7,7 @@ import { useConfig } from '@/packages/configprovider'
 import { IComponent } from '@/utils/typings'
 import { Icon, IconProps } from '@nutui/nutui-react';
 import classNames from 'classnames'
-import {cn2} from '@/utils/bem'
+import bem from '@/utils/bem'
 import Unit from '@/utils/unit'
 import {numericProp} from '@/utils/props'
 
@@ -66,7 +66,7 @@ export const HorizontalScrolling: FunctionComponent<
     ...props,
   }
 
-  const b = cn2('horizontalscrolling')
+  const b = bem('horizontalscrolling')
 
   const scrollRef = useRef(null)
 

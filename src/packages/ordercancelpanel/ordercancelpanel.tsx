@@ -15,7 +15,7 @@ import {
   Switch,
 } from "@nutui/nutui-react";
 import { IComponent } from "@/utils/typings";
-import { cn2 } from "@/utils/bem";
+import bem from "@/utils/bem";
 
 export type ICheckboxPosition = "front" | "back";
 export interface IreasonsObject {
@@ -82,7 +82,7 @@ export const OrderCancelPanel: FunctionComponent<
     ...defaultProps,
     ...props,
   };
-  const b = cn2("ordercancel");
+  const b = bem("ordercancel");
   const [currActivedKey, setCurrActivedKey] = useState("");
   const preChecked = useRef("");
   //其它文本框输入
