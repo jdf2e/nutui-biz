@@ -301,13 +301,13 @@ export default App;
 |---------|--------------------------------------------|---------|-----------|
 | logo | logo url | string | -- |
 | title | header title | string | -- |
-| formParams | input box configuration information | Object:<LoginParamsProps> | - |
+| formParams | input box configuration information | Object<LoginParamsProps> | - |
 | loginType | login type (optional verification code verification `verify`, account password verification `pwd`), default verify | string | `verify` |
-| loginButtonDisable | Whether the login button is disabled |Boolean | `true` |
+| loginButtonDisable | Whether the login button is disabled |boolean | `true` |
 | loginButtonText | Login button text |string | `Login` |
-| hasForgetPassWord | Whether there is a forgot password text button |Boolean |`true` |
-| isGetCode | Whether to get the verification code successfully |Boolean |`false` |
-| isHideSwitchBtn | Whether to hide the login type switch button |Boolean |true |
+| hasForgetPassWord | Whether there is a forgot password text button |boolean |`true` |
+| isGetCode | Whether to get the verification code successfully |boolean |`false` |
+| isHideSwitchBtn | Whether to hide the login type switch button |boolean |true |
 | countDownTime | countdown time for checking code acquisition anti-frequency |number |`60` |
 | slotProtocolText | Custom check informed consent content |React.ReactNode |- |
 | slotBottom | Customize the content below the login button |React.ReactNode |- |
@@ -327,7 +327,7 @@ export default App;
 | password | password | string | - |
 | passwordPlaceholder | password placeholder text | string | `Please enter a password` |
 | passwordErrorText | password error prompt text | string | - |
-| isShowPwdInput | Whether to show the password input box | Boolean | true |
+| isShowPwdInput | Whether to show the password input box | boolean | `true` |
 | verify | verification code | string | - |
 | verifyPlaceholder | Verification code placeholder text | string | `Please enter the verify code` |
 | verifyButtonText | Verification code get button text | string | `Get code` |

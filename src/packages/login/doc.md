@@ -88,6 +88,7 @@ const App = () => {
     verify: "",
   });
   const [getVerify, setGetVerify] = useState(false);
+   const [toastText, setToastText] = useState("");
   const onChange = (value: any, tag: string) => {
     console.log(tag, value);
   };
@@ -100,6 +101,10 @@ const App = () => {
   };
   const queryLogin = (formData: any) => {
     console.log("login", formData);
+    setToastText("toast 错误提示");
+    setTimeout(() => {
+        setToastText("");
+    }, 2000);
   };
   return (
      <Login
@@ -109,13 +114,13 @@ const App = () => {
         onInputChange={onChange}
         isGetCode={getVerify}
         onVerifyBtnClick={queryVerifyCode}
-        countDownTime={30}
+        toastErrorText={toastText}
         onLoginBtnClick={queryLogin}
         slotProtocolText={
-            <div>
+          <div>
             勾选后代表您已阅读并同意
             <span style={{ color: "red" }}>《用户隐私政策》</span>
-            </div>
+          </div>
         }
         />
   );
@@ -150,6 +155,7 @@ const App = () => {
         formParams={formParams3}
         logo={logoImg}
         loginType="pwd"
+        showErrorType="bottomMsg"
         onInputChange={onChange}
         />
   );
@@ -157,7 +163,7 @@ const App = () => {
 export default App;
 ```
 :::
-### 用户自定义登录框
+### 用户仅账号登录
 
 :::demo
 
@@ -189,17 +195,6 @@ const App = () => {
         onInputChange={onChange}
         isHideSwitchBtn={true}
         onLoginBtnClick={queryLogin}
-        slotBottom={
-            <div
-            style={{
-                color: "#006FFF",
-                textAlign: "center",
-                fontSize: "14px",
-            }}
-            >
-            新用户注册
-            </div>
-        }
         />
   );
 };
@@ -251,35 +246,46 @@ const App = () => {
         onInputChange={onChange}
         isHideSwitchBtn={true}
         loginButtonDisable={isDisable}
-        onClear={(tag) => {
+        onInputClear={(tag) => {
             if (tag === "account") {
               setAccount("");
             }
         }}
         slotInput={
-          <div className={`input-wrap`}>
-            <div className="input-item">
-                <Input
+          <div className={`nb-login__input-wrap`}>
+            <div className="nb-login__input-item">
+              <Input
                 className="nut-input-text"
                 border={false}
                 defaultValue={customInput}
-                placeholder={'请输入验证码'}
+                placeholder={translated.placeholder}
                 type="text"
                 clearable
                 onChange={(value) => {
-                    setCustomInput(value);
+                  setCustomInput(value);
                 }}
                 onClear={() => {
-                    setCustomInput("");
+                  setCustomInput("");
                 }}
-                />
-                <div className="code-box">
+              />
+              <div className="nb-login__code-box">
                 <img
-                    style={{ width: "65px", height: "30px" }}
-                    src="https://img12.360buyimg.com/imagetools/jfs/t1/211415/19/9275/14512/61924b82E09366437/cc5cc7297b9073ae.jpg"
+                  style={{ width: "65px", height: "30px" }}
+                  src="https://img12.360buyimg.com/imagetools/jfs/t1/211415/19/9275/14512/61924b82E09366437/cc5cc7297b9073ae.jpg"
                 />
-                </div>
+              </div>
             </div>
+          </div>
+        }
+        slotBottom={
+          <div
+            style={{
+              color: "#006FFF",
+              textAlign: "center",
+              fontSize: "14px",
+            }}
+          >
+            新用户注册
           </div>
         }
         />
@@ -298,19 +304,24 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| logo   | 头部图标链接，不配置不显示                                | string  | -        |
-| title  | 头部标题，不配置不显示                                 | string  | -         |
-| formParams   | 输入框配置信息                                 | Object:<LoginParamsProps>  | -        |
+| logo   | 头部图标链接，不配置不显示                                | string  | ''        |
+| title  | 头部标题，不配置不显示                                 | string  | ''         |
+| formParams   | 输入框配置信息                                 | Object<LoginParamsProps>  | -        |
 | loginType   | 登录类型(可选验证码校验`verify`，账号密码校验`pwd` )，默认verify                                | string  | `verify`         |
 | loginButtonDisable   | 登录按钮是否禁用  |boolean  | `true`        |
-| loginButtonText   | 登录按钮文案  |String  | `登录`        |
+| loginButtonText   | 登录按钮文案  |string  | `登录`        |
 | hasForgetPassWord   | 是否有忘记密码文字按钮  |boolean  |`true`        |
+| hasHidePwd   | 是否有隐藏和显示密码按钮  |boolean  |`true`        |
 | isGetCode   | 是否成功获取校验码 |boolean  | `false`       |
 | isHideSwitchBtn   | 是否隐藏登录类型切换按钮  | boolean  |`true`        |
 | countDownTime   | 校验码获取防频倒计时时间  |number  |`60`       |
+| showErrorType| 登录框错误提示的类型，可选值`toast`/`errorMsg`|string |`toast`|
+| toastErrorText| toast错误提示内容，有值时展示，无值隐藏 | string | ''|
 | slotProtocolText   | 自定义勾选知情同意内容  |ReactNode  |-        |
 | slotBottom   | 自定义登录按钮下方内容  |ReactNode  |-       |
 | slotInput   | 自定义输入框  |ReactNode  |-        |
+| slotInput   | 自定义输入框  |ReactNode  |-        |
+| buttonProps| 按钮基础组件 props |  [ButtonProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/button) | - |
 
 
 ### Props formParams
