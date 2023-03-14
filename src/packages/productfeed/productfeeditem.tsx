@@ -72,7 +72,7 @@ export const ProductFeedItem: FunctionComponent<
     return {
       "borderRadius": Unit.pxAdd(borderRadius),
       "padding": Unit.pxAdd(padding),
-    }
+    } as CSSProperties
   }
 
   const contentStyle = () => {
@@ -93,7 +93,7 @@ export const ProductFeedItem: FunctionComponent<
   return (
     <div 
       className={`${b()} ${col == 1 ? b("single") : b("multiple")}`}
-      style={{ ...itemStyle(), ...style }} 
+      style={itemStyle()} 
       onClick={handleClick}
       {...rest}
     >
