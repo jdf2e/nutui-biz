@@ -3,7 +3,7 @@
 exports[`Password Login test 1`] = `
 <div>
   <div
-    class="nb-login undefined"
+    class="nb-login"
   >
     <div
       class="nb-login__logo"
@@ -16,10 +16,10 @@ exports[`Password Login test 1`] = `
       class="nb-login__content"
     >
       <div
-        class="input-wrap "
+        class="nb-login__input-wrap"
       >
         <div
-          class="input-item"
+          class="nb-login__input-item"
         >
           <div
             class="nut-input  nut-input-text"
@@ -49,10 +49,10 @@ exports[`Password Login test 1`] = `
         </div>
       </div>
       <div
-        class="input-wrap "
+        class="nb-login__input-wrap"
       >
         <div
-          class="input-item"
+          class="nb-login__input-item"
         >
           <div
             class="nut-input  nut-input-text"
@@ -80,7 +80,7 @@ exports[`Password Login test 1`] = `
             </div>
           </div>
           <div
-            class="pwd-hide-icon"
+            class="nb-login__hide-icon"
           >
             <i
               class="nutui-iconfont nut-icon nut-icon-marshalling "
@@ -113,7 +113,7 @@ exports[`Password Login test 1`] = `
       </button>
     </div>
     <div
-      class="switch-type"
+      class="nb-login__switch-type"
     >
       手机/邮箱登录
     </div>
@@ -124,7 +124,7 @@ exports[`Password Login test 1`] = `
 exports[`Verify Login test 1`] = `
 <div>
   <div
-    class="nb-login undefined"
+    class="nb-login"
   >
     <div
       class="nb-login__logo"
@@ -137,10 +137,10 @@ exports[`Verify Login test 1`] = `
       class="nb-login__content"
     >
       <div
-        class="input-wrap "
+        class="nb-login__input-wrap"
       >
         <div
-          class="input-item"
+          class="nb-login__input-item"
         >
           <div
             class="nut-input  nut-input-text"
@@ -170,10 +170,10 @@ exports[`Verify Login test 1`] = `
         </div>
       </div>
       <div
-        class="input-wrap "
+        class="nb-login__input-wrap"
       >
         <div
-          class="input-item"
+          class="nb-login__input-item"
         >
           <div
             class="nut-input  nut-input-text"
@@ -201,7 +201,7 @@ exports[`Verify Login test 1`] = `
             </div>
           </div>
           <div
-            class="code-box"
+            class="nb-login__code-box"
           >
             获取验证码
           </div>
@@ -226,7 +226,7 @@ exports[`Verify Login test 1`] = `
       </button>
     </div>
     <div
-      class="switch-type"
+      class="nb-login__switch-type"
     >
       账号密码登录
     </div>

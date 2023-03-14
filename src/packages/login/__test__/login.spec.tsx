@@ -35,11 +35,11 @@ test("Verify Login test", async () => {
   const logoImge = container.querySelector(".nb-login__logo img");
   const telEl = container.querySelector('.input-text[name="telOrMail"]');
   const verifyEl = container.querySelector('.input-text[name="verify"]');
-  const codeBtn = container.querySelector(".code-box") as HTMLElement;
+  const codeBtn = container.querySelector(".nb-login__code-box") as HTMLElement;
   const loginBtn = container.querySelector(".nb-login__btn .nut-button");
   await waitFor(() => {
     expect(logoImge).toHaveAttribute("src", `${logoImg}`);
-    expect(container.querySelector(".switch-type")?.innerHTML).toBe(
+    expect(container.querySelector(".nb-login__switch-type")?.innerHTML).toBe(
       "账号密码登录"
     );
     expect(telEl).toHaveAttribute(
@@ -70,10 +70,6 @@ test("Password Login test", async () => {
   const accountEl = container.querySelector('.input-text[name="account"]');
   const pwdEl = container.querySelector('.input-text[name="password"]');
   await waitFor(() => {
-    // expect(logoImge).toHaveAttribute("src", `${logoImg}`);
-    // expect(container.querySelector(".switch-type")?.innerHTML).toBe(
-    //   "账号密码登录"
-    // );
     expect(accountEl).toHaveAttribute(
       "placeholder",
       `${formParams.accountPlaceholder}`
@@ -82,9 +78,9 @@ test("Password Login test", async () => {
       "placeholder",
       `${formParams.passwordPlaceholder}`
     );
-    expect(container.querySelector(".pwd-hide-icon")).toBeTruthy;
+    expect(container.querySelector(".nb-login__hide-icon")).toBeTruthy;
     expect(container.querySelector(".forget-pwd")).toBeTruthy;
-    expect(container.querySelector(".switch-type")?.innerHTML).toBe(
+    expect(container.querySelector(".nb-login__switch-type")?.innerHTML).toBe(
       "手机/邮箱登录"
     );
     expect(container).toMatchSnapshot();
@@ -107,7 +103,7 @@ test("Has informed consent", async () => {
     />
   );
   const checkEl = container.querySelector(
-    ".login-protocal .nut-checkbox__label "
+    ".nb-login__protocal .customer-protocal "
   );
 
   await waitFor(() => {
@@ -146,7 +142,7 @@ test("event test", async () => {
   const telEl = container.querySelector('.input-text[name="telOrMail"]');
   const verifyEl = container.querySelector('.input-text[name="verify"]');
   const loginBtn = container.querySelector(".nb-login__btn .nut-button");
-  const codeBtn = container.querySelector(".code-box") as HTMLElement;
+  const codeBtn = container.querySelector(".nb-login__code-box") as HTMLElement;
   expect(telEl).toHaveAttribute("value", `${formParams2.telOrMail}`);
   expect(verifyEl).toHaveAttribute("value", `${formParams2.verify}`);
   expect(loginBtn).not.toHaveClass("nut-button--disabled");

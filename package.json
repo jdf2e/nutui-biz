@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-biz",
-  "version": "0.0.1-beta.20",
+  "version": "0.0.1-beta.21",
   "style": "dist/style.css",
   "main": "dist/nutui.biz.umd.js",
   "module": "dist/esm/nutui-biz.es.js",
@@ -48,7 +48,7 @@
     "generate:themes": "node scripts/generate-themes.js",
     "generate:themes-dev": "node scripts/generate-themes-dev.js",
     "checked": "npm run generate:file && tsc",
-    "dev": "npm run checked && vite --open --force",
+    "dev": "npm run checked && vite --open --force --port 3000",
     "dev:theme": "npm run generate:themes-dev && npm run checked && vite --config vite.config.theme.ts --open --force",
     "replace:scss": "node scripts/replace-scss-alias.js",
     "build:dts": "node scripts/export-props.js && npx rollup -c rollup.config.dts.js",

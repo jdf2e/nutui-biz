@@ -17,7 +17,7 @@ interface CalResult {
   type: string;
   data: any;
 }
-// export type AddressType = "exist" | "custom" | "elevator";
+
 export type showErrorType = "toast" | "bottomMsg";
 
 export interface AddressInfo {
@@ -153,7 +153,7 @@ export const AddressEdit: FunctionComponent<
     town: [],
     addressTitle: "选择所在地区",
     type: "custom",
-    height: "200px",
+    height: "500px",
   });
   //地址编辑数据形式兜底文案配置
   const [editSeting, setEditSeting] = useState<AddressData>({

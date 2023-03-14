@@ -14,26 +14,13 @@ const DeliveryDemo = () => {
     const [visible4, setVisible4] = useState(false);
     const [visible5, setVisible5] = useState(false);
     const [visible6, setVisible6] = useState(false);
-    const [desc1, setDesc1] = useState<any>("");
-    const [desc2, setDesc2] = useState<any>("");
-    const [desc3, setDesc3] = useState<any>("");
-    const [desc4, setDesc4] = useState<any>("");
-    const deliveryTypes1: DeliveryTypes[] = [
-        {
-            label: 'jd',
-            text: '京东快递',
-            disabled: false,
-            desc: '若社区村镇人员出入管控，京东快递可送货上门',
-        },
-        {
-            label: 'jc',
-            text: '无接触配送',
-            disabled: false,
-            desc: '无接触配送，自定义',
-            children: <div style={{ 'padding': '0 20px', 'fontSize': '12px' }}>可选择无接触配送点</div>
-        }
-    ];
-    const deliveryDateData1: DeliveryData[] = [
+    const [visible7, setVisible7] = useState(false);
+    const [desc1, setDesc1] = useState<string>("...");
+    const [desc2, setDesc2] = useState<string>("...");
+    const [desc3, setDesc3] = useState<string>("...");
+    const [desc4, setDesc4] = useState<string>("...");
+    const [desc5, setDesc5] = useState<string>("...");
+    const [deliveryDateData1, setDeliveryDateData1] = useState<DeliveryData[]>([
         {
             label: '1',
             text: '时间配送',
@@ -47,7 +34,8 @@ const DeliveryDemo = () => {
                 },
                 {
                     label: '2',
-                    text: '3月1日(周三)'
+                    text: '3月1日(周三)',
+                    disabled: true
                 },
                 {
                     label: '3',
@@ -83,8 +71,8 @@ const DeliveryDemo = () => {
                 }
             ]
         }
-    ];
-    const deliveryDateData2: DeliveryData[] = [
+    ]);
+    const [deliveryDateData2, setDeliveryDateData2] = useState<DeliveryData[]>([
         {
             label: '1',
             text: '标准达',
@@ -139,12 +127,19 @@ const DeliveryDemo = () => {
                             children: [
                                 {
                                     label: '333',
-                                    text: '09:00-10:00',
-                                    
+                                    text: <>
+                                            <div style={{ 'lineHeight': '2' }} className="text">09:00-10:00</div>
+                                            <p style={{ 'lineHeight': '1' }}>加收3元运费</p>
+                                        </>,
+                                    disabled: true
+
                                 },
                                 {
                                     label: '444',
-                                    text: '10:00-11:00',
+                                    text: <>
+                                            <div style={{ 'lineHeight': '2' }} className="text">10:00-11:00</div>
+                                            <p style={{ 'lineHeight': '1' }}>加收5元运费</p>
+                                        </>,
                                 }
                             ]
                         },
@@ -153,8 +148,11 @@ const DeliveryDemo = () => {
                             title: '晚间',
                             children: [
                                 {
-                                    label: '333',
-                                    text: '15:00-18:00',
+                                    label: '555',
+                                    text: <>
+                                            <div style={{ 'lineHeight': '2' }} className="text">15:00-18:00</div>
+                                            <p style={{ 'lineHeight': '1' }}>加收3元运费</p>
+                                        </>,
                                 }
                             ]
                         }
@@ -169,8 +167,11 @@ const DeliveryDemo = () => {
                             title: '中午',
                             children: [
                                 {
-                                    label: '333',
-                                    text: '12:00-14:00',
+                                    label: '666',
+                                    text: <>
+                                            <div style={{ 'lineHeight': '2' }} className="text">12:00-14:00</div>
+                                            <p style={{ 'lineHeight': '1' }}>加收3元运费</p>
+                                        </>,
                                 }
                             ]
                         },
@@ -179,8 +180,11 @@ const DeliveryDemo = () => {
                             title: '下午',
                             children: [
                                 {
-                                    label: '333',
-                                    text: '16:00-17:00'
+                                    label: '777',
+                                    text: <>
+                                            <div style={{ 'lineHeight': '2' }} className="text">16:00-17:00</div>
+                                            <p style={{ 'lineHeight': '1' }}>加收3元运费</p>
+                                        </>,
                                 }
                             ]
                         },
@@ -189,14 +193,64 @@ const DeliveryDemo = () => {
                             title: '晚间',
                             children: [
                                 {
-                                    label: '231',
-                                    text: '19:00-21:00'
+                                    label: '888',
+                                    text: <>
+                                            <div style={{ 'lineHeight': '2' }} className="text">19:00-21:00</div>
+                                            <p style={{ 'lineHeight': '1' }}>加收10元运费</p>
+                                        </>,
                                 }
                             ]
                         }
                     ]
                 }
             ]
+        }
+    ]);
+    const [deliveryDateData4, setDeliveryDateData4] = useState<DateTimeType[]>([
+        {
+            label: '1',
+            title: '2月28日(周二)',
+            children: [
+                {
+                    label: '11',
+                    text: '09:00-15:00',
+                    selected: true,
+                },
+                {
+                    label: '22',
+                    text: '15:00-18:00',
+
+                }
+            ]
+        },
+        {
+            label: '2',
+            title: '3月1日(周三)',
+            children: [
+                {
+                    label: '33',
+                    text: '09:00-15:00'
+                },
+                {
+                    label: '44',
+                    text: '16:00-18:00'
+                }
+            ]
+        }
+    ]);
+    const deliveryTypes1: DeliveryTypes[] = [
+        {
+            label: 'jd',
+            text: '京东快递',
+            disabled: false,
+            desc: '若社区村镇人员出入管控，京东快递可送货上门',
+        },
+        {
+            label: 'jc',
+            text: '无接触配送',
+            disabled: false,
+            desc: '无接触配送，自定义',
+            children: <div style={{ 'padding': '0 20px', 'fontSize': '12px' }}>可选择无接触配送点</div>
         }
     ];
 
@@ -243,52 +297,31 @@ const DeliveryDemo = () => {
             text: '3月9日(周四)'
         }
     ]
+
+    const deliveryDateData5 = [...deliveryDateData3];
     const [activeKey3, setActiveKey3] = useState('1');
 
-    const deliveryDateData4 = [
-        {
-            label: '1',
-            title: '2月28日(周二)',
-            children: [
-                {
-                    label: '11',
-                    text: '09:00-15:00',
-                    selected: true,
-                },
-                {
-                    label: '22',
-                    text: '15:00-18:00',
-
-                }
-            ]
-        },
-        {
-            label: '2',
-            title: '3月1日(周三)',
-            children: [
-                {
-                    label: '33',
-                    text: '09:00-15:00'
-                },
-                {
-                    label: '44',
-                    text: '16:00-18:00'
-                }
-            ]
-        }
-    ];
-
     const [activeKey4, setActiveKey4] = useState('1');
+
+    const [activeKey5, setActiveKey5] = useState('1');
 
     const show1 = (param: boolean) => {
         setVisible1(param);
     }
 
-    const sure1 = (item: DateTimesType | null, type: string) => {
+    const sure1 = (item: DateTimesType | null, type: string, deliveryDateData: DeliveryData[]) => {
         const deliveryType = deliveryTypes1.find((value: DeliveryTypes) => value.label === type);
-        setDesc1(deliveryType?.text);
+        setDesc1(deliveryType?.text as string);
         if (item) {
             setDesc1([deliveryType?.text, (item as DateType).text].join());
+            deliveryDateData[0].times = deliveryDateData[0].times.map((value: DateTimesType) => {
+                return {
+                    ...value,
+                    selected: (value as DateType).label == item.label ? true : undefined
+                }
+            }).slice();
+
+            setDeliveryDateData1([...deliveryDateData]);
         }
     }
 
@@ -296,11 +329,51 @@ const DeliveryDemo = () => {
         setVisible2(param);
     }
 
-    const sure2 = (item: DateTimesType | null, type: string) => {
+    const sure2 = (item: DateTimesType | null, type: string, deliveryDateData: DeliveryData[]) => {
         const children = ((item as DateTimeType).children) as any[];
         if ((children[0])?.children) {
-            setDesc2(['京东快递', (item as DateTimeType).title, (item as any).children[0]?.title, (item as any).children[0]?.children[0].text].join(','));
+            deliveryDateData[1].times.forEach((value: DateTimesType) => {
+                if (value.label === item?.label) {
+                    (value as DateTimeType).children.forEach((subValue: DateTimesType) => {
+                        (subValue as DateTimeType).children = (subValue as DateTimeType).children.map((subitem: DateType) => {
+                            return {
+                                ...subitem,
+                                selected: subitem.label === (item as any).children[0]?.children[0].label ? true : undefined
+                            }
+                        })
+                    })
+                } else {
+                    (value as DateTimeType).children.forEach((subValue: DateTimesType) => {
+                        (subValue as DateTimeType).children = (subValue as DateTimeType).children.map((subitem: DateType) => {
+                            return {
+                                ...subitem,
+                                selected: undefined
+                            }
+                        })
+                    })
+                }
+            })
+            setDeliveryDateData2(deliveryDateData);
+            setDesc2(['京东快递', (item as DateTimeType).title, (item as any).children[0]?.title, (item as any).children[0]?.children[0].text.props.children[0].props.children].join(','));
         } else {
+            deliveryDateData[0].times.forEach((value: DateTimesType) => {
+                if (value.label === item?.label) {
+                    (value as DateTimeType).children = (value as DateTimeType).children.map((subValue: DateType) => {
+                        return {
+                            ...subValue,
+                            selected: subValue.label === (item as DateTimeType).children[0].label ? true : undefined
+                        }
+                    })
+                } else {
+                    (value as DateTimeType).children = (value as DateTimeType).children.map((subValue: DateType) => {
+                        return {
+                            ...subValue,
+                            selected: undefined
+                        }
+                    })
+                }
+            });
+            setDeliveryDateData2(deliveryDateData);
             setDesc2(['京东快递', (item as DateTimeType).title, (item as DateTimeType).children[0].text].join(','));
         }
     }
@@ -309,28 +382,53 @@ const DeliveryDemo = () => {
         setVisible3(param);
     }
 
-    const sure3 = (item: DateTimesType) => {
+    const sure3 = (item: string) => {
         console.log(item)
     }
 
     const handleDeliveryDate3 = (item: DateType) => {
         setActiveKey3(item.label);
         setVisible4(false);
-        setDesc3(item.text);
+        setDesc3(item.text as string);
     }
 
     const show5 = (param: boolean) => {
         setVisible5(param);
     }
 
-    const sure5 = (item: DateTimesType) => {
+    const sure5 = (item: string) => {
         console.log(item)
     }
 
-    const handleDeliveryDate4 = (item: DateTimeType) => {
+    const handleDeliveryDate4 = (item: DateTimeType, deliveryDateData: DateTimeType[]) => {
+        const currentItemIndex = deliveryDateData.findIndex((value: DateTimesType) => value.label === item.label);
+        deliveryDateData.forEach((subItem: DateTimesType, index: number) => {
+            if (currentItemIndex === index) {
+                (subItem as DateTimeType).children = (subItem as DateTimeType).children.map((value: DateType) => {
+                    return {
+                        ...value,
+                        selected: item.children[0].label === (value as DateType).label ? true : undefined
+                    }
+                });
+            } else {
+                (subItem as DateTimeType).children = (subItem as DateTimeType).children.map((value: DateType) => {
+                    return {
+                        ...value,
+                        selected: undefined
+                    }
+                });
+            }
+        })
+        setDeliveryDateData4(deliveryDateData);
         setActiveKey4(item.label);
         setVisible6(false);
         setDesc4(`${item.title},${item.children[0].text}`);
+    }
+
+    const handleDeliveryDate5 = (item: DateType) => {
+        setActiveKey5(item.label);
+        setVisible7(false);
+        setDesc5(item.text as string);
     }
 
     return (
@@ -349,7 +447,7 @@ const DeliveryDemo = () => {
                     deliveryDateData={deliveryDateData1}
                     onCloseMask={() => { show1(false) }}
                     onClose={() => show1(false)}
-                    onSure={sure1}
+                    onSure={(item: DateTimesType | null, type: string) => { sure1(item, type, deliveryDateData1) }}
                 ></Delivery>
                 <h2>标准达、京准达</h2>
                 <Cell
@@ -362,7 +460,7 @@ const DeliveryDemo = () => {
                     deliveryDateData={deliveryDateData2}
                     onCloseMask={() => { show2(false) }}
                     onClose={() => show2(false)}
-                    onSure={sure2}
+                    onSure={(item: DateTimesType | null, type: string) => { sure2(item, type, deliveryDateData2) }}
                 ></Delivery>
                 <h2>自定义内容1</h2>
                 <Cell
@@ -385,6 +483,7 @@ const DeliveryDemo = () => {
                     visible={visible4}
                     position="bottom"
                     style={{ 'height': '80%' }}
+                    overlayStyle={{ 'backgroundColor': 'transparent' }}
                     closeable
                     round
                     onClickOverlay={() => { setVisible4(false) }}
@@ -419,6 +518,7 @@ const DeliveryDemo = () => {
                     visible={visible6}
                     position="bottom"
                     style={{ 'height': '80%' }}
+                    overlayStyle={{ 'backgroundColor': 'transparent' }}
                     closeable
                     round
                     onClickOverlay={() => { setVisible6(false) }}
@@ -429,8 +529,31 @@ const DeliveryDemo = () => {
                         className="delivery-date4"
                         activeKey={activeKey4}
                         data={deliveryDateData4}
-                        onSelect={(item: DateTimeType) => { handleDeliveryDate4(item) }}
+                        onSelect={(item: DateTimeType) => { handleDeliveryDate4(item, deliveryDateData4) }}
                     ></DeliveryDateTime>
+                </Popup>
+                <h2>子组件单独使用</h2>
+                <Cell
+                    title="请选择"
+                    desc={desc5}
+                    onClick={() => { setVisible7(true) }}
+                />
+                <Popup
+                    visible={visible7}
+                    position="bottom"
+                    style={{ 'height': '80%' }}
+                    closeable
+                    round
+                    onClickOverlay={() => { setVisible7(false) }}
+                    onClickCloseIcon={() => { setVisible7(false) }}
+                    onClose={() => { setVisible7(false) }}
+                >
+                    <DeliveryDate
+                        className="delivery-date3"
+                        activeKey={activeKey5}
+                        data={deliveryDateData5}
+                        onSelect={(item: DateType) => { handleDeliveryDate5(item) }}
+                    ></DeliveryDate>
                 </Popup>
             </div>
         </>

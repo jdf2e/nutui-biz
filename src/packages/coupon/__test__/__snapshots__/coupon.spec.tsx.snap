@@ -3,52 +3,52 @@
 exports[`should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="nut-biz-coupon  undefined "
+    class="nb-coupon"
   >
     <div
-      class="nut-biz-coupon__box"
+      class="nb-coupon__box"
       style="width: 100%; height: auto; background-image: url(https://storage.360buyimg.com/jdcdkh/open/1.0.0/assets/bg-coupon-red.f6ae2e19.png);"
     >
       <div
-        class="nut-biz-coupon__main"
+        class="nb-coupon__main"
         style="width: 69%; color: rgb(255, 255, 255);"
       >
         <div
-          class="nut-biz-coupon__main-price"
+          class="nb-coupon__main-price"
         >
           <div
-            class="nut-biz-coupon__main-price--currency"
+            class="nb-coupon__main-price--currency"
           >
             ¥
           </div>
           <div
-            class="nut-biz-coupon__main-price--number"
+            class="nb-coupon__main-price--number"
           >
-            9.00
+            9
           </div>
         </div>
         <div
-          class="nut-biz-coupon__main-content"
+          class="nb-coupon__main-content"
         >
           <p
-            class="nut-biz-coupon__main-content--maintitle"
+            class="nb-coupon__main-content--maintitle"
           >
             满100元可用
           </p>
           <p
-            class="nut-biz-coupon__main-content--subtitle"
+            class="nb-coupon__main-content--subtitle"
           >
             仅可购买满折券测试
           </p>
           <p
-            class="nut-biz-coupon__main-content--timerange"
+            class="nb-coupon__main-content--timerange"
           >
             2022.03.01-2022.04.01
           </p>
         </div>
       </div>
       <div
-        class="nut-biz-coupon__btns"
+        class="nb-coupon__btns"
       >
         <button
           class="nut-button nut-button--primary nut-button--small nut-button--round nut-button--plain cancel-btn"
@@ -65,7 +65,7 @@ exports[`should match snapshot 1`] = `
         </button>
       </div>
       <div
-        class="nut-biz-coupon__label"
+        class="nb-coupon__label"
       >
         内购专享
       </div>

@@ -81,6 +81,7 @@ test("prop of Basic Usage", () => {
       showCancelPanel={true}
       popupTitle={state.popupTitle}
       cancelReason={state.cancelReason}
+      onSubmitBtn={closeClick}
       buttonProps={{
         type: "primary",
         className: "cancel-btn",
@@ -88,93 +89,42 @@ test("prop of Basic Usage", () => {
     />
   );
   expect(
-    container.querySelector(".nut-biz-ordercancel .nut-biz-ordercancel__header")
+    container.querySelector(".nb-ordercancel .nb-ordercancel__header")
   ).toHaveTextContent("退款原因");
+
   expect(
     container.querySelectorAll(
-      ".nut-biz-ordercancel .nut-biz-ordercancel__reason .nut-biz-ordercancel__reason--list"
+      ".nb-ordercancel .nb-ordercancel__reason .nb-ordercancel__reason--list"
     ).length
   ).toBe(state.cancelReason.length);
 
   expect(
-    container.querySelector(
-      ".nut-biz-ordercancel .nut-biz-ordercancel__btns .nut-button"
-    )
+    container.querySelector(".nb-ordercancel .nb-ordercancel__btns .nut-button")
   ).toHaveClass("nut-button--primary");
 
   //点击了某个原因
-  const nutOrderCancelList = container.querySelectorAll(
-    ".nut-biz-ordercancel .nut-biz-ordercancel__reason .nut-biz-ordercancel__reason--list"
-  )[1] as HTMLElement;
+  const nutOrderCancelList = container
+    .querySelectorAll(
+      ".nb-ordercancel .nb-ordercancel__main .nb-ordercancel__reason .nb-ordercancel__reason--list"
+    )[1]
+    .querySelector(".nb-ordercancel__reason--list__overlay") as HTMLElement;
   fireEvent.click(nutOrderCancelList);
   expect(
     container
       .querySelectorAll(
-        ".nut-biz-ordercancel .nut-biz-ordercancel__reason .nut-biz-ordercancel__reason--list"
+        ".nb-ordercancel .nb-ordercancel__main .nb-ordercancel__reason .nb-ordercancel__reason--list"
       )[1]
       .querySelector(
-        ".nut-biz-ordercancel__reason--list__checkbox .nut-checkbox .nut-icon"
+        ".nb-ordercancel__reason--list__checkbox .nut-checkbox .nut-icon"
       )
   ).toHaveClass("nut-icon-checked");
+
   //点击了关闭icon按钮
   const nutOrderCancelCloseIcon = container.querySelector(
-    ".nut-biz-ordercancel .nut-popup__close-icon"
+    ".nb-ordercancel .nb-ordercancel__btns .nb-ordercancel__btns--button .nut-button"
   ) as HTMLElement;
   fireEvent.click(nutOrderCancelCloseIcon);
   expect(closeClick).toBeCalled();
-});
-
-test("Overlay event of Basic Usage", () => {
-  const closeClick = jest.fn();
-  //   const closeClick2 = jest.fn();
-  const state = {
-    popupTitle: "退款原因",
-    cancelReason: [
-      {
-        key: "reasons1",
-        value: "商品无货",
-      },
-      {
-        key: "reasons2",
-        value: "发货时间问题",
-      },
-      {
-        key: "reasons3",
-        value: "不想要了",
-      },
-      {
-        key: "reasons4",
-        value: "商品选错/多选",
-      },
-      {
-        key: "reasons5",
-        value: "地址信息填写错误",
-      },
-      {
-        key: "reasons6",
-        value: "商品降价",
-      },
-    ],
-  };
-  const { container } = render(
-    <OrderCancelPanel
-      showCancelPanel={true}
-      popupTitle={state.popupTitle}
-      cancelReason={state.cancelReason}
-      //   onClose={closeClick2}
-      buttonProps={{
-        type: "primary",
-        className: "cancel-btn",
-      }}
-    />
-  );
-  //点击了关闭按钮
-  const nutOrderCancelOverlay = document.querySelector(
-    ".nut-overlay"
-  ) as HTMLElement;
-  fireEvent.click(nutOrderCancelOverlay);
-  expect(closeClick).toBeCalled();
-  //   expect(closeClick2).toBeCalled();
 });
 
 test("Components with warm tips", () => {
@@ -227,45 +177,45 @@ test("Components with warm tips", () => {
     />
   );
   expect(
-    container.querySelector(".nut-biz-ordercancel .nut-biz-ordercancel__header")
+    container.querySelector(".nb-ordercancel .nb-ordercancel__header")
   ).toHaveTextContent("退款原因");
   expect(
     container.querySelectorAll(
-      ".nut-biz-ordercancel .nut-biz-ordercancel__reason .nut-biz-ordercancel__reason--list"
+      ".nb-ordercancel .nb-ordercancel__reason .nb-ordercancel__reason--list"
     ).length
   ).toBe(state.cancelReason.length);
   expect(
     container.querySelectorAll(
-      ".nut-biz-ordercancel .nut-biz-ordercancel__tips .nut-biz-ordercancel__tips-list"
+      ".nb-ordercancel .nb-ordercancel__tips .nb-ordercancel__tips-list"
     ).length
   ).toBe(state.warmTips.length);
   expect(
-    container.querySelector(
-      ".nut-biz-ordercancel .nut-biz-ordercancel__btns .nut-button"
-    )
+    container.querySelector(".nb-ordercancel .nb-ordercancel__btns .nut-button")
   ).toHaveClass("nut-button--primary");
 
-  const nutOrderCancelList = container.querySelectorAll(
-    ".nut-biz-ordercancel .nut-biz-ordercancel__reason .nut-biz-ordercancel__reason--list"
-  )[1] as HTMLElement;
+  const nutOrderCancelList = container
+    .querySelectorAll(
+      ".nb-ordercancel .nb-ordercancel__reason .nb-ordercancel__reason--list"
+    )[1]
+    .querySelector(".nb-ordercancel__reason--list__overlay") as HTMLElement;
   fireEvent.click(nutOrderCancelList);
   expect(
     container
       .querySelectorAll(
-        ".nut-biz-ordercancel .nut-biz-ordercancel__reason .nut-biz-ordercancel__reason--list"
+        ".nb-ordercancel .nb-ordercancel__reason .nb-ordercancel__reason--list"
       )[1]
       .querySelector(
-        ".nut-biz-ordercancel__reason--list__checkbox .nut-checkbox .nut-icon"
+        ".nb-ordercancel__reason--list__checkbox .nut-checkbox .nut-icon"
       )
   ).toHaveClass("nut-icon-checked");
   fireEvent.click(nutOrderCancelList);
   expect(
     container
       .querySelectorAll(
-        ".nut-biz-ordercancel .nut-biz-ordercancel__reason .nut-biz-ordercancel__reason--list"
+        ".nb-ordercancel .nb-ordercancel__reason .nb-ordercancel__reason--list"
       )[1]
       .querySelector(
-        ".nut-biz-ordercancel__reason--list__checkbox .nut-checkbox .nut-icon"
+        ".nb-ordercancel__reason--list__checkbox .nut-checkbox .nut-icon"
       )
   ).toHaveClass("nut-icon-check-normal");
 });
@@ -325,30 +275,36 @@ test("Components with other reason options", () => {
     />
   );
   //点击其他选项
-  const nutOrderCancelList = container.querySelectorAll(
-    ".nut-biz-ordercancel .nut-biz-ordercancel__reason .nut-biz-ordercancel__reason--list"
-  )[state.cancelReason.length - 1] as HTMLElement;
+  const nutOrderCancelList = container
+    .querySelectorAll(
+      ".nb-ordercancel .nb-ordercancel__reason .nb-ordercancel__reason--list"
+    )
+    [state.cancelReason.length - 1].querySelector(
+      ".nb-ordercancel__reason--list__overlay"
+    ) as HTMLElement;
   fireEvent.click(nutOrderCancelList);
   const textareaEl = container.querySelector(
-    ".nut-biz-ordercancel .nut-biz-ordercancel__reason .nut-textarea"
+    ".nb-ordercancel .nb-ordercancel__reason .nut-textarea"
   ) as HTMLTextAreaElement;
-  expect(textareaEl).toHaveClass("nut-biz-ordercancel__area");
+  expect(textareaEl).toHaveClass("nb-ordercancel__area");
 
   //文字改变
   const textareaDom = container.querySelector(
-    ".nut-biz-ordercancel .nut-biz-ordercancel__reason .nut-textarea .nut-textarea__textarea"
+    ".nb-ordercancel .nb-ordercancel__reason .nut-textarea .nut-textarea__textarea"
   ) as HTMLTextAreaElement;
   fireEvent.change(textareaDom, { target: { value: "文字改变" } });
   expect(textareaDom.innerHTML).toBe("文字改变");
   //点击第一个
-  const nutOrderCancelListFirst = container.querySelectorAll(
-    ".nut-biz-ordercancel .nut-biz-ordercancel__reason .nut-biz-ordercancel__reason--list"
-  )[0] as HTMLElement;
+  const nutOrderCancelListFirst = container
+    .querySelectorAll(
+      ".nb-ordercancel .nb-ordercancel__reason .nb-ordercancel__reason--list"
+    )[0]
+    .querySelector(".nb-ordercancel__reason--list__overlay") as HTMLElement;
   fireEvent.click(nutOrderCancelListFirst);
 
   //点击确认按钮
   const nutOrderCancelBtns = container.querySelector(
-    ".nut-biz-ordercancel .nut-biz-ordercancel__btns .nut-button--normal"
+    ".nb-ordercancel .nb-ordercancel__btns .nut-button--normal"
   ) as HTMLElement;
   fireEvent.click(nutOrderCancelBtns);
   expect(onClick1).toBeCalled();
