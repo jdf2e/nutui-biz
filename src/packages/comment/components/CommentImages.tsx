@@ -2,7 +2,7 @@ import React, { FunctionComponent, HTMLAttributes, useEffect, useState } from "r
 import { IComponent } from "@/utils/typings";
 import { Icon } from "@nutui/nutui-react";
 import classNames from 'classnames';
-import {cn2} from '@/utils/bem'
+import bem from '@/utils/bem'
 
 export interface GoodsClickParams {
   type: string;
@@ -42,7 +42,7 @@ export const CommentImages: FunctionComponent<
     ...defaultProps,
     ...props,
   };
-  const b = cn2('comment-images')
+  const b = bem('comment-images')
 
   const [totalImages, setTotalImages] = useState(
     [] as Array<VideosType | ImagesType>

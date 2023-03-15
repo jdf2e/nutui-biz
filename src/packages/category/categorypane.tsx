@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames';
-import {cn2} from '@/utils/bem'
+import bem from '@/utils/bem'
 import { IComponent } from '@/utils/typings'
 import { throttle } from "@/utils/throttle";
 import { Image, Icon } from '@nutui/nutui-react';
@@ -60,7 +60,7 @@ export const CategoryPane = React.forwardRef<CategoryPaneHandler, Partial<Catego
     ...props,
   }
 
-  const b = cn2('category-pane')
+  const b = bem('category-pane')
 
   const bodyRef = useRef<HTMLDivElement>(null);
   const quickRef = useRef<HTMLDivElement>(null);

@@ -2,7 +2,7 @@ import React, { FunctionComponent, HTMLAttributes, useEffect, useState } from "r
 import { IComponent } from "@/utils/typings";
 import { Icon } from "@nutui/nutui-react";
 import classNames from 'classnames';
-import {cn2} from '@/utils/bem'
+import bem from '@/utils/bem'
 import { CommentInfo } from "../comment";
 export interface CommentBottomProps extends IComponent {
   type: "default" | "complex";
@@ -25,7 +25,7 @@ export const CommentBottom: FunctionComponent<
     ...props,
   };
 
-  const b = cn2('comment-bottom')
+  const b = bem('comment-bottom')
 
   const [showPopver, setShowPopover] = useState(false);
 

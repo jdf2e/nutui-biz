@@ -1,17 +1,18 @@
 import React, {
   FunctionComponent, ReactNode, CSSProperties
-} from 'react'
-import { Image } from '@nutui/nutui-react';
+} from "react"
+import { Image } from "@nutui/nutui-react";
+import { IComponent } from "@/utils/typings";
+import bem from "@/utils/bem"
+import Unit from "@/utils/unit"
+import { errorImg } from "@/utils"
+import { numericProp } from "@/utils/props"
+import { colType } from "./productfeed"
 
-import {cn2} from '@/utils/bem'
-import Unit from '@/utils/unit'
-import { errorImg } from '@/utils'
-import {numericProp} from '@/utils/props'
-
-export interface ProductFeedItemProps {
+export interface ProductFeedItemProps extends IComponent {
   index: number
   data: Array<any>
-  col: numericProp
+  col: colType
   padding: numericProp
   borderRadius: numericProp
   imgUrl: string
@@ -26,21 +27,24 @@ export interface ProductFeedItemProps {
 }
 
 const defaultProps = {
+  index: 0,
   data: [],
   col: 2,
-  padding: '10px',
-  borderRadius: '8px',
-  imgWidth: '150px',
-  imgHeight: '150px',
+  padding: "10px",
+  borderRadius: "8px",
+  imgUrl: "",
+  imgWidth: "150px",
+  imgHeight: "150px",
+  imgTag: "",
   isImageLazy: true,
   loadingImg: errorImg,
   errorImg,
   onClick: () => { },
   onImageClick: () => { }
-} as unknown as ProductFeedItemProps
+} as ProductFeedItemProps
 
 export const ProductFeedItem: FunctionComponent<
-  Partial<ProductFeedItemProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
+  Partial<ProductFeedItemProps> & Omit<React.HTMLAttributes<HTMLDivElement>, "onClick">
 > = (props) => {
   const {
     className,
@@ -66,13 +70,13 @@ export const ProductFeedItem: FunctionComponent<
     ...props,
   }
 
-  const b = cn2('productfeedItem')
+  const b = bem("productfeedItem")
 
   const itemStyle = () => {
     return {
       "borderRadius": Unit.pxAdd(borderRadius),
       "padding": Unit.pxAdd(padding),
-    }
+    } as CSSProperties
   }
 
   const contentStyle = () => {
@@ -93,7 +97,7 @@ export const ProductFeedItem: FunctionComponent<
   return (
     <div 
       className={`${b()} ${col == 1 ? b("single") : b("multiple")}`}
-      style={{ ...itemStyle(), ...style }} 
+      style={itemStyle()} 
       onClick={handleClick}
       {...rest}
     >
@@ -116,4 +120,4 @@ export const ProductFeedItem: FunctionComponent<
 }
 
 ProductFeedItem.defaultProps = defaultProps
-ProductFeedItem.displayName = 'NutProductFeedItem'
+ProductFeedItem.displayName = "NutProductFeedItem"

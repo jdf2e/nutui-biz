@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState, useRef } from 'react';
-import { cn2 as bem } from '@/utils/bem';
+import bem from '@/utils/bem';
 import { Icon, Elevator } from '@nutui/nutui-react';
 import { useConfig } from '@/packages/configprovider';
 import { SelectedRegionObj, RegionData, NextListObj, CustomRenderProps, CustomRegionData, MapRef } from './type';

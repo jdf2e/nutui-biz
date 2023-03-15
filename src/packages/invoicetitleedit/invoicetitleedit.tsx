@@ -5,7 +5,7 @@ import React, {
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames'
-import {cn2} from '@/utils/bem'
+import bem from '@/utils/bem'
 
 import { IComponent } from '@/utils/typings'
 import { Form, Radio, Input, Button, ButtonProps } from '@nutui/nutui-react'
@@ -40,7 +40,7 @@ export const InvoiceTitleEdit: FunctionComponent<
     ...props
   }
 
-  const b = cn2('invoice-title-edit')
+  const b = bem('invoice-title-edit')
 
   const [titleType, setTitleType] = useState<string>('1')
 

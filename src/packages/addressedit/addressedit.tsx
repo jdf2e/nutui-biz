@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { useConfig } from "@/packages/configprovider";
 import classNames from "classnames";
-import { cn2 } from "@/utils/bem";
+import bem from "@/utils/bem";
 import { IComponent } from "@/utils/typings";
 import { Input, Button, ButtonProps, Switch, Toast } from "@nutui/nutui-react";
 import Address from "../address";
@@ -334,7 +334,7 @@ export const AddressEdit: FunctionComponent<
     );
   };
 
-  const b = cn2("addressedit");
+  const b = bem("addressedit");
   return (
     <div
       className={classNames([b(), className])}

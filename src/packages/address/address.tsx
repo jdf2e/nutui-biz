@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Icon, Popup } from '@nutui/nutui-react';
-import { cn2 } from '@/utils/bem';
+import bem from '@/utils/bem';
 import { ExistRender } from './existRender';
 import { CustomRender } from './customRender';
 import { useConfig } from '@/packages/configprovider';
@@ -54,7 +54,7 @@ export const Address: FunctionComponent<Partial<AddressProps>> = (props) => {
   } = {
     ...props
   };
-  const b = cn2('address');
+  const b = bem('address');
 
   const [privateType, setPrivateType] = useState<AddressType>(type);
   const [tabName] = useState<string[]>(['province', 'city', 'country', 'town']);

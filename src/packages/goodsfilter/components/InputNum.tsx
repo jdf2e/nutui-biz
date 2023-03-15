@@ -1,8 +1,9 @@
 import React, { FunctionComponent, HTMLAttributes, useEffect, useState } from 'react'
 import { IComponent } from '@/utils/typings'
+import {numericProp} from '@/utils/props'
 
 export interface InputNumProps extends IComponent {
-  value: string | number
+  value: numericProp
   onNumInput: (val: string) => void
 }
 
@@ -18,9 +19,12 @@ export const InputNum: FunctionComponent<
     ...props
   }
 
-  const [inputVal, setInputVal] = useState<string | number>('')
+  const [inputVal, setInputVal] = useState<numericProp>('')
 
   const handleInput = (e: any) => {
+    if(e.target.value<0){
+      return
+    }
     const value = e.target.value.replace(/\D+/, '')
     var retVal = ''
     if (value === '') {
@@ -30,7 +34,9 @@ export const InputNum: FunctionComponent<
       setInputVal(e.target.value)
       retVal = e.target.value
     }
-    onNumInput && onNumInput(retVal)
+    console.log(value);
+    
+    onNumInput?.(retVal)
   };
 
   useEffect(() => {

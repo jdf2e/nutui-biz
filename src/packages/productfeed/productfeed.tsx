@@ -5,7 +5,7 @@ import { Infiniteloading, InfiniteloadingProps } from "@nutui/nutui-react";
 import { IComponent } from "@/utils/typings"
 
 import classNames from "classnames"
-import {cn2} from '@/utils/bem'
+import bem from '@/utils/bem'
 import { ProductFeedItem } from "./productfeeditem"
 import {numericProp} from '@/utils/props'
 
@@ -79,7 +79,7 @@ export const ProductFeed: FunctionComponent<
     ...props,
   }
 
-  const b = cn2('productfeed')
+  const b = bem('productfeed')
 
   const  [listLeft, setListLeft] = useState([] as any)
   const  [listRight, setListRight] = useState([] as any)

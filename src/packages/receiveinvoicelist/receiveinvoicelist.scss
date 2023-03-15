@@ -4,6 +4,21 @@
             font-size: 14px;
             font-weight: 600;
             color: rgba(51, 51, 51, 1);
+            .nut-cell__title {
+                overflow: hidden;
+            }
+            &-title {
+                display: flex;
+                align-items: center;
+                .nut-tag--danger {
+                    flex-shrink: 0;
+                }
+                > p {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
         }
 
         &-footer {

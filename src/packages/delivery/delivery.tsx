@@ -6,7 +6,7 @@ import React, {
   useEffect,
   useRef
 } from 'react'
-import { cn2 } from '@/utils/bem'
+import bem from '@/utils/bem'
 import { Popup, Radio, Button } from '@nutui/nutui-react'
 import classNames from 'classnames';
 
@@ -86,7 +86,7 @@ export const Delivery: FunctionComponent<
     ...props,
   }
 
-  const b = cn2('delivery')
+  const b = bem('delivery')
 
   const [deliveryType, setDeliveryType] = useState(defaultDeliveryType);
   const [deliveryTime, setDeliveryTime] = useState(''); // 送货/安装/其他时间的默认选中
