@@ -357,7 +357,7 @@ export default App;
 | country | Country data | Array | [] |
 | town | Town data | Array | [] |
 | height | Popup height | string | number | `200px` |
-| customAddressTitle  | Custom address title | string | `Select Region` |
+| addressTitle  | Custom address title | string | `Select Region` |
 | type | address component type, optional `custom`/`elevator` | string | `custom `|
 
 ### Props data

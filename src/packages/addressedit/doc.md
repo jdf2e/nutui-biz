@@ -355,7 +355,7 @@ export default App;
 | city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
-| customAddressTitle  | 自定义地址选择文案，type='custom' 时生效 | string | `请选择所在地区` |
+| addressTitle  | 自定义地址选择组件标题文案 | string | `请选择所在地区` |
 | type   | 地址选择类型 `custom`/`elevator`            | string           | `custom`         |
 | height | 弹层中内容容器的高度，仅在 type="elevator"时有效 | string | number | `200px` |
 
