@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { errorImg } from '@/utils'
 import {numericProp} from '@/utils/props'
 
-import {cn2} from '@/utils/bem'
+import bem from '@/utils/bem'
 
 export interface CardProps {
   title: string
@@ -67,7 +67,7 @@ export const Card: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const b = cn2('card')
+  const b = bem('card')
 
   const clampStyle = () => {
     if(titleLine > 1) return {'WebkitLineClamp': String(titleLine)} as CSSProperties

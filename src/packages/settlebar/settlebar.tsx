@@ -9,7 +9,7 @@ import React, {
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames';
 import { Icon, Checkbox } from '@nutui/nutui-react';
-import {cn2} from '@/utils/bem'
+import bem from '@/utils/bem'
 import {getRect} from '@/utils/useClientRect'
 import {numericProp} from '@/utils/props'
 
@@ -84,7 +84,7 @@ export const SettleBar: FunctionComponent<
     onSelectAll(checked)
   }
 
-  const b = cn2('settle-bar')
+  const b = bem('settle-bar')
 
   const [height,setHeight] = useState(0)
 

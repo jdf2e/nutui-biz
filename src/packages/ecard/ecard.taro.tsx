@@ -7,13 +7,13 @@ import React, {
   useEffect
 } from "react";
 import { useConfig } from "@/packages/configprovider";
-import { cn2 as nb } from "@/utils/bem";
+import bem from "@/utils/bem";
 import { InputNumber, InputNumberProps } from "@nutui/nutui-react";
 import mathMethods from '@/utils/math'
 import classNames from 'classnames'
 import { numericProp } from '@/utils/props'
 const { accurateMultiply } = mathMethods
-const b = nb("ecard");
+const b = bem("ecard");
 export interface DataListItem {
   price: number;
 }

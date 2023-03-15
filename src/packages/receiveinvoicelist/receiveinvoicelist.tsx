@@ -2,7 +2,7 @@ import React, { Children, FunctionComponent, ReactNode, useState } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import { Checkbox, Icon, Tag, Cell, CellGroup, Swipe, Button } from '@nutui/nutui-react';
 import { IComponent } from '@/utils/typings'
-import { cn2 } from '@/utils/bem'
+import bem from '@/utils/bem'
 import classNames from 'classnames';
 import { numericProp } from '@/utils/props';
 export interface ReceiveInvoiceItemExt {
@@ -36,7 +36,7 @@ const defaultProps = {
 export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListProps>> = (props) => {
   const { locale } = useConfig();
   const [defaultValue, setDefaultValue] = useState(props.defaultValue);
-  const b = cn2('receive-invoice-list');
+  const b = bem('receive-invoice-list');
   const {
     style,
     className,

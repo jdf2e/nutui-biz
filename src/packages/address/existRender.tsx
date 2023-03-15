@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode, useEffect } from 'react';
 import { Icon } from '@nutui/nutui-react';
-import { cn2 as bem } from '@/utils/bem';
+import bem from '@/utils/bem';
 import { AddressList, ExistRenderProps } from './type';
 
 import { useConfig } from '@/packages/configprovider';

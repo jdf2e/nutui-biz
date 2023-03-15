@@ -385,7 +385,7 @@ export default App;
 |-------------|--------------------------------|---------|-----------|
 | data        | 商品数据                        | Array   | -         |
 | customProduct | 商品图片下方区域内容            | (item) => ReactNode | - |
-| openInfiniteloading| 是否开启下拉下载功能       | boolean | `true`    |
+| openInfiniteloading| 是否开启下拉加载功能       | boolean | `true`    |
 | infiniteloadingProps       | [infiniteloading 组件的 props](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/infiniteloading)    | InfiniteloadingProps | - |
 | initProductNum | 初始展示商品个数               | number | `6`    |
 | col         | 每行商品数量，可选值有 `1`、 `2`| number \| string | `2`    |

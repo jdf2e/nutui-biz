@@ -5,7 +5,7 @@ import React, {
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames'
-import {cn2} from '@/utils/bem'
+import bem from '@/utils/bem'
 import {Button} from '@nutui/nutui-react'
 import {GeneralShell} from './generalShell'
 import {SwipeShell} from './swipeShell'
@@ -30,6 +30,15 @@ export interface AddressListProps extends IComponent {
   onLongDel: (event: Event, item: Object) => void
 }
 
+const defaultProps = {
+  data: [] as any,
+  longPress: false,
+  swipeEdition: false,
+  showBottomButton: true,
+  dataMapOptions: {},
+  showSelect: false
+} as AddressListProps
+
 export const AddressList: FunctionComponent<
   Partial<AddressListProps>
 > = (props) => {
@@ -37,12 +46,12 @@ export const AddressList: FunctionComponent<
   const {
     className,
     style,
-    data = [],
-    longPress = false,
-    swipeEdition = false,
-    showBottomButton = true,
-    dataMapOptions = {},
-    showSelect = false,
+    data,
+    longPress,
+    swipeEdition,
+    showBottomButton,
+    dataMapOptions,
+    showSelect,
     onAdd,
     onDelIcon,
     onEditIcon,
@@ -53,10 +62,11 @@ export const AddressList: FunctionComponent<
     onLongDel,
     ...rest
   } = {
+    ...defaultProps,
     ...props,
   }
 
-  const b = cn2('address-list')
+  const b = bem('address-list')
 
   const addAddress = (event: any) => {
     onAdd && onAdd(event)
@@ -84,10 +94,6 @@ export const AddressList: FunctionComponent<
   useEffect(() => {
     trowelData()
   }, [data])
-
-  useEffect(() => {
-    trowelData()
-  }, [])
 
   const clickDelIcon = (event: Event, item: unknown) => {
     if(item){
@@ -172,4 +178,5 @@ export const AddressList: FunctionComponent<
   )
 }
 
+AddressList.defaultProps = defaultProps
 AddressList.displayName = 'NutAddressList'
