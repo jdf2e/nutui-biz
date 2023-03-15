@@ -1,7 +1,7 @@
 import React, { FunctionComponent, HTMLAttributes, ReactNode } from "react";
 import { IComponent } from "@/utils/typings";
 import { Rate } from "@nutui/nutui-react";
-import {cn2} from '@/utils/bem'
+import bem from '@/utils/bem'
 import { CommentInfo } from "../comment";
 export interface CommentHeaderProps extends IComponent {
   type: "default" | "complex";
@@ -22,7 +22,7 @@ export const CommentHeader: FunctionComponent<
     ...props,
   };
 
-  const b = cn2('comment-header')
+  const b = bem('comment-header')
 
   return (
     <div>

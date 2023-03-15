@@ -4,7 +4,7 @@ import { CommentHeader } from "./components/CommentHeader";
 import { CommentBottom } from "./components/CommentBottom";
 import { CommentImages } from "./components/CommentImages";
 import { VideosType, ImagesType, GoodsClickParams } from "./components/CommentImages";
-import {cn2} from '@/utils/bem'
+import bem from '@/utils/bem'
 import { Icon } from "@nutui/nutui-react";
 
 export interface CommentInfo {
@@ -67,7 +67,7 @@ export const Comment: FunctionComponent<
     ...props,
   };
 
-  const b = cn2('comment')
+  const b = bem('comment')
 
   const onHandleClick = () => {
     onClick && onClick(info);

@@ -1,7 +1,6 @@
 import { withNaming } from '@bem-react/classname'
 
-export const cn2 = withNaming({ n: 'nb-', e: '__', m: '--', v: '-' })
-const cn = withNaming({ n: 'nut-', e: '__', m: '--', v: '-' })
+const cn = withNaming({ n: 'nb-', e: '__', m: '--', v: '-' })
 
 // const b = cn('icon', 'Element')
 //

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode, CSSProperties } from "react";
 import { IComponent } from "@/utils/typings";
 import { Button, ButtonProps, Price } from "@nutui/nutui-react";
-import { cn2 } from "@/utils/bem";
+import bem from "@/utils/bem";
 import { numericProp } from "@/utils/props";
 import classNames from "classnames";
 
@@ -61,7 +61,7 @@ export const Coupon: FunctionComponent<
     ...props,
   };
 
-  const b = cn2("coupon");
+  const b = bem("coupon");
   //价格
   const priceNumber = (price: number | string) => {
     return <div className={b("main-price--number")}>{handlePrice(price)}</div>;
