@@ -170,7 +170,7 @@ export const AddressEdit: FunctionComponent<
     addressPlaceholder: locale.addressedit.addressPlaceholder,
     addressErrorMsg: locale.addressedit.addressErrorMsg,
     bottomText: locale.addressedit.bottomText,
-    errorShowType: "toast",
+    errorShowType: "errorMsg",
     errorToastText: locale.addressedit.errorToastText,
   });
   const [errorList, setErrorList] = useState<string[] | any>([]);
@@ -325,6 +325,7 @@ export const AddressEdit: FunctionComponent<
             town={addressData.town}
             height={addressData.height}
             customAddressTitle={addressData.addressTitle}
+            existAddressTitle={addressData.addressTitle}
             onChange={(cal) => changeAddress(cal)}
             onClose={closeAddress}
           />

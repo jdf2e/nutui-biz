@@ -199,7 +199,7 @@ const App = () => {
     namePlaceholder: "请输入收件人姓名",
     isRequired: ["name", "tel"],
     isDefualtAddress:false,
-    errorShowType: "errorMsg",
+    errorShowType: "toast",
   };
 
 
@@ -277,7 +277,7 @@ const App = () => {
     namePlaceholder: "请输入收件人姓名",
     isRequired: ["name", "tel"],
     isDefualtAddress:false,
-    errorShowType: "errorMsg",
+    errorShowType: "toast",
   };
 
 
@@ -356,12 +356,13 @@ export default App;
 | country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | customAddressTitle  | 自定义地址选择文案，type='custom' 时生效 | string | `请选择所在地区` |
-| addressType   | 地址组件类型，可选`custom`/`custom2`                                 | string  | `custom`         |
-| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | string | number | `200px` |
+| type   | 地址选择类型 `custom`/`elevator`            | string           | `custom`         |
+| height | 弹层中内容容器的高度，仅在 type="elevator"时有效 | string | number | `200px` |
 
 ### Props data
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
+| id  | 地址编辑id | string | number | - |
 | nameText  | 自定义收货人文案 | string | `收货人` |
 | namePlaceholder  | 自定义收货人占位文案 | string | `请输入收货人` |
 | nameErrorMsg  | 自定义收货人非空校验错误提示文案 | string | `该项为必填项，请填写完后提交` |
@@ -374,8 +375,9 @@ export default App;
 | addressText  | 自定义详细地址文案 | string | `详细地址` |
 | addressPlaceholder  | 自定义详细地址占位文案 | string | `街道、楼牌号` |
 | addressErrorMsg  | 自定义详细地址非空校验错误提示文案 | string | `该项为必填项，请填写完后提交` |
+| isRequired| 必填项设置，可选值["name", "tel", "region", "address"]，数组中配置了的为必填项 |Array | [] |
 | bottomText|自定义底部保存按钮文案 | string | `保存` |
-| errorShowType| 输入框必填非空错误提示类型，可选值`toast`/`errorMsg`|string |`toast`|
+| errorShowType| 输入框必填非空错误提示类型，可选值 `errorMsg`/`toast`|string |`errorMsg`|
 | errorToastText| toast错误提示内容 | string | `请完成必填项`|
 
 ### Props addressInfo
