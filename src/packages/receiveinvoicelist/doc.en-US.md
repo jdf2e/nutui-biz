@@ -19,7 +19,7 @@ import { ReceiveInvoiceList } from '@nutui/nutui-biz';
 ```ts
 import  React from 'react';
 import { ReceiveInvoiceList } from '@nutui/nutui-biz';
-
+import { Toast } from '@nutui/nutui-react';
 const App = () => {
   
   const state = {
@@ -47,8 +47,14 @@ const App = () => {
   };
 
   const event = {
-    onEdit: (item: ReceiveInvoiceItem) => { console.log('onEdit', item) },
-    onSelected: (item: ReceiveInvoiceItem) => { console.log('onSelected', item) }
+    onEdit: (item: ReceiveInvoiceItem,index:number) => { 
+      Toast.text('onEdit ' + item.name);
+      console.log('onEdit', item,index);
+    },
+    onSelected: (item: ReceiveInvoiceItem,index:number) => { 
+      Toast.text('onSelected ' + item.name);
+      console.log('onSelected', item,index) 
+    }
   }
 
   return (
@@ -66,6 +72,7 @@ export default App;
 ```ts
 import  React from 'react';
 import { ReceiveInvoiceList } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   
@@ -94,11 +101,22 @@ const App = () => {
   };
 
   const event = {
-    onDelete: (item: ReceiveInvoiceItem) => { console.log('onDelete', item) },
+    onEdit: (item: ReceiveInvoiceItem,index:number) => { 
+      Toast.text('onEdit ' + item.name);
+      console.log('onEdit', item,index);
+    },
+    onSelected: (item: ReceiveInvoiceItem,index:number) => { 
+      Toast.text('onSelected ' + item.name);
+      console.log('onSelected', item,index);
+    },
+    onDelete: (item: ReceiveInvoiceItem,index:number) => { 
+      Toast.text('onDelete ' + item.name);
+      console.log('onDelete', item,index);
+    },
   }
 
   return (
-     <ReceiveInvoiceList enableDelete={true} list={state.list} defaultValue={state.defaultValue} onDelete={event.onDelete} />
+     <ReceiveInvoiceList enableDelete={true} list={state.list} defaultValue={state.defaultValue} onSelected={event.onSelected} onEdit={event.onEdit} onDelete={event.onDelete} />
   );
 };
 export default App;
@@ -113,9 +131,10 @@ export default App;
 
 | Attribute    | Description                           | Type                      | Default |
 |--------------|---------------------------------------|---------------------------|---------|
-| defaultValue | Id of chosen contact                  | number \| string          | -       |
+| defaultValue | Id of chosen contact                  | number \| string          | ""      |
 | list         | Data List                             | Array<ReceiveInvoiceItem> | []      |
 | enableDelete | Whether to enable the delete function | boolean                   | `false` |
+| customEdit   | Custom Edit Button                    | ReactNode                 |         |
 
 ### ReceiveInvoiceItem Data Structure
 

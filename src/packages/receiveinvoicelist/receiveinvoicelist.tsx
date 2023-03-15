@@ -1,4 +1,4 @@
-import React, { Children, FunctionComponent, useState } from 'react'
+import React, { Children, FunctionComponent, ReactNode, useState } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import { Checkbox, Icon, Tag, Cell, CellGroup, Swipe, Button } from '@nutui/nutui-react';
 import { IComponent } from '@/utils/typings'
@@ -23,6 +23,7 @@ export interface ReceiveInvoiceListProps extends IComponent {
   defaultValue: numericProp;
   list: Array<ReceiveInvoiceItem>;
   enableDelete: boolean;
+  customEdit?: ReactNode;
   onEdit?: (item: ReceiveInvoiceItem, index: number) => void;
   onSelected?: (item: ReceiveInvoiceItem, index: number) => void;
   onDelete?: (item: ReceiveInvoiceItem, index: number) => void;
@@ -44,6 +45,7 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
     onEdit,
     onDelete,
     enableDelete,
+    customEdit,
     ...rest
   } = {
     ...defaultProps,
@@ -57,11 +59,11 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
     setDefaultValue(item.id);
     onSelected?.(item, index);
   }
-  function RenderRowInfo(props: { label: string; value: string; }) {
+  function RenderRowInfo(label: string, value: string) {
     return (
-      <div className={b('item-footer-info')}>
-        <span>{props.label}</span>
-        <p>{props.value}</p>
+      <div className={b('item-footer-info')} key={label}>
+        <span>{label}</span>
+        <p>{value}</p>
       </div>
     );
   }
@@ -70,21 +72,20 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
       <Cell className={b('item-header')}
         onClick={() => onSelect(item, index)}
         title={
-          <>
-            {item.isDefault && <><Tag type="danger">{locale.default}</Tag>&nbsp;</>}
-            {item.name}
-          </>
+          <div className={b('item-header-title')}>{item.isDefault && <><Tag type="danger">{locale.default}</Tag>&nbsp;</>}<p>{item.name}</p></div>
         }
         linkSlot={
-          <Icon name="edit" color='#666' onClick={(e) => { e.stopPropagation(); onEdit?.(item, index) }}></Icon>
+          <div className={b('item-header-edit')} onClick={(e) => { e.stopPropagation(); onEdit?.(item, index) }}>
+            {customEdit ? customEdit : <Icon name="edit" color='#666' ></Icon>}
+          </div>
         } />
       <Cell className={b('item-footer')} onClick={() => onSelect(item, index)}>
         <Checkbox textPosition="right" label="" checked={item.id == defaultValue} />
         <div className={b('item-footer infobox')}>
-          <RenderRowInfo label={locale.tel} value={item.tel} />
-          <RenderRowInfo label={locale.addres} value={item.addres} />
-          {item?.extends?.map((i, index) => {
-            return <RenderRowInfo key={index} label={i.label} value={i.value} />
+          {RenderRowInfo(locale.tel, item.tel)}
+          {RenderRowInfo(locale.addres, item.addres)}
+          {item?.extends?.map((i) => {
+            return RenderRowInfo(i.label, i.value);
           })}
         </div>
       </Cell>
