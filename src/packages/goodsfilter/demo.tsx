@@ -10,6 +10,17 @@ const GoodsFilterDemo = () => {
   const [visible2, setVisible2] = useState(false)
   const [visible3, setVisible3] = useState(false)
   const [visible4, setVisible4] = useState(false)
+
+  const [ showData,setShowData] = useState<any>({})
+
+  const onSave = (res:any)=>{
+    let data:any = {}
+    data.filterAttrs = res.filterAttrs
+    data.goodsAttrs = res.goodsAttrs
+    data.price = res.price
+    setShowData(data)
+    setVisible4(false)
+  }
   return (
     <>
       <div className='demo'>
@@ -49,19 +60,20 @@ const GoodsFilterDemo = () => {
           priceRanges={state.priceRanges}
           goodsAttrs={state.goodsAttrs}
           filterAttrs={state.filterAttrs}
+          selectData={showData}
           onClose={() => { setVisible4(false) }}
           onReset={() => { console.log('onReset')}}
-          onConfirm={(res) => { console.log('onConfirm', res) }}
+          onConfirm={(res) => { onSave(res) }}
           onClickAddress={() => {
-            console.log('onClickAddress')
+            // console.log('onClickAddress')
           }}
           onSelectedAttrs={(attr: any, selected: boolean, selectedAttrs: any) => {
-            console.log('onSelectedAttrs', attr)
-            console.log('selected', selected)
-            console.log('selectedAttrs', selectedAttrs)
+            // console.log('onSelectedAttrs', attr)
+            // console.log('selected', selected)
+            // console.log('selectedAttrs', selectedAttrs)
           }}
           onSelectedPrice={(range: any) => {
-            console.log('onSelectedPrice', range)
+            // console.log('onSelectedPrice', range)
           }}
         ></GoodsFilter>
       </div>

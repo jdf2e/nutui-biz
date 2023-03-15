@@ -199,8 +199,8 @@ export default App;
 ### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
-| onChange | 输入框输入文字，返回输入文案和所在输入框的标识tag (name,tel,region,address) |  `value,tag` |
-| onAddressChange | 自定义选择地址时，选择地区时触发 |  `{custom:当前选中地址,next:下一级地址,value:当前已选中的地址信息}` |
-| onAddressClose | 地址选择弹框关闭时触发 | `value` |
-| onSave | 点击底部保存地址按钮，返回保存的信息 | ` value` |
+| onChange | 输入框输入文字，返回输入文案和所在输入框的标识tag (name,tel,region,address) |  value,tag |
+| onAddressChange | 自定义选择地址时，选择地区时触发 |  {custom:当前选中地址,next:下一级地址,value:当前已选中的地址信息}` |
+| onAddressClose | 地址选择弹框关闭时触发 | value |
+| onSave | 点击底部保存地址按钮，返回保存的信息 | value |
 
