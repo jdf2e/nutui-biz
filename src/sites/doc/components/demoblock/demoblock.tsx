@@ -53,12 +53,21 @@ ReactDOM.render(
 
   const openOnline = () => {
     const targetWindow = window.open(
-      "https://codehouse.jd.com?source=share&type=react"
+      "https://codehouse.jd.com?source=share&type=react&from=" + location.href
     );
     setTimeout(() => {
       targetWindow.postMessage(onlineUrl, "https://codehouse.jd.com");
     }, 500);
   };
+  //   const openOnline = () => {
+  //     const targetWindow = window.open(
+  //       "http://localhost:3000/index.html?source=share&type=react&from=" +
+  //         location.href
+  //     );
+  //     setTimeout(() => {
+  //       targetWindow.postMessage(onlineUrl, "http://localhost:3000");
+  //     }, 100);
+  //   };
   return (
     <div
       ref={onlineCode}

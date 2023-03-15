@@ -19,6 +19,7 @@ import { ReceiveInvoiceList } from '@nutui/nutui-biz';
 ```ts
 import  React from 'react';
 import { ReceiveInvoiceList } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   
@@ -47,8 +48,14 @@ const App = () => {
   };
 
   const event = {
-    onEdit: (item: ReceiveInvoiceItem) => { console.log('onEdit', item) },
-    onSelected: (item: ReceiveInvoiceItem) => { console.log('onSelected', item) }
+    onEdit: (item: ReceiveInvoiceItem,index:number) => { 
+      Toast.text('onEdit ' + item.name);
+      console.log('onEdit', item,index);
+    },
+    onSelected: (item: ReceiveInvoiceItem,index:number) => { 
+      Toast.text('onSelected ' + item.name);
+      console.log('onSelected', item,index) 
+    }
   }
 
   return (
@@ -66,6 +73,7 @@ export default App;
 ```ts
 import  React from 'react';
 import { ReceiveInvoiceList } from '@nutui/nutui-biz';
+import { Toast } from '@nutui/nutui-react';
 
 const App = () => {
   
@@ -94,11 +102,22 @@ const App = () => {
   };
 
   const event = {
-    onDelete: (item: ReceiveInvoiceItem) => { console.log('onDelete', item) },
+    onEdit: (item: ReceiveInvoiceItem,index:number) => { 
+      Toast.text('onEdit ' + item.name);
+      console.log('onEdit', item,index);
+    },
+    onSelected: (item: ReceiveInvoiceItem,index:number) => { 
+      Toast.text('onSelected ' + item.name);
+      console.log('onSelected', item,index);
+    },
+    onDelete: (item: ReceiveInvoiceItem,index:number) => { 
+      Toast.text('onDelete ' + item.name);
+      console.log('onDelete', item,index);
+    },
   }
 
   return (
-     <ReceiveInvoiceList enableDelete={true} list={state.list} defaultValue={state.defaultValue} onDelete={event.onDelete} />
+     <ReceiveInvoiceList enableDelete={true} list={state.list} defaultValue={state.defaultValue} onSelected={event.onSelected} onEdit={event.onEdit} onDelete={event.onDelete} />
   );
 };
 export default App;
@@ -113,9 +132,10 @@ export default App;
 
 | 字段         | 说明                | 类型                      | 默认值  |
 |--------------|---------------------|---------------------------|---------|
-| defaultValue | 当前选中联系人的 id | number \| string          | -       |
+| defaultValue | 当前选中联系人的 id | number \| string          | ""      |
 | list         | 联系人列表          | Array<ReceiveInvoiceItem> | []      |
 | enableDelete | 是否启用删除功能    | boolean                   | `false` |
+| customEdit   | 自定义编辑按钮      | ReactNode                 |         |
 
 ### ReceiveInvoiceItem 数据结构
 

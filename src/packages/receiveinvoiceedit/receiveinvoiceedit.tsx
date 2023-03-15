@@ -1,17 +1,18 @@
-import React, { FunctionComponent, useState, useEffect } from "react";
+import React, { FunctionComponent, useState, useEffect, useLayoutEffect, CSSProperties } from "react";
 import { IComponent } from "@/utils/typings";
 import {
   RegionData,
   NextListObj,
   CloseCallBack,
   CloseCallBackData,
-} from '../address/type';
-import { Input, Button } from "@nutui/nutui-react";
+} from "../address/type";
+import { Input, Button,ButtonProps } from "@nutui/nutui-react";
 import { Address } from "../address/address";
 import { useConfig } from "@/packages/configprovider";
+import bem from "@/utils/bem";
+import classNames from "classnames";
 
-
-interface InvoiceInfo {
+export interface InvoiceInfo {
   name?: string;
   tel?: string;
   region?: string;
@@ -19,7 +20,7 @@ interface InvoiceInfo {
   address?: string;
   [key: string]: any;
 }
-interface InvoiceData {
+export interface InvoiceData {
   nameText?: string;
   namePlaceholder?: string;
   nameErrorMsg?: string;
@@ -37,7 +38,7 @@ interface InvoiceData {
   bottomText?: string;
   [key: string]: any;
 }
-interface AddressResult {
+export interface AddressResult {
   addressSelect?: (string | number)[];
   province?: Array<RegionData>;
   city?: Array<RegionData>;
@@ -51,6 +52,7 @@ export interface ReceiveInvoiceEditProps extends IComponent {
   invoiceInfo: InvoiceInfo;
   data: InvoiceData;
   address: AddressResult;
+  buttonProps?: Partial<ButtonProps>;
   onChange?: (val: string, tag: string) => void;
   onAddressChange?: (data: NextListObj) => void;
   onAddressClose?: (data: CloseCallBack) => void; // 地址弹窗关闭时触发事件
@@ -80,11 +82,14 @@ const defaultProps = {
 export const ReceiveInvoiceEdit: FunctionComponent<
   Partial<ReceiveInvoiceEditProps>
 > = (props) => {
-  const { locale } = useConfig();
+  const b = bem('receive-invoice-edit');
   const {
     invoiceInfo,
     data,
     address,
+    buttonProps,
+    style,
+    className,
     onChange,
     onSave,
     onAddressChange,
@@ -102,29 +107,37 @@ export const ReceiveInvoiceEdit: FunctionComponent<
     "address",
   ]);
   //地址组件相关数据
-  const [addressData, setAddressData] = useState<AddressResult>({
-    addressSelect: [],
-    province: [],
-    city: [],
-    country: [],
-    town: [],
-    addressTitle: "选择所在地区",
-  });
+  const [addressData, setAddressData] = useState<AddressResult>(address);
   //地址编辑数据形式兜底文案配置
+  const {
+    nameText,
+    namePlaceholder,
+    nameErrorMsg,
+    telText,
+    telPlaceholder,
+    telErrorMsg,
+    regionText,
+    regionPlaceholder,
+    regionErrorMsg,
+    addressText,
+    addressPlaceholder,
+    addressErrorMsg,
+    bottomText,
+  } = useConfig()?.locale?.receiveInvoiceEdit;
   const [editSeting, setEditSeting] = useState<InvoiceData>({
-    nameText: locale.receiveInvoiceEdit.nameText,
-    namePlaceholder: locale.receiveInvoiceEdit.namePlaceholder,
-    nameErrorMsg: locale.receiveInvoiceEdit.nameErrorMsg,
-    telText: locale.receiveInvoiceEdit.telText,
-    telPlaceholder: locale.receiveInvoiceEdit.telPlaceholder,
-    telErrorMsg: locale.receiveInvoiceEdit.telErrorMsg,
-    regionText: locale.receiveInvoiceEdit.regionText,
-    regionPlaceholder: locale.receiveInvoiceEdit.regionPlaceholder,
-    regionErrorMsg: locale.receiveInvoiceEdit.regionErrorMsg,
-    addressText: locale.receiveInvoiceEdit.addressText,
-    addressPlaceholder: locale.receiveInvoiceEdit.addressPlaceholder,
-    addressErrorMsg: locale.receiveInvoiceEdit.addressErrorMsg,
-    bottomText: locale.receiveInvoiceEdit.bottomText,
+    nameText: nameText,
+    namePlaceholder: namePlaceholder,
+    nameErrorMsg: nameErrorMsg,
+    telText: telText,
+    telPlaceholder: telPlaceholder,
+    telErrorMsg: telErrorMsg,
+    regionText: regionText,
+    regionPlaceholder: regionPlaceholder,
+    regionErrorMsg: regionErrorMsg,
+    addressText: addressText,
+    addressPlaceholder: addressPlaceholder,
+    addressErrorMsg: addressErrorMsg,
+    bottomText: bottomText,
   });
   const [errorList, setErrorList] = useState<Array<string>>([]);
   const [addressVisible, setAddressVisible] = useState(false);
@@ -132,7 +145,7 @@ export const ReceiveInvoiceEdit: FunctionComponent<
   useEffect(() => {
     if (data) {
       setEditSeting({ ...editSeting, ...data });
-      if (data?.required) {
+      if (data.required) {
         setRequired(data.required);
       }
     }
@@ -145,7 +158,7 @@ export const ReceiveInvoiceEdit: FunctionComponent<
     }
     setErrorList([]);
   }, [address, data, invoiceInfo]);
-  const changeAddress = (cal:NextListObj) => {
+  const changeAddress = (cal: NextListObj) => {
     setErrorList(errorList.filter((i: string) => i != "region"));
     const name = addressData[cal.next];
     if (name.length < 1) {
@@ -155,11 +168,17 @@ export const ReceiveInvoiceEdit: FunctionComponent<
   };
   const closeAddress = (val: CloseCallBack) => {
     //地址id格式处理
-    let ids = (val.data as CloseCallBackData ).addressIdStr.split("_").map((item: string) => +item * 1);
+    let ids = (val.data as CloseCallBackData).addressIdStr
+      .split("_")
+      .map((item: string) => +item * 1);
     //删除数组中为0的项
     ids.splice(ids.indexOf(0));
     //提交信息数据同步
-    setFormData({ ...formData, region: (val.data as CloseCallBackData ).addressStr, regionIds: ids });
+    setFormData({
+      ...formData,
+      region: (val.data as CloseCallBackData).addressStr,
+      regionIds: ids,
+    });
     //地址组件数据同步
     setAddressData({ ...addressData, addressSelect: ids });
     onAddressClose && onAddressClose(val);
@@ -172,7 +191,7 @@ export const ReceiveInvoiceEdit: FunctionComponent<
     }
     Object.keys(formData).map((key: string) => {
       if (key === tag) {
-          data[tag] = val;
+        data[tag] = val;
       }
     });
     setFormData({ ...formData, ...data });
@@ -183,7 +202,7 @@ export const ReceiveInvoiceEdit: FunctionComponent<
     let arr: Array<string> = ([] as Array<string>).concat(errorList);
     Object.keys(form).map((key) => {
       if (required.includes(key) && formData[key] == "") {
-        if(!errorList.includes(key)){
+        if (!errorList.includes(key)) {
           arr.push(key);
         }
         setErrorList(arr);
@@ -192,17 +211,17 @@ export const ReceiveInvoiceEdit: FunctionComponent<
     return !arr.length;
   };
   const save = () => {
-    if (validForm()) {
-      onSave && onSave(formData);
-    }
+      validForm() && onSave?.(formData);
   };
-  const InputDom = (props: { name: string; type: string; }) => {
-    const { name, type } = props;
-    const label = name + "Text";
-    const errorMsg = name + "ErrorMsg";
-    const placeholder = name + "Placeholder";
+  const desc = (name:string,str:string)=>{
+    return name + str;
+  }
+  const inputDom = (name: string, type: string) => {
+    const label = desc(name,"Text") ;
+    const errorMsg = desc(name,"ErrorMsg") ;
+    const placeholder = desc(name,"Placeholder");
     return (
-      <div className="nut-receive-invoice-edit-item">
+      <div className={b('item')}>
         <Input
           className="nut-input-text"
           label={editSeting[label]}
@@ -221,11 +240,11 @@ export const ReceiveInvoiceEdit: FunctionComponent<
   };
 
   return (
-    <div className="nut-receive-invoice-edit" {...rest}>
-      {InputDom({ name: "name", type: "text" })}
-      {InputDom({ name: "tel", type: "tel" })}
-      {InputDom({ name: "region", type: "text" })}
-      {InputDom({ name: "address", type: "text" })}
+    <div className={classNames([b(), className])} style={style} {...rest}>
+      {inputDom("name", "text")}
+      {inputDom( "tel", "tel" )}
+      {inputDom( "region","text" )}
+      {inputDom( "address","text")}
       <Address
         modelValue={addressVisible}
         modelSelect={addressData.addressSelect}
@@ -237,8 +256,8 @@ export const ReceiveInvoiceEdit: FunctionComponent<
         onChange={(cal) => changeAddress(cal)}
         onClose={closeAddress}
       />
-      <div className="nut-receive-invoice-edit-bottom">
-        <Button block type="danger" onClick={save}>
+      <div className={b('bottom')}>
+        <Button block type="danger" onClick={save} {...buttonProps}>
           {editSeting.bottomText}
         </Button>
       </div>
