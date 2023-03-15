@@ -216,7 +216,6 @@ export default App;
 | couponData      | 渲染优惠券内容                                | ICouponType          | -          |
 | btnText         | 按钮文案                                      | string               | `立即领取` |
 | isReceived      | 是否领取优惠券                                | boolean              | `false`    |
-| className       | 自定义类名                                    | string               | -          |
 | buttonProps     | 按钮 props，来自于 nutui-react 中 Button 组件 | Partial<ButtonProps> | -          |
 | usedIcon        | 已经领取的优惠券打得标记 icon                 | ReactNode            | -          |
 
@@ -229,7 +228,7 @@ export default App;
 | mainTitle | 主标题                 | string         | -      |
 | subTitle  | 副标题                 | string         | -      |
 | timeRange | 优惠券使用时间范围     | string         | -      |
-| label     | 优惠券左上角的标签内容 | string         | -      |
+| label     | 优惠券左上角的标签内容 | ReactNode      | -      |
 
 ### Events
 
