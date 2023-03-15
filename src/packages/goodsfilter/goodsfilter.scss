@@ -1,6 +1,6 @@
 @import '../../styles/mixins/text-ellipsis.scss';
 
-.nut-goods-filter {
+.nb-goods-filter {
   height: 100%;
   padding: 0px 0px 60px;
   border-radius: 12px;
@@ -141,6 +141,11 @@
         border: 1px solid rgba(242, 243, 243, 1);
         border-radius: 18px;
         font-size: 12px;
+        &.active {
+          background: rgba(240, 37, 15, 0.05);
+          border: 1px solid rgba(242, 39, 12, 1);
+          color: rgba(242, 39, 12, 1);
+        }
 
         div {
           &:first-child {

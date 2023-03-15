@@ -194,7 +194,7 @@ export default App;
 | resetText    | 配置`重置`文案       | string |      `重置`        |
 | priceRangeTitle    | 配置`价格区间`文案      | string |     `价格区间`         |
 | addressTitle    | 配置`配送地址`文案      | string |        `配送地址`      |
-| selectedAddress    | 选中地址，为空时显示`您还没有选中的地址`         | string |           -   |
+| selectedAddress    | 选中地址，为空时显示`您还没有选中的地址`         | string |           ''  |
 | resetDisable | 重置按钮是否置灰 | boolean | `false` |
 | priceRanges | 价格区间模块，推荐价格列表     | Array |-  |
 | filterAttrs    | 配置`配送地址`下面的筛选项   | Array |       -       |
@@ -202,7 +202,7 @@ export default App;
 | specStyle  | 每个规格项的样式 | CSSProperties | - |
 | selectedSpecShow | 选中项是否显示 | boolean | `true` |
 | maxLine    | 每类商品属性，最多可展示的行数 | number | 2 |
-| icon | 展开一类规格项的图标 | string | 'arrow-up' |
+| icon | 展开一类规格项的图标 | string |`arrow-up`|
 | bottom | 底部按钮操作栏 | ReactNode | - |
 
 ### Events
@@ -211,9 +211,9 @@ export default App;
 |--------|----------------|--------------|
 | onClose | 关闭商品筛选弹窗 | - |
 | onReset  | 点击重置时触发 | - |
-| onConfirm  | 点击确定时触发 | `res` |
+| onConfirm  | 点击确定时触发 | res |
 | onClickAddress | 点击修改地址 | - |
-| onSelectedAttrs  | 点击筛选条件时触发 | `attr: any, selected: boolean, selectedAttrs: Array<any>` |
-| onSelectedPrice  | 点击推荐价格时触发 | `range: any` |
-| onBeforeSelected   | 在选中属性前进行的操作，调用 done() 函数进行选中 | `done: Function, selectedValue: any` |
-| onSelectedGoodsAttr | 点击商品属性筛选时触发123 | `attrs: any, value: any` |
+| onSelectedAttrs  | 点击筛选条件时触发 | attr: any, selected: boolean, selectedAttrs: Array<any> |
+| onSelectedPrice  | 点击推荐价格时触发 | range: any |
+| onBeforeSelected   | 在选中属性前进行的操作，调用 done() 函数进行选中 | done: Function, selectedValue: any |
+| onSelectedGoodsAttr | 点击商品属性筛选时触发 | attrs: any, value: any |
