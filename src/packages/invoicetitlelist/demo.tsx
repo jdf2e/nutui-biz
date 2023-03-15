@@ -49,7 +49,7 @@ const InvoiceTitleListDemo = () => {
             data={{
               isSelected: false,
               type: 'special',
-              status: '通过',
+              status: 'pass',
               isShowDefault: true,
               title: '北京环球影城娱乐信息技术有限公司',
               companyCode: '91110302MA222LU88A',
@@ -57,6 +57,8 @@ const InvoiceTitleListDemo = () => {
               companyPhone: '88488848',
               bankDeposit: '中国银行股份有限公司北京分行',
               bankAccount: '5833 2153 4243 2654',
+              isDelete: true,
+              isEdit: true
             }}
             onClick={(data: Idata) => {
               Toast.text('触发点击事件')
@@ -76,14 +78,16 @@ const InvoiceTitleListDemo = () => {
             data={{
               isSelected: false,
               type: 'special',
-              status: '否决',
+              status: 'veto',
               isShowDefault: true,
               title: '北京环球影城娱乐信息技术有限公司',
               companyCode: '91110302MA222LU88A',
               address: '北京市通州区台湖镇',
               companyPhone: '88488848',
               bankDeposit: '中国银行股份有限公司北京分行',
-              bankAccount: '5833 2153 4243 2654'
+              bankAccount: '5833 2153 4243 2654',
+              isDelete: true,
+              isEdit: true
             }}
             onClick={(data: Idata) => {
               Toast.text('触发点击事件')
@@ -103,14 +107,16 @@ const InvoiceTitleListDemo = () => {
             data={{
               isSelected: false,
               type: 'normal',
-              status: '否决',
+              status: 'veto',
               isShowDefault: true,
               title: '北京环球影城娱乐信息技术有限公司',
               companyCode: '91110302MA222LU88A',
               address: '北京市通州区台湖镇',
               companyPhone: '88488848',
               bankDeposit: '中国银行股份有限公司北京分行',
-              bankAccount: '5833 2153 4243 2654'
+              bankAccount: '5833 2153 4243 2654',
+              isDelete: true,
+              isEdit: true
             }}
             onClick={(data: Idata) => {
               Toast.text('触发点击事件')
@@ -130,14 +136,16 @@ const InvoiceTitleListDemo = () => {
             data={{
               isSelected: true,
               type: 'normal',
-              status: '否决',
+              status: 'veto',
               isShowDefault: true,
               title: '北京环球影城娱乐信息技术有限公司',
               companyCode: '91110302MA222LU88A',
               address: '北京市通州区台湖镇',
               companyPhone: '88488848',
               bankDeposit: '中国银行股份有限公司北京分行',
-              bankAccount: '5833 2153 4243 2654'
+              bankAccount: '5833 2153 4243 2654',
+              isDelete: true,
+              isEdit: true
             }}
             onClick={(data: Idata) => {
               Toast.text('触发点击事件')
@@ -157,14 +165,16 @@ const InvoiceTitleListDemo = () => {
             data={{
               isSelected: false,
               type: 'normal',
-              status: '否决',
+              status: 'veto',
               isShowDefault: true,
               title: '北京环球影城娱乐信息技术有限公司',
               companyCode: '91110302MA222LU88A',
               address: '北京市通州区台湖镇',
               companyPhone: '88488848',
               bankDeposit: '中国银行股份有限公司北京分行',
-              bankAccount: '5833 2153 4243 2654'
+              bankAccount: '5833 2153 4243 2654',
+              isDelete: true,
+              isEdit: true
             }}
             onClick={(data: Idata) => {
               Toast.text('触发点击事件')
@@ -185,17 +195,18 @@ const InvoiceTitleListDemo = () => {
             data={{
               isSelected: false,
               type: 'normal',
-              status: '否决',
+              status: 'veto',
               isShowDefault: true,
               title: '北京环球影城娱乐信息技术有限公司',
               companyCode: '91110302MA222LU88A',
               address: '北京市通州区台湖镇',
               companyPhone: '88488848',
               bankDeposit: '中国银行股份有限公司北京分行',
-              bankAccount: '5833 2153 4243 2654'
+              bankAccount: '5833 2153 4243 2654',
+              isDelete: true,
+              isEdit: true
             }}
             isShowEdit = {false}
-            isShowOperate = {false}
             onClick={(data: Idata) => {
               Toast.text('触发点击事件')
               console.log('data', data)

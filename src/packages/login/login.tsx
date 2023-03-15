@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { useConfig } from "@/packages/configprovider";
 import classNames from "classnames";
-import { cn2 } from "@/utils/bem";
+import bem from "@/utils/bem";
 import { IComponent } from "@/utils/typings";
 import { numericProp } from "@/utils/props";
 import {
@@ -386,7 +386,7 @@ export const Login: FunctionComponent<Partial<LoginProps>> = (props) => {
     );
   };
 
-  const b = cn2("login");
+  const b = bem("login");
   return (
     <div className={classNames([b(), className])} style={style}>
       {logo && (

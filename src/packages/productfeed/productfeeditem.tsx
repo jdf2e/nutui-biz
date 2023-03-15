@@ -3,7 +3,7 @@ import React, {
 } from 'react'
 import { Image } from '@nutui/nutui-react';
 
-import {cn2} from '@/utils/bem'
+import bem from '@/utils/bem'
 import Unit from '@/utils/unit'
 import { errorImg } from '@/utils'
 import {numericProp} from '@/utils/props'
@@ -66,13 +66,13 @@ export const ProductFeedItem: FunctionComponent<
     ...props,
   }
 
-  const b = cn2('productfeedItem')
+  const b = bem('productfeedItem')
 
   const itemStyle = () => {
     return {
       "borderRadius": Unit.pxAdd(borderRadius),
       "padding": Unit.pxAdd(padding),
-    }
+    } as CSSProperties
   }
 
   const contentStyle = () => {
@@ -93,7 +93,7 @@ export const ProductFeedItem: FunctionComponent<
   return (
     <div 
       className={`${b()} ${col == 1 ? b("single") : b("multiple")}`}
-      style={{ ...itemStyle(), ...style }} 
+      style={itemStyle()} 
       onClick={handleClick}
       {...rest}
     >
