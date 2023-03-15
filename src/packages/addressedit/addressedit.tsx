@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { useConfig } from "@/packages/configprovider";
 import classNames from "classnames";
-import { cn2 } from "@/utils/bem";
+import bem from "@/utils/bem";
 import { IComponent } from "@/utils/typings";
 import { Input, Button, ButtonProps, Switch, Toast } from "@nutui/nutui-react";
 import Address from "../address";
@@ -17,7 +17,7 @@ interface CalResult {
   type: string;
   data: any;
 }
-// export type AddressType = "exist" | "custom" | "elevator";
+
 export type showErrorType = "toast" | "bottomMsg";
 
 export interface AddressInfo {
@@ -153,7 +153,7 @@ export const AddressEdit: FunctionComponent<
     town: [],
     addressTitle: "选择所在地区",
     type: "custom",
-    height: "200px",
+    height: "500px",
   });
   //地址编辑数据形式兜底文案配置
   const [editSeting, setEditSeting] = useState<AddressData>({
@@ -333,7 +333,7 @@ export const AddressEdit: FunctionComponent<
     );
   };
 
-  const b = cn2("addressedit");
+  const b = bem("addressedit");
   return (
     <div
       className={classNames([b(), className])}

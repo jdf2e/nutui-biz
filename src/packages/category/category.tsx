@@ -10,7 +10,7 @@ import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames'
 import { IComponent } from '@/utils/typings'
 import {CategoryPane} from './categorypane'
-import {cn2} from '@/utils/bem'
+import bem from '@/utils/bem'
 import { errorImg } from '@/utils'
 import {Category as BaseCategory , CategoryPaneItem, CategoryPaneHandler } from './props';
 
@@ -68,7 +68,7 @@ export const Category: FunctionComponent<
     ...props,
   }
 
-  const b = cn2('category')
+  const b = bem('category')
 
   const panelRef = useRef<CategoryPaneHandler>(null);
   const listRef = useRef<HTMLDivElement>(null)

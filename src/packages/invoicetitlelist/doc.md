@@ -32,6 +32,8 @@ export interface Idata {
   companyPhone?: string
   bankDeposit?: string
   bankAccount?: string
+  isDelete?: boolean
+  isEdit?: boolean
 }
 
 const App = () => {
@@ -47,7 +49,9 @@ const App = () => {
             address: '北京市通州区台湖镇',
             companyPhone: '88488848',
             bankDeposit: '中国银行股份有限公司北京分行',
-            bankAccount: '5833 2153 4243 2654'
+            bankAccount: '5833 2153 4243 2654',
+            isDelete: true,
+            isEdit: true
         }}
         onClick={(data: Idata) => {
           Toast.text('触发点击事件')
@@ -89,6 +93,8 @@ export interface Idata {
   companyPhone?: string
   bankDeposit?: string
   bankAccount?: string
+  isDelete?: boolean
+  isEdit?: boolean
 }
 
 const App = () => {
@@ -104,7 +110,9 @@ const App = () => {
             address: '北京市通州区台湖镇',
             companyPhone: '88488848',
             bankDeposit: '中国银行股份有限公司北京分行',
-            bankAccount: '5833 2153 4243 2654'
+            bankAccount: '5833 2153 4243 2654',
+            isDelete: true,
+            isEdit: true
         }}
         onClick={(data: Idata) => {
           Toast.text('触发点击事件')
@@ -147,6 +155,8 @@ export interface Idata {
   companyPhone?: string
   bankDeposit?: string
   bankAccount?: string
+  isDelete?: boolean
+  isEdit?: boolean
 }
 
 const App = () => {
@@ -162,7 +172,9 @@ const App = () => {
             address: '北京市通州区台湖镇',
             companyPhone: '88488848',
             bankDeposit: '中国银行股份有限公司北京分行',
-            bankAccount: '5833 2153 4243 2654'
+            bankAccount: '5833 2153 4243 2654',
+            isDelete: true,
+            isEdit: true
         }}
         onClick={(data: Idata) => {
           Toast.text('触发点击事件')
@@ -205,6 +217,8 @@ export interface Idata {
   companyPhone?: string
   bankDeposit?: string
   bankAccount?: string
+  isDelete?: boolean
+  isEdit?: boolean
 }
 
 const App = () => {
@@ -220,7 +234,9 @@ const App = () => {
             address: '北京市通州区台湖镇',
             companyPhone: '88488848',
             bankDeposit: '中国银行股份有限公司北京分行',
-            bankAccount: '5833 2153 4243 2654'
+            bankAccount: '5833 2153 4243 2654',
+            isDelete: true,
+            isEdit: true
         }}
         onClick={(data: Idata) => {
           Toast.text('触发点击事件')
@@ -263,6 +279,10 @@ export interface Idata {
   companyPhone?: string
   bankDeposit?: string
   bankAccount?: string
+  isDelete?: boolean
+  isEdit?: boolean
+  isDelete?: boolean
+  isEdit?: boolean
 }
 
 const App = () => {
@@ -278,7 +298,9 @@ const App = () => {
             address: '北京市通州区台湖镇',
             companyPhone: '88488848',
             bankDeposit: '中国银行股份有限公司北京分行',
-            bankAccount: '5833 2153 4243 2654'
+            bankAccount: '5833 2153 4243 2654',
+            isDelete: true,
+            isEdit: true
         }}
         onClick={(data: Idata) => {
           Toast.text('触发点击事件')
@@ -322,6 +344,8 @@ export interface Idata {
   companyPhone?: string
   bankDeposit?: string
   bankAccount?: string
+  isDelete?: boolean
+  isEdit?: boolean
 }
 
 const App = () => {
@@ -337,14 +361,15 @@ const App = () => {
         address: '北京市通州区台湖镇',
         companyPhone: '88488848',
         bankDeposit: '中国银行股份有限公司北京分行',
-        bankAccount: '5833 2153 4243 2654'
+        bankAccount: '5833 2153 4243 2654',
+        isDelete: true,
+        isEdit: true
       }}
       isShowEdit = {false}
-      isShowOperate = {false}
-        onClick={(data: Idata) => {
-          Toast.text('触发点击事件')
-          console.log('data', data)
-        }}
+      onClick={(data: Idata) => {
+        Toast.text('触发点击事件')
+        console.log('data', data)
+      }}
     />
   );
 };
@@ -361,7 +386,6 @@ export default App;
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
 | data   | 发票信息                                 | object  | -         |
-| isShowOperate     | 是否展示操作区域                   | boolean  | `true`    |
 | isShowEdit     | 右上角是否展示编辑按钮，适用于电子普通发票                   | boolean  | `true`    |
 | otherOperate | 扩展其他操作                         | ReactNode  | -      |
 
@@ -380,6 +404,8 @@ export default App;
 | companyPhone | 公司电话（注册电话）                         | string  | -      |
 | bankDeposit | 开户行（开户银行）                         | string  | -      |
 | bankAccount | 银行账户                         | string  | -      |
+| isDelete | 是否可删除                         | boolean  | true      |
+| isEdit | 是否可编辑                         | boolean  | true      |
 
 
 ### Events
