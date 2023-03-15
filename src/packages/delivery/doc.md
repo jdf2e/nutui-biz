@@ -887,7 +887,7 @@ export default App;
 | onCloseMask | 点击遮罩层事件 |  - |
 | onClose | 点击遮罩层关闭按钮事件 |  - |
 | onSure | 点击确定按钮事件 | (item: 当前点击的时间对象 `DateTimesType`, type: 配送方式的label `string`) |
-| onDeliveryTypeChange | 点击配送方式 | (label: 当前配送方式的label, `string | number | boolean`) |
+| onDeliveryTypeChange | 点击配送方式 | (label: 当前配送方式的label, `string \| number \| boolean`) |
 
 ### DeliveryDate Props
 

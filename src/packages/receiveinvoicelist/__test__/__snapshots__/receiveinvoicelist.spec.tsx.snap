@@ -22,22 +22,32 @@ exports[`test props && event 1`] = `
             class="nut-cell__maintitle"
           >
             <div
-              class="nut-tag nut-tag--danger"
+              class="nb-receive-invoice-list__item-header-title"
             >
-              <span
-                class="nut-tag-text"
+              <div
+                class="nut-tag nut-tag--danger"
               >
-                默认
-              </span>
+                <span
+                  class="nut-tag-text"
+                >
+                  默认
+                </span>
+              </div>
+               
+              <p>
+                张三
+              </p>
             </div>
-             
-            张三
           </div>
         </div>
-        <i
-          class="nutui-iconfont nut-icon nut-icon-edit "
-          style="color: rgb(102, 102, 102);"
-        />
+        <div
+          class="nb-receive-invoice-list__item-header-edit"
+        >
+          <i
+            class="nutui-iconfont nut-icon nut-icon-edit "
+            style="color: rgb(102, 102, 102);"
+          />
+        </div>
       </div>
       <div
         class="nut-cell nb-receive-invoice-list__item-footer "
@@ -99,13 +109,23 @@ exports[`test props && event 1`] = `
           <div
             class="nut-cell__maintitle"
           >
-            李四
+            <div
+              class="nb-receive-invoice-list__item-header-title"
+            >
+              <p>
+                李四
+              </p>
+            </div>
           </div>
         </div>
-        <i
-          class="nutui-iconfont nut-icon nut-icon-edit "
-          style="color: rgb(102, 102, 102);"
-        />
+        <div
+          class="nb-receive-invoice-list__item-header-edit"
+        >
+          <i
+            class="nutui-iconfont nut-icon nut-icon-edit "
+            style="color: rgb(102, 102, 102);"
+          />
+        </div>
       </div>
       <div
         class="nut-cell nb-receive-invoice-list__item-footer "
