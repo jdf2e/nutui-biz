@@ -95,7 +95,7 @@ const zhCN: BaseLang = {
     namePlaceholder: "请输入姓名",
     nameErrorMsg: "该项为必填项，请填写完后提交",
     telText: "手机号码",
-    telPlaceholder: "请输入收货人手机号码",
+    telPlaceholder: "请输入手机号码",
     telErrorMsg: "该项为必填项，请填写完后提交",
     regionText: "所在地区",
     regionPlaceholder: "请选择所在地区",

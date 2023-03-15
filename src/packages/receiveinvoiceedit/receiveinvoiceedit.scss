@@ -1,14 +1,14 @@
-.nut-receive-invoice-edit{
+.nb-receive-invoice-edit{
     background: $white;
     padding:5px 10px;
     border-radius: 4px;
-    &-item{
+    &__item{
         background: $white;
         padding: 0 10px;
         font-size: $font-size-2;
         color:$title-color2;
     }
-    &-bottom{
+    &__bottom{
         bottom: constant(safe-area-inset-bottom);
         bottom: env(safe-area-inset-bottom);
         width: 100%;
