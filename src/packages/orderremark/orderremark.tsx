@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react';
 
 import { Popup, TextArea, Button } from '@nutui/nutui-react';
-import { cn2 as bem } from '@/utils/bem';
+import bem from '@/utils/bem';
 import { useConfig } from '@/packages/configprovider';
 import { IComponent } from '@/utils/typings';
 

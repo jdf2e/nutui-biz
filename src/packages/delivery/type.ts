@@ -4,6 +4,7 @@ export interface DeliveryBaseType {
     label: string;
     text: ReactNode;
     selected?: boolean;
+    disabled?: boolean;
 }
 
 export type DeliveryDateType = 'date' | 'date-time' | 'date-time-accurate'

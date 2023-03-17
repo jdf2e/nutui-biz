@@ -1,35 +1,90 @@
 import React, {
-  FunctionComponent, HTMLAttributes, useEffect, useMemo, useState, CSSProperties
+  FunctionComponent, HTMLAttributes, useEffect, useMemo, useState, CSSProperties, ReactNode
 } from 'react'
 import { Icon, Popup } from '@nutui/nutui-react'
 import { IComponent } from '@/utils/typings'
 import bem from '@/utils/bem'
+import {numericProp} from '@/utils/props'
 import { InputNum } from './components/InputNum'
+import classNames from 'classnames'
+
+export interface valueType {
+  id?:numericProp,
+  name?:string,
+  [x:string]:any
+}
+export interface goodsAttrsResType {
+  id?:numericProp,
+  value?:string[],
+  [x:string]:any
+}
+
+export interface resType {
+  address: string,
+  price:{
+    low: numericProp,
+    high: numericProp
+  },
+  filterAttrs: valueType,
+  goodsAttrs: goodsAttrsResType
+}
+export interface priceRangesType {
+    low: string,
+    high: string,
+    desc: string,
+    id?:numericProp
+    extra: any
+}
+
+export interface goodsAttrsType {
+  title: string,
+  id: numericProp,
+  values: valueType
+}
+
+export interface selectedGoodsAttrType{
+  id: numericProp,
+  isExpand: boolean|undefined,
+  showRow : numericProp,
+  title:string,
+  [x:string]:any
+}
+ 
+export interface selectDataType {
+  filterAttrs: valueType[]
+  goodsAttrs: goodsAttrsType[]
+  price: {
+    low:string,
+    high:string,
+  }
+}
+
 
 export interface GoodsFilterProps extends IComponent {
-  visible: boolean
-  confirmText: string
-  resetText: string
-  priceRangeTitle: string
-  addressTitle: string
+  visible?: boolean
+  confirmText?: React.ReactNode
+  resetText?: React.ReactNode
+  priceRangeTitle?: string
+  addressTitle?: string
   selectedAddress: string
-  resetDisable: boolean
-  priceRanges: Array<any>
-  filterAttrs: Array<any>
-  goodsAttrs: Array<any>
-  specStyle: CSSProperties
-  selectedSpecShow: boolean
+  resetDisable?: boolean
+  priceRanges?: priceRangesType[]
+  filterAttrs?: valueType[]
+  goodsAttrs?: goodsAttrsType[]
+  specStyle?: CSSProperties
+  selectedSpecShow?: boolean
   maxLine: number
-  icon: string
-  onClose: () => void
-  onReset: () => void
-  onConfirm: (res: any) => void
-  onClickAddress: () => void
-  onSelectedAttrs: (attr: any, selected: boolean, selectedAttrs: Array<any>) => void
-  onSelectedPrice: (range: any) => void
-  onBeforeSelected: (done: any, selectedValue: any) => void
-  onSelectedGoodsAttr: (attrs: any, value: any) => void
-  bottom: React.ReactNode,
+  icon?: string
+  selectData?: selectDataType
+  onClose?: () => void
+  onReset?: () => void
+  onConfirm?: (res: resType) => void
+  onClickAddress?: () => void
+  onSelectedAttrs?: (attr: valueType, selected: boolean, selectedAttrs:valueType[]) => void
+  onSelectedPrice?: (range: priceRangesType) => void
+  onBeforeSelected?: (done: () => void, selectedValue: goodsAttrsResType) => void
+  onSelectedGoodsAttr?: (attrs: selectedGoodsAttrType, value: valueType) => void
+  bottom?: React.ReactNode,
 }
 
 const defaultProps = {
@@ -42,18 +97,21 @@ const defaultProps = {
   resetDisable: false,
   selectedSpecShow: true,
   maxLine: 2,
-  icon: 'arrow-up',
-  onBeforeSelected: (done: any) => {
+  icon: 'arrow-down',
+  onBeforeSelected: (done: () => void) => {
     done()
   },
-} as unknown as GoodsFilterProps
+} as GoodsFilterProps
 
 export const GoodsFilter: FunctionComponent<
   Partial<GoodsFilterProps> & HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
+    className,
+    style,
     visible,
     confirmText,
+    selectData,
     resetText,
     priceRangeTitle,
     addressTitle,
@@ -74,7 +132,8 @@ export const GoodsFilter: FunctionComponent<
     onSelectedPrice,
     onBeforeSelected,
     onSelectedGoodsAttr,
-    bottom
+    bottom,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -82,17 +141,29 @@ export const GoodsFilter: FunctionComponent<
 
   const b = bem('goods-filter')
 
-  const [selectedValues, setSelectedValues] = useState({
-    filterAttrs: [] as any,
-    goodsAttrs: {} as any,
-  })
-  const [priceLow, setPriceLow] = useState<number | string>('')
-  const [priceHigh, setPriceHigh] = useState<number | string>('')
+  useEffect(()=>{
+    if(visible &&selectData ){
+      let obj:goodsAttrsResType = {}
+      if(selectData.goodsAttrs){
+        selectData.goodsAttrs.forEach(item => obj[item.id] = item);
+      }
+        setSelectedValues({
+          ...selectedValues,
+          filterAttrs: selectData.filterAttrs||[],
+          goodsAttrs: obj||{}
+        })
+        setPriceLow(selectData?.price?.low||"")
+        setPriceHigh(selectData?.price?.high||"")
+        setPriceId(undefined)
+    }
+  },[selectData,visible])
 
-  // 关闭 Popup
-  const onHandleClose = () => {
-    onClose && onClose()
-  }
+  const [selectedValues, setSelectedValues] = useState({
+    filterAttrs: [] as  valueType[] ,
+    goodsAttrs: {} as goodsAttrsResType ,
+  })
+  const [priceLow, setPriceLow] = useState<numericProp>('')
+  const [priceHigh, setPriceHigh] = useState<numericProp>('')
 
   // 地址选择
   const chooseAddress = () => {
@@ -100,27 +171,26 @@ export const GoodsFilter: FunctionComponent<
   }
 
   // 筛选分类类型
-  const filterAttrsHandler = (attr: any) => {
-    const idx = selectedValues.filterAttrs.findIndex((cattr: any) => {
+  const filterAttrsHandler = (attr:valueType ) => {
+    const idx = selectedValues.filterAttrs.findIndex((cattr: valueType) => {
       return cattr.id === attr.id
     })
-    let newFilterAttrs = [] as Array<any>
+    let newFilterAttrs = [] as valueType[]
+    newFilterAttrs = selectedValues.filterAttrs.slice()
     if (idx !== -1) {
-      newFilterAttrs = selectedValues.filterAttrs.slice()
       newFilterAttrs.splice(idx, 1)
       setSelectedValues({
         ...selectedValues,
         filterAttrs: newFilterAttrs
       })
-      onSelectedAttrs && onSelectedAttrs(attr, false, newFilterAttrs)
+      onSelectedAttrs?.(attr, false, newFilterAttrs)
     } else {
-      newFilterAttrs = selectedValues.filterAttrs.slice()
       newFilterAttrs.push(attr)
       setSelectedValues({
         ...selectedValues,
         filterAttrs: newFilterAttrs
       })
-      onSelectedAttrs && onSelectedAttrs(attr, true, newFilterAttrs)
+      onSelectedAttrs?.(attr, true, newFilterAttrs)
     }
   }
 
@@ -133,12 +203,29 @@ export const GoodsFilter: FunctionComponent<
     }
   }
 
-  // 点击推荐价格
-  const onClickRecPrice = (range: any) => {
-    setPriceLow(range.low)
-    setPriceHigh(range.high)
+  const [priceId,setPriceId] = useState<numericProp|undefined>()
 
-    onSelectedPrice && onSelectedPrice(range)
+  // 点击推荐价格
+  const onClickRecPrice = (range: priceRangesType) => {
+    if(range.id==priceId){
+      setPriceId(undefined)
+      setPriceLow('')
+      setPriceHigh('')
+      const data = {
+        low:'',
+        high: '',
+        desc: '',
+        id:'',
+        extra: ''
+      }
+      onSelectedPrice?.(data)
+    }else{
+      setPriceLow(range.low)
+      setPriceHigh(range.high)
+      setPriceId(range.id)
+      onSelectedPrice?.(range)
+    }
+    
   }
 
   // 价格区间格式化
@@ -168,20 +255,20 @@ export const GoodsFilter: FunctionComponent<
   }, [goodsAttrs, selectedValues.goodsAttrs])
 
   // 副标题，选中的值
-  const renderSelectedValues = (attrs: any)=>{
+  const renderSelectedValues = (attrs:selectedGoodsAttrType)=>{
     const allAttrs = attrs.values
     const id = selectedValues.goodsAttrs[attrs.id]
     if (id) {
       const sValues = id.values
-      const sAttrs = allAttrs.filter((attrs: any) => sValues.indexOf(attrs.id) != -1)
-      return sAttrs.map((s: any) => s.name).join(',')
+      const sAttrs = allAttrs.filter((attrs: { id: number }) => sValues.indexOf(attrs.id) != -1)
+      return sAttrs.map((s: { name: string }) => s.name).join(',')
     }
   }
 
   // 商品属性选择
-  const selectedGoodsAttr = (attrs: any, attr: any) => {
+  const selectedGoodsAttr = (attrs: selectedGoodsAttrType, attr: valueType) => {
     const { filterAttrs, goodsAttrs } = selectedValues
-    let selectedVal = {}
+    let selectedVal = {} as goodsAttrsResType
     if (goodsAttrs[attrs.id]) {
       selectedVal = goodsAttrs[attrs.id]
     } else {
@@ -210,13 +297,12 @@ export const GoodsFilter: FunctionComponent<
         filterAttrs: filterAttrs.slice(),
         goodsAttrs: Object.assign({}, goodsAttrs)
       })
-
-      onSelectedGoodsAttr && onSelectedGoodsAttr(attrs, attr)
+      onSelectedGoodsAttr?.(attrs, attr)
     }
-    onBeforeSelected && onBeforeSelected(done, selectedVal)
+    onBeforeSelected?.(done, selectedVal)
   }
 
-  const onClickIcon = (attrs: any) => {
+  const onClickIcon = (attrs: selectedGoodsAttrType) => {
     const { filterAttrs, goodsAttrs } = selectedValues
     if (goodsAttrs[attrs.id]) {
       goodsAttrs[attrs.id].isExpand = !goodsAttrs[attrs.id].isExpand
@@ -250,17 +336,25 @@ export const GoodsFilter: FunctionComponent<
   // 确定
   const confirm = () => {
     const { filterAttrs, goodsAttrs } = selectedValues
-    const sGoods = Object.keys(goodsAttrs).map(id => (goodsAttrs[id]))
+    const sGoods:goodsAttrsResType = Object.keys(goodsAttrs).map(id => (goodsAttrs[id]))
+    let pricelow:numericProp = ""
+    let pricehigh:numericProp = ""
+    if(+priceLow > +priceHigh){
+      pricelow = priceHigh
+      pricehigh = priceLow 
+      setPriceHigh(priceLow)
+      setPriceLow(priceHigh)
+    }
     const res = {
       address: selectedAddress,
       price:{
-        low: priceLow,
-        high: priceHigh
+        low:pricelow|| priceLow,
+        high: pricehigh||priceHigh
       },
       filterAttrs: filterAttrs,
       goodsAttrs: sGoods
     }
-    onConfirm && onConfirm(res)
+    onConfirm?.(res)
   }
 
   return (
@@ -269,9 +363,9 @@ export const GoodsFilter: FunctionComponent<
       position='right'
       round
       style={{ width: '80%', height: '100%' }}
-      onClose={onHandleClose}
+      onClose={()=>onClose?.()}
     >
-      <div className={b()}>
+      <div className={classNames([b(), className])} style={style} {...rest}  >
         {/* 地址选择 */}
         <div className={`${b('chunk')} ${b('chunk')}--address`}>
           <div className={b('chunk__label')}>{ addressTitle }</div>
@@ -289,15 +383,15 @@ export const GoodsFilter: FunctionComponent<
             <div className={b('chunk__group__modify')} onClick={chooseAddress}>修改</div>
           </div>
         </div>
-
         {/* 类型选择 */}
         <div className={b('chunk')}>
+         
           <div className={b('chunk__type')}>
             {
-              filterAttrs && filterAttrs?.map((attr: any) => {
+              filterAttrs && filterAttrs?.map((attr) => {
                 return <div
                   key={attr?.id}
-                  className={ selectedValues.filterAttrs && selectedValues.filterAttrs.some((cAttr: any) => { return cAttr.id === attr.id }) ? 'active' : '' }
+                  className={ selectedValues.filterAttrs && selectedValues.filterAttrs.some((cAttr) => { return cAttr.id === attr.id }) ? 'active' : '' }
                   onClick={() => filterAttrsHandler(attr)}
                 >
                   { attr?.name }
@@ -332,7 +426,7 @@ export const GoodsFilter: FunctionComponent<
                 {
                   norPriceRanges.map((range) => {
                     return <div
-                      className={b('chunk__price--recommend__item')}
+                      className={classNames([b('chunk__price--recommend__item'), priceId==range.id?'active':'' ])}
                       key={range.id}
                       onClick={() => onClickRecPrice(range)}
                     >
@@ -348,7 +442,6 @@ export const GoodsFilter: FunctionComponent<
 
         {/* 间隔 */}
         <div className={b('chunk__gap')}></div>
-        
         {/* 折叠面板 */}
         {
           norGoodsAttrs && norGoodsAttrs.length > 0 && <div className={b('chunk__list')}>
@@ -365,9 +458,10 @@ export const GoodsFilter: FunctionComponent<
                     }
                     <Icon name={icon} className={b('chunk__list--item__icon') + (attrs.isExpand ? ' expand' : '')}onClick={() => onClickIcon(attrs)}></Icon>
                   </div>
+                 
                   <div className={b('chunk__groups')}>
                     {
-                      (attrs.isExpand ? attrs.values : attrs.values.slice(0, 3 * maxLine)).map((attr: any) => {
+                      (attrs.isExpand ? attrs.values : attrs.values.slice(0, 3 * maxLine)).map((attr: valueType) => {
                         return <div
                           key={attr.id}
                           className={b('chunk__groups--item') +

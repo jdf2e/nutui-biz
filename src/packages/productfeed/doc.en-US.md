@@ -6,145 +6,121 @@ The product feed flow component can be configured with pull-down refresh, list l
 
 ### Install
 ``` javascript
-import { ProductFeed, ProductFeedItem } from "@nutui/nutui-biz";
+import { ProductFeed } from "@nutui/nutui-biz";
 ```
 
 ## Demo
 
 ### Double Columns
 
-When the goods has two columns, the goods data needs to be divided into two columns, which are transferred from 'leftProduct' and 'rightProduct'.
+Product data is passed through `data`, and the content of the area below the product image is passed through `customProduct`.
 
 :::demo
 
 ```ts
 import  React from "react";
 import { Price } from "@nutui/nutui-react";
-import { ProductFeed, ProductFeedItem } from "@nutui/nutui-biz";
+import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
 
 const App = () => {
 
-  const  [listLeft1, setListLeft1] = useState([] as any)
-  const  [listRight1, setListRight1] = useState([] as any)
+  const [data, setData] = useState<dataType[]>([])
+  const [listDouble, setListDouble] = useState([] as any)
+  const [hasMoreDouble, setHasMoreDouble] = useState(true)
 
-  const [hasMore1, setHasMore1] = useState(true)
+  useEffect(() => {
+    initData()
+  }, [])
 
-  const data = [
-    {
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: "I am the title I am the title I am the title I am the title",
-      desc: "buy more buy more",
-      price: "388",
-      vipPrice: "378",
-    }, {
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: "I am the title I am the title I am the title I am the title",
-      desc: "buy more buy more",
-      price: "388",
-      vipPrice: "378",
-    },
-    // ...
-  ]
+  const init = () => {
+    for (let i = 0; i < 6; i++) {
+      listDouble.push(data[i])
+    }
+    setListDouble([...listDouble])
+  }
 
-  const loadMore1 = (done: () => void) => {
-    setTimeout(() => {
-      const curLen1 = listLeft1.length
-      const curLen2 = listRight1.length
-      if (listLeft1.length >= data.length/2 && listRight1.length >= data.length/2) {
-        setHasMore1(false)
-      } else {
-        for (let i = curLen1 + curLen2; i < (curLen1 + curLen2 + 6 > data.length ? data.length : curLen1 + curLen2 + 6) ; i++) {
-          i % 2 == 0 ? listLeft1.push(data[i]) : listRight1.push(data[i])
-        }
-        setListLeft1(listLeft1)
-        setListRight1(listRight1)
+  const initData = () => {
+    for(var i = 0; i < 12; i++) {
+      data.push({
+        id: i + 1,
+        imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
+        name: "我是标题我是标题我是标题我是标题我是标题",
+        desc: "更多买点更多买点",
+        tag: i == 3 && '标签标签',
+        price: "388",
+        label: "自营",
+      })
+    }
+    init()
+  }
+
+  const loadMore = (list: any) => {
+    const curLen = list.length
+    
+    if (list.length >= data.length) {
+       setHasMoreDouble(false);
+    } else {
+      for (let i = curLen; i < (curLen + 6 > data.length ? data.length : curLen + 6) ; i++) {
+        list.push(data[i])
       }
+      setListDouble([...list]) 
+    }
+  }
+
+  const loadMoreDouble = (done: () => void) => {
+    setTimeout(() => {
+      loadMore(listDouble)
       done()
     }, 500)
   }
 
-  const handleClick = () => {
-    console.log("click")
+  const handleClick = (item: object, index: number) => {
+    console.log("click", item, index)
   }
 
-  const handleImageClick = (item: object) => {
-    console.log("click image", item)
+  const handleImageClick = (item: object, index: number) => {
+    console.log("click image", item, index)
   }
 
-  const productItem = (item: any)=>{
+  const customProductDouble = (item: any) => {
     return (
-      <ProductFeedItem
-        key={item.id}
-        data={item}
-        col={2}
-        imgUrl={item.imgUrl}
-        imgWidth="144"
-        imgHeight="144"
-        imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
-        onClick={handleClick}
-        onImageClick={handleImageClick}
-      >
-        <>
-          <div className="name-box">
-            {item.id}{item.name}
-          </div>
-          {item.tag && <div className="name-box">
-            {item.tag}
-          </div>}
-          <div className="bottom">
-            <div className="price-box">
-              <div className="price">
-                <Price price={item.price} />
-              </div>
+      <>
+        <div className="name-box">{item.name}</div>
+        {item.tag && <div className="name-box">
+          {item.tag}
+        </div>}
+        <div className="bottom">
+          <div className="price-box">
+            <div className="price">
+              <Price price={item.price} />
             </div>
           </div>
-        </>
-      </ProductFeedItem>
+        </div>
+      </>
     )
   }
 
-  const leftProduct1 = () => {
-    return (
-      listLeft1.map((item: any)=> {
-        return (
-          productItem(item)
-        )
-      })
-    )
-  }
-  const rightProduct1 = () => {
-    return (
-      listRight1.map((item: any)=> {
-        return (
-          productItem(item)
-        )
-      })
-    )
-  }
-
-  const init1 = () => {
-    for (let i = 0; i < 6; i++) {
-      i % 2 == 0 ? listLeft1.push(data[i]) : listRight1.push(data[i])
-    }
-    setListLeft1([...listLeft1])
-    setListRight1([...listRight1])
-  }
-
-  useEffect(() => {
-    init1()
-  }, [])
 
   return (
     <ProductFeed
       className="demo1"
-      id="refreshScroll1"
-      hasMore={hasMore1}
-      containerId="refreshScroll1"
-      useWindow={false}
-      onLoadMore={loadMore1}
-      leftProduct={leftProduct}
-      rightProduct={rightProduct}
+      id="refreshScrollDouble"
+      infiniteloadingProps={{
+        hasMore: hasMoreDouble,
+        containerId: "refreshScrollDouble",
+        useWindow: false,
+        onLoadMore: loadMoreDouble
+      }}
+      customProduct={customProductDouble}
+      data={listDouble}
+      col={2}
+      imgUrl="imgUrl"
+      imgWidth="144"
+      imgHeight="144"
+      imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+      onClick={handleClick}
+      onImageClick={handleImageClick}
     />
   );
 };
@@ -160,105 +136,111 @@ export default App;
 ```ts
 import  React from "react";
 import { Price } from "@nutui/nutui-react";
-import { ProductFeed, ProductFeedItem } from "@nutui/nutui-biz";
+import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
 
 const App = () => {
 
-  const [list2, setList2] = useState([] as any)
+  const [data, setData] = useState<dataType[]>([])
+  const [listSingle, setListSingle] = useState([] as any)
+  const [hasMoreSingle, setHasMoreSingle] = useState(true)
 
-  const [hasMore2, setHasMore2] = useState(true)
+  useEffect(() => {
+    initData()
+  }, [])
 
-  const data = [
-    {
-      id: '1',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: "I am the title I am the title I am the title I am the title",
-      desc: "buy more buy more",
-      price: "388",
-      vipPrice: "378",
-    }, {
-      id: '2',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: "I am the title I am the title I am the title I am the title",
-      desc: "buy more buy more",
-      price: "388",
-      vipPrice: "378",
-    },
-    // ...
-  ]
+  const init = () => {
+    for (let i = 0; i < 6; i++) {
+      listSingle.push(data[i])
+    }
+    setListSingle([...listSingle])
+  }
 
-  const loadMore2 = (done: () => void) => {
-    setTimeout(() => {
-      const curLen = list2.length
-      if (list2.length >= data.length) {
-        setHasMore2(false)
-      } else {
-        for (let i = curLen; i < (curLen + 6 > data.length ? data.length : curLen + 6) ; i++) {
-          list2.push(data[i])
-        }
-        setList2([...list2]) 
+  const initData = () => {
+    for(var i = 0; i < 12; i++) {
+      data.push({
+        id: i + 1,
+        imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
+        name: "我是标题我是标题我是标题我是标题我是标题",
+        desc: "更多买点更多买点",
+        tag: i == 3 && '标签标签',
+        price: "388",
+        label: "自营",
+      })
+    }
+    init()
+  }
+
+  const loadMore = (list: any) => {
+    const curLen = list.length
+    
+    if (list.length >= data.length) {
+      setHasMoreSingle(false);
+    } else {
+      for (let i = curLen; i < (curLen + 6 > data.length ? data.length : curLen + 6) ; i++) {
+        list.push(data[i])
       }
+      setListSingle([...list]) 
+    }
+  }
+
+  const loadMoreSingle = (done: () => void) => {
+    setTimeout(() => {
+      loadMore(listSingle)
       done()
     }, 500)
   }
 
-  const handleClick = () => {
-    console.log("click")
+  const handleClick = (item: object, index: number) => {
+    console.log("click", item, index)
   }
 
-  const handleImageClick = (item: object) => {
-    console.log("click image", item)
+  const handleImageClick = (item: object, index: number) => {
+    console.log("click image", item, index)
   }
 
-  const init2 = () => {
-    for (let i = 0; i < 6; i++) {
-      list2.push(data[i])
-    }
-    setList2([...list2])
-  }
 
-  useEffect(() => {
-    init2()
-  }, [])
+  const customProductSingle = (item: any) => {
+    return (
+      <>
+        <div className="name-box">
+          <div className="label">{item.label}</div>
+          {item.name}
+        </div>
+        <div className="name-box desc-box">
+          {item.desc}
+        </div>
+        <div className="bottom">
+          <div className="price-box">
+            <div className="price">
+              <Price price={item.price} />
+            </div>
+          </div>
+        </div>
+      </>
+    )
+  }
 
   return (
     <ProductFeed
       className="demo2"
-      id="refreshScroll2"
-      hasMore={hasMore2}
-      containerId="refreshScroll2"
-      useWindow={false}
-      onLoadMore={loadMore2}
+      id="refreshScrollSingle"
+      data={listSingle}
+      infiniteloadingProps={{
+        hasMore: hasMoreSingle,
+        containerId: "refreshScrollSingle",
+        useWindow: false,
+        onLoadMore: loadMoreSingle
+      }}
+      customProduct={customProductSingle}
+      col={1}
+      imgUrl="imgUrl"
+      imgWidth="100"
+      imgHeight="100"
+      imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+      onClick={handleClick}
+      onImageClick={handleImageClick}
     >
-      {list2.map((item: any)=> {
-        return (
-          <ProductFeedItem
-            key={item.id}
-            data={item}
-            col={1}
-            imgUrl={item.imgUrl}
-            imgHeight="120"
-            imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
-            onClick={handleClick}
-            onImageClick={handleImageClick}
-          >
-            <>
-              <div className="name-box">
-                <div className="label">Self</div>
-                {item.name}
-              </div>
-              <div className="bottom">
-                <div className="price-box">
-                  <div className="price">
-                    <Price price={item.price} />
-                  </div>
-                </div>
-              </div>
-            </>
-          </ProductFeedItem>
-        )
-      })}
     </ProductFeed>
   );
 };
@@ -276,58 +258,67 @@ export default App;
 ```ts
 import  React from "react";
 import { Price } from "@nutui/nutui-react";
-import { ProductFeed, ProductFeedItem } from "@nutui/nutui-biz";
+import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
 
 const App = () => {
 
-  const  [listLeft3, setListLeft3] = useState([] as any)
-  const  [listRight3, setListRight3] = useState([] as any)
-
+  const [data, setData] = useState<dataType[]>([])
+  const [list3, setList3] = useState([] as any)
   const [hasMore3, setHasMore3] = useState(true)
 
-  const data = [
-    {
-      id: '1',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: "I am the title I am the title I am the title I am the title",
-      desc: "buy more buy more",
-      price: "388",
-      vipPrice: "378",
-    }, {
-      id: '2',
-      imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
-      name: "I am the title I am the title I am the title I am the title",
-      desc: "buy more buy more",
-      price: "388",
-      vipPrice: "378",
-    },
-    // ...
-  ]
+  useEffect(() => {
+    initData()
+  }, [])
+
+  const init = () => {
+    for (let i = 0; i < 6; i++) {
+      list3.push(data[i])
+    }
+    setList3([...list3])
+  }
+
+  const initData = () => {
+    for(var i = 0; i < 12; i++) {
+      data.push({
+        id: i + 1,
+        imgUrl: "//img13.360buyimg.com/imagetools/jfs/t1/190855/7/12881/42147/60eb0cabE0c3b7234/d523d551413dc853.png",
+        name: "我是标题我是标题我是标题我是标题我是标题",
+        desc: "更多买点更多买点",
+        tag: i == 3 && '标签标签',
+        price: "388",
+        label: "自营",
+      })
+    }
+    init()
+  }
+
+  const loadMore = (list: any) => {
+    const curLen = list.length
+    
+    if (list.length >= data.length) {
+      setHasMore3(false);
+    } else {
+      for (let i = curLen; i < (curLen + 6 > data.length ? data.length : curLen + 6) ; i++) {
+        list.push(data[i])
+      }
+      setList3([...list]) 
+    }
+  }
 
   const loadMore3 = (done: () => void) => {
     setTimeout(() => {
-      const curLen1 = listLeft3.length
-      const curLen2 = listRight3.length
-      if (listLeft3.length >= data.length/2 && listRight3.length >= data.length/2) {
-        setHasMore1(false)
-      } else {
-        for (let i = curLen1 + curLen2; i < (curLen1 + curLen2 + 6 > data.length ? data.length : curLen1 + curLen2 + 6) ; i++) {
-          i % 2 == 0 ? listLeft3.push(data[i]) : listRight3.push(data[i])
-        }
-        setListLeft3(listLeft3)
-        setListRight3(listRight3)
-      }
+      loadMore(list3)
       done()
     }, 500)
   }
 
-  const handleClick = () => {
-    console.log("click")
+  const handleClick = (item: object, index: number) => {
+    console.log("click", item, index)
   }
 
-  const handleImageClick = (item: object) => {
-    console.log("click image", item)
+  const handleImageClick = (item: object, index: number) => {
+    console.log("click image", item, index)
   }
 
   const refresh = (done: () => void) => {
@@ -337,81 +328,45 @@ const App = () => {
     }, 1000)
   }
 
-  const init3 = () => {
-    for (let i = 0; i < 6; i++) {
-      i % 2 == 0 ? listLeft3.push(data[i]) : listRight3.push(data[i])
-    }
-    setListLeft3([...listLeft3])
-    setListRight3([...listRight3])
-  }
-
-  const productItem = (item: any)=>{
+  const customProductDouble = (item: any) => {
     return (
-      <ProductFeedItem
-        key={item.id}
-        data={item}
-        col={2}
-        imgUrl={item.imgUrl}
-        imgWidth="144"
-        imgHeight="144"
-        imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
-        onClick={handleClick}
-        onImageClick={handleImageClick}
-      >
-        <>
-          <div className="name-box">
-            {item.id}{item.name}
-          </div>
-          {item.tag && <div className="name-box">
-            {item.tag}
-          </div>}
-          <div className="bottom">
-            <div className="price-box">
-              <div className="price">
-                <Price price={item.price} />
-              </div>
+      <>
+        <div className="name-box">{item.name}</div>
+        {item.tag && <div className="name-box">
+          {item.tag}
+        </div>}
+        <div className="bottom">
+          <div className="price-box">
+            <div className="price">
+              <Price price={item.price} />
             </div>
           </div>
-        </>
-      </ProductFeedItem>
+        </div>
+      </>
     )
   }
-
-  const leftProduct3 = () => {
-    return (
-      listLeft3.map((item: any)=> {
-        return (
-          productItem(item)
-        )
-      })
-    )
-  }
-  const rightProduct3 = () => {
-    return (
-      listRight3.map((item: any)=> {
-        return (
-          productItem(item)
-        )
-      })
-    )
-  }
-
-  useEffect(() => {
-    init3()
-  }, [])
 
   return (
-    <ProductFeed
+   <ProductFeed
       className="demo3"
       id="refreshScroll3"
-      hasMore={hasMore3}
-      containerId="refreshScroll3"
-      useWindow={false}
-      isOpenRefresh={true}
-      onLoadMore={loadMore3}
-      onRefresh={refresh}
-      leftProduct={leftProduct3}
-      rightProduct={rightProduct3}
+      data={list3}
+      infiniteloadingProps={{
+        hasMore: hasMore3,
+        containerId: "refreshScroll3",
+        useWindow: false,
+        isOpenRefresh: true,
+        onLoadMore: loadMore3,
+        onRefresh: refresh
+      }}
+      customProduct={customProductDouble}
+      col={2}
+      imgUrl="imgUrl"
+      imgWidth="144"
+      imgHeight="144"
+      imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+      onClick={handleClick}
+      onImageClick={handleImageClick}
     />
   );
 };
@@ -429,17 +384,21 @@ export default App;
 
 | Event  | Description     | Type    |
 |---------|--------------------------------------------|---------|
-| leftProduct | When the product is double-column, the information in the left column of the product    | () => ReactNode | - |
-| rightProduct| When the product is double-column, the information in the right column of the product    | () => ReactNode | - |
-| hasMore     | Has more data                  | boolean | `true`    |
-| containerId | When the `useWindow` property is `false`, custom set the node ID | string  | -    |
-| useWindow   | Add scroll listener to window otherwise listen to component"s parent  | boolean  | `true`  |
-| loadMoreTxt | “No more” text              | string  | `Oops, this is the bottom` |
-| loadIcon    | Pull on loading `Icon` name         | string  | -    |
-| loadTxt     | Pull on loading text         | string  | `Loading...` |
-| isOpenRefresh | Enable pull refresh             | boolean | `false` |
-| pullIcon    | Pull refresh `Icon` name           | string  | -    |
-| pullTxt     | Pull refresh text              | string  | `Loose to refresh` |
+| data        | Item data                  | Array     | -  |
+| customProduct | The content of the area below the product image    | (item) => ReactNode | - |
+| openInfiniteloading| Whether to enable the pull-down download function       | boolean | `true`    |
+| infiniteloadingProps | [infiniteloading 组件的 props](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/infiniteloading)    | InfiniteloadingProps | - |
+| initProductNum | 初始展示商品个数               | number | `6`    |
+| col         | Quantity of items per row, eg `1`、 `2` | number \| string  | `2`    |
+| padding     | Product Inside Margin, default Unit ` px`   | number \| string  | `10px`  |
+| borderRadius | Item Fillet, default Unit ` px`       | number \| string  | `8px`  |
+| imgUrl      | Product image url                      | string           | -     |
+| imgWidth    | Product image width, default unit `px` | string           | `150px` |
+| imgHeight   | Product image height, default unit `px`| string           | `150px` |
+| imgTag      | Product image tag                      | ReactNode           | -      |
+| isImageLazy | Whether to enable product lazy loading | boolean          | `true` |
+| loadingImg  | Image when product image loads         | string           | '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'  |
+| errorImg    | Image when product image is wrong      | string           | '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'  |
 
 ### Events
 | Attribute            | Description               | Arguments   |
@@ -448,26 +407,5 @@ export default App;
 | onLoadMore | Emitted when continues to load |  done() |
 | onRefresh  | Emitted when pull refresh      |  done() |
 | onScrollChange  | Real-time monitoring of roll height   |  height |
-
-### ProductFeedItem Props
-
-| Event  | Description     | Type    |
-|---------|--------------------------------------------|---------|
-| data        | Item data                  | Array     | -  |
-| col         | Quantity of items per row              | number \| string  | `2`    |
-| padding     | Product Inside Margin, default Unit ` px`   | number \| string  | `10px`  |
-| borderRadius | Item Fillet, default Unit ` px`       | number \| string  | `8px`  |
-| imgUrl      | Product image url                      | string           | -     |
-| imgWidth    | Product image width, default unit `px` | string           | -     |
-| imgHeight   | Product image height, default unit `px`| string           | `150px` |
-| imgTag      | Product image tag                      | ReactNode           | -      |
-| isImageLazy | Whether to enable product lazy loading | boolean          | `true` |
-| loadingImg  | Image when product image loads         | string           | -      |
-| errorImg    | Image when product image is wrong      | string           | -      |
-
-### ProductFeedItem Events
-| Attribute            | Description               | Arguments   |
-|----- | ----- | -----  |
-|--------- | -------- | ---------------|
-| onClick  | fires on click | item, index |
+| onClick  | Triggered when an item is clicked | item, index |
 | onImageClick  | Triggered when clicking the picture |  item, index |

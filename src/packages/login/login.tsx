@@ -6,8 +6,10 @@ import React, {
   ReactNode,
 } from "react";
 import { useConfig } from "@/packages/configprovider";
-import { cn2 } from "@/utils/bem";
+import classNames from "classnames";
+import bem from "@/utils/bem";
 import { IComponent } from "@/utils/typings";
+import { numericProp } from "@/utils/props";
 import {
   Input,
   Button,
@@ -17,14 +19,17 @@ import {
   Toast,
 } from "@nutui/nutui-react";
 
+export type loginType = "verify" | "pwd";
+export type showErrorType = "toast" | "bottomMsg";
+
 export interface LoginParamsProps {
   account?: string;
   accountPlaceholder?: string;
   accountErrorText?: string;
-  telOrMail?: string | any;
+  telOrMail?: string | undefined;
   telOrMailPlaceholder?: string;
   telOrMailErrorText?: string;
-  password?: string | any;
+  password?: string;
   passwordPlaceholder?: string;
   passwordErrorText?: string;
   isShowPwdInput?: boolean;
@@ -36,27 +41,44 @@ export interface LoginParamsProps {
   switchLoginText1?: string;
   switchLoginText2?: string;
   forgetPwdText?: string;
+
+  [key: string]: any;
+}
+
+export interface LoginFormProps {
+  account?: string;
+  password?: string;
+  telOrMail?: string;
+  verify?: string;
   [key: string]: any;
 }
 export interface LoginProps extends IComponent {
-  logo: string;
-  title: string;
+  logo?: string;
+  title?: string;
   formParams: LoginParamsProps;
-  loginType: string;
-  loginButtonDisable: boolean;
-  loginButtonText: string;
-  hasForgetPassWord: boolean;
-  slotProtocolText?: ReactNode;
-  slotBottom?: ReactNode;
+  loginType: loginType;
+  loginButtonDisable?: boolean;
+  loginButtonText?: string;
+  hasForgetPassWord?: boolean;
+  showErrorType?: showErrorType;
+  toastErrorText?: string;
   hasHidePwd?: boolean;
   isGetCode?: boolean;
-  countDownTime?: number;
+  countDownTime?: number | undefined;
   isHideSwitchBtn?: boolean;
+  slotProtocolText?: ReactNode;
   slotInput?: ReactNode;
+  slotBottom?: ReactNode;
   buttonProps?: ButtonProps;
   onInputChange?: (value: string, tag: string) => void;
-  onLoginBtnClick?: (data: LoginParamsProps) => void;
-  onVerifyBtnClick?: (formData: LoginParamsProps) => void;
+  onLoginBtnClick?: (
+    formData: LoginFormProps,
+    totalData: LoginParamsProps
+  ) => void;
+  onVerifyBtnClick?: (
+    formData: LoginFormProps,
+    totalData: LoginParamsProps
+  ) => void;
   onForgetBtnClick?: () => void;
   onInputClear?: (tag: string) => void;
   onLoginTypeClick?: () => void;
@@ -69,17 +91,15 @@ const defaultProps = {
   loginType: "verify",
   loginButtonDisable: true,
   loginButtonText: "登录",
-  verifyButtonDisable: false,
   isGetCode: false,
   hasForgetPassWord: true,
   hasHidePwd: true,
   isHideSwitchBtn: false,
+  showErrorType: "toast",
   countDownTime: 60,
 } as LoginProps;
 
-export const Login: FunctionComponent<
-  Partial<LoginProps> & Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">
-> = (props) => {
+export const Login: FunctionComponent<Partial<LoginProps>> = (props) => {
   const { locale } = useConfig();
   const {
     className,
@@ -89,14 +109,16 @@ export const Login: FunctionComponent<
     formParams,
     loginType,
     loginButtonDisable,
-    loginButtonText = locale.login.loginButtonText,
+    loginButtonText,
     hasForgetPassWord,
     hasHidePwd,
     isGetCode,
     slotProtocolText,
     slotBottom,
-    countDownTime = 60,
+    countDownTime,
     isHideSwitchBtn,
+    showErrorType,
+    toastErrorText,
     slotInput,
     buttonProps,
     onInputChange,
@@ -109,18 +131,31 @@ export const Login: FunctionComponent<
     ...defaultProps,
     ...props,
   };
-  let [countTime, setCountTime] = useState(countDownTime);
+  let [countTime, setCountTime] = useState(60);
   const [inCountDown, setInCountDown] = useState(false);
   const [isHidePwd, setIsHidePwd] = useState(true);
   const [isLoginDisable, setIsLoginDisable] = useState(loginButtonDisable);
   const [currLoginType, setCurrLoginType] = useState(loginType);
   const [isProtocol, setIsPrtocal] = useState(false);
   let timer: any = useRef(null);
+  const [loginForm, setLoginForm] = useState<LoginFormProps>({});
 
   useEffect(() => {
     //初始化数据
     setLoginParams({ ...loginParams, ...formParams });
+
+    setLoginForm({
+      account: formParams.account,
+      password: formParams.password,
+      telOrMail: formParams.telOrMail,
+      verify: formParams.verify,
+    });
   }, [formParams]);
+
+  useEffect(() => {
+    countDownTime && !inCountDown && setCountTime(countDownTime);
+  }, [countDownTime]);
+
   //监听登录按钮是否禁用
   useEffect(() => {
     setIsLoginDisable(loginButtonDisable);
@@ -148,13 +183,8 @@ export const Login: FunctionComponent<
   });
 
   const switchLogin = () => {
-    if (currLoginType === "pwd") {
-      setCurrLoginType("verify");
-      resetParams();
-    } else {
-      setCurrLoginType("pwd");
-      resetParams();
-    }
+    setCurrLoginType(currLoginType === "pwd" ? "verify" : "pwd");
+    resetParams();
     onLoginTypeClick && onLoginTypeClick();
   };
   //重置
@@ -169,42 +199,66 @@ export const Login: FunctionComponent<
       verify: "",
       verifyErrorText: "",
     };
+    setLoginForm({
+      account: "",
+      password: "",
+      telOrMail: "",
+      verify: "",
+    });
     setLoginParams({ ...loginParams, ...clearObj });
     setIsPrtocal(false);
     clearInterval(timer.current);
     setInCountDown(false);
-    setCountTime(countDownTime);
+    countDownTime && setCountTime(countDownTime);
   };
   useEffect(() => {
     const { account, telOrMail, password, verify, isShowPwdInput } =
       loginParams;
+
     //登录状态可点击情况
-    let status1 =
+    let isPwdNotEmpty =
       currLoginType === "pwd" &&
       account != "" &&
       password != "" &&
       isShowPwdInput;
-    let status2 = currLoginType === "pwd" && account != "" && !isShowPwdInput;
-    let status3 = currLoginType === "verify" && telOrMail != "" && verify != "";
-    //用户自定义输入框slotInput时，登录按钮是否可点击用户控制
-    if (slotProtocolText) {
-      if ((status1 || status2 || status3) && isProtocol && !slotInput) {
-        setIsLoginDisable(false);
-        return;
-      }
-    } else {
-      if ((status1 || status2 || status3) && !slotInput) {
-        setIsLoginDisable(false);
-        return;
+    let isAccountNotEmpty =
+      currLoginType === "pwd" && account != "" && !isShowPwdInput;
+    let isVerfiyNotEmpty =
+      currLoginType === "verify" && telOrMail != "" && verify != "";
+    // 用户自定义输入框slotInput时，登录按钮是否可点击用户控制
+    if (!slotInput) {
+      if (slotProtocolText) {
+        if (
+          (isPwdNotEmpty || isAccountNotEmpty || isVerfiyNotEmpty) &&
+          isProtocol
+        ) {
+          setIsLoginDisable(false);
+          return;
+        }
+      } else {
+        if (isPwdNotEmpty || isAccountNotEmpty || isVerfiyNotEmpty) {
+          setIsLoginDisable(false);
+          return;
+        }
       }
     }
+
     !slotInput && setIsLoginDisable(true);
   }, [loginParams, slotProtocolText, isProtocol, slotInput]);
+  //toast 错误提示监听
+  useEffect(() => {
+    if (showErrorType === "toast" && toastErrorText?.length) {
+      Toast.text(toastErrorText);
+    }
+  }, [toastErrorText]);
 
   const inputOnChange = (value: any, tag: string) => {
-    let params: any = { ...loginParams };
+    let params: LoginParamsProps = { ...loginParams };
+    let form: LoginFormProps = { ...loginForm };
     params[tag] = value;
+    form[tag] = value;
     setLoginParams({ ...loginParams, ...params });
+    setLoginForm({ ...loginForm, ...form });
     onInputChange && onInputChange(value, tag);
   };
 
@@ -212,14 +266,15 @@ export const Login: FunctionComponent<
   const getCode = () => {
     const { telOrMail, getCodeErrorToast } = loginParams;
     //校验手机号和邮箱
-    if (telOrMail.length) {
-      onVerifyBtnClick && onVerifyBtnClick(loginParams);
+    if (telOrMail?.length) {
+      onVerifyBtnClick && onVerifyBtnClick(loginForm, loginParams);
     } else {
       Toast.text(getCodeErrorToast, { duration: 2 });
     }
   };
+  //异步获取验证码，控制倒计时
   useEffect(() => {
-    if (isGetCode && countDownTime) {
+    if (isGetCode && countDownTime && !inCountDown) {
       setCountTime(countDownTime);
       countDown(countDownTime);
     }
@@ -227,6 +282,7 @@ export const Login: FunctionComponent<
 
   // 倒计时
   const countDown = (time: number) => {
+    setCountTime(countTime--);
     setInCountDown(true);
     timer.current = setInterval(() => {
       setCountTime(countTime--);
@@ -246,27 +302,60 @@ export const Login: FunctionComponent<
   };
 
   const loginClick = () => {
-    onLoginBtnClick && onLoginBtnClick(loginParams);
+    onLoginBtnClick && onLoginBtnClick(loginForm, loginParams);
   };
   const inputClear = (tag: string) => {
-    let params: any = loginParams;
+    let params: LoginParamsProps = loginParams;
+    let form: LoginFormProps = { ...loginForm };
     params[tag] = "";
+    form[tag] = "";
     onInputClear && onInputClear(tag);
     setLoginParams({ ...loginParams, ...params });
+    setLoginForm({ ...loginForm, ...form });
   };
 
   const isError = (tag: string) => {
     let name = tag + "ErrorText";
-    return loginParams[name] != "";
+    return loginParams[name] != "" && showErrorType === "bottomMsg";
   };
-
+  //隐藏密码icon
+  const pwdEyesIcon = () => {
+    return (
+      <div
+        className={`${b("hide-icon")}`}
+        onClick={() => {
+          setIsHidePwd(!isHidePwd);
+        }}
+      >
+        <Icon
+          name={isHidePwd ? "marshalling" : "eye"}
+          size="14"
+          color={isHidePwd ? "#ccc" : "#666"}
+        />
+      </div>
+    );
+  };
+  //获取验证码倒计时按钮
+  const countDownTpl = () => {
+    return !inCountDown ? (
+      <div className={`${b("code-box")}`} onClick={getCode}>
+        {loginParams.verifyButtonText}
+      </div>
+    ) : (
+      <div className={classNames([b("code-box"), "disabled"])}>
+        <div className="counts">{countTime}s</div>
+      </div>
+    );
+  };
   const inputTpl = (tag: string) => {
     let placeholder = tag + "Placeholder";
     let errorText = tag + "ErrorText";
 
     return (
-      <div className={`input-wrap ${isError(tag) ? "error" : ""}`}>
-        <div className="input-item">
+      <div
+        className={classNames([b("input-wrap"), isError(tag) ? "error" : ""])}
+      >
+        <div className={`${b("input-item")}`}>
           <Input
             className="nut-input-text"
             border={false}
@@ -282,52 +371,30 @@ export const Login: FunctionComponent<
               inputClear(tag);
             }}
           />
-          {tag === "password" && hasHidePwd ? (
-            <div
-              className="pwd-hide-icon"
-              onClick={() => {
-                setIsHidePwd(!isHidePwd);
-              }}
-            >
-              <Icon
-                name={isHidePwd ? "marshalling" : "eye"}
-                size="14"
-                color={isHidePwd ? "#ccc" : "#666"}
-              />
-            </div>
-          ) : null}
-          {tag === "verify" &&
-            (!inCountDown ? (
-              <div className="code-box" onClick={getCode}>
-                {loginParams.verifyButtonText}
-              </div>
-            ) : (
-              <div className="code-box disabled">
-                <div className="counts">{countTime}s</div>
-              </div>
-            ))}
+          {tag === "password" && hasHidePwd && pwdEyesIcon()}
+          {tag === "verify" && countDownTpl()}
         </div>
-        {tag === "password" && hasForgetPassWord ? (
+        {tag === "password" && hasForgetPassWord && (
           <div className="forget-pwd" onClick={forgetClick}>
             {loginParams.forgetPwdText}
           </div>
-        ) : null}
-        {loginParams[errorText] ? (
+        )}
+        {loginParams[errorText] && (
           <div className="error-msg">{loginParams[errorText]}</div>
-        ) : null}
+        )}
       </div>
     );
   };
 
-  const b = cn2("login");
+  const b = bem("login");
   return (
-    <div className={`${b()} ${className}`} style={style}>
-      {logo ? (
+    <div className={classNames([b(), className])} style={style}>
+      {logo && (
         <div className={`${b("logo")}`}>
           <img src={logo} />
         </div>
-      ) : null}
-      {title ? <div className={`${b("title")}`}>{title}</div> : null}
+      )}
+      {title && <div className={`${b("title")}`}>{title}</div>}
       <div className={`${b("content")}`}>
         {currLoginType == "pwd" ? (
           <>
@@ -340,18 +407,18 @@ export const Login: FunctionComponent<
             {inputTpl("verify")}
           </>
         )}
-        {slotInput ? slotInput : null}
+        {slotInput}
         {slotProtocolText && (
-          <Checkbox
-            className="login-protocal"
-            iconSize={14}
-            checked={isProtocol}
-            onChange={(state) => {
-              setIsPrtocal(state);
-            }}
-          >
-            {slotProtocolText}
-          </Checkbox>
+          <div className={`${b("protocal")}`}>
+            <Checkbox
+              iconSize={14}
+              checked={isProtocol}
+              onChange={(state) => {
+                setIsPrtocal(state);
+              }}
+            ></Checkbox>
+            <div className="customer-protocal">{slotProtocolText}</div>
+          </div>
         )}
       </div>
       <div className={`${b("btn")}`}>
@@ -363,11 +430,11 @@ export const Login: FunctionComponent<
           onClick={loginClick}
           {...buttonProps}
         >
-          {loginButtonText}
+          {loginButtonText ? loginButtonText : locale.login.loginButtonText}
         </Button>
       </div>
       {!isHideSwitchBtn && (
-        <div className="switch-type" onClick={switchLogin}>
+        <div className={`${b("switch-type")}`} onClick={switchLogin}>
           {currLoginType === "verify"
             ? loginParams.switchLoginText1
             : loginParams.switchLoginText2}

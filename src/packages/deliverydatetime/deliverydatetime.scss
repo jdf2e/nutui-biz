@@ -1,6 +1,6 @@
 .nb-delivery-date-time {
     width: 100%;
-    height: calc(100% - 50px - 10px);
+    height: 100%;
     display: flex;
     margin-top: 15px;
 
@@ -55,6 +55,12 @@
                 background-color: #fce0df;
                 border: 1px solid #fa2c19;
                 color: #fa2c19;
+            }
+
+            &--disable {
+                background-color: #cecece;
+                border: 1px solid #cecece;
+                color: #999;
             }
         }
     }

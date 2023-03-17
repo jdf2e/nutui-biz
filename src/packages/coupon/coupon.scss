@@ -1,8 +1,4 @@
-@mixin ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+@import "../../styles/mixins/text-ellipsis.scss";
 .nb-coupon__box {
   display: flex;
   background-size: 100% 100%;
@@ -26,13 +22,13 @@
       overflow: hidden;
       &--maintitle {
         font-size: 14px;
-        @include ellipsis;
+        @include text-ellipsis;
       }
       &--subtitle,
       &--timerange {
         font-size: 12px;
         width: 100%;
-        @include ellipsis;
+        @include text-ellipsis;
       }
     }
     &-usedicon {
@@ -60,7 +56,7 @@
     background: #fff;
     border-radius: 6px 0;
     max-width: 100px;
-    @include ellipsis;
+    @include text-ellipsis;
   }
 }
 .nb-coupon__box--small {
@@ -88,14 +84,14 @@
     }
     &-content {
       width: 100%;
-      @include ellipsis;
+      @include text-ellipsis;
       &--maintitle {
         font-size: 10px;
       }
       &--subtitle {
         color: rgba(250, 44, 25, 0.5);
         font-size: 10px;
-        @include ellipsis;
+        @include text-ellipsis;
       }
     }
   }

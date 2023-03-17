@@ -159,31 +159,3 @@ test('test 操作按钮自定义', async () => {
   fireEvent.click(nutInvoiceTitleListButtonsDelete)
   expect(onDelete).toBeCalled()
 })
-
-test('隐藏所有操作', async () => {
-  const { container } = render(
-    <InvoiceTitleList 
-      data={{
-        isSelected: false,
-        type: 'normal',
-        status: '否决',
-        isShowDefault: true,
-        title: '北京环球影城娱乐信息技术有限公司',
-        companyCode: '91110302MA222LU88A',
-        address: '北京市通州区台湖镇',
-        companyPhone: '88488848',
-        bankDeposit: '中国银行股份有限公司北京分行',
-        bankAccount: '5833 2153 4243 2654'
-      }}
-      isShowEdit = {false}
-      isShowOperate = {false}
-      onClick={() => Toast.text('触发点击事件')}
-    />
-  )
-
-  const nutInvoiceTitleListButtons = container.querySelector('.nb-invoice-title-list__buttons') as HTMLElement
-  const nutIconEdit = container.querySelector('.nb-invoice-title-list .nut-icon-edit') as HTMLElement
-  
-  expect(nutInvoiceTitleListButtons).not.toBeTruthy()
-  expect(nutIconEdit).not.toBeTruthy()
-})

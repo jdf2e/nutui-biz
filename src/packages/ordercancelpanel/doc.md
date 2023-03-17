@@ -408,7 +408,11 @@ export default App;
 import React, { useState } from "react";
 import { Cell, ButtonProps } from "@nutui/nutui-react";
 import { OrderCancelPanel } from "@nutui/nutui-biz";
-
+interface IreasonsObject {
+  key: string;
+  value: string;
+  [x: string]: any;
+}
 const App = () => {
   const cancelReason = [
     {
@@ -439,7 +443,7 @@ const App = () => {
   const [showcheckboxCancelPanel, setShowcheckboxCancelPanel] = useState(false);
   const clickClosePopUpCheckbox = React.useCallback(() => {
     setShowcheckboxCancelPanel(false);
-  }, [showCheckboxCancelPanel]);
+  }, [showcheckboxCancelPanel]);
   const submitBtn = React.useCallback(
     (
       selectedReason: IreasonsObject,

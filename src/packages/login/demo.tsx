@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Login, LoginParamsProps } from "./login";
+import { Login, LoginFormProps, LoginParamsProps } from "./login";
 import { useTranslate } from "../../sites/assets/locale";
 import { Radio, Cell, CellGroup, Input } from "@nutui/nutui-react";
 const { RadioGroup } = Radio;
@@ -22,7 +22,7 @@ const LoginDemo = () => {
     "zh-CN": {
       basic: "基本用法",
       hasProtocol: "有知情同意勾选项",
-      hasCustom: "用户自定义登录框",
+      hasCustom: "用户仅账号登录",
       hasError: "错误提示",
       hasCustomInput: "用户自定义输入框",
       placeholder: "请输入验证码",
@@ -81,16 +81,15 @@ const LoginDemo = () => {
     verify: "",
   });
   const [getVerify, setGetVerify] = useState(false);
+  const [getVerify2, setGetVerify2] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
   const [account, setAccount] = useState("");
+  const [toastText, setToastText] = useState("");
   const [customInput, setCustomInput] = useState("");
   const onChange = (value: any, tag: string) => {
     console.log(tag, value);
-    if (tag === "account") {
-      setAccount(value);
-    }
   };
-  const queryVerifyCode = (formData: LoginParamsProps) => {
+  const queryVerifyCode = (formData: LoginFormProps) => {
     setGetVerify(false);
     console.log("getcode", formData);
     //异步获取校验码成功
@@ -98,166 +97,150 @@ const LoginDemo = () => {
       setGetVerify(true);
     }, 300);
   };
-  const queryLogin = (formData: LoginParamsProps) => {
-    console.log("login", formData);
+  const queryVerifyCode2 = (formData: LoginFormProps) => {
+    setGetVerify2(false);
+    console.log("getcode", formData);
+    //异步获取校验码成功
+    setTimeout(() => {
+      setGetVerify2(true);
+    }, 300);
   };
-  const [radioVal, setRadioVal] = useState("1");
-  const handleChange = (v: any) => {
-    setRadioVal(v);
-    setGetVerify(false);
+  const queryLogin = (formData: LoginFormProps) => {
+    console.log("login", formData);
   };
 
   useEffect(() => {
-    if (radioVal === "5") {
-      if (account.length > 0 && customInput.length > 0) {
-        setIsDisable(false);
-      } else {
-        setIsDisable(true);
-      }
+    if (account.length > 0 && customInput.length > 0) {
+      setIsDisable(false);
+    } else {
+      setIsDisable(true);
     }
   }, [account, customInput]);
 
   return (
     <div className="demo">
-      <CellGroup>
-        <Cell>
-          <RadioGroup
-            value={radioVal}
-            onChange={handleChange}
-            style={{ flexFlow: "wrap" }}
-          >
-            <Radio value="1">{translated.basic}</Radio>
-            <Radio value="2">{translated.hasProtocol}</Radio>
-            <Radio value="3">{translated.hasError}</Radio>
-            <Radio value="4">{translated.hasCustom}</Radio>
-            <Radio value="5">{translated.hasCustomInput}</Radio>
-          </RadioGroup>
-        </Cell>
-      </CellGroup>
+      <h2>{translated.basic}</h2>
+      <Login
+        formParams={formParams}
+        loginType="verify"
+        logo={logoImg}
+        onInputChange={onChange}
+        isGetCode={getVerify}
+        loginButtonText={translated.loginText}
+        onVerifyBtnClick={queryVerifyCode}
+        onLoginBtnClick={queryLogin}
+        countDownTime={30}
+        onForgetBtnClick={() => {
+          console.log("点击忘记密码");
+        }}
+      />
 
-      {radioVal === "1" && (
-        <>
-          <h2>{translated.basic}</h2>
-          <Login
-            formParams={formParams}
-            loginType="verify"
-            logo={logoImg}
-            onInputChange={onChange}
-            isGetCode={getVerify}
-            loginButtonText={translated.loginText}
-            onVerifyBtnClick={queryVerifyCode}
-            onLoginBtnClick={queryLogin}
-            countDownTime={30}
-            onForgetBtnClick={() => {
-              console.log("点击忘记密码");
-            }}
-          />
-        </>
-      )}
-      {radioVal === "2" && (
-        <>
-          <h2>{translated.hasProtocol}</h2>
-          <Login
-            formParams={formParams}
-            loginType="verify"
-            logo={logoImg}
-            onInputChange={onChange}
-            isGetCode={getVerify}
-            onVerifyBtnClick={queryVerifyCode}
-            countDownTime={30}
-            loginButtonText={translated.loginText}
-            slotProtocolText={
-              <div>
-                勾选后代表您已阅读并同意
-                <span style={{ color: "red" }}>《用户隐私政策》</span>
-              </div>
-            }
-          />
-        </>
-      )}
-      {radioVal === "3" && (
-        <>
-          <h2>{translated.hasError}</h2>
-          <Login
-            formParams={formParams3}
-            logo={logoImg}
-            loginType="pwd"
-            onInputChange={onChange}
-            loginButtonText={translated.loginText}
-          />
-        </>
-      )}
-      {radioVal === "4" && (
-        <>
-          <h2>{translated.hasCustom}</h2>
-          <Login
-            formParams={formParams2}
-            title={translated.titleText}
-            loginType="pwd"
-            onInputChange={onChange}
-            isHideSwitchBtn={true}
-            loginButtonText={translated.loginText}
-            slotBottom={
-              <div
-                style={{
-                  color: "#006FFF",
-                  textAlign: "center",
-                  fontSize: "14px",
+      <h2>{translated.hasProtocol}</h2>
+      <Login
+        formParams={formParams}
+        loginType="verify"
+        logo={logoImg}
+        isGetCode={getVerify2}
+        onVerifyBtnClick={queryVerifyCode2}
+        onInputChange={onChange}
+        toastErrorText={toastText}
+        onLoginBtnClick={() => {
+          setToastText("toast 错误提示");
+          setTimeout(() => {
+            setToastText("");
+          }, 2000);
+        }}
+        slotProtocolText={
+          <div>
+            勾选后代表您已阅读并同意
+            <span
+              style={{ color: "red" }}
+              onClick={() => {
+                console.log("protocalClick");
+              }}
+            >
+              《用户隐私政策》
+            </span>
+          </div>
+        }
+      />
+
+      <h2>{translated.hasError}</h2>
+      <Login
+        formParams={formParams3}
+        logo={logoImg}
+        loginType="pwd"
+        showErrorType="bottomMsg"
+        onInputChange={onChange}
+        loginButtonText={translated.loginText}
+      />
+
+      <h2>{translated.hasCustom}</h2>
+      <Login
+        formParams={formParams2}
+        title={translated.titleText}
+        loginType="pwd"
+        onInputChange={onChange}
+        isHideSwitchBtn={true}
+        loginButtonText={translated.loginText}
+      />
+
+      <h2>{translated.hasCustomInput}</h2>
+      <Login
+        formParams={formParams2}
+        title={translated.titleText}
+        loginType="pwd"
+        onInputChange={(value: any, tag: string) => {
+          if (tag === "account") {
+            setAccount(value);
+          }
+        }}
+        isHideSwitchBtn={true}
+        loginButtonDisable={isDisable}
+        loginButtonText={translated.loginText}
+        onInputClear={(tag) => {
+          if (tag === "account") {
+            setAccount("");
+          }
+        }}
+        slotInput={
+          <div className={`nb-login__input-wrap`}>
+            <div className="nb-login__input-item">
+              <Input
+                className="nut-input-text"
+                border={false}
+                defaultValue={customInput}
+                placeholder={translated.placeholder}
+                type="text"
+                clearable
+                onChange={(value) => {
+                  setCustomInput(value);
                 }}
-              >
-                {translated.zhuce}
+                onClear={() => {
+                  setCustomInput("");
+                }}
+              />
+              <div className="nb-login__code-box">
+                <img
+                  style={{ width: "65px", height: "30px" }}
+                  src="https://img12.360buyimg.com/imagetools/jfs/t1/211415/19/9275/14512/61924b82E09366437/cc5cc7297b9073ae.jpg"
+                />
               </div>
-            }
-          />
-        </>
-      )}
-
-      {radioVal === "5" && (
-        <>
-          <h2>{translated.hasCustomInput}</h2>
-          {isDisable}
-          <Login
-            formParams={formParams2}
-            title={translated.titleText}
-            loginType="pwd"
-            onInputChange={onChange}
-            isHideSwitchBtn={true}
-            loginButtonDisable={isDisable}
-            loginButtonText={translated.loginText}
-            onInputClear={(tag) => {
-              if (tag === "account") {
-                setAccount("");
-              }
+            </div>
+          </div>
+        }
+        slotBottom={
+          <div
+            style={{
+              color: "#006FFF",
+              textAlign: "center",
+              fontSize: "14px",
             }}
-            slotInput={
-              <div className={`input-wrap`}>
-                <div className="input-item">
-                  <Input
-                    className="nut-input-text"
-                    border={false}
-                    defaultValue={customInput}
-                    placeholder={translated.placeholder}
-                    type="text"
-                    clearable
-                    onChange={(value) => {
-                      setCustomInput(value);
-                    }}
-                    onClear={() => {
-                      setCustomInput("");
-                    }}
-                  />
-                  <div className="code-box">
-                    <img
-                      style={{ width: "65px", height: "30px" }}
-                      src="https://img12.360buyimg.com/imagetools/jfs/t1/211415/19/9275/14512/61924b82E09366437/cc5cc7297b9073ae.jpg"
-                    />
-                  </div>
-                </div>
-              </div>
-            }
-          />
-        </>
-      )}
+          >
+            {translated.zhuce}
+          </div>
+        }
+      />
     </div>
   );
 };

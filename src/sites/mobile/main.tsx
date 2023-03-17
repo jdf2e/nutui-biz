@@ -6,7 +6,6 @@ import "@/sites/assets/styles/reset.scss";
 import("../../packages/nutui.biz.scss");
 import { isMobile } from "@/sites/assets/util";
 const hash = window.location.hash.substring(2);
-
 if (isMobile) {
   sessionStorage.removeItem("biz-env");
 } else {

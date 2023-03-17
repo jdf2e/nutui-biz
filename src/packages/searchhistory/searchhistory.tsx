@@ -8,7 +8,7 @@ import React, {
 import classNames from 'classnames';
 import {SearchBar, Icon} from '@nutui/nutui-react'
 import { useConfig } from '@/packages/configprovider'
-import {cn2} from '@/utils/bem'
+import bem from '@/utils/bem'
 import { IComponent } from '@/utils/typings'
 
 export type IsearchItem = {
@@ -183,7 +183,7 @@ export const SearchHistory: FunctionComponent<
     </div>
   }
 
-  const b = cn2('search-history')
+  const b = bem('search-history')
 
   return (
     <div className={classNames([b(),className])} style={style} {...rest}>

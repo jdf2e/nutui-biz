@@ -638,3 +638,13 @@ export default App;
 | onClickCloseIcon  | 点击左上角关闭 icon 时触发 | - |
 | onClickOverlay  | 点击遮罩时触发 | - |
 | onClose  | 关闭弹层时触发 | - |
+
+
+### SkuInfo 
+
+| 字段    | 说明                                       | 类型    | 
+|---------|--------------------------------------------|---------|
+| name   | 规格名称                                | string |
+| id   | 商品编号            | number  | 
+| active   | 是否选中            | boolean  | 
+| disable   | 是否置灰            | boolean  | 

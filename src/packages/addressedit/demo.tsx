@@ -91,7 +91,7 @@ const AddressEditDemo = () => {
     namePlaceholder: "请输入收件人姓名",
     isRequired: ["name", "tel"],
     isDefualtAddress: false,
-    errorShowType: "errorMsg",
+    errorShowType: "toast",
   };
 
   const addressData2: Partial<AddressResult> = {
@@ -135,8 +135,6 @@ const AddressEditDemo = () => {
     setRadioVal(v);
   };
 
-
-
   return (
     <div className="demo" style={{ paddingBottom: "100px" }}>
       <>
@@ -154,7 +152,6 @@ const AddressEditDemo = () => {
             </RadioGroup>
           </Cell>
         </CellGroup>
-        {/* <>{renderTpl(radioVal)}</> */}
         {radioVal === "1" && (
           <>
             <h2>{translated.basic}</h2>

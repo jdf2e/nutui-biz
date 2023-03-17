@@ -3,7 +3,7 @@ import React, {
   ReactNode
 } from 'react'
 import classNames from 'classnames';
-import {cn2} from '@/utils/bem'
+import bem from '@/utils/bem'
 import {Button, ButtonProps} from '@nutui/nutui-react'
 
 import { IComponent } from '@/utils/typings'
@@ -33,7 +33,7 @@ export const CartBarButton: FunctionComponent<
     ...props,
   }
 
-  const b = cn2('cart-bar-button')
+  const b = bem('cart-bar-button')
 
   const handleClick = () => {
     onClick()

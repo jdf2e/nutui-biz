@@ -356,9 +356,9 @@ export default App;
 | city | City data | Array | [] |
 | country | Country data | Array | [] |
 | town | Town data | Array | [] |
-| height | Popup height | string、number | `200px` |
-| customAddressTitle  | Custom address title | string | `Select Region` |
-| addressType | address component type, optional `custom`/`custom2` | string | `custom `|
+| height | Popup height | string | number | `200px` |
+| addressTitle  | Custom address title | string | `Select Region` |
+| type | address component type, optional `custom`/`elevator` | string | `custom `|
 
 ### Props data
 
@@ -376,8 +376,9 @@ export default App;
 | addressText | Custom detailed address text | string | `Address` |
 | addressPlaceholder | Custom detailed address placeholder text | string | `street, building number` |
 | addressErrorMsg | Custom detailed address non-null verification error prompt text | string | `This item is required, please fill it out and submit it` |
+| isRequired| Required item settings, optional values ["name", "tel", "region", "address"] |Array | [] |
 |bottomText|Customize the text of the save button at the bottom | string | `Save` |
-| errorShowType| input error prompt type, optional value `toast`/`errorMsg`|string |`toast`|
+| errorShowType| input error prompt type, optional value `errorMsg`/`toast` |string |`errorMsg`|
 | errorToastText| Toast error message content | string | `Please complete the required items`|
 
 ### Props addressInfo

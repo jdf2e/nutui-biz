@@ -6,7 +6,7 @@ import React, {
   ReactNode
 } from 'react'
 import classNames from 'classnames'
-import {cn2} from '@/utils/bem'
+import bem from '@/utils/bem'
 import {getRect} from '@/utils/useClientRect'
 
 import { IComponent } from '@/utils/typings'
@@ -42,7 +42,7 @@ export const CartBar: FunctionComponent<
     ...props,
   }
 
-  const b = cn2('cart-bar')
+  const b = bem('cart-bar')
 
   const [height,setHeight] = useState(0)
 
