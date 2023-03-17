@@ -66,14 +66,14 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
   const b = bem('orderRemark');
 
   const clickOverlay = () => {
-    onClickOverlay && onClickOverlay(innerMark);
+    onClickOverlay?.(innerMark);
   };
   const closeFun = () => {
-    onClose && onClose(innerMark);
+    onClose?.(innerMark);
   };
   const onOpenFun = () => {
     setInnerMark(remark);
-    onOpen && onOpen();
+    onOpen?.();
   };
 
   const clickTag = (tag: string, index: number) => {
@@ -83,20 +83,20 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
     } else {
       innerMarkStr = tag;
     }
-    onClickTag && onClickTag(tag, index, innerMarkStr);
+    onClickTag?.(tag, index, innerMarkStr);
 
     if (innerMarkStr.length > maxLength) {
       innerMarkStr = innerMarkStr.slice(0, maxLength);
     }
     setInnerMark(innerMarkStr);
-    onChange && onChange(innerMarkStr);
+    onChange?.(innerMarkStr);
   };
   const textareaChange = (val: string) => {
     setInnerMark(val);
-    onChange && onChange(val);
+    onChange?.(val);
   };
   const onBtnSubmit = () => {
-    onSubmit && onSubmit(innerMark);
+    onSubmit?.(innerMark);
     setInnerVisible(false);
   };
   useEffect(() => {
