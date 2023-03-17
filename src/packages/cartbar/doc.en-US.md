@@ -19,15 +19,18 @@ import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
 ```ts
 import  React from 'react';
 import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   return (
-    <CartBar>
-      <CartBarIcon text="shop" iconProps={{name: 'shop'}} />
-      <CartBarIcon text="shopping cart" iconProps={{name: 'cart'}} />
-      <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
-      <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
-    </CartBar>
+    <div className="demo">
+      <CartBar>
+        <CartBarIcon text="shop" iconProps={{name: 'shop'}} />
+        <CartBarIcon text="shopping cart" iconProps={{name: 'cart'}} />
+        <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
+        <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
+      </CartBar>
+    </div>
   );
 };
 export default App;
@@ -43,15 +46,18 @@ export default App;
 ```ts
 import  React from 'react';
 import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   return (
-    <CartBar>
-      <CartBarIcon text="shop" iconProps={{name: 'shop'}} badgeProps={{value: '10'}}  />
-      <CartBarIcon text="shopping cart" iconProps={{name: 'cart'}} badgeProps={{dot: true}} />
-      <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
-      <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
-    </CartBar>
+    <div className="demo">
+      <CartBar>
+        <CartBarIcon text="shop" iconProps={{name: 'shop'}} badgeProps={{value: '10'}}  />
+        <CartBarIcon text="shopping cart" iconProps={{name: 'cart'}} badgeProps={{dot: true}} />
+        <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
+        <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
+      </CartBar>
+    </div>
   );
 };
 export default App;
@@ -67,15 +73,18 @@ export default App;
 ```ts
 import  React from 'react';
 import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   return (
-    <CartBar>
-      <CartBarIcon text="shop" iconProps={{name: 'shop', color: 'red'}} />
-      <CartBarIcon text="shopping cart" iconProps={{name: 'cart'}} />
-      <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
-      <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
-    </CartBar>
+    <div className="demo">
+      <CartBar>
+        <CartBarIcon text="shop" iconProps={{name: 'shop', color: 'red'}} />
+        <CartBarIcon text="shopping cart" iconProps={{name: 'cart'}} />
+        <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
+        <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
+      </CartBar>
+    </div>
   );
 };
 export default App;
@@ -91,15 +100,18 @@ export default App;
 ```ts
 import  React from 'react';
 import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   return (
-    <CartBar>
-      <CartBarIcon iconProps={{name: 'shop'}} />
-      <CartBarIcon iconProps={{name: 'cart'}} />
-      <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
-      <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
-    </CartBar>
+    <div className="demo">
+      <CartBar>
+        <CartBarIcon iconProps={{name: 'shop'}} />
+        <CartBarIcon iconProps={{name: 'cart'}} />
+        <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
+        <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
+      </CartBar>
+    </div>
   );
 };
 export default App;
@@ -115,15 +127,18 @@ export default App;
 ```ts
 import  React from 'react';
 import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   return (
-    <CartBar hasCapsuleButtons>
-      <CartBarIcon text="shop" iconProps={{name: 'shop'}} />
-      <CartBarIcon text="shopping cart" iconProps={{name: 'cart'}} />
-      <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
-      <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
-    </CartBar>
+    <div className="demo">
+      <CartBar hasCapsuleButtons>
+        <CartBarIcon text="shop" iconProps={{name: 'shop'}} />
+        <CartBarIcon text="shopping cart" iconProps={{name: 'cart'}} />
+        <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
+        <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
+      </CartBar>
+    </div>
   );
 };
 export default App;
@@ -139,6 +154,7 @@ export default App;
 ```ts
 import  React from 'react';
 import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   const customTopHtml = () => {
@@ -146,12 +162,14 @@ const App = () => {
   }
 
   return (
-    <CartBar top={customTopHtml()}>
-      <CartBarIcon text="shop" iconProps={{name: 'shop'}} />
-      <CartBarIcon text="shopping cart" iconProps={{name: 'cart'}} />
-      <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
-      <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
-    </CartBar>
+    <div className="demo">
+      <CartBar top={customTopHtml()}>
+        <CartBarIcon text="shop" iconProps={{name: 'shop'}} />
+        <CartBarIcon text="shopping cart" iconProps={{name: 'cart'}} />
+        <CartBarButton text="add cart" buttonProps={{type: 'danger'}} />
+        <CartBarButton text="buy it now" buttonProps={{type: 'warning'}} />
+      </CartBar>
+    </div>
   );
 };
 export default App;

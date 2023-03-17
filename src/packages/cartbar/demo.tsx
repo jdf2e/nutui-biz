@@ -3,7 +3,7 @@ import { CartBar } from './cartbar'
 import { CartBarIcon } from '../cartbaricon/cartbaricon'
 import { CartBarButton } from '../cartbarbutton/cartbarbutton'
 import { useTranslate } from '../../sites/assets/locale'
-import './demo.scss'
+import '../../styles/demo.scss'
 
 interface tarnslatedOption {
   basic: string

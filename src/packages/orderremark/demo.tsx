@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslate } from '../../sites/assets/locale';
 import { OrderRemark } from './orderremark';
 import { Cell, Toast } from '@nutui/nutui-react';
-import "./demo.scss"
+import "../../styles/demo.scss"
 interface tarnslatedOption {
   basic: string;
   title: string;
@@ -80,7 +80,7 @@ const OrderRemarkDemo = () => {
     console.log('onClickOverlay', val);
   };
   return (
-    <div className="demo orderremarkDemo">
+    <div className="demo order-remark-demo">
       <h2>{translated.basic}</h2>
       <Cell
         onClick={(e) => setShow(true)}

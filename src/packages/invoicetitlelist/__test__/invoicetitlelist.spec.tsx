@@ -10,14 +10,16 @@ test('test 增值税专用发票', async () => {
       data={{
         isSelected: false,
         type: 'special',
-        status: '通过',
-        isShowDefault: true,
+        status: 'pass',
+        isShowDefault: false,
         title: '北京环球影城娱乐信息技术有限公司',
         companyCode: '91110302MA222LU88A',
         address: '北京市通州区台湖镇',
         companyPhone: '88488848',
         bankDeposit: '中国银行股份有限公司北京分行',
-        bankAccount: '5833 2153 4243 2654'
+        bankAccount: '5833 2153 4243 2654',
+        isDelete: true,
+        isEdit: true
       }}
       onClick={() => Toast.text('触发点击事件')}
       onEdit={() => Toast.text('触发编辑事件')}
@@ -35,46 +37,21 @@ test('test 增值税专用发票', async () => {
   expect(nutInvoiceTitleListMainStatus).toHaveTextContent('通过')
 })
 
-test('test 增值税专用发票-发票状态', async () => {
-  const { container } = render(
-    <InvoiceTitleList 
-      data={{
-        isSelected: false,
-        type: 'special',
-        status: '否决',
-        isShowDefault: true,
-        title: '北京环球影城娱乐信息技术有限公司',
-        companyCode: '91110302MA222LU88A',
-        address: '北京市通州区台湖镇',
-        companyPhone: '88488848',
-        bankDeposit: '中国银行股份有限公司北京分行',
-        bankAccount: '5833 2153 4243 2654'
-      }}
-      onClick={() => Toast.text('触发点击事件')}
-      onEdit={() => Toast.text('触发编辑事件')}
-      onDelete={() => Toast.text('触发删除事件')}
-    />
-  )
-
-  const nutInvoiceTitleListMainStatus = container.querySelector('.nb-invoice-title-list__main-status')
-  
-  expect(nutInvoiceTitleListMainStatus).toHaveClass('veto')
-})
-
 test('test 电子普通发票', async () => {
   const { container } = render(
     <InvoiceTitleList 
       data={{
         isSelected: false,
         type: 'normal',
-        status: '否决',
-        isShowDefault: true,
+        isShowDefault: false,
         title: '北京环球影城娱乐信息技术有限公司',
         companyCode: '91110302MA222LU88A',
         address: '北京市通州区台湖镇',
         companyPhone: '88488848',
         bankDeposit: '中国银行股份有限公司北京分行',
-        bankAccount: '5833 2153 4243 2654'
+        bankAccount: '5833 2153 4243 2654',
+        isDelete: true,
+        isEdit: true
       }}
       onClick={() => Toast.text('触发点击事件')}
       onEdit={() => Toast.text('触发编辑事件')}
@@ -82,27 +59,53 @@ test('test 电子普通发票', async () => {
     />
   )
 
-  const nutInvoiceTitleListMainStatus = container.querySelector('.nb-invoice-title-list__main-status')
-  const nutIconEdit = container.querySelector('.nb-invoice-title-list .nut-icon-edit') as HTMLElement
+  const nutInvoiceTitleListMainStatus = container.querySelector('.nb-invoice-title-list__main-status') as HTMLElement
   
   expect(nutInvoiceTitleListMainStatus).not.toBeTruthy()
-  expect(nutIconEdit).toBeTruthy()
 })
 
-test('test 选中状态', async () => {
+test('test 是否默认', async () => {
   const { container } = render(
     <InvoiceTitleList 
       data={{
-        isSelected: true,
+        isSelected: false,
         type: 'normal',
-        status: '否决',
         isShowDefault: true,
         title: '北京环球影城娱乐信息技术有限公司',
         companyCode: '91110302MA222LU88A',
         address: '北京市通州区台湖镇',
         companyPhone: '88488848',
         bankDeposit: '中国银行股份有限公司北京分行',
-        bankAccount: '5833 2153 4243 2654'
+        bankAccount: '5833 2153 4243 2654',
+        isDelete: true,
+        isEdit: true
+      }}
+      onClick={() => Toast.text('触发点击事件')}
+      onEdit={() => Toast.text('触发编辑事件')}
+      onDelete={() => Toast.text('触发删除事件')}
+    />
+  )
+
+  const nutInvoiceTitleListMainDefault = container.querySelector('.nb-invoice-title-list__main-default') as HTMLElement
+  
+  expect(nutInvoiceTitleListMainDefault).toBeTruthy()
+})
+
+test('test 是否选中', async () => {
+  const { container } = render(
+    <InvoiceTitleList 
+      data={{
+        isSelected: true,
+        type: 'normal',
+        isShowDefault: false,
+        title: '北京环球影城娱乐信息技术有限公司',
+        companyCode: '91110302MA222LU88A',
+        address: '北京市通州区台湖镇',
+        companyPhone: '88488848',
+        bankDeposit: '中国银行股份有限公司北京分行',
+        bankAccount: '5833 2153 4243 2654',
+        isDelete: true,
+        isEdit: true
       }}
       onClick={() => Toast.text('触发点击事件')}
       onEdit={() => Toast.text('触发编辑事件')}
@@ -125,14 +128,15 @@ test('test 操作按钮自定义', async () => {
       data={{
         isSelected: false,
         type: 'normal',
-        status: '否决',
-        isShowDefault: true,
+        isShowDefault: false,
         title: '北京环球影城娱乐信息技术有限公司',
         companyCode: '91110302MA222LU88A',
         address: '北京市通州区台湖镇',
         companyPhone: '88488848',
         bankDeposit: '中国银行股份有限公司北京分行',
-        bankAccount: '5833 2153 4243 2654'
+        bankAccount: '5833 2153 4243 2654',
+        isDelete: true,
+        isEdit: true
       }}
       onClick={onClick}
       onEdit={onEdit}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Tabs, TabPane, Price } from "@nutui/nutui-react"
 import { ProductFeed } from "./productfeed"
 import { useTranslate } from "../../sites/assets/locale"
-import "./demo.scss"
+import "../../styles/demo.scss"
 
 interface T {
   title1: string
@@ -201,7 +201,6 @@ const ProductFeedDemo = () => {
         }}>
           <TabPane title={translated.title1}>
             <ProductFeed
-              className="demo1"
               id="refreshScrollDouble"
               infiniteloadingProps={{
                 hasMore: hasMoreDouble,
@@ -222,7 +221,7 @@ const ProductFeedDemo = () => {
           </TabPane>
           <TabPane title={translated.title2}>
             <ProductFeed
-              className="demo2"
+              className="product-feed-demo2"
               id="refreshScrollSingle"
               data={listSingle}
               infiniteloadingProps={{
@@ -244,7 +243,6 @@ const ProductFeedDemo = () => {
           </TabPane>
           <TabPane title={translated.title3}>
             <ProductFeed
-              className="demo3"
               id="refreshScroll3"
               data={listRefresh}
               infiniteloadingProps={{

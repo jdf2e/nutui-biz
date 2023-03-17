@@ -6,30 +6,29 @@ import React, {
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import { Button, Icon } from '@nutui/nutui-react'
+import { Button } from '@nutui/nutui-react'
 
 import { IComponent } from '@/utils/typings'
 
 export interface Idata {
-  isSelected?: boolean
+  isSelected: boolean
   type: string
   status?: string
-  isShowDefault?: boolean
+  isShowDefault: boolean
   title: string
-  companyCode?: string
-  address?: string
-  companyPhone?: string
-  bankDeposit?: string
-  bankAccount?: string
-  isDelete?: boolean
-  isEdit?: boolean
+  companyCode: string
+  address: string
+  companyPhone: string
+  bankDeposit: string
+  bankAccount: string
+  isDelete: boolean
+  isEdit: boolean
 }
 
 export interface InvoiceTitleListProps extends IComponent {
   data: Idata
   className: string
   style: CSSProperties
-  isShowEdit: boolean
   otherOperate: ReactNode
   onClick: (data: any) => void
   onDelete: (data: any) => void
@@ -37,11 +36,9 @@ export interface InvoiceTitleListProps extends IComponent {
 }
 
 const defaultProps = {
-  isShowEdit: true,
   data: {
     isSelected: false,
     type: 'special',
-    status: '-',
     isShowDefault: true,
     title: '-',
     companyCode: '-',
@@ -51,7 +48,10 @@ const defaultProps = {
     bankAccount: '-',
     isDelete: true,
     isEdit: true
-  }
+  },
+  onClick: (data: any) => {},
+  onDelete: (data: any) => {},
+  onEdit: (data: any) => {}
 } as InvoiceTitleListProps
 
 export const InvoiceTitleList: FunctionComponent<
@@ -61,7 +61,6 @@ export const InvoiceTitleList: FunctionComponent<
   const {
     className,
     style,
-    isShowEdit,
     data,
     otherOperate,
     onClick,
@@ -85,17 +84,13 @@ export const InvoiceTitleList: FunctionComponent<
 
   return (
     <div className={classNames([b(),className])} style={style} {...rest}>
-      <div className={b('main')} onClick={() => onClick && onClick(data)}>
+      <div className={b('main')} onClick={() => onClick(data)}>
         {data.isSelected && <i className="nutui-iconfont nut-icon nut-icon-checked nut-checkbox__icon" style={{fontSize: '18px', width: '18px',height: '18px'}}></i>}
         <div style={{marginLeft: data.isSelected ? '17px' : 0}}>
           <div className={b('main-title')}>
             {data.isShowDefault && <div className={b('main-default')}>默认</div>}
             <div className={b('main-text')}>{data.title}</div>
             {data.type === 'special' && <div className={classNames(b('main-status'), {pass: data.status === 'pass'}, {veto: data.status === 'veto'}, {approval: data.status === 'approval'})}>{statusMap[data.status || 'pass']}</div>}
-            {data.type === 'normal' && data.isEdit && isShowEdit && <Icon name="edit" onClick={e => {
-              e.stopPropagation()
-              onEdit && onEdit(data)
-            }} />}
           </div>
           <ul>
             <li className={b('info')}>
@@ -123,8 +118,8 @@ export const InvoiceTitleList: FunctionComponent<
       </div>
       {(otherOperate || data.isDelete || data.isEdit) && <div className={b('buttons')}>
         {otherOperate}
-        {data.isDelete && <Button className={b('buttons-delete')} onClick={() => onDelete && onDelete(data)}>删除</Button>}
-        {data.isEdit && <Button className={b('buttons-edit')} onClick={() => onEdit && onEdit(data)}>编辑</Button>}
+        {data.isDelete && <Button className={b('buttons-delete')} onClick={() => onDelete(data)}>删除</Button>}
+        {data.isEdit && <Button className={b('buttons-edit')} onClick={() => onEdit(data)}>编辑</Button>}
       </div>}
     </div>
   )

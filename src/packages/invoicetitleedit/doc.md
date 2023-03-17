@@ -14,6 +14,7 @@ import { InvoiceTitleEdit } from '@nutui/nutui-biz';
 ## 代码演示
 
 ### 增值税专用发票
+纳税人识别号不可编辑。
 
 :::demo
 
@@ -21,6 +22,7 @@ import { InvoiceTitleEdit } from '@nutui/nutui-biz';
 import  React from "react";
 import { Toast } from '@nutui/nutui-react'
 import { InvoiceTitleEdit } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   const handleSubmit = (arg: any) => {
@@ -38,10 +40,12 @@ const App = () => {
   }
 
   return (
-    <InvoiceTitleEdit 
-      onSubmit={handleSubmit}
-      onInput={handleInput}
-    />
+    <div className="demo">
+      <InvoiceTitleEdit 
+        onSubmit={handleSubmit}
+        onInput={handleInput}
+      />
+    </div>
   );
 };
 export default App;
@@ -57,6 +61,7 @@ export default App;
 import  React from "react";
 import { Toast } from '@nutui/nutui-react'
 import { InvoiceTitleEdit } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   const handleSubmit = (arg: any) => {
@@ -70,11 +75,13 @@ const App = () => {
   }
 
   return (
-    <InvoiceTitleEdit 
-      onSubmit={handleSubmit}
-      invoiceType="normal"
-      submitButtonText="提交"
-    />
+    <div className="demo">
+      <InvoiceTitleEdit 
+        onSubmit={handleSubmit}
+        invoiceType="normal"
+        submitButtonText="提交"
+      />
+    </div>
   );
 };
 export default App;
@@ -90,6 +97,7 @@ export default App;
 import  React from "react";
 import { Toast } from '@nutui/nutui-react'
 import { InvoiceTitleEdit } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   const handleSubmit = (arg: any) => {
@@ -103,12 +111,14 @@ const App = () => {
   }
 
   return (
-    <InvoiceTitleEdit 
-      onSubmit={handleSubmit}
-      invoiceType="normal"
-      submitButtonText="提交"
-      bottom={<div style={{textAlign: 'center', lineHeight: '40px'}}>我是自定义的底部</div>}
-    />
+    <div className="demo">
+      <InvoiceTitleEdit 
+        onSubmit={handleSubmit}
+        invoiceType="normal"
+        submitButtonText="提交"
+        bottom={<div style={{textAlign: 'center', lineHeight: '40px'}}>我是自定义的底部</div>}
+      />
+    </div>
   );
 };
 export default App;
@@ -133,5 +143,5 @@ export default App;
 ### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
-| onSubmit | 点击提交审批按钮事件 |  event: Event,item |
-| onInput | 发票抬头输入事件 |  event: Event,item |
+| onSubmit | 点击提交审批按钮事件 |  arg: any |
+| onInput | 发票抬头输入事件 |  value: string \| number, event: Event |

@@ -2,7 +2,7 @@ import React from 'react'
 import { InvoiceTitleEdit } from './invoicetitleedit'
 import { useTranslate } from '../../sites/assets/locale'
 import { Toast } from '@nutui/nutui-react'
-import './demo.scss'
+import '../../styles/demo.scss'
 
 interface tarnslatedOption {
   normalInvoice: string;

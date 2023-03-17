@@ -19,9 +19,9 @@ const InvoiceTitleListDemo = () => {
   const [translated] = useTranslate<tarnslatedOption>({
     'zh-CN': {
       title1: '增值税专用发票',
-      title2: '增值税专用发票-发票状态',
-      title3: '电子普通发票',
-      title4: '选中状态',
+      title2: '电子普通发票',
+      title3: '是否默认',
+      title4: '是否选中',
       title5: '操作按钮自定义',
       title6: '隐藏所有操作',
       clicked: '触发点击事件',
@@ -30,9 +30,9 @@ const InvoiceTitleListDemo = () => {
     },
     'en-US': {
       title1: 'Special Invoice',
-      title2: 'Special Invoice-Invoice Status',
-      title3: 'Normal Invoice',
-      title4: 'Selected Status',
+      title2: 'Normal Invoice',
+      title3: 'Is It The Default',
+      title4: 'Is It Selected',
       title5: 'Custom Bottom',
       title6: 'Hide All Operates',
       clicked: 'Clicked',
@@ -50,7 +50,7 @@ const InvoiceTitleListDemo = () => {
               isSelected: false,
               type: 'special',
               status: 'pass',
-              isShowDefault: true,
+              isShowDefault: false,
               title: '北京环球影城娱乐信息技术有限公司',
               companyCode: '91110302MA222LU88A',
               address: '北京市通州区台湖镇',
@@ -77,9 +77,8 @@ const InvoiceTitleListDemo = () => {
           <InvoiceTitleList 
             data={{
               isSelected: false,
-              type: 'special',
-              status: 'veto',
-              isShowDefault: true,
+              type: 'normal',
+              isShowDefault: false,
               title: '北京环球影城娱乐信息技术有限公司',
               companyCode: '91110302MA222LU88A',
               address: '北京市通州区台湖镇',
@@ -107,7 +106,6 @@ const InvoiceTitleListDemo = () => {
             data={{
               isSelected: false,
               type: 'normal',
-              status: 'veto',
               isShowDefault: true,
               title: '北京环球影城娱乐信息技术有限公司',
               companyCode: '91110302MA222LU88A',
@@ -136,8 +134,7 @@ const InvoiceTitleListDemo = () => {
             data={{
               isSelected: true,
               type: 'normal',
-              status: 'veto',
-              isShowDefault: true,
+              isShowDefault: false,
               title: '北京环球影城娱乐信息技术有限公司',
               companyCode: '91110302MA222LU88A',
               address: '北京市通州区台湖镇',
@@ -165,8 +162,7 @@ const InvoiceTitleListDemo = () => {
             data={{
               isSelected: false,
               type: 'normal',
-              status: 'veto',
-              isShowDefault: true,
+              isShowDefault: false,
               title: '北京环球影城娱乐信息技术有限公司',
               companyCode: '91110302MA222LU88A',
               address: '北京市通州区台湖镇',
@@ -195,18 +191,16 @@ const InvoiceTitleListDemo = () => {
             data={{
               isSelected: false,
               type: 'normal',
-              status: 'veto',
-              isShowDefault: true,
+              isShowDefault: false,
               title: '北京环球影城娱乐信息技术有限公司',
               companyCode: '91110302MA222LU88A',
               address: '北京市通州区台湖镇',
               companyPhone: '88488848',
               bankDeposit: '中国银行股份有限公司北京分行',
               bankAccount: '5833 2153 4243 2654',
-              isDelete: true,
-              isEdit: true
+              isDelete: false,
+              isEdit: false
             }}
-            isShowEdit = {false}
             onClick={(data: Idata) => {
               Toast.text('触发点击事件')
               console.log('data', data)

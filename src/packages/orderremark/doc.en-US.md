@@ -20,6 +20,7 @@ import { OrderRemark } from '@nutui/nutui-biz';
 import React, { useState } from 'react';
 import { OrderRemark } from '@nutui/nutui-biz';
 import { Cell, Toast } from '@nutui/nutui-react';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 const App = () => {
   const [show, setShow] = useState(false);
   const [mark, setMark] = useState('');
@@ -51,6 +52,7 @@ export default App;
 import React, { useState } from 'react';
 import { OrderRemark } from '@nutui/nutui-biz';
 import { Cell, Toast } from '@nutui/nutui-react';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 const App = () => {
   const [show, setShow] = useState(false);
   const [mark, setMark] = useState('');
@@ -91,6 +93,7 @@ export default App;
 import React, { useState } from 'react';
 import { OrderRemark } from '@nutui/nutui-biz';
 import { Cell, Toast } from '@nutui/nutui-react';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 const App = () => {
   const [show, setShow] = useState(false);
   const [mark, setMark] = useState('');
@@ -132,6 +135,7 @@ export default App;
 import React, { useState } from 'react';
 import { OrderRemark } from '@nutui/nutui-biz';
 import { Cell, Toast } from '@nutui/nutui-react';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 const App = () => {
   const [show, setShow] = useState(false);
   const [mark, setMark] = useState('');

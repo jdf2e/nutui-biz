@@ -39,32 +39,32 @@ export interface Idata {
 const App = () => {
   return (
     <InvoiceTitleList 
-        data={{
-            isSelected: false,
-            type: 'special',
-            status: '通过',
-            isShowDefault: true,
-            title: '北京环球影城娱乐信息技术有限公司',
-            companyCode: '91110302MA222LU88A',
-            address: '北京市通州区台湖镇',
-            companyPhone: '88488848',
-            bankDeposit: '中国银行股份有限公司北京分行',
-            bankAccount: '5833 2153 4243 2654',
-            isDelete: true,
-            isEdit: true
-        }}
-        onClick={(data: Idata) => {
-          Toast.text('触发点击事件')
-          console.log('data', data)
-        }}
-        onEdit={(data: Idata) => {
-          Toast.text('触发编辑事件')
-          console.log('data', data)
-        }}
-        onDelete={(data: Idata) => {
-          Toast.text('触发删除事件')
-          console.log('data', data)
-        }}
+      data={{
+        isSelected: false,
+        type: 'special',
+        status: 'pass',
+        isShowDefault: false,
+        title: '北京环球影城娱乐信息技术有限公司',
+        companyCode: '91110302MA222LU88A',
+        address: '北京市通州区台湖镇',
+        companyPhone: '88488848',
+        bankDeposit: '中国银行股份有限公司北京分行',
+        bankAccount: '5833 2153 4243 2654',
+        isDelete: true,
+        isEdit: true
+      }}
+      onClick={(data: Idata) => {
+        Toast.text('触发点击事件')
+        console.log('data', data)
+      }}
+      onEdit={(data: Idata) => {
+        Toast.text('触发编辑事件')
+        console.log('data', data)
+      }}
+      onDelete={(data: Idata) => {
+        Toast.text('触发删除事件')
+        console.log('data', data)
+      }}
     />
   );
 };
@@ -72,68 +72,6 @@ export default App;
 ```
 
 :::
-
-### 增值税专用发票-发票状态
-
-:::demo
-
-```ts
-import  React from 'react';
-import { Toast } from '@nutui/nutui-react';
-import { InvoiceTitleList } from '@nutui/nutui-biz';
-
-export interface Idata {
-  isSelected?: boolean
-  type: string
-  status?: string
-  isShowDefault?: boolean
-  title: string
-  companyCode?: string
-  address?: string
-  companyPhone?: string
-  bankDeposit?: string
-  bankAccount?: string
-  isDelete?: boolean
-  isEdit?: boolean
-}
-
-const App = () => {
-  return (
-    <InvoiceTitleList 
-        data={{
-            isSelected: false,
-            type: 'special',
-            status: '否决',
-            isShowDefault: true,
-            title: '北京环球影城娱乐信息技术有限公司',
-            companyCode: '91110302MA222LU88A',
-            address: '北京市通州区台湖镇',
-            companyPhone: '88488848',
-            bankDeposit: '中国银行股份有限公司北京分行',
-            bankAccount: '5833 2153 4243 2654',
-            isDelete: true,
-            isEdit: true
-        }}
-        onClick={(data: Idata) => {
-          Toast.text('触发点击事件')
-          console.log('data', data)
-        }}
-        onEdit={(data: Idata) => {
-          Toast.text('触发编辑事件')
-          console.log('data', data)
-        }}
-        onDelete={(data: Idata) => {
-          Toast.text('触发删除事件')
-          console.log('data', data)
-        }}
-    />
-  );
-};
-export default App;
-```
-
-:::
-
 
 ### 电子普通发票
 
@@ -163,18 +101,17 @@ const App = () => {
   return (
     <InvoiceTitleList 
         data={{
-            isSelected: false,
-            type: 'normal',
-            status: '否决',
-            isShowDefault: true,
-            title: '北京环球影城娱乐信息技术有限公司',
-            companyCode: '91110302MA222LU88A',
-            address: '北京市通州区台湖镇',
-            companyPhone: '88488848',
-            bankDeposit: '中国银行股份有限公司北京分行',
-            bankAccount: '5833 2153 4243 2654',
-            isDelete: true,
-            isEdit: true
+          isSelected: false,
+          type: 'normal',
+          isShowDefault: false,
+          title: '北京环球影城娱乐信息技术有限公司',
+          companyCode: '91110302MA222LU88A',
+          address: '北京市通州区台湖镇',
+          companyPhone: '88488848',
+          bankDeposit: '中国银行股份有限公司北京分行',
+          bankAccount: '5833 2153 4243 2654',
+          isDelete: true,
+          isEdit: true
         }}
         onClick={(data: Idata) => {
           Toast.text('触发点击事件')
@@ -197,7 +134,7 @@ export default App;
 :::
 
 
-### 选中状态
+### 是否默认
 
 :::demo
 
@@ -224,32 +161,92 @@ export interface Idata {
 const App = () => {
   return (
     <InvoiceTitleList 
-        data={{
-            isSelected: true,
-            type: 'normal',
-            status: '否决',
-            isShowDefault: true,
-            title: '北京环球影城娱乐信息技术有限公司',
-            companyCode: '91110302MA222LU88A',
-            address: '北京市通州区台湖镇',
-            companyPhone: '88488848',
-            bankDeposit: '中国银行股份有限公司北京分行',
-            bankAccount: '5833 2153 4243 2654',
-            isDelete: true,
-            isEdit: true
-        }}
-        onClick={(data: Idata) => {
-          Toast.text('触发点击事件')
-          console.log('data', data)
-        }}
-        onEdit={(data: Idata) => {
-          Toast.text('触发编辑事件')
-          console.log('data', data)
-        }}
-        onDelete={(data: Idata) => {
-          Toast.text('触发删除事件')
-          console.log('data', data)
-        }}
+      data={{
+        isSelected: false,
+        type: 'normal',
+        isShowDefault: true,
+        title: '北京环球影城娱乐信息技术有限公司',
+        companyCode: '91110302MA222LU88A',
+        address: '北京市通州区台湖镇',
+        companyPhone: '88488848',
+        bankDeposit: '中国银行股份有限公司北京分行',
+        bankAccount: '5833 2153 4243 2654',
+        isDelete: true,
+        isEdit: true
+      }}
+      onClick={(data: Idata) => {
+        Toast.text('触发点击事件')
+        console.log('data', data)
+      }}
+      onEdit={(data: Idata) => {
+        Toast.text('触发编辑事件')
+        console.log('data', data)
+      }}
+      onDelete={(data: Idata) => {
+        Toast.text('触发删除事件')
+        console.log('data', data)
+      }}
+    />
+  );
+};
+export default App;
+```
+
+:::
+
+
+### 是否选中
+
+:::demo
+
+```ts
+import  React from 'react';
+import { Toast } from '@nutui/nutui-react';
+import { InvoiceTitleList } from '@nutui/nutui-biz';
+
+export interface Idata {
+  isSelected?: boolean
+  type: string
+  status?: string
+  isShowDefault?: boolean
+  title: string
+  companyCode?: string
+  address?: string
+  companyPhone?: string
+  bankDeposit?: string
+  bankAccount?: string
+  isDelete?: boolean
+  isEdit?: boolean
+}
+
+const App = () => {
+  return (
+    <InvoiceTitleList 
+      data={{
+        isSelected: true,
+        type: 'normal',
+        isShowDefault: false,
+        title: '北京环球影城娱乐信息技术有限公司',
+        companyCode: '91110302MA222LU88A',
+        address: '北京市通州区台湖镇',
+        companyPhone: '88488848',
+        bankDeposit: '中国银行股份有限公司北京分行',
+        bankAccount: '5833 2153 4243 2654',
+        isDelete: true,
+        isEdit: true
+      }}
+      onClick={(data: Idata) => {
+        Toast.text('触发点击事件')
+        console.log('data', data)
+      }}
+      onEdit={(data: Idata) => {
+        Toast.text('触发编辑事件')
+        console.log('data', data)
+      }}
+      onDelete={(data: Idata) => {
+        Toast.text('触发删除事件')
+        console.log('data', data)
+      }}
     />
   );
 };
@@ -288,33 +285,32 @@ export interface Idata {
 const App = () => {
   return (
     <InvoiceTitleList 
-        data={{
-            isSelected: false,
-            type: 'normal',
-            status: '否决',
-            isShowDefault: true,
-            title: '北京环球影城娱乐信息技术有限公司',
-            companyCode: '91110302MA222LU88A',
-            address: '北京市通州区台湖镇',
-            companyPhone: '88488848',
-            bankDeposit: '中国银行股份有限公司北京分行',
-            bankAccount: '5833 2153 4243 2654',
-            isDelete: true,
-            isEdit: true
-        }}
-        onClick={(data: Idata) => {
-          Toast.text('触发点击事件')
-          console.log('data', data)
-        }}
-        onEdit={(data: Idata) => {
-          Toast.text('触发编辑事件')
-          console.log('data', data)
-        }}
-        onDelete={(data: Idata) => {
-          Toast.text('触发删除事件')
-          console.log('data', data)
-        }}
-        otherOperate = {<Button onClick={() => Toast.success('同步成功')}>同步到电子发票</Button>}
+      data={{
+        isSelected: false,
+        type: 'normal',
+        isShowDefault: false,
+        title: '北京环球影城娱乐信息技术有限公司',
+        companyCode: '91110302MA222LU88A',
+        address: '北京市通州区台湖镇',
+        companyPhone: '88488848',
+        bankDeposit: '中国银行股份有限公司北京分行',
+        bankAccount: '5833 2153 4243 2654',
+        isDelete: true,
+        isEdit: true
+      }}
+      onClick={(data: Idata) => {
+        Toast.text('触发点击事件')
+        console.log('data', data)
+      }}
+      onEdit={(data: Idata) => {
+        Toast.text('触发编辑事件')
+        console.log('data', data)
+      }}
+      onDelete={(data: Idata) => {
+        Toast.text('触发删除事件')
+        console.log('data', data)
+      }}
+      otherOperate = {<Button onClick={() => Toast.success('同步成功')}>同步到电子发票</Button>}
     />
   );
 };
@@ -354,18 +350,16 @@ const App = () => {
       data={{
         isSelected: false,
         type: 'normal',
-        status: '否决',
-        isShowDefault: true,
+        isShowDefault: false,
         title: '北京环球影城娱乐信息技术有限公司',
         companyCode: '91110302MA222LU88A',
         address: '北京市通州区台湖镇',
         companyPhone: '88488848',
         bankDeposit: '中国银行股份有限公司北京分行',
         bankAccount: '5833 2153 4243 2654',
-        isDelete: true,
-        isEdit: true
+        isDelete: false,
+        isEdit: false
       }}
-      isShowEdit = {false}
       onClick={(data: Idata) => {
         Toast.text('触发点击事件')
         console.log('data', data)
@@ -386,7 +380,6 @@ export default App;
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
 | data   | 发票信息                                 | object  | -         |
-| isShowEdit     | 右上角是否展示编辑按钮，适用于电子普通发票                   | boolean  | `true`    |
 | otherOperate | 扩展其他操作                         | ReactNode  | -      |
 
 ### Data 字段说明

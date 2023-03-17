@@ -19,28 +19,31 @@ import { HorizontalScrolling } from '@nutui/nutui-biz';
 import  React from 'react';
 import { Cell, Icon } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
 
   return (
-    <Cell
-      className="nut-cell-right-zero"
-    >
-      <HorizontalScrolling>
-        {[1, 2, 3, 4, 5, 6].map((item) => {
-          return (
-            <div   
-              className="nut-biz-horizontalscrolling__contain-item"
-              key={item}
-            >
-              <img
-                src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
-              />
-            </div>
-          )
-        })}
-      </HorizontalScrolling>
-    </Cell>
+    <div className="demo">
+      <Cell
+        className="nut-cell-right-zero"
+      >
+        <HorizontalScrolling>
+          {[1, 2, 3, 4, 5, 6].map((item) => {
+            return (
+              <div   
+                className="nut-biz-horizontalscrolling__contain-item"
+                key={item}
+              >
+                <img
+                  src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
+                />
+              </div>
+            )
+          })}
+        </HorizontalScrolling>
+      </Cell>
+    </div>
   );
 };
 export default App;
@@ -56,28 +59,31 @@ export default App;
 import  React from 'react';
 import { Cell, Icon } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
 
   return (
-    <Cell
-      className="nut-cell-left-zero"
-    >
-      <HorizontalScrolling maskPosition="left">
-        {[1, 2, 3, 4, 5, 6].map((item) => {
-          return (
-            <div   
-              className="nut-biz-horizontalscrolling__contain-item"
-              key={item}
-            >
-              <img
-                src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
-              />
-            </div>
-          )
-        })}
-      </HorizontalScrolling>
-    </Cell>
+    <div className="demo">
+      <Cell
+        className="nut-cell-left-zero"
+      >
+        <HorizontalScrolling maskPosition="left">
+          {[1, 2, 3, 4, 5, 6].map((item) => {
+            return (
+              <div   
+                className="nut-biz-horizontalscrolling__contain-item"
+                key={item}
+              >
+                <img
+                  src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
+                />
+              </div>
+            )
+          })}
+        </HorizontalScrolling>
+      </Cell>
+    </div>
   );
 };
 export default App;
@@ -93,36 +99,39 @@ export default App;
 import  React from 'react';
 import { Cell, Icon } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
 
   return (
-    <Cell
-      className="nut-cell-left-zero"
-    >
-      <HorizontalScrolling
-        maskPosition="left"
-        maskShadowType="shadow"
-        iconProps={{
-          name: "more-x",
-          color: "#fa2c19",
-          size: "26"
-        }}
+    <div className="demo">
+      <Cell
+        className="nut-cell-left-zero"
       >
-        {[1, 2, 3, 4, 5, 6].map((item) => {
-          return (
-            <div   
-              className="nut-biz-horizontalscrolling__contain-item"
-              key={item}
-            >
-              <img
-                src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
-              />
-            </div>
-          )
-        })}
-      </HorizontalScrolling>
-    </Cell>
+        <HorizontalScrolling
+          maskPosition="left"
+          maskShadowType="shadow"
+          iconProps={{
+            name: "more-x",
+            color: "#fa2c19",
+            size: "26"
+          }}
+        >
+          {[1, 2, 3, 4, 5, 6].map((item) => {
+            return (
+              <div   
+                className="nut-biz-horizontalscrolling__contain-item"
+                key={item}
+              >
+                <img
+                  src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
+                />
+              </div>
+            )
+          })}
+        </HorizontalScrolling>
+      </Cell>
+    </div>
   );
 };
 export default App;
@@ -138,38 +147,41 @@ export default App;
 import  React from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
 
   return (
-    <Cell
-      className="nut-cell-right-zero"
-    >
-      <HorizontalScrolling        
-        maskShadowType="transparent"  
-        maskWidth={50}
-        maskDistance={10}
-        maskContent={
-        <div className="nut-biz-horizontalscrolling__mask-box buy-price">
-          <div><i>￥</i>199</div>
-          <div>共3件</div>
-        </div>
-      }
+    <div className="demo">
+      <Cell
+        className="nut-cell-right-zero"
       >
-        {[1, 2, 3, 4, 5, 6].map((item) => {
-          return (
-            <div   
-              className="nut-biz-horizontalscrolling__contain-item"
-              key={item}
-            >
-              <img
-                src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
-              />
-            </div>
-          )
-        })}
-      </HorizontalScrolling>
-    </Cell>
+        <HorizontalScrolling        
+          maskShadowType="transparent"  
+          maskWidth={50}
+          maskDistance={10}
+          maskContent={
+          <div className="nut-biz-horizontalscrolling__mask-box buy-price">
+            <div><i>￥</i>199</div>
+            <div>共3件</div>
+          </div>
+        }
+        >
+          {[1, 2, 3, 4, 5, 6].map((item) => {
+            return (
+              <div   
+                className="nut-biz-horizontalscrolling__contain-item"
+                key={item}
+              >
+                <img
+                  src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
+                />
+              </div>
+            )
+          })}
+        </HorizontalScrolling>
+      </Cell>
+    </div>
   );
 };
 export default App;
@@ -185,38 +197,41 @@ export default App;
 import  React from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
 
   return (
-    <Cell
-      className="nut-cell-left-zero"
-    >
-      <HorizontalScrolling 
-        maskShadowType="shadow" 
-        maskPosition="left" 
-        maskWidth={40}
-        className="custom-float"
-        maskContent={
-          <div className="more-box">
-            查看更多
-          </div>
-        }
+    <div className="demo">
+      <Cell
+        className="nut-cell-left-zero"
       >
-        {[1, 2, 3, 4, 5, 6].map((item) => {
-          return (
-            <div   
-              className="nut-biz-horizontalscrolling__contain-item"
-              key={item}
-            >
-              <img
-                src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
-              />
+        <HorizontalScrolling 
+          maskShadowType="shadow" 
+          maskPosition="left" 
+          maskWidth={40}
+          className="custom-float"
+          maskContent={
+            <div className="more-box">
+              查看更多
             </div>
-          )
-        })}
-      </HorizontalScrolling>
-    </Cell>
+          }
+        >
+          {[1, 2, 3, 4, 5, 6].map((item) => {
+            return (
+              <div   
+                className="nut-biz-horizontalscrolling__contain-item"
+                key={item}
+              >
+                <img
+                  src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
+                />
+              </div>
+            )
+          })}
+        </HorizontalScrolling>
+      </Cell>
+    </div>
   );
 };
 export default App;
@@ -230,6 +245,7 @@ export default App;
 import  React from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
 
@@ -267,6 +283,7 @@ export default App;
 import  React from 'react';
 import { Cell, Icon } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
 
@@ -279,26 +296,28 @@ const App = () => {
   }
 
   return (
-    <Cell>
-      <HorizontalScrolling 
-        maskShadowType="shadow" 
-        onClickMask={onChange}
-        onScrollRight={onScroll}
-      >
-        {[1, 2, 3, 4, 5, 6].map((item) => {
-          return (
-            <div   
-              className="nut-biz-horizontalscrolling__contain-item"
-              key={item}
-            >
-              <img
-                src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
-              />
-            </div>
-          )
-        })}
-      </HorizontalScrolling>
-    </Cell>
+    <div className="demo">
+      <Cell>
+        <HorizontalScrolling 
+          maskShadowType="shadow" 
+          onClickMask={onChange}
+          onScrollRight={onScroll}
+        >
+          {[1, 2, 3, 4, 5, 6].map((item) => {
+            return (
+              <div   
+                className="nut-biz-horizontalscrolling__contain-item"
+                key={item}
+              >
+                <img
+                  src="https://img13.360buyimg.com/imagetools/s140x140_jfs/t1/209493/27/20842/369749/6260d2eeE02eb253c/97386232ecf1c1ef.jpg"
+                />
+              </div>
+            )
+          })}
+        </HorizontalScrolling>
+      </Cell>
+    </div>
   );
 };
 export default App;

@@ -20,13 +20,16 @@ import { SettleBar } from '@nutui/nutui-biz';
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 import { Toast } from '@nutui/nutui-react';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   return (
-    <SettleBar
-      total={100}
-      onClickButton ={() => Toast.text('点击按钮')}
-    />
+    <div className="demo">
+      <SettleBar
+        total={100}
+        onClickButton ={() => Toast.text('点击按钮')}
+      />
+    </div>
   );
 };
 export default App;
@@ -43,14 +46,17 @@ export default App;
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 import { Toast } from '@nutui/nutui-react';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   return (
-    <SettleBar 
-      total={100}
-      totalAlign="left" 
-      onClickButton ={() => Toast.text('点击按钮')}
-    />
+    <div className="demo">
+      <SettleBar 
+        total={100}
+        totalAlign="left" 
+        onClickButton ={() => Toast.text('点击按钮')}
+      />
+    </div>
   );
 };
 export default App;
@@ -66,13 +72,16 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   return (
-    <SettleBar 
-      total={100}
-      disabled 
-    />
+    <div className="demo">
+      <SettleBar 
+        total={100}
+        disabled 
+      />
+    </div>
   );
 };
 export default App;
@@ -88,13 +97,16 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   return (
-    <SettleBar 
-      total={100}
-      loading 
-    />
+    <div className="demo">
+      <SettleBar 
+        total={100}
+        loading 
+      />
+    </div>
   );
 };
 export default App;
@@ -111,17 +123,20 @@ export default App;
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 import { Toast } from '@nutui/nutui-react';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   return (
-    <SettleBar 
-      total={100}
-      customSelectAll="" 
-      showZero={false} 
-      totalText="total" 
-      settleButtonText="submit order" 
-      onClickButton ={() => Toast.text('点击按钮')}
-    />
+    <div className="demo">
+      <SettleBar 
+        total={100}
+        customSelectAll="" 
+        showZero={false} 
+        totalText="total" 
+        settleButtonText="submit order" 
+        onClickButton ={() => Toast.text('点击按钮')}
+      />
+    </div>
   );
 };
 export default App;
@@ -138,14 +153,17 @@ export default App;
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 import { Toast } from '@nutui/nutui-react';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   return (
-    <SettleBar 
-      total={100}
-      settleCount="100" 
-      onClickButton ={() => Toast.text('点击按钮')}
-    />
+    <div className="demo">
+      <SettleBar 
+        total={100}
+        settleCount="100" 
+        onClickButton ={() => Toast.text('点击按钮')}
+      />
+    </div>
   );
 };
 export default App;
@@ -162,14 +180,17 @@ export default App;
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 import { Toast } from '@nutui/nutui-react';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   return (
-    <SettleBar 
-      total={100}
-      customTotalExtra={<div style={{fontSize: '12px'}}>reduced ¥30.00</div>} 
-      onClickButton ={() => Toast.text('点击按钮')}
-    />
+    <div className="demo">
+      <SettleBar 
+        total={100}
+        customTotalExtra={<div style={{fontSize: '12px'}}>reduced ¥30.00</div>} 
+        onClickButton ={() => Toast.text('点击按钮')}
+      />
+    </div>
   );
 };
 export default App;
@@ -186,6 +207,7 @@ export default App;
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 import { Toast } from '@nutui/nutui-react';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   const customWarningHtml = () => {
@@ -193,11 +215,13 @@ const App = () => {
   }
   
   return (
-    <SettleBar 
-      total={100}
-      customWarning={customWarningHtml()} 
-      onClickButton ={() => Toast.text('点击按钮')}
-    />
+    <div className="demo">
+      <SettleBar 
+        total={100}
+        customWarning={customWarningHtml()} 
+        onClickButton ={() => Toast.text('点击按钮')}
+      />
+    </div>
   );
 };
 export default App;

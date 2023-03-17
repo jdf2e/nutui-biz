@@ -20,6 +20,7 @@ import { Delivery } from '@nutui/nutui-biz';
 import React, { useState, ReactNode } from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { Delivery } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 interface DeliveryBaseType {
     label: string;
     text: ReactNode;
@@ -148,7 +149,7 @@ const App = () => {
   }
 
   return (
-    <>
+    <div className="demo">
         <Cell
             title="请选择"
             desc={desc1}
@@ -163,7 +164,7 @@ const App = () => {
             onClose={() => show1(false)}
             onSure={(item: DateTimesType | null, type: string) => { sure1(item, type, deliveryDateData1) }}
         ></Delivery>
-    </>
+    </div>
   );
 };
 export default App;
@@ -179,6 +180,7 @@ export default App;
 import React, { useState, ReactNode } from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { Delivery } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 interface DeliveryBaseType {
     label: string;
     text: ReactNode;
@@ -406,7 +408,7 @@ const App = () => {
   }
 
   return (
-    <>
+    <div className="demo">
         <Cell
             title="请选择"
             desc={desc2}
@@ -419,7 +421,7 @@ const App = () => {
             onClose={() => show2(false)}
             onSure={(item: DateTimesType | null, type: string) => { sure2(item, type, deliveryDateData2) }}
         ></Delivery>
-    </>
+    </div>
   );
 };
 export default App;
@@ -433,6 +435,7 @@ export default App;
 import React, { useState, ReactNode } from 'react';
 import { Cell, Popup } from '@nutui/nutui-react';
 import { Delivery, DeliveryDate } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 interface DeliveryBaseType {
     label: string;
     text: ReactNode;
@@ -531,7 +534,7 @@ const App = () => {
     setDesc3(item.text as string);
   }
   return (
-    <>
+    <div className="demo">
         <Cell
             title="请选择"
             desc={desc3}
@@ -567,7 +570,7 @@ const App = () => {
                 onSelect={(item: DateType) => { handleDeliveryDate3(item) }}
             ></DeliveryDate>
         </Popup>
-    </>
+    </div>
   );
 };
 export default App;
@@ -583,6 +586,7 @@ export default App;
 import React, { useState, ReactNode } from 'react';
 import { Cell, Popup } from '@nutui/nutui-react';
 import { Delivery, DeliveryDateTime } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 interface DeliveryBaseType {
     label: string;
@@ -690,7 +694,7 @@ const App = () => {
     setDesc4(`${item.title},${item.children[0].text}`);
   }
   return (
-    <>
+    <div className="demo">
         <Cell
             title="请选择"
             desc={desc4}
@@ -726,7 +730,7 @@ const App = () => {
                 onSelect={(item: DateTimeType) => { handleDeliveryDate4(item, deliveryDateData4) }}
             ></DeliveryDateTime>
         </Popup>
-    </>
+    </div>
   );
 };
 export default App;
@@ -742,6 +746,7 @@ export default App;
 import React, { useState, ReactNode } from 'react';
 import { Cell, Popup } from '@nutui/nutui-react';
 import { DeliveryDate } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 interface DeliveryBaseType {
     label: string;
@@ -834,7 +839,7 @@ const App = () => {
   }
 
   return (
-    <>
+    <div className="demo">
         <Cell
             title="请选择"
             desc={desc5}
@@ -857,7 +862,7 @@ const App = () => {
                 onSelect={(item: DateType) => { handleDeliveryDate5(item) }}
             ></DeliveryDate>
         </Popup>
-    </>
+    </div>
   );
 };
 export default App;

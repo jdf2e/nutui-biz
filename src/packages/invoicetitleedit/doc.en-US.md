@@ -14,6 +14,7 @@ import { InvoiceTitleEdit } from '@nutui/nutui-biz';
 ## Demo
 
 ### Special Invoice
+Company code cannot be edited.
 
 :::demo
 
@@ -21,6 +22,7 @@ import { InvoiceTitleEdit } from '@nutui/nutui-biz';
 import  React from "react";
 import { Toast } from '@nutui/nutui-react'
 import { InvoiceTitleEdit } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   const handleSubmit = (arg: any) => {
@@ -38,10 +40,12 @@ const App = () => {
   }
 
   return (
-    <InvoiceTitleEdit 
-      onSubmit={handleSubmit}
-      onInput={handleInput}
-    />
+    <div className="demo">
+      <InvoiceTitleEdit 
+        onSubmit={handleSubmit}
+        onInput={handleInput}
+      />
+    </div>
   );
 };
 export default App;
@@ -57,6 +61,7 @@ export default App;
 import  React from "react";
 import { Toast } from '@nutui/nutui-react'
 import { InvoiceTitleEdit } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   const handleSubmit = (arg: any) => {
@@ -70,11 +75,13 @@ const App = () => {
   }
 
   return (
-    <InvoiceTitleEdit 
-      onSubmit={handleSubmit}
-      invoiceType="normal"
-      submitButtonText="submit"
-    />
+    <div className="demo">
+      <InvoiceTitleEdit 
+        onSubmit={handleSubmit}
+        invoiceType="normal"
+        submitButtonText="submit"
+      />
+    </div>
   );
 };
 export default App;
@@ -90,6 +97,7 @@ export default App;
 import  React from "react";
 import { Toast } from '@nutui/nutui-react'
 import { InvoiceTitleEdit } from '@nutui/nutui-biz';
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
   const handleSubmit = (arg: any) => {
@@ -103,12 +111,14 @@ const App = () => {
   }
   
   return (
-    <InvoiceTitleEdit 
-      onSubmit={handleSubmit}
-      invoiceType="normal"
-      submitButtonText="submit"
-      bottom={<div style={{textAlign: 'center', lineHeight: '40px'}}>Custom Bottom</div>}
-    />
+    <div className="demo">
+      <InvoiceTitleEdit 
+        onSubmit={handleSubmit}
+        invoiceType="normal"
+        submitButtonText="submit"
+        bottom={<div style={{textAlign: 'center', lineHeight: '40px'}}>Custom Bottom</div>}
+      />
+    </div>
   );
 };
 export default App;
@@ -133,5 +143,5 @@ export default App;
 ### Events
 | Attribute | Description | Arguments |
 |----- | ----- | -----  |
-| onSubmit | Submit event |  event: Event,item |
-| onInput | Invoice header input event |  event: Event,item |
+| onSubmit | Submit event |  arg: any |
+| onInput | Invoice header input event |  value: string \| number, event: Event|

@@ -6,6 +6,7 @@ import React, {
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
+import { numericProp } from '@/utils/props'
 
 import { IComponent } from '@/utils/typings'
 import { Form, Radio, Input, Button, ButtonProps } from '@nutui/nutui-react'
@@ -19,8 +20,13 @@ export interface InvoiceTitleEditProps extends IComponent {
   buttonProps: Partial<Omit<ButtonProps, "type | block">>;
   submitButtonText: string
   onSubmit: (arg: any) => void
-  onInput: () => void;
+  onInput: (value: numericProp, event: Event) => void;
 }
+
+const defaultProps = {
+  onSubmit: (arg: any) => {},
+  onInput: (value: numericProp, event: Event) => {}
+} as InvoiceTitleEditProps
 
 export const InvoiceTitleEdit: FunctionComponent<
   Partial<InvoiceTitleEditProps>
@@ -37,6 +43,7 @@ export const InvoiceTitleEdit: FunctionComponent<
     onInput,
     ...rest
   } = {
+    ...defaultProps,
     ...props
   }
 
@@ -45,11 +52,11 @@ export const InvoiceTitleEdit: FunctionComponent<
   const [titleType, setTitleType] = useState<string>('1')
 
   const submitFailed = (error: any) => {
-    onSubmit && onSubmit(error)
+    onSubmit(error)
   }
 
   const submitSucceed = (obj: any) => {
-    onSubmit && onSubmit(obj)
+    onSubmit(obj)
   }
 
   return (
@@ -72,14 +79,14 @@ export const InvoiceTitleEdit: FunctionComponent<
           name="title"
           rules={[{ required: true, message: "请输入发票抬头" }]}
         >
-          <Input placeholder="请输入发票抬头" border={false} onChange={() => onInput && onInput()} />
+          <Input placeholder="请输入发票抬头" border={false} onChange={onInput} />
         </Item>
         <Item 
           label="纳税人识别号"
           name="companyCode"
           rules={[{ required: (invoiceType === 'special' || (invoiceType === 'normal' && titleType === '1')), message: "请输入纳税人识别号" }]}
         >
-          <Input placeholder="请输入纳税人识别号" border={false} readonly={invoiceType === 'special'} />
+          <Input placeholder={invoiceType === 'special' ? '' : '请输入纳税人识别号'} border={false} readonly={invoiceType === 'special'} />
         </Item>
         <Item 
           label="注册地址"
@@ -109,15 +116,16 @@ export const InvoiceTitleEdit: FunctionComponent<
         >
           <Input placeholder="请输入银行账户" border={false} />
         </Item>
+        {bottom}
         <Item>
           <div className={b('submit')}>
             <Button type="primary" block {...buttonProps}>{submitButtonText}</Button>
           </div>
         </Item>
       </Form>
-      {bottom}
     </div>
   )
 }
 
+InvoiceTitleEdit.defaultProps = defaultProps
 InvoiceTitleEdit.displayName = 'NutInvoiceTitleEdit'

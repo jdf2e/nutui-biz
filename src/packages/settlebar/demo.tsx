@@ -2,7 +2,7 @@ import React from 'react'
 import { SettleBar } from './settlebar'
 import { useTranslate } from '../../sites/assets/locale'
 import { Toast } from '@nutui/nutui-react';
-import './demo.scss';
+import '../../styles/demo.scss'
 
 interface tarnslatedOption {
   basic: string;

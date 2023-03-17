@@ -153,7 +153,6 @@ test('infiniteloading test', () => {
     }
     return (
       <ProductFeed
-        className="demo3"
         data={list}
         infiniteloadingProps={{
           hasMore: hasMore,

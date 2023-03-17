@@ -22,6 +22,7 @@ import  React from "react";
 import { Price } from "@nutui/nutui-react";
 import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
 
@@ -103,25 +104,26 @@ const App = () => {
 
 
   return (
-    <ProductFeed
-      className="demo1"
-      id="refreshScrollDouble"
-      infiniteloadingProps={{
-        hasMore: hasMoreDouble,
-        containerId: "refreshScrollDouble",
-        useWindow: false,
-        onLoadMore: loadMoreDouble
-      }}
-      customProduct={customProductDouble}
-      data={listDouble}
-      col={2}
-      imgUrl="imgUrl"
-      imgWidth="144"
-      imgHeight="144"
-      imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
-      onClick={handleClick}
-      onImageClick={handleImageClick}
-    />
+    <div className="demo">
+      <ProductFeed
+        id="refreshScrollDouble"
+        infiniteloadingProps={{
+          hasMore: hasMoreDouble,
+          containerId: "refreshScrollDouble",
+          useWindow: false,
+          onLoadMore: loadMoreDouble
+        }}
+        customProduct={customProductDouble}
+        data={listDouble}
+        col={2}
+        imgUrl="imgUrl"
+        imgWidth="144"
+        imgHeight="144"
+        imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+        onClick={handleClick}
+        onImageClick={handleImageClick}
+      />
+    </div>
   );
 };
 export default App;
@@ -138,6 +140,7 @@ import  React from "react";
 import { Price } from "@nutui/nutui-react";
 import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
 
@@ -222,26 +225,27 @@ const App = () => {
   }
 
   return (
-    <ProductFeed
-      className="demo2"
-      id="refreshScrollSingle"
-      data={listSingle}
-      infiniteloadingProps={{
-        hasMore: hasMoreSingle,
-        containerId: "refreshScrollSingle",
-        useWindow: false,
-        onLoadMore: loadMoreSingle
-      }}
-      customProduct={customProductSingle}
-      col={1}
-      imgUrl="imgUrl"
-      imgWidth="100"
-      imgHeight="100"
-      imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
-      onClick={handleClick}
-      onImageClick={handleImageClick}
-    >
-    </ProductFeed>
+    <div className="demo">
+      <ProductFeed
+        className="product-feed-demo2"
+        id="refreshScrollSingle"
+        data={listSingle}
+        infiniteloadingProps={{
+          hasMore: hasMoreSingle,
+          containerId: "refreshScrollSingle",
+          useWindow: false,
+          onLoadMore: loadMoreSingle
+        }}
+        customProduct={customProductSingle}
+        col={1}
+        imgUrl="imgUrl"
+        imgWidth="100"
+        imgHeight="100"
+        imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+        onClick={handleClick}
+        onImageClick={handleImageClick}
+      />
+    </div>
   );
 };
 export default App;
@@ -260,6 +264,7 @@ import  React from "react";
 import { Price } from "@nutui/nutui-react";
 import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
+import "@nutui/nutui-biz/dist/styles/demo.scss";
 
 const App = () => {
 
@@ -347,27 +352,28 @@ const App = () => {
   }
 
   return (
-   <ProductFeed
-      className="demo3"
-      id="refreshScroll3"
-      data={list3}
-      infiniteloadingProps={{
-        hasMore: hasMore3,
-        containerId: "refreshScroll3",
-        useWindow: false,
-        isOpenRefresh: true,
-        onLoadMore: loadMore3,
-        onRefresh: refresh
-      }}
-      customProduct={customProductDouble}
-      col={2}
-      imgUrl="imgUrl"
-      imgWidth="144"
-      imgHeight="144"
-      imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
-      onClick={handleClick}
-      onImageClick={handleImageClick}
-    />
+    <div className="demo">
+      <ProductFeed
+          id="refreshScroll3"
+          data={list3}
+          infiniteloadingProps={{
+            hasMore: hasMore3,
+            containerId: "refreshScroll3",
+            useWindow: false,
+            isOpenRefresh: true,
+            onLoadMore: loadMore3,
+            onRefresh: refresh
+          }}
+          customProduct={customProductDouble}
+          col={2}
+          imgUrl="imgUrl"
+          imgWidth="144"
+          imgHeight="144"
+          imgTag={<div className="img-label"><img src="https://img12.360buyimg.com/imagetools/jfs/t1/186347/7/7338/1009/60c0806bE0b6c7207/97fd04b48d689ffe.png" /></div>}
+          onClick={handleClick}
+          onImageClick={handleImageClick}
+        />
+    </div>
   );
 };
 export default App;
