@@ -23,14 +23,14 @@ import { AddressList } from '@nutui/nutui-biz';
 const App = () => {
   const data = [
     {
-      testid: 3,
+      id: 3,
       testaddressName: '姓名',
       phone: '123****4567',
       defaultAddress: false,
       fullAddress: '北京亦庄经济技术开发区科创十一街18号院'
     },
     {
-      testid: 4,
+      id: 4,
       testaddressName: '姓名',
       phone: '123****4567',
       defaultAddress: true,
@@ -84,14 +84,14 @@ import { AddressList } from '@nutui/nutui-biz';
 const App = () => {
   const data = [
     {
-      testid: 3,
+      id: 3,
       testaddressName: '姓名',
       phone: '123****4567',
       defaultAddress: false,
       fullAddress: '北京亦庄经济技术开发区科创十一街18号院'
     },
     {
-      testid: 4,
+      id: 4,
       testaddressName: '姓名',
       phone: '123****4567',
       defaultAddress: true,
@@ -157,14 +157,14 @@ import { AddressList } from '@nutui/nutui-biz';
 const App = () => {
   const data = [
     {
-      testid: 3,
+      id: 3,
       testaddressName: '姓名',
       phone: '123****4567',
       defaultAddress: false,
       fullAddress: '北京亦庄经济技术开发区科创十一街18号院'
     },
     {
-      testid: 4,
+      id: 4,
       testaddressName: '姓名',
       phone: '123****4567',
       defaultAddress: true,
@@ -222,11 +222,11 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| data   | 地址数组                                 | Array  | -         |
+| data   | 地址数组                                 | Array<IDataInfo>  | -         |
 | longPress   | 长按功能                                 | boolean  | `false`         |
 | swipeEdition   | 右滑功能                                 | boolean  | `false`         |
 | showBottomButton   | 是否展示底部按钮                                 | boolean  | `true`         |
-| showSelect   | 是否可选择                                 | boolean  | `false`         |
+| dataMapOptions   | 若想自定义 key 值，可以通过 dataMapOptions 设置映射关系                                 | object  | {}         |
 
 
 ### Events
@@ -240,3 +240,38 @@ export default App;
 | onLongSet | 点击设置默认按钮，长按功能下点击事件 |  event: Event,item |
 | onLongDel | 点击删除地址按钮，长按功能下点击事件 |  event: Event,item |
 | onSwipeDel | 默认右滑删除按钮，滑动功能下点击事件 |  event: Event,item |
+
+### IDataInfo 
+
+| 字段    | 说明                                       | 类型    | 
+|---------|--------------------------------------------|---------|
+| id   | 地址 id                                | number \| string |
+| addressName   | 地址名            | string  | 
+| phone   | 联系电话            | string  | 
+| defaultAddress   | 是否为默认地址            | boolean  | 
+| fullAddress   | 详细地址            | string  | 
+
+
+### data 数组中每一项 与 dataMapOptions 对象的参数磨平
+
+下面是 data 数组中每一项基础数据结构。
+
+```javascript
+const dataInfo = {
+  id: 2, //地址id
+  addressName: "姓名", //地址姓名
+  phone: "123****4567", //联系方式
+  defaultAddress: false, //是否是默认
+  fullAddress: "北京市通州区测试测试测试测试测试测试测试测试测试", //详细地址
+};
+```
+
+组件内优先获取基础数据结构中定义的字段，若想自定义 key 值，可以通过 dataMapOptions 设置映射关系。
+
+```javascript
+const dataMapOptions = {
+  id: "testid",
+  addressDetail: "testaddressDetail",
+  addressName: "testaddressName",
+};
+```

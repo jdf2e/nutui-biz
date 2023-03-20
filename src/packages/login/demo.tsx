@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Login, LoginFormProps, LoginParamsProps } from "./login";
+import { Login, LoginFormProps } from "./login";
 import { useTranslate } from "../../sites/assets/locale";
-import { Radio, Cell, CellGroup, Input } from "@nutui/nutui-react";
-const { RadioGroup } = Radio;
+import { Input } from "@nutui/nutui-react";
+
 interface T {
   basic: string;
   hasProtocol: string;

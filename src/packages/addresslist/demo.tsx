@@ -30,15 +30,15 @@ const AddressListDemo = () => {
 
   const data = [
     {
-      testid: 3,
-      testaddressName: translated.testaddressName,
+      id: 3,
+      addressName: translated.testaddressName,
       phone: '123****4567',
       defaultAddress: false,
       fullAddress: translated.fullAddress
     },
     {
-      testid: 4,
-      testaddressName: translated.testaddressName,
+      id: 4,
+      addressName: translated.testaddressName,
       phone: '123****4567',
       defaultAddress: true,
       fullAddress: translated.fullAddress

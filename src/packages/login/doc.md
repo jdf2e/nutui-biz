@@ -258,7 +258,7 @@ const App = () => {
                 className="nut-input-text"
                 border={false}
                 defaultValue={customInput}
-                placeholder={translated.placeholder}
+                placeholder="请输入验证码"
                 type="text"
                 clearable
                 onChange={(value) => {
@@ -306,14 +306,14 @@ export default App;
 |---------|--------------------------------------------|---------|-----------|
 | logo   | 头部图标链接，不配置不显示                                | string  | ''        |
 | title  | 头部标题，不配置不显示                                 | string  | ''         |
-| formParams   | 输入框配置信息                                 | Object<LoginParamsProps>  | -        |
+| formParams   | 输入框配置信息                                 | object<LoginParamsProps>  | {}        |
 | loginType   | 登录类型(可选验证码校验`verify`，账号密码校验`pwd` )，默认verify                                | string  | `verify`         |
 | loginButtonDisable   | 登录按钮是否禁用  |boolean  | `true`        |
 | loginButtonText   | 登录按钮文案  |string  | `登录`        |
 | hasForgetPassWord   | 是否有忘记密码文字按钮  |boolean  |`true`        |
 | hasHidePwd   | 是否有隐藏和显示密码按钮  |boolean  |`true`        |
 | isGetCode   | 是否成功获取校验码 |boolean  | `false`       |
-| isHideSwitchBtn   | 是否隐藏登录类型切换按钮  | boolean  |`true`        |
+| isHideSwitchBtn   | 是否隐藏登录类型切换按钮  | boolean  |`false`        |
 | countDownTime   | 校验码获取防频倒计时时间  |number  |`60`       |
 | showErrorType| 登录框错误提示的类型，可选值`toast`/`errorMsg`|string |`toast`|
 | toastErrorText| toast错误提示内容，有值时展示，无值隐藏 | string | ''|

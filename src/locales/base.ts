@@ -126,11 +126,9 @@ export interface BaseLang {
     delete: string;
   };
   generalShell: {
-    copy: string;
-    address: string;
-    set: string;
-    default: string;
-    delete: string;
+    copyAddress: string;
+    setDefault: string;
+    deleteAddress: string;
   };
   comment: {
     complaintsText: string;

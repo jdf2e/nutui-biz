@@ -5,32 +5,27 @@ import React, {
 import { useConfig } from '@/packages/configprovider'
 
 import { IComponent } from '@/utils/typings'
-import {ItemContents} from './itemContents'
+import { ItemContents } from './itemContents'
 import bem from '@/utils/bem'
+import { IDataInfo, functionType } from './addresslist'
 
 export interface GeneralShellProps extends IComponent {
-  item: {
-    phone: string
-    addressName: string
-    defaultAddress: string
-    fullAddress: string
-  }
+  item: IDataInfo
   longPress: boolean
-  onLongCopy: (event: Event, item: Object) => void
-  onLongSet: (event: Event, item: Object) => void
-  onLongDel: (event: Event, item: Object) => void
-  onSwipeDel: (event: Event, item: Object) => void
-  onDelIcon: (event: Event, item: Object) => void
-  onEditIcon: (event: Event, item: Object) => void
-  onItemClick: (event: Event, item: Object) => void
-  onLongDown: (event: Event, item: Object) => void
+  onLongCopy?: functionType
+  onLongSet?: functionType
+  onLongDel?: functionType
+  onDelIcon?: functionType
+  onEditIcon?: functionType
+  onItemClick?: functionType
+  onLongDown?: functionType
 }
 
 const defaultProps = {
   longPress: false
 } as GeneralShellProps
 
-export const GeneralShell: FunctionComponent<
+export const LongPressShell: FunctionComponent<
   Partial<GeneralShellProps>
 > = (props) => {
   const { locale } = useConfig()
@@ -40,7 +35,6 @@ export const GeneralShell: FunctionComponent<
     onLongCopy,
     onLongSet,
     onLongDel,
-    onSwipeDel,
     onDelIcon,
     onEditIcon,
     onItemClick,
@@ -68,21 +62,21 @@ export const GeneralShell: FunctionComponent<
 
   const copyClick = (event: any) => {
     if(item){
-      onLongCopy && onLongCopy(event, item)
+      onLongCopy?.(event, item)
     }
     event.stopPropagation();
   }
 
   const setDefault = (event: any) => {
     if(item) {
-      onLongSet && onLongSet(event, item)
+      onLongSet?.(event, item)
     }
     event.stopPropagation();
   }
 
   const delClick = (event: any) => {
     if(item) {
-      onLongDel && onLongDel(event, item)
+      onLongDel?.(event, item)
     }
     event.stopPropagation();
   }
@@ -93,21 +87,21 @@ export const GeneralShell: FunctionComponent<
 
   const delShellClick = (event: any) => {
     if(item) {
-      onDelIcon && onDelIcon(event, item)
+      onDelIcon?.(event, item)
     }
     event.stopPropagation();
   }
 
   const editShellClick = (event: any) => {
     if(item) {
-      onEditIcon && onEditIcon(event, item)
+      onEditIcon?.(event, item)
     }
     event.stopPropagation();
   }
 
   const itemShellClick = (event: any) => {
     if(item) {
-      onItemClick && onItemClick(event, item)
+      onItemClick?.(event, item)
     }
     event.stopPropagation();
   }
@@ -116,7 +110,7 @@ export const GeneralShell: FunctionComponent<
     loop = 0;
     setShowMaskRef(true)
     if(item) {
-      onLongDown && onLongDown(event, item)
+      onLongDown?.(event, item)
     }
   }
 
@@ -149,18 +143,16 @@ export const GeneralShell: FunctionComponent<
         onTouchEnd={holddownend}
         onTouchMove={holddownmove}
       />
-      {longPress && showMaskRef && <div className={b('general-mask')} v-if="" onClick={maskClick}>
-        <slot name="longpressAll">
-          <div className={b('general-mask-copy')} onClick={copyClick}>
-            <div className={b('mask-contain')}> {locale.generalShell.copy}<br />{locale.generalShell.address} </div>
-          </div>
-          <div className={b('general-mask-set')} onClick={setDefault}>
-            <div className={b('mask-contain')}> {locale.generalShell.set}<br />{locale.generalShell.default} </div>
-          </div>
-          <div className={b('general-mask-del')} onClick={delClick}>
-            <div className={b('mask-contain')}> {locale.generalShell.delete}<br />{locale.generalShell.address} </div>
-          </div>
-        </slot>
+      {longPress && showMaskRef && <div className={b('general-mask')} onClick={maskClick}>
+        <div className={b('general-mask-copy')} onClick={copyClick}>
+          <div className={b('mask-contain')}> {locale.generalShell.copyAddress} </div>
+        </div>
+        {!item.defaultAddress && <div className={b('general-mask-set')} onClick={setDefault}>
+          <div className={b('mask-contain')}> {locale.generalShell.setDefault} </div>
+        </div>}
+        <div className={b('general-mask-del')} onClick={delClick}>
+          <div className={b('mask-contain')}> {locale.generalShell.deleteAddress} </div>
+        </div>
       </div>}
       
       {showMaskRef && <div className={b('mask-bottom')} onClick={hideMaskClick}></div>}
@@ -168,5 +160,5 @@ export const GeneralShell: FunctionComponent<
   )
 }
 
-GeneralShell.defaultProps = defaultProps
-GeneralShell.displayName = 'NutGeneralShell'
+LongPressShell.defaultProps = defaultProps
+LongPressShell.displayName = 'NutGeneralShell'
