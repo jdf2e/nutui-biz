@@ -115,11 +115,8 @@ const App = () => {
   return (
     <div className="demo">
       <ProductFeed
-        id="refreshScrollDouble"
         infiniteloadingProps={{
           hasMore: hasMoreDouble,
-          containerId: "refreshScrollDouble",
-          useWindow: false,
           onLoadMore: loadMoreDouble
         }}
         customProduct={customProductDouble}
@@ -246,12 +243,9 @@ const App = () => {
     <div className="demo">
       <ProductFeed
         className="product-feed-demo2"
-        id="refreshScroll2"
         data={listSingle}
         infiniteloadingProps={{
           hasMore: hasMoreSingle,
-          containerId: "refreshScroll2",
-          useWindow: false,
           onLoadMore: loadMoreSingle
         }}
         customProduct={customProductSingle}
@@ -383,12 +377,9 @@ const App = () => {
   return (
     <div className="demo">
       <ProductFeed
-        id="refreshScroll3"
         data={list3}
         infiniteloadingProps={{
           hasMore: hasMore3,
-          containerId: "refreshScroll3",
-          useWindow: false,
           isOpenRefresh: true,
           onLoadMore: loadMore3,
           onRefresh: refresh
