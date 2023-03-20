@@ -194,7 +194,7 @@ const ProductFeedDemo = () => {
   }
   
   return (
-    <div className="demo">
+    <div className="demo product-feed-demo">
       <>
         <Tabs value={tab1value} onChange={({ paneKey }) => {
           setTab1value(paneKey)

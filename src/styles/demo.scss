@@ -55,12 +55,12 @@
         padding: 0 10px;
     }
 
-    .buy-price{
-        > div{
+    .buy-price {
+        > div {
             font-size: 16px;
             color: #000;
 
-            &:last-child{
+            &:last-child {
                 font-size: 12px;
                 color: #4e4e4f;
             }
@@ -91,7 +91,7 @@
 
     // OrderRemark
     // 基础组件 Cell 问题（#822）
-    .order-remark-demo {
+    &.order-remark-demo {
         .nut-cell__value {
             max-width: 60%;
             text-align: left !important;
@@ -100,7 +100,7 @@
     }
 
     // ProductFeed
-    .product-feed-demo {
+    &.product-feed-demo {
         padding: 57px 0 0;
 
         .nut-tabs__titles {
