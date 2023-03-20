@@ -7,7 +7,7 @@ import { IComponent } from "@/utils/typings"
 import classNames from "classnames"
 import bem from '@/utils/bem'
 import { ProductFeedItem } from "./productfeeditem"
-import {numericProp} from '@/utils/props'
+import { numericProp } from '@/utils/props'
 
 export type colType = 1 | 2 | '1' | '2';
 

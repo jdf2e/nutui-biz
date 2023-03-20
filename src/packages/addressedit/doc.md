@@ -337,9 +337,9 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| address   | 地址组件相关信息                                | Object<AddressResult>  |    {addressSelect: [], addressStr: "", province: [], city: [], country: [], town: [], addressTitle: "选择所在地区", type: "custom", height: ""}     |
-| data   | 编辑地址数据格式设置                                 | Object<AddressData>  | -         |
-| addressInfo   | 地址信息                                 | Object<AddressInfo>  | {name: "", tel: "", region: "", regionIds: [], address: "", default: false}         |
+| address   | 地址组件相关信息                                | object<AddressResult>  |    {addressSelect: [], addressStr: "", province: [], city: [], country: [], town: [], addressTitle: "选择所在地区", type: "custom", height: ""}     |
+| data   | 编辑地址数据格式设置                                 | object<AddressData>  | -         |
+| addressInfo   | 地址信息                                 | object<AddressInfo>  | {name: "", tel: "", region: "", regionIds: [], address: "", default: false}         |
 | bottomInputTpl   | 自定义输入框                                 | ReactNode  | -         |
 | showSave   | 保存按钮是否显示                          | boolean | `true`         |
 | showDefault| 是否显示默认地址按钮 | boolean | `true` |

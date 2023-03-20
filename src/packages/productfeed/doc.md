@@ -24,6 +24,16 @@ import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
 import "@nutui/nutui-biz/dist/styles/demo.scss";
 
+interface dataType {
+  id: number,
+  imgUrl: string,
+  name: string,
+  desc: string,
+  tag: string | boolean,
+  price: string,
+  label: string
+}
+
 const App = () => {
 
   const [data, setData] = useState<dataType[]>([])
@@ -140,6 +150,16 @@ import { Price } from "@nutui/nutui-react";
 import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
 import "@nutui/nutui-biz/dist/styles/demo.scss";
+
+interface dataType {
+  id: number,
+  imgUrl: string,
+  name: string,
+  desc: string,
+  tag: string | boolean,
+  price: string,
+  label: string
+}
 
 const App = () => {
 
@@ -264,6 +284,16 @@ import { Price } from "@nutui/nutui-react";
 import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
 import "@nutui/nutui-biz/dist/styles/demo.scss";
+
+interface dataType {
+  id: number,
+  imgUrl: string,
+  name: string,
+  desc: string,
+  tag: string | boolean,
+  price: string,
+  label: string
+}
 
 const App = () => {
 
@@ -402,8 +432,8 @@ export default App;
 | imgHeight   | 商品图片高度，默认单位 `px`  | string           | `150px` |
 | imgTag      | 商品图片标签               | ReactNode        | -      |
 | isImageLazy | 是否开启商品图片懒加载       | boolean         | `true` |
-| loadingImg  | 商品图片加载时的图片        | string           | '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png' |
-| errorImg    | 商品图片错误时的图片        | string           | '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'  |
+| loadingImg  | 商品图片加载时的图片        | string           | `//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png` |
+| errorImg    | 商品图片错误时的图片        | string           | `//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png`  |
 
 ### Events
 | 字段        | 说明            | 回调参数             |

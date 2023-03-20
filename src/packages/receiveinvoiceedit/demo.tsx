@@ -4,7 +4,6 @@ import { Radio, Cell, CellGroup } from "@nutui/nutui-react";
 import { useTranslate } from "../../sites/assets/locale";
 interface tarnslatedOption {
   basic: string;
-  selectAddress: string;
   changeAddress: string;
   addAddress: string;
 }
@@ -13,19 +12,16 @@ const ReceiveInvoiceEditDemo = () => {
   const [translated] = useTranslate<tarnslatedOption>({
     "zh-CN": {
       basic: "基本用法",
-      selectAddress: "已选地址",
       changeAddress: "修改地址",
       addAddress: "新增地址",
     },
     "zh-TW": {
       basic: "基本用法",
-      selectAddress: "已選地址",
       changeAddress: "修改地址",
       addAddress: "新增地址",
     },
     "en-US": {
       basic: "Basic usage",
-      selectAddress: "selectAddress address",
       changeAddress: "Modify address",
       addAddress: "Add Address",
     },
@@ -120,7 +116,7 @@ const ReceiveInvoiceEditDemo = () => {
           console.log(formData);
         }}
       />
-      <h2>{translated.selectAddress}</h2>
+      <h2>{translated.changeAddress}</h2>
       <ReceiveInvoiceEdit
         address={addressData2}
         data={addressSetData}

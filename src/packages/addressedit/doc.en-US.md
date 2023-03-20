@@ -341,9 +341,9 @@ export default App;
 
 | Attribute    | Description     | Type    | Default   |
 |---------|--------------------------------------------|---------|-----------|
-| address | Information about address components | Object | {} |
-| data | Edit address data format settings | Object | {} |
-| addressInfo | address information | Object |{} |
+| address | Information about address components | object | {} |
+| data | Edit address data format settings | object | {} |
+| addressInfo | address information | object |{} |
 | bottomInputTpl   | custom input box                                 | ReactNode  | -         |
 | showSave   | Whether to display the save button button                 | Boolean | `true`         |
 
