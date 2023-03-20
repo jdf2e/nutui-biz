@@ -420,6 +420,7 @@ export default App;
 | 字段         | 说明                           | 类型     | 默认值    |
 |-------------|--------------------------------|---------|-----------|
 | data        | 商品数据                        | Array   | -         |
+| itemKey     | 商品循环key值字段                | string   | `id`   |
 | customProduct | 商品图片下方区域内容            | (item) => ReactNode | - |
 | openInfiniteloading| 是否开启下拉加载功能       | boolean | `true`    |
 | infiniteloadingProps       | [infiniteloading 组件的 props](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/infiniteloading)    | InfiniteloadingProps | - |

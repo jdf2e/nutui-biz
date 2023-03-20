@@ -391,6 +391,8 @@ export default App;
 | Event  | Description     | Type    |
 |---------|--------------------------------------------|---------|
 | data        | Item data                  | Array     | -  |
+| itemKey     | 
+Commodity cycle key-value segment | string   | `id`   |
 | customProduct | The content of the area below the product image    | (item) => ReactNode | - |
 | openInfiniteloading| Whether to enable the pull-down download function       | boolean | `true`    |
 | infiniteloadingProps | [infiniteloading 组件的 props](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/infiniteloading)    | InfiniteloadingProps | - |
