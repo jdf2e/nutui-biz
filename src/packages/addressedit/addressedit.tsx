@@ -3,7 +3,6 @@ import React, {
   useState,
   useEffect,
   ReactNode,
-  CSSProperties,
 } from "react";
 import { useConfig } from "@/packages/configprovider";
 import classNames from "classnames";
@@ -11,7 +10,8 @@ import bem from "@/utils/bem";
 import { IComponent } from "@/utils/typings";
 import { Input, Button, ButtonProps, Switch, Toast } from "@nutui/nutui-react";
 import Address from "../address";
-import { AddressProps, AddressType, RegionData } from "../address/type";
+import { AddressType, RegionData } from "../address/type";
+import { numericProp } from "@/utils/props";
 
 interface CalResult {
   type: string;
@@ -24,13 +24,13 @@ export interface AddressInfo {
   name?: string;
   tel?: string;
   region?: string;
-  regionIds?: (string | number)[] | any;
+  regionIds?: (numericProp)[];
   address?: string;
   default?: boolean;
   [key: string]: any;
 }
 export interface AddressData {
-  id?: string | number | any;
+  id?: numericProp;
   nameText: string;
   namePlaceholder: string;
   nameErrorMsg: string;
@@ -51,14 +51,14 @@ export interface AddressData {
   [key: string]: any;
 }
 export interface AddressResult {
-  addressSelect?: (string | number)[];
+  addressSelect?: (numericProp)[];
   addressStr?: string;
   province?: RegionData[];
   city?: RegionData[];
   country?: RegionData[];
   town?: RegionData[];
   addressTitle?: string;
-  type?: AddressType | undefined;
+  type?: AddressType;
   height?: string;
 }
 
@@ -193,7 +193,7 @@ export const AddressEdit: FunctionComponent<
     if (addressInfo) {
       setFormData({ ...formData, ...addressInfo });
       //同步地址组件
-      if (addressInfo.regionIds.length) {
+      if (addressInfo.regionIds && addressInfo.regionIds.length) {
         setAddressData({
           ...addressData,
           ...address,
@@ -338,7 +338,7 @@ export const AddressEdit: FunctionComponent<
   return (
     <div
       className={classNames([b(), className])}
-      id={data?.id}
+      id={String(data?.id)}
       style={style}
       {...rest}
     >

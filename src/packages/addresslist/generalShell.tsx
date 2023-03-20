@@ -121,7 +121,7 @@ export const GeneralShell: FunctionComponent<
   }
 
   // 长按功能实现
-  const holddownstart = (event: any) => {
+  const holddownstart = (event: Event) => {
     loop = setTimeout(() => {
       holdingFunc(event);
     }, 300);
@@ -144,9 +144,10 @@ export const GeneralShell: FunctionComponent<
         onDelIcon={delShellClick}
         onEditIcon={editShellClick}
         onClickItem={itemShellClick}
-        // onTouchStart={holddownstart}
-        // onTouchEnd={holddownend}
-        // onTouchMove={holddownmove}
+        // @ts-ignore
+        onTouchStart={holddownstart}
+        onTouchEnd={holddownend}
+        onTouchMove={holddownmove}
       />
       {longPress && showMaskRef && <div className={b('general-mask')} v-if="" onClick={maskClick}>
         <slot name="longpressAll">

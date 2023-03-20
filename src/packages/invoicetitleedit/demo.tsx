@@ -1,5 +1,5 @@
 import React from 'react'
-import { InvoiceTitleEdit } from './invoicetitleedit'
+import { InvoiceTitleEdit, Idata } from './invoicetitleedit'
 import { useTranslate } from '../../sites/assets/locale'
 import { Toast } from '@nutui/nutui-react'
 import '../../styles/demo.scss'
@@ -37,20 +37,41 @@ const InvoiceTitleEditDemo = () => {
   const handleInput = () => {
     console.log('Invoice title input event is triggered')
   }
+  
+  const specialData: Idata = {
+    title: '京东集团',
+    companyCode: '123456ABCD',
+    address: '北京市经开区',
+    companyPhone: '010-12345678',
+    bankDeposit: '中国银行',
+    bankAccount: '12345678'
+  }
+  
+  const normalData: Idata = {
+    titleType: 'enterprise',
+    title: '京东集团',
+    companyCode: '123456ABCD',
+    address: '北京市经开区',
+    companyPhone: '010-12345678',
+    bankDeposit: '中国银行',
+    bankAccount: '12345678'
+  }
 
   return (
     <>
       <div className="demo full">
         <h2>{translated.specialInvoice}</h2>
         <InvoiceTitleEdit 
+          data = {specialData}
           onSubmit={handleSubmit}
           onInput={handleInput}
         />
         <h2>{translated.normalInvoice}</h2>
         <InvoiceTitleEdit 
-          onSubmit={handleSubmit}
+          data = {normalData}
           invoiceType="normal"
           submitButtonText="提交"
+          onSubmit={handleSubmit}
         />
         <h2>{translated.customBottom}</h2>
         <InvoiceTitleEdit

@@ -14,18 +14,32 @@ import { Form, Radio, Input, Button, ButtonProps } from '@nutui/nutui-react'
 const { RadioGroup } = Radio
 const { Item } = Form
 
+export interface Idata {
+  titleType?: string
+  title: string
+  companyCode: string
+  address: string
+  companyPhone: string
+  bankDeposit: string
+  bankAccount: string
+}
+
+export type invoiceType = "special" | "normal";
+
 export interface InvoiceTitleEditProps extends IComponent {
-  invoiceType: string
+  invoiceType: invoiceType
   bottom: ReactNode
   buttonProps: Partial<Omit<ButtonProps, "type | block">>;
   submitButtonText: string
+  data: Idata
   onSubmit: (arg: any) => void
-  onInput: (value: numericProp, event: Event) => void;
+  onInput: (value: numericProp, event?: Event) => void;
 }
 
 const defaultProps = {
-  onSubmit: (arg: any) => {},
-  onInput: (value: numericProp, event: Event) => {}
+  invoiceType: 'special',
+  submitButtonText: '提交审批',
+  onSubmit: (arg: any) => {}
 } as InvoiceTitleEditProps
 
 export const InvoiceTitleEdit: FunctionComponent<
@@ -35,10 +49,11 @@ export const InvoiceTitleEdit: FunctionComponent<
   const {
     className,
     style,
-    invoiceType = 'special',
+    invoiceType,
     bottom,
     buttonProps,
-    submitButtonText = '提交审批',
+    submitButtonText,
+    data,
     onSubmit,
     onInput,
     ...rest
@@ -49,7 +64,13 @@ export const InvoiceTitleEdit: FunctionComponent<
 
   const b = bem('invoice-title-edit')
 
-  const [titleType, setTitleType] = useState<string>('1')
+  const [titleType, setTitleType] = useState<string>(data?.titleType || 'personal')
+  const [title, setTitle] = useState<string>(data?.title)
+  const [address, setAddress] = useState<string>(data?.address)
+  const [companyPhone, setCompanyPhone] = useState<string>(data?.companyPhone)
+  const [bankDeposit, setBankDeposit] = useState<string>(data?.bankDeposit)
+  const [bankAccount, setBankAccount] = useState<string>(data?.bankAccount)
+  const [companyCode, setCompanyCode] = useState<string>(data?.companyCode)
 
   const submitFailed = (error: any) => {
     onSubmit(error)
@@ -57,6 +78,14 @@ export const InvoiceTitleEdit: FunctionComponent<
 
   const submitSucceed = (obj: any) => {
     onSubmit(obj)
+  }
+
+  const handleChangeTitle = (val: string) => {
+    if(onInput) {
+      onInput(val)
+    } else {
+      setTitle(val)
+    }
   }
 
   return (
@@ -70,8 +99,8 @@ export const InvoiceTitleEdit: FunctionComponent<
           name="titleType"
         >
           <RadioGroup value={titleType} direction="horizontal" onChange={v => setTitleType(v as string)}>
-            <Radio shape="button" value='1'>个人或事业单位</Radio>
-            <Radio shape="button" value='2'>企业</Radio>
+            <Radio shape="button" value='personal'>个人或事业单位</Radio>
+            <Radio shape="button" value='enterprise'>企业</Radio>
           </RadioGroup>
         </Item>}
         <Item 
@@ -79,42 +108,73 @@ export const InvoiceTitleEdit: FunctionComponent<
           name="title"
           rules={[{ required: true, message: "请输入发票抬头" }]}
         >
-          <Input placeholder="请输入发票抬头" border={false} onChange={onInput} />
+          <Input 
+            placeholder="请输入发票抬头" 
+            border={false} 
+            onChange={handleChangeTitle}
+            defaultValue={title}
+          />
         </Item>
         <Item 
           label="纳税人识别号"
           name="companyCode"
-          rules={[{ required: (invoiceType === 'special' || (invoiceType === 'normal' && titleType === '1')), message: "请输入纳税人识别号" }]}
+          rules={[{ required: invoiceType === 'normal' && titleType === 'enterprise', message: "请输入纳税人识别号" }]}
         >
-          <Input placeholder={invoiceType === 'special' ? '' : '请输入纳税人识别号'} border={false} readonly={invoiceType === 'special'} />
+          <Input 
+            placeholder={invoiceType === 'special' ? '' : '请输入纳税人识别号'} 
+            border={false} 
+            readonly={invoiceType === 'special'} 
+            defaultValue={companyCode}
+            onChange={(val: string) => setCompanyCode(val)}
+          />
         </Item>
         <Item 
           label="注册地址"
           name="address"
           rules={[{ required: invoiceType === 'special', message: "请输入注册地址" }]}
         >
-          <Input placeholder="请输入注册地址" border={false} />
+          <Input 
+            placeholder="请输入注册地址" 
+            border={false} 
+            defaultValue={address}
+            onChange={(val: string) => setAddress(val)}
+          />
         </Item>
         <Item 
           label="注册电话"
           name="companyPhone"  
           rules={[{ required: invoiceType === 'special', message: "请输入注册电话" }]}
         >
-          <Input placeholder="请输入注册电话" border={false} />
+          <Input 
+            placeholder="请输入注册电话" 
+            border={false} 
+            defaultValue={companyPhone}
+            onChange={(val: string) => setCompanyPhone(val)}
+          />
         </Item>
         <Item 
           label="开户行"
           name="bankDeposit"  
           rules={[{ required: invoiceType === 'special', message: "请输入开户行" }]}
         >
-          <Input placeholder="请输入开户行" border={false} />
+          <Input 
+            placeholder="请输入开户行" 
+            border={false}
+            defaultValue={bankDeposit}
+            onChange={(val: string) => setBankDeposit(val)}
+          />
         </Item>
         <Item 
           label="银行账户"
           name="bankAccount"  
           rules={[{ required: invoiceType === 'special', message: "请输入银行账户" }]}
         >
-          <Input placeholder="请输入银行账户" border={false} />
+          <Input 
+            placeholder="请输入银行账户" 
+            border={false}
+            defaultValue={bankAccount}
+            onChange={(val: string) => setBankAccount(val)}
+          />
         </Item>
         {bottom}
         <Item>

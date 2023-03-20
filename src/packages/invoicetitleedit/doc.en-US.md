@@ -134,7 +134,7 @@ export default App;
 
 | Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
-| data   | 地址数组                                 | Array  | -         |
+| data   | 地址数组                                 | Idata  | -         |
 | invoiceType   | Invoice type, optional value:  `normal`，`special`    | string  | `special`         |
 | bottom   | Custom bottom content     | ReactNode  | -         |
 | submitButtonText   | Submit button text     | string  | `提交审批`         |
@@ -145,3 +145,16 @@ export default App;
 |----- | ----- | -----  |
 | onSubmit | Submit event |  arg: any |
 | onInput | Invoice header input event |  value: string \| number, event: Event|
+
+
+### Idata 
+
+| 字段    | 说明                                       | 类型    | 
+|---------|--------------------------------------------|---------|
+| titleType   | 抬头类型，仅适用于电子普通发票，可选值：`personal`、`enterprise`                                | string |
+| title   | 发票抬头            | string  | 
+| companyCode   | 纳税人识别号            | string  | 
+| address   | 注册地址            | string  | 
+| companyPhone   | 注册电话            | string  | 
+| bankDeposit   | 开户行            | string  | 
+| bankAccount   | 银行账户            | string  | 

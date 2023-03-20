@@ -12,7 +12,7 @@ import { AddressEdit } from '@nutui/nutui-biz';
 
 ## 代码演示
 
-### 基本用法
+### 新增地址
 
 :::demo
 
@@ -75,7 +75,7 @@ export default App;
 ```
 :::
 
-### 已有地址信息修改
+### 修改地址
 
 :::demo
 
@@ -337,9 +337,9 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| address   | 地址组件相关信息                                | Object<AddressResult>  | -        |
+| address   | 地址组件相关信息                                | Object<AddressResult>  |    {addressSelect: [], addressStr: "", province: [], city: [], country: [], town: [], addressTitle: "选择所在地区", type: "custom", height: ""}     |
 | data   | 编辑地址数据格式设置                                 | Object<AddressData>  | -         |
-| addressInfo   | 地址信息                                 | Object<AddressInfo>  |-         |
+| addressInfo   | 地址信息                                 | Object<AddressInfo>  | {name: "", tel: "", region: "", regionIds: [], address: "", default: false}         |
 | bottomInputTpl   | 自定义输入框                                 | ReactNode  | -         |
 | showSave   | 保存按钮是否显示                          | boolean | `true`         |
 | showDefault| 是否显示默认地址按钮 | boolean | `true` |
@@ -349,7 +349,7 @@ export default App;
 ### Props address
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| addressSelect   | 设置默认选中地址 | string\|number[] | [] |
+| addressSelect   | 设置默认选中地址 | string \| number[] | [] |
 | addressStr   | 地址信息                                 | string  |   -      |
 | province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
@@ -357,12 +357,12 @@ export default App;
 | town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | addressTitle  | 自定义地址选择组件标题文案 | string | `请选择所在地区` |
 | type   | 地址选择类型 `custom`/`elevator`            | string           | `custom`         |
-| height | 弹层中内容容器的高度，仅在 type="elevator"时有效 | string | number | `200px` |
+| height | 弹层中内容容器的高度，仅在 type="elevator" 时有效 | string \| number | `200px` |
 
 ### Props data
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| id  | 地址编辑id | string | number | - |
+| id  | 地址编辑 id | string \| number | - |
 | nameText  | 自定义收货人文案 | string | `收货人` |
 | namePlaceholder  | 自定义收货人占位文案 | string | `请输入收货人` |
 | nameErrorMsg  | 自定义收货人非空校验错误提示文案 | string | `该项为必填项，请填写完后提交` |
@@ -375,10 +375,10 @@ export default App;
 | addressText  | 自定义详细地址文案 | string | `详细地址` |
 | addressPlaceholder  | 自定义详细地址占位文案 | string | `街道、楼牌号` |
 | addressErrorMsg  | 自定义详细地址非空校验错误提示文案 | string | `该项为必填项，请填写完后提交` |
-| isRequired| 必填项设置，可选值["name", "tel", "region", "address"]，数组中配置了的为必填项 |Array | [] |
+| isRequired| 必填项设置，可选值 ["name", "tel", "region", "address"]，数组中配置了的为必填项 |Array | [] |
 | bottomText|自定义底部保存按钮文案 | string | `保存` |
 | errorShowType| 输入框必填非空错误提示类型，可选值 `errorMsg`/`toast`|string |`errorMsg`|
-| errorToastText| toast错误提示内容 | string | `请完成必填项`|
+| errorToastText| Toast 错误提示内容 | string | `请完成必填项`|
 
 ### Props addressInfo
 | 字段    | 说明                                       | 类型    | 默认值    |
@@ -386,7 +386,7 @@ export default App;
 | name | 收货人信息 | string | - |
 | tel | 电话号码信息 | string | - |
 | region | 所在区域信息 | string | - |
-| regionIds | 所在区域已选地址id信息 | string | - |
+| regionIds | 所在区域已选地址 id 信息 | string | - |
 | address | 详细地址信息 | string | - |
 | default | 是否为默认地址 |  boolean  | `false` |
 
@@ -395,9 +395,9 @@ export default App;
 ### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
-| onChange | 输入框输入文字，返回输入文案和所在输入框的标识tag (name，tel，region，address) |  value，tag |
-| onChangeAddress | 自定义选择地址时，选择地区时触发 |  参考Address地址组件 [onChange](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/address) |
-| onCloseAddress | 地址选择弹框关闭时触发 | 参考Address地址组件 [close](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/address) |
+| onChange | 输入框输入文字，返回输入文案和所在输入框的标识 tag (name，tel，region，address) |  value，tag |
+| onChangeAddress | 自定义选择地址时，选择地区时触发 |  参考 Address 地址组件 [onChange](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/address) |
+| onCloseAddress | 地址选择弹框关闭时触发 | 参考 Address 地址组件 [close](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/address) |
 | onSave | 点击底部保存地址按钮，返回保存的信息 |  formData:<AddressInfo>  |
 | onSwitch | 默认地址切换回调，返回开关状态和保存的信息 |  state，formData:<AddressInfo> |
 

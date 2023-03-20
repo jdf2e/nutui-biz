@@ -17,6 +17,9 @@ export interface ItemContentsProps extends IComponent {
   onDelIcon: (event: Event, item: Object) => void
   onEditIcon: (event: Event, item: Object) => void
   onClickItem: (event: Event, item: Object) => void
+  onTouchStart: () => void,
+  onTouchEnd: () => void,
+  onTouchMove: () => void
 }
 
 const defaultProps = {
@@ -76,9 +79,7 @@ export const ItemContents: FunctionComponent<
         </div>
       </div>
       <div className={b('item-addr')}>
-        <slot name="contentAddr">
-          { item.fullAddress }
-        </slot>
+        { item.fullAddress }
       </div>
     </div>
   )

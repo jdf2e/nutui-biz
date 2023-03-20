@@ -85,8 +85,8 @@ export const SwipeShell: FunctionComponent<
           onDelIcon={delClick}
           onEditIcon={editClick}
           onClickItem={itemClick}
-          // onTouchMove={swipermove}
-          // onTouchStart={swiperstart}
+          onTouchMove={swipermove}
+          onTouchStart={swiperstart}
         />
       </div>
     </Swipe>
