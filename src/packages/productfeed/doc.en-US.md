@@ -106,11 +106,8 @@ const App = () => {
   return (
     <div className="demo">
       <ProductFeed
-        id="refreshScrollDouble"
         infiniteloadingProps={{
           hasMore: hasMoreDouble,
-          containerId: "refreshScrollDouble",
-          useWindow: false,
           onLoadMore: loadMoreDouble
         }}
         customProduct={customProductDouble}
@@ -228,12 +225,9 @@ const App = () => {
     <div className="demo">
       <ProductFeed
         className="product-feed-demo2"
-        id="refreshScrollSingle"
         data={listSingle}
         infiniteloadingProps={{
           hasMore: hasMoreSingle,
-          containerId: "refreshScrollSingle",
-          useWindow: false,
           onLoadMore: loadMoreSingle
         }}
         customProduct={customProductSingle}
@@ -354,12 +348,9 @@ const App = () => {
   return (
     <div className="demo">
       <ProductFeed
-          id="refreshScroll3"
           data={list3}
           infiniteloadingProps={{
             hasMore: hasMore3,
-            containerId: "refreshScroll3",
-            useWindow: false,
             isOpenRefresh: true,
             onLoadMore: loadMore3,
             onRefresh: refresh
@@ -391,6 +382,8 @@ export default App;
 | Event  | Description     | Type    |
 |---------|--------------------------------------------|---------|
 | data        | Item data                  | Array     | -  |
+| itemKey     | 
+Commodity cycle key-value segment | string   | `id`   |
 | customProduct | The content of the area below the product image    | (item) => ReactNode | - |
 | openInfiniteloading| Whether to enable the pull-down download function       | boolean | `true`    |
 | infiniteloadingProps | [infiniteloading 组件的 props](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/infiniteloading)    | InfiniteloadingProps | - |

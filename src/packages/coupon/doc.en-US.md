@@ -220,7 +220,7 @@ export default App;
 
 | Attribute | Description                                          | Type           | Default |
 | --------- | ---------------------------------------------------- | -------------- | ------- |
-| price     | The price of the coupon                              | string\/number | -       |
+| price     | The price of the coupon                              | string \| number | -       |
 | currency  | Currency symbol                                      | string         | -       |
 | mainTitle | Main title                                           | string         | -       |
 | subTitle  | Subtitle                                             | string         | -       |

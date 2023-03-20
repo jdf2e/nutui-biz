@@ -20,6 +20,22 @@ import { ReceiveInvoiceList } from '@nutui/nutui-biz';
 import  React from 'react';
 import { ReceiveInvoiceList } from '@nutui/nutui-biz';
 import { Toast } from '@nutui/nutui-react';
+
+export interface ReceiveInvoiceItemExt {
+  label: string;
+  value: string;
+  [x: string]: any;
+}
+export interface ReceiveInvoiceItem {
+  id: number | string;
+  name: string;
+  tel: string;
+  addres: string;
+  isDefault: boolean;
+  extends?: Array<ReceiveInvoiceItemExt>;
+  [x: string]: any;
+}
+
 const App = () => {
   
   const state = {
@@ -58,7 +74,12 @@ const App = () => {
   }
 
   return (
-     <ReceiveInvoiceList list={state.list} defaultValue={state.defaultValue} onSelected={event.onSelected} onEdit={event.onEdit} />
+     <ReceiveInvoiceList 
+      list={state.list} 
+      defaultValue={state.defaultValue} 
+      onSelected={event.onSelected} 
+      onEdit={event.onEdit} 
+     />
   );
 };
 export default App;
@@ -73,6 +94,21 @@ export default App;
 import  React from 'react';
 import { ReceiveInvoiceList } from '@nutui/nutui-biz';
 import { Toast } from '@nutui/nutui-react';
+
+export interface ReceiveInvoiceItemExt {
+  label: string;
+  value: string;
+  [x: string]: any;
+}
+export interface ReceiveInvoiceItem {
+  id: number | string;
+  name: string;
+  tel: string;
+  addres: string;
+  isDefault: boolean;
+  extends?: Array<ReceiveInvoiceItemExt>;
+  [x: string]: any;
+}
 
 const App = () => {
   
@@ -116,7 +152,14 @@ const App = () => {
   }
 
   return (
-     <ReceiveInvoiceList enableDelete={true} list={state.list} defaultValue={state.defaultValue} onSelected={event.onSelected} onEdit={event.onEdit} onDelete={event.onDelete} />
+     <ReceiveInvoiceList 
+      enableDelete={true} 
+      list={state.list} 
+      defaultValue={state.defaultValue} 
+      onSelected={event.onSelected} 
+      onEdit={event.onEdit} 
+      onDelete={event.onDelete} 
+     />
   );
 };
 export default App;

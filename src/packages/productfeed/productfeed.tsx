@@ -7,12 +7,13 @@ import { IComponent } from "@/utils/typings"
 import classNames from "classnames"
 import bem from '@/utils/bem'
 import { ProductFeedItem } from "./productfeeditem"
-import {numericProp} from '@/utils/props'
+import { numericProp } from '@/utils/props'
 
 export type colType = 1 | 2 | '1' | '2';
 
 export interface ProductFeedProps extends IComponent {
   data: Array<any>
+  itemKey: string
   customProduct: (item: any) => ReactNode
   openInfiniteloading: boolean
   infiniteloadingProps?: Partial<InfiniteloadingProps>
@@ -33,6 +34,7 @@ export interface ProductFeedProps extends IComponent {
 
 const defaultProps = {
   data: [],
+  itemKey: 'id',
   customProduct: () => {},
   openInfiniteloading: true,
   initProductNum: 6,
@@ -57,6 +59,7 @@ export const ProductFeed: FunctionComponent<
     style,
     children,
     data,
+    itemKey,
     customProduct,
     openInfiniteloading,
     infiniteloadingProps,
@@ -105,7 +108,7 @@ export const ProductFeed: FunctionComponent<
   const productItem = (item: any, index: number)=>{
     return (
       <ProductFeedItem
-        key={item.id}
+        key={item[itemKey]}
         index={index}
         data={item}
         col={col}

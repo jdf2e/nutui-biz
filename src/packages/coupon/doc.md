@@ -216,14 +216,14 @@ export default App;
 | couponData      | 渲染优惠券内容                                | ICouponType          | -          |
 | btnText         | 按钮文案                                      | string               | `立即领取` |
 | isReceived      | 是否领取优惠券                                | boolean              | `false`    |
-| buttonProps     | 按钮 props，来自于 nutui-react 中 Button 组件 | Partial<ButtonProps> | -          |
+| buttonProps     | 按钮 props，来自于 nutui-react 中 Button 组件 | [ButtonProps](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/button)  | -          |
 | usedIcon        | 已经领取的优惠券打得标记 icon                 | ReactNode            | -          |
 
 ### ICouponType
 
 | 字段      | 说明                   | 类型           | 默认值 |
 | --------- | ---------------------- | -------------- | ------ |
-| price     | 优惠券的价格           | string\/number | -      |
+| price     | 优惠券的价格           | string \| number | -      |
 | currency  | 货币符号               | string         | -      |
 | mainTitle | 主标题                 | string         | -      |
 | subTitle  | 副标题                 | string         | -      |

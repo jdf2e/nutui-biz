@@ -6,28 +6,38 @@ import React, {
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import {Button} from '@nutui/nutui-react'
-import {GeneralShell} from './generalShell'
-import {SwipeShell} from './swipeShell'
-import {floatData} from '@/utils'
+import { numericProp } from '@/utils/props'
+import { Button } from '@nutui/nutui-react'
+import { LongPressShell } from './longPressShell'
+import { SwipeShell } from './swipeShell'
+import { floatData } from '@/utils'
 
 import { IComponent } from '@/utils/typings'
 
+export interface IDataInfo {
+  id: numericProp;
+  addressName: string;
+  phone: string;
+  defaultAddress: boolean;
+  fullAddress: string
+}
+
+export type functionType = (event: Event, item: Object) => void
+
 export interface AddressListProps extends IComponent {
-  data: Array<any>
+  data: Array<IDataInfo>
   longPress: boolean
   swipeEdition: boolean
   showBottomButton: boolean
   dataMapOptions: Object
-  showSelect: boolean
-  onAdd: (event: Event) => void
-  onDelIcon: (event: Event, item: Object) => void
-  onEditIcon: (event: Event, item: Object) => void
-  onItemClick: (event: Event, item: Object) => void
-  onSwipeDel: (event: Event, item: Object) => void
-  onLongCopy: (event: Event, item: Object) => void
-  onLongSet: (event: Event, item: Object) => void
-  onLongDel: (event: Event, item: Object) => void
+  onAdd?: (event: Event) => void
+  onDelIcon?: functionType
+  onEditIcon?: functionType
+  onItemClick?: functionType
+  onSwipeDel?: functionType
+  onLongCopy?: functionType
+  onLongSet?: functionType
+  onLongDel?: functionType
 }
 
 const defaultProps = {
@@ -35,8 +45,7 @@ const defaultProps = {
   longPress: false,
   swipeEdition: false,
   showBottomButton: true,
-  dataMapOptions: {},
-  showSelect: false
+  dataMapOptions: {}
 } as AddressListProps
 
 export const AddressList: FunctionComponent<
@@ -51,7 +60,6 @@ export const AddressList: FunctionComponent<
     swipeEdition,
     showBottomButton,
     dataMapOptions,
-    showSelect,
     onAdd,
     onDelIcon,
     onEditIcon,
@@ -69,17 +77,17 @@ export const AddressList: FunctionComponent<
   const b = bem('address-list')
 
   const addAddress = (event: any) => {
-    onAdd && onAdd(event)
+    onAdd?.(event)
     event.stopPropagation();
   }
 
-  const [dataArray, setdataArray] = useState<Array<any>>([])
+  const [dataArray, setdataArray] = useState<Array<IDataInfo>>([])
   const dataInfo = {
-    id: 2,
-    addressName: '姓名',
-    phone: '123****4567',
+    id: '',
+    addressName: '',
+    phone: '',
     defaultAddress: false,
-    fullAddress: '北京亦庄经济技术开发区科创十一街18号院'
+    fullAddress: ''
   };
 
   const trowelData = () => {
@@ -95,51 +103,49 @@ export const AddressList: FunctionComponent<
     trowelData()
   }, [data])
 
-  const clickDelIcon = (event: Event, item: unknown) => {
+  const clickDelIcon = (event: Event, item: Object) => {
+    onDelIcon?.(event, item)
+    event.stopPropagation();
+  }
+
+  const clickEditIcon = (event: Event, item: Object) => {
     if(item){
-      onDelIcon && onDelIcon(event, item)
+      onEditIcon?.(event, item)
     }
     event.stopPropagation();
   }
 
-  const clickEditIcon = (event: Event, item: unknown) => {
+  const clickContentItem = (event: Event, item: Object) => {
     if(item){
-      onEditIcon && onEditIcon(event, item)
+      onItemClick?.(event, item)
     }
     event.stopPropagation();
   }
 
-  const clickContentItem = (event: Event, item: unknown) => {
+  const clickSwipeDel = (event: Event, item: Object) => {
     if(item){
-      onItemClick && onItemClick(event, item)
+      onSwipeDel?.(event, item)
     }
     event.stopPropagation();
   }
 
-  const clickSwipeDel = (event: Event, item: unknown) => {
+  const clickLongCopy = (event: Event, item: Object) => {
     if(item){
-      onSwipeDel && onSwipeDel(event, item)
+      onLongCopy?.(event, item)
     }
     event.stopPropagation();
   }
 
-  const clickLongCopy = (event: Event, item: unknown) => {
+  const clickLongSet = (event: Event, item: Object) => {
     if(item){
-      onLongCopy && onLongCopy(event, item)
+      onLongSet?.(event, item)
     }
     event.stopPropagation();
   }
 
-  const clickLongSet = (event: Event, item: unknown) => {
+  const clickLongDel = (event: Event, item: Object) => {
     if(item){
-      onLongSet && onLongSet(event, item)
-    }
-    event.stopPropagation();
-  }
-
-  const clickLongDel = (event: Event, item: unknown) => {
-    if(item){
-      onLongDel && onLongDel(event, item)
+      onLongDel?.(event, item)
     }
     event.stopPropagation();
   }
@@ -157,14 +163,13 @@ export const AddressList: FunctionComponent<
                   onSwipeDel={clickSwipeDel}
                 />
         }) : dataArray.map((item, index) => {
-          return <GeneralShell 
+          return <LongPressShell 
                   item={item} 
                   key={index} 
                   longPress={longPress}
                   onDelIcon={clickDelIcon}
                   onEditIcon={clickEditIcon}
                   onItemClick={clickContentItem}
-                  onSwipeDel={clickSwipeDel}
                   onLongCopy={clickLongCopy}
                   onLongSet={clickLongSet}
                   onLongDel={clickLongDel}

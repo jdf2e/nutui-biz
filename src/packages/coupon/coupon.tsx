@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode, CSSProperties } from "react";
 import { IComponent } from "@/utils/typings";
-import { Button, ButtonProps, Price } from "@nutui/nutui-react";
+import { Button, ButtonProps } from "@nutui/nutui-react";
 import bem from "@/utils/bem";
 import { numericProp } from "@/utils/props";
 import classNames from "classnames";

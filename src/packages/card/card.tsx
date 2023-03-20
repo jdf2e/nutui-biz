@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode, CSSProperties, HTMLAttributes } fr
 import { Price, Tag, Image, ImageProps } from '@nutui/nutui-react'
 import classNames from 'classnames'
 import { errorImg } from '@/utils'
-import {numericProp} from '@/utils/props'
+import { numericProp } from '@/utils/props'
 
 import bem from '@/utils/bem'
 

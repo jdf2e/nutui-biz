@@ -127,11 +127,9 @@ const zhCN: BaseLang = {
     delete: "删除",
   },
   generalShell: {
-    copy: "复制",
-    address: "地址",
-    set: "设置",
-    default: "默认",
-    delete: "删除",
+    copyAddress: "复制地址",
+    setDefault: "设置默认",
+    deleteAddress: "删除地址"
   },
   comment: {
     complaintsText: "我要投诉",

@@ -2,33 +2,24 @@ import React, {
   FunctionComponent
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
-import {Icon} from '@nutui/nutui-react'
+import { Icon } from '@nutui/nutui-react'
 
 import { IComponent } from '@/utils/typings'
 import bem from '@/utils/bem'
+import { IDataInfo, functionType } from './addresslist'
 
 export interface ItemContentsProps extends IComponent {
-  item: {
-    phone: string
-    addressName: string
-    defaultAddress: string
-    fullAddress: string
-  }
-  onDelIcon: (event: Event, item: Object) => void
-  onEditIcon: (event: Event, item: Object) => void
-  onClickItem: (event: Event, item: Object) => void
+  item: IDataInfo
+  onDelIcon?: functionType
+  onEditIcon?: functionType
+  onClickItem?: functionType
   onTouchStart: () => void,
   onTouchEnd: () => void,
   onTouchMove: () => void
 }
 
 const defaultProps = {
-  item: {
-    phone: '',
-    addressName: '',
-    defaultAddress: '',
-    fullAddress: ''
-  }
+  item: {}
 } as ItemContentsProps
 
 export const ItemContents: FunctionComponent<
@@ -49,17 +40,17 @@ export const ItemContents: FunctionComponent<
   const b = bem('address-list')
 
   const delClick = (event: any) => {
-    onDelIcon && onDelIcon(event, item)
+    onDelIcon?.(event, item)
     event.stopPropagation();
   }
 
   const editClick = (event: any) => {
-    onEditIcon && onEditIcon(event, item)
+    onEditIcon?.(event, item)
     event.stopPropagation();
   }
 
   const contentsClick = (event: any) => {
-    onClickItem && onClickItem(event, item)
+    onClickItem?.(event, item)
     event.stopPropagation();
   }
 
@@ -67,11 +58,9 @@ export const ItemContents: FunctionComponent<
     <div className={b('item')} onClick={contentsClick} {...rest}>
       <div className={b('item-info')}>
         <div className={b('item-info-contact')}>
-          <slot name="contentTop">
-            <div className={b('item-info-contact-name')}>{ item.addressName }</div>
-            <div className={b('item-info-contact-tel')}>{ item.phone }</div>
-            {item.defaultAddress && <div className={b('item-info-contact-default')}>{locale.itemContents.default}</div>}
-          </slot>
+          <div className={b('item-info-contact-name')}>{ item.addressName }</div>
+          <div className={b('item-info-contact-tel')}>{ item.phone }</div>
+          {item.defaultAddress && <div className={b('item-info-contact-default')}>{locale.itemContents.default}</div>}
         </div>
         <div className={b('item-info-handle')}>
           <Icon name="del" className={b('item-info-handle-del')} onClick={delClick}></Icon>

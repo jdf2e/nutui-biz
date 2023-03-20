@@ -3,23 +3,18 @@ import React, {
   useState
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
-import {Button,Swipe} from '@nutui/nutui-react'
-
+import { Button, Swipe } from '@nutui/nutui-react'
 import { IComponent } from '@/utils/typings'
-import {ItemContents} from './itemContents'
+import { ItemContents } from './itemContents'
 import bem from '@/utils/bem'
+import { IDataInfo, functionType } from './addresslist'
 
 export interface SwipeShellProps extends IComponent {
-  onDelIcon: (event: Event, item: Object) => void
-  onEditIcon: (event: Event, item: Object) => void
-  onItemClick: (event: Event, item: Object) => void
-  onSwipeDel: (event: Event, item: Object) => void
-  item: {
-    phone: string
-    addressName: string
-    defaultAddress: string
-    fullAddress: string
-  }
+  item: IDataInfo
+  onDelIcon?: functionType
+  onEditIcon?: functionType
+  onItemClick?: functionType
+  onSwipeDel?: functionType
 }
 
 export const SwipeShell: FunctionComponent<
@@ -41,38 +36,40 @@ export const SwipeShell: FunctionComponent<
 
   const [moveRef, setMoveRef] = useState<boolean>(false)
 
+  const stop = (event: Event) => {
+    event.stopPropagation();
+  }
+
   const delClick = (event: Event) => {
     if(item) {
-      onDelIcon && onDelIcon(event, item)
+      onDelIcon?.(event, item)
     }
-    event.stopPropagation();
+    stop(event);
   }
 
   const editClick = (event: Event) => {
     if(item) {
-      onEditIcon && onEditIcon(event, item)
+      onEditIcon?.(event, item)
     }
-    event.stopPropagation();
+    stop(event);
   }
 
   const itemClick = (event: Event) => {
+    if(moveRef) return;
+    
     if(item) {
-      onItemClick && onItemClick(event, item)
+      onItemClick?.(event, item)
     }
-    event.stopPropagation();
+    stop(event);
   }
 
-  const swiperstart = () => {
-    setMoveRef(false)
-  }
-
-  const swipermove = () => {
-    setMoveRef(true)
+  const swiper = (isMove: boolean) => {
+    setMoveRef(isMove)
   }
 
   const swipeDelClick = (event: Event) => {
     if(item) {
-      onSwipeDel && onSwipeDel(event, item)
+      onSwipeDel?.(event, item)
     }
     event.stopPropagation();
   }
@@ -85,8 +82,8 @@ export const SwipeShell: FunctionComponent<
           onDelIcon={delClick}
           onEditIcon={editClick}
           onClickItem={itemClick}
-          onTouchMove={swipermove}
-          onTouchStart={swiperstart}
+          onTouchMove={() => swiper(true)}
+          onTouchStart={() => swiper(false)}
         />
       </div>
     </Swipe>

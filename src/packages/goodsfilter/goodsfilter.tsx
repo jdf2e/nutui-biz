@@ -4,49 +4,50 @@ import React, {
 import { Icon, Popup } from '@nutui/nutui-react'
 import { IComponent } from '@/utils/typings'
 import bem from '@/utils/bem'
-import {numericProp} from '@/utils/props'
+import { numericProp } from '@/utils/props'
 import { InputNum } from './components/InputNum'
 import classNames from 'classnames'
 
 export interface valueType {
-  id?:numericProp,
-  name?:string,
-  [x:string]:any
+  id?: numericProp
+  name?: string
+  [x:string]: any
 }
 export interface goodsAttrsResType {
-  id?:numericProp,
-  value?:string[],
+  id?:numericProp
+  value?:string[]
   [x:string]:any
 }
 
 export interface resType {
-  address: string,
+  address: string
   price:{
     low: numericProp,
     high: numericProp
-  },
-  filterAttrs: valueType,
+  }
+  filterAttrs: valueType
   goodsAttrs: goodsAttrsResType
 }
+
 export interface priceRangesType {
-    low: string,
-    high: string,
-    desc: string,
-    id?:numericProp
+    low: string
+    high: string
+    desc: string
+    id?: numericProp
     extra: any
 }
 
 export interface goodsAttrsType {
-  title: string,
+  title: string
   id: numericProp,
   values: valueType
 }
 
-export interface selectedGoodsAttrType{
-  id: numericProp,
-  isExpand: boolean|undefined,
-  showRow : numericProp,
-  title:string,
+export interface selectedGoodsAttrType {
+  id: numericProp
+  isExpand: boolean|undefined
+  showRow : numericProp
+  title:string
   [x:string]:any
 }
  

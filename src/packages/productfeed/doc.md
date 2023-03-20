@@ -24,6 +24,16 @@ import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
 import "@nutui/nutui-biz/dist/styles/demo.scss";
 
+interface dataType {
+  id: number,
+  imgUrl: string,
+  name: string,
+  desc: string,
+  tag: string | boolean,
+  price: string,
+  label: string
+}
+
 const App = () => {
 
   const [data, setData] = useState<dataType[]>([])
@@ -105,11 +115,8 @@ const App = () => {
   return (
     <div className="demo">
       <ProductFeed
-        id="refreshScrollDouble"
         infiniteloadingProps={{
           hasMore: hasMoreDouble,
-          containerId: "refreshScrollDouble",
-          useWindow: false,
           onLoadMore: loadMoreDouble
         }}
         customProduct={customProductDouble}
@@ -140,6 +147,16 @@ import { Price } from "@nutui/nutui-react";
 import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
 import "@nutui/nutui-biz/dist/styles/demo.scss";
+
+interface dataType {
+  id: number,
+  imgUrl: string,
+  name: string,
+  desc: string,
+  tag: string | boolean,
+  price: string,
+  label: string
+}
 
 const App = () => {
 
@@ -226,12 +243,9 @@ const App = () => {
     <div className="demo">
       <ProductFeed
         className="product-feed-demo2"
-        id="refreshScroll2"
         data={listSingle}
         infiniteloadingProps={{
           hasMore: hasMoreSingle,
-          containerId: "refreshScroll2",
-          useWindow: false,
           onLoadMore: loadMoreSingle
         }}
         customProduct={customProductSingle}
@@ -264,6 +278,16 @@ import { Price } from "@nutui/nutui-react";
 import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
 import "@nutui/nutui-biz/dist/styles/demo.scss";
+
+interface dataType {
+  id: number,
+  imgUrl: string,
+  name: string,
+  desc: string,
+  tag: string | boolean,
+  price: string,
+  label: string
+}
 
 const App = () => {
 
@@ -353,12 +377,9 @@ const App = () => {
   return (
     <div className="demo">
       <ProductFeed
-        id="refreshScroll3"
         data={list3}
         infiniteloadingProps={{
           hasMore: hasMore3,
-          containerId: "refreshScroll3",
-          useWindow: false,
           isOpenRefresh: true,
           onLoadMore: loadMore3,
           onRefresh: refresh
@@ -390,6 +411,7 @@ export default App;
 | 字段         | 说明                           | 类型     | 默认值    |
 |-------------|--------------------------------|---------|-----------|
 | data        | 商品数据                        | Array   | -         |
+| itemKey     | 商品循环key值字段                | string   | `id`   |
 | customProduct | 商品图片下方区域内容            | (item) => ReactNode | - |
 | openInfiniteloading| 是否开启下拉加载功能       | boolean | `true`    |
 | infiniteloadingProps       | [infiniteloading 组件的 props](https://nutui.jd.com/h5/react/1x/#/zh-CN/component/infiniteloading)    | InfiniteloadingProps | - |
@@ -402,8 +424,8 @@ export default App;
 | imgHeight   | 商品图片高度，默认单位 `px`  | string           | `150px` |
 | imgTag      | 商品图片标签               | ReactNode        | -      |
 | isImageLazy | 是否开启商品图片懒加载       | boolean         | `true` |
-| loadingImg  | 商品图片加载时的图片        | string           | '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png' |
-| errorImg    | 商品图片错误时的图片        | string           | '//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'  |
+| loadingImg  | 商品图片加载时的图片        | string           | `//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png` |
+| errorImg    | 商品图片错误时的图片        | string           | `//img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png`  |
 
 ### Events
 | 字段        | 说明            | 回调参数             |

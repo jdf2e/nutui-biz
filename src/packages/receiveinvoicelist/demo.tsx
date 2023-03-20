@@ -64,9 +64,21 @@ const ReceiveInvoiceListDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <ReceiveInvoiceList list={state.list} defaultValue={state.defaultValue} onSelected={event.onSelected} onEdit={event.onEdit} />
+        <ReceiveInvoiceList 
+          list={state.list} 
+          defaultValue={state.defaultValue} 
+          onSelected={event.onSelected} 
+          onEdit={event.onEdit} 
+        />
         <h2>{translated.useSwipe}</h2>
-        <ReceiveInvoiceList enableDelete={true} list={state.list} defaultValue={state.defaultValue} onSelected={event.onSelected} onEdit={event.onEdit} onDelete={event.onDelete} />
+        <ReceiveInvoiceList 
+          enableDelete={true} 
+          list={state.list} 
+          defaultValue={state.defaultValue} 
+          onSelected={event.onSelected} 
+          onEdit={event.onEdit} 
+          onDelete={event.onDelete} 
+        />
       </div>
     </>
   )

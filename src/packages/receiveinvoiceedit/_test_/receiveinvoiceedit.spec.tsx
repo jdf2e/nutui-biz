@@ -52,7 +52,7 @@ test("test props & event", async () => {
       onSave={saveHandle}
     />
   );
-  const inputItem = container.querySelectorAll('.nut-receive-invoice-edit-item') 
+  const inputItem = container.querySelectorAll('.nb-receive-invoice-edit-item') 
   expect(inputItem).toBeTruthy()
   const requiredItem = container.querySelectorAll(".nut-input-required");
   await waitFor(() => {
@@ -63,7 +63,7 @@ test("test props & event", async () => {
     expect(container).toMatchSnapshot();
   });
   const bottomEl = container.querySelector(
-    ".nut-receive-invoice-edit-bottom .nut-button"
+    ".nb-receive-invoice-edit-bottom .nut-button"
   ) as HTMLElement;
   fireEvent.click(bottomEl);
   const inputEl = container.querySelectorAll(".nut-input-text")[0];

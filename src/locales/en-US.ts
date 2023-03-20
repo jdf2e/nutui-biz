@@ -125,11 +125,9 @@ const enUS: BaseLang = {
     delete: "Delete",
   },
   generalShell: {
-    copy: "Copy",
-    address: "Address",
-    set: "Set",
-    default: "Default",
-    delete: "Delete",
+    copyAddress: "Copy Address",
+    setDefault: "Set Default",
+    deleteAddress: "Delete Address"
   },
   comment: {
     complaintsText: "I have a complaint",

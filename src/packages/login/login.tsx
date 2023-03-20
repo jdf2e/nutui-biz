@@ -9,7 +9,6 @@ import { useConfig } from "@/packages/configprovider";
 import classNames from "classnames";
 import bem from "@/utils/bem";
 import { IComponent } from "@/utils/typings";
-import { numericProp } from "@/utils/props";
 import {
   Input,
   Button,

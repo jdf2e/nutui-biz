@@ -71,7 +71,7 @@ export default App;
 ```
 :::
 
-### 已有地址信息修改
+### 修改地址
 
 :::demo
 
@@ -152,14 +152,14 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| address   | 地址组件相关信息                                | object  | `{}`       |
-| data   | 编辑收票地址数据格式设置                                 | object  | `{}`         |
-| invoiceInfo   | 发票地址值                                 | object  |`{} `        |
+| address   | 地址组件相关信息                                | object  | {modelValue: false, addressSelect: [], province: [], city: [], country: [], town: [], addressTitle: "选择所在地区"}       |
+| data   | 编辑收票地址数据格式设置                                 | object  | {}         |
+| invoiceInfo   | 发票地址值                                 | object  |{name: "", tel: "", region: "", regionIds: [], address: ""}        |
 
 ### Props address
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| addressSelect   | 设置默认选中地址 | string\|number[] | `[]` |
+| addressSelect   | 设置默认选中地址 | string \| number[] | `[]` |
 | addressStr   | 地址信息                                 | string  |  ` ''  `    |
 | province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | `[]` |
 | city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | `[]` |
@@ -191,7 +191,7 @@ export default App;
 | name | 收票人信息 | string | '' |
 | tel | 电话号码信息 | string | '' |
 | region | 所在区域信息 | string | '' |
-| regionIds | 所在区域已选地址id信息 | string | '' |
+| regionIds | 所在区域已选地址 id 信息 | string | '' |
 | address | 详细地址信息 | string | '' |
 
 
@@ -199,7 +199,7 @@ export default App;
 ### Events
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | -----  |
-| onChange | 输入框输入文字，返回输入文案和所在输入框的标识tag (name,tel,region,address) |  value,tag |
+| onChange | 输入框输入文字，返回输入文案和所在输入框的标识 tag (name,tel,region,address) |  value,tag |
 | onAddressChange | 自定义选择地址时，选择地区时触发 |  {custom:当前选中地址,next:下一级地址,value:当前已选中的地址信息}` |
 | onAddressClose | 地址选择弹框关闭时触发 | value |
 | onSave | 点击底部保存地址按钮，返回保存的信息 | value |
