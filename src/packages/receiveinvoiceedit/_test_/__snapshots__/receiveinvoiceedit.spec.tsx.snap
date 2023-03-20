@@ -3,10 +3,10 @@
 exports[`test props & event 1`] = `
 <div>
   <div
-    class="nut-receive-invoice-edit"
+    class="nb-receive-invoice-edit"
   >
     <div
-      class="nut-receive-invoice-edit-item"
+      class="nb-receive-invoice-edit__item"
     >
       <div
         class="nut-input nut-input-required nut-input-border  nut-input-text"
@@ -45,7 +45,7 @@ exports[`test props & event 1`] = `
       </div>
     </div>
     <div
-      class="nut-receive-invoice-edit-item"
+      class="nb-receive-invoice-edit__item"
     >
       <div
         class="nut-input nut-input-required nut-input-border  nut-input-text"
@@ -73,7 +73,7 @@ exports[`test props & event 1`] = `
                 class="input-text"
                 maxlength="9999"
                 name="tel"
-                placeholder="请输入收货人手机号码"
+                placeholder="请输入手机号码"
                 style="text-align: left;"
                 type="tel"
                 value=""
@@ -84,7 +84,7 @@ exports[`test props & event 1`] = `
       </div>
     </div>
     <div
-      class="nut-receive-invoice-edit-item"
+      class="nb-receive-invoice-edit__item"
     >
       <div
         class="nut-input nut-input-required nut-input-border  nut-input-text"
@@ -124,7 +124,7 @@ exports[`test props & event 1`] = `
       </div>
     </div>
     <div
-      class="nut-receive-invoice-edit-item"
+      class="nb-receive-invoice-edit__item"
     >
       <div
         class="nut-input nut-input-required nut-input-border  nut-input-text"
@@ -167,7 +167,7 @@ exports[`test props & event 1`] = `
       style="z-index: 1000; animation-duration: 0.3s;"
     />
     <div
-      class="nut-receive-invoice-edit-bottom"
+      class="nb-receive-invoice-edit__bottom"
     >
       <button
         class="nut-button nut-button--danger nut-button--normal nut-button--round nut-button--block "

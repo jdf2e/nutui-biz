@@ -1,6 +1,6 @@
 import React, { FunctionComponent, HTMLAttributes, useEffect, useState } from 'react'
 import { IComponent } from '@/utils/typings'
-import {numericProp} from '@/utils/props'
+import { numericProp } from '@/utils/props'
 
 export interface InputNumProps extends IComponent {
   value: numericProp

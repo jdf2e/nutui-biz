@@ -9,7 +9,7 @@ import { Icon, IconProps } from '@nutui/nutui-react';
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Unit from '@/utils/unit'
-import {numericProp} from '@/utils/props'
+import { numericProp } from '@/utils/props'
 
 
 export type MaskPositionType = "left" | "right";

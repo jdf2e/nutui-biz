@@ -15,11 +15,11 @@ const DeliveryDemo = () => {
     const [visible5, setVisible5] = useState(false);
     const [visible6, setVisible6] = useState(false);
     const [visible7, setVisible7] = useState(false);
-    const [desc1, setDesc1] = useState<string>("...");
-    const [desc2, setDesc2] = useState<string>("...");
-    const [desc3, setDesc3] = useState<string>("...");
-    const [desc4, setDesc4] = useState<string>("...");
-    const [desc5, setDesc5] = useState<string>("...");
+    const [desc1, setDesc1] = useState<string>("");
+    const [desc2, setDesc2] = useState<string>("");
+    const [desc3, setDesc3] = useState<string>("");
+    const [desc4, setDesc4] = useState<string>("");
+    const [desc5, setDesc5] = useState<string>("");
     const [deliveryDateData1, setDeliveryDateData1] = useState<DeliveryData[]>([
         {
             label: '1',
@@ -475,8 +475,8 @@ const DeliveryDemo = () => {
                     onSure={() => { sure3(desc3); }}
                 >
                     <div className="custom-content" onClick={() => { setVisible4(true) }}>
-                        <div className="left">请选择送货时间</div>
-                        <div className="right">{desc3}</div>
+                        <div className="left">请选择送货时间{desc3}</div>
+                        <div className="right">...</div>
                     </div>
                 </Delivery>
                 <Popup
@@ -510,8 +510,8 @@ const DeliveryDemo = () => {
                     onSure={() => { sure5(desc4); }}
                 >
                     <div className="custom-content" onClick={() => { setVisible6(true) }}>
-                        <div className="left">请选择送货时间</div>
-                        <div className="right">{desc4}</div>
+                        <div className="left">请选择送货时间<div>{desc4}</div></div>
+                        <div className="right">...</div>
                     </div>
                 </Delivery>
                 <Popup

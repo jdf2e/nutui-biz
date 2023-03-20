@@ -11,7 +11,7 @@ import classNames from 'classnames';
 import { Icon, Checkbox } from '@nutui/nutui-react';
 import bem from '@/utils/bem'
 import {getRect} from '@/utils/useClientRect'
-import {numericProp} from '@/utils/props'
+import { numericProp } from '@/utils/props'
 
 import { IComponent } from '@/utils/typings'
 
