@@ -281,17 +281,13 @@ export const Login: FunctionComponent<Partial<LoginProps>> = (props) => {
 
   // 倒计时
   const countDown = (time: number) => {
-    setCountTime(countTime--);
-    setInCountDown(true);
     timer.current = setInterval(() => {
       setCountTime(countTime--);
-      if (countTime < 10) {
-        setCountTime(countTime);
-        if (countTime == 0) {
-          clearInterval(timer.current);
-          setInCountDown(false);
-          setCountTime(time);
-        }
+      setInCountDown(true);
+      if (countTime < -1) {
+        clearInterval(timer.current);
+        setInCountDown(false);
+        setCountTime(time);
       }
     }, 1000);
   };
