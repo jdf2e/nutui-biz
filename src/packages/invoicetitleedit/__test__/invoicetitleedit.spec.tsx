@@ -16,7 +16,7 @@ test('test 增值税专用发票', async () => {
 
 test('test 电子普通发票', async () => {
   const { container } = render(
-    <InvoiceTitleEdit invoiceType="normal" />
+    <InvoiceTitleEdit invoiceType="normal" submitButtonText="提交" />
   )
 
   const nutInvoiceTitleEditSubmit = container.querySelector('.nb-invoice-title-edit__submit') as HTMLElement
