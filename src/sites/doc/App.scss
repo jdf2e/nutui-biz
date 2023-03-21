@@ -13,7 +13,6 @@ $doc-title-height: 137px;
   flex-direction: column;
   //padding-top: $doc-header-height;
 }
-
 .doc {
   &-title {
     width: 100%;
@@ -53,6 +52,9 @@ $doc-title-height: 137px;
       .title {
         font-size: 32px;
         font-weight: 700;
+      }
+      .npm-package {
+        line-height: 25px;
       }
     }
   }
@@ -116,5 +118,26 @@ $doc-title-height: 137px;
 .nutui-react--demo-wrapper {
   .nutui-react--demo-button {
     display: block;
+  }
+}
+
+#doc .highlighter {
+  padding: 10px !important;
+  border-radius: 16px;
+  background-color: #fafafa !important;
+  code {
+    display: block;
+    padding: 6px !important;
+    overflow-x: auto;
+    color: #58727e;
+    font-weight: 400;
+    font-size: 14px !important;
+    font-family: Source Code Pro, Monaco, Inconsolata, monospace;
+    line-height: 26px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    -webkit-font-smoothing: auto;
+    background-color: #fafafa;
+    border-radius: 16px;
   }
 }

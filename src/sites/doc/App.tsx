@@ -1,144 +1,143 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import {
-  HashRouter,
-  Switch,
-  Route,
-  useLocation,
-} from 'react-router-dom'
-import './App.scss'
-import { nav } from '@/config.json'
-import {getLocale} from '../assets/locale/uselocale'
-import remarkGfm from 'remark-gfm'
-import { raws, scssRaws } from './docs'
-import { visit } from 'unist-util-visit'
-import ReactMarkdown from 'react-markdown'
-import Nav from '@/sites/doc/components/nav'
-import remarkDirective from 'remark-directive'
-import Header from '@/sites/doc/components/header'
-import Demoblock from '@/sites/doc/components/demoblock'
-import DemoPreview from '@/sites/doc/components/demo-preview'
-import Issue from '@/sites/doc/components/issue'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import routers from './router'
-import classNames from 'classnames'
+import React, { useEffect, useMemo, useState } from "react";
+import { HashRouter, Switch, Route, useLocation } from "react-router-dom";
+import "./App.scss";
+import { nav } from "@/config.json";
+import { getLocale } from "../assets/locale/uselocale";
+import remarkGfm from "remark-gfm";
+import { raws, scssRaws } from "./docs";
+import { visit } from "unist-util-visit";
+import ReactMarkdown from "react-markdown";
+import Nav from "@/sites/doc/components/nav";
+import remarkDirective from "remark-directive";
+import Header from "@/sites/doc/components/header";
+import Demoblock from "@/sites/doc/components/demoblock";
+import DemoPreview from "@/sites/doc/components/demo-preview";
+import Issue from "@/sites/doc/components/issue";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+
+import routers from "./router";
+import classNames from "classnames";
 
 function myRemarkPlugin() {
   return (tree: any) => {
     visit(tree, (node) => {
-      if (node.type === 'containerDirective') {
-        if (node.name !== 'demo') return
+      if (node.type === "containerDirective") {
+        if (node.name !== "demo") return;
 
-        const data = node.data || (node.data = {})
+        const data = node.data || (node.data = {});
 
-        data.hName = 'div'
+        data.hName = "div";
         data.hProperties = {
-          class: 'nutui-react--demo-wrapper',
-        }
+          class: "nutui-react--demo-wrapper",
+        };
       }
-    })
-  }
+    });
+  };
 }
 
 const Title = () => {
-  let location = useLocation()
+  let location = useLocation();
 
   const getComponentName = () => {
-    const s = window.location.hash.split('/')
-    const cname = s[s.length - 1].toLowerCase().replace('-taro', '')
-    const component: any = {}
+    const s = window.location.hash.split("/");
+    const cname = s[s.length - 1].toLowerCase().replace("-taro", "");
+    const component: any = {};
     nav.forEach((item: any) => {
       item.packages.forEach((sItem: any) => {
         if (sItem.name.toLowerCase() == cname) {
-          component.name = sItem.name
-          component.cName = sItem.cName
-          return
+          component.name = sItem.name;
+          component.cName = sItem.cName;
+          return;
         }
-      })
-    })
-    return component
-  }
+      });
+    });
+    return component;
+  };
   useEffect(() => {
-    const componentName = getComponentName()
-    setComponentName(componentName)
-  }, [location])
-  const [componentName, setComponentName] = useState({ name: '', cName: '' })
+    const componentName = getComponentName();
+    setComponentName(componentName);
+  }, [location]);
+  const [componentName, setComponentName] = useState({ name: "", cName: "" });
   return (
     <div className="title">
-      {componentName.name}&nbsp;{getLocale() === 'zh-CN' && componentName.cName}
+      {componentName.name}&nbsp;{getLocale() === "zh-CN" && componentName.cName}
       <div className="npm-package">
         <a href="https://www.npmjs.com/package/@nutui/nutui-biz">
-          <img src="https://img.shields.io/badge/npm-%40nutui%2Fnutui--biz-brightgreen" alt="@nutui/nutui" />
+          <img
+            src="https://img.shields.io/badge/npm-%40nutui%2Fnutui--biz-brightgreen"
+            alt="@nutui/nutui"
+          />
         </a>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const App = (props) => {
   const taros = useMemo(() => {
-    const docs = {} as any
-    const support = {} as any
+    const docs = {} as any;
+    const support = {} as any;
     nav.forEach((navItem) => {
       return navItem.packages.forEach((pk: any) => {
-        const lname = pk.name.toLowerCase()
+        const lname = pk.name.toLowerCase();
         if (pk.tarodoc) {
-          docs[lname] = true
+          docs[lname] = true;
         }
         if (pk.taro) {
-          support[lname] = true
+          support[lname] = true;
         }
-      })
-    })
-    return { docs, support }
-  }, [nav])
+      });
+    });
+    return { docs, support };
+  }, [nav]);
 
-  const [fixed, setFixed] = useState(false)
-  const [hidden, setHidden] = useState(false)
-  const [activeName, setActiveName] = useState('guide')
+  const [fixed, setFixed] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [activeName, setActiveName] = useState("guide");
 
   const scrollTitle = () => {
-    let top = document.documentElement.scrollTop
+    let top = document.documentElement.scrollTop;
     if (top > 127) {
-      setFixed(true)
+      setFixed(true);
       if (top < 142) {
-        setHidden(true)
+        setHidden(true);
       } else {
-        setHidden(false)
+        setHidden(false);
       }
     } else {
-      setFixed(false)
-      setHidden(false)
+      setFixed(false);
+      setHidden(false);
     }
-  }
+  };
 
   const switchDoc = (name: string) => {
-    const href = window.location.href
-    if (name === 'react') {
-      window.location.href = href.replace('-taro', '')
+    const href = window.location.href;
+    if (name === "react") {
+      window.location.href = href.replace("-taro", "");
     } else {
-      window.location.href = href.replace('-taro', '') + '-taro'
+      window.location.href = href.replace("-taro", "") + "-taro";
     }
-    setDocName(name)
-  }
+    setDocName(name);
+  };
 
   useEffect(() => {
-    document.addEventListener('scroll', scrollTitle)
-  }, [])
+    document.addEventListener("scroll", scrollTitle);
+  }, []);
 
   useEffect(() => {
-    if(location.href.includes('component')) {
-      setActiveName('component')
+    if (location.href.includes("component")) {
+      setActiveName("component");
     }
-    if(location.hash === '#/') {
-      location.href="#/zh-CN/guide/intro"
+    if (location.hash === "#/") {
+      location.href = "#/zh-CN/guide/intro";
     }
-  })
+  });
 
-  const [docname, setDocName] = useState('react')
+  const [docname, setDocName] = useState("react");
 
   const handleClick = (activeName: string) => {
-    setActiveName(activeName)
-  }
+    setActiveName(activeName);
+  };
 
   return (
     <div>
@@ -146,36 +145,43 @@ const App = (props) => {
         <Header click={handleClick}></Header>
         <Nav click={handleClick}></Nav>
         <div className="doc-content">
-          { activeName === 'component' && <div className="doc-title">
-            <div
-              className={`doc-title-position ${fixed ? 'fixed' : ''} ${
-                hidden ? 'hidden' : ''
-              }`}
-            >
-              <Title></Title>
-              <Issue></Issue>
+          {activeName === "component" && (
+            <div className="doc-title">
+              <div
+                className={`doc-title-position ${fixed ? "fixed" : ""} ${
+                  hidden ? "hidden" : ""
+                }`}
+              >
+                <Title></Title>
+                <Issue></Issue>
+              </div>
             </div>
-          </div>}
-          <div className={classNames(['doc-content-document', activeName === 'component' ? 'isComponent' : 'full'])}>
+          )}
+          <div
+            className={classNames([
+              "doc-content-document",
+              activeName === "component" ? "isComponent" : "full",
+            ])}
+          >
             <Switch>
               {routers.map((ru, k) => {
                 return (
                   <Route key={Math.random()} path={ru.path}>
-                    {taros.docs[ru.name.replace('-taro', '')] ? (
+                    {taros.docs[ru.name.replace("-taro", "")] ? (
                       <div className="doc-content-tabs ">
                         <div
                           className={`tab-item ${
-                            docname === 'react' ? 'cur' : ''
+                            docname === "react" ? "cur" : ""
                           }`}
-                          onClick={() => switchDoc('react')}
+                          onClick={() => switchDoc("react")}
                         >
                           React
                         </div>
                         <div
                           className={`tab-item ${
-                            docname === 'taro' ? 'cur' : ''
+                            docname === "taro" ? "cur" : ""
                           }`}
-                          onClick={() => switchDoc('taro')}
+                          onClick={() => switchDoc("taro")}
                         >
                           Taro
                         </div>
@@ -185,9 +191,9 @@ const App = (props) => {
                         className="doc-content-tabs single"
                         style={{
                           display: `${
-                            taros.support[ru.name.replace('-taro', '')]
-                              ? 'inherit'
-                              : 'none'
+                            taros.support[ru.name.replace("-taro", "")]
+                              ? "inherit"
+                              : "none"
                           }`,
                         }}
                       >
@@ -205,17 +211,17 @@ const App = (props) => {
                       components={{
                         code({ node, inline, className, children, ...props }) {
                           const match = /language-([^(scss)]\w+)/.exec(
-                            className || ''
-                          )
+                            className || ""
+                          );
                           return !inline && match ? (
                             <Demoblock
-                              text={String(children).replace(/\n$/, '')}
-                              scss={(scssRaws as any)[ru.name + 'Scss']}
+                              text={String(children).replace(/\n$/, "")}
+                              scss={(scssRaws as any)[ru.name + "Scss"]}
                             >
                               <SyntaxHighlighter
-                                children={String(children).replace(/\n$/, '')}
-                                language={match[1]}
-                                PreTag="div"
+                                children={String(children).replace(/\n$/, "")}
+                                language={"tsx"}
+                                className="highlighter"
                                 {...props}
                               />
                             </Demoblock>
@@ -223,21 +229,23 @@ const App = (props) => {
                             <code className={className} {...props}>
                               {children}
                             </code>
-                          )
+                          );
                         },
                       }}
                     />
                   </Route>
-                )
+                );
               })}
             </Switch>
           </div>
-          { activeName === 'component' && <div className="markdown-body">
-            <DemoPreview className={`${fixed ? 'fixed' : ''}`}></DemoPreview>
-          </div> }
+          {activeName === "component" && (
+            <div className="markdown-body">
+              <DemoPreview className={`${fixed ? "fixed" : ""}`}></DemoPreview>
+            </div>
+          )}
         </div>
       </HashRouter>
     </div>
-  )
-}
-export default App
+  );
+};
+export default App;
