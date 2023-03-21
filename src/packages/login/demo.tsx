@@ -21,7 +21,7 @@ const LoginDemo = () => {
   const [translated] = useTranslate<T>({
     "zh-CN": {
       basic: "基本用法",
-      hasProtocol: "有知情同意勾选项",
+      hasProtocol: "有用户隐私勾选项",
       hasCustom: "用户仅账号登录",
       hasError: "错误提示",
       hasCustomInput: "用户自定义输入框",
@@ -35,7 +35,7 @@ const LoginDemo = () => {
     },
     "en-US": {
       basic: "Basic usage",
-      hasProtocol: "Has informed consent",
+      hasProtocol: "There is a user privacy tick option",
       hasCustom: "Custom Login",
       hasCustomInput: "Custom Input",
       hasError: "Error Prompt",
