@@ -281,9 +281,10 @@ export const Login: FunctionComponent<Partial<LoginProps>> = (props) => {
 
   // 倒计时
   const countDown = (time: number) => {
+    setCountTime(countTime--);
+    setInCountDown(true);
     timer.current = setInterval(() => {
       setCountTime(countTime--);
-      setInCountDown(true);
       if (countTime < -1) {
         clearInterval(timer.current);
         setInCountDown(false);
