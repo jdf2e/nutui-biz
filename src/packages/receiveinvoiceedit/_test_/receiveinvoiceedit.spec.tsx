@@ -63,7 +63,7 @@ test("test props & event", async () => {
     expect(container).toMatchSnapshot();
   });
   const bottomEl = container.querySelector(
-    ".nb-receive-invoice-edit-bottom .nut-button"
+    ".nb-receive-invoice-edit__bottom .nut-button"
   ) as HTMLElement;
   fireEvent.click(bottomEl);
   const inputEl = container.querySelectorAll(".nut-input-text")[0];
