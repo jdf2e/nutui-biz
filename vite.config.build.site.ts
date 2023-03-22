@@ -1,17 +1,18 @@
-import { defineConfig } from 'vite'
-import reactRefresh from '@vitejs/plugin-react-refresh'
+import { defineConfig } from "vite";
+import reactRefresh from "@vitejs/plugin-react-refresh";
 
-const path = require('path')
-const atImport = require('postcss-import')
-const config = require('./package.json')
+const path = require("path");
+const atImport = require("postcss-import");
+const config = require("./package.json");
 
-const { resolve } = path
+const { resolve } = path;
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/biz/h5/react/1x/',
+  base: "/",
+  // base: '/biz/h5/react/1x/',
   resolve: {
-    alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
+    alias: [{ find: "@", replacement: resolve(__dirname, "./src") }],
   },
   css: {
     preprocessorOptions: {
@@ -24,14 +25,14 @@ export default defineConfig({
     },
     postcss: {
       plugins: [
-        atImport({ path: path.join(__dirname, 'src`') }),
-        require('autoprefixer')({
+        atImport({ path: path.join(__dirname, "src`") }),
+        require("autoprefixer")({
           overrideBrowserslist: [
-            '> 0.5%',
-            'last 2 versions',
-            'ie > 11',
-            'iOS >= 10',
-            'Android >= 5',
+            "> 0.5%",
+            "last 2 versions",
+            "ie > 11",
+            "iOS >= 10",
+            "Android >= 5",
           ],
         }),
       ],
@@ -39,13 +40,14 @@ export default defineConfig({
   },
   plugins: [reactRefresh()],
   build: {
-    target: 'es2015',
-    outDir: './dist/biz/h5/react/1x/',
+    target: "es2015",
+    // outDir: './dist/biz/h5/react/1x/',
+    outDir: "./dist/1x/",
     cssCodeSplit: true,
     rollupOptions: {
       input: {
-        mobile: resolve(__dirname, 'demo.html'),
-        index: resolve(__dirname, 'index.html'),
+        mobile: resolve(__dirname, "demo.html"),
+        index: resolve(__dirname, "index.html"),
       },
       output: {
         entryFileNames: `demo-${config.version}/[name].js`,
@@ -54,4 +56,4 @@ export default defineConfig({
       },
     },
   },
-})
+});
