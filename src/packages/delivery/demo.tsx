@@ -5,7 +5,7 @@ import DeliveryDateTime from './../deliverydatetime';
 import { DeliveryTypes, DeliveryData, DateTimesType, DateType, DateTimeType } from './type';
 import { Cell, Popup } from '@nutui/nutui-react'
 
-import '../../styles/demo.scss';
+import '../../styles/demo.css';
 
 const DeliveryDemo = () => {
     const [visible1, setVisible1] = useState(false);

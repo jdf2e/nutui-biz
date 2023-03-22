@@ -19,7 +19,7 @@ import { HorizontalScrolling } from '@nutui/nutui-biz';
 import  React from 'react';
 import { Cell, Icon } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -59,7 +59,7 @@ export default App;
 import  React from 'react';
 import { Cell, Icon } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -99,7 +99,7 @@ export default App;
 import  React from 'react';
 import { Cell, Icon } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -147,7 +147,7 @@ export default App;
 import  React from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -197,7 +197,7 @@ export default App;
 import  React from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -245,7 +245,7 @@ export default App;
 import  React from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -283,7 +283,7 @@ export default App;
 import  React from 'react';
 import { Cell, Icon } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 

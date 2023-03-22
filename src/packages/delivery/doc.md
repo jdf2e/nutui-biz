@@ -20,7 +20,7 @@ import { Delivery } from '@nutui/nutui-biz';
 import React, { useState, ReactNode } from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { Delivery } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 interface DeliveryBaseType {
     label: string;
     text: ReactNode;
@@ -180,7 +180,7 @@ export default App;
 import React, { useState, ReactNode } from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { Delivery } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 interface DeliveryBaseType {
     label: string;
     text: ReactNode;
@@ -435,7 +435,7 @@ export default App;
 import React, { useState, ReactNode } from 'react';
 import { Cell, Popup } from '@nutui/nutui-react';
 import { Delivery, DeliveryDate } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 interface DeliveryBaseType {
     label: string;
     text: ReactNode;
@@ -586,7 +586,7 @@ export default App;
 import React, { useState, ReactNode } from 'react';
 import { Cell, Popup } from '@nutui/nutui-react';
 import { Delivery, DeliveryDateTime } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 interface DeliveryBaseType {
     label: string;
@@ -746,7 +746,7 @@ export default App;
 import React, { useState, ReactNode } from 'react';
 import { Cell, Popup } from '@nutui/nutui-react';
 import { DeliveryDate } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 interface DeliveryBaseType {
     label: string;

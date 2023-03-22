@@ -2,7 +2,7 @@ import React from 'react'
 import { useTranslate } from '../../sites/assets/locale'
 import { HorizontalScrolling } from './horizontalscrolling'
 import { Cell } from '@nutui/nutui-react'
-import '../../styles/demo.scss'
+import '../../styles/demo.css'
 
 interface T {
   [props: string]: string

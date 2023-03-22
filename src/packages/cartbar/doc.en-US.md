@@ -19,7 +19,7 @@ import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
 ```ts
 import  React from 'react';
 import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
   return (
@@ -46,7 +46,7 @@ export default App;
 ```ts
 import  React from 'react';
 import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
   return (
@@ -73,7 +73,7 @@ export default App;
 ```ts
 import  React from 'react';
 import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
   return (
@@ -100,7 +100,7 @@ export default App;
 ```ts
 import  React from 'react';
 import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
   return (
@@ -127,7 +127,7 @@ export default App;
 ```ts
 import  React from 'react';
 import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
   return (
@@ -154,7 +154,7 @@ export default App;
 ```ts
 import  React from 'react';
 import { CartBar, CartBarIcon, CartBarButton } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
   const customTopHtml = () => {

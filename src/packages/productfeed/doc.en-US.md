@@ -22,7 +22,7 @@ import  React from "react";
 import { Price } from "@nutui/nutui-react";
 import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -137,7 +137,7 @@ import  React from "react";
 import { Price } from "@nutui/nutui-react";
 import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -258,7 +258,7 @@ import  React from "react";
 import { Price } from "@nutui/nutui-react";
 import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 

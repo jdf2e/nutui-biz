@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslate } from '../../sites/assets/locale';
 import { OrderRemark } from './orderremark';
 import { Cell, Toast } from '@nutui/nutui-react';
-import "../../styles/demo.scss"
+import "../../styles/demo.css"
 interface tarnslatedOption {
   basic: string;
   title: string;

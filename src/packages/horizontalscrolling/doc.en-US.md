@@ -19,7 +19,7 @@ import { HorizontalScrolling } from '@nutui/nutui-biz';
 import  React from 'react';
 import { Cell, Icon } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -59,7 +59,7 @@ The position of the mask layer can be controlled by `maskPosition`
 import  React from 'react';
 import { Cell, Icon } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -99,7 +99,7 @@ Mask layer shadow style `maskShadowType` has 4 types: shadow (shadow), triangle 
 import  React from 'react';
 import { Cell, Icon } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -143,7 +143,7 @@ The distance between the scrollable content and the mask side of the container d
 import  React from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -193,7 +193,7 @@ Customize the mask content through `maskContent`
 import  React from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -241,7 +241,7 @@ export default App;
 import  React from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -281,7 +281,7 @@ export default App;
 import  React from 'react';
 import { Cell, Icon } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
