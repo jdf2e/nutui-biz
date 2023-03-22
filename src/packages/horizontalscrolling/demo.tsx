@@ -130,7 +130,7 @@ const HorizontalScrollingDemo = () => {
           maskContent={
             <div className="nb-horizontalscrolling__mask-box buy-price">
               <div><i>{translated.symbol}</i>199</div>
-              <div>{translated.more}</div>
+              <div>共3件</div>
             </div>}
           >
           {[1, 2, 3, 4, 5, 6].map((item) => {

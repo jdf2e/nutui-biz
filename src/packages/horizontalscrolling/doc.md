@@ -32,7 +32,7 @@ const App = () => {
           {[1, 2, 3, 4, 5, 6].map((item) => {
             return (
               <div   
-                className="nut-biz-horizontalscrolling__contain-item"
+                className="nb-horizontalscrolling__contain-item"
                 key={item}
               >
                 <img
@@ -72,7 +72,7 @@ const App = () => {
           {[1, 2, 3, 4, 5, 6].map((item) => {
             return (
               <div   
-                className="nut-biz-horizontalscrolling__contain-item"
+                className="nb-horizontalscrolling__contain-item"
                 key={item}
               >
                 <img
@@ -120,7 +120,7 @@ const App = () => {
           {[1, 2, 3, 4, 5, 6].map((item) => {
             return (
               <div   
-                className="nut-biz-horizontalscrolling__contain-item"
+                className="nb-horizontalscrolling__contain-item"
                 key={item}
               >
                 <img
@@ -161,7 +161,7 @@ const App = () => {
           maskWidth={50}
           maskDistance={10}
           maskContent={
-          <div className="nut-biz-horizontalscrolling__mask-box buy-price">
+          <div className="nb-horizontalscrolling__mask-box buy-price">
             <div><i>￥</i>199</div>
             <div>共3件</div>
           </div>
@@ -170,7 +170,7 @@ const App = () => {
           {[1, 2, 3, 4, 5, 6].map((item) => {
             return (
               <div   
-                className="nut-biz-horizontalscrolling__contain-item"
+                className="nb-horizontalscrolling__contain-item"
                 key={item}
               >
                 <img
@@ -220,7 +220,7 @@ const App = () => {
           {[1, 2, 3, 4, 5, 6].map((item) => {
             return (
               <div   
-                className="nut-biz-horizontalscrolling__contain-item"
+                className="nb-horizontalscrolling__contain-item"
                 key={item}
               >
                 <img
@@ -258,7 +258,7 @@ const App = () => {
         {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
-              className="nut-biz-horizontalscrolling__contain-item"
+              className="nb-horizontalscrolling__contain-item"
               key={item}
             >
               <img
@@ -306,7 +306,7 @@ const App = () => {
           {[1, 2, 3, 4, 5, 6].map((item) => {
             return (
               <div   
-                className="nut-biz-horizontalscrolling__contain-item"
+                className="nb-horizontalscrolling__contain-item"
                 key={item}
               >
                 <img

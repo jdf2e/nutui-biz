@@ -21,6 +21,7 @@ import { Comment } from "@nutui/nutui-biz";
 ```js
 import React, { useState,useEffect } from 'react';
 import { Comment } from '@nutui/nutui-biz';
+import { Cell } from "@nutui/nutui-react";
 
 const App = () => {
 
@@ -50,25 +51,27 @@ const App = () => {
   };
 
   return (
-    <Comment
-      images={cmt.images}
-      videos={cmt.videos}
-      info={cmt.info}
-      onClick={onHandleClick}
-      onClickImages={onClickImages}
-      onClickOperate={(type: string) => {
-        console.log(type);
-      }}
-      operation={["reply"]}
-      commentLabels={
-        <img
-          style={{
-            height: "20px",
-          }}
-          src="https://img11.360buyimg.com/imagetools/jfs/t1/211858/17/4258/12101/618e6f78Ed0edcadc/e83a673555edf59f.jpg"
-        />
-      }
-    ></Comment>
+    <Cell>
+      <Comment
+        images={cmt.images}
+        videos={cmt.videos}
+        info={cmt.info}
+        onClick={onHandleClick}
+        onClickImages={onClickImages}
+        onClickOperate={(type: string) => {
+          console.log(type);
+        }}
+        operation={["reply"]}
+        commentLabels={
+          <img
+            style={{
+              height: "20px",
+            }}
+            src="https://img11.360buyimg.com/imagetools/jfs/t1/211858/17/4258/12101/618e6f78Ed0edcadc/e83a673555edf59f.jpg"
+          />
+        }
+      />
+    </Cell>
   );
 };
 export default App;
@@ -85,6 +88,7 @@ export default App;
 ```js
 import React,{useEffect,useState} from 'react';
 import { Comment } from '@nutui/nutui-biz';
+import { Cell } from "@nutui/nutui-react";
 
 const App = () => {
 
@@ -114,27 +118,29 @@ const App = () => {
   };
 
   return (
-    <Comment
-      type="complex"
-      imagesRows="multi"
-      images={cmt.images}
-      videos={cmt.videos}
-      info={cmt.info}
-      ellipsis="6"
-      onClickImages={onClickImages}
-      commentLabels={
-        <img
-          src="https://storage.360buyimg.com/imgtools/78925d9440-f9e874d0-e93d-11eb-8e5c-0da9e18a13b1.png"
-          style={{ height: "12px" }}
-        />
-      }
-      commentShopReply={
-        <div className="nut-comment-shop">
-          <span>京东美妆国际：</span>
-          尊敬的客户您好，非常抱歉给您带来不愉快的购物体验，关于过敏，什么成分都不存在个别性和普遍性。
-        </div>
-      }
-    ></Comment>
+    <Cell>
+      <Comment
+        type="complex"
+        imagesRows="multi"
+        images={cmt.images}
+        videos={cmt.videos}
+        info={cmt.info}
+        ellipsis="6"
+        onClickImages={onClickImages}
+        commentLabels={
+          <img
+            src="https://storage.360buyimg.com/imgtools/78925d9440-f9e874d0-e93d-11eb-8e5c-0da9e18a13b1.png"
+            style={{ height: "12px" }}
+          />
+        }
+        commentShopReply={
+          <div className="nut-comment-shop">
+            <span>京东美妆国际：</span>
+            尊敬的客户您好，非常抱歉给您带来不愉快的购物体验，关于过敏，什么成分都不存在个别性和普遍性。
+          </div>
+        }
+      />
+    </Cell>
   );
 };
 export default App;
@@ -149,6 +155,7 @@ export default App;
 ```js
 import React,{useEffect,useState} from 'react';
 import { Comment } from '@nutui/nutui-biz';
+import { Cell } from "@nutui/nutui-react";
 
 const App = () => {
 
@@ -174,14 +181,16 @@ const App = () => {
   };
 
   return (
-    <Comment
-      imagesRows="multi"
-      images={cmt.images}
-      videos={cmt.videos}
-      info={cmt.info}
-      follow={cmt.follow}
-      onClickImages={onClickImages}
-    ></Comment>
+    <Cell>
+      <Comment
+        imagesRows="multi"
+        images={cmt.images}
+        videos={cmt.videos}
+        info={cmt.info}
+        follow={cmt.follow}
+        onClickImages={onClickImages}
+      />
+    </Cell>
   );
 };
 export default App;
