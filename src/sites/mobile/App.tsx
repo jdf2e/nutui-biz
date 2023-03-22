@@ -65,7 +65,7 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
           <div
             className="back"
             onClick={() => {
-              location.replace(`/nutui/biz/demo.html#/`);
+              location.replace(`/biz/h5/react/1x/demo.html#/`);
             }}
           >
             <Icon name="left"></Icon>
