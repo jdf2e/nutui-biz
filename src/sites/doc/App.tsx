@@ -1,10 +1,10 @@
-import React, { memo, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { HashRouter, Switch, Route, useLocation } from "react-router-dom";
 import "./App.scss";
 import { nav } from "@/config.json";
 import { getLocale } from "../assets/locale/uselocale";
 import remarkGfm from "remark-gfm";
-import { raws, scssRaws } from "./docs";
+import { scssRaws } from "./docs";
 import { visit } from "unist-util-visit";
 import ReactMarkdown from "react-markdown";
 import Nav from "@/sites/doc/components/nav";
