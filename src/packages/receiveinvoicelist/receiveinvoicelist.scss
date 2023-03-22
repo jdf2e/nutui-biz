@@ -46,6 +46,11 @@
                     font-size: 12px;
                     color: #333333;
                     word-break: break-word;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    -webkit-box-orient:vertical; 
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
                 }
             }
         }
