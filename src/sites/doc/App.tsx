@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { memo, useEffect, useMemo, useState } from "react";
 import { HashRouter, Switch, Route, useLocation } from "react-router-dom";
 import "./App.scss";
 import { nav } from "@/config.json";
@@ -14,6 +14,7 @@ import Demoblock from "@/sites/doc/components/demoblock";
 import DemoPreview from "@/sites/doc/components/demo-preview";
 import Issue from "@/sites/doc/components/issue";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import rehypeRaw from "rehype-raw";
 
 import routers from "./router";
 import classNames from "classnames";
@@ -57,6 +58,7 @@ const Title = () => {
     const componentName = getComponentName();
     setComponentName(componentName);
   }, [location]);
+
   const [componentName, setComponentName] = useState({ name: "", cName: "" });
   return (
     <div className="title">
@@ -96,6 +98,10 @@ const App = (props) => {
   const [activeName, setActiveName] = useState("guide");
 
   const scrollTitle = () => {
+    const hash = location.hash.indexOf("component") > -1;
+    if (!hash) {
+      return false;
+    }
     let top = document.documentElement.scrollTop;
     if (top > 127) {
       setFixed(true);
@@ -208,6 +214,7 @@ const App = (props) => {
                         remarkDirective,
                         myRemarkPlugin,
                       ]}
+                      rehypePlugins={[rehypeRaw]}
                       components={{
                         code({ node, inline, className, children, ...props }) {
                           const match = /language-([^(scss)]\w+)/.exec(
