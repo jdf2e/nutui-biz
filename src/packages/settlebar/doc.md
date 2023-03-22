@@ -20,7 +20,7 @@ import { SettleBar } from '@nutui/nutui-biz';
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 import { Toast } from '@nutui/nutui-react';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
   return (
@@ -45,7 +45,7 @@ export default App;
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 import { Toast } from '@nutui/nutui-react';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
   return (
@@ -71,7 +71,7 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
   return (
@@ -96,7 +96,7 @@ export default App;
 ```ts
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
   return (
@@ -122,7 +122,7 @@ export default App;
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 import { Toast } from '@nutui/nutui-react';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
   return (
@@ -152,7 +152,7 @@ export default App;
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 import { Toast } from '@nutui/nutui-react';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
   return (
@@ -179,7 +179,7 @@ export default App;
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 import { Toast } from '@nutui/nutui-react';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
   return (
@@ -206,7 +206,7 @@ export default App;
 import  React from 'react';
 import { SettleBar } from '@nutui/nutui-biz';
 import { Toast } from '@nutui/nutui-react';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
   const customWarningHtml = () => {

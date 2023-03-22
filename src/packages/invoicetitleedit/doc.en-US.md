@@ -22,7 +22,7 @@ Company code cannot be edited.
 import  React from "react";
 import { Toast } from '@nutui/nutui-react'
 import { InvoiceTitleEdit } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
   const handleSubmit = (arg: any) => {
@@ -61,7 +61,7 @@ export default App;
 import  React from "react";
 import { Toast } from '@nutui/nutui-react'
 import { InvoiceTitleEdit } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
   const handleSubmit = (arg: any) => {
@@ -97,7 +97,7 @@ export default App;
 import  React from "react";
 import { Toast } from '@nutui/nutui-react'
 import { InvoiceTitleEdit } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
   const handleSubmit = (arg: any) => {

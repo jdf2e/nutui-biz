@@ -22,7 +22,7 @@ import  React from "react";
 import { Price } from "@nutui/nutui-react";
 import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 interface dataType {
   id: number,
@@ -113,7 +113,7 @@ const App = () => {
   }
 
   return (
-    <div className="demo">
+    <div className="demo product-feed-demo">
       <ProductFeed
         infiniteloadingProps={{
           hasMore: hasMoreDouble,
@@ -146,7 +146,7 @@ import  React from "react";
 import { Price } from "@nutui/nutui-react";
 import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 interface dataType {
   id: number,
@@ -240,7 +240,7 @@ const App = () => {
   }
 
   return (
-    <div className="demo">
+    <div className="demo product-feed-demo">
       <ProductFeed
         className="product-feed-demo2"
         data={listSingle}
@@ -277,7 +277,7 @@ import  React from "react";
 import { Price } from "@nutui/nutui-react";
 import { ProductFeed } from "@nutui/nutui-biz";
 import React, { useEffect, useState } from "react"
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 interface dataType {
   id: number,
@@ -375,7 +375,7 @@ const App = () => {
   }
 
   return (
-    <div className="demo">
+    <div className="demo product-feed-demo">
       <ProductFeed
         data={list3}
         infiniteloadingProps={{

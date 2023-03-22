@@ -4,6 +4,7 @@ exports[`Add New Address 1`] = `
 <div>
   <div
     class="nb-addressedit"
+    id="undefined"
   >
     <div
       class="nb-addressedit__item"

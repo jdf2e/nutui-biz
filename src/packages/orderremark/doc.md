@@ -20,12 +20,12 @@ import { OrderRemark } from '@nutui/nutui-biz';
 import React, { useState } from 'react';
 import { OrderRemark } from '@nutui/nutui-biz';
 import { Cell, Toast } from '@nutui/nutui-react';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 const App = () => {
   const [show, setShow] = useState(false);
   const [mark, setMark] = useState('');
   return (
-    <div className="demo">
+    <div className="demo order-remark-demo">
       <Cell onClick={(e) => setShow(true)} title="订单备注" desc={mark ? mark : '请输入备注信息'}></Cell>
       <OrderRemark
         visible={show}
@@ -52,13 +52,13 @@ export default App;
 import React, { useState } from 'react';
 import { OrderRemark } from '@nutui/nutui-biz';
 import { Cell, Toast } from '@nutui/nutui-react';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 const App = () => {
   const [show, setShow] = useState(false);
   const [mark, setMark] = useState('');
   const tagArr = ['京东快递', '轻拿轻放', '周末配送', '配送前，需提前电话联系', '如家中无人，可电话后，放置于门口'];
   return (
-    <div className="demo">
+    <div className="demo order-remark-demo">
       <Cell onClick={(e) => setShow(true)} title="订单备注" desc={mark ? mark : '请输入备注信息'}></Cell>
       <OrderRemark
         visible={show}
@@ -87,13 +87,13 @@ export default App;
 import React, { useState } from 'react';
 import { OrderRemark } from '@nutui/nutui-biz';
 import { Cell, Toast } from '@nutui/nutui-react';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 const App = () => {
   const [show, setShow] = useState(false);
   const [mark, setMark] = useState('');
   const tagArr = ['京东快递', '轻拿轻放', '周末配送', '配送前，需提前电话联系', '如家中无人，可电话后，放置于门口'];
   return (
-    <div className="demo">
+    <div className="demo order-remark-demo">
       <Cell onClick={(e) => setShow(true)} title="订单备注" desc={mark ? mark : '请输入备注信息'}></Cell>
       <OrderRemark
         visible={show}
@@ -123,7 +123,7 @@ export default App;
 import React, { useState } from 'react';
 import { OrderRemark } from '@nutui/nutui-biz';
 import { Cell, Toast } from '@nutui/nutui-react';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 const App = () => {
   const [show, setShow] = useState(false);
   const [mark, setMark] = useState('');
@@ -142,7 +142,7 @@ const App = () => {
     console.log('onClickOverlay', val);
   };
   return (
-    <div className="demo">
+    <div className="demo order-remark-demo">
       <Cell onClick={(e) => setShow(true)} title="订单备注" desc={mark ? mark : '请输入备注信息'}></Cell>
       <OrderRemark
         visible={show}

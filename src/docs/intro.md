@@ -2,8 +2,6 @@
 
 基于 [NutUI-react](https://nutui.jd.com/h5/react/1x/#/zh-CN/guide/intro-react) 的 业务组件库，适用于移动端电商商城需求的快速开发。组件包括商品、订单、售后、客服、发票、履约六大域，开箱即用，帮助研发进一步提升开发效率，改善开发体验。
 
-<!-- ![](https://img12.360buyimg.com/imagetools/jfs/t1/93525/10/35630/3509/63e5e07fFee1229de/364b5180962e277c.png) -->
-
  <div id="intro-banner-box"></div>
 
 ## 特性
@@ -17,7 +15,7 @@
 
 ## 扫码体验
 
-![](https://img13.360buyimg.com/imagetools/jfs/t1/135818/39/32871/2503/63e5e33bFdb8aa54c/5171f56774fcb8dd.png)
+![](https://img11.360buyimg.com/imagetools/jfs/t1/220934/19/24560/1631/641ac798F78842b17/c1c34711aaad1909.png)
 
 ## 版本
 

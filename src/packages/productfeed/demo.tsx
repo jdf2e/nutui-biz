@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Tabs, TabPane, Price } from "@nutui/nutui-react"
 import { ProductFeed } from "./productfeed"
 import { useTranslate } from "../../sites/assets/locale"
-import "../../styles/demo.scss"
+import "../../styles/demo.css"
 
 interface T {
   title1: string

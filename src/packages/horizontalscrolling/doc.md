@@ -19,7 +19,7 @@ import { HorizontalScrolling } from '@nutui/nutui-biz';
 import  React from 'react';
 import { Cell, Icon } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -32,7 +32,7 @@ const App = () => {
           {[1, 2, 3, 4, 5, 6].map((item) => {
             return (
               <div   
-                className="nut-biz-horizontalscrolling__contain-item"
+                className="nb-horizontalscrolling__contain-item"
                 key={item}
               >
                 <img
@@ -59,7 +59,7 @@ export default App;
 import  React from 'react';
 import { Cell, Icon } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -72,7 +72,7 @@ const App = () => {
           {[1, 2, 3, 4, 5, 6].map((item) => {
             return (
               <div   
-                className="nut-biz-horizontalscrolling__contain-item"
+                className="nb-horizontalscrolling__contain-item"
                 key={item}
               >
                 <img
@@ -99,7 +99,7 @@ export default App;
 import  React from 'react';
 import { Cell, Icon } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -120,7 +120,7 @@ const App = () => {
           {[1, 2, 3, 4, 5, 6].map((item) => {
             return (
               <div   
-                className="nut-biz-horizontalscrolling__contain-item"
+                className="nb-horizontalscrolling__contain-item"
                 key={item}
               >
                 <img
@@ -147,7 +147,7 @@ export default App;
 import  React from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -161,7 +161,7 @@ const App = () => {
           maskWidth={50}
           maskDistance={10}
           maskContent={
-          <div className="nut-biz-horizontalscrolling__mask-box buy-price">
+          <div className="nb-horizontalscrolling__mask-box buy-price">
             <div><i>￥</i>199</div>
             <div>共3件</div>
           </div>
@@ -170,7 +170,7 @@ const App = () => {
           {[1, 2, 3, 4, 5, 6].map((item) => {
             return (
               <div   
-                className="nut-biz-horizontalscrolling__contain-item"
+                className="nb-horizontalscrolling__contain-item"
                 key={item}
               >
                 <img
@@ -197,7 +197,7 @@ export default App;
 import  React from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -220,7 +220,7 @@ const App = () => {
           {[1, 2, 3, 4, 5, 6].map((item) => {
             return (
               <div   
-                className="nut-biz-horizontalscrolling__contain-item"
+                className="nb-horizontalscrolling__contain-item"
                 key={item}
               >
                 <img
@@ -245,7 +245,7 @@ export default App;
 import  React from 'react';
 import { Cell } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -258,7 +258,7 @@ const App = () => {
         {[1, 2, 3, 4, 5, 6].map((item) => {
           return (
             <div   
-              className="nut-biz-horizontalscrolling__contain-item"
+              className="nb-horizontalscrolling__contain-item"
               key={item}
             >
               <img
@@ -283,7 +283,7 @@ export default App;
 import  React from 'react';
 import { Cell, Icon } from '@nutui/nutui-react';
 import { HorizontalScrolling } from '@nutui/nutui-biz';
-import "@nutui/nutui-biz/dist/styles/demo.scss";
+import "@nutui/nutui-biz/dist/styles/demo.css";
 
 const App = () => {
 
@@ -306,7 +306,7 @@ const App = () => {
           {[1, 2, 3, 4, 5, 6].map((item) => {
             return (
               <div   
-                className="nut-biz-horizontalscrolling__contain-item"
+                className="nb-horizontalscrolling__contain-item"
                 key={item}
               >
                 <img
