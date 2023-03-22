@@ -45,7 +45,7 @@
 </p>
 
 <p align="center">
-   <img src="https://img12.360buyimg.com/imagetools/jfs/t1/202336/18/18586/7437/61b832ccE0b13d53d/18605da7232a5a0e.png" width="164" alt="NutUI-Biz" />
+   <img src="https://img11.360buyimg.com/imagetools/jfs/t1/220934/19/24560/1631/641ac798F78842b17/c1c34711aaad1909.png" width="164" alt="NutUI-Biz" />
 </p>
 
 ---
