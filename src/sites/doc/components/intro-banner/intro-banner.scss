@@ -1,0 +1,421 @@
+@mixin breathe-circle($size, $time) {
+  animation: breathe $time infinite cubic-bezier(0, 0, 0.49, 1.02);
+}
+@keyframes breathe {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50%,
+  75% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  78%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+.intro-banner {
+  position: relative;
+  margin: 30px 0;
+  width: 1000px;
+  height: 350px;
+  overflow: hidden;
+  background-color: #fff;
+
+  &-circle {
+    position: relative;
+    height: 100%;
+    .boxshadow-line-top {
+      position: absolute;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      height: 20px;
+      background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.1)
+      );
+    }
+    .boxshadow-line-bottom {
+      position: absolute;
+      bottom: 0;
+      z-index: 100;
+      width: 100%;
+      height: 20px;
+      background-image: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.1)
+      );
+    }
+    .circle-logo,
+    .circle-item {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+    }
+    .circle-logo {
+      z-index: 80;
+      img {
+        width: 90px;
+      }
+    }
+    .circle-item-1 {
+      width: 250px;
+      height: 250px;
+      background-color: #dde7fd;
+      z-index: 30;
+    }
+    .circle-item-2 {
+      width: 600px;
+      height: 600px;
+      background-color: rgb(232, 240, 254);
+      z-index: 20;
+    }
+    .circle-item-3 {
+      width: 900px;
+      height: 900px;
+      background-color: #f3f7fe;
+      z-index: 10;
+    }
+    .circle-line {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-4px);
+      display: flex;
+      justify-content: space-between;
+      width: 360px;
+      z-index: 50;
+      .line-word {
+        display: inline-block;
+        font-size: 12px;
+        color: #b7d0f8;
+        margin-top: 1px;
+      }
+      .line {
+        display: inline-block;
+        width: 130px;
+        height: 20px;
+        background-image: url("https://img12.360buyimg.com/imagetools/jfs/t1/127347/16/30243/278/64197b97F1bac2950/ec1ecc13fc4febba.png");
+        background-repeat: repeat-x;
+        background-position: center center;
+        background-size: 10px 10px;
+      }
+    }
+    .line-1 {
+      left: 80px;
+    }
+    .line-2 {
+      right: 80px;
+    }
+  }
+  &-area {
+    position: absolute;
+    top: 0;
+    z-index: 90;
+    width: 100%;
+    height: 100%;
+    .area-group {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      &:hover {
+        &:before {
+          width: 30px;
+          height: 30px;
+        }
+      }
+      &:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0.3;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: #ee7874;
+      }
+    }
+
+    .area-item {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .area-level-father {
+      width: 20px;
+      height: 20px;
+      background-color: #ee7874;
+    }
+    .area-level-child {
+      width: 15px;
+      height: 15px;
+      background-color: #ee7874;
+    }
+    .area-level-text {
+      position: relative;
+      top: 25px;
+      font-size: 12px;
+      color: #333;
+    }
+    .area-group-child {
+      &:hover {
+        &:before {
+          width: 25px;
+          height: 25px;
+        }
+      }
+      &:before {
+        width: 20px;
+        height: 20px;
+        background-color: #ee7874;
+      }
+      .area-level-text {
+        color: #a2a6ad;
+        top: 20px;
+        transform: scale(0.9);
+      }
+    }
+    .area-0 {
+      .area-group-0 {
+        top: 90px;
+        left: 430px;
+      }
+      .area-group-child-0 {
+        left: 262px;
+        top: 66px;
+      }
+      .area-group-child-1 {
+        left: 215px;
+        top: 87px;
+      }
+      .area-group-child-2 {
+        left: 113px;
+        top: 180px;
+      }
+      .area-group-child-3 {
+        left: 267px;
+        top: 200px;
+      }
+      .area-group-child-4 {
+        left: 159px;
+        top: 111px;
+      }
+      .area-group-child-5 {
+        left: 351px;
+        top: 84px;
+      }
+      .area-group-child-6 {
+        left: 291px;
+        top: 106px;
+      }
+      .area-group-child-7 {
+        left: 231px;
+        top: 133px;
+      }
+      .area-group-child-8 {
+        left: 159px;
+        top: 50px;
+      }
+      .area-group-child-9 {
+        left: 193px;
+        top: 196px;
+      }
+      .area-group-child-10 {
+        left: 327px;
+        top: 137px;
+      }
+      .area-group-child-11 {
+        left: 285px;
+        top: 17px;
+      }
+      .area-group-child-12 {
+        left: 358px;
+        top: 30px;
+      }
+    }
+    .area-1 {
+      .area-group-1 {
+        top: 110px;
+        left: 570px;
+        .area-level-father,
+        .area-group-child,
+        &:before {
+          background-color: #617cd2;
+        }
+      }
+      .area-group-child {
+        .area-level-child,
+        &:before {
+          background-color: #617cd2;
+        }
+      }
+      .area-group-child-0 {
+        top: 90px;
+        left: 620px;
+      }
+      .area-group-child-1 {
+        top: 130px;
+        left: 690px;
+      }
+      .area-group-child-2 {
+        top: 80px;
+        left: 680px;
+      }
+      .area-group-child-3 {
+        top: 20px;
+        left: 660px;
+      }
+      .area-group-child-7 {
+        top: 120px;
+        left: 790px;
+      }
+      .area-group-child-8 {
+        top: 90px;
+        left: 730px;
+      }
+    }
+    .area-2 {
+      .area-group-2 {
+        top: 200px;
+        left: 390px;
+        .area-level-father,
+        &:before {
+          background-color: #7fcdf5;
+        }
+      }
+      .area-group-child {
+        .area-level-child,
+        &:before {
+          background-color: #7fcdf5;
+        }
+      }
+      .area-group-child-0 {
+        top: 230px;
+        left: 240px;
+      }
+      .area-group-child-1 {
+        top: 260px;
+        left: 140px;
+      }
+      .area-group-child-2 {
+        top: 280px;
+        left: 220px;
+      }
+      .area-group-child-3 {
+        top: 200px;
+        left: 300px;
+      }
+    }
+    .area-3 {
+      .area-group-3 {
+        top: 230px;
+        left: 530px;
+        .area-level-father,
+        &:before {
+          background-color: #a06ec1;
+        }
+      }
+      .area-group-child {
+        .area-level-child,
+        &:before {
+          background-color: #a06ec1;
+        }
+      }
+      .area-group-child-0 {
+        top: 200px;
+        left: 650px;
+      }
+      .area-group-child-1 {
+        top: 240px;
+        left: 700px;
+      }
+      .area-group-child-2 {
+        top: 300px;
+        left: 550px;
+      }
+    }
+    .area-4 {
+      .area-group-4 {
+        top: 250px;
+        left: 600px;
+        .area-level-father,
+        &:before {
+          background-color: #ef90dc;
+        }
+      }
+      .area-group-child {
+        .area-level-child,
+        &:before {
+          background-color: #ef90dc;
+        }
+      }
+    }
+    .area-5 {
+      .area-group-5 {
+        top: 20px;
+        left: 570px;
+        .area-level-father,
+        &:before {
+          background-color: #6fbfa6;
+        }
+      }
+      .area-group-child {
+        .area-level-child,
+        &:before {
+          background-color: #6fbfa6;
+        }
+      }
+    }
+    .area-6 {
+      .area-group-6 {
+        top: 280px;
+        left: 370px;
+        .area-level-father,
+        &:before {
+          background-color: #fadc74;
+        }
+      }
+      .area-group-child {
+        .area-level-child,
+        &:before {
+          background-color: #fadc74;
+        }
+      }
+    }
+    .area {
+      transition: all linear 0.2s;
+      .activeColor {
+        &:before {
+          @include breathe-circle(30px, 0.9s);
+        }
+      }
+      .activeColor.area-group-child {
+        &:before {
+          @include breathe-circle(25px, 0.9s);
+        }
+      }
+      .diabledColor {
+        &:before,
+        .area-level-father {
+          opacity: 0.2;
+        }
+        &:before,
+        .area-level-child,
+        .area-level-text {
+          opacity: 0.2;
+        }
+      }
+    }
+  }
+}

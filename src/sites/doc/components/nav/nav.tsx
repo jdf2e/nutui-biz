@@ -4,6 +4,7 @@ import { NavLink, useHistory } from "react-router-dom";
 import "./nav.scss";
 import useLocale from "@/sites/assets/locale/uselocale";
 import classNames from "classnames";
+import RenderDomIntro from "@/sites/doc/components/intro-banner/intro.tsx";
 
 interface NavProps {
   click: (activeName: string) => void;
@@ -52,6 +53,10 @@ const Nav: React.FunctionComponent<NavProps> = (props) => {
       history.push("/zh-CN/guide/intro");
     }
   };
+
+  useEffect(() => {
+    RenderDomIntro();
+  }, [history.location.pathname]);
 
   const handleSwichNav = () => {
     sessionStorage.setItem("biz-env", "PC");
