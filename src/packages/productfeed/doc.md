@@ -113,7 +113,7 @@ const App = () => {
   }
 
   return (
-    <div className="demo">
+    <div className="demo product-feed-demo">
       <ProductFeed
         infiniteloadingProps={{
           hasMore: hasMoreDouble,
@@ -240,7 +240,7 @@ const App = () => {
   }
 
   return (
-    <div className="demo">
+    <div className="demo product-feed-demo">
       <ProductFeed
         className="product-feed-demo2"
         data={listSingle}
@@ -375,7 +375,7 @@ const App = () => {
   }
 
   return (
-    <div className="demo">
+    <div className="demo product-feed-demo">
       <ProductFeed
         data={list3}
         infiniteloadingProps={{
