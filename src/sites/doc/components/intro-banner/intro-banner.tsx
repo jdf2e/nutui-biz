@@ -6,26 +6,16 @@ import { withRouter } from "react-router-dom";
 import "./intro-banner.scss";
 
 const IntroBanner: React.FunctionComponent = (props: any) => {
-  const randomFun = ({ top, left }: any) => {
-    const topNum = Math.round(Math.random() * (top.max - top.min)) + top.min;
-    const leftNum =
-      Math.round(Math.random() * (left.max - left.min)) + left.min;
-    const styDistance = {
-      left: leftNum + "px",
-      top: topNum + "px",
-    };
-    return styDistance;
-  };
-  const numList = [
-    {
-      top: { min: 30, max: 200 },
-      left: { min: 100, max: 400 },
-    },
-    {
-      top: { min: 130, max: 300 },
-      left: { min: 220, max: 500 },
-    },
-  ];
+  // const randomFun = ({ top, left }: any) => {
+  //   const topNum = Math.round(Math.random() * (top.max - top.min)) + top.min;
+  //   const leftNum =
+  //     Math.round(Math.random() * (left.max - left.min)) + left.min;
+  //   const styDistance = {
+  //     left: leftNum + "px",
+  //     top: topNum + "px",
+  //   };
+  //   return styDistance;
+  // };
   const [activeColor, setActiveColor] = useState(-1);
   const addChildClass = (index: number) => {
     setActiveColor(index);
@@ -94,7 +84,6 @@ const IntroBanner: React.FunctionComponent = (props: any) => {
                       }`}
                       key={child.name}
                       onClick={() => goRouter(child)}
-                      // style={randomFun(numList[1])}
                     >
                       <div className="area-item area-level-child"></div>
                       <span className="area-level-text">{child.cName}</span>

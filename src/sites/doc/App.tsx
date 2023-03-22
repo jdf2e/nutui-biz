@@ -59,9 +59,6 @@ const Title = () => {
     setComponentName(componentName);
   }, [location]);
 
-  useEffect(() => {
-    console.log(22);
-  }, [location.pathname]);
   const [componentName, setComponentName] = useState({ name: "", cName: "" });
   return (
     <div className="title">
