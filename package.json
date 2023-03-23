@@ -98,6 +98,7 @@
     "classnames": "^2.3.1",
     "mobx-react-lite": "^3.4.0",
     "react-router-dom": "^5.2.0",
+    "rehype-raw": "^6.1.1",
     "react-transition-group": "^4.4.2"
   },
   "devDependencies": {
@@ -169,7 +170,6 @@
     "react-syntax-highlighter": "^15.4.5",
     "react-test-renderer": "^18.2.0",
     "reactcss": "^1.2.3",
-    "rehype-raw": "^6.1.1",
     "remark-directive": "^2.0.1",
     "remark-gfm": "^3.0.1",
     "rollup-plugin-delete": "^2.0.0",
