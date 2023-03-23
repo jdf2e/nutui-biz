@@ -55,7 +55,9 @@ const Nav: React.FunctionComponent<NavProps> = (props) => {
   };
 
   useEffect(() => {
-    RenderDomIntro();
+    setTimeout(() => {
+      RenderDomIntro();
+    }, 500);
   }, [history.location.pathname]);
 
   const handleSwichNav = () => {
