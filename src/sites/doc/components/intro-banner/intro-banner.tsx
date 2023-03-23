@@ -54,10 +54,10 @@ const IntroBanner: React.FunctionComponent = (props: any) => {
           return (
             <div className={`area area-${index}`} key={item.name}>
               <div
-                className={`area-group area-group-${index} ${
+                className={`area-group  area-group-${index} ${
                   activeColor > -1
                     ? activeColor === index
-                      ? "activeColor"
+                      ? "activeColor area-group-title"
                       : "diabledColor"
                     : ""
                 }`}

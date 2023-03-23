@@ -7,7 +7,7 @@
   }
   50%,
   75% {
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%) scale(1.2);
   }
   78%,
   100% {
@@ -137,11 +137,12 @@
         left: 50%;
         border-radius: 50%;
         transform: translate(-50%, -50%);
-        opacity: 0.3;
         width: 25px;
         height: 25px;
         border-radius: 50%;
         background-color: #ee7874;
+        transition: opacity linear 1s;
+        opacity: 0.3;
       }
     }
 
@@ -167,6 +168,13 @@
       top: 25px;
       font-size: 12px;
       color: #333;
+      font-weight: 900;
+    }
+    .area-level-father,
+    .area-level-child,
+    .area-level-text {
+      transition: opacity linear 1s;
+      opacity: 1;
     }
     .area-group-child {
       &:hover {
@@ -398,10 +406,18 @@
       }
     }
     .area {
-      transition: all linear 0.2s;
+      transition: all linear 1s;
       .activeColor {
         &:before {
           @include breathe-circle(30px, 0.9s);
+        }
+        .area-level-text {
+          color: #727272;
+        }
+      }
+      .activeColor.area-group-title {
+        .area-level-text {
+          color: #000;
         }
       }
       .activeColor.area-group-child {
@@ -412,11 +428,13 @@
       .diabledColor {
         &:before,
         .area-level-father {
+          transition: opacity linear 1s;
           opacity: 0.2;
         }
         &:before,
         .area-level-child,
         .area-level-text {
+          transition: opacity linear 1s;
           opacity: 0.2;
         }
       }
