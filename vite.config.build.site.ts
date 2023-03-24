@@ -9,8 +9,8 @@ const { resolve } = path;
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/",
-  // base: '/biz/h5/react/1x/',
+  // base: "/",
+  base: '/biz/h5/react/1x/',
   resolve: {
     alias: [{ find: "@", replacement: resolve(__dirname, "./src") }],
   },
@@ -41,8 +41,8 @@ export default defineConfig({
   plugins: [reactRefresh()],
   build: {
     target: "es2015",
-    // outDir: './dist/biz/h5/react/1x/',
-    outDir: "./dist/1x/",
+    outDir: './dist/biz/h5/react/1x/',
+    // outDir: "./dist/1x/",
     cssCodeSplit: true,
     rollupOptions: {
       input: {
