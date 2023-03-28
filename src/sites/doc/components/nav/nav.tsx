@@ -7,6 +7,7 @@ import classNames from "classnames";
 import RenderDomIntro from "@/sites/doc/components/intro-banner/intro.tsx";
 
 interface NavProps {
+  activeName1: string;
   click: (activeName: string) => void;
 }
 
@@ -40,7 +41,6 @@ const Nav: React.FunctionComponent<NavProps> = (props) => {
   }, []);
 
   const isGuideNav = location.href.includes("guide") || location.hash === "#/";
-
   const changeNav = (_nav: any) => {
     props.click("guide");
     setSelected(false);
@@ -76,7 +76,7 @@ const Nav: React.FunctionComponent<NavProps> = (props) => {
             return (
               <li
                 className={classNames([
-                  { active: activeName === _package.name },
+                  { active: activeName === _package.name && props.activeName1 !== 'card' },
                 ])}
                 key={index}
                 onClick={() => changeNav(_package)}
@@ -98,7 +98,7 @@ const Nav: React.FunctionComponent<NavProps> = (props) => {
                   return (
                     <NavLink
                       key={Math.random()}
-                      activeClassName={selected ? "selected" : ""}
+                      activeClassName={(selected || props.activeName1) ? "selected" : ""}
                       to={`${lang ? `/${lang}` : ""}/component/${cp.name}`}
                       onClick={() => handleSwichNav()}
                     >

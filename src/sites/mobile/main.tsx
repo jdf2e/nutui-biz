@@ -11,7 +11,8 @@ if (isMobile) {
 } else {
   if (sessionStorage.getItem("biz-env") !== "PC") {
     const url = hash ? `component/${hash}` : "guide/intro";
-    location.replace(`/nutui/biz/index.html#/zh-CN/${url}`);
+    // location.replace(`/nutui/biz/index.html#/zh-CN/${url}`);
+    location.replace(`/biz/h5/react/1x/index.html#/zh-CN/${url}`);
   }
   sessionStorage.setItem("biz-env", "PC");
 }

@@ -131,7 +131,7 @@ const App = (props) => {
   }, []);
 
   useEffect(() => {
-    if (location.href.includes("component")) {
+    if (location.href.includes("component") && activeName !== 'card') {
       setActiveName("component");
     }
     if (location.hash === "#/") {
@@ -142,6 +142,9 @@ const App = (props) => {
   const [docname, setDocName] = useState("react");
 
   const handleClick = (activeName: string) => {
+    window.scrollTo({
+      top: 0
+    })
     setActiveName(activeName);
   };
 
@@ -149,7 +152,7 @@ const App = (props) => {
     <div>
       <HashRouter>
         <Header click={handleClick}></Header>
-        <Nav click={handleClick}></Nav>
+        <Nav click={handleClick} activeName1={activeName}></Nav>
         <div className="doc-content">
           {activeName === "component" && (
             <div className="doc-title">

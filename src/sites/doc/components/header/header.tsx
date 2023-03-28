@@ -22,7 +22,6 @@ const Header: React.FunctionComponent<HeaderProps> = (props) => {
   const [searchList, setSearchList] = useState([])
   const [searchIndex, setSearchIndex] = useState(0)
   const [searchCurName, setSearchCurName] = useState('')
-  const [activeName, setActiveName] = useState('guide')
 
   const toHome = () => {
     history.replace('/')
@@ -69,12 +68,6 @@ const Header: React.FunctionComponent<HeaderProps> = (props) => {
 
   useEffect(() => {
   }, [searchList])
-
-  useEffect(() => {
-    if(location.pathname.includes('component')) {
-      setActiveName('component')
-    }
-  })
 
   const handleKeyUp = (e) => {
     let sVal = e.target.value;
@@ -125,7 +118,6 @@ const Header: React.FunctionComponent<HeaderProps> = (props) => {
   }
 
   const handleSetActiveName = (activeName: string) => {
-    setActiveName(activeName); 
     props.click(activeName)
   }
 
@@ -160,7 +152,7 @@ const Header: React.FunctionComponent<HeaderProps> = (props) => {
         <div className="nav-box">
           <ul className="nav-list">
             {/* <li className={classNames(['nav-item', {active: activeName === 'guide'}])} onClick={() => handleSetActiveName('guide')}><NavLink to="/zh-CN/guide/intro">指南</NavLink></li> */}
-            <li className={classNames(['nav-item active', {active: activeName === 'component'}])} onClick={() => handleSetActiveName('component')}><NavLink to="/zh-CN/guide/intro">组件</NavLink></li>
+            <li className="nav-item active" onClick={() => handleSetActiveName('card')}><NavLink to="/zh-CN/component/Card">组件</NavLink></li>
             <li className="nav-item"><a className="user-link" target="_blank" href="https://github.com/jdf2e/nutui-biz"></a></li>
           </ul>
         </div>

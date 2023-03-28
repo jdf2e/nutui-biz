@@ -15,7 +15,7 @@
 
 ## 扫码体验
 
-![](https://img11.360buyimg.com/imagetools/jfs/t1/220934/19/24560/1631/641ac798F78842b17/c1c34711aaad1909.png)
+![](https://img11.360buyimg.com/imagetools/jfs/t1/125392/15/36236/3450/6422d3fcF3af86473/e103f55da277a200.png)
 
 ## 版本
 
