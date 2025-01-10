@@ -1,13 +1,13 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 
-import { Popup, TextArea, Button } from "@nutui/nutui-react-taro";
+import { Popup, TextArea, Button } from "@dongdesign/ui";
 import bem from "@/utils/bem";
 import { useConfig } from "@/packages/configprovider";
 import { IComponent } from "@/utils/typings";
 
 export interface OrderRemarkProps extends IComponent {
   visible: boolean;
-  closeOnClickOverlay: boolean;
+  closeOnOverlayClick: boolean;
   maxLength: number;
   placeholderText: string;
   title: string;
@@ -15,7 +15,7 @@ export interface OrderRemarkProps extends IComponent {
   remark: string;
   submitText: string;
   recommendTags: string[];
-  onClickOverlay?: (val: string) => void;
+  onOverlayClick?: (val: string) => void;
   onCloseMask?: (val: string) => void;
   onClose?: (val: string) => void;
   onOpen?: () => void;
@@ -26,7 +26,7 @@ export interface OrderRemarkProps extends IComponent {
 
 const defaultProps = {
   visible: false,
-  closeOnClickOverlay: true,
+  closeOnOverlayClick: true,
   maxLength: 50,
   placeholderText: "",
   title: "",
@@ -42,7 +42,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (
   const { locale } = useConfig();
   const {
     visible,
-    closeOnClickOverlay,
+    closeOnOverlayClick,
     maxLength,
     placeholderText,
     title,
@@ -52,7 +52,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (
     recommendTags,
     style,
     className,
-    onClickOverlay,
+    onOverlayClick,
     onCloseMask,
     onClose,
     onOpen,
@@ -70,7 +70,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (
   const b = bem("orderRemark");
 
   const clickOverlay = () => {
-    onClickOverlay && onClickOverlay(innerMark);
+    onOverlayClick && onOverlayClick(innerMark);
   };
   const closeFun = () => {
     onClose && onClose(innerMark);
@@ -114,11 +114,11 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (
     <Popup
       visible={innerVisible}
       position="bottom"
-      popClass={`${b("popup")}`}
+      className={`${b("popup")}`}
       closeable
       overlay={true}
-      closeOnClickOverlay={closeOnClickOverlay}
-      onClickOverlay={clickOverlay}
+      closeOnOverlayClick={closeOnOverlayClick}
+      onOverlayClick={clickOverlay}
       onClose={() => {
         closeFun();
       }}
@@ -135,8 +135,8 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (
         <div className={b("textarea-container")}>
           <TextArea
             placeholder={placeholderText || locale.orderRemark.placeholderText}
-            maxlength={maxLength}
-            limitshow
+            maxLength={maxLength}
+            showCount
             defaultValue={innerMark}
             onChange={textareaChange}
           ></TextArea>

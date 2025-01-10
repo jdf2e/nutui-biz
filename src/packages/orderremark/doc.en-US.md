@@ -150,14 +150,14 @@ const App = () => {
     console.log('onChange', val);
   };
   const onOpen = () => {
-    Toast.text('onOpen');
+    Toast.show('onOpen');
   };
   const onClickTag = (val: string) => {
     console.log('onClickTag', val);
-    Toast.text(`onClickTag:${val}`);
+    Toast.show(`onClickTag:${val}`);
   };
-  const onClickOverlay = (val: string) => {
-    console.log('onClickOverlay', val);
+  const onOverlayClick = (val: string) => {
+    console.log('onOverlayClick', val);
   };
   return (
     <div className="demo order-remark-demo">
@@ -167,15 +167,15 @@ const App = () => {
         remark={mark}
         recommendTags={tagArr}
         onOpen={onOpen}
-        onClickOverlay={onClickOverlay}
+        onOverlayClick={onOverlayClick}
         onClickTag={onClickTag}
         onChange={onChange}
         onClose={(e) => {
-          Toast.text(`onClose:${e}`);
+          Toast.show(`onClose:${e}`);
           setShow(false);
         }}
         onSubmit={(e) => {
-          Toast.text(`onSubmit:${e}`);
+          Toast.show(`onSubmit:${e}`);
           setMark(e);
         }}></OrderRemark>
     </div>
@@ -192,7 +192,7 @@ export default App;
 | 字段                | 说明                 | 类型     | 默认值           |
 | ------------------- | -------------------- | -------- | ---------------- |
 | visible             | Whether to display pop-up window         | boolean  | `false`          |
-| closeOnClickOverlay | Click whether the mask can be closed | boolean  | `true`          |
+| closeOnOverlayClick | Click whether the mask can be closed | boolean  | `true`          |
 | maxLength           | Note content length limit     | number   | `50`             |
 | placeholderText     | Placeholder when input box is empty   | string   | `Please enter the content of the remarks` |
 | title               | Main title of pop-up window         | ReactNode   | `Order Remarks`       |
@@ -205,7 +205,7 @@ export default App;
 
 | 字段           | 说明               | 回调参数     |
 | -------------- | ------------------ | ------------ |
-| onClickOverlay | Triggered when clicking the pop-up mask | Current remarks |
+| onOverlayClick | Triggered when clicking the pop-up mask | Current remarks |
 | onClose        | Triggered when the pop-up layer is closed   | Current remarks |
 | onOpen         | Trigger when the pop-up layer is opened   | - |
 | onChange       | Triggered when the input content changes | Current remarks |

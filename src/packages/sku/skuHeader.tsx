@@ -46,7 +46,7 @@ import React, {
         <div className='nut-sku-header'>
             <img src={goods.imagePath} alt="" />
             <div className='nut-sku-header-right'>
-                {skuHeaderPrice || <Price price={goods.price} needSymbol={true} thousands={false} />}
+                {skuHeaderPrice || <Price price={goods.price} thousands={false} />}
                 {renderSkuHeaderExtra()}
             </div>
         </div>

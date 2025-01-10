@@ -41,10 +41,10 @@ export const CommentHeader: FunctionComponent<
 
                 <div className={b(`user-score`)}>
                   <Rate
-                    modelValue={info.score}
-                    iconSize={12}
+                    value={info.score}
+                    size={12}
                     spacing={5}
-                    readonly
+                    readOnly
                   />
                 </div>
               </div>
@@ -64,7 +64,7 @@ export const CommentHeader: FunctionComponent<
       )}
       {type === "complex" && (
         <div className={b(`${type}-score`)}>
-          <Rate modelValue={info?.score} iconSize={12} spacing={3} readonly />
+          <Rate value={info?.score} size={12} readonly />
           <i className={b(`${type}-score-i`)}></i>
           <div className={b(`${type}-score-size`)}>
             {info?.size}

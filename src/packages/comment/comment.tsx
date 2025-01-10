@@ -5,7 +5,7 @@ import { CommentBottom } from "./components/CommentBottom";
 import { CommentImages } from "./components/CommentImages";
 import { VideosType, ImagesType, GoodsClickParams } from "./components/CommentImages";
 import bem from '@/utils/bem'
-import { Icon } from "@nutui/nutui-react";
+import { ArrowRight } from "@nutui/icons-react";
 
 export interface CommentInfo {
   content: string, // 评论详情
@@ -116,7 +116,7 @@ export const Comment: FunctionComponent<
           {follow.images && follow.images.length > 0 && (
             <div className={b("follow-img")}>
               {follow.images.length} 张追评图片
-              <Icon name="right" width="12px"></Icon>
+              <ArrowRight width="12px"></ArrowRight>
             </div>
           )}
         </div>

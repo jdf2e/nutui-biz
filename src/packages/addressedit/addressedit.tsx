@@ -277,7 +277,7 @@ export const AddressEdit: FunctionComponent<
       onSave && onSave(formData);
     } else {
       console.log("error");
-      editSeting.errorShowType === "toast" && Toast.text("请完成必填项");
+      editSeting.errorShowType === "toast" && Toast.show("请完成必填项");
     }
   };
   const inputClear = (tag: string) => {

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState, useRef } from 'react';
-import { Icon } from '@nutui/nutui-react';
+import { Check } from '@nutui/icons-react';
 import bem from '@/utils/bem';
-import { Elevator } from '@nutui/nutui-react-taro';
+import { Elevator } from '@dongdesign/ui';
 import { useConfig } from '@/packages/configprovider';
 import { SelectedRegionObj, RegionData, NextListObj } from './type';
 
@@ -321,7 +321,7 @@ export const CustomRender: FunctionComponent<Partial<AddressProps> & React.HTMLA
                       }}>
                       {selectedRegion &&
                         selectedRegion[tabName[tabIndex] as SelectedRegionType].id === (item as RegionData).id && (
-                          <Icon className={b('region-item--icon')} name="Check" color="#FA2C19" size="13px" />
+                          <Check className={b('region-item--icon')} color="#FA2C19" width={13} height={13} />
                         )}
                       {(item as RegionData).name}
                     </div>
@@ -337,8 +337,8 @@ export const CustomRender: FunctionComponent<Partial<AddressProps> & React.HTMLA
         <div className={b('elevator-group')}>
           <Elevator
             height={height}
-            indexList={regionList[tabName[tabIndex] as SelectedRegionType]}
-            onClickItem={handleElevatorItem}
+            list={regionList[tabName[tabIndex] as SelectedRegionType]}
+            onItemClick={handleElevatorItem}
           />
         </div>
       )}

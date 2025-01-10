@@ -5,12 +5,12 @@ import React, {
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import { IComponent } from '@/utils/typings'
-import { Icon, IconProps } from '@nutui/nutui-react';
+import { IconProps } from '@nutui/nutui-react';
+import { Category } from '@nutui/icons-react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Unit from '@/utils/unit'
 import { numericProp } from '@/utils/props'
-
 
 export type MaskPositionType = "left" | "right";
 export type MaskShadowTypeType = "triangle" | "shadow" | "transparent" | "none";
@@ -95,7 +95,7 @@ export const HorizontalScrolling: FunctionComponent<
       <div className={classNames([b(`mask-${maskPosition}`), b(`mask-${maskPosition}--${maskShadowType}`)])} style={{width: maskWidth}} onClick={handleMaskClick}>
         {typeof maskContent !== 'string' ? maskContent : 
         <div className={b('mask-box')}>
-          <Icon name="category" {...iconProps} className={b('mask-icon')}></Icon>
+          {/* <Category {...iconProps} className={b('mask-icon')} /> */}
           <span>{maskContent ? maskContent : locale.horizontalscrolling.more}</span>
         </div>}
       </div>

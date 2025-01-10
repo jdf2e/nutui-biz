@@ -61,15 +61,15 @@ const InvoiceTitleListDemo = () => {
               isEdit: true
             }}
             onClick={(data: Idata) => {
-              Toast.text('触发点击事件')
+              Toast.show('触发点击事件')
               console.log('data', data)
             }}
             onEdit={(data: Idata) => {
-              Toast.text('触发编辑事件')
+              Toast.show('触发编辑事件')
               console.log('data', data)
             }}
             onDelete={(data: Idata) => {
-              Toast.text('触发删除事件')
+              Toast.show('触发删除事件')
               console.log('data', data)
             }}
           />
@@ -89,15 +89,15 @@ const InvoiceTitleListDemo = () => {
               isEdit: true
             }}
             onClick={(data: Idata) => {
-              Toast.text('触发点击事件')
+              Toast.show('触发点击事件')
               console.log('data', data)
             }}
             onEdit={(data: Idata) => {
-              Toast.text('触发编辑事件')
+              Toast.show('触发编辑事件')
               console.log('data', data)
             }}
             onDelete={(data: Idata) => {
-              Toast.text('触发删除事件')
+              Toast.show('触发删除事件')
               console.log('data', data)
             }}
           />
@@ -117,15 +117,15 @@ const InvoiceTitleListDemo = () => {
               isEdit: true
             }}
             onClick={(data: Idata) => {
-              Toast.text('触发点击事件')
+              Toast.show('触发点击事件')
               console.log('data', data)
             }}
             onEdit={(data: Idata) => {
-              Toast.text('触发编辑事件')
+              Toast.show('触发编辑事件')
               console.log('data', data)
             }}
             onDelete={(data: Idata) => {
-              Toast.text('触发删除事件')
+              Toast.show('触发删除事件')
               console.log('data', data)
             }}
           />
@@ -145,15 +145,15 @@ const InvoiceTitleListDemo = () => {
               isEdit: true
             }}
             onClick={(data: Idata) => {
-              Toast.text('触发点击事件')
+              Toast.show('触发点击事件')
               console.log('data', data)
             }}
             onEdit={(data: Idata) => {
-              Toast.text('触发编辑事件')
+              Toast.show('触发编辑事件')
               console.log('data', data)
             }}
             onDelete={(data: Idata) => {
-              Toast.text('触发删除事件')
+              Toast.show('触发删除事件')
               console.log('data', data)
             }}
           />
@@ -173,18 +173,18 @@ const InvoiceTitleListDemo = () => {
               isEdit: true
             }}
             onClick={(data: Idata) => {
-              Toast.text('触发点击事件')
+              Toast.show('触发点击事件')
               console.log('data', data)
             }}
             onEdit={(data: Idata) => {
-              Toast.text('触发编辑事件')
+              Toast.show('触发编辑事件')
               console.log('data', data)
             }}
             onDelete={(data: Idata) => {
-              Toast.text('触发删除事件')
+              Toast.show('触发删除事件')
               console.log('data', data)
             }}
-            otherOperate = {<Button onClick={() => Toast.success('同步成功')}>同步到电子发票</Button>}
+            otherOperate = {<Button onClick={() => Toast.show({title: '同步成功', icon:'success'})}>同步到电子发票</Button>}
           />
           <h2>{translated.title6}</h2>
           <InvoiceTitleList 
@@ -202,7 +202,7 @@ const InvoiceTitleListDemo = () => {
               isEdit: false
             }}
             onClick={(data: Idata) => {
-              Toast.text('触发点击事件')
+              Toast.show('触发点击事件')
               console.log('data', data)
             }}
           />

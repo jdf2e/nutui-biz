@@ -6,7 +6,7 @@ import {
   CloseCallBack,
   CloseCallBackData,
 } from "../address/type";
-import { Input, Button,ButtonProps } from "@nutui/nutui-react";
+import { Input, Button, ButtonProps } from "@nutui/nutui-react";
 import { Address } from "../address/address";
 import { useConfig } from "@/packages/configprovider";
 import bem from "@/utils/bem";

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode, CSSProperties, HTMLAttributes } from 'react'
-import { Price, Tag, Image, ImageProps } from '@nutui/nutui-react'
+import { Price, Image, ImageProps } from '@nutui/nutui-react'
 import classNames from 'classnames'
 import { errorImg } from '@/utils'
 import { numericProp } from '@/utils/props'
@@ -84,7 +84,7 @@ export const Card: FunctionComponent<
           <div className={b('right')}>
             {infoTpl || <>
               {title && <div
-                className={classNames([b('right__title'), {'one-line': titleLine == 1}, {'multiple-lines': titleLine > 1}])}
+                className={classNames([b('right__title'), {'one-line': titleLine == 1}, {'multiple-lines': parseInt(titleLine + '') > 1}])}
                 style={clampStyle()}
               >{titleTag || ''}{title}</div>}
               {prolistTpl}
@@ -110,7 +110,7 @@ export const Card: FunctionComponent<
           <div className={b('right')}>
             {infoTpl || <>
               {title && <div 
-                className={classNames([b('right__title'), {'one-line': titleLine == 1}, {'multiple-lines': titleLine > 1}])}
+                className={classNames([b('right__title'), {'one-line': titleLine == 1}, {'multiple-lines': parseInt(titleLine + '') > 1}])}
                 style={clampStyle()}
               >{titleTag || ''}{title}</div>}
               {isNeedPrice && <div className={b('right__price')}>

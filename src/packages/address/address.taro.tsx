@@ -4,7 +4,8 @@ import React, {
   useState,
   CSSProperties,
 } from 'react'
-import {Icon,Popup} from '@nutui/nutui-react-taro'
+import { Popup } from '@dongdesign/ui'
+import {Icon} from '@nutui/icons-react-taro' 
 import bem from '@/utils/bem'
 import { ExistRender } from './existRender'
 import { CustomRender } from './customRender.taro'
@@ -267,7 +268,7 @@ export const Address: FunctionComponent<
         <Popup
           visible={showPopup}
           position="bottom"
-          onClickOverlay={clickOverlay}
+          onOverlayClick={clickOverlay}
           onClose={() => {
             closeFun()
           }}

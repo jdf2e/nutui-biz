@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Address } from '@/packages/nutui.biz.taro';
-import { Cell } from '@nutui/nutui-react-taro';
+import { Cell } from '@dongdesign/ui';
 
 interface CalBack {
   next: string;
@@ -318,17 +318,17 @@ const AddressDemo = () => {
     <>
       <div className="demo">
         <h2>选择自定义地址</h2>
-        <Cell title="选择地址" desc={text.one} onClick={() => showAddress('normal')} />
+        <Cell title="选择地址" description={text.one} onClick={() => showAddress('normal')} />
         <h2>选中省市区1</h2>
-        <Cell title="选择地址" desc={text.six} onClick={() => showAddress('select')} />
+        <Cell title="选择地址" description={text.six} onClick={() => showAddress('select')} />
         <h2>选择自定义地址2</h2>
-        <Cell title="选择地址" desc={text.five} onClick={() => showAddress('normal2')} />
+        <Cell title="选择地址" description={text.five} onClick={() => showAddress('normal2')} />
         <h2>选择已有地址</h2>
-        <Cell title="选择地址" desc={text.two} onClick={() => showAddress('exist')} />
+        <Cell title="选择地址" description={text.two} onClick={() => showAddress('exist')} />
         <h2>自定义图标</h2>
-        <Cell title="选择地址" desc={text.three} onClick={() => showAddress('customImg')} />
+        <Cell title="选择地址" description={text.three} onClick={() => showAddress('customImg')} />
         <h2>自定义地址与已有地址切换</h2>
-        <Cell title="选择地址" desc={text.four} onClick={() => showAddress('other')} />
+        <Cell title="选择地址" description={text.four} onClick={() => showAddress('other')} />
 
         <Address
           modelValue={showPopup.normal}

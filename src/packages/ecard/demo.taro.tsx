@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Ecard } from "@/packages/nutui.biz.taro";
-import { Cell } from '@nutui/nutui-react-taro';
+import { Cell } from '@dongdesign/ui';
 import { useTranslate } from '@/sites/assets/locale/taro'
 
 interface DataListItem {
@@ -52,7 +52,7 @@ const EcardDemo = () => {
         <h2>基本用法</h2>
         <Cell>
           <Ecard
-            money={money}
+            // money={money}
             onChangeInput={onChangeInput}
             onChange={onChange}
             onChangeStep={onChangeStep}

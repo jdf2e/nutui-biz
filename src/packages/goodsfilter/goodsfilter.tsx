@@ -2,6 +2,7 @@ import React, {
   FunctionComponent, HTMLAttributes, useEffect, useMemo, useState, CSSProperties, ReactNode
 } from 'react'
 import { Icon, Popup } from '@nutui/nutui-react'
+import { Location } from '@nutui/icons-react'
 import { IComponent } from '@/utils/typings'
 import bem from '@/utils/bem'
 import { numericProp } from '@/utils/props'
@@ -371,11 +372,10 @@ export const GoodsFilter: FunctionComponent<
         <div className={`${b('chunk')} ${b('chunk')}--address`}>
           <div className={b('chunk__label')}>{ addressTitle }</div>
           <div className={b('chunk__group')}>
-            <Icon
+            <Location
               className={b('chunk__group__icon')}
-              name='location2'
-              size="12"
-            ></Icon>
+              width={12} height={12}
+            />
             <div className={b('chunk__group__address')} onClick={chooseAddress}>
               {
                 <span>{selectedAddress ? selectedAddress : '您还没有选中的地址'}</span>

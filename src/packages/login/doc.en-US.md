@@ -315,7 +315,6 @@ const App = () => {
             <div className="nb-login__input-item">
               <Input
                 className="nut-input-text"
-                border={false}
                 defaultValue={customInput}
                 placeholder="Please enter the verify code"
                 type="text"

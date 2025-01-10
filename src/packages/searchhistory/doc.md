@@ -572,7 +572,7 @@ const App = () => {
         recentSearchData={recentSearchData} 
         searchDiscoverData={searchDiscoverData} 
         refreshIcon="refresh"
-        onRefresh={() => Toast.text('点击了刷新按钮')}
+        onRefresh={() => Toast.show('点击了刷新按钮')}
     />
   );
 };

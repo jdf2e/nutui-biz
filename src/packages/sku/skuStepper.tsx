@@ -28,7 +28,6 @@ export interface SkuStepperProps extends IComponent {
 export const SkuStepper: FunctionComponent<
   Partial<SkuStepperProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
-  const { locale } = useConfig()
   const {
     stepperMax = 99999,
     stepperMin = 1,
@@ -79,13 +78,13 @@ export const SkuStepper: FunctionComponent<
           <div className='nut-sku-stepper-limit'>{getExtraText()}</div>
           <div className='nut-sku-stepper-count'>
             <InputNumber
-              modelValue={goodsCount}
+              value={goodsCount}
               min={stepperMin}
               max={stepperMax}
-              onAdd={handleAdd}
-              onReduce={handleReduce}
+              onPlus={handleAdd}
+              onMinus={handleReduce}
               onOverlimit={handleOverLimit}
-              onChangeFuc={handleChangeFuc}
+              onChange={handleChangeFuc}
             />
           </div>
       </div>

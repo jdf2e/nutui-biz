@@ -1,6 +1,6 @@
 import React, { FunctionComponent, HTMLAttributes, useEffect, useState } from "react";
 import { IComponent } from "@/utils/typings";
-import { Icon } from "@nutui/nutui-react";
+import { Comment, Fabulous, More } from "@nutui/icons-react";
 import classNames from 'classnames';
 import bem from '@/utils/bem'
 import { CommentInfo } from "../comment";
@@ -60,14 +60,14 @@ export const CommentBottom: FunctionComponent<
               key={i}
             >
               {
-                name == 'reply' && (<><span>{info?.reply}</span><Icon name="comment"></Icon></>)
+                name == 'reply' && (<><span>{info?.reply}</span><Comment></Comment></>)
               }
               {
-                name == 'like' &&  (<><span>{info?.like}</span><Icon name="fabulous"></Icon></>)
+                name == 'like' &&  (<><span>{info?.like}</span><Fabulous></Fabulous></>)
               }
               {name == "more" && (
                 <>
-                  <Icon name="more-x"></Icon>
+                  <More />
                   {showPopver && (
                     <div
                       className={b('cpx-item-popover')}

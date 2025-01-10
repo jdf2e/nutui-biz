@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Category } from "./category";
 import { useTranslate } from "../../sites/assets/locale";
-import { Tabbar, TabbarItem } from "@nutui/nutui-react";
+import { Tabbar } from "@nutui/nutui-react";
 
 interface T {
   [props: string]: string;
@@ -77,9 +77,9 @@ const CommentDemo = () => {
       )}
 
       <Tabbar onSwitch={(child, idx) => onTabSwitch(child, idx)}>
-        <TabbarItem tabTitle={translated.basic} icon="category" />
-        <TabbarItem tabTitle={translated.hideImage} icon="image" />
-        <TabbarItem tabTitle={translated.quicknav} icon="horizontal" />
+        <Tabbar.Item title={translated.basic} icon="category" />
+        <Tabbar.Item title={translated.hideImage} icon="image" />
+        <Tabbar.Item title={translated.quicknav} icon="horizontal" />
       </Tabbar>
     </>
   );

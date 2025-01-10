@@ -208,7 +208,6 @@ const LoginDemo = () => {
             <div className="nb-login__input-item">
               <Input
                 className="nut-input-text"
-                border={false}
                 defaultValue={customInput}
                 placeholder={translated.placeholder}
                 type="text"

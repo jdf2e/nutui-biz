@@ -2,11 +2,10 @@ import React, {
   FunctionComponent,
   ReactNode,
   useState,
-  useRef,
-  useEffect
 } from 'react'
 import classNames from 'classnames';
-import {SearchBar, Icon} from '@nutui/nutui-react'
+import {SearchBar} from '@nutui/nutui-react'
+import {Search, Eye, Marshalling, Photograph, Del, ArrowLeft} from '@nutui/icons-react'
 import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 import { IComponent } from '@/utils/typings'
@@ -58,11 +57,11 @@ export const SearchHistory: FunctionComponent<
     keyword = '',
     recentSearchData = [],
     searchDiscoverData = [],
-    leftInIcon = <Icon name="search" size="12" />,
+    leftInIcon = <Search width={12} height={12} />,
     rightOutIcon = locale.searchHistory.rightOutIcon,
-    rightInIcon = <Icon name="photograph" size="12" />,
-    openEyeIcon = <Icon name="eye" />,
-    closeEyeIcon = <Icon name="marshalling" />,
+    rightInIcon = <Photograph width={12} height={12} />,
+    openEyeIcon = <Eye />,
+    closeEyeIcon = <Marshalling />,
     refreshIcon = "refresh",
     searchDiscoverExtra,
     noDiscoverDataText = locale.searchHistory.noDiscoverDataText,
@@ -107,7 +106,7 @@ export const SearchHistory: FunctionComponent<
       value={value}
       leftinIcon={leftInIcon}
       rightinIcon={<div onClick={() => onClickRightInIcon && onClickRightInIcon()}>{rightInIcon}</div>}
-      leftoutIcon={<div onClick={() => onClickBackIcon && onClickBackIcon()}>{typeof backIcon === 'string' ? <Icon name={backIcon} size="14" /> : backIcon}</div>}
+      leftoutIcon={<div onClick={() => onClickBackIcon && onClickBackIcon()}>{typeof backIcon === 'string' ? <ArrowLeft width={14} height={14} /> : backIcon}</div>}
       rightoutIcon={<div onClick={() => handleSearch(value as string)}>{rightOutIcon}</div>}
       onClear={handleClear}
       onChange={handleChange}
@@ -139,7 +138,7 @@ export const SearchHistory: FunctionComponent<
                 <div onClick={handleDelete}>{locale.searchHistory.deleteAll}</div>
                 <div className={b('recent-divider')}>|</div>
                 <div onClick={() => setIsShowDeleteSearchItemIcon(false)}>{locale.searchHistory.finish}</div>
-              </div> : <div onClick={handleDelete}>{typeof deleteIcon === 'string' ? <Icon name={deleteIcon} /> : deleteIcon}</div>
+              </div> : <div onClick={handleDelete}>{typeof deleteIcon === 'string' ? <Del /> : deleteIcon}</div>
             }
           </div>
           {

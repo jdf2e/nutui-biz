@@ -7,7 +7,7 @@ import { IComponent } from '@/utils/typings';
 
 export interface OrderRemarkProps extends IComponent {
   visible: boolean;
-  closeOnClickOverlay: boolean;
+  closeOnOverlayClick: boolean;
   maxLength: number;
   placeholderText: string;
   title: ReactNode;
@@ -15,7 +15,7 @@ export interface OrderRemarkProps extends IComponent {
   remark: string;
   submitText: string;
   recommendTags: string[];
-  onClickOverlay?: (val: string) => void;
+  onOverlayClick?: (val: string) => void;
   onClose?: (val: string) => void;
   onOpen?: () => void;
   onChange?: (val: string) => void;
@@ -25,7 +25,7 @@ export interface OrderRemarkProps extends IComponent {
 
 const defaultProps = {
   visible: false,
-  closeOnClickOverlay: true,
+  closeOnOverlayClick: true,
   maxLength: 50,
   placeholderText: '',
   title: '',
@@ -39,7 +39,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
   const { locale } = useConfig();
   const {
     visible,
-    closeOnClickOverlay,
+    closeOnOverlayClick,
     maxLength,
     placeholderText,
     title,
@@ -49,7 +49,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
     recommendTags,
     style,
     className,
-    onClickOverlay,
+    onOverlayClick,
     onClose,
     onOpen,
     onChange,
@@ -66,7 +66,7 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
   const b = bem('orderRemark');
 
   const clickOverlay = () => {
-    onClickOverlay?.(innerMark);
+    onOverlayClick?.(innerMark);
   };
   const closeFun = () => {
     onClose?.(innerMark);
@@ -110,11 +110,11 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
     <Popup
       visible={innerVisible}
       position="bottom"
-      popClass={`${b('popup')}`}
+      className={`${b('popup')}`}
       closeable
       overlay={true}
-      closeOnClickOverlay={closeOnClickOverlay}
-      onClickOverlay={clickOverlay}
+      closeOnOverlayClick={closeOnOverlayClick}
+      onOverlayClick={clickOverlay}
       onClose={() => {
         closeFun();
       }}
@@ -126,8 +126,8 @@ export const OrderRemark: FunctionComponent<Partial<OrderRemarkProps>> = (props)
         <div className={b('textarea-container')}>
           <TextArea
             placeholder={placeholderText || locale.orderRemark.placeholderText}
-            maxlength={maxLength}
-            limitshow
+            maxLength={maxLength}
+            showCount
             defaultValue={innerMark}
             onChange={textareaChange}></TextArea>
         </div>

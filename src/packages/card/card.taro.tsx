@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import {Price,Tag} from '@nutui/nutui-react-taro'
+import {Price, Tag, View} from '@dongdesign/ui'
 
 import bem from '@/utils/bem'
-import { View } from '@tarojs/components'
+// import { View } from '@tarojs/components'
 
 export interface CardProps {
   imgUrl: string

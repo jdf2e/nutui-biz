@@ -8,8 +8,6 @@ import {
 import { Radio, Cell, CellGroup, Input } from "@nutui/nutui-react";
 import { useTranslate } from "../../sites/assets/locale";
 
-const { RadioGroup } = Radio;
-
 interface T {
   basic: string;
   selected: string;
@@ -140,7 +138,7 @@ const AddressEditDemo = () => {
       <>
         <CellGroup>
           <Cell>
-            <RadioGroup
+            <Radio.Group
               value={radioVal}
               onChange={handleChange}
               style={{ flexFlow: "wrap" }}
@@ -149,7 +147,7 @@ const AddressEditDemo = () => {
               <Radio value="2">{translated.hasInfo}</Radio>
               <Radio value="3">{translated.custom1}</Radio>
               <Radio value="4">{translated.custom2}</Radio>
-            </RadioGroup>
+            </Radio.Group>
           </Cell>
         </CellGroup>
         {radioVal === "1" && (

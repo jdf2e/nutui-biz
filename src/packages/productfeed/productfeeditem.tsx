@@ -104,11 +104,11 @@ export const ProductFeedItem: FunctionComponent<
       <div className={b("image")} onClick={handleImageClick}>
         <Image
           src={imgUrl}
-          isLazy={isImageLazy}
+          lazy={isImageLazy}
           width={imgWidth}
           height={imgHeight}
-          loadingImg={loadingImg}
-          errorImg={loadingImg}
+          loading={loadingImg}
+          error={loadingImg}
         />
         {imgTag && <div className={b("image-tag")}>{imgTag}</div>}
       </div>

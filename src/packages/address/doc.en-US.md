@@ -77,7 +77,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="Choose Address" desc={text}  onClick={()=>setNormal(true)} />
+      <Cell title="Choose Address" description={text}  onClick={()=>setNormal(true)} />
       <Address
           modelValue={normal}
           province={province}
@@ -152,7 +152,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="Choose Address" desc={text}  onClick={()=>setNormal(true)} />
+      <Cell title="Choose Address" description={text}  onClick={()=>setNormal(true)} />
       <Address
           modelValue={normal}
           modelSelect={[1, 7, 3]}
@@ -232,7 +232,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="Choose Address" desc={text}  onClick={()=>setNormal2(true)} />
+      <Cell title="Choose Address" description={text}  onClick={()=>setNormal2(true)} />
       <Address
           modelValue={normal2}
           type="elevator"
@@ -319,7 +319,7 @@ const App = () => {
   };
   return (
     <>
-      <Cell title="Choose Address" desc={text} onClick={() => setNormal(true)} />
+      <Cell title="Choose Address" description={text} onClick={() => setNormal(true)} />
       <Address
         modelValue={normal}
         province={province}
@@ -405,7 +405,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="Choose Address" desc={text}  onClick={()=>setExist(true)} />
+      <Cell title="Choose Address" description={text}  onClick={()=>setExist(true)} />
       <Address
           modelValue={exist}
           type="exist"
@@ -498,7 +498,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="Choose Address" desc={text}  onClick={()=>setCustomImg(true)} />
+      <Cell title="Choose Address" description={text}  onClick={()=>setCustomImg(true)} />
       <Address
           modelValue={customImg}
           type="exist"
@@ -642,7 +642,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="Choose Address" desc={text}  onClick={()=>setOther(true)} />
+      <Cell title="Choose Address" description={text}  onClick={()=>setOther(true)} />
       <Address
           modelValue={other}
           type="exist"

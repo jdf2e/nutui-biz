@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Icon, Popup } from '@nutui/nutui-react';
+// import {} from '@nutui/icons-react'
 import bem from '@/utils/bem';
 import { ExistRender } from './existRender';
 import { CustomRender } from './customRender';
@@ -196,7 +197,7 @@ export const Address: FunctionComponent<Partial<AddressProps>> = (props) => {
     <Popup
       visible={showPopup}
       position="bottom"
-      onClickOverlay={clickOverlay}
+      onOverlayClick={clickOverlay}
       onClose={() => {
         closeFun();
       }}>

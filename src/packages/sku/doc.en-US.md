@@ -562,7 +562,7 @@ const App = () => {
         goods={goodsInfo}
         btnOptions={['buy', 'cart']}
         skuHeaderPrice={<div>
-          <Price price={goodsInfo.price} needSymbol={true} thousands={false} />
+          <Price price={goodsInfo.price} thousands={false} />
           <span style={tagStyle}></span>
         </div>}
         skuHeaderExtra={<span className='nut-sku-header-right-extra'>weight：0.1kg skuId：{ goodsInfo.skuId }</span>}
@@ -639,8 +639,8 @@ export default App;
 | overLimit  | Emitted when click stepper disabled button | value |
 | onChangeStepper  | Emitted when click stepper change | value |
 | onClickBtnOperate  | Emitted when click bottom button | {type:'confirm',value:'inputNumber value'} |
-| onClickCloseIcon  | Emitted when click close button | - |
-| onClickOverlay  | Emitted when click mask | - |
+| onCloseIconClick  | Emitted when click close button | - |
+| onOverlayClick  | Emitted when click mask | - |
 | onClose  | Emitted when popup close | - |
 
 

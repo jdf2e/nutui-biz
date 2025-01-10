@@ -21,9 +21,9 @@ test('test 增值税专用发票', async () => {
         isDelete: true,
         isEdit: true
       }}
-      onClick={() => Toast.text('触发点击事件')}
-      onEdit={() => Toast.text('触发编辑事件')}
-      onDelete={() => Toast.text('触发删除事件')}
+      onClick={() => Toast.show('触发点击事件')}
+      onEdit={() => Toast.show('触发编辑事件')}
+      onDelete={() => Toast.show('触发删除事件')}
     />
   )
 
@@ -53,9 +53,9 @@ test('test 电子普通发票', async () => {
         isDelete: true,
         isEdit: true
       }}
-      onClick={() => Toast.text('触发点击事件')}
-      onEdit={() => Toast.text('触发编辑事件')}
-      onDelete={() => Toast.text('触发删除事件')}
+      onClick={() => Toast.show('触发点击事件')}
+      onEdit={() => Toast.show('触发编辑事件')}
+      onDelete={() => Toast.show('触发删除事件')}
     />
   )
 
@@ -80,9 +80,9 @@ test('test 是否默认', async () => {
         isDelete: true,
         isEdit: true
       }}
-      onClick={() => Toast.text('触发点击事件')}
-      onEdit={() => Toast.text('触发编辑事件')}
-      onDelete={() => Toast.text('触发删除事件')}
+      onClick={() => Toast.show('触发点击事件')}
+      onEdit={() => Toast.show('触发编辑事件')}
+      onDelete={() => Toast.show('触发删除事件')}
     />
   )
 
@@ -107,9 +107,9 @@ test('test 是否选中', async () => {
         isDelete: true,
         isEdit: true
       }}
-      onClick={() => Toast.text('触发点击事件')}
-      onEdit={() => Toast.text('触发编辑事件')}
-      onDelete={() => Toast.text('触发删除事件')}
+      onClick={() => Toast.show('触发点击事件')}
+      onEdit={() => Toast.show('触发编辑事件')}
+      onDelete={() => Toast.show('触发删除事件')}
     />
   )
 

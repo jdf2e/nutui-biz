@@ -92,7 +92,7 @@ const CardDemo = () => {
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis'
-  } as CSSProperties
+  }
   return (
     <>
       <div className="demo">

@@ -70,14 +70,14 @@ const OrderRemarkDemo = () => {
     console.log('onChange', val);
   };
   const onOpen = () => {
-    Toast.text('onOpen');
+    Toast.show('onOpen');
   };
   const onClickTag = (val: string, index: number, str: string) => {
     console.log('onClickTag', val, index, str);
-    Toast.text(`onClickTag:${val}`);
+    Toast.show(`onClickTag:${val}`);
   };
-  const onClickOverlay = (val: string) => {
-    console.log('onClickOverlay', val);
+  const onOverlayClick = (val: string) => {
+    console.log('onOverlayClick', val);
   };
   return (
     <div className="demo order-remark-demo">
@@ -85,7 +85,7 @@ const OrderRemarkDemo = () => {
       <Cell
         onClick={(e) => setShow(true)}
         title={translated.cellTitle}
-        desc={mark ? mark : translated.emptyText}></Cell>
+        description={mark ? mark : translated.emptyText}></Cell>
       <OrderRemark
         visible={show}
         remark={mark}
@@ -100,7 +100,7 @@ const OrderRemarkDemo = () => {
       <Cell
         onClick={(e) => setShow2(true)}
         title={translated.cellTitle}
-        desc={mark2 ? mark2 : translated.emptyText}></Cell>
+        description={mark2 ? mark2 : translated.emptyText}></Cell>
       <OrderRemark
         visible={show2}
         maxLength={100}
@@ -116,7 +116,7 @@ const OrderRemarkDemo = () => {
       <Cell
         onClick={(e) => setShow3(true)}
         title={translated.cellTitle}
-        desc={mark3 ? mark3 : translated.emptyText}></Cell>
+        description={mark3 ? mark3 : translated.emptyText}></Cell>
       <OrderRemark
         visible={show3}
         remark={mark3}
@@ -135,7 +135,7 @@ const OrderRemarkDemo = () => {
       <Cell
         onClick={(e) => setShow4(true)}
         title={translated.cellTitle}
-        desc={mark4 ? mark4 : translated.emptyText}></Cell>
+        description={mark4 ? mark4 : translated.emptyText}></Cell>
       <OrderRemark
         visible={show4}
         remark={mark4}
@@ -143,15 +143,15 @@ const OrderRemarkDemo = () => {
         onOpen={onOpen}
         onClose={(e) => {
           console.log('onClose');
-          Toast.text(`onClose:${e}`);
+          Toast.show(`onClose:${e}`);
           setShow4(false);
         }}
-        onClickOverlay={onClickOverlay}
+        onOverlayClick={onOverlayClick}
         onClickTag={onClickTag}
         onChange={onChange}
         onSubmit={(e) => {
           console.log('onSubmit', e);
-          Toast.text(`onSubmit:${e}`);
+          Toast.show(`onSubmit:${e}`);
           setMark4(e);
         }}></OrderRemark>
     </div>

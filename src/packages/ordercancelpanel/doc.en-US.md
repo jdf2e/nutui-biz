@@ -74,9 +74,9 @@ const App = () => {
           popupTitle={<div>Refund reason</div>}
           cancelReason={cancelReason}
           buttonProps={buttonProps}
-          onClickCloseIcon={clickClosePopUp}
+          onCloseIconClick={clickClosePopUp}
           onClose={clickClosePopUp}
-          onClickOverlay={clickClosePopUp}
+          onOverlayClick={clickClosePopUp}
           onSubmitBtn={submitBtn}
         />
       </div>
@@ -163,9 +163,9 @@ const App = () => {
           cancelReason={cancelReason}
           buttonProps={buttonProps}
           textAreaProps={textareaProps}
-          onClickCloseIcon={clickClosePopUp}
+          onCloseIconClick={clickClosePopUp}
           onClose={clickClosePopUp}
-          onClickOverlay={clickClosePopUp}
+          onOverlayClick={clickClosePopUp}
           onSubmitBtn={submitBtn}
         />
       </div>
@@ -267,9 +267,9 @@ const App = () => {
           cancelReason={cancelReason}
           buttonProps={buttonProps}
           textAreaProps={textareaProps}
-          onClickCloseIcon={clickClosePopUp}
+          onCloseIconClick={clickClosePopUp}
           onClose={clickClosePopUp}
-          onClickOverlay={clickClosePopUp}
+          onOverlayClick={clickClosePopUp}
           onSubmitBtn={submitBtn}
         />
       </div>
@@ -310,6 +310,6 @@ export default App;
 | Attribute        | Description                                      | Arguments |
 | ---------------- | ------------------------------------------------ | --------- |
 | onClose          | Triggered when clicking the pop-up box           | --        |
-| onClickCloseIcon | Triggered when the close icon is clicked         | --        |
-| onClickOverlay   | Click the mask to trigger                        | --        |
+| onCloseIconClick | Triggered when the close icon is clicked         | --        |
+| onOverlayClick   | Click the mask to trigger                        | --        |
 | onSubmitBtn      | Click the submit button to trigger The parameter | --        |

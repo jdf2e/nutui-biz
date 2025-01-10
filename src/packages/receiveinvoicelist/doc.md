@@ -64,11 +64,11 @@ const App = () => {
 
   const event = {
     onEdit: (item: ReceiveInvoiceItem,index:number) => { 
-      Toast.text('onEdit ' + item.name);
+      Toast.show('onEdit ' + item.name);
       console.log('onEdit', item,index);
     },
     onSelected: (item: ReceiveInvoiceItem,index:number) => { 
-      Toast.text('onSelected ' + item.name);
+      Toast.show('onSelected ' + item.name);
       console.log('onSelected', item,index) 
     }
   }
@@ -138,15 +138,15 @@ const App = () => {
 
   const event = {
     onEdit: (item: ReceiveInvoiceItem,index:number) => { 
-      Toast.text('onEdit ' + item.name);
+      Toast.show('onEdit ' + item.name);
       console.log('onEdit', item,index);
     },
     onSelected: (item: ReceiveInvoiceItem,index:number) => { 
-      Toast.text('onSelected ' + item.name);
+      Toast.show('onSelected ' + item.name);
       console.log('onSelected', item,index);
     },
     onDelete: (item: ReceiveInvoiceItem,index:number) => { 
-      Toast.text('onDelete ' + item.name);
+      Toast.show('onDelete ' + item.name);
       console.log('onDelete', item,index);
     },
   }

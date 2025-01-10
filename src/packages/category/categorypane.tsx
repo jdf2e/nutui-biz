@@ -43,7 +43,6 @@ const defaultProps = {
 } as CategoryPaneProps
 
 export const CategoryPane = React.forwardRef<CategoryPaneHandler, Partial<CategoryPaneProps>>((props,ref) => {
-  const { locale } = useConfig()
   const {
     categoryChild,
     showSkuImg,
@@ -180,7 +179,7 @@ export const CategoryPane = React.forwardRef<CategoryPaneHandler, Partial<Catego
                     <div className={classNames([b('child-item'),!showSkuImg && b('child-item-no')])} key={idx} onClick={()=>panelSkuClick(sku)}>
                       
                       {
-                        showSkuImg && (<Image className={b('child-img')} src={sku.backImg}  isLazy={isLazy} loadingImg={loadingImg}  errorImg={errorImg} />)
+                        showSkuImg && (<Image className={b('child-img')} src={sku.backImg} lazy={isLazy} loadingImg={loadingImg}  errorImg={errorImg} />)
                       }
                       <div className={classNames(b(showSkuImg ? 'sku-img' : 'sku-name'))}>{sku?.catName}</div>
                     </div>

@@ -13,10 +13,10 @@ import {
   Input,
   Button,
   ButtonProps,
-  Icon,
   Checkbox,
   Toast,
 } from "@nutui/nutui-react";
+import { Marshalling, Eye } from "@nutui/icons-react"
 
 export type loginType = "verify" | "pwd";
 export type showErrorType = "toast" | "bottomMsg";
@@ -247,7 +247,7 @@ export const Login: FunctionComponent<Partial<LoginProps>> = (props) => {
   //toast 错误提示监听
   useEffect(() => {
     if (showErrorType === "toast" && toastErrorText?.length) {
-      Toast.text(toastErrorText);
+      Toast.show(toastErrorText);
     }
   }, [toastErrorText]);
 
@@ -268,7 +268,7 @@ export const Login: FunctionComponent<Partial<LoginProps>> = (props) => {
     if (telOrMail?.length) {
       onVerifyBtnClick && onVerifyBtnClick(loginForm, loginParams);
     } else {
-      Toast.text(getCodeErrorToast, { duration: 2 });
+      Toast.show(getCodeErrorToast, { duration: 2 });
     }
   };
   //异步获取验证码，控制倒计时
@@ -323,11 +323,7 @@ export const Login: FunctionComponent<Partial<LoginProps>> = (props) => {
           setIsHidePwd(!isHidePwd);
         }}
       >
-        <Icon
-          name={isHidePwd ? "marshalling" : "eye"}
-          size="14"
-          color={isHidePwd ? "#ccc" : "#666"}
-        />
+        {isHidePwd ? <Marshalling width={14} height={14} color="#ccc"/> : <Eye width={14} height={14} color="#ccc"/>}
       </div>
     );
   };
@@ -354,7 +350,6 @@ export const Login: FunctionComponent<Partial<LoginProps>> = (props) => {
         <div className={`${b("input-item")}`}>
           <Input
             className="nut-input-text"
-            border={false}
             defaultValue={loginParams[tag]}
             name={tag}
             placeholder={loginParams[placeholder]}
@@ -407,7 +402,6 @@ export const Login: FunctionComponent<Partial<LoginProps>> = (props) => {
         {slotProtocolText && (
           <div className={`${b("protocal")}`}>
             <Checkbox
-              iconSize={14}
               checked={isProtocol}
               onChange={(state) => {
                 setIsPrtocal(state);

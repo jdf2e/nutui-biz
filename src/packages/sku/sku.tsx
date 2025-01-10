@@ -46,8 +46,8 @@ export interface SkuProps extends IComponent {
   confirmText: string
   onClickBtnOperate: (btn: string) => void
   onClose: () => void
-  onClickCloseIcon: () => void
-  onClickOverlay: () => void
+  onCloseIconClick: () => void
+  onOverlayClick: () => void
   onSelectSku: (skus: any) => void
   onAdd: (value: number) => void
   onReduce: (value: number) => void
@@ -84,8 +84,8 @@ export const Sku: FunctionComponent<
     confirmText = locale.sku.confirm,
     operateBtn,
     onClose,
-    onClickOverlay,
-    onClickCloseIcon,
+    onOverlayClick,
+    onCloseIconClick,
     onSelectSku,
     onAdd,
     onReduce,
@@ -113,11 +113,11 @@ export const Sku: FunctionComponent<
 
   const closePopup = (type: string) => {
     if (type == 'icon') {
-      onClickCloseIcon && onClickCloseIcon();
+      onCloseIconClick && onCloseIconClick();
     }
 
     if (type == 'overlay') {
-      onClickOverlay && onClickOverlay();
+      onOverlayClick && onOverlayClick();
     }
 
     if (type == 'close') {
@@ -163,8 +163,8 @@ export const Sku: FunctionComponent<
       closeable
       round
       onClose={()=>closePopup('close')}
-      onClickCloseIcon={()=>closePopup('icon')}
-      onClickOverlay={()=>closePopup('overlay')}
+      onCloseIconClick={()=>closePopup('icon')}
+      onOverlayClick={()=>closePopup('overlay')}
       {...props}
     >
       <div className={classNames([b(),className])} style={style}>

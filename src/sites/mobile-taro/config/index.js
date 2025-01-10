@@ -11,9 +11,10 @@ const config = {
   },
   sourceRoot: "src",
   outputRoot: `dist/${process.env.TARO_ENV}`,
-
   plugins: ["@tarojs/plugin-html"],
-  compiler: "webpack5",
+  compiler: {
+    type: 'webpack5'
+  },
   alias: {
     react: path.resolve(__dirname, "../../../../node_modules/react"),
     "@/packages": path.resolve(__dirname, "../../../../src/packages"),

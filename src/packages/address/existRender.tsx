@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode, useEffect } from 'react';
-import { Icon } from '@nutui/nutui-react';
+import { Check, Location } from '@nutui/icons-react';
 import bem from '@/utils/bem';
 import { AddressList, ExistRenderProps } from './type';
 
@@ -65,16 +65,12 @@ export const ExistRender: FunctionComponent<Partial<ExistRenderProps> & React.HT
       return icon;
     } else {
       return (
-        <Icon
-          className={b('exist-item-icon')}
-          name={item.selectedAddress ? 'Check' : 'location2'}
-          color={item.selectedAddress ? '#FA2C19' : ''}
-          size="13px"
-        />
+        <>
+         {item.selectedAddress ? <Check className={b('exist-item-icon')} color={item.selectedAddress ? '#FA2C19' : ''} width={13} height={13} /> : <Location className={b('exist-item-icon')} color={item.selectedAddress ? '#FA2C19' : ''} width={13} height={13} />}
+        </>
       );
     }
   };
-  // useEffect(() => {}, [existAddress]);
 
   return (
     <div className={b('exist')}>

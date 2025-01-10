@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslate } from '@/sites/assets/locale/taro';
 import { OrderRemark } from '@/packages/nutui.biz.taro';
-import { Cell, Toast } from '@nutui/nutui-react-taro';
+import { Cell } from '@dongdesign/ui';
 
 interface tarnslatedOption {
   basic: string;
@@ -82,8 +82,8 @@ const OrderRemarkDemo = () => {
   const onClickTag = (val: string) => {
     console.log('onClickTag', val);
   };
-  const onClickOverlay = (val: string) => {
-    console.log('onClickOverlay', val);
+  const onOverlayClick = (val: string) => {
+    console.log('onOverlayClick', val);
   };
   return (
     <div className="demo">
@@ -151,7 +151,7 @@ const OrderRemarkDemo = () => {
           console.log('onClose');
           setShow4(false);
         }}
-        onClickOverlay={onClickOverlay}
+        onOverlayClick={onOverlayClick}
         onClickTag={onClickTag}
         onChange={onChange}
         onSubmit={(e) => {

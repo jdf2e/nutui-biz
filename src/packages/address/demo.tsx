@@ -411,19 +411,19 @@ const AddressDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.title}</h2>
-        <Cell title={translated.customAddress} desc={text.one} onClick={() => showAddress('normal')} />
+        <Cell title={translated.customAddress} description={text.one} onClick={() => showAddress('normal')} />
         <h2>{translated.selectCity}</h2>
-        <Cell title={translated.title} desc={text.six} onClick={() => showAddress('select')} />
+        <Cell title={translated.title} description={text.six} onClick={() => showAddress('select')} />
         <h2>{translated.customAddress2}</h2>
-        <Cell title={translated.title} desc={text.five} onClick={() => showAddress('normal2')} />
+        <Cell title={translated.title} description={text.five} onClick={() => showAddress('normal2')} />
         <h2>{translated.normalLazy} </h2>
-        <Cell title={translated.title} desc={text.seven} onClick={() => showAddress('normalLazy')} />
+        <Cell title={translated.title} description={text.seven} onClick={() => showAddress('normalLazy')} />
         <h2>{translated.existAddress}</h2>
-        <Cell title={translated.title} desc={text.two} onClick={() => showAddress('exist')} />
+        <Cell title={translated.title} description={text.two} onClick={() => showAddress('exist')} />
         <h2>{translated.icon}</h2>
-        <Cell title={translated.title} desc={text.three} onClick={() => showAddress('customImg')} />
+        <Cell title={translated.title} description={text.three} onClick={() => showAddress('customImg')} />
         <h2>{translated.change}</h2>
-        <Cell title={translated.title} desc={text.four} onClick={() => showAddress('other')} />
+        <Cell title={translated.title} description={text.four} onClick={() => showAddress('other')} />
 
         <Address
           modelValue={showPopup.normal}

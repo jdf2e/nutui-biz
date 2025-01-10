@@ -437,7 +437,7 @@ const DeliveryDemo = () => {
                 <h2>基本用法</h2>
                 <Cell
                     title="请选择"
-                    desc={desc1}
+                    description={desc1}
                     onClick={() => { show1(true) }}
                 />
                 <Delivery
@@ -452,7 +452,7 @@ const DeliveryDemo = () => {
                 <h2>标准达、京准达</h2>
                 <Cell
                     title="请选择"
-                    desc={desc2}
+                    description={desc2}
                     onClick={() => { show2(true) }}
                 />
                 <Delivery
@@ -465,7 +465,7 @@ const DeliveryDemo = () => {
                 <h2>自定义内容1</h2>
                 <Cell
                     title="请选择"
-                    desc={desc3}
+                    description={desc3}
                     onClick={() => { show3(true) }}
                 />
                 <Delivery
@@ -486,8 +486,8 @@ const DeliveryDemo = () => {
                     overlayStyle={{ 'backgroundColor': 'transparent' }}
                     closeable
                     round
-                    onClickOverlay={() => { setVisible4(false) }}
-                    onClickCloseIcon={() => { setVisible4(false) }}
+                    onOverlayClick={() => { setVisible4(false) }}
+                    onCloseIconClick={() => { setVisible4(false) }}
                     onClose={() => { setVisible4(false) }}
                 >
                     <DeliveryDate
@@ -500,7 +500,7 @@ const DeliveryDemo = () => {
                 <h2>自定义内容2</h2>
                 <Cell
                     title="请选择"
-                    desc={desc4}
+                    description={desc4}
                     onClick={() => { show5(true) }}
                 />
                 <Delivery
@@ -521,8 +521,8 @@ const DeliveryDemo = () => {
                     overlayStyle={{ 'backgroundColor': 'transparent' }}
                     closeable
                     round
-                    onClickOverlay={() => { setVisible6(false) }}
-                    onClickCloseIcon={() => { setVisible6(false) }}
+                    onOverlayClick={() => { setVisible6(false) }}
+                    onCloseIconClick={() => { setVisible6(false) }}
                     onClose={() => { setVisible6(false) }}
                 >
                     <DeliveryDateTime
@@ -535,7 +535,7 @@ const DeliveryDemo = () => {
                 <h2>子组件单独使用</h2>
                 <Cell
                     title="请选择"
-                    desc={desc5}
+                    description={desc5}
                     onClick={() => { setVisible7(true) }}
                 />
                 <Popup
@@ -544,8 +544,8 @@ const DeliveryDemo = () => {
                     style={{ 'height': '80%' }}
                     closeable
                     round
-                    onClickOverlay={() => { setVisible7(false) }}
-                    onClickCloseIcon={() => { setVisible7(false) }}
+                    onOverlayClick={() => { setVisible7(false) }}
+                    onCloseIconClick={() => { setVisible7(false) }}
                     onClose={() => { setVisible7(false) }}
                 >
                     <DeliveryDate

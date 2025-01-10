@@ -132,14 +132,14 @@ const App = () => {
     console.log('onChange', val);
   };
   const onOpen = () => {
-    Toast.text('onOpen');
+    Toast.show('onOpen');
   };
   const onClickTag = (val: string) => {
     console.log('onClickTag', val);
-    Toast.text(`onClickTag:${val}`);
+    Toast.show(`onClickTag:${val}`);
   };
-  const onClickOverlay = (val: string) => {
-    console.log('onClickOverlay', val);
+  const onOverlayClick = (val: string) => {
+    console.log('onOverlayClick', val);
   };
   return (
     <div className="demo order-remark-demo">
@@ -149,15 +149,15 @@ const App = () => {
         remark={mark}
         recommendTags={tagArr}
         onOpen={onOpen}
-        onClickOverlay={onClickOverlay}
+        onOverlayClick={onOverlayClick}
         onClickTag={onClickTag}
         onChange={onChange}
         onClose={(e) => {
-          Toast.text(`onClose:${e}`);
+          Toast.show(`onClose:${e}`);
           setShow(false);
         }}
         onSubmit={(e) => {
-          Toast.text(`onSubmit:${e}`);
+          Toast.show(`onSubmit:${e}`);
           setMark(e);
         }}></OrderRemark>
     </div>
@@ -175,7 +175,7 @@ export default App;
 | 字段                | 说明                 | 类型     | 默认值           |
 | ------------------- | -------------------- | -------- | ---------------- |
 | visible             | 是否显示弹窗         | boolean  | `false`          |
-| closeOnClickOverlay | 点击遮罩是否可以关闭 | boolean  | `true`          |
+| closeOnOverlayClick | 点击遮罩是否可以关闭 | boolean  | `true`          |
 | maxLength           | 备注内容长度限制     | number   | `50`             |
 | placeholderText     | 输入框为空时占位符   | string   | `请输入备注内容` |
 | title               | 弹窗的主标题         | ReactNode   | `订单备注`       |
@@ -188,7 +188,7 @@ export default App;
 
 | 字段           | 说明               | 回调参数     |
 | -------------- | ------------------ | ------------ |
-| onClickOverlay | 点击弹窗遮罩时触发 | 当前备注信息 |
+| onOverlayClick | 点击弹窗遮罩时触发 | 当前备注信息 |
 | onClose        | 弹出层关闭时触发   | 当前备注信息 |
 | onOpen         | 弹出层打开时触发   | - |
 | onChange       | 输入内容改变时触发 | 当前备注信息 |

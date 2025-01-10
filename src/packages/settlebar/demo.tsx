@@ -63,13 +63,13 @@ const SettleBarDemo = () => {
         <h2>{translated.basic}</h2>
         <SettleBar 
           total={100}
-          onClickButton={() => Toast.text(translated.clicked)} 
+          onClickButton={() => Toast.show(translated.clicked)} 
         />
         <h2>{translated.title1}</h2>
         <SettleBar 
           total={100}
           totalAlign="left" 
-          onClickButton={() => Toast.text(translated.clicked)} 
+          onClickButton={() => Toast.show(translated.clicked)} 
         />
         <h2>{translated.title2}</h2>
         <SettleBar 
@@ -88,25 +88,25 @@ const SettleBarDemo = () => {
           noCount={true} 
           totalText={translated.totalText} 
           settleButtonText={translated.settleButtonText} 
-          onClickButton={() => Toast.text(translated.clicked)} 
+          onClickButton={() => Toast.show(translated.clicked)} 
         />
         <h2>{translated.title5}</h2>
         <SettleBar 
           total={100}
           settleCount="100" 
-          onClickButton={() => Toast.text(translated.clicked)} 
+          onClickButton={() => Toast.show(translated.clicked)} 
         />
         <h2>{translated.title6}</h2>
         <SettleBar 
           total={100}
           customTotalExtra={<div style={{fontSize: '12px'}}>{translated.reduced} ¥30.00</div>} 
-          onClickButton={() => Toast.text(translated.clicked)} 
+          onClickButton={() => Toast.show(translated.clicked)} 
         />
         <h2>{translated.title7}</h2>
         <SettleBar 
           total={100}
           customWarning={customWarningHtml()} 
-          onClickButton={() => Toast.text(translated.clicked)} 
+          onClickButton={() => Toast.show(translated.clicked)} 
         />
       </div>
     </>

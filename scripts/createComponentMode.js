@@ -87,18 +87,6 @@ function init() {
           return '输入有误！请输入选项前编号'
         },
       },
-      //   {
-      //     type: 'confirm',
-      //     name: 'showDemo',
-      //     message: '是否需要DEMO页面?',
-      //     default: true
-      //   },
-      //   {
-      //     type: 'confirm',
-      //     name: 'showTest',
-      //     message: '是否需要单元测试页面?',
-      //     default: true
-      //   },
       {
         type: 'input',
         name: 'author',

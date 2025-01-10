@@ -2,8 +2,7 @@ import React, {
   FunctionComponent
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
-import { Icon } from '@nutui/nutui-react'
-
+import { Del, Edit } from '@nutui/icons-react'
 import { IComponent } from '@/utils/typings'
 import bem from '@/utils/bem'
 import { IDataInfo, functionType } from './addresslist'
@@ -63,8 +62,8 @@ export const ItemContents: FunctionComponent<
           {item.defaultAddress && <div className={b('item-info-contact-default')}>{locale.itemContents.default}</div>}
         </div>
         <div className={b('item-info-handle')}>
-          <Icon name="del" className={b('item-info-handle-del')} onClick={delClick}></Icon>
-          <Icon name="edit" className={b('item-info-handle-edit')} onClick={editClick}></Icon>
+          <Del className={b('item-info-handle-del')} onClick={delClick}></Del>
+          <Edit className={b('item-info-handle-edit')} onClick={editClick}></Edit>
         </div>
       </div>
       <div className={b('item-addr')}>

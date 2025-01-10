@@ -202,7 +202,7 @@ const SearchHistoryDemo = () => {
           recentSearchData={recentSearchData}
           searchDiscoverData={searchDiscoverData}
           refreshIcon="refresh"
-          onRefresh={() => Toast.text(translated.clicked)}
+          onRefresh={() => Toast.show(translated.clicked)}
         />
       </div>
     </>

@@ -188,12 +188,12 @@ export const QuickEnter: FunctionComponent<Partial<QuickEnterProps>> = (
   const renderQuickEnter = () => {
     return (
       <Swiper
-        width={contentWidth}
-        autoPlay="0"
+        slideSize={contentWidth}
+        autoPlay={0}
         loop={false}
-        paginationVisible={indicatorVisible}
-        paginationBgColor={indicatorBgColor}
-        paginationColor={indicatorActiveColor}
+        // paginationVisible={indicatorVisible}
+        // paginationBgColor={indicatorBgColor}
+        // paginationColor={indicatorActiveColor}
       >
         {formatIcons().map((item, idx) => {
           return (

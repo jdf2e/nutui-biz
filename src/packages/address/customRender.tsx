@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect, useState, useRef } from 'react';
 import bem from '@/utils/bem';
-import { Icon, Elevator } from '@nutui/nutui-react';
+import { Elevator } from '@nutui/nutui-react';
+import {Loading, Check} from '@nutui/icons-react'
 import { useConfig } from '@/packages/configprovider';
 import { SelectedRegionObj, RegionData, NextListObj, CustomRenderProps, CustomRegionData, MapRef } from './type';
 
@@ -338,7 +339,7 @@ export const CustomRender: FunctionComponent<Partial<CustomRenderProps> & React.
           <ul className={b('region-group')}>
             {false ? (
               <div className="loading_box">
-                <Icon name="loading"></Icon>
+                <Loading />
               </div>
             ) : (
               tabName.current[tabIndex] &&
@@ -353,10 +354,10 @@ export const CustomRender: FunctionComponent<Partial<CustomRenderProps> & React.
                       }}>
                       {loading
                         ? judgeClickItem(item) && (
-                            <Icon className={b('region-item--loading')} name="loading" size="13px"></Icon>
+                            <Loading className={b('region-item--loading')} width={13} height={13}></Loading>
                           )
                         : judgeSelectStatus(item) && (
-                            <Icon className={b('region-item--icon')} name="Check" color="#FA2C19" size="13px" />
+                            <Check className={b('region-item--icon')} color="#FA2C19" width={13} height={13}/>
                           )}
                       {item.name}
                     </li>
@@ -372,18 +373,18 @@ export const CustomRender: FunctionComponent<Partial<CustomRenderProps> & React.
         <div className={b('elevator-group')}>
           <Elevator
             height={height}
-            indexList={regionList[tabName.current[tabIndex] as SelectedRegionType]}
-            onClickItem={handleElevatorItem}>
+            list={regionList[tabName.current[tabIndex] as SelectedRegionType]}
+            onItemClick={handleElevatorItem}>
             <Elevator.Context.Consumer>
               {(item) => {
                 return (
                   <div className={`${b('region-item')} ${judgeSelectStatus(item) ? 'active' : ''}`}>
                     {loading
                       ? judgeClickItem(item) && (
-                          <Icon className={b('region-item--loading')} name="loading" size="13px"></Icon>
+                          <Loading className={b('region-item--loading')} width={13} height={13}></Loading>
                         )
                       : judgeSelectStatus(item) && (
-                          <Icon className={b('region-item--icon')} name="Check" color="#FA2C19" size="13px" />
+                          <Check className={b('region-item--icon')} color="#FA2C19" width={13} height={13}/>
                         )}
                     {item?.name}
                   </div>

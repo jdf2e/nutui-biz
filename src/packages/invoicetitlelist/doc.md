@@ -54,15 +54,15 @@ const App = () => {
         isEdit: true
       }}
       onClick={(data: Idata) => {
-        Toast.text('触发点击事件')
+        Toast.show('触发点击事件')
         console.log('data', data)
       }}
       onEdit={(data: Idata) => {
-        Toast.text('触发编辑事件')
+        Toast.show('触发编辑事件')
         console.log('data', data)
       }}
       onDelete={(data: Idata) => {
-        Toast.text('触发删除事件')
+        Toast.show('触发删除事件')
         console.log('data', data)
       }}
     />
@@ -114,15 +114,15 @@ const App = () => {
           isEdit: true
         }}
         onClick={(data: Idata) => {
-          Toast.text('触发点击事件')
+          Toast.show('触发点击事件')
           console.log('data', data)
         }}
         onEdit={(data: Idata) => {
-          Toast.text('触发编辑事件')
+          Toast.show('触发编辑事件')
           console.log('data', data)
         }}
         onDelete={(data: Idata) => {
-          Toast.text('触发删除事件')
+          Toast.show('触发删除事件')
           console.log('data', data)
         }}
     />
@@ -175,15 +175,15 @@ const App = () => {
         isEdit: true
       }}
       onClick={(data: Idata) => {
-        Toast.text('触发点击事件')
+        Toast.show('触发点击事件')
         console.log('data', data)
       }}
       onEdit={(data: Idata) => {
-        Toast.text('触发编辑事件')
+        Toast.show('触发编辑事件')
         console.log('data', data)
       }}
       onDelete={(data: Idata) => {
-        Toast.text('触发删除事件')
+        Toast.show('触发删除事件')
         console.log('data', data)
       }}
     />
@@ -236,15 +236,15 @@ const App = () => {
         isEdit: true
       }}
       onClick={(data: Idata) => {
-        Toast.text('触发点击事件')
+        Toast.show('触发点击事件')
         console.log('data', data)
       }}
       onEdit={(data: Idata) => {
-        Toast.text('触发编辑事件')
+        Toast.show('触发编辑事件')
         console.log('data', data)
       }}
       onDelete={(data: Idata) => {
-        Toast.text('触发删除事件')
+        Toast.show('触发删除事件')
         console.log('data', data)
       }}
     />
@@ -299,15 +299,15 @@ const App = () => {
         isEdit: true
       }}
       onClick={(data: Idata) => {
-        Toast.text('触发点击事件')
+        Toast.show('触发点击事件')
         console.log('data', data)
       }}
       onEdit={(data: Idata) => {
-        Toast.text('触发编辑事件')
+        Toast.show('触发编辑事件')
         console.log('data', data)
       }}
       onDelete={(data: Idata) => {
-        Toast.text('触发删除事件')
+        Toast.show('触发删除事件')
         console.log('data', data)
       }}
       otherOperate = {<Button onClick={() => Toast.success('同步成功')}>同步到电子发票</Button>}
@@ -361,7 +361,7 @@ const App = () => {
         isEdit: false
       }}
       onClick={(data: Idata) => {
-        Toast.text('触发点击事件')
+        Toast.show('触发点击事件')
         console.log('data', data)
       }}
     />

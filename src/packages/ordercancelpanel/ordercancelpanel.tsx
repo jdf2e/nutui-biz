@@ -2,7 +2,6 @@ import React, {
   FunctionComponent,
   useState,
   useRef,
-  CSSProperties,
 } from "react";
 import {
   Popup,

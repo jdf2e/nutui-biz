@@ -281,7 +281,7 @@ const SkuDemo = () => {
           goods={goodsInfo}
           btnOptions={['buy', 'cart']}
           skuHeaderPrice={<div>
-            <Price price={goodsInfo.price} needSymbol={true} thousands={false} />
+            <Price price={goodsInfo.price} thousands={false} />
             <span style={tagStyle}></span>
           </div>}
           skuHeaderExtra={<span className='nut-sku-header-right-extra'>{translated.weight}：0.1kg {translated.skuId}：{ goodsInfo.skuId }</span>}
@@ -295,7 +295,7 @@ const SkuDemo = () => {
             <Cell
               style={{boxShadow: 'none', padding: '13px 0'}}
               title={translated.sendTo}
-              desc={addressDesc}
+              description={addressDesc}
               onClick={() => setShowAddressPopup(true)}
             />
           }

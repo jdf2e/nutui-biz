@@ -1,6 +1,7 @@
-import React, { Children, FunctionComponent, ReactNode, useState } from 'react'
+import React, { FunctionComponent, ReactNode, useState } from 'react'
 import { useConfig } from '@/packages/configprovider'
-import { Checkbox, Icon, Tag, Cell, CellGroup, Swipe, Button } from '@nutui/nutui-react';
+import { Checkbox, Tag, Cell, CellGroup, Swipe, Button } from '@nutui/nutui-react';
+import { Edit } from '@nutui/icons-react'
 import { IComponent } from '@/utils/typings'
 import bem from '@/utils/bem'
 import classNames from 'classnames';
@@ -73,14 +74,13 @@ export const ReceiveInvoiceList: FunctionComponent<Partial<ReceiveInvoiceListPro
         onClick={() => onSelect(item, index)}
         title={
           <div className={b('item-header-title')}>{item.isDefault && <><Tag type="danger">{locale.default}</Tag>&nbsp;</>}<p>{item.name}</p></div>
-        }
-        linkSlot={
+        }>
           <div className={b('item-header-edit')} onClick={(e) => { e.stopPropagation(); onEdit?.(item, index) }}>
-            {customEdit ? customEdit : <Icon name="edit" color='#666' ></Icon>}
+            {customEdit ? customEdit : <Edit color='#666' />}
           </div>
-        } />
+        </Cell>
       <Cell className={b('item-footer')} onClick={() => onSelect(item, index)}>
-        <Checkbox textPosition="right" label="" checked={item.id == defaultValue} />
+        <Checkbox labelPosition="right" label="" checked={item.id == defaultValue} />
         <div className={b('item-footer infobox')}>
           {RenderRowInfo(locale.tel, item.tel)}
           {RenderRowInfo(locale.addres, item.addres)}

@@ -7,12 +7,12 @@ import React, {
   ReactNode
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
-import classNames from 'classnames';
-import { Icon, Checkbox } from '@nutui/nutui-react';
+import classNames from 'classnames'
+import { Checkbox } from '@nutui/nutui-react'
+import { Loading } from '@nutui/icons-react'
 import bem from '@/utils/bem'
 import {getRect} from '@/utils/useClientRect'
 import { numericProp } from '@/utils/props'
-
 import { IComponent } from '@/utils/typings'
 
 export interface SettleBarProps extends IComponent {
@@ -105,7 +105,7 @@ export const SettleBar: FunctionComponent<
       className={classNames(`${b('main-buy')} ${(disabled || loading) ? 'disabled' : ''}`)}
       onClick={handleSettle}
     >
-      {loading && <Icon name='loading' />}{settleButtonText}{!noCount && renderCountAndUnit()}
+      {loading && <Loading />}{settleButtonText}{!noCount && renderCountAndUnit()}
     </div>
   }
 

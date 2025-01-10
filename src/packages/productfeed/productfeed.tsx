@@ -1,7 +1,7 @@
 import React, {
   FunctionComponent, ReactNode, useEffect, useState
 } from "react"
-import { Infiniteloading, InfiniteloadingProps } from "@nutui/nutui-react";
+import { InfiniteLoading, InfiniteLoadingProps } from "@nutui/nutui-react";
 import { IComponent } from "@/utils/typings"
 
 import classNames from "classnames"
@@ -16,7 +16,7 @@ export interface ProductFeedProps extends IComponent {
   itemKey: string
   customProduct: (item: any) => ReactNode
   openInfiniteloading: boolean
-  infiniteloadingProps?: Partial<InfiniteloadingProps>
+  infiniteloadingProps?: Partial<InfiniteLoadingProps>
   initProductNum: number
   col: colType
   padding: numericProp
@@ -158,11 +158,11 @@ export const ProductFeed: FunctionComponent<
   return (
     <div className={classNames([b(), className])} style={style} {...rest}>
       {openInfiniteloading ? 
-        <Infiniteloading
+        <InfiniteLoading
           {...infiniteloadingProps}
         >
           {product()}
-        </Infiniteloading> :
+        </InfiniteLoading> :
         product()
       }
     </div>

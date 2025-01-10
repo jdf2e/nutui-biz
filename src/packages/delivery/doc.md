@@ -48,7 +48,7 @@ type DateTimesType = DateType | DateTimeType | DateTimeAccurateType;
 
 interface DeliveryTypes extends DeliveryBaseType {
     disabled?: boolean;
-    desc?: ReactNode;
+    description?: ReactNode;
     children?: ReactNode;
 }
 
@@ -558,8 +558,8 @@ const App = () => {
             overlayStyle={{ 'backgroundColor': 'transparent' }}
             closeable
             round
-            onClickOverlay={() => { setVisible4(false) }}
-            onClickCloseIcon={() => { setVisible4(false) }}
+            onOverlayClick={() => { setVisible4(false) }}
+            onCloseIconClick={() => { setVisible4(false) }}
             onClose={() => { setVisible4(false) }}
         >
             <DeliveryDate
@@ -697,7 +697,7 @@ const App = () => {
     <div className="demo">
         <Cell
             title="请选择"
-            desc={desc4}
+            description={desc4}
             onClick={() => { show5(true) }}
         />
         <Delivery
@@ -718,8 +718,8 @@ const App = () => {
             overlayStyle={{ 'backgroundColor': 'transparent' }}
             closeable
             round
-            onClickOverlay={() => { setVisible6(false) }}
-            onClickCloseIcon={() => { setVisible6(false) }}
+            onOverlayClick={() => { setVisible6(false) }}
+            onCloseIconClick={() => { setVisible6(false) }}
             onClose={() => { setVisible6(false) }}
         >
             <DeliveryDateTime
@@ -775,7 +775,7 @@ type DateTimesType = DateType | DateTimeType | DateTimeAccurateType;
 
 interface DeliveryTypes extends DeliveryBaseType {
     disabled?: boolean;
-    desc?: ReactNode;
+    description?: ReactNode;
     children?: ReactNode;
 }
 
@@ -842,7 +842,7 @@ const App = () => {
     <div className="demo">
         <Cell
             title="请选择"
-            desc={desc5}
+            description={desc5}
             onClick={() => { setVisible7(true) }}
         />
         <Popup
@@ -851,8 +851,8 @@ const App = () => {
             style={{ 'height': '80%' }}
             closeable
             round
-            onClickOverlay={() => { setVisible7(false) }}
-            onClickCloseIcon={() => { setVisible7(false) }}
+            onOverlayClick={() => { setVisible7(false) }}
+            onCloseIconClick={() => { setVisible7(false) }}
             onClose={() => { setVisible7(false) }}
         >
             <DeliveryDate
@@ -878,7 +878,7 @@ export default App;
 |----- | ----- | ----- | -----  |
 | visible | 组件的显示/隐藏 | boolean | `false` |
 | title | 组件的标题 | string | `配送` |
-| deliveryTypes | 配送方式,最多支持三种 | Array<DeliveryTypes> | `[{ label: 'jd', text: '京东快递', disabled: false, desc: '' }]` |
+| deliveryTypes | 配送方式,最多支持三种 | Array<DeliveryTypes> | `[{ label: 'jd', text: '京东快递', disabled: false, description: '' }]` |
 | deliveryTimeTitle | 配送时间的标题 | ReactNode | `送货时间` |
 | deliveryDateData | 配送时间的数据, 最多支持三个 | Array<DeliveryData> | `[]` |
 | buttonText | 确定按钮文案 | ReactNode | `确定` |
@@ -968,7 +968,7 @@ export default App;
 | text | 内容 | ReactNode |
 | selected | 是否默认选中 | boolean |
 | disabled | 是否禁用 | boolean |
-| desc | 具体描述信息 | ReactNode |
+| description | 具体描述信息 | ReactNode |
 | children | 支持自定义扩展该方式下的内容 | ReactNode |
 
 ### DeliveryData 配送时间数据,继承 DeliveryTypes
@@ -978,7 +978,7 @@ export default App;
 | text | 内容 | ReactNode |
 | selected | 是否默认选中 | boolean |
 | disabled | 是否可选择 | boolean |
-| desc | 具体描述信息 | ReactNode |
+| description | 具体描述信息 | ReactNode |
 | children | 支持自定义扩展该方式下的内容 | ReactNode |
 | type | 配送时间类型 | DeliveryDateType |
 | times | 具体的时间内容 | DateTimesType[] |

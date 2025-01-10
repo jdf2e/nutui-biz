@@ -224,15 +224,15 @@ export const Delivery: FunctionComponent<
         closeable
         round
         duration={duration}
-        onClickOverlay={clickOverlay}
-        onClickCloseIcon={clickOverlay}
+        onOverlayClick={clickOverlay}
+        onCloseIconClick={clickOverlay}
         onClose={closeFun}
       >
         <div className={classNames([b(), className])} style={style} {...rest}>
           <div className={`${b('title')}`} ref={titleRef}>{title}</div>
           <div className={`${b('content')}`} ref={contentRef}>
             <div className={`${b('content-type')}`}>
-              <Radio.RadioGroup value={deliveryType} onChange={handleTypeChange}>
+              <Radio.Group value={deliveryType} onChange={handleTypeChange}>
                 {
                   deliveryTypes && deliveryTypes.slice(0, maxCount).map((item: DeliveryTypes) => (
                     <Radio
@@ -243,7 +243,7 @@ export const Delivery: FunctionComponent<
                     >{item.text}</Radio>
                   ))
                 }
-              </Radio.RadioGroup>
+              </Radio.Group>
               {
                 getDeliveryTypeItem(deliveryType) && <div className={`${b('content-type-tips')}`}>
                   {getDeliveryTypeItem(deliveryType)?.desc}
@@ -260,7 +260,7 @@ export const Delivery: FunctionComponent<
                       <>
                         <div className={`${b('content-deliverytime-title')}`}>{deliveryTimeTitle}</div>
                         <div className={`${b('content-deliverytime-tabs')}`}>
-                          <Radio.RadioGroup value={deliveryTime} onChange={(label: numericProp | boolean) => { setDeliveryTime(label as string); }}>
+                          <Radio.Group value={deliveryTime} onChange={(label: numericProp | boolean) => { setDeliveryTime(label as string); }}>
                             {
                               deliveryDateData && deliveryDateData.slice(0, maxCount).map((item: DeliveryData) => (
                                 <Radio
@@ -271,7 +271,7 @@ export const Delivery: FunctionComponent<
                                 >{item.text}</Radio>
                               ))
                             }
-                          </Radio.RadioGroup>
+                          </Radio.Group>
                         </div>
                         <div className={`${b('content-deliverytime-tips')}`}>
                           {getDeliveryTimeItem(deliveryTime)?.desc}

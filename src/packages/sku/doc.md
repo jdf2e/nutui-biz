@@ -558,7 +558,7 @@ const App = () => {
         goods={goodsInfo}
         btnOptions={['buy', 'cart']}
         skuHeaderPrice={<div>
-          <Price price={goodsInfo.price} needSymbol={true} thousands={false} />
+          <Price price={goodsInfo.price} thousands={false} />
           <span style={tagStyle}></span>
         </div>}
         skuHeaderExtra={<span className='nut-sku-header-right-extra'>重量：0.1kg 编号：{ goodsInfo.skuId }</span>}
@@ -635,8 +635,8 @@ export default App;
 | overLimit  | inputNumber 点击不可用的按钮时触发 | value |
 | onChangeStepper  | 购买变化时触发 | value |
 | onClickBtnOperate  | 点击底部按钮时触发 | {type:'confirm',value:'inputNumber value'} |
-| onClickCloseIcon  | 点击左上角关闭 icon 时触发 | - |
-| onClickOverlay  | 点击遮罩时触发 | - |
+| onCloseIconClick  | 点击左上角关闭 icon 时触发 | - |
+| onOverlayClick  | 点击遮罩时触发 | - |
 | onClose  | 关闭弹层时触发 | - |
 
 

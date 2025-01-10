@@ -75,7 +75,7 @@ const App = () => {
   };
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setNormal(true)} />
+      <Cell title="选择地址" description={text} onClick={() => setNormal(true)} />
       <Address
         modelValue={normal}
         province={province}
@@ -150,7 +150,7 @@ const App = () => {
   };
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setNormal(true)} />
+      <Cell title="选择地址" description={text} onClick={() => setNormal(true)} />
       <Address
         modelValue={normal}
         modelSelect={value}
@@ -232,7 +232,7 @@ const App = () => {
   };
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setNormal2(true)} />
+      <Cell title="选择地址" description={text} onClick={() => setNormal2(true)} />
       <Address
         modelValue={normal2}
         modelSelect={value}
@@ -320,7 +320,7 @@ const App = () => {
   };
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setNormal(true)} />
+      <Cell title="选择地址" description={text} onClick={() => setNormal(true)} />
       <Address
         modelValue={normal}
         province={province}
@@ -407,7 +407,7 @@ const App = () => {
   };
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setExist(true)} />
+      <Cell title="选择地址" description={text} onClick={() => setExist(true)} />
       <Address
         modelValue={exist}
         type="exist"
@@ -500,7 +500,7 @@ const App = () => {
   };
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setCustomImg(true)} />
+      <Cell title="选择地址" description={text} onClick={() => setCustomImg(true)} />
       <Address
         modelValue={customImg}
         type="exist"
@@ -644,7 +644,7 @@ const App = () => {
   };
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setOther(true)} />
+      <Cell title="选择地址" description={text} onClick={() => setOther(true)} />
       <Address
         modelValue={other}
         type="exist"

@@ -27,7 +27,7 @@ const App = () => {
     <div className="demo">
       <SettleBar
         total={100}
-        onClickButton ={() => Toast.text('点击按钮')}
+        onClickButton ={() => Toast.show('点击按钮')}
       />
     </div>
   );
@@ -53,7 +53,7 @@ const App = () => {
       <SettleBar 
         total={100}
         totalAlign="left"
-        onClickButton ={() => Toast.text('点击按钮')}
+        onClickButton ={() => Toast.show('点击按钮')}
       />
     </div>
   );
@@ -133,7 +133,7 @@ const App = () => {
         showZero={false} 
         totalText="总计" 
         settleButtonText="提交订单" 
-        onClickButton ={() => Toast.text('点击按钮')}
+        onClickButton ={() => Toast.show('点击按钮')}
       />
     </div>
   );
@@ -160,7 +160,7 @@ const App = () => {
       <SettleBar 
         total={100}
         settleCount="100" 
-        onClickButton ={() => Toast.text('点击按钮')}
+        onClickButton ={() => Toast.show('点击按钮')}
       />
     </div>
   );
@@ -187,7 +187,7 @@ const App = () => {
       <SettleBar 
         total={100}
         customTotalExtra={<div style={{fontSize: '12px'}}>已减 ¥30.00</div>} 
-        onClickButton ={() => Toast.text('点击按钮')}
+        onClickButton ={() => Toast.show('点击按钮')}
       />
     </div>
   );
@@ -218,7 +218,7 @@ const App = () => {
       <SettleBar 
         total={100}
         customWarning={customWarningHtml()} 
-        onClickButton ={() => Toast.text('点击按钮')}
+        onClickButton ={() => Toast.show('点击按钮')}
       />
     </div>
   );

@@ -11,7 +11,6 @@ import { numericProp } from '@/utils/props'
 import { IComponent } from '@/utils/typings'
 import { Form, Radio, Input, Button, ButtonProps } from '@nutui/nutui-react'
 
-const { RadioGroup } = Radio
 const { Item } = Form
 
 export interface Idata {
@@ -98,10 +97,10 @@ export const InvoiceTitleEdit: FunctionComponent<
           label="抬头类型"
           name="titleType"
         >
-          <RadioGroup value={titleType} direction="horizontal" onChange={v => setTitleType(v as string)}>
+          <Radio.Group value={titleType} direction="horizontal" onChange={v => setTitleType(v as string)}>
             <Radio shape="button" value='personal'>个人或事业单位</Radio>
             <Radio shape="button" value='enterprise'>企业</Radio>
-          </RadioGroup>
+          </Radio.Group>
         </Item>}
         <Item 
           label="发票抬头"
@@ -109,8 +108,7 @@ export const InvoiceTitleEdit: FunctionComponent<
           rules={[{ required: true, message: "请输入发票抬头" }]}
         >
           <Input 
-            placeholder="请输入发票抬头" 
-            border={false} 
+            placeholder="请输入发票抬头"
             onChange={handleChangeTitle}
             defaultValue={title}
           />
@@ -122,8 +120,7 @@ export const InvoiceTitleEdit: FunctionComponent<
         >
           <Input 
             placeholder={invoiceType === 'special' ? '' : '请输入纳税人识别号'} 
-            border={false} 
-            readonly={invoiceType === 'special'} 
+            readOnly={invoiceType === 'special'} 
             defaultValue={companyCode}
             onChange={(val: string) => setCompanyCode(val)}
           />
@@ -135,7 +132,6 @@ export const InvoiceTitleEdit: FunctionComponent<
         >
           <Input 
             placeholder="请输入注册地址" 
-            border={false} 
             defaultValue={address}
             onChange={(val: string) => setAddress(val)}
           />
@@ -147,7 +143,6 @@ export const InvoiceTitleEdit: FunctionComponent<
         >
           <Input 
             placeholder="请输入注册电话" 
-            border={false} 
             defaultValue={companyPhone}
             onChange={(val: string) => setCompanyPhone(val)}
           />
@@ -159,7 +154,6 @@ export const InvoiceTitleEdit: FunctionComponent<
         >
           <Input 
             placeholder="请输入开户行" 
-            border={false}
             defaultValue={bankDeposit}
             onChange={(val: string) => setBankDeposit(val)}
           />
@@ -171,7 +165,6 @@ export const InvoiceTitleEdit: FunctionComponent<
         >
           <Input 
             placeholder="请输入银行账户" 
-            border={false}
             defaultValue={bankAccount}
             onChange={(val: string) => setBankAccount(val)}
           />
