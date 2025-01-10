@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import {Price,Tag} from '@nutui/nutui-react-taro'
 
 import bem from '@/utils/bem'
+import { View } from '@tarojs/components'
 
 export interface CardProps {
   imgUrl: string
@@ -42,18 +43,18 @@ export const Card: FunctionComponent<
   const b = bem('card')
   return (
     <div className={`${b()} ${className}`} style={style} {...rest}>
-      <div className={b('left')}>
+      <View className={b('left')}>
         <img src={imgUrl} alt="" />
-      </div>
-      <div className={b('right')}>
-        <div className={b('right__title')}>{title}</div>
+      </View>
+      <View className={b('right')}>
+        <View className={b('right__title')}>{title}</View>
         {prolistTpl}
-        <div className={b('right__price')}>
+        <View className={b('right__price')}>
           <Price price={price} />
           {originTpl || (
             <Price className={b('right__price__origin')} price={vipPrice} />
           )}
-        </div>
+        </View>
         <div className={b('right__other')}>
           {shopTagTpl || (
             <>
@@ -65,7 +66,7 @@ export const Card: FunctionComponent<
         <div className={b('right__shop')}>
           <div className={b('right__shop__name')}>{shopName}</div>
         </div>
-      </div>
+      </View>
     </div>
   )
 }

@@ -47,7 +47,7 @@ export const LongPressShell: FunctionComponent<
 
   const b = bem('address-list')
 
-  let loop: number = 0;
+  let loop: any = 0;
 
   const [showMaskRef, setShowMaskRef] = useState<boolean>(false)
 

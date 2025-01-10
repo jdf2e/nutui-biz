@@ -5,7 +5,6 @@ import {
   Switch,
   Route,
   Redirect,
-  useHistory,
 } from "react-router-dom";
 import loadable, { LoadableComponent } from "@loadable/component";
 import routes from "./router";
@@ -71,9 +70,6 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
             <Icon name="left"></Icon>
           </div>
           {getComponentName()["name"]}
-          {/* <div className="translate" onClick={() => handleSwitchLocale()}>
-            <Icon name="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"></Icon>
-          </div> */}
         </div>
         <C key={Math.random()} />
       </>
@@ -128,13 +124,12 @@ const AppSwitch = () => {
     </Configprovider>
   );
 };
+
 const App = () => {
   return (
-    <>
-      <HashRouter>
-        <AppSwitch></AppSwitch>
-      </HashRouter>
-    </>
+    <HashRouter>
+      <AppSwitch></AppSwitch>
+    </HashRouter>
   );
 };
 export default App;

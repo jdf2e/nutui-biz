@@ -47,11 +47,11 @@ test('Custome icon', async () => {
 })
 
 test('Click test', async () => {
-  const onReset = jest.fn()
-  const onClickAddress = jest.fn()
-  const onConfirm = jest.fn()
-  const onSelectedAttrs = jest.fn()
-  const onSelectedPrice = jest.fn()
+  const onReset = vi.fn()
+  const onClickAddress = vi.fn()
+  const onConfirm = vi.fn()
+  const onSelectedAttrs = vi.fn()
+  const onSelectedPrice = vi.fn()
   const { container } = render(
     <GoodsFilter
       visible={true}

@@ -165,7 +165,7 @@ test('HorizontalScrolling maskContent', async () => {
 })
 
 test('click test', () => {
-  const onChange = jest.fn()
+  const onChange = vi.fn()
   const { container } = render(
     <HorizontalScrolling 
       maskShadowType="shadow" 

@@ -3,7 +3,6 @@ import { Price, Tag, Image, ImageProps } from '@nutui/nutui-react'
 import classNames from 'classnames'
 import { errorImg } from '@/utils'
 import { numericProp } from '@/utils/props'
-
 import bem from '@/utils/bem'
 
 export interface CardProps {
@@ -70,7 +69,7 @@ export const Card: FunctionComponent<
   const b = bem('card')
 
   const clampStyle = () => {
-    if(titleLine > 1) return {'WebkitLineClamp': String(titleLine)} as CSSProperties
+    if(parseInt(titleLine as string) > 1) return {'WebkitLineClamp': String(titleLine)} as CSSProperties
   }
 
   return (

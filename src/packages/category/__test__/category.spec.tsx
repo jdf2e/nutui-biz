@@ -8,7 +8,7 @@ import { sleep } from '@/utils/test/event'
 const intersectionObserverMock = () => ({
   observe: () => null
 })
-window.IntersectionObserver = jest.fn().mockImplementation(intersectionObserverMock);
+window.IntersectionObserver = vi.fn().mockImplementation(intersectionObserverMock);
 
 test('Show Category',() => {
   const { container } = render(

@@ -128,8 +128,8 @@ test("edit address", async () => {
 });
 
 test("event onChangeAddress test", async () => {
-  const changeHandle = jest.fn();
-  const closeHandle = jest.fn();
+  const changeHandle = vi.fn();
+  const closeHandle = vi.fn();
   const { container } = render(
     <AddressEdit
       address={addressData2}
@@ -161,7 +161,7 @@ test("event onChangeAddress test", async () => {
 });
 
 test("event onSave test", async () => {
-  const saveHandle = jest.fn();
+  const saveHandle = vi.fn();
   const { container } = render(
     <AddressEdit
       address={addressData2}

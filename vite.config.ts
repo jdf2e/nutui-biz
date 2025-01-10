@@ -1,5 +1,6 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite'
-import reactRefresh from '@vitejs/plugin-react-refresh'
+import reactRefresh from '@vitejs/plugin-react'
 
 const atImport = require('postcss-import')
 const path = require('path')
@@ -24,4 +25,15 @@ export default defineConfig({
     },
   },
   plugins: [reactRefresh()],
+  test: {
+    setupFiles: ['./vitest.setup.ts'],
+    globals: true,
+    environment: 'happy-dom',
+    coverage: {
+      all: false,
+      provider: 'v8',
+    },
+    include: ['src/packages/**/*.(test|spec).(ts|tsx)'],
+    reporters: ['default', 'html'],
+  },
 })

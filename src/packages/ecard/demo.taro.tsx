@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Ecard } from "@/packages/nutui.react.taro";
+import { Ecard } from "@/packages/nutui.biz.taro";
 import { Cell } from '@nutui/nutui-react-taro';
 import { useTranslate } from '@/sites/assets/locale/taro'
 

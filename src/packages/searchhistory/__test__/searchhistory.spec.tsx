@@ -150,7 +150,7 @@ test('searchDiscoverExtra test', async () => {
 })
 
 test('refresh test', async () => {
-  const onRefresh = jest.fn()
+  const onRefresh = vi.fn()
 
   const { container } = render(
     <SearchHistory

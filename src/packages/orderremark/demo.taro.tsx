@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslate } from '@/sites/assets/locale/taro';
-import { OrderRemark } from '@/packages/nutui.react.taro';
+import { OrderRemark } from '@/packages/nutui.biz.taro';
 import { Cell, Toast } from '@nutui/nutui-react-taro';
 
 interface tarnslatedOption {

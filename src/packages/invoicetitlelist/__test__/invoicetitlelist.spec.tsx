@@ -119,9 +119,9 @@ test('test 是否选中', async () => {
 })
 
 test('test 操作按钮自定义', async () => {
-  const onClick = jest.fn()
-  const onEdit = jest.fn()
-  const onDelete = jest.fn()
+  const onClick = vi.fn()
+  const onEdit = vi.fn()
+  const onDelete = vi.fn()
 
   const { container } = render(
     <InvoiceTitleList 

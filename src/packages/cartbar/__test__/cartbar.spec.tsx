@@ -97,8 +97,8 @@ test('test placeholder', async () => {
 })
 
 test('test click', async () => {
-  const onClick1 = jest.fn()
-  const onClick2 = jest.fn()
+  const onClick1 = vi.fn()
+  const onClick2 = vi.fn()
   const { container } = render(
     <CartBar>
       <CartBarIcon text="店铺" iconProps={{name: 'shop'}} onClick={onClick1} />

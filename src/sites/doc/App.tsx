@@ -24,9 +24,7 @@ function myRemarkPlugin() {
     visit(tree, (node) => {
       if (node.type === "containerDirective") {
         if (node.name !== "demo") return;
-
         const data = node.data || (node.data = {});
-
         data.hName = "div";
         data.hProperties = {
           class: "nutui-react--demo-wrapper",

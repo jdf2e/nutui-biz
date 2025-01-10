@@ -216,7 +216,7 @@ test('props test', () => {
 })
 
 test('onsure click test', async () => {
-    const onHandleSure = jest.fn()
+    const onHandleSure = vi.fn()
     const { container } = render(
         <Delivery
             visible

@@ -9,7 +9,7 @@ import { ProductFeed } from '../productfeed'
 const intersectionObserverMock = () => ({
   observe: () => null
 })
-window.IntersectionObserver = jest.fn().mockImplementation(intersectionObserverMock);
+window.IntersectionObserver = vi.fn().mockImplementation(intersectionObserverMock);
 
 test('col test', () => {
   const data = [{
@@ -82,7 +82,7 @@ test('onRefresh test', () => {
     desc: "更多买点",
     price: "388",
   }]
-  const refresh = jest.fn()
+  const refresh = vi.fn()
   const { container } = render(
     <ProductFeed
     id="refreshScroll2"

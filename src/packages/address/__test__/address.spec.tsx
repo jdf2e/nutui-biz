@@ -79,7 +79,7 @@ test('Show Address', async () => {
 });
 
 test('choose address item', async () => {
-  const changeHandle = jest.fn();
+  const changeHandle = vi.fn();
   const { container } = render(
     <Address
       modelValue
@@ -102,7 +102,7 @@ test('choose address item', async () => {
 });
 
 test('default choose address', async () => {
-  const changeHandle = jest.fn();
+  const changeHandle = vi.fn();
   const { container } = render(
     <Address
       modelValue
@@ -140,7 +140,7 @@ test('exist address', async () => {
 });
 
 test('exist address choose event', async () => {
-  const selectHandle = jest.fn();
+  const selectHandle = vi.fn();
   const { container } = render(
     <Address
       modelValue
@@ -160,8 +160,8 @@ test('exist address choose event', async () => {
 });
 
 test('exist address & list address', async () => {
-  const changeHandle = jest.fn();
-  const switchModule = jest.fn();
+  const changeHandle = vi.fn();
+  const switchModule = vi.fn();
   const { container } = render(
     <Address
       modelValue

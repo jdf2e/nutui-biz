@@ -123,9 +123,9 @@ const formParams2 = {
 };
 
 test("event test", async () => {
-  const onChange = jest.fn();
-  const verifyClick = jest.fn();
-  const loginClick = jest.fn();
+  const onChange = vi.fn();
+  const verifyClick = vi.fn();
+  const loginClick = vi.fn();
   const { container } = render(
     <Login
       formParams={formParams2}
@@ -160,9 +160,9 @@ test("event test", async () => {
 });
 
 test("error test", async () => {
-  const onChange = jest.fn();
-  const verifyClick = jest.fn();
-  const loginClick = jest.fn();
+  const onChange = vi.fn();
+  const verifyClick = vi.fn();
+  const loginClick = vi.fn();
   const { container } = render(
     <Login
       formParams={formParams2}

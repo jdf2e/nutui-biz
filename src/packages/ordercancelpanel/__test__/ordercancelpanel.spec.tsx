@@ -46,7 +46,7 @@ test("should match snapshot", () => {
 });
 
 test("prop of Basic Usage", () => {
-  const closeClick = jest.fn();
+  const closeClick = vi.fn();
   const state = {
     popupTitle: "退款原因",
     cancelReason: [
@@ -221,7 +221,7 @@ test("Components with warm tips", () => {
 });
 
 test("Components with other reason options", () => {
-  const onClick1 = jest.fn();
+  const onClick1 = vi.fn();
   const state = {
     popupTitle: "退款原因",
     warmTips: [

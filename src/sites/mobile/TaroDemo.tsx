@@ -17,10 +17,6 @@ const TaroDemo = () => {
           src="https://img11.360buyimg.com/imagetools/jfs/t1/117193/21/28934/19545/6323e0a4Ea936afda/277e70088c9749cf.jpg"
           width="200"
         />
-        {/*<img*/}
-        {/*  src="https://img12.360buyimg.com/imagetools/jfs/t1/205124/1/15643/30360/62aad730Ea5734bf9/703bb91a0b73282f.png"*/}
-        {/*  width="250"*/}
-        {/*/>*/}
       </div>
     </div>
   )

@@ -55,9 +55,9 @@ test('Custom Copywriting', async () => {
 test('The corresponding event should be triggered when the tag or button is clicked', async () => {
   const show = true;
   const mark = '123456789123';
-  const clickTag = jest.fn();
-  const onChange = jest.fn();
-  const onBtnSubmit = jest.fn();
+  const clickTag = vi.fn();
+  const onChange = vi.fn();
+  const onBtnSubmit = vi.fn();
   const { container } = render(
     <OrderRemark
       visible={show}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from '@/packages/nutui.react.taro'
+import { Card } from '@/packages/nutui.biz.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 
 interface T {

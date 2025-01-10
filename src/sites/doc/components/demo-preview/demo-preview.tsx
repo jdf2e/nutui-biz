@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./demo-preview.scss";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const DemoPreview = (props: any) => {
   const location = useLocation();
@@ -9,13 +9,12 @@ const DemoPreview = (props: any) => {
 
   useEffect(() => {
     const path = window.location.hash.substring(2).split("/");
-    setURL(path[path.length - 1]);
+    setURL(`/nutui/biz/demo.html#/${path[path.length - 1]}`);
   }, [location]);
 
   return (
     <div className={`doc-demo-preview ${props.className}`}>
-      <iframe src={`/biz/h5/react/1x/demo.html#/${URL}`} frameBorder="0"></iframe>
-      {/* <iframe src={`/react/demo.html#${URL}`} frameBorder="0"></iframe> */}
+      <iframe src={URL} name="demos"></iframe>
     </div>
   );
 };

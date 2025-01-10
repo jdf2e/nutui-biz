@@ -1,5 +1,5 @@
 import React from 'react'
-import { ConfigProvider } from '@/packages/nutui.react.taro'
+import { ConfigProvider } from '@/packages/nutui.biz.taro'
 import enUS from '../../locales/en-US'
 import zhCN from '../../locales/zh-CN'
 

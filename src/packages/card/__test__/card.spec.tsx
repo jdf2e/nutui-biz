@@ -258,7 +258,7 @@ test('titleTag test', () => {
 })
 
 test('click test', () => {
-  const onClick1 = jest.fn()
+  const onClick1 = vi.fn()
   const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',

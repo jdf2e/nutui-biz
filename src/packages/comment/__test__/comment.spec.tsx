@@ -69,8 +69,8 @@ test('props & one imageRow test', () => {
 test('multi imagesRows test', () => {
   const state = data.Comment
   state.info.avatar = "https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
-  const onClickImages = jest.fn()
-  const onClickOperate = jest.fn()
+  const onClickImages = vi.fn()
+  const onClickOperate = vi.fn()
   const { container } = render(
     <Comment
       type="complex"
@@ -123,7 +123,7 @@ test('multi imagesRows test', () => {
 test('follow test', () => {
   const state = data.Comment
   state.info.avatar = "https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
-  const onClick = jest.fn()
+  const onClick = vi.fn()
   const { container } = render(
     <Comment
       type='complex'

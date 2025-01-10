@@ -4,7 +4,7 @@ import "@testing-library/jest-dom";
 import { Coupon, ButtonPropsType } from "../coupon";
 
 test("should match snapshot", () => {
-  const basedOnClick = jest.fn();
+  const basedOnClick = vi.fn();
   const buttonProps: Partial<ButtonPropsType> = {
     type: "primary",
     size: "small",
@@ -60,7 +60,7 @@ test("should match snapshot", () => {
 });
 
 test("prop of Basic Usage", () => {
-  const basedOnClick = jest.fn();
+  const basedOnClick = vi.fn();
   const buttonProps: Partial<ButtonPropsType> = {
     type: "primary",
     size: "small",
@@ -126,7 +126,7 @@ test("prop of Basic Usage", () => {
 });
 
 test("small type of coupon", () => {
-  const basedOnClick = jest.fn();
+  const basedOnClick = vi.fn();
   const buttonProps: Partial<ButtonPropsType> = {
     type: "primary",
     size: "small",
@@ -186,7 +186,7 @@ test("small type of coupon", () => {
 });
 
 test("test price length", () => {
-  const basedOnClick = jest.fn();
+  const basedOnClick = vi.fn();
   const buttonProps: Partial<ButtonPropsType> = {
     type: "primary",
     size: "small",
@@ -246,7 +246,7 @@ test("test price length", () => {
 });
 
 test("test price length sec", () => {
-  const basedOnClick = jest.fn();
+  const basedOnClick = vi.fn();
   const buttonProps: Partial<ButtonPropsType> = {
     type: "primary",
     size: "small",

@@ -43,7 +43,7 @@ const addressSetData = {
 };
 test("test props & event", async () => {
 
-  const saveHandle = jest.fn();
+  const saveHandle = vi.fn();
   const { container } = render(
     <ReceiveInvoiceEdit
       address={addressData}
@@ -114,9 +114,9 @@ test("test props & event", async () => {
     ],
     town: [],
   };
-  const changeHandle = jest.fn();
-  const closeHandle = jest.fn();
-  const saveHandle = jest.fn();
+  const changeHandle = vi.fn();
+  const closeHandle = vi.fn();
+  const saveHandle = vi.fn();
   const { container } = render(
     <ReceiveInvoiceEdit
       address={addressData2}
